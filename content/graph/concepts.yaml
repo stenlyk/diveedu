@@ -1,0 +1,18 @@
+- id: hloubka
+  label: Hloubka
+  type: quantity
+  shortDefinition: Svislá vzdálenost pod hladinou v metrech; vstup téměř každého výpočtu.
+  moduleId: zaklady
+
+- id: absolutni-tlak
+  label: Absolutní tlak
+  type: quantity
+  shortDefinition: Součet tlaku atmosféry a tlaku vodního sloupce v barech.
+  moduleId: zaklady
+
+- id: vzorec-p-abs
+  label: Vzorec absolutního tlaku
+  type: formula
+  shortDefinition: Hloubka dělená deseti plus jedna.
+  moduleId: zaklady
+  formulaId: p-abs

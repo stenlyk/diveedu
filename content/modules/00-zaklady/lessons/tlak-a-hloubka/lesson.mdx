@@ -1,0 +1,83 @@
+<Hook>
+
+Na hladině nafoukneš balonek a stáhneš ho pod vodu. V deseti metrech má **poloviční** objem.
+Kdyby to šlo dál stejným tempem, ve dvaceti metrech by měl čtvrtinu. Nemá. Má třetinu.
+
+Proč se prvních deset metrů chová jinak než těch dalších? Odpověď je v jediném čísle,
+které si potápěč musí umět spočítat kdykoliv a z hlavy: **absolutní tlak**.
+
+</Hook>
+
+<Principle>
+
+Na tělo i na plyn pod vodou tlačí dvě vrstvy:
+
+- **Atmosféra.** Sloupec vzduchu od hladiny až po okraj vesmíru. Na úrovni moře tlačí silou zhruba <Calc fn="absPressure" args={[0]} unit="bar" />.
+- **Voda.** Je asi osmsetkrát hustší než vzduch, takže stejný tlak jako celá atmosféra vytvoří sloupec mořské vody vysoký pouhých deset metrů.
+
+Součet obou je <Term cs="absolutní tlak" />. Tlak samotné vody se nazývá hydrostatický a ukazuje ho
+hloubkoměr; plyn v plicích, v kompenzátoru i v tkáních ale „cítí“ vždy tlak absolutní.
+
+Důležitý je **poměr**, ne rozdíl. Mezi hladinou a deseti metry tlak vzroste dvakrát.
+Mezi třiceti a čtyřiceti metry jen <Calc fn="pressureRatio" args={[30, 40]} decimals={2} />krát.
+Proto se objem plynu, vztlak i riziko barotraumatu mění nejrychleji těsně pod hladinou.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="p-abs" />
+
+Odvození je jen sečtení obou vrstev: každých deset metrů mořské vody je jeden bar, k tomu jeden bar atmosféry.
+
+V této aplikaci platí metrická konvence **10 m mořské vody = 1 bar**. Je to zaokrouhlení, se kterým počítají
+všechny kurzy technického potápění. Dvě situace, kdy neplatí přesně:
+
+- **Sladká voda** je řidší, jeden bar odpovídá asi 10,3 m. Ve stejné hloubce je tedy tlak nepatrně nižší.
+- **Nadmořská výška.** V horském jezeře je atmosférický tlak nižší než 1 bar a dekompresní tabulky i počítače s tím musí počítat.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Řešený příklad.** Jaký je absolutní tlak v hloubce 30 m?
+
+<Worked fn="absPressure" args={[30]} expected={4} tolerance={0.001} steps="absPressureSteps" unit="bar" decimals={1} />
+
+**Opačný směr.** V jaké hloubce je absolutní tlak 5,5 bar? Odečti atmosféru a vynásob deseti:
+
+<Worked fn="depthFromPressure" args={[5.5]} expected={45} tolerance={0.001} unit="m" decimals={0} />
+
+**Teď ty.** Spočítej z hlavy absolutní tlak ve 24 m a ověř si ho v hračce v další části.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="depth-pressure" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hranicka-propast" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,17 @@
+- from: hloubka
+  to: absolutni-tlak
+  type: zvysuje
+  explanation: Každých 10 m mořské vody přidá k okolnímu tlaku 1 bar.
+  lessonId: tlak-a-hloubka
+
+- from: vzorec-p-abs
+  to: hloubka
+  type: pocita_se_z
+  explanation: Jediným vstupem vzorce je hloubka; atmosféra se přičítá jako konstanta 1 bar.
+  lessonId: tlak-a-hloubka
+
+- from: vzorec-p-abs
+  to: absolutni-tlak
+  type: je_predpokladem
+  explanation: Bez vzorce nejde absolutní tlak spočítat a s ním ani ppO2, spotřebu nebo hustotu plynu.
+  lessonId: tlak-a-hloubka

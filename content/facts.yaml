@@ -1,0 +1,12 @@
+- id: hranicka-propast
+  text: >-
+    Nejhlubší známá zatopená propast světa je sladkovodní – Hranická propast na Moravě.
+    Dálkově řízený robot v ní v roce 2016 dosáhl hloubky 404 m a dna se nedotkl.
+    Ve sladké vodě by tam absolutní tlak byl kolem 40 bar.
+  conceptIds: [hloubka, absolutni-tlak]
+  source:
+    title: Hranická propast – průzkum ROV 2016
+    author: Česká speleologická společnost, ZO 7-02 Hranický kras
+    year: 2016
+    note: Hloubku a rok ověřit proti primárnímu zdroji.
+  needs_review: true

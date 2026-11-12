@@ -1,0 +1,55 @@
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import { useSettings, DISCLAIMER_VERSION } from '../db/settings';
+import { Home } from '../features/Home';
+import { Onboarding } from '../features/Onboarding';
+import { AppShell } from './AppShell';
+import { UpdatePrompt } from './UpdatePrompt';
+
+// Stránky mimo úvodní obrazovku se načítají líně, aby první načtení zůstalo malé.
+const Learn = lazy(() => import('../features/Learn').then((m) => ({ default: m.Learn })));
+const LessonPage = lazy(() => import('../features/LessonPage').then((m) => ({ default: m.LessonPage })));
+const Train = lazy(() => import('../features/Train').then((m) => ({ default: m.Train })));
+const QuickCheck = lazy(() => import('../features/Train').then((m) => ({ default: m.QuickCheck })));
+const GraphPage = lazy(() => import('../features/GraphPage').then((m) => ({ default: m.GraphPage })));
+const Tools = lazy(() => import('../features/Tools').then((m) => ({ default: m.Tools })));
+const Settings = lazy(() => import('../features/Settings').then((m) => ({ default: m.Settings })));
+
+export function App() {
+  const { loaded, theme, disclaimerAccepted, load } = useSettings();
+
+  useEffect(() => void load(), [load]);
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0b1418' : '#f4f8f9');
+  }, [theme]);
+  useEffect(() => {
+    // Požádá prohlížeč, aby data nemazal při nedostatku místa (důležité hlavně na iOS).
+    void navigator.storage?.persist?.().catch(() => undefined);
+  }, []);
+
+  if (!loaded) return null;
+  if (disclaimerAccepted < DISCLAIMER_VERSION) return <Onboarding />;
+
+  return (
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Suspense fallback={<p className="p-6 text-muted">Načítám…</p>}>
+        <Routes>
+          <Route element={<AppShell />}>
+            <Route index element={<Home />} />
+            <Route path="uceni" element={<Learn />} />
+            <Route path="uceni/:lessonId" element={<LessonPage />} />
+            <Route path="trenink" element={<Train />} />
+            <Route path="trenink/rychly-check" element={<QuickCheck />} />
+            <Route path="graf" element={<GraphPage />} />
+            <Route path="graf/:conceptId" element={<GraphPage />} />
+            <Route path="nastroje" element={<Tools />} />
+            <Route path="nastaveni" element={<Settings />} />
+            <Route path="*" element={<p>Stránka nenalezena.</p>} />
+          </Route>
+        </Routes>
+      </Suspense>
+      <UpdatePrompt />
+    </BrowserRouter>
+  );
+}

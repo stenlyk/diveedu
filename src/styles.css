@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+/* Design tokeny. Tmavý režim je výchozí; světlý se zapíná atributem data-theme="light". */
+:root {
+  --bg: #0b1418;
+  --surface: #121f25;
+  --surface-2: #1a2b33;
+  --border: #2b4651;
+  --text: #e6f0f2;
+  --muted: #9db3ba;
+  --accent: #3ec6d3;
+  --accent-ink: #04262b;
+  --ok: #5fd08a;
+  --warn: #f2c14e;
+  --danger: #ff7a6e;
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  --bg: #f4f8f9;
+  --surface: #ffffff;
+  --surface-2: #e9f1f3;
+  --border: #c2d3d8;
+  --text: #0e1c21;
+  --muted: #47606a;
+  --accent: #0a6f7b;
+  --accent-ink: #ffffff;
+  --ok: #17703d;
+  --warn: #7a5600;
+  --danger: #b3261e;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  overscroll-behavior-y: none;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Text lekcí */
+.prose-lesson { max-width: 68ch; }
+.prose-lesson p { margin: 0 0 1rem; }
+.prose-lesson ul { margin: 0 0 1rem; padding-left: 1.25rem; list-style: disc; }
+.prose-lesson li { margin-bottom: 0.4rem; }
+.prose-lesson strong { color: var(--text); font-weight: 650; }
+.katex { font-size: 1.12em; }
+.katex-display { margin: 0.5rem 0; overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; }
+
+input[type='range'] { accent-color: var(--accent); height: 2.5rem; min-width: 0; flex: 1 1 0; }
+
+/* Položky gridu a flexu se smí zmenšit pod šířku svého obsahu (jinak vzorce roztáhnou stránku). */
+.grid > *, .flex > * { min-width: 0; }

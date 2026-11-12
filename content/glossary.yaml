@@ -1,0 +1,8 @@
+- cs: absolutní tlak
+  en: absolute pressure
+  definition: Celkový tlak působící v hloubce – tlak atmosféry plus tlak vodního sloupce.
+  pronunciation: absolutní tlak
+
+- cs: hydrostatický tlak
+  en: hydrostatic (gauge) pressure
+  definition: Tlak samotného vodního sloupce bez atmosféry; ten ukazuje hloubkoměr.

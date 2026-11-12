@@ -1,0 +1,9 @@
+id: zaklady
+title: Základy fyziky a fyziologie
+subtitle: Tlak, objem, parciální tlaky a tělo pod vodou
+branch: depth
+rig: oc
+prerequisites: []
+order: 0
+passThreshold: 0.8
+status: draft

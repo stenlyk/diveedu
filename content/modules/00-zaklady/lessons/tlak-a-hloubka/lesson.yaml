@@ -1,0 +1,25 @@
+id: tlak-a-hloubka
+moduleId: zaklady
+title: Tlak a hloubka
+order: 1
+conceptIds: [hloubka, absolutni-tlak, vzorec-p-abs]
+checkQuestionIds: [tlak-30m, tlak-v-hloubce, hloubka-z-tlaku, tlak-zdvojnasobeni, tlak-sladka-voda]
+estimatedMinutes: 8
+audioSummary: >-
+  Pod vodou na tebe tlačí dvě věci: atmosféra nad hladinou a sloupec vody nad tebou.
+  Atmosféra dělá jeden bar. Každých deset metrů mořské vody přidá další bar.
+  Absolutní tlak proto spočítáš jako hloubku dělenou deseti plus jedna.
+  Ve třiceti metrech jsou to čtyři bary, ve čtyřiceti pěti metrech pět a půl baru.
+  Pozor na nejčastější chybu: zapomenout přičíst atmosféru.
+  A zapamatuj si, že tlak se relativně nejvíc mění u hladiny. Mezi hladinou a deseti metry se zdvojnásobí,
+  kdežto mezi třiceti a čtyřiceti metry vzroste jen o čtvrtinu.
+  Od absolutního tlaku se odvíjí skoro všechno, co budeš v technickém potápění počítat:
+  objem plynu, spotřeba, parciální tlaky i hustota toho, co dýcháš.
+sources:
+  - title: NOAA Diving Manual, 6th Edition – kapitola Physics of Diving
+    author: NOAA
+    year: 2017
+  - title: U.S. Navy Diving Manual, Revision 7 – kapitola Underwater Physics
+    author: Naval Sea Systems Command
+    year: 2016
+needs_review: false

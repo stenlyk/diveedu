@@ -1,0 +1,7 @@
+- id: p-abs
+  title: Absolutní tlak
+  latex: 'P_{abs} = \frac{d}{10} + 1'
+  variables:
+    - { symbol: 'P_{abs}', name: absolutní tlak, unit: bar }
+    - { symbol: 'd', name: hloubka, unit: m }
+  calcFunction: absPressure

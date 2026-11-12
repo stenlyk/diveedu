@@ -1,0 +1,82 @@
+- id: tlak-30m
+  type: choice
+  conceptIds: [absolutni-tlak, vzorec-p-abs]
+  difficulty: 1
+  prompt: Jaký je absolutní tlak v hloubce 30 m v moři?
+  options:
+    - text: 3 bar
+      explanation: To je jen tlak vody (hydrostatický). Chybí 1 bar atmosféry nad hladinou.
+    - text: 4 bar
+      correct: true
+    - text: 30 bar
+      explanation: Jeden bar přibývá každých 10 m, ne každý metr.
+    - text: 31 bar
+      explanation: Jeden bar přibývá každých 10 m, ne každý metr; atmosféra je přičtená správně.
+  explanation: Hloubku vyděl deseti a přičti atmosféru – 30 / 10 + 1 = 4 bar.
+  backToLessonId: tlak-a-hloubka
+
+- id: tlak-v-hloubce
+  type: numeric
+  conceptIds: [absolutni-tlak, hloubka, vzorec-p-abs]
+  difficulty: 1
+  prompt: Jaký je absolutní tlak v hloubce {depth} m (mořská voda)?
+  template:
+    fn: absPressure
+    params:
+      depth: { min: 3, max: 75, step: 1 }
+    args: [depth]
+    tolerance: 0.05
+    unit: bar
+    decimals: 1
+  explanation: Absolutní tlak je hloubka dělená deseti plus jeden bar atmosféry.
+  backToLessonId: tlak-a-hloubka
+
+- id: hloubka-z-tlaku
+  type: numeric
+  conceptIds: [hloubka, absolutni-tlak, vzorec-p-abs]
+  difficulty: 2
+  prompt: V jaké hloubce je absolutní tlak {pressure} bar (mořská voda)?
+  template:
+    fn: depthFromPressure
+    params:
+      pressure: { values: [1.5, 1.6, 2.2, 2.8, 3.4, 4, 4.3, 5.5, 6.1, 7] }
+    args: [pressure]
+    tolerance: 0.5
+    unit: m
+    decimals: 0
+  explanation: Od absolutního tlaku odečti 1 bar atmosféry a zbytek vynásob deseti.
+  backToLessonId: tlak-a-hloubka
+
+- id: tlak-zdvojnasobeni
+  type: why
+  conceptIds: [hloubka, absolutni-tlak]
+  difficulty: 2
+  prompt: Proč se objem plynu mění nejrychleji těsně pod hladinou?
+  options:
+    - text: Protože se tam absolutní tlak mění relativně nejvíc – mezi hladinou a 10 m se zdvojnásobí.
+      correct: true
+    - text: Protože je voda u hladiny teplejší a plyn se teplem rozpíná.
+      explanation: Teplota má vliv malý. Rozhoduje poměr tlaků, a ten je největší u hladiny.
+    - text: Protože u hladiny přibývá na každý metr víc barů než v hloubce.
+      explanation: Na každý metr přibývá všude stejně, 0,1 bar. Liší se poměr k tlaku, který už tam je.
+    - text: Protože v hloubce je plyn už stlačený na minimum a dál se stlačit nedá.
+      explanation: Plyn se stlačuje dál i ve velkých hloubkách, jen relativně pomaleji.
+  explanation: Objem se řídí poměrem tlaků. Z 1 na 2 bar je to dvojnásobek, ze 4 na 5 bar jen o čtvrtinu víc.
+  backToLessonId: tlak-a-hloubka
+
+- id: tlak-sladka-voda
+  type: choice
+  conceptIds: [absolutni-tlak, hloubka]
+  difficulty: 2
+  prompt: Potápíš se ve sladkovodním lomu na úrovni moře. Jaký je tlak ve 40 m oproti stejné hloubce v moři?
+  options:
+    - text: Nepatrně nižší, protože sladká voda je řidší.
+      correct: true
+    - text: Nepatrně vyšší, protože sladká voda je hustší.
+      explanation: Je to naopak – sůl mořskou vodu zahušťuje, sladká je asi o 3 % řidší.
+    - text: Úplně stejný, tlak závisí jen na hloubce.
+      explanation: Tlak závisí na hloubce a na hustotě kapaliny. Rozdíl je malý, ale existuje.
+    - text: Výrazně nižší, přibližně poloviční.
+      explanation: Rozdíl hustot je jen kolem 3 %, takže i rozdíl tlaku vody je jen kolem 3 %.
+  explanation: Ve sladké vodě odpovídá jednomu baru asi 10,3 m, v mořské 10 m.
+  backToLessonId: tlak-a-hloubka

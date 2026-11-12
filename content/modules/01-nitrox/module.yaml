@@ -1,0 +1,9 @@
+id: nitrox
+title: Advanced Nitrox
+subtitle: Kyslík jako nástroj i riziko
+branch: depth
+rig: oc
+prerequisites: [zaklady]
+order: 1
+passThreshold: 0.8
+status: draft
