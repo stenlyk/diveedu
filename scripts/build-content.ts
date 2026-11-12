@@ -2,7 +2,7 @@
  * Validuje /content a zapíše zkompilovaný obsah pro aplikaci + REVIEW.md.
  * Chyba v obsahu ukončí proces s kódem 1 (zastaví build).
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadContent } from './lib/load';
@@ -21,6 +21,10 @@ if (errors.length > 0) {
 const outDir = join(root, 'src/content/generated');
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, 'content.json'), JSON.stringify(content));
+
+// Aplikace manifest zvuku vždy načítá; bez vygenerovaného zvuku (npm run tts) dostane prázdný a čte systémovým hlasem.
+const manifestPath = join(root, 'public/media-manifest.json');
+if (!existsSync(manifestPath)) writeFileSync(manifestPath, JSON.stringify({ voice: '', generatedAt: '', files: [] }));
 
 const items = reviewItems(content);
 const review = [

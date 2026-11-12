@@ -93,6 +93,11 @@ describe('validátor obsahu', () => {
     expect(errorsOf((raw) => Object.assign(raw.modules[0]!.data as object, { branch: 'vesmir' }))).toMatch(/module\.yaml: branch/);
   });
 
+  it('zkratka mimo slovník výslovnosti ve zvukovém shrnutí je chyba', () => {
+    expect(errorsOf((raw) => Object.assign(meta(raw), { audioSummary: 'Podle XYZ je to jinak.' }))).toMatch(/zkratka „XYZ“/);
+    expect(errorsOf((raw) => Object.assign(meta(raw), { audioSummary: 'Limit MOD a ppO2 známe.' }))).not.toMatch(/zkratka/);
+  });
+
   it('chybějící, zdvojená a přeházená sekce šablony', () => {
     expect(errorsOf((raw) => { raw.lessons[0]!.topLevelElements = LESSON_SECTIONS.filter((s) => s !== 'RealWorld'); })).toMatch(/chybí sekce <RealWorld>/);
     expect(errorsOf((raw) => raw.lessons[0]!.topLevelElements.push('Hook'))).toMatch(/sekce <Hook> je v lekci 2×/);

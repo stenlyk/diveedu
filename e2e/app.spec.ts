@@ -429,6 +429,10 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await expect(page.getByTestId('scenario-play')).toBeVisible();
   await page.goto('/uceni/plyn-v-jeskyni');
   await expect(page.getByRole('heading', { name: 'Plyn v jeskyni: třetiny a tlak otočky' })).toBeVisible();
+  await page.goto('/poslech');
+  await expect(page.getByTestId('podcast-transcript')).not.toBeEmpty();
+  await page.goto('/nastaveni');
+  await expect(page.getByRole('heading', { name: 'Zvukové balíčky' })).toBeVisible();
 });
 
 test('scénář ztráty šňůry: tma, úbytek plynu a rozbor rozhodnutí', async ({ page }) => {

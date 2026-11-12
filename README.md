@@ -44,11 +44,23 @@ docs/      poznámky k odborné kontrole výpočtů
 - Po úpravě spusť `npm run content`. Chyba vypíše soubor a pole a zastaví build.
 - Nejistý fakt označ `needs_review: true` – objeví se se štítkem v aplikaci a v `REVIEW.md`.
 
+## Zvuk
+
+```bash
+npm run tts            # vygeneruje chybějící a změněná shrnutí do public/media (jen macOS, hlas Zuzana)
+npm run tts -- --all   # přegeneruje všechno
+```
+
+Zvuk se čte systémovým hlasem počítače, nic se neposílá ven. Výstup (asi 14 MB) není v gitu.
+Bez něj aplikace funguje dál a shrnutí čte systémový hlas zařízení. Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`;
+nová zkratka v názvu nebo shrnutí lekce bez záznamu ve slovníku zastaví build.
+
 ## Nasazení (Cloudflare Pages)
 
 ```bash
 npx wrangler login                                   # jednorázově, otevře prohlížeč
 npx wrangler pages project create diveedu --production-branch main   # jednorázově
+npm run tts                                          # zvuková shrnutí; bez nich se nasadí verze bez nahraného hlasu
 npm run deploy
 ```
 

@@ -5,6 +5,7 @@
 import { callContentFunction, isContentFunction } from '../../src/content/fns';
 import type { z } from 'zod';
 import { CUSTOM_PLAYGROUND_KINDS } from '../../src/mdx/playgroundKinds';
+import { unknownAbbreviations } from '../../src/audio/pronounce';
 import { DIAGRAMS } from '../../src/quiz/diagramDefs';
 import { CALC_DEFS } from '../../src/tools/defs';
 import {
@@ -184,6 +185,10 @@ export function validateContent(raw: RawContent): ValidationResult {
     const where = `lekce ${lesson.id}`;
     if (!moduleIds.has(lesson.moduleId)) errors.push(`${where}: neznámý modul „${lesson.moduleId}“`);
     needConcepts(lesson.conceptIds, where);
+    // Shrnutí čte hlas: zkratka, kterou slovník výslovnosti nezná, by vyšla zkomoleně.
+    for (const word of unknownAbbreviations(`${lesson.title}. ${lesson.audioSummary}`)) {
+      errors.push(`${where}: zkratka „${word}“ v názvu nebo zvukovém shrnutí není ve slovníku výslovnosti (src/audio/pronounce.ts)`);
+    }
     for (const questionId of lesson.checkQuestionIds) {
       if (!questionIds.has(questionId)) errors.push(`${where}: neznámá otázka „${questionId}“ v checkQuestionIds`);
     }

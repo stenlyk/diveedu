@@ -36,7 +36,9 @@ export default defineConfig({
       },
       workbox: {
         // Jádro: kód, styly, text, otázky, graf, matematické fonty. Média se cachují až po stažení balíčku.
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
+        // Manifest zvuku je malý a musí být offline, aby aplikace věděla, které soubory hledat ve staženém balíčku.
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}', 'media-manifest.json'],
+        globIgnores: ['media/**'],
         navigateFallback: `${base}index.html`,
         cleanupOutdatedCaches: true,
         runtimeCaching: [

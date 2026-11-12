@@ -3,8 +3,9 @@
  * které volají @diveedu/calc – žádný výsledek se v lekci nepíše ručně.
  */
 import * as calc from '@diveedu/calc';
-import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, type ReactNode, useContext, useState } from 'react';
 import { Link } from 'react-router';
+import { useSummaryPlayer } from '../audio/useSummaryPlayer';
 import { LocalGraph as LocalGraphView } from '../components/LocalGraph';
 import { Tex } from '../components/Math';
 import { Steps } from '../components/Steps';
@@ -158,32 +159,20 @@ function LessonCheck() {
   return <div className="max-w-none"><QuizRunner questions={questions} mode="lesson" /></div>;
 }
 
-/** Shrnutí pro poslech. Do etapy 6 čte systémový hlas (Web Speech API), funguje i offline. */
+/** Shrnutí pro poslech: nahraný hlas, je-li k dispozici, jinak systémový hlas zařízení (funguje i offline). */
 function AudioSummaryPlayer() {
   const { lesson } = useLesson();
-  const [speaking, setSpeaking] = useState(false);
-  const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
-  useEffect(() => () => { if (supported) window.speechSynthesis.cancel(); }, [supported]);
-  const toggle = () => {
-    if (speaking) {
-      window.speechSynthesis.cancel();
-      setSpeaking(false);
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(lesson.audioSummary);
-    utterance.lang = 'cs-CZ';
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(utterance);
-    setSpeaking(true);
-  };
+  const player = useSummaryPlayer();
+  const active = player.status !== 'idle';
   return (
     <div>
-      {supported && (
-        <button type="button" onClick={toggle} className="mb-4 inline-flex min-h-12 items-center gap-2 rounded-xl border border-border bg-surface-2 px-5 font-semibold">
-          {speaking ? '■ Zastavit' : '▶ Přehrát shrnutí'}
+      <div className="mb-4 flex flex-wrap items-center gap-3">
+        <button type="button" onClick={() => (active ? player.stop() : void player.play(lesson))} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-border bg-surface-2 px-5 font-semibold" data-testid="summary-play">
+          {active ? '■ Zastavit' : '▶ Přehrát shrnutí'}
         </button>
-      )}
+        {active && <span className="text-sm text-muted" role="status" data-testid="summary-source">{player.source === 'file' ? 'Nahraný hlas' : player.source === 'speech' ? 'Systémový hlas zařízení' : 'Načítám…'}</span>}
+        <Link to="/poslech" className="text-sm text-accent underline underline-offset-4">Režim poslechu</Link>
+      </div>
       <p>{lesson.audioSummary}</p>
     </div>
   );

@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–5 hotové (hloubková i jeskynní linie, 8 modulů). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23). Další je etapa 6 (hlas, podcast, mediální balíčky).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–5 hotové; etapa 6 částečně: zvuková shrnutí, režim poslechu a balíčky ke stažení jsou hotové, animace a videa ne (sekce 24). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -394,4 +394,33 @@ Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul
 - Všech 81 porovnaných zastávek je v toleranci 1 minuty (30 se liší právě o minutu, žádná o víc). Celkový čas se liší až o 3 minuty, protože decotengu drží na každé zastávce nejméně minutu a náš plánovač splněnou zastávkou proplave; tolerance celkového času je u těchto profilů nastavená výslovně a zdůvodněná v README.
 - Tím je splněné akceptační kritérium etapy 4. Dřívější poznámky v sekcích 21 a 22 o „1 z 10 profilů“ popisují stav před tímto krokem.
 - Mimo ověření zůstávají víceúrovňové profily, travel gas při sestupu a kotvení GF low podle Subsurface.
+
+## 24. Etapa 6 – zvuk: shrnutí, režim poslechu, balíčky (2026-11-12; videa nevznikla)
+
+**Rozhodnutí o hlasu.** Zadání počítá s placenou neuronovou službou (ElevenLabs, Azure). Zvolil jsem systémový český hlas macOS (Zuzana) přes příkaz `say`: je zdarma, běží v počítači a obsah nikam neodchází. Je to hlas starší generace – srozumitelný, ale strojový. Výměna za jinou službu znamená přepsat jen `scripts/gen-tts.ts`; formát souborů, manifest ani aplikace se nemění.
+
+- **Slovník výslovnosti** (`src/audio/pronounce.ts`): zkratky (MOD, END, CNS, OTU, GF, SAC, ppO2, CO2…), směsi (EAN50, Tx 18/45), složené jednotky a znaky. Stejnou funkcí prochází text pro generátor i pro systémový hlas v prohlížeči. Validátor obsahu odmítne název nebo shrnutí lekce se zkratkou, kterou slovník nezná.
+- **Generátor** (`npm run tts`): 78 souborů AAC (mono, 32 kb/s) v `public/media/<modul>/`, celkem 13,5 MB a 55 minut. Nezměněné texty přeskakuje podle otisku. Výstup není v gitu – před nasazením je třeba ho vygenerovat na macOS.
+- **Přehrávač shrnutí** v lekci: nahraný hlas, je-li dostupný (ze sítě nebo ze staženého balíčku); jinak čte systémový hlas zařízení. Přepis je vždy vidět.
+- **Režim poslechu** (`/poslech`): shrnutí jedno po druhém, výběr modulu, tři velká tlačítka, rychlost 1× / 1,25× / 1,5×, přepis, ovládání ze zamčené obrazovky a sluchátek (Media Session), zapamatovaná pozice.
+- **Balíčky po modulech** (Nastavení → Zvukové balíčky): stažení do mezipaměti zařízení, velikost a délka, smazání. Jádro aplikace zvuk nepřibaluje; manifest (pár kB) je součástí jádra, aby aplikace offline věděla, co má hledat.
+
+### Stav etapy 6 proti akceptačním kritériím
+
+| Kritérium | Stav |
+| --- | --- |
+| Audio u každé lekce | hotovo: 78 z 78, pokud je před nasazením spuštěn `npm run tts`; jinak čte systémový hlas zařízení |
+| Výslovnost zkratek správně | slovník a testy hotové; **nikdo to neposlouchal** – výsledek jsem ověřil jen na textu, který do hlasu vstupuje |
+| Režim podcast | hotovo |
+| Balíčky médií ke stažení | hotovo pro zvuk; obrázky a videa v balíčcích nejsou, protože žádné nevznikly |
+| Animace a videa (Remotion) | **nevzniklo** |
+
+### Co je v etapě 6 slabé nebo otevřené
+
+- **Kvalita hlasu** je pod úrovní neuronových služeb ze zadání. Jestli je pro poslech v autě přijatelná, musí posoudit člověk.
+- **Shrnutí jsou krátká:** průměr 42 s, zadání chce 60–90 s.
+- **Poslech nahrávek jsem neověřil.** Přízvuk, výslovnost cizích slov (trimix, sidemount, stage, cookie) ani tempo jsem neslyšel; slovník pokrývá zkratky, ne anglické termíny v českém textu.
+- Systémový hlas v prohlížeči se mezi zařízeními liší a na některých český hlas chybí; pozastavení čtení nemusí fungovat všude.
+- Zvuk se generuje jen na macOS; CI ho nevytváří.
+- Dál chybí: videa a animace, průřezové moduly, míchací stanice, kreslení profilu od ruky.
 

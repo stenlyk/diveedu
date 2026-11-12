@@ -4,6 +4,7 @@ import { Button, Card, PageHeader } from '../components/ui';
 import { BackupError, backupFileName, exportBackup, importBackup, parseBackup } from '../db/backup';
 import { db, TABLES } from '../db/db';
 import { useSettings } from '../db/settings';
+import { AudioPacks } from './AudioPacks';
 
 export function Settings() {
   const theme = useSettings((state) => state.theme);
@@ -52,6 +53,7 @@ export function Settings() {
           ))}
         </div>
       </Card>
+      <AudioPacks />
       <Card>
         <h2 className="font-semibold">Záloha pokroku</h2>
         <p className="mt-1 text-sm text-muted">Pokrok žije jen v tomto zařízení. Exportem ho přeneseš jinam nebo zazálohuješ.</p>

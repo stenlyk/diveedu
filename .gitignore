@@ -11,3 +11,5 @@ src/content/generated
 *.tsbuildinfo
 .venv-ref/
 __pycache__/
+public/media/
+public/media-manifest.json
