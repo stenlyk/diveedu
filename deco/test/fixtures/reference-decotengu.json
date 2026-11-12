@@ -1,0 +1,727 @@
+{
+ "library": "decotengu",
+ "version": "0.14.1",
+ "python": "3.10.11",
+ "results": [
+  {
+   "name": "vzduch 30 m / 40 min, GF 30/85",
+   "input": {
+    "depthM": 30,
+    "bottomMinutes": 40,
+    "gases": [
+     [
+      0,
+      21,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 15.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 8.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 18.0
+    }
+   ],
+   "decoTotalMin": 32.0,
+   "runtimeMin": 75.0
+  },
+  {
+   "name": "vzduch 45 m / 25 min, GF 30/85",
+   "input": {
+    "depthM": 45,
+    "bottomMinutes": 25,
+    "gases": [
+     [
+      0,
+      21,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 3.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 5.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 9.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 21.0
+    }
+   ],
+   "decoTotalMin": 42.0,
+   "runtimeMin": 71.5
+  },
+  {
+   "name": "EAN32 36 m / 40 min, GF 30/85",
+   "input": {
+    "depthM": 36,
+    "bottomMinutes": 40,
+    "gases": [
+     [
+      0,
+      32,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 15.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 6.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 14.0
+    }
+   ],
+   "decoTotalMin": 24.0,
+   "runtimeMin": 67.6
+  },
+  {
+   "name": "vzduch 45 m / 25 min + EAN50 od 21 m, GF 30/85",
+   "input": {
+    "depthM": 45,
+    "bottomMinutes": 25,
+    "gases": [
+     [
+      0,
+      21,
+      0
+     ],
+     [
+      21,
+      50,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 3.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 5.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 11.0
+    }
+   ],
+   "decoTotalMin": 23.0,
+   "runtimeMin": 52.5
+  },
+  {
+   "name": "vzduch 51 m / 20 min + EAN50 od 21 m + O2 od 6 m, GF 30/85",
+   "input": {
+    "depthM": 51,
+    "bottomMinutes": 20,
+    "gases": [
+     [
+      0,
+      21,
+      0
+     ],
+     [
+      21,
+      50,
+      0
+     ],
+     [
+      6,
+      100,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": true
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": true,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 24.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 10.0
+    }
+   ],
+   "decoTotalMin": 17.0,
+   "runtimeMin": 42.1
+  },
+  {
+   "name": "Tx 21/35 51 m / 25 min + EAN50 od 21 m, GF 30/85",
+   "input": {
+    "depthM": 51,
+    "bottomMinutes": 25,
+    "gases": [
+     [
+      0,
+      21,
+      35
+     ],
+     [
+      21,
+      50,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 24.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 6.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 14.0
+    }
+   ],
+   "decoTotalMin": 30.0,
+   "runtimeMin": 60.1
+  },
+  {
+   "name": "Tx 18/45 60 m / 25 min + EAN50 od 21 m + O2 od 6 m, GF 30/85",
+   "input": {
+    "depthM": 60,
+    "bottomMinutes": 25,
+    "gases": [
+     [
+      0,
+      18,
+      45
+     ],
+     [
+      21,
+      50,
+      0
+     ],
+     [
+      6,
+      100,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": true
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": true,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 33.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 30.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 27.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 24.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 6.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 22.0
+    }
+   ],
+   "decoTotalMin": 42.0,
+   "runtimeMin": 73.0
+  },
+  {
+   "name": "Tx 18/45 60 m / 25 min + EAN50 od 21 m, GF 50/80",
+   "input": {
+    "depthM": 60,
+    "bottomMinutes": 25,
+    "gases": [
+     [
+      0,
+      18,
+      45
+     ],
+     [
+      21,
+      50,
+      0
+     ]
+    ],
+    "gfLow": 50,
+    "gfHigh": 80,
+    "lastStop6m": false
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": false,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.5,
+    "gf_high": 0.8,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 27.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 24.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 6.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 11.0
+    },
+    {
+     "depthM": 3.0,
+     "minutes": 21.0
+    }
+   ],
+   "decoTotalMin": 50.0,
+   "runtimeMin": 81.0
+  },
+  {
+   "name": "Tx 15/55 75 m / 20 min + EAN36 od 33 m + O2 od 6 m, GF 30/85",
+   "input": {
+    "depthM": 75,
+    "bottomMinutes": 20,
+    "gases": [
+     [
+      0,
+      15,
+      55
+     ],
+     [
+      33,
+      36,
+      0
+     ],
+     [
+      6,
+      100,
+      0
+     ]
+    ],
+    "gfLow": 30,
+    "gfHigh": 85,
+    "lastStop6m": true
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": true,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 42.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 39.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 36.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 33.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 30.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 27.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 24.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 5.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 8.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 27.0
+    }
+   ],
+   "decoTotalMin": 54.0,
+   "runtimeMin": 81.5
+  },
+  {
+   "name": "Tx 15/55 75 m / 20 min + EAN36 od 33 m + O2 od 6 m, GF 50/80",
+   "input": {
+    "depthM": 75,
+    "bottomMinutes": 20,
+    "gases": [
+     [
+      0,
+      15,
+      55
+     ],
+     [
+      33,
+      36,
+      0
+     ],
+     [
+      6,
+      100,
+      0
+     ]
+    ],
+    "gfLow": 50,
+    "gfHigh": 80,
+    "lastStop6m": true
+   },
+   "settings": {
+    "descent_rate": 20.0,
+    "ascent_rate": 10.0,
+    "surface_pressure": 1.01325,
+    "meter_to_bar": null,
+    "last_stop_6m": true,
+    "pp_o2": null,
+    "time_delta": null,
+    "model": "ZH_L16C_GF",
+    "gf_low": 0.5,
+    "gf_high": 0.8,
+    "water_vapour_pressure": 0.0627
+   },
+   "stops": [
+    {
+     "depthM": 33.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 30.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 27.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 24.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 21.0,
+     "minutes": 1.0
+    },
+    {
+     "depthM": 18.0,
+     "minutes": 2.0
+    },
+    {
+     "depthM": 15.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 12.0,
+     "minutes": 4.0
+    },
+    {
+     "depthM": 9.0,
+     "minutes": 9.0
+    },
+    {
+     "depthM": 6.0,
+     "minutes": 26.0
+    }
+   ],
+   "decoTotalMin": 50.0,
+   "runtimeMin": 77.5
+  }
+ ],
+ "failures": []
+}

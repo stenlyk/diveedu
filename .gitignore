@@ -9,3 +9,5 @@ src/content/generated
 .DS_Store
 .wrangler
 *.tsbuildinfo
+.venv-ref/
+__pycache__/

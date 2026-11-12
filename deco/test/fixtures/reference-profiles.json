@@ -1,23 +1,793 @@
 [
-  {
-    "name": "Subsurface testMetric: 79 m / 30 min, Tx 15/45, EAN36 od 33 m, O2 od 6 m, GF 100/100",
-    "source": "subsurface/tests/testplan.cpp (testMetric), očekávaný celkový čas 109 min",
-    "input": {
-      "depthM": 79,
-      "bottomMinutes": 30,
-      "gases": [
-        { "gas": { "fO2": 0.15, "fHe": 0.45 } },
-        { "gas": { "fO2": 0.36, "fHe": 0 }, "switchDepthM": 33 },
-        { "gas": { "fO2": 1, "fHe": 0 }, "switchDepthM": 6 }
-      ],
-      "gfLow": 100,
-      "gfHigh": 100,
-      "descentRate": 23,
-      "ascentRate": 9.144,
-      "surfaceRate": 3.048,
-      "lastStopM": 6,
-      "switchMinutes": 1
+ {
+  "name": "Subsurface testMetric: 79 m / 30 min, Tx 15/45, EAN36 od 33 m, O2 od 6 m, GF 100/100",
+  "source": "subsurface/tests/testplan.cpp (testMetric), očekávaný celkový čas 109 min",
+  "input": {
+   "depthM": 79,
+   "bottomMinutes": 30,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.15,
+      "fHe": 0.45
+     }
     },
-    "expected": { "runtimeMin": 109 }
+    {
+     "gas": {
+      "fO2": 0.36,
+      "fHe": 0
+     },
+     "switchDepthM": 33
+    },
+    {
+     "gas": {
+      "fO2": 1,
+      "fHe": 0
+     },
+     "switchDepthM": 6
+    }
+   ],
+   "gfLow": 100,
+   "gfHigh": 100,
+   "descentRate": 23,
+   "ascentRate": 9.144,
+   "surfaceRate": 3.048,
+   "lastStopM": 6,
+   "switchMinutes": 1
+  },
+  "expected": {
+   "runtimeMin": 109
   }
+ },
+ {
+  "name": "decotengu: vzduch 30 m / 40 min, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 30,
+   "bottomMinutes": 40,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.21,
+      "fHe": 0.0
+     }
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 75.0,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 15,
+     "minutes": 1
+    },
+    {
+     "depthM": 12,
+     "minutes": 1
+    },
+    {
+     "depthM": 9,
+     "minutes": 4
+    },
+    {
+     "depthM": 6,
+     "minutes": 8
+    },
+    {
+     "depthM": 3,
+     "minutes": 18
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: vzduch 45 m / 25 min, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 45,
+   "bottomMinutes": 25,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.21,
+      "fHe": 0.0
+     }
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 71.5,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 1
+    },
+    {
+     "depthM": 15,
+     "minutes": 2
+    },
+    {
+     "depthM": 12,
+     "minutes": 3
+    },
+    {
+     "depthM": 9,
+     "minutes": 5
+    },
+    {
+     "depthM": 6,
+     "minutes": 9
+    },
+    {
+     "depthM": 3,
+     "minutes": 21
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: EAN32 36 m / 40 min, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 36,
+   "bottomMinutes": 40,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.32,
+      "fHe": 0.0
+     }
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 67.6,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 15,
+     "minutes": 1
+    },
+    {
+     "depthM": 12,
+     "minutes": 1
+    },
+    {
+     "depthM": 9,
+     "minutes": 2
+    },
+    {
+     "depthM": 6,
+     "minutes": 6
+    },
+    {
+     "depthM": 3,
+     "minutes": 14
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: vzduch 45 m / 25 min + EAN50 od 21 m, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 45,
+   "bottomMinutes": 25,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.21,
+      "fHe": 0.0
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.5,
+      "fHe": 0.0
+     },
+     "switchDepthM": 21
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 52.5,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 1
+    },
+    {
+     "depthM": 15,
+     "minutes": 1
+    },
+    {
+     "depthM": 12,
+     "minutes": 1
+    },
+    {
+     "depthM": 9,
+     "minutes": 3
+    },
+    {
+     "depthM": 6,
+     "minutes": 5
+    },
+    {
+     "depthM": 3,
+     "minutes": 11
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: vzduch 51 m / 20 min + EAN50 od 21 m + O2 od 6 m, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 51,
+   "bottomMinutes": 20,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.21,
+      "fHe": 0.0
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.5,
+      "fHe": 0.0
+     },
+     "switchDepthM": 21
+    },
+    {
+     "gas": {
+      "fO2": 1.0,
+      "fHe": 0.0
+     },
+     "switchDepthM": 6
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 6,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 42.1,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 24,
+     "minutes": 1
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 1
+    },
+    {
+     "depthM": 15,
+     "minutes": 1
+    },
+    {
+     "depthM": 12,
+     "minutes": 1
+    },
+    {
+     "depthM": 9,
+     "minutes": 2
+    },
+    {
+     "depthM": 6,
+     "minutes": 10
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: Tx 21/35 51 m / 25 min + EAN50 od 21 m, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 51,
+   "bottomMinutes": 25,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.21,
+      "fHe": 0.35
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.5,
+      "fHe": 0.0
+     },
+     "switchDepthM": 21
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 60.1,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 24,
+     "minutes": 1
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 1
+    },
+    {
+     "depthM": 15,
+     "minutes": 1
+    },
+    {
+     "depthM": 12,
+     "minutes": 2
+    },
+    {
+     "depthM": 9,
+     "minutes": 4
+    },
+    {
+     "depthM": 6,
+     "minutes": 6
+    },
+    {
+     "depthM": 3,
+     "minutes": 14
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: Tx 18/45 60 m / 25 min + EAN50 od 21 m + O2 od 6 m, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 60,
+   "bottomMinutes": 25,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.18,
+      "fHe": 0.45
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.5,
+      "fHe": 0.0
+     },
+     "switchDepthM": 21
+    },
+    {
+     "gas": {
+      "fO2": 1.0,
+      "fHe": 0.0
+     },
+     "switchDepthM": 6
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 6,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 73.0,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 33,
+     "minutes": 1
+    },
+    {
+     "depthM": 30,
+     "minutes": 1
+    },
+    {
+     "depthM": 27,
+     "minutes": 1
+    },
+    {
+     "depthM": 24,
+     "minutes": 2
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 2
+    },
+    {
+     "depthM": 15,
+     "minutes": 2
+    },
+    {
+     "depthM": 12,
+     "minutes": 4
+    },
+    {
+     "depthM": 9,
+     "minutes": 6
+    },
+    {
+     "depthM": 6,
+     "minutes": 22
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: Tx 18/45 60 m / 25 min + EAN50 od 21 m, GF 50/80",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 60,
+   "bottomMinutes": 25,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.18,
+      "fHe": 0.45
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.5,
+      "fHe": 0.0
+     },
+     "switchDepthM": 21
+    }
+   ],
+   "gfLow": 50,
+   "gfHigh": 80,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 3,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 81.0,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 27,
+     "minutes": 1
+    },
+    {
+     "depthM": 24,
+     "minutes": 2
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 2
+    },
+    {
+     "depthM": 15,
+     "minutes": 2
+    },
+    {
+     "depthM": 12,
+     "minutes": 4
+    },
+    {
+     "depthM": 9,
+     "minutes": 6
+    },
+    {
+     "depthM": 6,
+     "minutes": 11
+    },
+    {
+     "depthM": 3,
+     "minutes": 21
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: Tx 15/55 75 m / 20 min + EAN36 od 33 m + O2 od 6 m, GF 30/85",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 75,
+   "bottomMinutes": 20,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.15,
+      "fHe": 0.55
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.36,
+      "fHe": 0.0
+     },
+     "switchDepthM": 33
+    },
+    {
+     "gas": {
+      "fO2": 1.0,
+      "fHe": 0.0
+     },
+     "switchDepthM": 6
+    }
+   ],
+   "gfLow": 30,
+   "gfHigh": 85,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 6,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 81.5,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 42,
+     "minutes": 1
+    },
+    {
+     "depthM": 39,
+     "minutes": 1
+    },
+    {
+     "depthM": 36,
+     "minutes": 1
+    },
+    {
+     "depthM": 33,
+     "minutes": 1
+    },
+    {
+     "depthM": 30,
+     "minutes": 1
+    },
+    {
+     "depthM": 27,
+     "minutes": 1
+    },
+    {
+     "depthM": 24,
+     "minutes": 1
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 2
+    },
+    {
+     "depthM": 15,
+     "minutes": 4
+    },
+    {
+     "depthM": 12,
+     "minutes": 5
+    },
+    {
+     "depthM": 9,
+     "minutes": 8
+    },
+    {
+     "depthM": 6,
+     "minutes": 27
+    }
+   ]
+  }
+ },
+ {
+  "name": "decotengu: Tx 15/55 75 m / 20 min + EAN36 od 33 m + O2 od 6 m, GF 50/80",
+  "source": "decotengu 0.14.1 (ZH_L16C_GF), viz reference-decotengu.json a gen_reference.py",
+  "input": {
+   "depthM": 75,
+   "bottomMinutes": 20,
+   "gases": [
+    {
+     "gas": {
+      "fO2": 0.15,
+      "fHe": 0.55
+     }
+    },
+    {
+     "gas": {
+      "fO2": 0.36,
+      "fHe": 0.0
+     },
+     "switchDepthM": 33
+    },
+    {
+     "gas": {
+      "fO2": 1.0,
+      "fHe": 0.0
+     },
+     "switchDepthM": 6
+    }
+   ],
+   "gfLow": 50,
+   "gfHigh": 80,
+   "descentRate": 20,
+   "ascentRate": 10,
+   "surfaceRate": 10,
+   "lastStopM": 6,
+   "switchMinutes": 0
+  },
+  "env": {
+   "surfaceBar": 1.01325,
+   "barPerMeter": 0.09985,
+   "waterVaporBar": 0.0627,
+   "airFN2": 0.7902
+  },
+  "expected": {
+   "runtimeMin": 77.5,
+   "runtimeToleranceMin": 3,
+   "stops": [
+    {
+     "depthM": 33,
+     "minutes": 1
+    },
+    {
+     "depthM": 30,
+     "minutes": 1
+    },
+    {
+     "depthM": 27,
+     "minutes": 1
+    },
+    {
+     "depthM": 24,
+     "minutes": 1
+    },
+    {
+     "depthM": 21,
+     "minutes": 1
+    },
+    {
+     "depthM": 18,
+     "minutes": 2
+    },
+    {
+     "depthM": 15,
+     "minutes": 4
+    },
+    {
+     "depthM": 12,
+     "minutes": 4
+    },
+    {
+     "depthM": 9,
+     "minutes": 9
+    },
+    {
+     "depthM": 6,
+     "minutes": 26
+    }
+   ]
+  }
+ }
 ]

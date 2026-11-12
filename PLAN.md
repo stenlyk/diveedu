@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–3 hotové (MVP). Etapa 4 obsahově hotová (moduly 2–4, tři simulátory, 5 případovek); její akceptační kritérium „deko ověřené proti referenci“ splněné není – ověřen je 1 profil z 10. Další je etapa 5 (jeskyně).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–5 hotové (hloubková i jeskynní linie, 8 modulů). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23). Další je etapa 6 (hlas, podcast, mediální balíčky).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -332,7 +332,7 @@ Odchylky od plánu:
 | Moduly 2–4 | hotovo: 32 lekcí, 166 otázek |
 | Tkáňový simulátor, ternární diagram, profil ponoru | hotovo |
 | Další případovky | hotovo: U-869, Zacatón, hypoxie u hladiny (celkem 5) |
-| Deko ověřené proti referenci na 10 profilech | **nesplněno – 1 profil z 10**; viz `deco/test/fixtures/README.md` |
+| Deko ověřené proti referenci na 10 profilech | hotovo (doplněno po etapě 5): 11 profilů, zastávky do 1 min; viz `deco/test/fixtures/README.md` |
 | REVIEW.md aktualizovaný | hotovo: 55 položek |
 
 ### Co ze SPEC zatím chybí napříč etapami
@@ -387,4 +387,11 @@ Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul
 - Výpočty pro skútr předpokládají stejnou spotřebu při jízdě a plavání (ve skutečnosti je při plavání vyšší); lekce to uvádí.
 - Dekompresní čísla v C3 jsou z výukového modelu, který je ověřený jen na 1 z 10 referenčních profilů (nesplněné kritérium etapy 4), a trimixové profily mezi ověřenými nejsou.
 - Průřezové moduly, míchací stanice a kreslení profilu od ruky dál chybí; etapa 6 (hlas, podcast, mediální balíčky) nezačala.
+
+## 23. Ověření dekompresního modelu (hotovo 2026-11-12)
+
+- Deset profilů spočítaných knihovnou decotengu 0.14.1 (ZH-L16C s GF) doplnilo jediný profil ze Subsurface. Knihovnu spustil uživatel ručně v odděleném prostředí; skript `deco/test/fixtures/gen_reference.py` a surový výstup jsou v repozitáři.
+- Všech 81 porovnaných zastávek je v toleranci 1 minuty (30 se liší právě o minutu, žádná o víc). Celkový čas se liší až o 3 minuty, protože decotengu drží na každé zastávce nejméně minutu a náš plánovač splněnou zastávkou proplave; tolerance celkového času je u těchto profilů nastavená výslovně a zdůvodněná v README.
+- Tím je splněné akceptační kritérium etapy 4. Dřívější poznámky v sekcích 21 a 22 o „1 z 10 profilů“ popisují stav před tímto krokem.
+- Mimo ověření zůstávají víceúrovňové profily, travel gas při sestupu a kotvení GF low podle Subsurface.
 

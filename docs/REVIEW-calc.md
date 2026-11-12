@@ -17,7 +17,7 @@ dělá, co jsem zamýšlel. Níže jsou místa, kde jsem musel zvolit konvenci �
 | 11 | `physics.ts` `adiabaticTempC` | Ideální adiabata, κ = 1,4 | Horní mez; v lekci výslovně uvedeno. |
 | 12 | `physics.ts` `netBuoyancyKg` | Hustota mořské vody 1,03 kg/l | Běžná zaokrouhlená hodnota. |
 | 13 | `mdx/playgrounds.tsx` | Kyslíkové okno a pohlcování barev: ilustrativní hodnoty, ne výpočet | Čísla (mmHg, hloubky mizení barev) ověřit proti učebnici fyziologie. |
-| 14 | `deco/plan.ts` | GF low ukotvený na hloubce první zastávky; zastávky v celých minutách; přepnutí plynu po příchodu na zastávku; výchozí výstup 9 m/min | Subsurface kotví GF low na nejhlubším stropu, ne na zaokrouhlené zastávce – u GF < 100 se plány mohou lišit o minuty. Ověřeno jen pro GF 100/100. |
+| 14 | `deco/plan.ts` | GF low ukotvený na hloubce první zastávky; zastávky v celých minutách; přepnutí plynu po příchodu na zastávku; výchozí výstup 9 m/min | Subsurface kotví GF low na nejhlubším stropu, ne na zaokrouhlené zastávce – u GF < 100 se plány mohou lišit o minuty. Proti Subsurface ověřeno jen GF 100/100; GF 30/85 a 50/80 ověřeny proti decotengu (10 profilů, zastávky do 1 min). |
 | 15 | `deco/model.ts` | Výuková konvence 10 m = 1 bar, hladina 1 bar, vodní pára 0,0627 bar, vzduch 79 % N2 | Čísla v lekcích se proto mírně liší od počítače s 1,013 bar a slanou vodou. |
 | 16 | `deco/simple.ts` `ndlMinutes` | GF low = GF high, celé minuty, čas na dně včetně sestupu 20 m/min | Limity v lekcích jsou „podle výukového modelu“, ne tabulkové hodnoty. |
 | 17 | `mdx/WhatIfGraph.tsx` | Stupně uzlů: ppO2 1,4 / 1,6 bar, END 30 / 40 m, hustota 5,2 / 6,2 g/l; námaha posune CO2 o stupeň, vysoký CO2 posune narkózu o stupeň | Prahy a pravidla posunu jsou výukové zjednodušení, ne fyziologický model. |
