@@ -71,7 +71,7 @@ test('zvukový balíček jde stáhnout do zařízení a smazat', async ({ page }
   await acceptOnboarding(page);
   await page.goto('/nastaveni');
   const pack = page.getByTestId('pack-zaklady');
-  await expect(pack).toContainText('3 lekcí');
+  await expect(pack).toContainText('nahrávek: 3');
   const cached = () => page.evaluate(async () => (await (await caches.open('media')).keys()).length);
   expect(await cached()).toBe(0);
   await pack.getByRole('button', { name: 'Stáhnout' }).click();
@@ -102,3 +102,43 @@ test('bez nahraného zvuku to nastavení řekne a lekce nabídne čtení', async
   await page.getByRole('list', { name: 'Části lekce' }).getByRole('button').nth(8).click();
   await expect(page.getByTestId('summary-play')).toBeVisible();
 });
+
+test('animovaný výklad: bez nahraného hlasu běží s titulky, jde krokovat a přehrát', async ({ page }) => {
+  await page.route('**/media-manifest.json', (route) => route.fulfill({ json: { voice: '', generatedAt: '', files: [], animations: [] } }));
+  await acceptOnboarding(page);
+  await page.goto('/uceni');
+  await page.getByRole('link', { name: /Animované výklady/ }).click();
+  await page.getByRole('link', { name: /Tlak a objem plynu/ }).click();
+  const animation = page.getByTestId('animation');
+  await expect(animation).toHaveAttribute('data-cue', '0');
+  await expect(page.getByTestId('animation-caption')).toContainText('Na hladině tlačí na balonek jeden bar');
+  await page.getByRole('button', { name: 'Další věta' }).click();
+  await expect(animation).toHaveAttribute('data-cue', '1');
+  await expect(page.getByTestId('animation-caption')).toContainText('V deseti metrech');
+  await page.getByTestId('animation-toggle').click();
+  await expect(page.getByText(/bez hlasu, čti titulky/)).toBeVisible();
+  // Scéna se hýbe: balonek klesá a objem v odečtu se mění.
+  await expect(animation.getByText('5,0 l')).toBeVisible({ timeout: 8000 });
+  await expect(animation).toHaveAttribute('data-cue', '2', { timeout: 15_000 });
+  await page.getByTestId('animation-toggle').click();
+  await page.getByRole('button', { name: 'Předchozí věta' }).click();
+  await expect(animation).toHaveAttribute('data-cue', /[12]/);
+});
+
+test('animovaný výklad se řídí nahraným hlasem a je vložený v lekci', async ({ page }) => {
+  const files = [{ id: 'tlak-a-objem', moduleId: 'zaklady', file: 'media/animace/tlak-a-objem.wav', bytes: 3244, seconds: 0.4, hash: 't', cues: [0, 0.05, 0.1, 0.15, 0.2, 0.3] }];
+  await page.route('**/media-manifest.json', (route) => route.fulfill({ json: { voice: 'Testovací hlas', generatedAt: '', files: [], animations: files } }));
+  await page.route('**/media/**', (route) => route.fulfill({ status: 200, contentType: 'audio/wav', body: silentWav() }));
+  await acceptOnboarding(page);
+  await page.goto('/uceni/boyle-objem');
+  await page.getByRole('list', { name: 'Části lekce' }).getByRole('button').nth(1).click();
+  const animation = page.getByTestId('animation');
+  await animation.scrollIntoViewIfNeeded();
+  await page.getByTestId('animation-toggle').click();
+  // Nahrávka má 0,4 s; výklad podle ní doběhne na poslední větu.
+  await expect(animation).toHaveAttribute('data-cue', '5');
+  await expect(page.getByTestId('animation-caption')).toContainText('nikdy nezadržuje dech');
+  await page.goto('/nastaveni');
+  await expect(page.getByTestId('pack-zaklady')).toContainText('nahrávek: 1');
+});
+

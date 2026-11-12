@@ -9,6 +9,8 @@ import { UpdatePrompt } from './UpdatePrompt';
 // Stránky mimo úvodní obrazovku se načítají líně, aby první načtení zůstalo malé.
 const Learn = lazy(() => import('../features/Learn').then((m) => ({ default: m.Learn })));
 const NotFound = lazy(() => import('../features/NotFound').then((m) => ({ default: m.NotFound })));
+const Animations = lazy(() => import('../features/Animations').then((m) => ({ default: m.Animations })));
+const AnimationPage = lazy(() => import('../features/Animations').then((m) => ({ default: m.AnimationPage })));
 const Podcast = lazy(() => import('../features/Podcast').then((m) => ({ default: m.Podcast })));
 const LessonPage = lazy(() => import('../features/LessonPage').then((m) => ({ default: m.LessonPage })));
 const Train = lazy(() => import('../features/Train').then((m) => ({ default: m.Train })));
@@ -54,6 +56,8 @@ export function App() {
             <Route path="uceni" element={<Learn />} />
             <Route path="uceni/:lessonId" element={<LessonPage />} />
             <Route path="poslech" element={<Podcast />} />
+            <Route path="animace" element={<Animations />} />
+            <Route path="animace/:animationId" element={<AnimationPage />} />
             <Route path="trenink" element={<Train />} />
             <Route path="trenink/rychly-check" element={<QuickCheck />} />
             <Route path="trenink/opakovani" element={<Review />} />

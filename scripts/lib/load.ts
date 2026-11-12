@@ -33,7 +33,7 @@ function attributeValue(value: unknown): unknown {
   return new Function(`return (${source});`)();
 }
 
-const REF_ELEMENTS = new Set(['Playground', 'Fact', 'CaseLink', 'Formula', 'Term', 'Scenario']);
+const REF_ELEMENTS = new Set(['Playground', 'Fact', 'CaseLink', 'Formula', 'Term', 'Scenario', 'Animation']);
 
 export function parseLessonMdx(source: string): Pick<RawLesson, 'topLevelElements' | 'calcCalls' | 'refs' | 'handWritten'> {
   const tree = unified().use(remarkParse).use(remarkMdx).parse(source) as MdxNode;

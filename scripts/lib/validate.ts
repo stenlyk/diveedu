@@ -5,6 +5,7 @@
 import { callContentFunction, isContentFunction } from '../../src/content/fns';
 import type { z } from 'zod';
 import { CUSTOM_PLAYGROUND_KINDS } from '../../src/mdx/playgroundKinds';
+import { animationsById } from '../../src/anim/defs';
 import { unknownAbbreviations } from '../../src/audio/pronounce';
 import { DIAGRAMS } from '../../src/quiz/diagramDefs';
 import { CALC_DEFS } from '../../src/tools/defs';
@@ -216,6 +217,7 @@ export function validateContent(raw: RawContent): ValidationResult {
         Formula: (value) => formulaIds.has(value),
         Term: (value) => glossaryTerms.has(value.toLowerCase()),
         Scenario: (value) => scenarioIds.has(value),
+        Animation: (value) => animationsById.has(value),
       };
       if (!known[ref.element]!(ref.value)) errors.push(`${where}: <${ref.element}> odkazuje na neznámou položku „${ref.value}“`);
     }

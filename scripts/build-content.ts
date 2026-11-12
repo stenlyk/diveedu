@@ -24,7 +24,7 @@ writeFileSync(join(outDir, 'content.json'), JSON.stringify(content));
 
 // Aplikace manifest zvuku vždy načítá; bez vygenerovaného zvuku (npm run tts) dostane prázdný a čte systémovým hlasem.
 const manifestPath = join(root, 'public/media-manifest.json');
-if (!existsSync(manifestPath)) writeFileSync(manifestPath, JSON.stringify({ voice: '', generatedAt: '', files: [] }));
+if (!existsSync(manifestPath)) writeFileSync(manifestPath, JSON.stringify({ voice: '', generatedAt: '', files: [], animations: [] }));
 
 const items = reviewItems(content);
 const review = [

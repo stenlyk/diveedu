@@ -10,11 +10,24 @@ export interface AudioFile {
   hash: string;
 }
 
+/** Namluvený animovaný výklad: jeden soubor a začátky jednotlivých vět. */
+export interface AnimationAudio {
+  id: string;
+  moduleId: string;
+  file: string;
+  bytes: number;
+  seconds: number;
+  hash: string;
+  /** Začátek každé věty v sekundách; řídí kroky scény a titulky. */
+  cues: number[];
+}
+
 export interface AudioManifest {
   /** Hlas a nástroj, kterým zvuk vznikl. */
   voice: string;
   generatedAt: string;
   files: AudioFile[];
+  animations: AnimationAudio[];
 }
 
 export interface AudioPack {
@@ -24,7 +37,7 @@ export interface AudioPack {
   seconds: number;
 }
 
-export const EMPTY_MANIFEST: AudioManifest = { voice: '', generatedAt: '', files: [] };
+export const EMPTY_MANIFEST: AudioManifest = { voice: '', generatedAt: '', files: [], animations: [] };
 
 /** Balíčky po modulech, v pořadí modulů; moduly bez zvuku se vynechají. */
 export function packsOf(manifest: AudioManifest, lessons: readonly { id: string; moduleId: string }[], moduleOrder: readonly string[]): AudioPack[] {
@@ -34,6 +47,11 @@ export function packsOf(manifest: AudioManifest, lessons: readonly { id: string;
     const moduleId = moduleOfLesson.get(file.lessonId);
     if (!moduleId) continue;
     byModule.set(moduleId, [...(byModule.get(moduleId) ?? []), file]);
+  }
+  // Zvuk animovaných výkladů patří do balíčku svého modulu.
+  for (const animation of manifest.animations) {
+    const entry: AudioFile = { lessonId: `animace:${animation.id}`, file: animation.file, bytes: animation.bytes, seconds: animation.seconds, hash: animation.hash };
+    byModule.set(animation.moduleId, [...(byModule.get(animation.moduleId) ?? []), entry]);
   }
   return moduleOrder.flatMap((moduleId) => {
     const files = byModule.get(moduleId);
@@ -58,7 +76,9 @@ export function parseManifest(value: unknown): AudioManifest {
   const raw = value as Partial<AudioManifest>;
   if (!Array.isArray(raw.files)) return EMPTY_MANIFEST;
   const files = raw.files.filter((file): file is AudioFile => typeof file?.lessonId === 'string' && typeof file.file === 'string' && typeof file.bytes === 'number' && typeof file.seconds === 'number');
-  return { voice: typeof raw.voice === 'string' ? raw.voice : '', generatedAt: typeof raw.generatedAt === 'string' ? raw.generatedAt : '', files };
+  const animations = (Array.isArray(raw.animations) ? raw.animations : []).filter((item): item is AnimationAudio =>
+    typeof item?.id === 'string' && typeof item.moduleId === 'string' && typeof item.file === 'string' && typeof item.bytes === 'number' && typeof item.seconds === 'number' && Array.isArray(item.cues) && item.cues.every((cue) => typeof cue === 'number'));
+  return { voice: typeof raw.voice === 'string' ? raw.voice : '', generatedAt: typeof raw.generatedAt === 'string' ? raw.generatedAt : '', files, animations };
 }
 
 export const mediaUrl = (file: string): string => `${import.meta.env.BASE_URL}${file}`;

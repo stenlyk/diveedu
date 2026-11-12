@@ -14,7 +14,7 @@ export function Learn() {
   return (
     <div>
       <PageHeader title="Učení" subtitle="Moduly jsou přístupné vždy. Splnit je lze po zkoušce na 80 %." />
-      <p className="-mt-2 mb-5"><Link to="/poslech" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 font-semibold">🎧 Režim poslechu</Link></p>
+      <p className="-mt-2 mb-5 flex flex-wrap gap-2"><Link to="/poslech" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 font-semibold">🎧 Režim poslechu</Link><Link to="/animace" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 font-semibold">▶ Animované výklady</Link></p>
       {(['depth', 'cave', 'cross'] as const).map((branch) => {
         const modules = content.modules.filter((module) => module.branch === branch);
         if (modules.length === 0) return null;

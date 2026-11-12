@@ -59,6 +59,8 @@ Dva zdroje hlasu:
   Texty shrnutí (asi 45 tisíc znaků) odcházejí službě. Nepovinně `ELEVENLABS_MODEL` a `ELEVENLABS_SPEED`.
 - **macOS** – systémový hlas Zuzana, nic neopouští počítač. Výchozí, když klíč není.
 
+Stejný příkaz namlouvá i animované výklady (`src/anim/defs.ts`) a ukládá k nim začátek každé věty.
+
 Výstup není v gitu. Bez něj aplikace funguje dál a shrnutí čte systémový hlas zařízení.
 Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`; nová zkratka v názvu nebo shrnutí lekce bez záznamu ve slovníku zastaví build.
 

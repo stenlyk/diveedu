@@ -5,6 +5,8 @@
 import * as calc from '@diveedu/calc';
 import { createContext, type ReactNode, useContext, useState } from 'react';
 import { Link } from 'react-router';
+import { AnimationPlayer } from '../anim/AnimationPlayer';
+import { animationsById } from '../anim/defs';
 import { useSummaryPlayer } from '../audio/useSummaryPlayer';
 import { LocalGraph as LocalGraphView } from '../components/LocalGraph';
 import { Tex } from '../components/Math';
@@ -213,6 +215,12 @@ function Given({ children }: { children?: ReactNode }) {
 }
 
 /** Scénář vložený do lekce. */
+/** Animovaný výklad vložený do lekce. */
+function AnimationEmbed({ id }: { id: string }) {
+  const animation = animationsById.get(id);
+  return animation ? <AnimationPlayer animation={animation} /> : null;
+}
+
 function ScenarioEmbed({ id }: { id: string }) {
   const scenario = scenariosById.get(id);
   return scenario ? <div className="max-w-none"><ScenarioPlayer scenario={scenario} /></div> : null;
@@ -220,6 +228,7 @@ function ScenarioEmbed({ id }: { id: string }) {
 
 export const mdxComponents = {
   Scenario: ScenarioEmbed,
+  Animation: AnimationEmbed,
   Given,
   WhatIf,
   CaseLink,

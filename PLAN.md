@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–5 hotové; etapa 6 částečně: zvuková shrnutí, režim poslechu a balíčky ke stažení jsou hotové, animace a videa ne (sekce 24). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–6 hotové s výhradami: zvuk a pět animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -427,4 +427,20 @@ Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul
 ### Dodatek k etapě 6: hlas ElevenLabs (2026-11-12)
 
 Systémový hlas macOS uživatel po poslechu odmítl. Generátor proto umí ElevenLabs (klíč a ID hlasu v `.env.tts`, mimo git) a všech 78 shrnutí je nahraných znovu: MP3 64 kb/s, 26,4 MB, 58 minut, model `eleven_multilingual_v2`. Hlas macOS zůstal jako výchozí zdroj bez klíče. Texty shrnutí (asi 45 tisíc znaků) byly odeslány službě; jiný obsah ne. Slovník výslovnosti platí beze změny; jak zkratky s tímto hlasem zní, posoudil jen uživatel na jednom vzorku.
+
+## 25. Animované výklady (2026-11-12)
+
+**Odchylka od zadání.** Zadání chce videa 1–3 minuty renderovaná z animací v Remotionu. Vznikly místo nich animace kreslené přímo v aplikaci (SVG) a řízené namluveným výkladem. Důvody: zůstávají ostré a v tmavém režimu, čísla ve scéně počítá `calc`, fungují offline, celý balíček má stovky kB místo stovek MB a nepřibyla těžká závislost. Scéna je čistá funkce „věta a postup v ní“, takže ji lze později beze změny vyrenderovat do videa.
+
+- **Pět výkladů** (`src/anim/defs.ts`, scény v `src/anim/scenes.tsx`): tlak a objem plynu; parciální tlak kyslíku a MOD; sycení tkání a dekomprese; pravidlo třetin v jeskyni; rozcestí, šipky a vlastní značka. Každý je vložený do své lekce (`<Animation id>`) a všechny jsou v přehledu `/animace`.
+- **Hlas a časování:** výklad namlouvá stejný generátor jako shrnutí lekcí. ElevenLabs vrací čas každého znaku, takže kroky scény a titulky jsou svázané se skutečným začátkem každé věty. Bez nahrávky běží výklad potichu podle odhadu tempa čtení, s titulky.
+- **Ovládání:** přehrát a pozastavit, krok po větách vpřed a zpět; titulky jsou vidět vždy.
+- **Kontroly:** test hlídá, že čísla vyslovená ve výkladu odpovídají funkcím z `calc`, že výklad neobsahuje zkratku mimo slovník výslovnosti a že každý výklad patří k existující lekci. Scény jsem prošel na snímcích z mobilního zobrazení a opravil čtyři vady (překryv popisků, balonek nad hladinou, zaokrouhlený poločas, šipky mimo kruh hmatu).
+
+### Co je slabé nebo otevřené
+
+- **Délka:** výklady mají 39–54 s, zadání chce 1–3 minuty.
+- **Počet:** pět výkladů na 78 lekcí. Výběr je můj; další kandidáti jsou izobarická protidifuze, gradient factors, skok cívkou a hustota plynu s heliem.
+- **Poslech a plynulost jsem neověřil.** Viděl jsem jednotlivé snímky, ne pohyb; souhru hlasu se scénou musí posoudit člověk.
+- Předrenderovaná videa (MP4) nevznikla.
 

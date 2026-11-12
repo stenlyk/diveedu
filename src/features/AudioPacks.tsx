@@ -34,7 +34,7 @@ export function AudioPacks() {
   return (
     <Card>
       <h2 className="font-semibold">Zvukové balíčky</h2>
-      <p className="mt-1 text-sm text-muted">Nahraná shrnutí lekcí pro poslech bez připojení. Text, otázky a kalkulačky fungují offline vždy; bez balíčku čte shrnutí systémový hlas zařízení.</p>
+      <p className="mt-1 text-sm text-muted">Nahraná shrnutí lekcí a hlas k animovaným výkladům pro poslech bez připojení. Text, otázky a kalkulačky fungují offline vždy; bez balíčku čte shrnutí systémový hlas zařízení.</p>
       {manifest === null ? <p className="mt-3 text-sm text-muted">Načítám…</p>
         : !packsSupported() ? <p className="mt-3 text-sm text-muted">Tento prohlížeč neumí ukládat soubory pro použití bez připojení.</p>
         : packs.length === 0 ? <p className="mt-3 text-sm text-muted" data-testid="packs-empty">V této verzi aplikace nahraný zvuk není. Shrnutí čte systémový hlas zařízení.</p>
@@ -48,7 +48,7 @@ export function AudioPacks() {
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="min-w-0">
                       <div className="font-medium">{modulesById.get(pack.moduleId)?.title ?? pack.moduleId}</div>
-                      <div className="text-sm text-muted tabular-nums">{pack.files.length} lekcí · {formatDuration(pack.seconds)} · {formatBytes(pack.bytes)}{complete ? ' · v zařízení' : row.cached > 0 ? ` · staženo ${row.cached} z ${pack.files.length}` : ''}</div>
+                      <div className="text-sm text-muted tabular-nums">nahrávek: {pack.files.length} · {formatDuration(pack.seconds)} · {formatBytes(pack.bytes)}{complete ? ' · v zařízení' : row.cached > 0 ? ` · staženo ${row.cached} z ${pack.files.length}` : ''}</div>
                     </div>
                     {complete
                       ? <Button variant="ghost" disabled={row.busy} onClick={() => void remove(pack)}>Smazat</Button>

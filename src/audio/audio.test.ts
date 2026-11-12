@@ -32,12 +32,14 @@ describe('playlist', () => {
 
 describe('manifest', () => {
   it('skládá balíčky po modulech a sčítá velikost', () => {
-    const manifest = { voice: 'v', generatedAt: 'd', files: [file('a1', 100, 10), file('b1', 300, 30), file('a2', 200, 20), file('cizi', 1, 1)] };
+    const manifest = { voice: 'v', generatedAt: 'd', files: [file('a1', 100, 10), file('b1', 300, 30), file('a2', 200, 20), file('cizi', 1, 1)], animations: [] };
     expect(packsOf(manifest, lessons, ['a', 'b', 'c'])).toEqual([
       { moduleId: 'a', files: [manifest.files[0], manifest.files[2]], bytes: 300, seconds: 30 },
       { moduleId: 'b', files: [manifest.files[1]], bytes: 300, seconds: 30 },
     ]);
     expect(packsOf(EMPTY_MANIFEST, lessons, ['a'])).toEqual([]);
+    const withAnimation = { ...EMPTY_MANIFEST, animations: [{ id: 'x', moduleId: 'b', file: 'media/animace/x.mp3', bytes: 50, seconds: 5, hash: 'h', cues: [0, 2] }] };
+    expect(packsOf(withAnimation, lessons, ['a', 'b'])).toEqual([{ moduleId: 'b', files: [{ lessonId: 'animace:x', file: 'media/animace/x.mp3', bytes: 50, seconds: 5, hash: 'h' }], bytes: 50, seconds: 5 }]);
   });
   it('formátuje velikost a délku', () => {
     expect(formatBytes(200)).toBe('1 kB');
@@ -50,7 +52,8 @@ describe('manifest', () => {
     expect(parseManifest(null)).toBe(EMPTY_MANIFEST);
     expect(parseManifest('x')).toBe(EMPTY_MANIFEST);
     expect(parseManifest({ files: 'x' })).toBe(EMPTY_MANIFEST);
-    expect(parseManifest({ voice: 1, files: [file('a1', 1, 1), { lessonId: 'bez-souboru' }, null] })).toEqual({ voice: '', generatedAt: '', files: [file('a1', 1, 1)] });
-    expect(parseManifest({ voice: 'Zuzana', generatedAt: '2026', files: [] })).toEqual({ voice: 'Zuzana', generatedAt: '2026', files: [] });
+    expect(parseManifest({ voice: 1, files: [file('a1', 1, 1), { lessonId: 'bez-souboru' }, null] })).toEqual({ voice: '', generatedAt: '', files: [file('a1', 1, 1)], animations: [] });
+    const animation = { id: 'x', moduleId: 'm', file: 'f', bytes: 1, seconds: 1, hash: 'h', cues: [0, 0.5] };
+    expect(parseManifest({ voice: 'Zuzana', generatedAt: '2026', files: [], animations: [animation, { id: 'bez-vet', moduleId: 'm', file: 'f', bytes: 1, seconds: 1 }, { ...animation, cues: ['a'] }] })).toEqual({ voice: 'Zuzana', generatedAt: '2026', files: [], animations: [animation] });
   });
 });
