@@ -1,0 +1,18 @@
+id: sac-a-spotreba
+moduleId: deko
+title: "SAC: tvoje spotřeba jako základ plánu"
+order: 6
+conceptIds: ["sac", "namaha", "absolutni-tlak"]
+checkQuestionIds: ["sac-vypocet", "sac-co-meni", "sac-spotreba-hloubka", "sac-bar-za-minutu"]
+estimatedMinutes: 9
+audioSummary: >-
+  Povrchová spotřeba je objem plynu, který prodýcháš za minutu, přepočtený na hladinu.
+  V hloubce se násobí absolutním tlakem. Ve čtyřiceti metrech spotřebuješ pětkrát víc.
+  Pro plánování potřebuješ tři čísla. Pracovní spotřebu na dně, nižší spotřebu na dekompresi a stresovou spotřebu pro výpočet rezerv.
+  Stresová se obvykle bere jako dvojnásobek pracovní.
+  Spotřebu změříš z poklesu tlaku ve stálé hloubce. Spotřebovaný plyn vyděl absolutním tlakem a časem.
+  Měř opakovaně a v podmínkách, ve kterých se skutečně potápíš.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: false

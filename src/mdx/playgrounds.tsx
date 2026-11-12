@@ -1,6 +1,7 @@
 import { absPressure, boyleVolume, formatCs, pressureRatio } from '@diveedu/calc';
 import { type ComponentType, useState } from 'react';
 import { SliderField } from '../components/ui';
+import { TissueSimulator } from './TissueSimulator';
 
 /** Hračka k lekci Tlak a hloubka: posuvník hloubky, tlak a objem balonku. */
 function DepthPressure() {
@@ -131,4 +132,4 @@ function OxygenWindow() {
   );
 }
 
-Object.assign(PLAYGROUNDS, { 'light-absorption': LightAbsorption, 'oxygen-window': OxygenWindow });
+Object.assign(PLAYGROUNDS, { 'light-absorption': LightAbsorption, 'oxygen-window': OxygenWindow, 'tissue-sim': TissueSimulator });

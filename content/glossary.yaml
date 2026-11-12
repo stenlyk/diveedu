@@ -24,3 +24,16 @@
 - { cs: vyrovnání tlaku, en: equalization, definition: 'Doplnění vzduchu do středouší a dutin při sestupu.' }
 - { cs: poločas tkáně, en: tissue half-time, definition: 'Doba, za kterou tkáň vyrovná polovinu rozdílu mezi svým a okolním tlakem inertního plynu.' }
 - { cs: best mix, en: best mix, definition: 'Nejbohatší směs použitelná v plánované hloubce.' }
+- { cs: kompartment, en: tissue compartment, definition: 'Matematický model skupiny tkání se stejným poločasem sycení.' }
+- { cs: M-hodnota, en: M-value, definition: 'Nejvyšší tlak inertního plynu, který model v kompartmentu při daném okolním tlaku připouští.', pronunciation: em hodnota }
+- { cs: přesycení, en: supersaturation, definition: 'Tlak inertního plynu v tkáni vyšší než okolní tlak.' }
+- { cs: gradient factors, en: gradient factors (GF), definition: 'Dvojice čísel určující, jakou část povoleného přesycení smí tkáň čerpat na první zastávce a na hladině.', pronunciation: gradient faktory }
+- { cs: dekompresní strop, en: decompression ceiling, definition: 'Nejmenší hloubka, do které lze v danou chvíli vystoupat.' }
+- { cs: bezdekompresní limit, en: no-decompression limit (NDL), definition: 'Nejdelší čas v hloubce bez povinných zastávek.', pronunciation: en dé el }
+- { cs: tiché bubliny, en: silent bubbles (venous gas emboli), definition: 'Žilní bubliny po ponoru, které nevyvolávají příznaky.' }
+- { cs: povrchová spotřeba, en: surface air consumption (SAC) / respiratory minute volume (RMV), definition: 'Spotřeba plynu přepočtená na hladinu v l/min.', pronunciation: sak }
+- { cs: minimum gas, en: minimum gas / rock bottom, definition: 'Rezerva pro výstup dvou potápěčů z nejhlubšího bodu.' }
+- { cs: run-time, en: run time, definition: 'Čas od opuštění hladiny.', pronunciation: ran tajm }
+- { cs: stage lahev, en: stage cylinder, definition: 'Samostatně nesená lahev s vlastní automatikou.', pronunciation: stejdž lahev }
+- { cs: manifold, en: isolation manifold, definition: 'Propojení dvou lahví s izolačním ventilem uprostřed.' }
+- { cs: ventilový drill, en: valve drill (shutdown drill), definition: 'Nácvik zavírání a otevírání ventilů dvojčete.' }

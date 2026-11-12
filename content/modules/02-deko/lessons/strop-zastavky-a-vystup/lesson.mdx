@@ -1,0 +1,86 @@
+<Hook>
+
+Počítač ti ve 40 m přestane ukazovat „NDL“ a místo toho napíše „STOP 6 m“.
+
+V tu chvíli nad tebou vznikl neviditelný strop. Není z betonu, ale platí pro něj totéž: na hladinu už přímo nemůžeš.
+
+</Hook>
+
+<Principle>
+
+<Term cs="bezdekompresní limit" /> je čas, po který lze v dané hloubce zůstat a pak vystoupat přímo na hladinu.
+Na vzduchu ve 30 m je to podle výukového modelu <Calc fn="ndlMinutes" args={[30, 0.21, 100]} unit="min" /> při GF 100 a <Calc fn="ndlMinutes" args={[30, 0.21, 85]} unit="min" /> při GF 85.
+Po jeho překročení má některý kompartment víc plynu, než dovoluje povrchová M-hodnota.
+
+<Term cs="dekompresní strop" /> je nejmenší hloubka, do které v danou chvíli smíš. Počítá se průběžně a s každou minutou dekomprese stoupá k hladině.
+
+**Zastávky** jsou strop zaokrouhlený na tři metry směrem dolů. Na zastávce čekáš, dokud strop nevystoupá nad zastávku další. Platí pro ně:
+
+- drž hloubku přesně – půl metru nad zastávkou znamená být nad stropem,
+- zůstaň ve vodorovné poloze, ať je celé tělo ve stejné hloubce,
+- nepracuj, ale ani nevisíš nehybně; mírný pohyb udržuje prokrvení.
+
+**Poslední zastávka** se tradičně dělá ve 3 m. Mnoho potápěčů ji dělá v 6 m: hloubka se tam lépe drží ve vlnách a kyslík má právě 1,6 bar. Stojí to pár minut navíc.
+
+**Rychlost výstupu** je součást dekomprese. Běžně se plánuje 9–10 m/min, z poslední zastávky na hladinu pomaleji – klidně minutu na metr.
+Výstup rychlejší, než s jakým počítal plán, znamená větší přesycení, než plán předpokládal.
+
+Bezpečnostní zastávka u ponorů v limitu funguje stejně: několik minut ve 3–6 m sníží přesycení rychlých kompartmentů a množství bublin.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="m-hodnota" />
+
+Strop je hloubka, ve které se tlak v tkáni právě rovná povolenému limitu. Výpočet je M-hodnota obrácená naruby:
+z tlaku v tkáni se hledá okolní tlak, při kterém je ještě v mezích.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Jak dlouho trvá výstup k první zastávce.** Ze 45 m do 21 m rychlostí 9 m/min:
+
+<Worked fn="travelMinutes" args={[45, 21, 9]} expected={2.67} tolerance={0.01} unit="min" decimals={1} />
+
+**Poslední úsek.** Z 6 m na hladinu rychlostí 3 m/min:
+
+<Worked fn="travelMinutes" args={[6, 0, 3]} expected={2} tolerance={0.01} unit="min" decimals={0} />
+
+Stejné dvě až tři minuty, jenže pro čtvrtinu vzdálenosti. Posledních šest metrů je místo, kde se tlak poměrně mění nejrychleji – a kde se nejvíc spěchá.
+
+**Limity podle modelu** (vzduch, GF 85): v 18 m <Calc fn="ndlMinutes" args={[18, 0.21, 85]} unit="min" />, ve 30 m <Calc fn="ndlMinutes" args={[30, 0.21, 85]} unit="min" />, ve 40 m <Calc fn="ndlMinutes" args={[40, 0.21, 85]} unit="min" />.
+Tvůj počítač může ukázat jiná čísla; má jiné konvence a pamatuje si předchozí ponory.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="tissue-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="rychlost-vystupu-historie" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

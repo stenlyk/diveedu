@@ -105,3 +105,62 @@
 - { from: michani-parcialnim-tlakem, to: nitrox, type: zpusobuje, lessonId: michani-nitroxu, explanation: Výsledkem míchání je nitrox požadovaného složení. }
 - { from: michani-parcialnim-tlakem, to: analyza-plynu, type: je_predpokladem, lessonId: michani-nitroxu, explanation: 'Výpočet předpokládá ideální plyn; skutečné složení ukáže až analýza.' }
 - { from: teplota, to: michani-parcialnim-tlakem, type: zhorsuje, lessonId: michani-nitroxu, explanation: 'Ohřátá lahev ukazuje vyšší tlak, než jaký bude po vychladnutí, a směs vyjde jinak.' }
+
+# ── Modul 2 ──────────────────────────────────────────────────────────────────
+- { from: polocas-tkane, to: kompartment, type: je_predpokladem, lessonId: od-haldana-k-buhlmannovi, explanation: Každý kompartment je určen svým poločasem. }
+- { from: kompartment, to: syceni-tkani, type: je_predpokladem, lessonId: od-haldana-k-buhlmannovi, explanation: 'Model nahrazuje skutečné tkáně sadou kompartmentů, které se sytí různě rychle.' }
+- { from: model-buhlmann, to: kompartment, type: pocita_se_z, lessonId: od-haldana-k-buhlmannovi, explanation: ZHL-16C sleduje 16 kompartmentů s poločasy od 5 do 635 minut. }
+
+- { from: m-hodnota, to: absolutni-tlak, type: pocita_se_z, lessonId: m-hodnoty, explanation: 'M-hodnota roste s okolním tlakem: v hloubce tkáň snese víc inertního plynu.' }
+- { from: syceni-tkani, to: presyceni, type: zpusobuje, lessonId: m-hodnoty, explanation: 'Nasycená tkáň je po snížení okolního tlaku přesycená.' }
+- { from: m-hodnota, to: presyceni, type: zmirnuje, lessonId: m-hodnoty, explanation: Model drží přesycení pod M-hodnotou každého kompartmentu. }
+- { from: presyceni, to: dcs, type: zpusobuje, lessonId: m-hodnoty, explanation: 'Čím větší přesycení, tím pravděpodobnější vznik a růst bublin.' }
+
+- { from: gradient-factor, to: m-hodnota, type: pocita_se_z, lessonId: gradient-factors, explanation: Gradient factor je podíl z rozdílu mezi okolním tlakem a M-hodnotou. }
+- { from: gradient-factor, to: presyceni, type: snizuje, lessonId: gradient-factors, explanation: 'Nižší GF dovolí menší přesycení, a tedy delší dekompresi.' }
+- { from: gf99, to: gradient-factor, type: je_predpokladem, lessonId: gradient-factors, explanation: 'GF99 ukazuje, kolik z nastaveného limitu vedoucí tkáň právě čerpá.' }
+- { from: gradient-factor, to: strop-dekomprese, type: zvysuje, lessonId: gradient-factors, explanation: Konzervativnější GF posune strop hlouběji. }
+
+- { from: presyceni, to: bubliny, type: zpusobuje, lessonId: bubliny-a-bublinove-modely, explanation: Bubliny vznikají a rostou v přesycené tkáni a krvi. }
+- { from: bubliny, to: dcs, type: zpusobuje, lessonId: bubliny-a-bublinove-modely, explanation: 'Příznaky vznikají, když je bublin příliš mnoho nebo jsou na špatném místě.' }
+- { from: bublinove-modely, to: bubliny, type: zmirnuje, lessonId: bubliny-a-bublinove-modely, explanation: Bublinové modely se snaží omezit růst bublin hlubšími zastávkami. }
+- { from: bublinove-modely, to: deko-zastavka, type: zvysuje, lessonId: bubliny-a-bublinove-modely, explanation: Předepisují první zastávky hlouběji než modely rozpuštěného plynu. }
+
+- { from: strop-dekomprese, to: deko-zastavka, type: je_predpokladem, lessonId: strop-zastavky-a-vystup, explanation: 'Zastávka je nejbližší násobek tří metrů pod stropem.' }
+- { from: deko-zastavka, to: presyceni, type: snizuje, lessonId: strop-zastavky-a-vystup, explanation: Na zastávce tkáně vydávají plyn při řízeném přesycení. }
+- { from: rychlost-vystupu, to: bubliny, type: zhorsuje, lessonId: strop-zastavky-a-vystup, explanation: Rychlý výstup zvětší přesycení dřív, než stihne plyn odejít. }
+- { from: bezdekompresni-limit, to: deko-zastavka, type: je_predpokladem, lessonId: strop-zastavky-a-vystup, explanation: Po překročení limitu už přímý výstup na hladinu není možný. }
+- { from: hloubka, to: bezdekompresni-limit, type: snizuje, lessonId: strop-zastavky-a-vystup, explanation: 'Čím hlouběji, tím rychleji se tkáně nasytí nad povrchovou M-hodnotu.' }
+
+- { from: namaha, to: sac, type: zvysuje, lessonId: sac-a-spotreba, explanation: Při práci nebo stresu se spotřeba snadno zdvojnásobí. }
+- { from: sac, to: planovani-plynu, type: je_predpokladem, lessonId: sac-a-spotreba, explanation: Bez znalosti vlastní spotřeby nelze spočítat potřebu plynu. }
+- { from: absolutni-tlak, to: sac, type: je_predpokladem, lessonId: sac-a-spotreba, explanation: Skutečná spotřeba je povrchová spotřeba krát absolutní tlak. }
+
+- { from: minimum-gas, to: sac, type: pocita_se_z, lessonId: minimum-gas, explanation: Rezerva se počítá ze stresové spotřeby dvou potápěčů. }
+- { from: minimum-gas, to: hloubka, type: pocita_se_z, lessonId: minimum-gas, explanation: 'Čím hlouběji, tím delší výstup a větší spotřeba.' }
+- { from: minimum-gas, to: unik-plynu, type: zmirnuje, lessonId: minimum-gas, explanation: 'Rezerva zajistí, že ztráta plynu jednoho potápěče neskončí výstupem bez plynu.' }
+
+- { from: pravidlo-tretin, to: planovani-plynu, type: je_predpokladem, lessonId: planovani-plynu, explanation: Třetiny jsou jedním ze způsobů rozdělení použitelného plynu. }
+- { from: planovani-plynu, to: minimum-gas, type: pocita_se_z, lessonId: planovani-plynu, explanation: Použitelný plyn je to, co zbude po odečtení rezervy. }
+- { from: planovani-plynu, to: ztrata-deko-plynu, type: zmirnuje, lessonId: planovani-plynu, explanation: Plán počítá s tím, že některý plyn nebude k dispozici. }
+
+- { from: ean50, to: deko-zastavka, type: snizuje, lessonId: dekompresni-plyny-v-planu, explanation: Bohatá směs zkracuje čas na mělkých zastávkách. }
+- { from: run-time, to: deko-zastavka, type: je_predpokladem, lessonId: dekompresni-plyny-v-planu, explanation: Rozvrh říká, v kolikáté minutě se která zastávka opouští. }
+- { from: kyslikove-okno, to: deko-zastavka, type: snizuje, lessonId: dekompresni-plyny-v-planu, explanation: Širší kyslíkové okno urychluje odchod inertního plynu. }
+
+- { from: stage-lahev, to: deko-lahev, type: je_predpokladem, lessonId: stage-lahve, explanation: Dekompresní lahev je stage lahev s dekompresní směsí. }
+- { from: stage-lahev, to: vztlak, type: zvysuje, lessonId: stage-lahve, explanation: Hliníková lahev je po vydýchání plovoucí a mění vyvážení i trim. }
+- { from: stage-lahev, to: zamena-plynu, type: zhorsuje, lessonId: stage-lahve, explanation: 'Víc lahví znamená víc automatik, po kterých lze sáhnout omylem.' }
+
+- { from: twinset, to: unik-plynu, type: zmirnuje, lessonId: twinset-a-ventilovy-drill, explanation: Dva první stupně a izolátor umožní únik zastavit a neztratit všechen plyn. }
+- { from: ventilovy-drill, to: unik-plynu, type: zmirnuje, lessonId: twinset-a-ventilovy-drill, explanation: Nacvičený postup zavře správný ventil během vteřin. }
+- { from: twinset, to: ventilovy-drill, type: je_predpokladem, lessonId: twinset-a-ventilovy-drill, explanation: Redundance dvojčete funguje jen tehdy, když potápěč na ventily dosáhne. }
+
+- { from: ztrata-deko-plynu, to: vynechana-dekomprese, type: zpusobuje, lessonId: ztrata-deko-plynu, explanation: Bez záložního plánu a rezervy vede ztráta plynu k nedokončené dekompresi. }
+- { from: vynechana-dekomprese, to: dcs, type: zpusobuje, lessonId: ztrata-deko-plynu, explanation: Výstup nad strop znamená přesycení nad limit modelu. }
+- { from: ztrata-deko-plynu, to: deko-zastavka, type: zvysuje, lessonId: ztrata-deko-plynu, explanation: Na chudším plynu jsou zastávky výrazně delší. }
+
+- { from: tym, to: plan-ponoru, type: je_predpokladem, lessonId: tym-a-plan-ponoru, explanation: Plán platí pro celý tým a všichni ho znají. }
+- { from: plan-ponoru, to: vynechana-dekomprese, type: zmirnuje, lessonId: tym-a-plan-ponoru, explanation: Záložní rozvrhy připravené předem nahrazují improvizaci pod vodou. }
+- { from: plan-ponoru, to: run-time, type: pocita_se_z, lessonId: tym-a-plan-ponoru, explanation: Jádrem plánu je rozvrh podle run-time. }
+- { from: tym, to: zamena-plynu, type: zmirnuje, lessonId: tym-a-plan-ponoru, explanation: Partner potvrzuje každé přepnutí plynu. }

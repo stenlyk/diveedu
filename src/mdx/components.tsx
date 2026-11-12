@@ -10,6 +10,7 @@ import { Tex } from '../components/Math';
 import { Steps } from '../components/Steps';
 import { Card, ReviewBadge } from '../components/ui';
 import { casesById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
+import { callContentFunction } from '../content/fns';
 import { LESSON_SECTIONS, type Lesson } from '../content/schema';
 import { QuizRunner } from '../quiz/QuizRunner';
 import { CalcToy } from '../tools/CalcView';
@@ -35,11 +36,9 @@ function section(name: SectionName) {
   };
 }
 
-const fns = calc as unknown as Record<string, (...args: unknown[]) => unknown>;
-
 function compute(fn: string, args: unknown[]): number {
-  const value = fns[fn]?.(...args);
-  if (typeof value !== 'number') throw new Error(`calc.${fn} nevrátila číslo`);
+  const value = callContentFunction(fn, args);
+  if (typeof value !== 'number') throw new Error(`Funkce ${fn} nevrátila číslo`);
   return value;
 }
 
@@ -64,7 +63,7 @@ interface WorkedProps {
 
 function Worked({ fn, args, steps, unit, decimals = 1 }: WorkedProps) {
   const value = compute(fn, args);
-  const list = steps ? (fns[steps]?.(...args) as calc.CalcStep[] | undefined) : undefined;
+  const list = steps ? (callContentFunction(steps, args) as calc.CalcStep[]) : undefined;
   return (
     <div className="my-4" data-worked={fn}>
       {list && <Steps steps={list} />}

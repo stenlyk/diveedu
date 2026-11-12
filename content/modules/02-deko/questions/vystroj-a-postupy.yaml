@@ -1,0 +1,240 @@
+- id: stage-proc-hlinik
+  type: why
+  conceptIds: [stage-lahev, vztlak, trim]
+  difficulty: 1
+  prompt: Proč se jako stage lahve používají hliníkové?
+  options:
+    - { text: 'Jsou ve vodě téměř neutrální, takže neruší vyvážení a dají se odložit nebo předat.', correct: true }
+    - { text: 'Vydrží vyšší tlak než ocelové.', explanation: 'Nevydrží; jde o vztlak, ne o tlak.' }
+    - { text: 'Jsou lehčí na souši.', explanation: 'Na souši jsou srovnatelné. Rozhoduje chování ve vodě.' }
+    - { text: 'Kyslík v nich nehoří.', explanation: 'Materiál lahve požadavek na kyslíkovou čistotu nemění.' }
+  explanation: 'Plná hliníková lahev lehce táhne dolů, prázdná lehce nadnáší.'
+  backToLessonId: stage-lahve
+
+- id: stage-znaceni
+  type: choice
+  conceptIds: [stage-lahev, znaceni-lahvi, zamena-plynu]
+  difficulty: 1
+  prompt: Kde má být na stage lahvi napsaná MOD?
+  options:
+    - { text: 'Velkými číslicemi na obou bocích, čitelná pro mě i pro partnera', correct: true }
+    - { text: 'Jen na štítku u ventilu', explanation: 'Štítek u ventilu pod vodou nepřečte nikdo.' }
+    - { text: 'Na dně lahve', explanation: 'Dno není při nošení vidět.' }
+    - { text: 'Stačí barva lahve', explanation: 'Barvy nejsou jednotné a ve tmě nebo v hloubce se nerozeznají.' }
+  explanation: 'MOD na boku je poslední pojistka při přepnutí.'
+  backToLessonId: stage-lahve
+
+- id: stage-objem-plynu
+  type: numeric
+  conceptIds: [stage-lahev, deko-lahev, planovani-plynu]
+  difficulty: 2
+  prompt: 'Na dekompresi potřebuješ {liters} l plynu včetně rezervy. Kolik barů to je v lahvi {tank} l?'
+  template: { fn: litersToBar, params: { liters: { values: [400, 600, 800, 1000] }, tank: { values: [7, 11.1] } }, args: [liters, tank], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Litry děleno objemem lahve.'
+  backToLessonId: stage-lahve
+
+- id: stage-ventil
+  type: why
+  conceptIds: [stage-lahev, deko-lahev, zamena-plynu]
+  difficulty: 2
+  prompt: Proč je ventil dekompresní lahve během ponoru zavřený?
+  options:
+    - { text: 'Z lahve se nedá nadechnout omylem a případný únik ji nevyprázdní.', correct: true }
+    - { text: 'Aby se ušetřil plyn odpařováním.', explanation: 'Stlačený plyn se neodpařuje.' }
+    - { text: 'Otevřený ventil by lahev nadnášel.', explanation: Poloha ventilu vztlak neovlivní. }
+    - { text: 'Aby automatika nezamrzla.', explanation: 'S mrazem to nesouvisí.' }
+  explanation: 'Automatika je natlakovaná a ventil zavřený; otevírá se až při přepnutí.'
+  backToLessonId: stage-lahve
+
+- id: twinset-proc-izolator
+  type: why
+  conceptIds: [twinset, unik-plynu]
+  difficulty: 2
+  prompt: K čemu slouží izolátor na dvojčeti?
+  options:
+    - { text: 'Při úniku na spoji nebo ventilu oddělí lahve a zachrání plyn v jedné z nich.', correct: true }
+    - { text: 'Reguluje tlak mezi lahvemi.', explanation: 'Tlak se vyrovnává sám; izolátor je jen uzávěr.' }
+    - { text: 'Slouží k plnění lahví.', explanation: 'Plní se přes ventily lahví.' }
+    - { text: 'Přepíná mezi dvěma směsmi.', explanation: 'V dvojčeti je jedna směs.' }
+  explanation: 'Bez izolátoru by únik na jedné straně vyprázdnil obě lahve.'
+  backToLessonId: twinset-a-ventilovy-drill
+
+- id: drill-poradi
+  type: order
+  conceptIds: [ventilovy-drill, unik-plynu, tym]
+  difficulty: 2
+  prompt: Seřaď obecnou logiku zásahu při úniku plynu za hlavou.
+  items:
+    - Dej znamení partnerovi
+    - Zavři ventil na straně poruchy
+    - Přejdi na druhou automatiku
+    - 'Pokud únik pokračuje, zavři izolátor'
+    - Ukonči ponor
+  explanation: 'Přesné pořadí se mezi agenturami liší. Podstatné je mít jedno nacvičené.'
+  backToLessonId: twinset-a-ventilovy-drill
+
+- id: drill-nevim-odkud
+  type: choice
+  conceptIds: [ventilovy-drill, twinset, unik-plynu]
+  difficulty: 2
+  prompt: 'Silně to syčí za hlavou, nevíš odkud a partner není na dosah. Co zachrání nejvíc plynu?'
+  options:
+    - { text: 'Zavřít izolátor – únik pak vyprázdní nejvýš jednu lahev', correct: true }
+    - { text: 'Čekat, až se ukáže, která automatika nefunguje', explanation: 'Každá vteřina stojí plyn z obou lahví.' }
+    - { text: 'Okamžitě vystoupat', explanation: 'Bez zásahu ztratíš plyn, který budeš na výstupu potřebovat.' }
+    - { text: 'Zavřít oba ventily lahví', explanation: 'Pak nemáš z čeho dýchat.' }
+  explanation: 'Izolátor rozdělí zásobu na dvě poloviny. Pak je čas hledat příčinu.'
+  backToLessonId: twinset-a-ventilovy-drill
+
+- id: twinset-plyn-po-izolaci
+  type: numeric
+  conceptIds: [twinset, unik-plynu, minimum-gas]
+  difficulty: 2
+  prompt: 'Porucha nastane při {bar} bar a izolátor zavřeš okamžitě. Kolik litrů plynu ti zůstane v jedné lahvi {tank} l?'
+  template: { fn: barToLiters, params: { bar: { values: [80, 100, 120, 150] }, tank: { values: [10, 12] } }, args: [bar, tank], tolerance: 10, unit: l, decimals: 0 }
+  explanation: 'Tlak krát objem jedné lahve. Polovina zásoby je pryč.'
+  backToLessonId: twinset-a-ventilovy-drill
+
+- id: drill-levy-ventil
+  type: why
+  conceptIds: [ventilovy-drill, twinset]
+  difficulty: 3
+  prompt: 'Proč se v jeskyni nebo vraku pravidelně kontroluje levý ventil dvojčete?'
+  options:
+    - { text: 'Třením o strop se může sám zavřít.', correct: true }
+    - { text: 'Protože z něj uniká víc plynu než z pravého.', explanation: Oba ventily jsou stejné. }
+    - { text: 'Protože je na něm hlavní automatika.', explanation: 'Hlavní automatika bývá na pravém ventilu.' }
+    - { text: 'Protože se v chladu zadírá.', explanation: 'Důvodem je směr otáčení při kontaktu se stropem.' }
+  explanation: 'Levý ventil se zavírá otáčením, které odpovídá pohybu lahve pod stropem vpřed.'
+  backToLessonId: twinset-a-ventilovy-drill
+
+- id: ztrata-plan-b
+  type: choice
+  conceptIds: [ztrata-deko-plynu, plan-ponoru, planovani-plynu]
+  difficulty: 2
+  prompt: Co musí plán obsahovat pro případ ztráty dekompresního plynu?
+  options:
+    - { text: 'Záložní rozvrh na plynu ze zad a dost plynu na jeho dokončení', correct: true }
+    - { text: 'Nic, taková situace se řeší pod vodou', explanation: 'Pod vodou se už nic spočítat nedá.' }
+    - { text: 'Druhou stejnou dekompresní lahev pro každého', explanation: 'Možné, ale neobvyklé. Základem je záložní rozvrh a rezerva na zádech.' }
+    - { text: 'Telefonní číslo na komoru', explanation: 'Užitečné, ale to není plán dekomprese.' }
+  explanation: 'Zásoba na zádech, která pokryje delší rozvrh, je skutečná rezerva dekompresního ponoru.'
+  backToLessonId: ztrata-deko-plynu
+
+- id: ztrata-o-kolik-delsi
+  type: why
+  conceptIds: [ztrata-deko-plynu, deko-zastavka, kyslikove-okno]
+  difficulty: 2
+  prompt: Proč je dekomprese bez dekompresního plynu výrazně delší?
+  options:
+    - { text: 'Na mělkých zastávkách dýcháš víc inertního plynu, takže tkáně ho vydávají pomaleji.', correct: true }
+    - { text: 'Protože plyn ze zad je studenější.', explanation: Teplota plynu to neurčuje. }
+    - { text: 'Protože počítač za trest přidává čas.', explanation: 'Počítač jen počítá model s jiným plynem.' }
+    - { text: 'Protože musíš zůstat hlouběji.', explanation: 'Zastávky jsou ve stejných hloubkách, jen delší.' }
+  explanation: 'Stejný model, jiný vdechovaný tlak inertního plynu.'
+  backToLessonId: ztrata-deko-plynu
+
+- id: vynechana-co-delat
+  type: order
+  conceptIds: [vynechana-dekomprese, dcs]
+  difficulty: 2
+  prompt: 'Potápěč se vynořil bez dokončené dekomprese a nemá příznaky. Seřaď obecné zásady.'
+  items:
+    - Zůstaň na hladině a mimo vodu
+    - Dýchej kyslík
+    - 'Lež v klidu, pij'
+    - Sleduj příznaky
+    - Kontaktuj hyperbarického lékaře
+  explanation: 'Konkrétní postup určuje agentura. Návrat do vody je vyhrazen připraveným postupům, ne improvizaci.'
+  backToLessonId: ztrata-deko-plynu
+
+- id: ztrata-tym
+  type: why
+  conceptIds: [ztrata-deko-plynu, tym, planovani-plynu]
+  difficulty: 2
+  prompt: Proč má tým nosit stejné dekompresní směsi?
+  options:
+    - { text: 'O plyn se pak lze podělit a rozvrh je pro všechny stejný.', correct: true }
+    - { text: 'Je to levnější.', explanation: 'Cena není důvod.' }
+    - { text: 'Různé směsi se nesmí míchat ve vodě.', explanation: Směsi se ve vodě nemíchají; jde o sdílení a společný rozvrh. }
+    - { text: 'Kvůli stejné barvě lahví.', explanation: 'Barva není spolehlivé značení.' }
+  explanation: 'Rezerva 1,5 na dekompresním plynu má smysl jen tehdy, když ji může použít i partner.'
+  backToLessonId: ztrata-deko-plynu
+
+- id: vynechana-nikdy
+  type: choice
+  conceptIds: [vynechana-dekomprese, dcs]
+  difficulty: 1
+  prompt: 'Potápěč po vynechané dekompresi má příznaky dekompresní nemoci. Co se nesmí udělat?'
+  options:
+    - { text: 'Poslat ho zpět do vody „dodekomprimovat“', correct: true }
+    - { text: 'Podat kyslík', explanation: 'Kyslík je první pomoc.' }
+    - { text: 'Zavolat záchrannou službu a hyperbarického lékaře', explanation: 'To je správný postup.' }
+    - { text: 'Uložit ho do klidu a dát mu pít', explanation: 'To je správný postup, pokud je při vědomí.' }
+  explanation: 'S příznaky platí kyslík a transport do komory. Improvizované ponoření zpět zabilo víc lidí, než zachránilo.'
+  backToLessonId: ztrata-deko-plynu
+
+- id: tym-co-obsahuje-plan
+  type: multi
+  conceptIds: [plan-ponoru, run-time, minimum-gas]
+  difficulty: 1
+  prompt: Co má obsahovat plán dekompresního ponoru?
+  options:
+    - { text: 'Hloubku, čas a rozvrh podle run-time', correct: true }
+    - { text: 'Plyny, jejich MOD a hloubky přepnutí', correct: true }
+    - { text: 'Tlak otočky, minimum gas a záložní rozvrhy', correct: true }
+    - { text: 'Odhad, kolik minut navíc si tým může dovolit', explanation: 'Odhad pod vodou neplatí; na „navíc“ existuje konkrétní záložní rozvrh, nebo se neprodlužuje.' }
+  explanation: 'Rozvrhy má každý napsané u sebe.'
+  backToLessonId: tym-a-plan-ponoru
+
+- id: tym-kdo-ukonci
+  type: choice
+  conceptIds: [tym, plan-ponoru]
+  difficulty: 1
+  prompt: Kdo smí ukončit ponor?
+  options:
+    - { text: 'Kdokoli, kdykoli a bez vysvětlování', correct: true }
+    - { text: 'Jen vedoucí týmu', explanation: 'Pak by ostatní mlčeli o problémech, které vidí jen oni.' }
+    - { text: 'Jen ten, kdo má problém s výstrojí', explanation: 'Důvod nemusí být vidět ani jít vysvětlit pod vodou.' }
+    - { text: 'Nikdo, dokud není splněn cíl ponoru', explanation: 'To je cesta k nehodě.' }
+  explanation: 'Pravidlo se říká nahlas před každým ponorem, protože pod tlakem okolností se na něj zapomíná.'
+  backToLessonId: tym-a-plan-ponoru
+
+- id: tym-odchylka
+  type: choice
+  conceptIds: [plan-ponoru, run-time, vynechana-dekomprese]
+  difficulty: 2
+  prompt: 'Na dně jste o čtyři minuty déle, než říká plán. Co platí?'
+  options:
+    - { text: 'Záložní rozvrh pro delší čas, pokud ho máte a máte na něj plyn', correct: true }
+    - { text: 'Původní rozvrh, čtyři minuty se ztratí', explanation: 'Tkáně o plánu nevědí. Dekomprese podle kratšího času je nedostatečná.' }
+    - { text: 'Zastávky si prodloužíte odhadem', explanation: 'Odhad pod narkózou není plán.' }
+    - { text: 'Vystoupáte rychleji, abyste čas dohnali', explanation: 'To by přesycení ještě zvětšilo.' }
+  explanation: 'Na předvídatelné odchylky má plán připravenou tabulku. Počítač je druhá pojistka.'
+  backToLessonId: tym-a-plan-ponoru
+
+- id: tym-kontrola-pred
+  type: why
+  conceptIds: [tym, zamena-plynu, plan-ponoru]
+  difficulty: 1
+  prompt: Proč si tým před ponorem navzájem kontroluje výstroj a plyny?
+  options:
+    - { text: 'Většina vážných chyb vzniká před vstupem do vody a vlastní chybu člověk snadno přehlédne.', correct: true }
+    - { text: 'Je to formalita vyžadovaná pojišťovnou.', explanation: 'Je to bezpečnostní nástroj.' }
+    - { text: 'Aby se ponor zdržel a tým se uklidnil.', explanation: 'Uklidnění je vedlejší účinek; hlavní je odhalení chyb.' }
+    - { text: 'Protože pod vodou se výstroj kontrolovat nedá.', explanation: 'Dá, ale některé chyby se už pod vodou nedají napravit.' }
+  explanation: 'Zavřený ventil, špatná lahev, nepřepnutý počítač. Kontrola trvá dvě minuty.'
+  backToLessonId: tym-a-plan-ponoru
+
+- id: tym-runtime
+  type: why
+  conceptIds: [run-time, tym, plan-ponoru]
+  difficulty: 2
+  prompt: Proč se pod vodou sleduje run-time místo „času na zastávce“?
+  options:
+    - { text: 'Jedno průběžné číslo hned ukáže zpoždění a tým podle něj jedná společně.', correct: true }
+    - { text: 'Protože počítače čas na zastávce neumí měřit.', explanation: 'Umí. Jde o společnou referenci.' }
+    - { text: 'Protože zastávky nemají pevnou délku.', explanation: 'V plánu ji mají.' }
+    - { text: 'Protože run-time je kratší.', explanation: 'Je to celkový čas, tedy naopak delší.' }
+  explanation: 'Když se run-time na některém řádku rozejde s plánem, všichni to vidí ve stejnou chvíli.'
+  backToLessonId: tym-a-plan-ponoru

@@ -2,7 +2,7 @@ id: zamena-plynu-krece
 title: Kyslíkové křeče po přepnutí na špatnou lahev
 location: Anonymizovaný vzorec nehody
 rig: oc
-moduleIds: [nitrox]
+moduleIds: [nitrox, deko]
 anonymized: true
 context: >-
   Nejde o jednu konkrétní nehodu, ale o vzorec, který se v rozborech smrtelných nehod technických potápěčů opakuje:

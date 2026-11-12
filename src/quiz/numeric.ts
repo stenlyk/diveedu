@@ -1,8 +1,8 @@
 /** Numerické otázky: generování variant ze šablony a vyhodnocení odpovědi. Výsledek vždy počítá calc. */
 import * as calc from '@diveedu/calc';
+import { callContentFunction } from '../content/fns';
 import type { NumericTemplate } from '../content/schema';
 
-const fns = calc as unknown as Record<string, (...args: number[]) => number>;
 
 export interface NumericVariant {
   values: Record<string, number>;
@@ -20,9 +20,7 @@ function pick(param: NumericTemplate['params'][string], rng: Rng): number {
 
 export function generateVariant(template: NumericTemplate, rng: Rng = Math.random): NumericVariant {
   const values = { ...template.fixed, ...Object.fromEntries(Object.entries(template.params).map(([name, param]) => [name, pick(param, rng)])) };
-  const fn = fns[template.fn];
-  if (typeof fn !== 'function') throw new Error(`Neznámá funkce calc: ${template.fn}`);
-  return { values, answer: fn(...template.args.map((arg) => values[arg]!)) };
+  return { values, answer: callContentFunction(template.fn, template.args.map((arg) => values[arg]!)) as number };
 }
 
 /** Dosadí hodnoty do promptu; čísla formátuje česky. */

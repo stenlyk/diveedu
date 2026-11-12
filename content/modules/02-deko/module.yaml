@@ -1,0 +1,9 @@
+id: deko
+title: Decompression Procedures
+subtitle: Dekompresní modely, plánování plynu a postupy
+branch: depth
+rig: oc
+prerequisites: [nitrox]
+order: 2
+passThreshold: 0.8
+status: published

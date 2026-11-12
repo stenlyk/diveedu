@@ -1,0 +1,18 @@
+id: minimum-gas
+moduleId: deko
+title: "Minimum gas: rezerva, která se neplánuje"
+order: 7
+conceptIds: ["minimum-gas", "sac", "hloubka", "unik-plynu"]
+checkQuestionIds: ["mingas-co-je", "mingas-vypocet", "mingas-proc-dva", "mingas-kdy-prepocitat", "mingas-neplanuje"]
+estimatedMinutes: 10
+audioSummary: >-
+  Minimum gas je rezerva, která dostane dva potápěče z nejhlubšího bodu ponoru na hladinu nebo k dalšímu plynu.
+  Počítá se pro nejhorší okamžik. Porucha v největší hloubce, oba dýchají stresovou spotřebou a minutu řeší problém, než začnou stoupat.
+  Je to rezerva, ne zásoba. Do plánu se nezapočítává.
+  Mění se s hloubkou, takže pro každou úroveň ponoru je jiná.
+  Při dekompresním ponoru nestačí rezerva na hladinu. Počítá se k první použitelné dekompresní lahvi.
+  Výsledek vždy zaokrouhli nahoru na celých deset barů.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: true

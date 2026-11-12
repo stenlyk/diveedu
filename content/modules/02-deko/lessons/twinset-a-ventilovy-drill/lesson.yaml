@@ -1,0 +1,20 @@
+id: twinset-a-ventilovy-drill
+moduleId: deko
+title: "Dvojče a ventilový drill"
+order: 11
+conceptIds: ["twinset", "ventilovy-drill", "unik-plynu"]
+checkQuestionIds: ["twinset-proc-izolator", "drill-poradi", "drill-nevim-odkud", "twinset-plyn-po-izolaci", "drill-levy-ventil"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dvojče jsou dvě propojené lahve se dvěma ventily, dvěma prvními stupni a izolátorem uprostřed.
+  Smyslem je redundance bez ztráty plynu.
+  Když selže automatika, zavřeš její ventil a dýcháš z druhé. Plyn z obou lahví ti zůstane.
+  Když uniká spoj nebo ventil, zavřeš izolátor a zachráníš plyn v jedné lahvi.
+  Ventilový drill je nacvičený postup, kterým ventily ovládáš popaměti.
+  Nejdřív dej znamení partnerovi, který vidí, odkud bubliny jdou.
+  Levý ventil se pod stropem může třením zavřít, proto ho pravidelně kontroluj.
+  A na ventily musíš dosáhnout. Jinak redundanci nemáš.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: true

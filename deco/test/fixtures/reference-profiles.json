@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Subsurface testMetric: 79 m / 30 min, Tx 15/45, EAN36 od 33 m, O2 od 6 m, GF 100/100",
+    "source": "subsurface/tests/testplan.cpp (testMetric), očekávaný celkový čas 109 min",
+    "input": {
+      "depthM": 79,
+      "bottomMinutes": 30,
+      "gases": [
+        { "gas": { "fO2": 0.15, "fHe": 0.45 } },
+        { "gas": { "fO2": 0.36, "fHe": 0 }, "switchDepthM": 33 },
+        { "gas": { "fO2": 1, "fHe": 0 }, "switchDepthM": 6 }
+      ],
+      "gfLow": 100,
+      "gfHigh": 100,
+      "descentRate": 23,
+      "ascentRate": 9.144,
+      "surfaceRate": 3.048,
+      "lastStopM": 6,
+      "switchMinutes": 1
+    },
+    "expected": { "runtimeMin": 109 }
+  }
+]

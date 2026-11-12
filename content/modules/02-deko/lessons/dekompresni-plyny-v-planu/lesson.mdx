@@ -1,0 +1,84 @@
+<Hook>
+
+Stejný ponor: 45 m, 25 minut na vzduchu. Bez dekompresního plynu trvá výstup <Calc fn="ascentMinutesAir" args={[45, 25, 30, 85]} unit="min" />.
+
+S jednou lahví EAN50 <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 0.5, 21]} unit="min" />. Kde se ten čas ušetřil – a co tě stál?
+
+</Hook>
+
+<Principle>
+
+Dekompresní plyn zkracuje zastávky dvojím způsobem, jak víš z lekce o kyslíkovém okně: v dechu je méně inertního plynu a tkáně ho proto vydávají rychleji.
+Největší účinek má na mělkých zastávkách, které jsou nejdelší.
+
+**Výběr plynu** se řídí hloubkou, kde dekomprese začíná:
+
+- pro ponory kolem 40–50 m se nejčastěji nese jedna lahev: EAN50 od 21 m,
+- u delších dekompresí se přidává kyslík od 6 m,
+- hlubší trimixové ponory používají i mezistupně; těm se věnují další moduly.
+
+Každý plyn navíc je lahev, automatika, přepnutí a příležitost k chybě. Druhý dekompresní plyn se bere tehdy, když ušetří víc času, než kolik přidá složitosti.
+
+**Run-time** je čas od opuštění hladiny. Rozvrh ponoru se píše jako tabulka: hloubka, čas na zastávce a run-time, ve kterém zastávku opouštíš.
+Pod vodou se neřídíš tím, „jak dlouho už tu jsem“, ale tím, jestli run-time odpovídá plánu. Zpoždění na dně se v run-time ukáže okamžitě.
+
+**Kyslík a dlouhé zastávky.** Při ppO2 1,6 bar ubíhají CNS hodiny rychle. Na dlouhých kyslíkových zastávkách se proto dělají přestávky na plynu s nižším ppO2.
+Intervaly se mezi agenturami liší.
+
+Co plán vždy obsahuje navíc: rozvrh pro případ, že dekompresní plyn nebude k dispozici. O něm je samostatná lekce.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Hloubka přepnutí je MOD dekompresního plynu při limitu 1,6 bar, zaokrouhlená na nejbližší mělčí zastávku. Run-time se počítá sčítáním:
+
+<Given>run-time = čas na dně + výstup + součet zastávek</Given>
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor na vzduch, 45 m a 25 minut, GF 30/85. Podle výukového modelu:
+
+- jen vzduch: výstup <Calc fn="ascentMinutesAir" args={[45, 25, 30, 85]} unit="min" />
+- s EAN50 od 21 m: výstup <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 0.5, 21]} unit="min" />
+- s kyslíkem od 6 m: výstup <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 1, 6]} unit="min" />
+
+Jedna lahev zkrátila výstup skoro o dvacet minut. A kontrola, kterou musíš umět z hlavy – kyslíková zátěž na nejhlubší zastávce s EAN50:
+
+<Worked fn="ppO2" args={[0.5, 21]} expected={1.55} tolerance={0.001} unit="bar" decimals={2} />
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="deco-gas" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="vzduchove-prestavky" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,306 @@
+- id: model-kompartment-co-je
+  type: choice
+  conceptIds: [kompartment, model-buhlmann]
+  difficulty: 1
+  prompt: Co je kompartment v dekompresním modelu?
+  options:
+    - { text: 'Matematický model skupiny tkání se stejnou rychlostí sycení', correct: true }
+    - { text: 'Konkrétní orgán, například mozek nebo játra', explanation: 'Kompartmenty neodpovídají orgánům; jsou to křivky proložené daty.' }
+    - { text: 'Část plic, kde probíhá výměna plynů', explanation: To jsou plicní sklípky. Kompartment je pojem modelu. }
+    - { text: 'Lahev s jedním druhem plynu', explanation: Kompartment se týká tkání, ne výstroje. }
+  explanation: 'Model nahrazuje tisíce skutečných tkání malou sadou nádob lišících se jen poločasem.'
+  backToLessonId: od-haldana-k-buhlmannovi
+
+- id: model-rychly-pomaly
+  type: match
+  conceptIds: [kompartment, polocas-tkane, syceni-tkani]
+  difficulty: 2
+  prompt: Který kompartment řídí dekompresi?
+  pairs:
+    - { left: 'Krátký hluboký ponor', right: Rychlý kompartment s krátkým poločasem }
+    - { left: 'Dlouhý nebo opakovaný ponor', right: Pomalý kompartment s dlouhým poločasem }
+  explanation: 'Rychlé kompartmenty se stihnou nasytit i za pár minut. Pomalé potřebují hodiny, ale stejně pomalu plyn vydávají.'
+  backToLessonId: od-haldana-k-buhlmannovi
+
+- id: model-polocasy-rozsah
+  type: choice
+  conceptIds: [model-buhlmann, polocas-tkane]
+  difficulty: 2
+  prompt: Kolik kompartmentů má model ZHL-16C a jaký rozsah poločasů dusíku pokrývá?
+  options:
+    - { text: '16 kompartmentů, od 5 do 635 minut', correct: true }
+    - { text: '5 kompartmentů, od 5 do 75 minut', explanation: 'To je Haldaneův model z roku 1908.' }
+    - { text: '16 kompartmentů, od 1 do 16 minut', explanation: 'Šestnáct je počet kompartmentů, ne nejdelší poločas.' }
+    - { text: '99 kompartmentů, od 1 do 1000 minut', explanation: 'Číslo 99 se objevuje v názvu GF99, s počtem kompartmentů nesouvisí.' }
+  explanation: 'Nejpomalejší kompartment se nasytí až po více než dvou dnech – proto záleží i na ponorech z předchozích dní.'
+  backToLessonId: od-haldana-k-buhlmannovi
+
+- id: model-tkan-vypocet
+  type: numeric
+  conceptIds: [polocas-tkane, kompartment, syceni-tkani]
+  difficulty: 3
+  prompt: 'Kompartment s poločasem {half} min začíná na 0,79 bar dusíku. V hloubce dýcháš dusík o tlaku {ambient} bar. Jaký tlak dusíku v něm bude po {time} min?'
+  template: { fn: haldaneTissuePressure, params: { ambient: { values: [2.37, 3.16, 3.95] }, half: { values: [5, 12.5, 27] }, time: { values: [5, 12.5, 25, 27] } }, fixed: { start: 0.79 }, args: [start, ambient, half, time], tolerance: 0.08, unit: bar, decimals: 2 }
+  explanation: 'Spočítej, kolik poločasů uběhlo. Po jednom zmizí polovina rozdílu, po dvou tři čtvrtiny, po pěti téměř vše.'
+  backToLessonId: od-haldana-k-buhlmannovi
+
+- id: mhod-co-je
+  type: choice
+  conceptIds: [m-hodnota, presyceni]
+  difficulty: 1
+  prompt: Co je M-hodnota?
+  options:
+    - { text: 'Nejvyšší tlak inertního plynu, který model v kompartmentu při daném okolním tlaku připouští', correct: true }
+    - { text: 'Maximální hloubka směsi', explanation: To je MOD. }
+    - { text: 'Maximální doba ponoru', explanation: 'M-hodnota je tlak, ne čas.' }
+    - { text: 'Množství plynu v lahvi', explanation: M-hodnota se týká tkání. }
+  explanation: '„M“ znamená maximum. Pojem zavedl Workman roku 1965.'
+  backToLessonId: m-hodnoty
+
+- id: mhod-rychle-vs-pomale
+  type: why
+  conceptIds: [m-hodnota, kompartment, polocas-tkane]
+  difficulty: 2
+  prompt: Proč je dekomprese po dlouhém ponoru tak zdlouhavá?
+  options:
+    - { text: 'Nasytily se pomalé kompartmenty, které snesou jen malé přesycení a plyn vydávají pomalu.', correct: true }
+    - { text: 'Rychlé kompartmenty po dlouhém ponoru zpomalí.', explanation: Poločasy se během ponoru nemění. }
+    - { text: 'M-hodnoty s délkou ponoru klesají.', explanation: 'M-hodnoty závisí na okolním tlaku, ne na čase.' }
+    - { text: 'Dlouhý ponor zvyšuje okolní tlak.', explanation: 'Okolní tlak určuje hloubka.' }
+  explanation: 'Pomalý kompartment má povrchovou M-hodnotu jen asi o čtvrtinu nad okolním tlakem, rychlý skoro trojnásobnou.'
+  backToLessonId: m-hodnoty
+
+- id: mhod-neni-hranice
+  type: why
+  conceptIds: [m-hodnota, dcs, presyceni]
+  difficulty: 2
+  prompt: Proč se k M-hodnotám nikdo dobrovolně neblíží?
+  options:
+    - { text: 'Nejsou hranicí mezi zdravím a nemocí; dekompresní nemoc vzniká i pod nimi, jen méně často.', correct: true }
+    - { text: 'Při dosažení M-hodnoty vzniká dekompresní nemoc vždy.', explanation: 'Ne vždy. M-hodnota je statistická čára, ne spínač.' }
+    - { text: 'Počítač při M-hodnotě přestane fungovat.', explanation: 'Počítač upozorní, ale počítá dál.' }
+    - { text: 'M-hodnoty platí jen pro vzduch.', explanation: 'Model má koeficienty pro dusík i helium.' }
+  explanation: 'M-hodnoty jsou čáry proložené výsledky pokusů. Proto existují gradient factors.'
+  backToLessonId: m-hodnoty
+
+- id: mhod-hloubka
+  type: choice
+  conceptIds: [m-hodnota, absolutni-tlak, strop-dekomprese]
+  difficulty: 2
+  prompt: Jak se M-hodnota mění s hloubkou?
+  options:
+    - { text: 'Roste – v hloubce snese tkáň víc inertního plynu', correct: true }
+    - { text: 'Klesá – v hloubce snese tkáň méně', explanation: 'Je to naopak. Proto existuje strop: nad ním by tkáň M-hodnotu překročila.' }
+    - { text: 'Nemění se', explanation: 'M = a + P/b; s okolním tlakem roste.' }
+    - { text: 'Roste jen do 30 m', explanation: 'Vztah je v modelu lineární bez takového zlomu.' }
+  explanation: 'Díky tomu je možné nasytit tkáně na dně a problém nastává až při výstupu.'
+  backToLessonId: m-hodnoty
+
+- id: gf-co-znamena
+  type: choice
+  conceptIds: [gradient-factor, m-hodnota]
+  difficulty: 1
+  prompt: 'Co znamená gradient factor 85 %?'
+  options:
+    - { text: 'Tkáň smí čerpat 85 % rozdílu mezi okolním tlakem a M-hodnotou', correct: true }
+    - { text: 'Dekomprese je o 85 % delší', explanation: GF neudává délku dekomprese přímo. }
+    - { text: 'Tkáň je nasycená z 85 %', explanation: 'GF popisuje povolené přesycení, ne stupeň nasycení.' }
+    - { text: 'Směs obsahuje 85 % inertního plynu', explanation: Se složením směsi GF nesouvisí. }
+  explanation: '0 % je okolní tlak, 100 % je M-hodnota. Nižší číslo znamená víc rezervy.'
+  backToLessonId: gradient-factors
+
+- id: gf-low-high
+  type: match
+  conceptIds: [gradient-factor, strop-dekomprese, deko-zastavka]
+  difficulty: 2
+  prompt: Co které číslo řídí?
+  pairs:
+    - { left: GF low, right: 'Hloubku první zastávky' }
+    - { left: GF high, right: 'Přesycení při vynoření a délku mělkých zastávek' }
+  explanation: 'Mezi první zastávkou a hladinou se povolený gradient plynule mění od GF low ke GF high.'
+  backToLessonId: gradient-factors
+
+- id: gf-vypocet
+  type: numeric
+  conceptIds: [gradient-factor, gf99, m-hodnota]
+  difficulty: 3
+  prompt: 'Kompartment má {tissue} bar inertního plynu. Okolní tlak je {ambient} bar a M-hodnota při něm {m} bar. Kolik procent gradientu tkáň čerpá?'
+  template: { fn: gradientPercent, params: { tissue: { values: [1.9, 2.1, 2.3, 2.5] }, ambient: { values: [1.3, 1.6] }, m: { values: [2.6, 2.8] } }, args: [tissue, ambient, m], tolerance: 2, unit: '%', decimals: 0 }
+  explanation: 'GF = (tlak v tkáni − okolní tlak) / (M-hodnota − okolní tlak) × 100.'
+  backToLessonId: gradient-factors
+
+- id: gf99-cteni
+  type: choice
+  conceptIds: [gf99, gradient-factor]
+  difficulty: 2
+  prompt: 'Na zastávce ukazuje počítač Surfacing GF 110 % a máš nastaveno GF high 85. Co to znamená?'
+  options:
+    - { text: 'Kdybych teď vystoupal na hladinu, překročil bych M-hodnotu; dekomprese není hotová.', correct: true }
+    - { text: 'Dekomprese je hotová s rezervou 25 %.', explanation: 'Naopak – 110 % je nad M-hodnotou i nad nastaveným GF high.' }
+    - { text: 'Počítač má poruchu, GF nemůže být nad 100.', explanation: 'Může. Znamená to přesycení nad M-hodnotu.' }
+    - { text: 'Jsem příliš hluboko.', explanation: 'Surfacing GF neříká nic o aktuální hloubce; říká, co by nastalo na hladině.' }
+  explanation: 'Dekomprese končí, až Surfacing GF klesne na tvé GF high.'
+  backToLessonId: gradient-factors
+
+- id: gf-konzervativni
+  type: findError
+  conceptIds: [gradient-factor, bublinove-modely, presyceni]
+  difficulty: 3
+  prompt: Která tvrzení o gradient factors jsou chybná?
+  items:
+    - { text: 'Nižší GF high prodlouží mělké zastávky.' }
+    - { text: 'Nižší GF low je vždy bezpečnější.', isError: true, explanation: 'Sporné. Hluboké zastávky dál sytí pomalé tkáně; pokus NEDU z roku 2011 jim za pravdu nedal.' }
+    - { text: 'GF mění, jak daleko od M-hodnoty se model drží.' }
+    - { text: 'Správně nastavené GF zaručí, že dekompresní nemoc nevznikne.', isError: true, explanation: 'Žádné nastavení riziko neodstraní. Model nezná tvé tělo ani podmínky ponoru.' }
+  explanation: 'GF jsou nástroj pro volbu rezervy, ne pojistka. O GF low se vede debata.'
+  backToLessonId: gradient-factors
+
+- id: bubliny-tiche
+  type: why
+  conceptIds: [bubliny, dcs]
+  difficulty: 1
+  prompt: 'Po většině ponorů vznikají v žilní krvi bubliny. Proč většinou nezpůsobí potíže?'
+  options:
+    - { text: 'Plíce je zachytí a plyn z nich se vydýchá.', correct: true }
+    - { text: 'Bubliny v žilách nejsou z dusíku.', explanation: Jsou z inertního plynu; jde o jejich množství a o to, kam se dostanou. }
+    - { text: 'Žilní krev bubliny rozpustí.', explanation: 'V přesycené krvi se nerozpustí; odstraní je plicní filtr.' }
+    - { text: 'Bubliny po hodině zmizí samy v tkáních.', explanation: 'Odstraňují se hlavně v plicích.' }
+  explanation: 'Problém nastává, když je bublin příliš mnoho, když plíce obejdou, nebo když vzniknou přímo v tkáni.'
+  backToLessonId: bubliny-a-bublinove-modely
+
+- id: bubliny-modely-rozdil
+  type: match
+  conceptIds: [bublinove-modely, model-buhlmann, bubliny]
+  difficulty: 2
+  prompt: Přiřaď model k tomu, co hlídá.
+  pairs:
+    - { left: 'Bühlmann ZHL-16C', right: 'Přesycení kompartmentů pod M-hodnotou' }
+    - { left: 'VPM, RGBM', right: 'Růst bublin ze zárodků' }
+  explanation: 'Bublinové modely proto předepisují hlubší první zastávky a obvykle kratší mělké.'
+  backToLessonId: bubliny-a-bublinove-modely
+
+- id: bubliny-deep-stops
+  type: choice
+  conceptIds: [bublinove-modely, deko-zastavka, presyceni]
+  difficulty: 3
+  prompt: Co ukázalo srovnání amerického námořnictva (NEDU) z roku 2011?
+  options:
+    - { text: 'Rozvrh s hlubokými zastávkami měl při stejné celkové době víc případů dekompresní nemoci.', correct: true }
+    - { text: 'Hluboké zastávky jsou vždy bezpečnější.', explanation: 'Výsledek byl opačný, v podmínkách toho pokusu.' }
+    - { text: 'Na rozložení zastávek nezáleží.', explanation: Rozdíl mezi rozvrhy byl statisticky významný. }
+    - { text: 'Bublinové modely nejsou použitelné pro helium.', explanation: 'Pokus probíhal na vzduchu; o heliu nic neříká.' }
+  explanation: 'Čas strávený hluboko dál sytí pomalé tkáně. Závěr platí pro podmínky pokusu a debata pokračuje.'
+  backToLessonId: bubliny-a-bublinove-modely
+
+- id: bubliny-prevence
+  type: multi
+  conceptIds: [bubliny, rychlost-vystupu, dcs]
+  difficulty: 2
+  prompt: Co snižuje množství bublin po ponoru?
+  options:
+    - { text: Pomalý výstup a dodržené zastávky, correct: true }
+    - { text: Klid první hodinu po ponoru, correct: true }
+    - { text: Dostatek tekutin a teplo na dekompresi, correct: true }
+    - { text: Horká sprcha ihned po vynoření, explanation: 'Prudké zahřátí může vznik bublin v povrchových tkáních podpořit.' }
+  explanation: 'Model řeší jen přesycení. Zbytek je na tobě.'
+  backToLessonId: bubliny-a-bublinove-modely
+
+- id: strop-vs-zastavka
+  type: choice
+  conceptIds: [strop-dekomprese, deko-zastavka]
+  difficulty: 2
+  prompt: 'Počítač ukazuje strop 7,4 m. Na jaké zastávce čekáš?'
+  options:
+    - { text: 9 m, correct: true }
+    - { text: 6 m, explanation: 'Šest metrů je nad stropem. Zastávka je nejbližší násobek tří metrů pod stropem.' }
+    - { text: '7,4 m', explanation: 'Na stropě se nevisí; zastávky jsou po třech metrech a hloubka se tak drží snáz.' }
+    - { text: 12 m, explanation: 'Zbytečně hluboko; nejbližší zastávka pod stropem je 9 m.' }
+  explanation: 'Zastávka = strop zaokrouhlený dolů (hlouběji) na násobek tří metrů.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: strop-ndl-proc
+  type: why
+  conceptIds: [bezdekompresni-limit, m-hodnota, hloubka]
+  difficulty: 2
+  prompt: Proč se bezdekompresní limit s hloubkou tak rychle zkracuje?
+  options:
+    - { text: 'Vyšší parciální tlak dusíku sytí tkáně rychleji a povrchovou M-hodnotu překročí dřív.', correct: true }
+    - { text: 'M-hodnoty v hloubce klesají.', explanation: 'M-hodnoty v hloubce rostou. Rozhoduje povrchová M-hodnota, se kterou se porovnává tlak v tkáni.' }
+    - { text: 'V hloubce se zkracují poločasy kompartmentů.', explanation: Poločasy se s hloubkou nemění. }
+    - { text: 'Hlouběji je méně kyslíku.', explanation: 'ppO2 v hloubce naopak roste.' }
+  explanation: 'Limit je čas, za který první kompartment přesáhne to, co smí mít na hladině.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: vystup-cas
+  type: numeric
+  conceptIds: [rychlost-vystupu, deko-zastavka, hloubka]
+  difficulty: 1
+  prompt: 'Jak dlouho trvá výstup z {from} m do {to} m rychlostí 9 m/min?'
+  template: { fn: travelMinutes, params: { from: { values: [36, 45, 54, 63] }, to: { values: [0, 9, 18, 27] } }, fixed: { rate: 9 }, args: [from, to, rate], tolerance: 0.2, unit: min, decimals: 1 }
+  explanation: 'Rozdíl hloubek dělený rychlostí.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: vystup-rychlost-proc
+  type: why
+  conceptIds: [rychlost-vystupu, presyceni, bubliny]
+  difficulty: 1
+  prompt: Proč je rychlost výstupu součástí dekomprese?
+  options:
+    - { text: 'Rychlejší výstup, než s jakým počítal plán, znamená větší přesycení, než plán předpokládal.', correct: true }
+    - { text: 'Pomalý výstup šetří plyn.', explanation: 'Naopak, stojí plyn. Důvodem je přesycení.' }
+    - { text: 'Při rychlém výstupu počítač nestíhá měřit.', explanation: 'Počítač měří bez potíží; nestíhají tkáně.' }
+    - { text: 'Rychlý výstup zvyšuje ppO2.', explanation: 'Při výstupu ppO2 klesá.' }
+  explanation: 'Model počítá s určitou rychlostí. Co je rychlejší, je mimo model.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: strop-posledni-zastavka
+  type: multi
+  conceptIds: [deko-zastavka, strop-dekomprese]
+  difficulty: 2
+  prompt: Proč mnoho potápěčů dělá poslední zastávku v 6 m místo ve 3 m?
+  options:
+    - { text: 'Ve vlnách se tam lépe drží hloubka', correct: true }
+    - { text: 'Kyslík má v 6 m ppO2 právě 1,6 bar', correct: true }
+    - { text: 'Dekomprese je v 6 m kratší než ve 3 m', explanation: 'Je o něco delší; výhodou je stabilita, ne čas.' }
+    - { text: 'Ve 3 m je vyšší riziko narkózy', explanation: Narkóza v takové hloubce nehraje roli. }
+  explanation: 'Zastávka v 6 m stojí pár minut navíc a vyplatí se hlavně na moři.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: gf99-na-dne
+  type: why
+  conceptIds: [gf99, presyceni, syceni-tkani]
+  difficulty: 2
+  prompt: 'Na dně ukazuje počítač GF99 0 %. Proč?'
+  options:
+    - { text: 'Tkáně mají nižší tlak inertního plynu než okolí – sytí se, nejsou přesycené.', correct: true }
+    - { text: 'Počítač GF99 měří až od první zastávky.', explanation: 'Počítá ho stále; na dně jen není co ukázat.' }
+    - { text: 'Dekomprese je hotová.', explanation: 'Na dně ještě ani nezačala.' }
+    - { text: 'Tkáně jsou zcela nasycené.', explanation: 'Plně nasycená tkáň by měla tlak rovný okolí; ani pak by nebyla přesycená.' }
+  explanation: 'Gradient vzniká až při výstupu, když okolní tlak klesne pod tlak v tkáni.'
+  backToLessonId: gradient-factors
+
+- id: ndl-co-po-prekroceni
+  type: choice
+  conceptIds: [bezdekompresni-limit, strop-dekomprese, deko-zastavka]
+  difficulty: 1
+  prompt: Co se změní ve chvíli, kdy překročíš bezdekompresní limit?
+  options:
+    - { text: 'Vznikne strop: přímý výstup na hladinu už není možný bez zastávek.', correct: true }
+    - { text: 'Okamžitě vzniká dekompresní nemoc.', explanation: 'Nevzniká; jen přibyla povinnost dekomprese.' }
+    - { text: 'Musíš ihned vystoupat na hladinu.', explanation: 'Právě naopak – na hladinu už přímo nesmíš.' }
+    - { text: 'Nic, limit je jen doporučení.', explanation: 'Podle modelu by přímý výstup překročil povrchovou M-hodnotu.' }
+  explanation: 'Limit odděluje ponory s přímým výstupem od ponorů s povinnými zastávkami.'
+  backToLessonId: strop-zastavky-a-vystup
+
+- id: ndl-nitrox
+  type: why
+  conceptIds: [bezdekompresni-limit, nitrox, ppn2]
+  difficulty: 2
+  prompt: Proč má nitrox ve stejné hloubce delší bezdekompresní limit než vzduch?
+  options:
+    - { text: 'Nižší ppN2 sytí tkáně pomaleji, takže k povrchové M-hodnotě dojdou později.', correct: true }
+    - { text: 'Nitrox má vyšší M-hodnoty.', explanation: 'M-hodnoty patří tkáním, ne plynu.' }
+    - { text: 'Kyslík zkracuje poločasy tkání.', explanation: Poločasy se nemění. }
+    - { text: 'Nitrox se dýchá pod nižším tlakem.', explanation: 'Okolní tlak je stejný.' }
+  explanation: 'Model vidí jen parciální tlak inertního plynu. Méně dusíku v dechu = pomalejší sycení.'
+  backToLessonId: strop-zastavky-a-vystup

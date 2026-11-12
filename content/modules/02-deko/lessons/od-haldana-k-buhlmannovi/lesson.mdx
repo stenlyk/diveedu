@@ -1,0 +1,84 @@
+<Hook>
+
+Tvůj počítač ukazuje „NDL 12 min“ a tváří se, že ví, co se děje ve tvých kloubech, v míše a v tukové tkáni.
+
+Neví. Počítá šestnáct rovnic, které se tvému tělu jen podobají. Proč to přesto funguje – a kde to přestává stačit?
+
+</Hook>
+
+<Principle>
+
+Skutečné tělo má tisíce tkání s různým prokrvením a složením. Dekompresní model je nahrazuje malou sadou vymyšlených nádob.
+Každá se jmenuje <Term cs="kompartment" /> a má jedinou vlastnost: poločas, tedy rychlost, s jakou se sytí a vysycuje.
+
+**Haldane (1908)** použil pět kompartmentů s poločasy 5 až 75 minut a jedno pravidlo: tlak smí bez následků klesnout na polovinu.
+
+**Workman (1965)** pro americké námořnictvo ukázal, že jedno pravidlo nestačí. Rychlé kompartmenty snesou větší přesycení než pomalé a v hloubce snese tkáň víc než u hladiny.
+
+**Bühlmann** v Curychu rozšířil model na šestnáct kompartmentů s poločasy od 5 do 635 minut a přidal helium. Varianta **ZHL-16C** je určená pro počítače
+a dnes běží téměř v každém z nich.
+
+Co si z toho odnést:
+
+- **Kompartment není orgán.** „Kompartment 5“ není sval ani mozek. Je to křivka, která se dobře shoduje s daty.
+- **Všechny kompartmenty se sytí zároveň** a nezávisle na sobě – každý svou rychlostí.
+- **Rozhoduje ten nejhorší.** Dekompresi v každém okamžiku řídí kompartment, který je nejblíž svému limitu. Říká se mu vedoucí.
+  Po krátkém hlubokém ponoru je to rychlý kompartment, po dlouhém nebo opakovaném pomalý.
+- **Model nezná tebe.** Nezná tvé prokrvení, únavu, teplotu, hydrataci ani otvor v srdeční přepážce. Počítá průměrného potápěče.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="haldane" />
+
+Každý ze šestnácti kompartmentů používá tuto rovnici se svým poločasem. Celý model je tedy šestnáct stejných výpočtů vedle sebe a jedna otázka navíc:
+kolik inertního plynu který kompartment snese. Na tu odpovídá další lekce.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor na vzduch do 30 m. Tkáně začínají na 0,79 bar dusíku, v hloubce dýcháš dusík o tlaku <Calc fn="ppN2" args={[{ fO2: 0.21, fHe: 0 }, 30]} decimals={2} unit="bar" />.
+
+**Nejrychlejší kompartment** (poločas <Calc fn="n2HalfTime" args={[1]} unit="min" />) po 5 minutách:
+
+<Worked fn="haldaneTissuePressure" args={[0.79, 3.16, 5, 5]} expected={1.975} tolerance={0.001} unit="bar" decimals={2} />
+
+**Nejpomalejší kompartment** (poločas <Calc fn="n2HalfTime" args={[16]} unit="min" />) po 30 minutách:
+
+<Worked fn="haldaneTissuePressure" args={[0.79, 3.16, 635, 30]} expected={0.866} tolerance={0.001} unit="bar" decimals={2} />
+
+Rychlý kompartment je za pět minut v polovině cesty. Pomalý se za půl hodiny sotva pohnul – ale stejně pomalu bude plyn i vydávat.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="henry" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="buhlmann-keller" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

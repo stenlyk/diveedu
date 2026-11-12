@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router';
 import { Disclaimer } from '../components/Disclaimer';
 import { Badge, Card, PageHeader } from '../components/ui';
 import { CalcPractice, CalcSolve } from '../tools/CalcView';
+import { TissueSimulator } from '../mdx/TissueSimulator';
 import { CALC_DEFS, calcDefsById } from '../tools/defs';
 
 export function Tools() {
@@ -24,6 +25,25 @@ export function Tools() {
           </li>
         ))}
       </ul>
+      <h2 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">Simulátory</h2>
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <li>
+          <Link to="/nastroje/simulator/tkane" className="block h-full min-h-20 rounded-2xl border border-border bg-surface p-4 hover:border-accent">
+            <span className="text-lg font-semibold">Tkáňový simulátor</span>
+            <span className="mt-1 block text-sm text-muted">Sycení 16 kompartmentů, M-hodnoty a gradient factors na přehrávaném profilu.</span>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+export function SimulatorPage() {
+  return (
+    <div>
+      <nav className="text-sm text-muted"><Link to="/nastroje" className="underline underline-offset-4">Nástroje</Link> › Tkáňový simulátor</nav>
+      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Tkáňový simulátor</h1>
+      <TissueSimulator />
     </div>
   );
 }

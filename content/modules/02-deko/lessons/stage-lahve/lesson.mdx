@@ -1,0 +1,82 @@
+<Hook>
+
+Lahev, ve které je tvoje dekomprese, visí celou dobu na boku. Čtyřicet minut ji nepotřebuješ a pak na ní závisí všechno.
+
+Jak ji nést, aby nepřekážela, nešla zaměnit a byla po ruce přesně ve chvíli, kdy na ni dojde?
+
+</Hook>
+
+<Principle>
+
+<Term cs="stage lahev" /> je samostatná lahev s vlastní automatikou a manometrem, připnutá karabinami k postroji – obvykle na levém boku.
+
+**Proč hliník.** Hliníkové lahve 7 l a 11,1 l jsou ve vodě blízko neutrálu. Plná lehce táhne dolů, vydýchaná lehce nadnáší, takže neruší trim a dá se pod vodou odložit i předat.
+
+**Jak je lahev připravená:**
+
+- automatika je natlakovaná a ventil **zavřený** – nedá se z ní nadechnout omylem a případný únik nevyprázdní lahev,
+- hadice je uložená podél lahve pod gumovými pásky,
+- manometr na krátké hadici je čitelný bez odepínání.
+
+**Značení.** MOD velkými číslicemi na obou bocích lahve, čitelná pro tebe i pro partnera. Štítek z analýzy u ventilu. Tým používá stejný systém.
+
+**Umístění.** Konvence se liší. Jedni nosí všechny lahve vlevo, druzí dělí „bohaté vpravo, chudé vlevo“. Důležitější než volba je, aby se neměnila:
+ruka má jít pro kyslík vždy stejným pohybem.
+
+**Kolik plynu.** Objem lahve se volí podle potřeby dekompresního plynu včetně rezervy. Malá lahev je pohodlná jen do chvíle, kdy se dekomprese protáhne.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Z potřeby v litrech dostaneš tlak vydělením objemem lahve. Hmotnost plynu, o kterou lahev během dekomprese zlehkne, je objem krát tlak krát hustota směsi.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Stačí sedmilitrová lahev?** Dekomprese potřebuje s rezervou 472,5 l plynu:
+
+<Worked fn="litersToBar" args={[472.5, 7]} expected={67.5} tolerance={0.01} unit="bar" decimals={0} />
+
+Ano. Kdyby potřeba byla dvojnásobná, vyšlo by <Calc fn="litersToBar" args={[945, 7]} decimals={0} unit="bar" /> – stále v mezích, ale už bez velké vůle.
+
+**Kolik váží plyn v osmdesátce.** Lahev 11,1 l s EAN50 na 200 bar:
+
+<Worked fn="gasMassKg" args={[11.1, 200, { fO2: 0.5, fHe: 0 }]} expected={2.97} tolerance={0.01} unit="kg" decimals={1} />
+
+Skoro tři kilogramy, o které se změní vyvážení jednoho boku, když lahev vydýcháš nebo odložíš.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="consumption" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hlinikova-osmdesatka" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

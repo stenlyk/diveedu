@@ -1,0 +1,20 @@
+id: bubliny-a-bublinove-modely
+moduleId: deko
+title: "Bubliny a bublinové modely"
+order: 4
+conceptIds: ["bubliny", "bublinove-modely", "presyceni", "dcs"]
+checkQuestionIds: ["bubliny-tiche", "bubliny-modely-rozdil", "bubliny-deep-stops", "bubliny-prevence"]
+estimatedMinutes: 11
+audioSummary: >-
+  Bubliny vznikají v žilní krvi po většině ponorů, i když nemáš žádné příznaky. Říká se jim tiché bubliny a plíce je odfiltrují.
+  Dekompresní nemoc je otázka toho, kolik bublin vznikne, jak jsou velké a kde.
+  Modely rozpuštěného plynu, jako je Bühlmannův, hlídají přesycení tkání.
+  Bublinové modely, jako vé pé em a er gé bé em, se snaží omezit růst bublin hlubšími zastávkami.
+  Přímé srovnání amerického námořnictva z roku dva tisíce jedenáct ale hlubokým zastávkám za pravdu nedalo. Debata pokračuje.
+  Množství bublin nejvíc ovlivníš sám. Pomalým výstupem, dodržením zastávek, klidem po ponoru, tekutinami a teplem.
+sources:
+  - { title: "On the use of a bubble formation model to calculate diving tables. Aviation, Space, and Environmental Medicine 57(2)", author: "Yount D. E., Hoffman D. C.", year: 1986 }
+  - { title: "Redistribution of decompression stop time from shallow to deep stops increases incidence of decompression sickness in air decompression dives. NEDU TR 11-06", author: "Doolette D. J., Gerth W. A., Gault K. A.", year: 2011 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: true

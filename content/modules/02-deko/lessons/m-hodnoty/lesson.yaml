@@ -1,0 +1,20 @@
+id: m-hodnoty
+moduleId: deko
+title: "M-hodnoty: kolik přesycení tkáň snese"
+order: 2
+conceptIds: ["m-hodnota", "presyceni", "kompartment", "absolutni-tlak"]
+checkQuestionIds: ["mhod-co-je", "mhod-rychle-vs-pomale", "mhod-neni-hranice", "mhod-hloubka"]
+estimatedMinutes: 10
+audioSummary: >-
+  Při výstupu je v tkáních víc inertního plynu, než odpovídá okolnímu tlaku. Tomu se říká přesycení.
+  Přesycení žene plyn z tkání ven, ale je také podmínkou vzniku bublin.
+  M-hodnota je nejvyšší tlak inertního plynu, který model v kompartmentu připouští.
+  Roste s hloubkou a liší se podle kompartmentu.
+  Rychlé kompartmenty snesou skoro trojnásobek okolního tlaku, pomalé jen o čtvrtinu víc.
+  M-hodnota není hranice mezi zdravím a nemocí. Je to čára proložená výsledky pokusů.
+  Proto se k ní nikdo dobrovolně neblíží.
+sources:
+  - { title: "Calculation of decompression schedules for nitrogen-oxygen and helium-oxygen dives. NEDU Research Report 6-65", author: "Workman R. D.", year: 1965 }
+  - { title: "Understanding M-values; Clearing Up the Confusion About Deep Stops", author: "Baker E. C.", year: 1998 }
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+needs_review: false

@@ -1,0 +1,216 @@
+- id: sac-vypocet
+  type: numeric
+  conceptIds: [sac, absolutni-tlak]
+  difficulty: 2
+  prompt: 'Lahev {tank} l: tlak klesl z {start} na {end} bar za {time} min v průměrné hloubce {depth} m. Jaká je povrchová spotřeba?'
+  template: { fn: sacFromPressureDrop, params: { start: { values: [200, 210] }, end: { values: [80, 100, 120] }, tank: { values: [12, 15, 24] }, depth: { values: [10, 20, 30] }, time: { values: [20, 30, 40] } }, args: [start, end, tank, depth, time], tolerance: 1, unit: l/min, decimals: 1 }
+  explanation: 'Spotřebované litry (pokles tlaku × objem lahve) vyděl absolutním tlakem a časem.'
+  backToLessonId: sac-a-spotreba
+
+- id: sac-co-meni
+  type: multi
+  conceptIds: [sac, namaha, prace-dychani]
+  difficulty: 1
+  prompt: Co zvyšuje spotřebu plynu?
+  options:
+    - { text: Námaha a plavání proti proudu, correct: true }
+    - { text: Chlad a stres, correct: true }
+    - { text: Špatný trim a zbytečný pohyb, correct: true }
+    - { text: Bohatší nitrox, explanation: 'Složení směsi objem prodýchaného plynu nemění.' }
+  explanation: 'Proto se spotřeba měří v podmínkách, ve kterých se potápíš, a rezervy se počítají se stresovou hodnotou.'
+  backToLessonId: sac-a-spotreba
+
+- id: sac-spotreba-hloubka
+  type: numeric
+  conceptIds: [sac, hloubka, planovani-plynu]
+  difficulty: 2
+  prompt: 'S povrchovou spotřebou {sac} l/min plánuješ {time} min v {depth} m. Kolik litrů plynu potřebuješ?'
+  template: { fn: gasConsumed, params: { sac: { values: [15, 18, 20, 22] }, depth: { values: [30, 40, 45, 50] }, time: { values: [15, 20, 25, 30] } }, args: [sac, depth, time], tolerance: 20, unit: l, decimals: 0 }
+  explanation: 'Spotřeba = SAC × absolutní tlak × čas.'
+  backToLessonId: sac-a-spotreba
+
+- id: sac-bar-za-minutu
+  type: choice
+  conceptIds: [sac, tlak-v-lahvi]
+  difficulty: 2
+  prompt: 'Spotřeba 20 l/min ve 40 m, dvojče 2×12 l. O kolik barů klesne manometr za minutu?'
+  options:
+    - { text: Asi o 4 bar, correct: true }
+    - { text: Asi o 1 bar, explanation: 'To by platilo na hladině. Ve 40 m je tlak 5 bar a spotřeba 100 l/min.' }
+    - { text: Asi o 8 bar, explanation: 'To by platilo pro jednu dvanáctilitrovou lahev.' }
+    - { text: Asi o 20 bar, explanation: '20 je spotřeba v litrech, ne v barech.' }
+  explanation: '20 × 5 = 100 l/min; 100 / 24 ≈ 4,2 bar za minutu.'
+  backToLessonId: sac-a-spotreba
+
+- id: mingas-co-je
+  type: choice
+  conceptIds: [minimum-gas, unik-plynu]
+  difficulty: 1
+  prompt: Co je minimum gas (rock bottom)?
+  options:
+    - { text: 'Rezerva, která dostane dva potápěče z nejhlubšího bodu na hladinu nebo k dalšímu plynu', correct: true }
+    - { text: 'Nejmenší tlak, při kterém automatika ještě funguje', explanation: To je technický parametr automatiky. }
+    - { text: 'Tlak, při kterém se začíná výstup, vždy 50 bar', explanation: 'Pevných 50 bar nezohledňuje hloubku, lahve ani partnera.' }
+    - { text: 'Plyn na dekompresní zastávky', explanation: 'Dekompresní plyn se plánuje zvlášť.' }
+  explanation: 'Je to číslo, pod které tlak na dně nikdy neklesne.'
+  backToLessonId: minimum-gas
+
+- id: mingas-vypocet
+  type: numeric
+  conceptIds: [minimum-gas, sac, hloubka]
+  difficulty: 3
+  prompt: 'Spočítej minimum gas v barech pro ponor do {depth} m: stresová spotřeba {sac} l/min, dvojče 24 l, dva potápěči, 1 min řešení, výstup 9 m/min bez zastávek.'
+  template: { fn: rockBottomBar, params: { depth: { values: [27, 36, 45] }, sac: { values: [20, 25, 30] } }, fixed: { tank: 24 }, args: [depth, sac, tank], tolerance: 2, unit: bar, decimals: 1 }
+  explanation: 'Minuta v hloubce plus výstup průměrnou hloubkou, krát dva potápěči, děleno objemem lahví.'
+  backToLessonId: minimum-gas
+
+- id: mingas-proc-dva
+  type: why
+  conceptIds: [minimum-gas, tym]
+  difficulty: 1
+  prompt: Proč se minimum gas počítá pro dva potápěče?
+  options:
+    - { text: 'Nejhorší případ je partner bez plynu, který dýchá z mé zásoby až na hladinu.', correct: true }
+    - { text: 'Protože při výstupu dýchá každý dvakrát rychleji.', explanation: 'Stresová spotřeba je započítaná zvlášť; násobek dvěma je za druhého potápěče.' }
+    - { text: 'Protože dvojče má dvě lahve.', explanation: Počet lahví s tím nesouvisí. }
+    - { text: 'Je to jen bezpečnostní koeficient.', explanation: 'Má konkrétní důvod: sdílení plynu.' }
+  explanation: 'Rezerva na mých zádech je rezerva pro partnera. A jeho pro mě.'
+  backToLessonId: minimum-gas
+
+- id: mingas-kdy-prepocitat
+  type: choice
+  conceptIds: [minimum-gas, hloubka, planovani-plynu]
+  difficulty: 2
+  prompt: 'Ponor má dvě úrovně: 20 minut ve 45 m a potom 15 minut ve 25 m. Jak je to s minimum gas?'
+  options:
+    - { text: 'Pro každou úroveň platí jiná hodnota; ve 25 m je menší.', correct: true }
+    - { text: 'Platí jedna hodnota spočítaná pro průměrnou hloubku.', explanation: 'Rezerva musí stačit z místa, kde právě jsi, ne z průměru.' }
+    - { text: 'Po opuštění největší hloubky už žádná rezerva není potřeba.', explanation: 'Sdílet plyn můžeš muset i ve 25 m.' }
+    - { text: 'Ve 25 m je větší, protože jsi unavenější.', explanation: 'Mělčeji je výstup kratší a tlak nižší, rezerva je menší.' }
+  explanation: 'Minimum gas se mění s hloubkou. Plán má hodnotu pro každou úroveň.'
+  backToLessonId: minimum-gas
+
+- id: mingas-neplanuje
+  type: why
+  conceptIds: [minimum-gas, planovani-plynu]
+  difficulty: 2
+  prompt: 'Proč se minimum gas nezapočítává do použitelného plynu?'
+  options:
+    - { text: 'Je to rezerva pro poruchu; když ji naplánuješ ke spotřebě, při poruše chybí.', correct: true }
+    - { text: 'Protože plyn pod tímto tlakem je horší kvality.', explanation: Kvalita plynu se s tlakem nemění. }
+    - { text: 'Protože ho automatika nedokáže dodat.', explanation: 'Automatika ho dodá. Jde o to, komu má zbýt.' }
+    - { text: 'Protože se s ním počítá na dekompresi.', explanation: 'Dekompresní plyn se plánuje zvlášť.' }
+  explanation: 'Použitelný plyn je jen to, co je nad rezervou.'
+  backToLessonId: minimum-gas
+
+- id: plan-tretiny-vypocet
+  type: numeric
+  conceptIds: [pravidlo-tretin, planovani-plynu]
+  difficulty: 1
+  prompt: 'Začínáš s {start} bar. Na jakém tlaku otočíš podle pravidla třetin? (Třetinu zaokrouhli dolů na desítky barů.)'
+  template: { fn: thirdsTurnBar, params: { start: { values: [180, 200, 210, 220, 230, 240] } }, args: [start], tolerance: 0, unit: bar, decimals: 0 }
+  explanation: 'Třetina dolů na desítky, odečti od počátečního tlaku. 200 bar: třetina 60, otočka 140.'
+  backToLessonId: planovani-plynu
+
+- id: plan-kdy-ktere
+  type: match
+  conceptIds: [pravidlo-tretin, planovani-plynu, minimum-gas]
+  difficulty: 2
+  prompt: Přiřaď pravidlo k situaci.
+  pairs:
+    - { left: 'Volná voda, výstup možný kdekoli', right: 'Vše nad minimum gas je použitelné' }
+    - { left: 'Návrat ke kotevnímu lanu je žádoucí', right: 'Použitelný plyn napůl: tam a zpět' }
+    - { left: 'Jeskyně nebo vrak, návrat je nutný', right: 'Třetiny: tam, zpět, rezerva' }
+  explanation: 'Čím méně možností výstupu, tím větší podíl plynu zůstává v rezervě.'
+  backToLessonId: planovani-plynu
+
+- id: plan-deko-rezerva
+  type: choice
+  conceptIds: [planovani-plynu, deko-lahev, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: 'Zastávky potřebují 400 l dekompresního plynu. Kolik ho naplánuješ s obvyklou rezervou?'
+  options:
+    - { text: '600 l', correct: true }
+    - { text: '400 l', explanation: 'Přesně na míru nezbyde nic na pomalejší výstup, vyšší spotřebu ani na partnera.' }
+    - { text: '440 l', explanation: 'Deset procent je málo; obvyklý násobitel je 1,5.' }
+    - { text: '1200 l', explanation: 'Trojnásobek je zbytečně mnoho; obvyklý násobitel je 1,5.' }
+  explanation: '400 × 1,5 = 600 l.'
+  backToLessonId: planovani-plynu
+
+- id: plan-ruzne-lahve
+  type: why
+  conceptIds: [pravidlo-tretin, tym, planovani-plynu]
+  difficulty: 3
+  prompt: 'Jeden potápěč má dvojče 2×12 l, druhý jednu lahev 15 l, oba 200 bar. Proč nemohou oba otočit na stejném tlaku?'
+  options:
+    - { text: 'Třetina menší lahve je méně litrů; větší lahev musí držet rezervu, která by partnerovi skutečně stačila.', correct: true }
+    - { text: 'Menší lahev se rychleji ochlazuje.', explanation: 'Teplota tu nehraje roli.' }
+    - { text: 'Mohou, tlak je tlak.', explanation: 'Stejný tlak v různě velkých lahvích je různé množství plynu.' }
+    - { text: 'Dvojče má vyšší plnicí tlak.', explanation: 'Oba začínají na 200 bar.' }
+  explanation: 'Jak daleko se jde, určuje menší zásoba. Potápěč s větší lahví si otočku přepočítá.'
+  backToLessonId: planovani-plynu
+
+- id: plan-chyby
+  type: findError
+  conceptIds: [planovani-plynu, sac, minimum-gas]
+  difficulty: 2
+  prompt: 'V plánu plynu jsou chyby. Které řádky jsou špatně?'
+  items:
+    - { text: 'Spotřebu jsem vzal z letních ponorů v teplé vodě.', isError: true, explanation: 'Ve studené vodě a v suchém obleku bývá spotřeba vyšší. Měř v podmínkách ponoru.' }
+    - { text: 'Minimum gas jsem zaokrouhlil nahoru na desítky barů.' }
+    - { text: 'Dekompresní plyn mám přesně na zastávky podle plánu.', isError: true, explanation: 'Chybí rezerva. Obvyklý násobitel je 1,5.' }
+    - { text: 'Tlak otočky mám spočítaný a napsaný.' }
+  explanation: 'Plán plynu se kazí optimistickými vstupy a rezervou, která existuje jen na papíře.'
+  backToLessonId: planovani-plynu
+
+- id: dekoplyn-o-kolik
+  type: why
+  conceptIds: [ean50, deko-zastavka, kyslikove-okno]
+  difficulty: 2
+  prompt: Na kterých zastávkách ušetří dekompresní plyn nejvíc času?
+  options:
+    - { text: 'Na mělkých – jsou nejdelší a bohatá směs tam má největší účinek.', correct: true }
+    - { text: 'Na nejhlubších, kde je nejvyšší tlak.', explanation: 'Hluboké zastávky jsou krátké a bohatý plyn tam ještě nelze dýchat.' }
+    - { text: 'Na všech stejně.', explanation: 'Použitelný je až od své MOD a mělké zastávky dominují celkovému času.' }
+    - { text: 'Neušetří čas, jen zvýší bezpečnost.', explanation: 'Zkracuje dekompresi výrazně.' }
+  explanation: 'Méně inertního plynu v dechu znamená rychlejší vysycování tam, kde trávíš nejvíc času.'
+  backToLessonId: dekompresni-plyny-v-planu
+
+- id: dekoplyn-runtime-co-je
+  type: choice
+  conceptIds: [run-time, plan-ponoru]
+  difficulty: 1
+  prompt: Co je run-time?
+  options:
+    - { text: 'Čas od opuštění hladiny', correct: true }
+    - { text: 'Čas strávený na dně', explanation: 'To je čas na dně. Run-time běží od začátku sestupu až do vynoření.' }
+    - { text: 'Čas zbývající do konce dekomprese', explanation: 'To je TTS, čas do hladiny.' }
+    - { text: 'Čas od posledního přepnutí plynu', explanation: Run-time se během ponoru nenuluje. }
+  explanation: 'Rozvrh udává, v kolikáté minutě opouštíš dno a každou zastávku.'
+  backToLessonId: dekompresni-plyny-v-planu
+
+- id: dekoplyn-vyber
+  type: choice
+  conceptIds: [ean50, deko-zastavka, planovani-plynu]
+  difficulty: 2
+  prompt: 'Kdy má smysl nést druhý dekompresní plyn?'
+  options:
+    - { text: 'Když ušetří víc času, než kolik přidá složitosti a příležitostí k chybě', correct: true }
+    - { text: 'Vždy – čím víc plynů, tím lépe', explanation: 'Každý plyn je lahev, automatika a přepnutí navíc.' }
+    - { text: 'Nikdy – jeden plyn stačí na každý ponor', explanation: 'U dlouhých dekompresí kyslík od 6 m ušetří desítky minut.' }
+    - { text: 'Jen když je voda teplá', explanation: 'Teplota o počtu plynů nerozhoduje.' }
+  explanation: 'Pro ponory kolem 40–50 m obvykle stačí jedna lahev EAN50.'
+  backToLessonId: dekompresni-plyny-v-planu
+
+- id: dekoplyn-prestavky
+  type: why
+  conceptIds: [deko-zastavka, cns-toxicita, vzorec-cns]
+  difficulty: 2
+  prompt: Proč se při dlouhé dekompresi na kyslíku dělají přestávky na jiném plynu?
+  options:
+    - { text: 'Při ppO2 1,6 bar ubíhají CNS hodiny rychle; přestávka sníží riziko křečí.', correct: true }
+    - { text: 'Aby se ušetřil kyslík.', explanation: 'Důvodem je kyslíková toxicita, ne zásoba.' }
+    - { text: 'Kyslík po 20 minutách přestává působit.', explanation: Působí stále; roste jeho toxická zátěž. }
+    - { text: 'Aby se tkáně znovu nasytily dusíkem.', explanation: 'To je nežádoucí vedlejší účinek, ne cíl.' }
+  explanation: 'Limit jedné expozice při 1,6 bar je podle NOAA 45 minut.'
+  backToLessonId: dekompresni-plyny-v-planu

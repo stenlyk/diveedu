@@ -1,0 +1,92 @@
+<Hook>
+
+Za hlavou ti začne syčet. Hlasitě. Bubliny nevidíš, manometr nemáš před očima a každou vteřinou mizí plyn, se kterým jsi počítal na dekompresi.
+
+Máš dvě ruce, tři ventily a pár vteřin. Kterou rukou sáhneš kam?
+
+</Hook>
+
+<Principle>
+
+Dvojče jsou dvě lahve spojené potrubím. Na každé je vlastní ventil a vlastní první stupeň; uprostřed potrubí je třetí ventil – izolátor.
+Dokud je vše otevřené, dýcháš z obou lahví kteroukoli automatikou.
+
+Smysl uspořádání je **redundance bez ztráty plynu**:
+
+- porouchá-li se automatika, zavřeš její ventil a dýcháš z druhé – stále máš plyn z obou lahví,
+- porouchá-li se spoj nebo ventil, zavřeš izolátor a zachráníš plyn v jedné lahvi.
+
+<Term cs="ventilový drill" /> je nacvičený postup, kterým tyto ventily ovládáš popaměti, v rukavicích a ve vodorovné poloze. Obecná logika zásahu:
+
+1. Dej znamení partnerovi; ten vidí, odkud bubliny jdou.
+2. Zavři ventil na straně poruchy a přejdi na druhou automatiku.
+3. Když únik pokračuje nebo nevíš, odkud je, zavři izolátor.
+4. Ukonči ponor. Pořadí kroků 2 a 3 se mezi agenturami liší – nauč se jedno a cvič ho.
+
+Co je kde, musíš vědět zpaměti: pravý ventil napájí obvykle hlavní automatiku na dlouhé hadici, levý záložní automatiku, manometr a plnění suchého obleku.
+Po zavření ventilu přijdeš o všechno, co na něm visí.
+
+**Levý ventil a strop.** Levý ventil se zavírá otáčením směrem dozadu. Při posouvání pod stropem jeskyně nebo vraku se může třením zavřít sám.
+Proto se v prostředí se stropem jeho poloha pravidelně kontroluje.
+
+Na ventily musíš dosáhnout. Kdo na ně nedosáhne, nemá dvojče – má jednu velkou lahev se třemi místy, kde může unikat.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Po zavření izolátoru máš k dispozici jen plyn z jedné lahve. Kolik to je, spočítáš z tlaku a objemu té jedné lahve – a právě s tím číslem musí počítat tvé minimum gas.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Kolik zbyde po izolaci.** Porucha nastane při 100 bar a izolátor zavřeš hned. V jedné dvanáctilitrové lahvi zůstává:
+
+<Worked fn="barToLiters" args={[100, 12]} expected={1200} tolerance={0.01} unit="l" decimals={0} />
+
+**Na jak dlouho to stačí** ve 45 m při stresové spotřebě 40 l/min? Za minutu spotřebuješ:
+
+<Worked fn="gasConsumed" args={[40, 45, 1]} expected={220} tolerance={0.01} unit="l" decimals={0} />
+
+Tedy na pět až šest minut v hloubce. Kdyby drill trval o půl minuty déle a tlak mezitím klesl na 60 bar, zbylo by <Calc fn="barToLiters" args={[60, 12]} unit="l" />.
+Rychlost zásahu se přímo převádí na minuty, které máš na výstup.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'začne volně proudit hlavní automatika, ze které dýcháš?', effect: 'Přejdi na záložní automatiku a zavři pravý ventil. Plyn z obou lahví ti zůstal, přišel jsi jen o jednu automatiku. Ponor končí.' },
+  { label: 'syčí to za hlavou a nevíš odkud?', effect: 'Dej znamení partnerovi – vidí, co ty ne. Když pomoc není po ruce a únik je silný, izolátor zachrání polovinu plynu, než příčinu najdeš.' },
+  { label: 'uniká spoj mezi lahvemi?', effect: 'Zavření ventilu automatiky nepomůže. Pomůže jen izolátor; plyn z poškozené strany je ztracený a dýcháš z té druhé.' },
+  { label: 'po průplavu zúženým místem ti nejde záložní automatika?', effect: 'Levý ventil se mohl třením o strop zavřít. Sáhni na něj a otevři ho. Proto se jeho poloha pod stropem kontroluje pravidelně.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hogarthian" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

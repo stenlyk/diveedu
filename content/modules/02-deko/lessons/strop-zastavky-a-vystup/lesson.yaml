@@ -1,0 +1,19 @@
+id: strop-zastavky-a-vystup
+moduleId: deko
+title: "Strop, zastávky a rychlost výstupu"
+order: 5
+conceptIds: ["strop-dekomprese", "deko-zastavka", "rychlost-vystupu", "bezdekompresni-limit"]
+checkQuestionIds: ["strop-vs-zastavka", "strop-ndl-proc", "vystup-cas", "vystup-rychlost-proc", "strop-posledni-zastavka", "ndl-co-po-prekroceni"]
+estimatedMinutes: 11
+audioSummary: >-
+  Bezdekompresní limit je čas, po který můžeš v hloubce zůstat a pak vystoupat přímo na hladinu.
+  Po jeho překročení vzniká strop. Je to nejmenší hloubka, do které v danou chvíli smíš.
+  Zastávky jsou strop zaokrouhlený na tři metry dolů. Na zastávce čekáš, dokud strop nevystoupá nad zastávku další.
+  Hloubku drž přesně a ve vodorovné poloze.
+  Poslední zastávka se dělá ve třech nebo v šesti metrech. V šesti se lépe drží hloubka a kyslík tam má právě jedna celá šest baru.
+  Rychlost výstupu je součást dekomprese. Plánuje se devět až deset metrů za minutu a z poslední zastávky na hladinu ještě pomaleji.
+sources:
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: true

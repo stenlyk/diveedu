@@ -1,0 +1,90 @@
+<Hook>
+
+Po úplně běžném ponoru v limitech, bez jediného příznaku, ti lékař přiloží na hrudník ultrazvuk. A uslyší praskání.
+
+V žilní krvi máš bubliny. Skoro každý je po ponoru má. Jak to, že nejsi nemocný?
+
+</Hook>
+
+<Principle>
+
+Haldane předpokládal, že pod jeho limitem bubliny nevznikají. Ultrazvuk v 70. letech ukázal, že vznikají skoro vždy.
+Říká se jim <Term cs="tiché bubliny" />: plavou žilní krví do plic, tam se zachytí a plyn z nich se vydýchá.
+
+Dekompresní nemoc tedy není otázka „bubliny ano, nebo ne“. Je to otázka **kolik, jak velké a kde**:
+
+- příliš mnoho bublin zahltí plicní filtr,
+- bubliny, které plíce obejdou (například otvorem mezi srdečními síněmi), se dostanou do tepen,
+- bubliny vzniklé přímo v tkáni – v kloubu, míše, vnitřním uchu – tam působí mechanicky i zánětem.
+
+Z toho vznikly dva způsoby, jak dekompresi počítat:
+
+- **Modely rozpuštěného plynu** (Haldane, Bühlmann). Hlídají přesycení kompartmentů a drží je pod M-hodnotou. Bubliny přímo nepočítají.
+- **Bublinové modely** (VPM, RGBM). Předpokládají, že v těle jsou vždy mikroskopická zárodky bublin, a snaží se nedovolit jim růst.
+  Výsledkem jsou hlubší první zastávky a obvykle kratší mělké.
+
+Která cesta je lepší? Bublinové modely byly kolem roku 2000 velmi populární a „hluboké zastávky“ se staly módou.
+Přímé srovnání amerického námořnictva z roku 2011 však dopadlo opačně, než se čekalo: rozvrh s hlubokými zastávkami měl při stejné celkové době víc případů dekompresní nemoci.
+Platí to pro podmínky toho pokusu – vzduch, jedna hloubka – a debata pokračuje. Podrobně v modulu Full Trimix.
+
+Bez ohledu na model platí, co množství bublin ovlivňuje nejvíc: pomalý výstup, dodržené zastávky, žádná námaha těsně po ponoru, dostatek tekutin a teplo na dekompresi.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Jeden vztah ale vysvětluje, proč malé bubliny samy zanikají a velké rostou:
+
+<Given>tlak v bublině = okolní tlak + 2γ / r</Given>
+
+Povrchové napětí γ bublinu stlačuje, a to tím víc, čím menší má poloměr r. Malá bublina má uvnitř vyšší tlak než okolí a plyn z ní odchází.
+Od určité velikosti převáží přesycení okolní tkáně a bublina roste. Bublinové modely počítají právě s touto kritickou velikostí.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Model rozpuštěného plynu se dá přimět k chování podobnému bublinovému – nízkým GF low. Stejný ponor na vzduch, 45 m a 25 minut:
+
+- GF 20/85: první zastávka <Calc fn="firstStopAir" args={[45, 25, 20, 85]} unit="m" />, výstup <Calc fn="ascentMinutesAir" args={[45, 25, 20, 85]} unit="min" />
+- GF 80/85: první zastávka <Calc fn="firstStopAir" args={[45, 25, 80, 85]} unit="m" />, výstup <Calc fn="ascentMinutesAir" args={[45, 25, 80, 85]} unit="min" />
+
+Hlubší začátek dekompresi prodloužil, ale přesycení na hladině je v obou případech stejné – určuje ho GF high.
+Spor je o to, co se děje mezi tím: jestli hluboké zastávky bublinám brání, nebo jen dál sytí pomalé tkáně.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'hned po ponoru vyneseš lahve do schodů?', effect: 'Námaha v době, kdy je v žilní krvi nejvíc bublin, zvyšuje pravděpodobnost, že část z nich projde do tepen. První hodinu po ponoru se těžká práce nedělá.' },
+  { label: 'se po ponoru zahřeješ horkou sprchou nebo saunou?', effect: 'Prudké zahřátí sníží rozpustnost plynu v povrchových tkáních a může podpořit vznik bublin v kůži. Zahřívej se postupně.' },
+  { label: 'jsi dehydratovaný?', effect: 'Hustší krev a horší prokrvení zpomalují odvod plynu. Dehydratace patří mezi uznávané rizikové faktory dekompresní nemoci.' },
+  { label: 'zkrátíš poslední zastávku, protože „se nic nestane“?', effect: 'Většinou se opravdu nic nestane – a právě proto je to nebezpečný zvyk. Mělké zastávky rozhodují o přesycení, se kterým vylezeš z vody.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="spencer-doppler" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

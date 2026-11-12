@@ -19,6 +19,7 @@ const Mental = lazy(() => import('../features/Mental').then((m) => ({ default: m
 const Dashboard = lazy(() => import('../features/Dashboard').then((m) => ({ default: m.Dashboard })));
 const GraphPage = lazy(() => import('../features/GraphPage').then((m) => ({ default: m.GraphPage })));
 const Tools = lazy(() => import('../features/Tools').then((m) => ({ default: m.Tools })));
+const SimulatorPage = lazy(() => import('../features/Tools').then((m) => ({ default: m.SimulatorPage })));
 const ToolPage = lazy(() => import('../features/Tools').then((m) => ({ default: m.ToolPage })));
 const Cases = lazy(() => import('../features/Cases').then((m) => ({ default: m.Cases })));
 const CasePage = lazy(() => import('../features/Cases').then((m) => ({ default: m.CasePage })));
@@ -59,6 +60,7 @@ export function App() {
             <Route path="graf" element={<GraphPage />} />
             <Route path="graf/:conceptId" element={<GraphPage />} />
             <Route path="nastroje" element={<Tools />} />
+            <Route path="nastroje/simulator/tkane" element={<SimulatorPage />} />
             <Route path="nastroje/:toolId" element={<ToolPage />} />
             <Route path="pripady" element={<Cases />} />
             <Route path="pripady/:caseId" element={<CasePage />} />

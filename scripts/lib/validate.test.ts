@@ -129,8 +129,8 @@ describe('validátor obsahu', () => {
   });
 
   it('vzorec a <Calc>/<Worked> musí mířit na existující funkci calc', () => {
-    expect(errorsOf((raw) => Object.assign(raw.formulas[0] as object, { calcFunction: 'neni' }))).toMatch(/„neni“ není v @diveedu\/calc/);
-    expect(errorsOf((raw) => { raw.lessons[0]!.calcCalls[0]!.fn = 'neni'; })).toMatch(/neznámou funkci calc „neni“/);
+    expect(errorsOf((raw) => Object.assign(raw.formulas[0] as object, { calcFunction: 'neni' }))).toMatch(/„neni“ není mezi funkcemi calc\/deco/);
+    expect(errorsOf((raw) => { raw.lessons[0]!.calcCalls[0]!.fn = 'neni'; })).toMatch(/neznámou funkci „neni“/);
     expect(errorsOf((raw) => { raw.lessons[0]!.calcCalls[0]!.steps = 'neni'; })).toMatch(/neznámá funkce postupu/);
     expect(errorsOf((raw) => { raw.lessons[0]!.calcCalls[0]!.args = 30; })).toMatch(/args musí být pole/);
   });
@@ -152,7 +152,7 @@ describe('validátor obsahu', () => {
       raw.questions[0]!.data = { id: 'q1', type: 'numeric', conceptIds: ['tlak'], difficulty: 1, prompt, explanation: 'x', template: { fn: 'absPressure', params: { depth: { min: 0, max: 60, step: 1 } }, args: ['depth'], tolerance: 0.05, unit: 'bar', ...template } };
     };
     expect(errorsOf(numeric({}))).toBe('');
-    expect(errorsOf(numeric({ fn: 'neni' }))).toMatch(/„neni“ není v @diveedu\/calc/);
+    expect(errorsOf(numeric({ fn: 'neni' }))).toMatch(/„neni“ není mezi funkcemi calc\/deco/);
     expect(errorsOf(numeric({ args: ['hloubka'] }))).toMatch(/argument „hloubka“ nemá definici/);
     expect(errorsOf(numeric({}, 'Tlak?'))).toMatch(/prompt neobsahuje \{depth\}/);
     expect(errorsOf(numeric({ params: { depth: { min: -10, max: 60, step: 1 } } }))).toMatch(/výpočet selhal/);

@@ -52,3 +52,31 @@
 - { id: kyslikova-cistota, label: Kyslíková čistota, type: procedure, moduleId: nitrox, shortDefinition: 'Vyčištění a použití kompatibilních materiálů u vybavení, které přijde do styku s vysokým podílem kyslíku.' }
 - { id: kyslikovy-pozar, label: Kyslíkový požár, type: risk, moduleId: nitrox, shortDefinition: 'Vznícení maziva, těsnění nebo nečistot v prostředí bohatém na kyslík.' }
 - { id: michani-parcialnim-tlakem, label: Míchání parciálním tlakem, type: procedure, moduleId: nitrox, shortDefinition: 'Příprava směsi postupným plněním složek podle tlaku: nejdřív kyslík, pak vzduch.' }
+
+# ── Modul 2: Decompression Procedures ────────────────────────────────────────
+- { id: kompartment, label: Tkáňový kompartment, type: physiology, moduleId: deko, shortDefinition: 'Matematický model skupiny tkání se stejnou rychlostí sycení; není to konkrétní orgán.' }
+- { id: polocas-tkane, label: Poločas tkáně, type: quantity, moduleId: deko, shortDefinition: 'Doba, za kterou kompartment vyrovná polovinu rozdílu mezi svým a vdechovaným tlakem inertního plynu.' }
+- { id: model-buhlmann, label: Bühlmann ZHL-16C, type: formula, moduleId: deko, shortDefinition: 'Dekompresní model se 16 kompartmenty a M-hodnotami; základ většiny potápěčských počítačů.' }
+- { id: presyceni, label: Přesycení, type: physiology, moduleId: deko, shortDefinition: 'Stav, kdy je tlak inertního plynu v tkáni vyšší než okolní tlak; hnací síla vysycování i vzniku bublin.' }
+- { id: m-hodnota, label: M-hodnota, type: quantity, moduleId: deko, formulaId: m-hodnota, shortDefinition: 'Nejvyšší tlak inertního plynu, který model v kompartmentu při daném okolním tlaku připouští.' }
+- { id: gradient-factor, label: Gradient factors, type: quantity, moduleId: deko, formulaId: gradient-factor, shortDefinition: 'Nastavení konzervativnosti: jakou část rozdílu mezi okolním tlakem a M-hodnotou smí tkáň čerpat (GF low / GF high).' }
+- { id: gf99, label: GF99 a surfacing GF, type: quantity, moduleId: deko, shortDefinition: 'Okamžitý gradient factor vedoucí tkáně a gradient factor, který by vznikl okamžitým výstupem na hladinu.' }
+- { id: bubliny, label: Tiché bubliny, type: physiology, moduleId: deko, shortDefinition: 'Bubliny v žilní krvi, které vznikají po většině ponorů bez příznaků; plíce je odfiltrují.' }
+- { id: bublinove-modely, label: 'Bublinové modely (VPM, RGBM)', type: formula, moduleId: deko, shortDefinition: 'Modely, které místo limitu přesycení hlídají růst bublin; předepisují hlubší první zastávky.' }
+- { id: strop-dekomprese, label: Dekompresní strop, type: quantity, moduleId: deko, shortDefinition: 'Nejmenší hloubka, do které lze v danou chvíli vystoupat bez překročení limitu modelu.' }
+- { id: deko-zastavka, label: Dekompresní zastávka, type: procedure, moduleId: deko, shortDefinition: 'Povinné zdržení v dané hloubce, dokud strop neklesne pod další zastávku.' }
+- { id: bezdekompresni-limit, label: Bezdekompresní limit, type: quantity, moduleId: deko, shortDefinition: 'Nejdelší čas v hloubce, po kterém lze podle modelu vystoupat přímo na hladinu.' }
+- { id: rychlost-vystupu, label: Rychlost výstupu, type: procedure, moduleId: deko, shortDefinition: 'Řízený výstup kolem 9–10 m/min; je součástí dekomprese, ne cestou k ní.' }
+- { id: sac, label: Povrchová spotřeba (SAC), type: quantity, moduleId: deko, formulaId: sac, shortDefinition: 'Objem plynu, který potápěč prodýchá za minutu, přepočtený na hladinu (l/min).' }
+- { id: minimum-gas, label: Minimum gas (rock bottom), type: quantity, moduleId: deko, formulaId: minimum-gas, shortDefinition: 'Rezerva, která dostane dva potápěče z nejhlubšího bodu na hladinu nebo k dalšímu plynu.' }
+- { id: pravidlo-tretin, label: Pravidlo třetin, type: procedure, moduleId: deko, shortDefinition: 'Třetina plynu na cestu tam, třetina zpět, třetina rezerva; pro ponory bez přímé cesty na hladinu.' }
+- { id: planovani-plynu, label: Plánování plynu, type: procedure, moduleId: deko, shortDefinition: 'Výpočet potřeby a rezerv každého plynu pro plánovaný ponor i pro jeho poruchy.' }
+- { id: run-time, label: Run-time, type: quantity, moduleId: deko, shortDefinition: 'Čas od opuštění hladiny; rozvrh ponoru udává, v kolikáté minutě opouštíš kterou hloubku.' }
+- { id: stage-lahev, label: Stage lahev, type: equipment, moduleId: deko, shortDefinition: 'Samostatně nesená lahev s vlastní automatikou, připnutá na boku.' }
+- { id: twinset, label: Dvojče s manifoldem, type: equipment, moduleId: deko, shortDefinition: 'Dvě propojené lahve se dvěma prvními stupni a izolačním ventilem; redundance bez ztráty plynu.' }
+- { id: ventilovy-drill, label: Ventilový drill, type: procedure, moduleId: deko, shortDefinition: 'Nacvičené zavření a otevření ventilů dvojčete, kterým se izoluje únik plynu.' }
+- { id: unik-plynu, label: Únik plynu, type: risk, moduleId: deko, shortDefinition: 'Porucha automatiky, hadice nebo ventilu, při které plyn nekontrolovaně uniká.' }
+- { id: ztrata-deko-plynu, label: Ztráta dekompresního plynu, type: risk, moduleId: deko, shortDefinition: 'Situace, kdy dekompresní směs není k dispozici a dekomprese se musí dokončit na jiném plynu.' }
+- { id: vynechana-dekomprese, label: Vynechaná dekomprese, type: risk, moduleId: deko, shortDefinition: 'Výstup nad strop nebo vynoření bez dokončení povinných zastávek.' }
+- { id: tym, label: Týmový postup, type: procedure, moduleId: deko, shortDefinition: 'Společný plán, role a vzájemná kontrola; tým je záložní mozek i záložní plyn.' }
+- { id: plan-ponoru, label: Plán ponoru, type: procedure, moduleId: deko, shortDefinition: 'Písemně stanovené limity, plyny, rozvrh a záložní varianty, které se pod vodou jen plní.' }

@@ -1,0 +1,80 @@
+<Hook>
+
+Při výstupu je v tkáních víc dusíku, než odpovídá okolnímu tlaku. To není chyba – bez toho by plyn neměl proč odcházet.
+
+Otázka zní jinak: kolik je ještě v pořádku? A kdo to určil?
+
+</Hook>
+
+<Principle>
+
+Když okolní tlak klesne pod tlak inertního plynu v tkáni, je tkáň ve stavu, kterému se říká <Term cs="přesycení" />.
+Přesycení je hnací síla vysycování, ale také podmínka vzniku bublin.
+
+<Term cs="M-hodnota" /> je nejvyšší tlak inertního plynu, který model v daném kompartmentu při daném okolním tlaku připouští. Má tři důležité vlastnosti:
+
+- **Roste s hloubkou.** Ve 30 m snese tkáň víc plynu než na hladině. Proto existuje dekompresní strop: hloubka, nad kterou by byl tlak v tkáni vyšší než M-hodnota.
+- **Je jiná pro každý kompartment.** Rychlé kompartmenty snesou velké přesycení, pomalé malé.
+- **Na hladině má zvláštní význam.** Povrchová M-hodnota určuje, jestli smíš z vody. Na ní stojí bezdekompresní limity.
+
+A čtvrtá vlastnost, kterou je třeba říct nahlas: **M-hodnota není hranice mezi zdravím a nemocí.** Je to čára proložená výsledky pokusů.
+Dekompresní nemoc vzniká i pod ní, jen méně často, a ne každé překročení skončí příznaky. Proto se k M-hodnotám nikdo dobrovolně neblíží a proto existují gradient factors.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="m-hodnota" />
+
+Koeficient *a* říká, kolik přesycení kompartment snese na nulovém tlaku. Koeficient *b* určuje, jak rychle tolerance roste s hloubkou.
+Od rychlých kompartmentů k pomalým *a* klesá a *b* se blíží jedné.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Nejrychlejší kompartment na hladině** (okolní tlak 1 bar):
+
+<Worked fn="mValueN2" args={[1, 1]} expected={2.962} tolerance={0.001} unit="bar" decimals={2} />
+
+Skoro trojnásobek okolního tlaku.
+
+**Nejpomalejší kompartment na hladině:**
+
+<Worked fn="mValueN2" args={[16, 1]} expected={1.269} tolerance={0.001} unit="bar" decimals={2} />
+
+Jen o čtvrtinu víc než okolní tlak. Proto po dlouhých ponorech, kdy se stihnou nasytit pomalé kompartmenty, trvá dekomprese tak dlouho.
+
+**Nejrychlejší kompartment ve 30 m** (4 bar): <Calc fn="mValueN2" args={[1, 4]} decimals={2} unit="bar" />. V hloubce je prostor mnohem větší – přesycení se stává problémem až při výstupu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="m-value" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="workman-m" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

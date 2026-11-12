@@ -1,0 +1,90 @@
+<Hook>
+
+Dva potápěči se stejným počítačem a stejným ponorem. Jeden má nastaveno 30/85, druhý 80/85.
+
+První začne dekompresi ve <Calc fn="firstStopAir" args={[45, 25, 30, 85]} unit="m" />, druhý ve <Calc fn="firstStopAir" args={[45, 25, 80, 85]} unit="m" />. Kdo z nich je opatrnější? Odpověď není tak jednoduchá, jak vypadá.
+
+</Hook>
+
+<Principle>
+
+<Term cs="gradient factors" /> jsou způsob, jak říct modelu: „Nechci jít až na M-hodnotu. Chci jen její část.“
+
+Rozdíl mezi okolním tlakem a M-hodnotou je sto procent. Gradient factor říká, kolik procent z něj smí tkáň čerpat. Nastavují se dvě čísla:
+
+- **GF low** platí na první zastávce. Čím nižší, tím hlouběji dekomprese začne.
+- **GF high** platí při vynoření. Čím nižší, tím déle potrvají mělké zastávky a s tím menším přesycením vylezeš z vody.
+
+Mezi první zastávkou a hladinou se povolený gradient plynule mění od GF low ke GF high.
+
+Počítače ukazují dvě související hodnoty:
+
+- **GF99** – kolik procent gradientu vedoucí kompartment čerpá právě teď.
+- **Surfacing GF** – kolik by to bylo, kdybys v tuto chvíli vystoupal rovnou na hladinu. Dokud je nad tvým GF high, dekomprese není dokončená.
+
+**Jaká čísla zvolit?** Tady shoda není. GF high kolem 70–85 je běžná volba; nižší znamená delší dekompresi a menší přesycení na hladině.
+O GF low se vede spor. Nízké hodnoty jako 20–30 dávají hluboké první zastávky. Pokusy amerického námořnictva z roku 2011 ale naznačily,
+že čas strávený hluboko pomalé tkáně dál sytí a výsledek může být horší než stejně dlouhá dekomprese s mělčími zastávkami.
+Řada potápěčů proto GF low zvýšila. Debatě se podrobně věnuje modul Full Trimix.
+
+Jisté je jedno: gradient factors nemění fyziologii. Mění jen to, jak daleko od čáry, kterou někdo proložil daty, se rozhodneš držet.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Nula procent znamená, že tkáň má stejný tlak jako okolí. Sto procent znamená, že je přesně na M-hodnotě.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Čtení GF99.** Kompartment 5 má 2,5 bar dusíku a ty jsi na zastávce v 6 m, tedy při 1,6 bar. Jeho M-hodnota tam je <Calc fn="mValueN2" args={[5, 1.6]} decimals={2} unit="bar" />.
+
+<Worked fn="gradientPercentN2" args={[5, 2.5, 1.6]} expected={91.0} tolerance={0.1} unit="%" decimals={0} />
+
+S nastavením GF high 85 je to příliš; na této zastávce ještě musíš zůstat.
+
+**Strop podle GF.** Stejný kompartment se 3,0 bar dusíku. Při GF 100:
+
+<Worked fn="ceilingDepthN2" args={[5, 3, 100]} expected={9.34} tolerance={0.05} unit="m" decimals={1} />
+
+Při GF 50:
+
+<Worked fn="ceilingDepthN2" args={[5, 3, 50]} expected={14.12} tolerance={0.05} unit="m" decimals={1} />
+
+Poloviční gradient posunul strop o necelých pět metrů hlouběji.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="gf-plan" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="baker-gf" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

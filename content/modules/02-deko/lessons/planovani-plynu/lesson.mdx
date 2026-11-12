@@ -1,0 +1,87 @@
+<Hook>
+
+„Otočíme na sto barech.“ Proč na sto? „Vždycky otáčíme na sto.“
+
+Sto barů v patnáctce a sto barů v dvojčeti je jiný plyn. A sto barů při ponoru z lodi do modré vody je jiný problém než sto barů na konci tunelu.
+
+</Hook>
+
+<Principle>
+
+Plánování plynu odpovídá na tři otázky: kolik potřebuji, kolik si nechám v rezervě a kdy otočím. Odpověď závisí na tom, kudy vede cesta ven.
+
+**Přímá cesta na hladinu kdekoli.** Od zásoby odečti minimum gas. Zbytek je použitelný plyn a můžeš ho spotřebovat celý.
+
+**Návrat do výchozího bodu je žádoucí** – kotevní lano, břeh. Použitelný plyn se dělí napůl: polovina tam, polovina zpět. Když to nevyjde, vystoupáš jinde.
+
+**Návrat do výchozího bodu je nutný** – jeskyně, vrak, ponor s dekompresní lahví odloženou u vstupu. Platí pravidlo třetin:
+třetina tam, třetina zpět, třetina rezerva. Rezerva pokryje cestu ven pro partnera, který přišel o plyn v nejvzdálenějším bodě.
+
+Třetina se zaokrouhluje dolů. S 200 bar je to 60 bar tam a otočka na 140.
+
+**Dekompresní plyn** se plánuje zvlášť: potřeba na zastávky krát rezerva, obvykle 1,5. Rezerva kryje pomalejší výstup, vyšší spotřebu a část potřeby partnera.
+
+**Různé lahve nebo různá spotřeba v týmu.** Tlak otočky pak není pro oba stejný. Potápěč s menší zásobou určuje, jak daleko se jde,
+a potápěč s větší lahví si musí třetinu přepočítat na objem, který by partnerovi skutečně stačil.
+
+Jak se plány kazí:
+
+- otočka podle zvyku místo výpočtu,
+- spotřeba z klidných ponorů použitá pro studenou vodu a proud,
+- rezerva „spotřebovaná“ už v plánu,
+- dekompresní plyn přesně na míru, bez násobitele.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Všechny výpočty plynu jsou tento jeden vzorec, použitý pro každý úsek ponoru zvlášť a sečtený. Na konci se litry převedou na bary podle objemu lahví.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tlak otočky podle třetin** při 200 bar:
+
+<Worked fn="thirdsTurnBar" args={[200]} expected={140} tolerance={0.01} unit="bar" decimals={0} />
+
+**Dekompresní plyn.** Zastávky 5 minut v 6 m a 10 minut ve 3 m, dekompresní spotřeba 15 l/min, rezerva 1,5:
+
+<Worked fn="decoGasLiters" args={[15, [{ depthM: 6, minutes: 5 }, { depthM: 3, minutes: 10 }]]} expected={472.5} tolerance={0.1} unit="l" decimals={0} />
+
+V sedmilitrové lahvi je to <Calc fn="litersToBar" args={[472.5, 7]} decimals={0} unit="bar" />. Lahev plněná na 200 bar stačí s velkou rezervou;
+u delší dekomprese už ne a bere se větší.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="team-turn" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="tretiny-exley" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

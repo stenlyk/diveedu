@@ -1,0 +1,20 @@
+id: od-haldana-k-buhlmannovi
+moduleId: deko
+title: "Od Haldana k Bühlmannovi: jak počítá dekompresní model"
+order: 1
+conceptIds: ["kompartment", "polocas-tkane", "model-buhlmann", "syceni-tkani"]
+checkQuestionIds: ["model-kompartment-co-je", "model-rychly-pomaly", "model-polocasy-rozsah", "model-tkan-vypocet"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dekompresní model nahrazuje tělo sadou vymyšlených nádob, kterým se říká kompartmenty.
+  Každý kompartment má svůj poločas, tedy rychlost, s jakou se sytí a vysycuje.
+  Haldane jich měl pět, Bühlmannův model ZHL šestnáct cé jich má šestnáct, s poločasy od pěti do šesti set třiceti pěti minut.
+  Kompartment není konkrétní orgán. Je to křivka, která dobře odpovídá datům.
+  Všechny kompartmenty se sytí zároveň a dekompresi řídí ten, který je nejblíž svému limitu.
+  Po krátkém hlubokém ponoru je to rychlý kompartment, po dlouhém pomalý.
+  A model nezná tebe. Počítá průměrného potápěče.
+sources:
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: false

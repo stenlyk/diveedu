@@ -1,0 +1,20 @@
+id: dekompresni-plyny-v-planu
+moduleId: deko
+title: "Dekompresní plyny v plánu a run-time"
+order: 9
+conceptIds: ["run-time", "deko-zastavka", "ean50", "kyslikove-okno"]
+checkQuestionIds: ["dekoplyn-o-kolik", "dekoplyn-runtime-co-je", "dekoplyn-vyber", "dekoplyn-prestavky"]
+estimatedMinutes: 10
+audioSummary: >-
+  Dekompresní plyn zkracuje zastávky, protože v dechu je méně inertního plynu.
+  Největší účinek má na mělkých zastávkách, které jsou nejdelší.
+  Pro ponory kolem čtyřiceti až padesáti metrů se nejčastěji nese jedna lahev, e á en padesát od dvaceti jedna metrů.
+  Každý další plyn je další lahev, přepnutí a příležitost k chybě.
+  Run-time je čas od opuštění hladiny. Rozvrh říká, ve které minutě opouštíš kterou zastávku.
+  Pod vodou sleduješ, jestli run-time odpovídá plánu.
+  A plán vždy obsahuje i rozvrh pro případ, že dekompresní plyn nebude k dispozici.
+sources:
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+needs_review: true

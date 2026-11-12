@@ -2,7 +2,7 @@
  * Validace obsahu: schémata + křížové kontroly. Čistá funkce nad načtenými daty,
  * aby šla testovat bez souborového systému.
  */
-import * as calc from '@diveedu/calc';
+import { callContentFunction, isContentFunction } from '../../src/content/fns';
 import type { z } from 'zod';
 import { CUSTOM_PLAYGROUND_KINDS } from '../../src/mdx/playgroundKinds';
 import { CALC_DEFS } from '../../src/tools/defs';
@@ -67,8 +67,7 @@ export const MIN_QUESTIONS_PER_MODULE = 40;
 export const MIN_QUESTIONS_PER_CONCEPT = 3;
 export const MIN_RELATIONS_PER_LESSON = 2;
 
-const calcFns = calc as unknown as Record<string, unknown>;
-const isCalcFn = (name: string) => typeof calcFns[name] === 'function';
+const isCalcFn = isContentFunction;
 
 function parseAll<S extends z.ZodType>(schema: S, items: unknown[], where: (i: number) => string, errors: string[]): z.infer<S>[] {
   const out: z.infer<S>[] = [];
@@ -210,7 +209,7 @@ export function validateContent(raw: RawContent): ValidationResult {
     for (const call of lesson.raw.calcCalls) {
       const tag = `${where}: <${call.element}>`;
       if (!call.fn || !isCalcFn(call.fn)) {
-        errors.push(`${tag} odkazuje na neznámou funkci calc „${call.fn}“`);
+        errors.push(`${tag} odkazuje na neznámou funkci „${call.fn}“`);
         continue;
       }
       if (!Array.isArray(call.args)) {
@@ -219,7 +218,7 @@ export function validateContent(raw: RawContent): ValidationResult {
       }
       if (call.steps && !isCalcFn(call.steps)) errors.push(`${tag}: neznámá funkce postupu „${call.steps}“`);
       try {
-        const value = (calcFns[call.fn] as (...a: unknown[]) => unknown)(...call.args);
+        const value = callContentFunction(call.fn, call.args);
         if (call.element === 'Worked') {
           if (typeof call.expected !== 'number' || typeof call.tolerance !== 'number') {
             errors.push(`${tag} fn=${call.fn}: chybí číselné expected a tolerance`);
@@ -254,7 +253,7 @@ export function validateContent(raw: RawContent): ValidationResult {
 
   // Vzorce
   for (const formula of formulas) {
-    if (!isCalcFn(formula.calcFunction)) errors.push(`vzorec ${formula.id}: funkce „${formula.calcFunction}“ není v @diveedu/calc`);
+    if (!isCalcFn(formula.calcFunction)) errors.push(`vzorec ${formula.id}: funkce „${formula.calcFunction}“ není mezi funkcemi calc/deco`);
   }
 
   // Otázky
@@ -282,7 +281,7 @@ export function validateContent(raw: RawContent): ValidationResult {
     if (question.type === 'numeric') {
       const template = question.template;
       if (!isCalcFn(template.fn)) {
-        errors.push(`${where}: funkce „${template.fn}“ není v @diveedu/calc`);
+        errors.push(`${where}: funkce „${template.fn}“ není mezi funkcemi calc/deco`);
         continue;
       }
       for (const arg of template.args) {
@@ -296,7 +295,7 @@ export function validateContent(raw: RawContent): ValidationResult {
       }
       for (const corner of templateCorners(template)) {
         try {
-          const value = (calcFns[template.fn] as (...a: number[]) => unknown)(...template.args.map((a) => corner[a]!));
+          const value = callContentFunction(template.fn, template.args.map((a) => corner[a]!));
           if (typeof value !== 'number' || !Number.isFinite(value)) {
             errors.push(`${where}: pro ${JSON.stringify(corner)} funkce nevrací konečné číslo`);
           }
@@ -312,7 +311,7 @@ export function validateContent(raw: RawContent): ValidationResult {
     const where = `případová studie ${study.id}`;
     for (const moduleId of study.moduleIds) if (!moduleIds.has(moduleId)) errors.push(`${where}: neznámý modul „${moduleId}“`);
     study.errorChain.forEach((link) => needConcepts(link.conceptIds, where));
-    for (const task of study.calcTasks) if (!isCalcFn(task.fn)) errors.push(`${where}: funkce „${task.fn}“ není v @diveedu/calc`);
+    for (const task of study.calcTasks) if (!isCalcFn(task.fn)) errors.push(`${where}: funkce „${task.fn}“ není mezi funkcemi calc/deco`);
   }
   for (const fact of facts) {
     needConcepts(fact.conceptIds, `zajímavost ${fact.id}`);

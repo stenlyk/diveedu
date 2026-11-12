@@ -98,6 +98,37 @@ test('kalkulačka MOD: režim Spočítám sám dá zpětnou vazbu u chybného kr
   await expect(page.locator('#practice-0')).toHaveValue('');
 });
 
+test('tkáňový simulátor: rozvrh, přehrávání a reakce na gradient factors', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje');
+  await page.getByRole('link', { name: /Tkáňový simulátor/ }).click();
+  const sim = page.getByTestId('tissue-sim');
+  await expect(sim.getByRole('note')).toContainText('není plánovač ponorů');
+  await expect(page.getByTestId('sim-stops')).toContainText('Zastávky:');
+  const ascent = async () => Number((await page.getByTestId('sim-ascent').innerText()).replace(/\D/g, ''));
+  const before = await ascent();
+  // Konzervativnější GF high (85 → 70) musí dekompresi prodloužit.
+  for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'GF high: ubrat' }).click();
+  expect(await ascent()).toBeGreaterThan(before);
+  await expect(page.getByTestId('sim-now')).toContainText('0. minuta');
+  await page.getByRole('slider', { name: 'Čas ponoru' }).fill('20');
+  await expect(page.getByTestId('sim-now')).not.toContainText(/^0\. minuta/);
+  await expect(page.getByTestId('sim-now')).toContainText('strop');
+  // Mělký krátký ponor nemá zastávky.
+  for (let i = 0; i < 8; i++) await page.getByRole('button', { name: 'Hloubka: ubrat' }).click();
+  for (let i = 0; i < 4; i++) await page.getByRole('button', { name: 'Čas na dně: ubrat' }).click();
+  await expect(page.getByTestId('sim-stops')).toHaveText('Bez zastávek.');
+});
+
+test('kalkulačka minimum gas počítá rezervu a rozepíše postup', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje/rock-bottom');
+  await expect(page.locator('[data-output="Rezerva v litrech"]')).toHaveText('493 l');
+  await expect(page.locator('[data-output="Rezerva na manometru (nahoru na 10 bar)"]')).toHaveText('30 bar');
+  await expect(page.getByText('Pro dva potápěče')).toBeVisible();
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+});
+
 test('případová studie má všech osm částí, označení jistoty a výpočet', async ({ page }) => {
   await acceptOnboarding(page);
   await page.goto('/uceni');
@@ -115,7 +146,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(180_000);
+  test.setTimeout(300_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -123,7 +154,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(23);
+  expect(hrefs.length).toBe(36);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -234,7 +265,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(51);
+  await expect(map.locator('[data-node]')).toHaveCount(77);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -295,13 +326,18 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.goto('/uceni/kyslikove-okno');
   await page.getByRole('button', { name: '5. Vyzkoušej si' }).click();
   await expect(page.getByText(/kyslíkové okno: přibližně/)).toBeVisible();
+  await page.goto('/nastroje/simulator/tkane');
+  await expect(page.getByTestId('sim-stops')).toContainText('Zastávky:');
+  await page.goto('/uceni/gradient-factors');
+  await page.getByRole('button', { name: '4. Ukázkový výpočet' }).click();
+  await expect(page.locator('[data-worked="ceilingDepthN2"]').first()).toContainText('9,3 m');
   await page.goto('/trenink/rychly-check');
   await expect(page.getByText('Otázka 1 z 10')).toBeVisible();
   await page.goto('/trenink/z-hlavy');
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(51);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(77);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');

@@ -1,0 +1,97 @@
+<Hook>
+
+Na dně je krásně, času je dost, plynu také. Partner ukáže: ještě pět minut?
+
+Pět minut ve 45 metrech není pět minut. Je to jiný rozvrh, jiná potřeba plynu a jiná rezerva – a žádné z těch čísel nemáte.
+
+</Hook>
+
+<Principle>
+
+V dekompresním potápění platí stará zásada: **naplánuj ponor a pak plň plán.** Pod vodou, s narkózou a pod časovým tlakem, se rozhoduje špatně. Rozhodnutí se dělají na souši.
+
+**Co plán obsahuje:**
+
+- největší hloubku a čas na dně,
+- plyny, jejich MOD a hloubky přepnutí,
+- rozvrh zastávek podle run-time,
+- tlak otočky a minimum gas,
+- záložní rozvrhy: ztráta dekompresního plynu, o pět minut déle, o tři metry hlouběji,
+- kdo co nese a kdo jde první.
+
+Rozvrhy má každý napsané u sebe. Paměť pod vodou neplatí.
+
+**Odchylky.** Pro každou předvídatelnou odchylku existuje předem připravená odpověď. Co v plánu není, se nedělá.
+„Ještě pět minut“ je možné jen tehdy, když na to má tým tabulku a plyn.
+
+**Tým** není jen společnost. Je to záložní plyn, záložní mozek a nezávislá kontrola:
+
+- před ponorem si tým navzájem projde výstroj, plyny a plán,
+- při každém přepnutí plynu partner potvrzuje lahev a hloubku,
+- kdo má problém, hlásí ho hned; kdo vidí problém u druhého, také.
+
+**Kdokoli může kdykoli ukončit ponor, bez vysvětlování.** Pravidlo zní samozřejmě, dokud nejsi ten, kdo má ukončit ponor, na který ostatní cestovali přes půl Evropy.
+Proto se říká nahlas před každým ponorem.
+
+A po ponoru krátký rozbor: co bylo jinak než v plánu a proč. Malé odchylky, které se nikdy neřeší, se postupně stanou normou.
+
+</Principle>
+
+<FormulaSection>
+
+<Given>run-time = čas na dně + výstup + součet zastávek</Given>
+
+Rozvrh se píše odspodu nahoru: v kolikáté minutě opouštíš dno a každou zastávku. Když se run-time na některém řádku rozejde s plánem, víš to hned.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Plán: 45 m, 25 minut, vzduch a EAN50 od 21 m, GF 30/85. Výukový model dává výstup <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 0.5, 21]} unit="min" />.
+
+**Záložní varianta „o pět minut déle“** – stejný ponor, 30 minut na dně: výstup <Calc fn="ascentMinutesWithDecoGas" args={[45, 30, 30, 85, 0.5, 21]} unit="min" />.
+
+**Záložní varianta „o tři metry hlouběji“** – 48 m, 25 minut: výstup <Calc fn="ascentMinutesWithDecoGas" args={[48, 25, 30, 85, 0.5, 21]} unit="min" />.
+
+Pět minut na dně navíc stojí také plyn. Při pracovní spotřebě 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 45, 5]} expected={550} tolerance={0.1} unit="l" decimals={0} />
+
+A k tomu delší dekomprese. „Jen pět minut“ je rozhodnutí, které se dělá u stolu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'se na dně zdržíš o pět minut?', effect: 'Platí záložní rozvrh „+5 minut“, pokud ho máš a pokud na něj máš plyn. Jinak se neprodlužuje. Bez tabulky nevíš, kolik dekomprese navíc sis právě přidal.' },
+  { label: 'jeden z týmu chce ponor ukončit dřív?', effect: 'Ponor končí pro všechny, bez diskuse a bez vysvětlování pod vodou. Rozbor patří na břeh.' },
+  { label: 'se v plánu objeví chyba až ve vodě?', effect: 'Platí konzervativnější možnost: kratší čas, mělčí hloubka, delší zastávky. Plán se pod vodou nikdy neupravuje směrem k většímu riziku.' },
+  { label: 'vynecháte kontrolu před ponorem, protože spěcháte?', effect: 'Většina vážných chyb – zavřený ventil, špatná lahev, nezapnutý počítač – vzniká před vstupem do vody. Kontrola trvá dvě minuty.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="checklist-b17" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

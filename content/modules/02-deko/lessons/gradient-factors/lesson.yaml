@@ -1,0 +1,20 @@
+id: gradient-factors
+moduleId: deko
+title: "Gradient factors: jak nastavit konzervativnost"
+order: 3
+conceptIds: ["gradient-factor", "gf99", "m-hodnota", "strop-dekomprese"]
+checkQuestionIds: ["gf-co-znamena", "gf-low-high", "gf-vypocet", "gf99-cteni", "gf-konzervativni", "gf99-na-dne"]
+estimatedMinutes: 12
+audioSummary: >-
+  Gradient factors říkají modelu, jakou část povoleného přesycení smí tkáň čerpat.
+  Nula procent je okolní tlak, sto procent je M-hodnota.
+  Nastavují se dvě čísla. Gé ef low platí na první zastávce a určuje, jak hluboko dekomprese začne.
+  Gé ef high platí při vynoření a určuje, s jakým přesycením vylezeš z vody.
+  Počítač ukazuje gé ef devadesát devět, tedy kolik vedoucí tkáň čerpá právě teď, a surfacing gé ef, tedy kolik by to bylo po okamžitém výstupu.
+  O správných hodnotách se vede debata, hlavně o gé ef low a hlubokých zastávkách.
+  Gradient factors nemění fyziologii. Mění jen tvou vzdálenost od čáry proložené daty.
+sources:
+  - { title: "Understanding M-values; Clearing Up the Confusion About Deep Stops", author: "Baker E. C.", year: 1998 }
+  - { title: "Redistribution of decompression stop time from shallow to deep stops increases incidence of decompression sickness in air decompression dives. NEDU TR 11-06", author: "Doolette D. J., Gerth W. A., Gault K. A.", year: 2011 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: true

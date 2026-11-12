@@ -167,3 +167,48 @@ describe('otočka dvojice', () => {
     expect(() => teamTurnPressure(twin, { ...twin, startBar: -1 })).toThrow(CalcInputError);
   });
 });
+
+import { decoGasLiters, rockBottomBar, rockBottomLiters, rockBottomSteps, sacBarPerMinute, sacFromPressureDrop, sacSteps, thirdsTurnBar, travelMinutes } from '../src';
+
+describe('zkratky pro plánování plynu', () => {
+  it('SAC z poklesu tlaku', () => {
+    expect(sacFromPressureDrop(200, 50, 12, 20, 40)).toBeCloseTo(15, 10);
+  });
+  it('rock bottom v litrech a barech', () => {
+    expect(rockBottomLiters(30, 20)).toBeCloseTo(493.33, 2);
+    expect(rockBottomBar(30, 20, 24)).toBeCloseTo(20.56, 2);
+  });
+  it('otočka podle třetin', () => {
+    expect(thirdsTurnBar(200)).toBe(140);
+    expect(thirdsTurnBar(210)).toBe(140);
+    expect(thirdsTurnBar(230)).toBe(160);
+  });
+  it('doba přesunu mezi hloubkami', () => {
+    expect(travelMinutes(45, 21, 9)).toBeCloseTo(2.667, 3);
+    expect(travelMinutes(0, 40, 20)).toBe(2);
+    expect(() => travelMinutes(-1, 0, 9)).toThrow(CalcInputError);
+    expect(() => travelMinutes(0, -1, 9)).toThrow(CalcInputError);
+    expect(() => travelMinutes(10, 0, 0)).toThrow(CalcInputError);
+  });
+  it('spotřeba v barech za minutu', () => {
+    // 20 l/min · 4 bar = 80 l/min z dvojčete 24 l = 3,33 bar/min
+    expect(sacBarPerMinute(20, 30, 24)).toBeCloseTo(3.333, 3);
+    expect(sacBarPerMinute(20, 30.9, 24, FRESH_WATER_ENV)).toBeCloseTo(3.333, 3);
+  });
+  it('plyn na dekompresi s rezervou', () => {
+    // 15 l/min: 5 min v 6 m (1,6 bar) = 120 l, 10 min ve 3 m (1,3 bar) = 195 l; × 1,5 = 472,5 l
+    const stops = [{ depthM: 6, minutes: 5 }, { depthM: 3, minutes: 10 }];
+    expect(decoGasLiters(15, stops)).toBeCloseTo(472.5, 8);
+    expect(decoGasLiters(15, stops, 1)).toBeCloseTo(315, 8);
+    expect(decoGasLiters(15, stops, 2, FRESH_WATER_ENV)).toBeLessThan(630);
+    expect(() => decoGasLiters(15, stops, 0)).toThrow(CalcInputError);
+  });
+  it('rozepsané postupy končí stejnou hodnotou jako výpočet', () => {
+    const sac = sacSteps(200, 50, 12, 20, 40);
+    expect(sac.map((s) => s.value)).toEqual([1800, 3, 15]);
+    const rb = rockBottomSteps(30, 20, 24);
+    expect(rb).toHaveLength(5);
+    expect(rb[3]!.value).toBeCloseTo(rockBottomLiters(30, 20), 10);
+    expect(rb[4]!.value).toBeCloseTo(rockBottomBar(30, 20, 24), 10);
+  });
+});

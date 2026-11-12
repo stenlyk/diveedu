@@ -1,0 +1,20 @@
+id: planovani-plynu
+moduleId: deko
+title: "Plánování plynu: třetiny, poloviny a rezervy"
+order: 8
+conceptIds: ["pravidlo-tretin", "planovani-plynu", "minimum-gas", "sac"]
+checkQuestionIds: ["plan-tretiny-vypocet", "plan-kdy-ktere", "plan-deko-rezerva", "plan-ruzne-lahve", "plan-chyby"]
+estimatedMinutes: 11
+audioSummary: >-
+  Plánování plynu odpovídá na tři otázky. Kolik potřebuji, kolik nechám v rezervě a kdy otočím.
+  Když vede cesta na hladinu odkudkoli, odečti minimum gas a zbytek je použitelný.
+  Když se chceš vrátit na výchozí místo, děl použitelný plyn napůl.
+  Když se vrátit musíš, platí pravidlo třetin. Třetina tam, třetina zpět, třetina rezerva.
+  Třetinu zaokrouhli dolů. Se dvěma sty bary otáčíš na sto čtyřiceti.
+  Dekompresní plyn plánuj zvlášť a vynásob jeden a půl.
+  A pozor na různé lahve v týmu. Tlak otočky pak není pro oba stejný.
+sources:
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: true

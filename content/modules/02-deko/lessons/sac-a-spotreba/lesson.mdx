@@ -1,0 +1,77 @@
+<Hook>
+
+„Kolik máš spotřebu?“ – „Tak nějak normální.“
+
+S touhle odpovědí se dá potápět na 18 metrů. Na 45 metrů s půlhodinou dekomprese potřebuješ číslo. Vlastní, změřené, a ne jedno.
+
+</Hook>
+
+<Principle>
+
+<Term cs="povrchová spotřeba" /> je objem plynu, který prodýcháš za minutu, přepočtený na tlak 1 bar. Udává se v litrech za minutu a zkracuje se SAC nebo RMV.
+V hloubce se násobí absolutním tlakem: ve 40 m spotřebuješ pětkrát víc než na hladině.
+
+Jedno číslo nestačí. Pro plánování potřebuješ nejméně tři:
+
+- **pracovní spotřebu** – plavání na dně s výstrojí,
+- **dekompresní spotřebu** – klid na zastávkách, obvykle o čtvrtinu až třetinu nižší,
+- **stresovou spotřebu** – pro výpočet rezerv; běžně se bere dvojnásobek pracovní.
+
+Spotřebu zvyšuje námaha, chlad, stres, špatný trim a hustota plynu v hloubce. Snižuje ji zkušenost a klid – ne zadržování dechu.
+
+**Jak ji změřit:** plav několik minut ve stálé hloubce obvyklým tempem a zapiš tlak na začátku a na konci. Opakuj v klidu na zastávce.
+Měř při více ponorech a v podmínkách, ve kterých se potápíš. Hodnoty z teplé vody v mokrém obleku pro studený lom v suchém obleku neplatí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="sac" />
+
+Čitatel je spotřebovaný plyn v litrech, jmenovatel převádí hloubku a čas na „minuty na hladině“. Opačným směrem platí vzorec spotřeby z modulu Základy.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Měření.** Lahev 12 l, tlak klesl z 200 na 50 bar za 40 minut v průměrné hloubce 20 m:
+
+<Worked fn="sacFromPressureDrop" args={[200, 50, 12, 20, 40]} expected={15} tolerance={0.01} steps="sacSteps" unit="l/min" decimals={1} />
+
+**Použití.** S pracovní spotřebou 20 l/min plánuješ 25 minut ve 45 m:
+
+<Worked fn="gasConsumed" args={[20, 45, 25]} expected={2750} tolerance={0.1} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+V dvojčeti 2×12 l je to <Calc fn="litersToBar" args={[2750, 24]} decimals={0} unit="bar" />. Na manometru ti ubývá <Calc fn="sacBarPerMinute" args={[20, 45, 24]} decimals={1} unit="bar" /> každou minutu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="sac-log" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="spotreba-stres" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

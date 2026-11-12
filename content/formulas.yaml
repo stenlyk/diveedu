@@ -132,3 +132,43 @@
     - { symbol: 'P_{abs}', name: absolutní tlak v hloubce, unit: bar }
     - { symbol: 't', name: čas, unit: min }
   calcFunction: gasConsumed
+
+- id: m-hodnota
+  title: M-hodnota (Bühlmann)
+  latex: 'M = a + \frac{P_{abs}}{b}'
+  variables:
+    - { symbol: 'M', name: nejvyšší tolerovaný tlak inertního plynu v kompartmentu, unit: bar }
+    - { symbol: 'P_{abs}', name: okolní tlak, unit: bar }
+    - { symbol: 'a, b', name: koeficienty kompartmentu (a klesá a b roste s poločasem), unit: '–' }
+  calcFunction: mValueN2
+
+- id: gradient-factor
+  title: Gradient factor
+  latex: 'GF = \frac{p_{tkan} - P_{abs}}{M - P_{abs}} \cdot 100\,\%'
+  variables:
+    - { symbol: 'p_{tkan}', name: tlak inertního plynu v kompartmentu, unit: bar }
+    - { symbol: 'P_{abs}', name: okolní tlak, unit: bar }
+    - { symbol: 'M', name: M-hodnota při tomto okolním tlaku, unit: bar }
+  calcFunction: gradientPercent
+
+- id: sac
+  title: Povrchová spotřeba z ponoru
+  latex: 'SAC = \frac{(P_1 - P_2) \cdot V_{lahev}}{P_{abs} \cdot t}'
+  variables:
+    - { symbol: 'P_1, P_2', name: tlak v lahvi na začátku a na konci, unit: bar }
+    - { symbol: 'V_{lahev}', name: objem lahve, unit: l }
+    - { symbol: 'P_{abs}', name: absolutní tlak v průměrné hloubce, unit: bar }
+    - { symbol: 't', name: čas, unit: min }
+  calcFunction: sacFromPressureDrop
+
+- id: minimum-gas
+  title: Minimum gas (rock bottom)
+  latex: 'V = n \cdot SAC \cdot \left(P_{dno} \cdot t_{reseni} + P_{prumer} \cdot t_{vystup}\right)'
+  variables:
+    - { symbol: 'n', name: 'počet potápěčů dýchajících z rezervy (obvykle 2)', unit: '–' }
+    - { symbol: 'SAC', name: stresová povrchová spotřeba jednoho potápěče, unit: l/min }
+    - { symbol: 'P_{dno}', name: absolutní tlak v největší hloubce, unit: bar }
+    - { symbol: 't_{reseni}', name: 'čas na vyřešení problému v hloubce (obvykle 1 min)', unit: min }
+    - { symbol: 'P_{prumer}', name: absolutní tlak v poloviční hloubce, unit: bar }
+    - { symbol: 't_{vystup}', name: doba výstupu, unit: min }
+  calcFunction: rockBottomLiters

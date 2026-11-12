@@ -1,0 +1,20 @@
+id: tym-a-plan-ponoru
+moduleId: deko
+title: "Tým a plán ponoru"
+order: 13
+conceptIds: ["tym", "plan-ponoru", "run-time", "zamena-plynu"]
+checkQuestionIds: ["tym-co-obsahuje-plan", "tym-kdo-ukonci", "tym-odchylka", "tym-kontrola-pred", "tym-runtime"]
+estimatedMinutes: 10
+audioSummary: >-
+  V dekompresním potápění platí: naplánuj ponor a pak plň plán. Rozhodnutí se dělají na souši.
+  Plán obsahuje hloubku a čas, plyny a hloubky přepnutí, rozvrh podle run-time, tlak otočky a minimum gas.
+  Patří k němu záložní rozvrhy. Pro ztrátu dekompresního plynu, pro pět minut navíc a pro tři metry hlouběji.
+  Co v plánu není, se pod vodou nedělá.
+  Tým je záložní plyn, záložní mozek a nezávislá kontrola.
+  Kdokoli může kdykoli ukončit ponor, bez vysvětlování.
+  A po ponoru si řekněte, co bylo jinak než v plánu.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: false

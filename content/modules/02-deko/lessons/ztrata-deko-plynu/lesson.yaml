@@ -1,0 +1,20 @@
+id: ztrata-deko-plynu
+moduleId: deko
+title: "Ztráta dekompresního plynu a vynechaná dekomprese"
+order: 12
+conceptIds: ["ztrata-deko-plynu", "vynechana-dekomprese", "planovani-plynu", "deko-zastavka"]
+checkQuestionIds: ["ztrata-plan-b", "ztrata-o-kolik-delsi", "vynechana-co-delat", "ztrata-tym", "vynechana-nikdy"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dekompresní plyn se může ztratit. Vadný ventil, utržená lahev, únik, záměna, nebo ho potřebuje partner.
+  Ke každému plánu proto patří záložní rozvrh, tedy dekomprese jen na plynu ze zad. Je výrazně delší.
+  Zásoba plynu na zádech musí na tento rozvrh stačit.
+  Tým nosí stejné směsi, aby se o dekompresní plyn mohl podělit.
+  Vynechaná dekomprese se řeší podle postupů agentury.
+  Bez příznaků zůstaň na hladině, dýchej kyslík, buď v klidu, pij a kontaktuj hyperbarického lékaře.
+  S příznaky kyslík a transport do komory. Nikdy návrat do vody.
+sources:
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: true

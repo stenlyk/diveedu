@@ -158,3 +158,99 @@
     U nitroxu je odchylka malá, u trimixu s heliem už znatelná – proto míchači používají tabulky stlačitelnosti a výsledek vždy analyzují.
   conceptIds: [michani-parcialnim-tlakem, analyza-plynu]
   source: { title: 'NOAA Diving Manual, 6th Edition – Gas Mixing', author: NOAA, year: 2017 }
+
+- id: buhlmann-keller
+  text: >-
+    Albert Bühlmann vyvíjel své tabulky v curyšské univerzitní nemocnici od konce 50. let. Proslavil je matematik Hannes Keller,
+    který s nimi v roce 1962 sestoupil ve zvonu na 300 metrů. Sada koeficientů ZHL-16 vyšla knižně roku 1983 a dodnes je základem většiny potápěčských počítačů.
+  conceptIds: [model-buhlmann]
+  source: { title: Dekompression – Dekompressionskrankheit, author: 'Bühlmann A. A.', year: 1983, note: Údaje o Kellerově ponoru ověřit. }
+  needs_review: true
+
+- id: workman-m
+  text: >-
+    Pojem M-hodnota zavedl roku 1965 Robert Workman, lékař amerického námořnictva. „M“ znamená maximum.
+    Haldane počítal se stálým poměrem tlaků 2 : 1; Workman ukázal, že přípustné přesycení se liší podle kompartmentu a roste s hloubkou.
+  conceptIds: [m-hodnota]
+  source: { title: Calculation of decompression schedules for nitrogen-oxygen and helium-oxygen dives. NEDU Research Report 6-65, author: 'Workman R. D.', year: 1965 }
+
+- id: baker-gf
+  text: >-
+    Gradient factors nevymyslel lékař, ale inženýr. Erik Baker je popsal koncem 90. let v článcích pro technické potápěče
+    a zdrojový kód svého programu zveřejnil. Díky tomu se GF staly standardem, kterému rozumí každý počítač i plánovač.
+  conceptIds: [gradient-factor]
+  source: { title: 'Understanding M-values; Clearing Up the Confusion About Deep Stops', author: 'Baker E. C.', year: 1998 }
+
+- id: spencer-doppler
+  text: >-
+    Že bubliny vznikají i po „bezpečných“ ponorech, ukázal ultrazvuk. Merrill Spencer v 70. letech Dopplerovým detektorem slyšel bubliny
+    v žilní krvi potápěčů bez jakýchkoli příznaků. Jeho stupnice 0–IV se k hodnocení množství bublin používá dodnes.
+  conceptIds: [bubliny]
+  source: { title: 'Decompression limits for compressed air determined by ultrasonically detected blood bubbles. Journal of Applied Physiology 40(2)', author: 'Spencer M. P.', year: 1976 }
+
+- id: rychlost-vystupu-historie
+  text: >-
+    Rychlost výstupu 18 m/min, se kterou vyrostly generace potápěčů, vznikla jako kompromis: lehcí potápěči chtěli stoupat rychleji, přilbáři to nestíhali.
+    Americké námořnictvo ji později snížilo na 9 m/min, když se ukázalo, že pomalejší výstup snižuje počet bublin.
+  conceptIds: [rychlost-vystupu]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7', author: Naval Sea Systems Command, year: 2016, note: Historii a rok změny ověřit. }
+  needs_review: true
+
+- id: spotreba-stres
+  text: >-
+    Vlastní spotřebu většina potápěčů podceňuje, protože ji zná z klidných ponorů. Při silném stresu může ventilace vyskočit na několikanásobek –
+    proto se rezervy počítají se stresovou, ne s průměrnou spotřebou.
+  conceptIds: [sac, namaha]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Air Consumption', author: NOAA, year: 2017 }
+
+- id: minimum-gas-nazvy
+  text: >-
+    Stejná rezerva má několik jmen: rock bottom, minimum gas, kritický tlak. Liší se i detaily výpočtu mezi agenturami –
+    čas na řešení problému, rychlost výstupu, zastávky. Podstata je vždy stejná: dva lidé, jeden zdroj plynu, nejhlubší bod ponoru.
+  conceptIds: [minimum-gas]
+  source: { title: GUE Standards and Procedures – minimum gas, author: Global Underwater Explorers, note: Aktuální verzi standardů ověřit. }
+  needs_review: true
+
+- id: tretiny-exley
+  text: >-
+    Pravidlo třetin vzešlo z rozborů smrtelných nehod ve floridských jeskyních. Sheck Exley je roku 1979 zařadil mezi základní pravidla
+    v útlé knížce Basic Cave Diving: A Blueprint for Survival – každé pravidlo v ní je vykoupené konkrétními nehodami.
+  conceptIds: [pravidlo-tretin]
+  source: { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979 }
+
+- id: vzduchove-prestavky
+  text: >-
+    Při dlouhé dekompresi na kyslíku předepisují tabulky amerického námořnictva pravidelné přestávky na vzduchu: po každých 30 minutách kyslíku 5 minut vzduchu.
+    Přestávka sníží riziko kyslíkových křečí a do času dekomprese se nezapočítává.
+  conceptIds: [deko-zastavka, cns-toxicita]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7 – Air Decompression', author: Naval Sea Systems Command, year: 2016, note: Přesné intervaly ověřit. }
+  needs_review: true
+
+- id: hlinikova-osmdesatka
+  text: >-
+    Nejrozšířenější potápěčská lahev na světě je hliníková „osmdesátka“ o objemu 11,1 l. Jako stage je oblíbená proto, že je ve vodě téměř neutrální:
+    plná lehce táhne dolů, prázdná lehce nadnáší.
+  conceptIds: [stage-lahev, vztlak]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Diving Equipment', author: NOAA, year: 2017 }
+
+- id: hogarthian
+  text: >-
+    Minimalistická konfigurace s dvojčetem, dlouhou hadicí a záložní automatikou na gumičce pod bradou nese jméno floridského jeskyňáře Williama Hogartha Maina.
+    Jeho zásada: co nepotřebuješ, neber; co potřebuješ, měj vždy na stejném místě.
+  conceptIds: [twinset]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006, note: Původ názvu ověřit. }
+  needs_review: true
+
+- id: vynechana-deko-postupy
+  text: >-
+    Vynechaná dekomprese má v příručkách námořnictev i agentur vlastní kapitolu s postupy podle toho, jak hluboké zastávky chybějí a zda má potápěč příznaky.
+    Společný jmenovatel: kyslík, klid, tekutiny, sledování a včasný kontakt s hyperbarickým lékařem.
+  conceptIds: [vynechana-dekomprese]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7 – Omitted Decompression', author: Naval Sea Systems Command, year: 2016 }
+
+- id: checklist-b17
+  text: >-
+    Kontrolní seznamy přišly z letectví. V roce 1935 havaroval prototyp bombardéru Boeing, protože zkušená posádka zapomněla odjistit řízení.
+    Letadlo nebylo příliš složité na pilotování – jen příliš složité na paměť jednoho člověka. Řešením byl list papíru.
+  conceptIds: [plan-ponoru, tym]
+  source: { title: The Checklist Manifesto, author: 'Gawande A.', year: 2009 }

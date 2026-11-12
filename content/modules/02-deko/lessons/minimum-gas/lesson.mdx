@@ -1,0 +1,83 @@
+<Hook>
+
+Ve 45 metrech partnerovi praskne hadice. Během minuty je bez plynu a dýchá z tvojí dlouhé hadice.
+
+Od této chvíle dva vystrašení lidé dýchají z jedněch zad a cesta na hladinu trvá minuty. Kolik barů na to musíš mít – a věděl jsi to číslo před ponorem?
+
+</Hook>
+
+<Principle>
+
+<Term cs="minimum gas" /> je množství plynu, které dostane **dva potápěče** z nejhlubšího bodu ponoru na hladinu, nebo k dalšímu použitelnému plynu.
+Je to číslo, pod které tlak nikdy neklesne, dokud je tým na dně.
+
+Počítá se pro nejhorší okamžik:
+
+- porucha nastane v největší hloubce, na konci času na dně,
+- oba potápěči dýchají stresovou spotřebou,
+- minutu trvá, než problém vyřeší a zahájí výstup,
+- výstup probíhá normální rychlostí; zastávky se připočítávají.
+
+Tři věci, na které se zapomíná:
+
+- **Je to rezerva, ne zásoba.** Do plánu se nezapočítává. Použitelný plyn je to, co je nad ní.
+- **Mění se s hloubkou.** Pro každou úroveň ponoru je jiná; ve 20 m je mnohem menší než ve 45 m.
+- **Při dekompresním ponoru nestačí „na hladinu“.** Počítá se k první dekompresní lahvi – a ta musí být použitelná. Jinak se počítá celá dekomprese na plynu ze zad.
+
+Konvence se mezi agenturami liší v čase na řešení, rychlosti výstupu a započítaných zastávkách. Výsledek se vždy zaokrouhluje nahoru, obvykle na celých deset barů.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="minimum-gas" />
+
+Výstup se počítá průměrnou hloubkou, tedy polovinou největší hloubky. Výsledek v litrech se dělí objemem lahví a dostaneš tlak na manometru.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Ponor do 30 m,** stresová spotřeba 20 l/min, dvojče 2×12 l:
+
+<Worked fn="rockBottomBar" args={[30, 20, 24]} expected={20.56} tolerance={0.01} steps="rockBottomSteps" unit="bar" decimals={1} />
+
+Zaokrouhleno nahoru: 30 bar.
+
+**Ponor do 45 m,** stejní potápěči:
+
+<Worked fn="rockBottomBar" args={[45, 20, 24]} expected={36.25} tolerance={0.01} steps="rockBottomSteps" unit="bar" decimals={1} />
+
+Zaokrouhleno nahoru: 40 bar – a to je jen přímý výstup bez jediné zastávky. S dekompresí na plynu ze zad by číslo bylo několikanásobné.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="rock-bottom" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="minimum-gas-nazvy" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

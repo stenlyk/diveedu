@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router';
 import { Disclaimer } from '../components/Disclaimer';
 import { Badge, Button, Card, PageHeader, ReviewBadge } from '../components/ui';
 import { casesById, conceptsById, content } from '../content';
+import { callContentFunction } from '../content/fns';
 import type { CaseStudy } from '../content/schema';
 import { ReportButton } from './ReportButton';
 
@@ -65,7 +66,7 @@ function Profile({ profile }: { profile: CaseStudy['profile'] }) {
 function CalcTask({ task }: { task: CaseStudy['calcTasks'][number] }) {
   const [input, setInput] = useState('');
   const [checked, setChecked] = useState(false);
-  const answer = (calc as unknown as Record<string, (...args: unknown[]) => number>)[task.fn]!(...task.args);
+  const answer = callContentFunction(task.fn, task.args) as number;
   const value = calc.parseCs(input);
   const correct = value !== null && Math.abs(value - answer) <= task.tolerance + 1e-9;
   return (

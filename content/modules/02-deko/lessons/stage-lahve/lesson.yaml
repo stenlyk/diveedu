@@ -1,0 +1,18 @@
+id: stage-lahve
+moduleId: deko
+title: "Stage lahve: nošení, značení a objem"
+order: 10
+conceptIds: ["stage-lahev", "deko-lahev", "vztlak", "zamena-plynu"]
+checkQuestionIds: ["stage-proc-hlinik", "stage-znaceni", "stage-objem-plynu", "stage-ventil"]
+estimatedMinutes: 9
+audioSummary: >-
+  Stage lahev je samostatná lahev s vlastní automatikou, připnutá na boku.
+  Používají se hliníkové lahve, protože jsou ve vodě téměř neutrální.
+  Automatika je natlakovaná a ventil zavřený. Z lahve se tak nedá nadechnout omylem.
+  Maximální hloubka směsi je napsaná velkými číslicemi na obou bocích.
+  Lahve nos vždy na stejném místě, aby ruka šla pro každý plyn stejným pohybem.
+  Objem lahve vol podle potřeby plynu včetně rezervy.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+needs_review: true

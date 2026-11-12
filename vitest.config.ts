@@ -6,8 +6,8 @@ export default defineConfig({
     environment: 'node',
     coverage: {
       provider: 'v8',
-      include: ['calc/src/**/*.ts'],
-      exclude: ['calc/src/index.ts'],
+      include: ['calc/src/**/*.ts', 'deco/src/**/*.ts'],
+      exclude: ['calc/src/index.ts', 'deco/src/index.ts'],
       reporter: ['text', 'json-summary'],
       thresholds: { branches: 100, functions: 100, lines: 100, statements: 100 },
     },

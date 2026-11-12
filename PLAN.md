@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–3 hotové (MVP). Obsah modulů 0 a 1 čeká na odbornou kontrolu. Další je etapa 4.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–3 hotové (MVP). Etapa 4 probíhá: dodávka 4a hotová (deco, modul 2, tkáňový simulátor), zbývá 4b (modul 3, ternární diagram) a 4c (modul 4, profil ponoru).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -293,3 +293,14 @@ Odchylky od plánu:
 - Zvládnutí se počítá živě z historie odpovědí; tabulka `mastery` zůstává ve schématu nevyužitá (bez migrace ji lze později použít jako cache).
 - Pohled „Co kdyby“ (animace zhoršení uzlů při změně vstupu) přijde v etapě 4, až budou v grafu uzly pro hustotu směsí a END.
 - Rozpočet velikosti: kód < 1,5 MB, celkem s textem < 3 MB (rozhodnutí 2026-11-12). Aktuálně kód 1,23 MB, celkem 1,50 MB.
+
+## 18. Etapa 4a – dekomprese a modul 2 (hotovo 2026-11-12)
+
+- **`deco/`:** Bühlmann ZHL-16C (kompartment 1b, poločas 5 min), Schreinerova rovnice, gradient factors (GF low ukotvený na první zastávce), zastávky po 3 m, poslední zastávka 3 nebo 6 m, přepínání plynů, minutové vzorky pro simulátor. Pokrytí 100 %.
+- **Ověření proti referenci – jen částečné.** Koeficienty souhlasí se zdrojovým kódem Subsurface. Jeden profil z testů Subsurface (79 m / 30 min, Tx 15/45, GF 100/100) vychází na 109,0 min proti 109 min. SPEC chce 10 profilů; zbylých 9 chybí, protože spuštění cizí referenční knihovny nebylo při vývoji povoleno. Postup doplnění je v `deco/test/fixtures/README.md`. **Akceptační kritérium „Deko ověřené proti referenci“ tedy zatím není splněné.**
+- **Modul 2 – Decompression Procedures:** 13 lekcí, 62 otázek, 26 uzlů, 45 vazeb, 13 zajímavostí.
+- **Tkáňový simulátor:** 16 kompartmentů v čase, graf okolní tlak × tlak v tkáni s přímkou M-hodnot a limitem GF, přehrávání profilu.
+- **Kalkulačky:** spotřeba, SAC z ponoru, minimum gas, třetiny, otočka dvojice; hračky M-hodnota, bezdekompresní limit, vliv GF, vliv dekompresního plynu.
+- Obsah smí volat funkce z `calc` i `deco` přes jeden seznam (`src/content/fns.ts`).
+- Čísla z dekompresního modelu v lekcích jdou přes `<Calc>` bez ruční reference – ručně je spočítat nelze. Jejich správnost stojí na ověření `deco/`.
+- Nová případová studie pro modul 2 nevznikla; stávající „záměna plynu“ je přiřazená i k němu. Rouseovi (U-869) přijdou s modulem 3.

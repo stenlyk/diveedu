@@ -4,6 +4,7 @@
  * i jako kalkulačka v Nástrojích (režimy „Spočti mi“ a „Spočítám sám“).
  */
 import * as c from '@diveedu/calc';
+import * as d from '@diveedu/deco';
 
 export interface InputDef {
   key: string;
@@ -282,6 +283,157 @@ export const CALC_DEFS: CalcDef[] = [
       { label: 'MOD při 1,6 bar (dekomprese)', value: c.floorTo(c.mod(v.o2!, 1.6)), unit: 'm', decimals: 0, note: 'Na štítek patří: naměřený podíl O2, MOD, datum a podpis toho, kdo měřil a kdo bude z lahve dýchat.' },
     ],
   },
+  // ── Modul 2: plánování plynu a dekomprese ──────────────────────────────────
+  {
+    id: 'consumption',
+    title: 'Spotřeba plynu',
+    summary: 'Kolik plynu spotřebuješ v hloubce a kolik je to na manometru.',
+    tool: true,
+    inputs: [
+      { key: 'sac', label: 'Povrchová spotřeba (SAC)', min: 10, max: 40, step: 1, unit: 'l/min', initial: 20 },
+      depth(30, 70),
+      { key: 'minutes', label: 'Čas', min: 1, max: 60, step: 1, unit: 'min', initial: 20 },
+      { key: 'tank', label: 'Objem lahví', min: 7, max: 30, step: 1, unit: 'l', initial: 24 },
+    ],
+    outputs: (v) => {
+      const liters = c.gasConsumed(v.sac!, v.depth!, v.minutes!);
+      return [
+        { label: 'Spotřeba', value: liters, unit: 'l', decimals: 0 },
+        { label: 'Úbytek na manometru', value: c.ceilTo(c.litersToBar(liters, v.tank!)), unit: 'bar', decimals: 0, bar: { max: 232 }, note: `${c.formatCs(c.sacBarPerMinute(v.sac!, v.depth!, v.tank!), 1)} bar za minutu. Zaokrouhleno nahoru.` },
+      ];
+    },
+    steps: (v) => c.gasConsumedSteps(v.sac!, v.depth!, v.minutes!),
+  },
+  {
+    id: 'sac-log',
+    title: 'SAC z ponoru',
+    summary: 'Povrchová spotřeba spočítaná z poklesu tlaku.',
+    tool: true,
+    inputs: [
+      { key: 'start', label: 'Tlak na začátku', min: 150, max: 300, step: 5, unit: 'bar', initial: 200 },
+      { key: 'used', label: 'Spotřebováno', min: 10, max: 150, step: 5, unit: 'bar', initial: 100 },
+      { key: 'tank', label: 'Objem lahví', min: 7, max: 30, step: 1, unit: 'l', initial: 12 },
+      depth(20, 60, 'depth', 'Průměrná hloubka'),
+      { key: 'minutes', label: 'Čas', min: 5, max: 90, step: 5, unit: 'min', initial: 40 },
+    ],
+    outputs: (v) => [{ label: 'SAC', value: c.sacFromPressureDrop(v.start!, v.start! - v.used!, v.tank!, v.depth!, v.minutes!), unit: 'l/min', decimals: 1, bar: { max: 40 }, note: 'Klidná spotřeba. Pro rezervy se počítá se stresovou, obvykle dvojnásobnou.' }],
+    steps: (v) => c.sacSteps(v.start!, v.start! - v.used!, v.tank!, v.depth!, v.minutes!),
+  },
+  {
+    id: 'rock-bottom',
+    title: 'Minimum gas (rock bottom)',
+    summary: 'Rezerva, která dostane dva potápěče z nejhlubšího bodu na hladinu.',
+    tool: true,
+    inputs: [
+      depth(30, 60),
+      { key: 'sac', label: 'Stresová spotřeba jednoho potápěče', min: 15, max: 45, step: 5, unit: 'l/min', initial: 20 },
+      { key: 'tank', label: 'Objem lahví', min: 10, max: 30, step: 1, unit: 'l', initial: 24 },
+    ],
+    outputs: (v) => [
+      { label: 'Rezerva v litrech', value: c.rockBottomLiters(v.depth!, v.sac!), unit: 'l', decimals: 0 },
+      { label: 'Rezerva na manometru (nahoru na 10 bar)', value: c.ceilTo(c.rockBottomBar(v.depth!, v.sac!, v.tank!), 10), unit: 'bar', decimals: 0, bar: { max: 232 }, note: 'Dva potápěči, 1 min řešení v hloubce, výstup 9 m/min bez zastávek. Konvence agentur se liší; zastávky a dekomprese se připočítávají.' },
+    ],
+    steps: (v) => c.rockBottomSteps(v.depth!, v.sac!, v.tank!),
+  },
+  {
+    id: 'thirds',
+    title: 'Pravidlo třetin',
+    summary: 'Kdy otočit ponor, ze kterého není přímá cesta na hladinu.',
+    tool: true,
+    inputs: [{ key: 'start', label: 'Tlak na začátku', min: 150, max: 300, step: 5, unit: 'bar', initial: 200 }],
+    outputs: (v) => {
+      const thirds = c.ruleOfThirdsPractical(v.start!);
+      return [
+        { label: 'Plyn na cestu tam', value: thirds.usableBar, unit: 'bar', decimals: 0 },
+        { label: 'Tlak otočky', value: thirds.turnBar, unit: 'bar', decimals: 0, bar: { max: 300 }, note: 'Třetina se zaokrouhluje dolů na celé desítky barů.' },
+      ];
+    },
+  },
+  {
+    id: 'team-turn',
+    title: 'Otočka dvojice',
+    summary: 'Tlak otočky pro dva potápěče s různými lahvemi nebo spotřebou.',
+    tool: true,
+    inputs: [
+      { key: 'start', label: 'Tlak obou na začátku', min: 150, max: 300, step: 10, unit: 'bar', initial: 200 },
+      { key: 'tankA', label: 'Lahve potápěče A', min: 10, max: 30, step: 1, unit: 'l', initial: 24 },
+      { key: 'sacA', label: 'SAC potápěče A', min: 10, max: 35, step: 1, unit: 'l/min', initial: 20 },
+      { key: 'tankB', label: 'Lahve potápěče B', min: 10, max: 30, step: 1, unit: 'l', initial: 15 },
+      { key: 'sacB', label: 'SAC potápěče B', min: 10, max: 35, step: 1, unit: 'l/min', initial: 15 },
+    ],
+    outputs: (v) => {
+      const turn = c.teamTurnPressure({ tankLiters: v.tankA!, startBar: v.start!, sacLpm: v.sacA! }, { tankLiters: v.tankB!, startBar: v.start!, sacLpm: v.sacB! });
+      return [
+        { label: 'Otočka potápěče A', value: c.ceilTo(turn.a.turnBar, 5), unit: 'bar', decimals: 0, tone: turn.limitedBy === 'a' ? 'warn' : undefined },
+        { label: 'Otočka potápěče B', value: c.ceilTo(turn.b.turnBar, 5), unit: 'bar', decimals: 0, tone: turn.limitedBy === 'b' ? 'warn' : undefined, note: `Ponor otáčí potápěč ${turn.limitedBy.toUpperCase()}. Nikdo nepoužije víc než svou třetinu a rezerva každého stačí na cestu ven pro oba.` },
+      ];
+    },
+  },
+  {
+    id: 'm-value',
+    title: 'M-hodnota kompartmentu',
+    summary: 'Kolik dusíku tkáň snese v dané hloubce.',
+    inputs: [
+      { key: 'comp', label: 'Kompartment', min: 1, max: 16, step: 1, unit: '', initial: 5 },
+      depth(0, 40),
+    ],
+    outputs: (v) => {
+      const ambient = c.absPressure(v.depth!);
+      const m = d.mValueN2(v.comp!, ambient);
+      return [
+        { label: 'Poločas kompartmentu', value: d.n2HalfTime(v.comp!), unit: 'min', decimals: 1 },
+        { label: 'Okolní tlak', value: ambient, unit: 'bar', decimals: 1 },
+        { label: 'M-hodnota (nejvyšší tolerovaný tlak dusíku)', value: m, unit: 'bar', decimals: 2, bar: { max: 9 }, note: `Povolené přesycení nad okolní tlak: ${c.formatCs(m - ambient, 2)} bar. Rychlé kompartmenty snesou víc.` },
+      ];
+    },
+  },
+  {
+    id: 'ndl',
+    title: 'Bezdekompresní limit',
+    summary: 'Jak dlouho lze zůstat bez zastávek – podle modelu a zvoleného GF.',
+    inputs: [depth(30, 45), pct('fO2', 'Kyslík ve směsi', 21, 40, 21), { key: 'gf', label: 'Gradient factor', min: 50, max: 100, step: 5, unit: '%', initial: 85 }],
+    outputs: (v) => [{ label: 'Bezdekompresní limit', value: d.ndlMinutes(Math.max(v.depth!, 6), v.fO2!, v.gf!), unit: 'min', decimals: 0, bar: { max: 120 }, note: 'Výukový model ZHL-16C. Skutečný počítač může ukázat jinou hodnotu – má jiné konvence a zná tvůj předchozí ponor.' }],
+  },
+  {
+    id: 'gf-plan',
+    title: 'Gradient factors a tvar dekomprese',
+    summary: 'Jak GF low a GF high mění první zastávku a délku výstupu (vzduch).',
+    inputs: [
+      depth(45, 60),
+      { key: 'bottom', label: 'Čas na dně', min: 10, max: 40, step: 5, unit: 'min', initial: 25 },
+      { key: 'low', label: 'GF low', min: 10, max: 100, step: 5, unit: '%', initial: 30 },
+      { key: 'high', label: 'GF high', min: 50, max: 100, step: 5, unit: '%', initial: 85 },
+    ],
+    outputs: (v) => {
+      const low = Math.min(v.low!, v.high!);
+      const depthM = Math.max(v.depth!, 18);
+      return [
+        { label: 'První zastávka', value: d.firstStopAir(depthM, v.bottom!, low, v.high!), unit: 'm', decimals: 0, bar: { max: 40 } },
+        { label: 'Doba výstupu včetně zastávek', value: d.ascentMinutesAir(depthM, v.bottom!, low, v.high!), unit: 'min', decimals: 0, bar: { max: 150 }, note: 'GF low určuje, kde dekomprese začne. GF high určuje, s jakým přesycením vylezeš z vody.' },
+      ];
+    },
+  },
+  {
+    id: 'deco-gas',
+    title: 'Vliv dekompresního plynu',
+    summary: 'O kolik zkrátí výstup bohatá směs (dno na vzduchu, GF 30/85).',
+    inputs: [
+      depth(45, 60),
+      { key: 'bottom', label: 'Čas na dně', min: 10, max: 40, step: 5, unit: 'min', initial: 25 },
+      pct('fO2', 'Kyslík v dekompresním plynu', 32, 100, 50),
+    ],
+    outputs: (v) => {
+      const depthM = Math.max(v.depth!, 18);
+      const switchDepth = c.floorTo(Math.min(c.mod(v.fO2!, 1.6), depthM), 3);
+      const air = d.ascentMinutesAir(depthM, v.bottom!, 30, 85);
+      const mixed = d.ascentMinutesWithDecoGas(depthM, v.bottom!, 30, 85, v.fO2!, switchDepth);
+      return [
+        { label: 'Hloubka přepnutí (MOD při 1,6 bar, na zastávku)', value: switchDepth, unit: 'm', decimals: 0 },
+        { label: 'Výstup jen na vzduchu', value: air, unit: 'min', decimals: 0, bar: { max: 150 } },
+        { label: 'Výstup s dekompresním plynem', value: mixed, unit: 'min', decimals: 0, tone: 'ok', bar: { max: 150 } },
+      ];
+    },
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));
@@ -302,6 +454,8 @@ export function stepTolerance(step: c.CalcStep): number {
     case 'bar': return step.value > 20 ? 1 : 0.02;
     case 'm': return 1;
     case '': return 0.01;
+    case 'l/min': return 0.5;
+    case 'l': return Math.max(5, Math.abs(step.value) * 0.02);
     case 'g/l': return 0.05;
     case '%': case 'OTU': case 'min': return 1;
     default: return Math.max(0.1, Math.abs(step.value) * 0.01);

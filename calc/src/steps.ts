@@ -4,7 +4,7 @@ import { AIR_FN2, fN2, type Gas } from './gas';
 import { ead, end } from './narcosis';
 import { bestMix, cnsLimitMinutes, mod, otu, ppO2 } from './oxygen';
 import { absPressure, boyleVolume } from './pressure';
-import { gasConsumed } from './consumption';
+import { gasConsumed, rockBottomLiters, sacFromPressureDrop } from './consumption';
 import { partialPressureBlend } from './blending';
 import { CalcInputError } from './errors';
 
@@ -231,5 +231,30 @@ export function nitroxBlendSteps(targetBar: number, targetFO2: number): CalcStep
       value: blend.o2Bar,
       unit: 'bar',
     },
+  ];
+}
+
+export function sacSteps(startBar: number, endBar: number, tankLiters: number, avgDepthM: number, minutes: number): CalcStep[] {
+  const liters = (startBar - endBar) * tankLiters;
+  const p = absPressure(avgDepthM);
+  return [
+    { label: 'Spotřebovaný plyn', latex: `V = (${tex(startBar)} - ${tex(endBar)}) \\cdot ${tex(tankLiters)}`, value: liters, unit: 'l' },
+    { label: 'Tlak v průměrné hloubce', latex: `P_{abs} = \\frac{${tex(avgDepthM)}}{10} + 1`, value: p, unit: 'bar' },
+    { label: 'Povrchová spotřeba', latex: `SAC = \\frac{V}{P_{abs} \\cdot t} = \\frac{${tex(liters)}}{${tex(p)} \\cdot ${tex(minutes)}}`, value: sacFromPressureDrop(startBar, endBar, tankLiters, avgDepthM, minutes), unit: 'l/min' },
+  ];
+}
+
+/** Rock bottom s výchozími konvencemi: 2 potápěči, 1 min v hloubce, výstup 9 m/min průměrnou hloubkou. */
+export function rockBottomSteps(depthM: number, sacLpm: number, tankLiters: number): CalcStep[] {
+  const atDepth = gasConsumed(sacLpm, depthM, 1);
+  const ascentMin = depthM / 9;
+  const ascent = gasConsumed(sacLpm, depthM / 2, ascentMin);
+  const liters = rockBottomLiters(depthM, sacLpm);
+  return [
+    { label: 'Minuta řešení problému v hloubce (jeden potápěč)', latex: `V_1 = ${tex(sacLpm)} \\cdot ${tex(absPressure(depthM))} \\cdot 1`, value: atDepth, unit: 'l' },
+    { label: 'Doba výstupu rychlostí 9 m/min', latex: `t = \\frac{${tex(depthM)}}{9}`, value: ascentMin, unit: 'min' },
+    { label: 'Výstup průměrnou hloubkou (jeden potápěč)', latex: `V_2 = ${tex(sacLpm)} \\cdot ${tex(absPressure(depthM / 2))} \\cdot ${tex(ascentMin, 2)}`, value: ascent, unit: 'l' },
+    { label: 'Pro dva potápěče', latex: `V = 2 \\cdot (V_1 + V_2) = 2 \\cdot (${tex(atDepth, 1)} + ${tex(ascent, 1)})`, value: liters, unit: 'l' },
+    { label: 'Přepočet na tlak v lahvi', latex: `P = \\frac{V}{V_{lahev}} = \\frac{${tex(liters, 1)}}{${tex(tankLiters)}}`, value: liters / tankLiters, unit: 'bar' },
   ];
 }

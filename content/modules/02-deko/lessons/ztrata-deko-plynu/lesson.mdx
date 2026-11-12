@@ -1,0 +1,84 @@
+<Hook>
+
+Ve 21 metrech otevřeš ventil dekompresní lahve, nadechneš se – a nic. Manometr ukazuje nulu.
+
+Tvůj plán počítal se <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 0.5, 21]} unit="min" /> výstupu. Teď je to <Calc fn="ascentMinutesAir" args={[45, 25, 30, 85]} unit="min" />. Máš na to na zádech plyn?
+
+</Hook>
+
+<Principle>
+
+Dekompresní plyn se může ztratit mnoha způsoby: vadný ventil, utržená lahev, únik během ponoru, záměna, nebo ho potřebuje partner.
+Dobrý plán s tím počítá předem, protože pod vodou se už nic vypočítat nedá.
+
+**Záložní rozvrh.** Ke každému plánu patří druhá tabulka: dekomprese jen na plynu ze zad. Je výrazně delší.
+Nosíš ji napsanou s sebou a tvoje zásoba plynu na zádech musí na tento rozvrh stačit – to je skutečná rezerva dekompresního ponoru.
+
+**Tým.** Dekompresní plyn s rezervou 1,5 pokryje část potřeby partnera. Dva potápěči se o jednu lahev mohou střídat.
+Proto tým nosí stejné směsi a dekomprimuje spolu.
+
+**Vynechaná dekomprese** je situace, kdy potápěč vystoupal nad strop nebo se vynořil bez dokončených zastávek. Co dál, určují postupy agentur a námořnictev;
+liší se podle toho, kolik dekomprese chybí a zda má potápěč příznaky. Společné zásady:
+
+- **bez příznaků, krátké přerušení:** některé postupy dovolují vrátit se během několika minut do hloubky a zastávky prodloužit – jen pokud je dost plynu, partner a podmínky,
+- **jinak:** zůstat na hladině, dýchat kyslík, ležet v klidu, pít, sledovat příznaky a kontaktovat hyperbarického lékaře,
+- **s příznaky:** kyslík a transport do komory. Nikdy návrat do vody.
+
+Improvizovaná „léčba“ ponořením zpět do hloubky bez připraveného postupu, plynu a podpory zabila víc lidí, než zachránila.
+
+Nejlepší postup pro vynechanou dekompresi je ten, který nikdy nepoužiješ: záložní rozvrh, dost plynu a tým.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Potřebu plynu pro záložní rozvrh spočítáš stejně jako každou jinou: zastávku po zastávce, dekompresní spotřebou, a přičteš výstup.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor 45 m a 25 minut na vzduchu, GF 30/85. Podle výukového modelu:
+
+- plán s EAN50: výstup <Calc fn="ascentMinutesWithDecoGas" args={[45, 25, 30, 85, 0.5, 21]} unit="min" />
+- záložní rozvrh jen na vzduchu: výstup <Calc fn="ascentMinutesAir" args={[45, 25, 30, 85]} unit="min" />
+
+Většina času navíc připadá na mělké zastávky. Hrubý odhad potřeby: 40 minut v průměru kolem 6 m při dekompresní spotřebě 15 l/min:
+
+<Worked fn="gasConsumed" args={[15, 6, 40]} expected={960} tolerance={0.1} unit="l" decimals={0} />
+
+V dvojčeti 2×12 l to je <Calc fn="litersToBar" args={[960, 24]} decimals={0} unit="bar" /> – navíc k minimum gas a k plynu na dno. Kdo tohle nemá spočítané, nemá záložní plán.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="deco-gas" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="vynechana-deko-postupy" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

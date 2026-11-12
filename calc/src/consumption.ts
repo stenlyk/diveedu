@@ -164,3 +164,44 @@ export function teamTurnPressure(a: TeamDiver, b: TeamDiver): TeamTurn {
   };
   return { a: turn(a), b: turn(b), limitedBy: limitA <= limitB ? 'a' : 'b' };
 }
+
+// ── Zkratky s číselnými argumenty (pro lekce, kalkulačky a numerické otázky) ──
+
+/** SAC z poklesu tlaku: (start − konec) · objem lahve / (tlak v průměrné hloubce · čas). */
+export function sacFromPressureDrop(startBar: number, endBar: number, tankLiters: number, avgDepthM: number, minutes: number): number {
+  return sacFromLog({ startBar, endBar, tankLiters, avgDepthM, minutes });
+}
+
+/** Rock bottom v litrech s výchozími konvencemi (2 potápěči, 1 min řešení, výstup 9 m/min). */
+export function rockBottomLiters(depthM: number, sacLpm: number): number {
+  return rockBottom({ depthM, sacLpm });
+}
+
+/** Rock bottom přepočtený na tlak v lahvi daného objemu. */
+export function rockBottomBar(depthM: number, sacLpm: number, tankLiters: number): number {
+  return litersToBar(rockBottomLiters(depthM, sacLpm), tankLiters);
+}
+
+/** Tlak otočky podle pravidla třetin, jak se počítá v praxi (třetina dolů na desítky barů). */
+export function thirdsTurnBar(startBar: number): number {
+  return ruleOfThirdsPractical(startBar).turnBar;
+}
+
+/** Doba výstupu nebo sestupu mezi dvěma hloubkami danou rychlostí. */
+export function travelMinutes(fromM: number, toM: number, rateMpm: number): number {
+  assertNonNegative(fromM, 'hloubka');
+  assertNonNegative(toM, 'hloubka');
+  assertPositive(rateMpm, 'rychlost');
+  return Math.abs(fromM - toM) / rateMpm;
+}
+
+/** Spotřeba v barech za minutu z dané lahve (SAC v l/min přepočtená na manometr). */
+export function sacBarPerMinute(sacLpm: number, depthM: number, tankLiters: number, env: Env = DEFAULT_ENV): number {
+  return litersToBar(gasConsumed(sacLpm, depthM, 1, env), tankLiters);
+}
+
+/** Plyn na dekompresní zastávky s rezervou (násobitel, obvykle 1,5). */
+export function decoGasLiters(sacLpm: number, stops: readonly Stop[], reserveFactor = 1.5, env: Env = DEFAULT_ENV): number {
+  assertPositive(reserveFactor, 'rezerva');
+  return reserveFactor * stops.reduce((sum, stop) => sum + gasConsumed(sacLpm, stop.depthM, stop.minutes, env), 0);
+}
