@@ -1,0 +1,93 @@
+<Hook>
+
+Otočíš se a kužel světla, který byl celou dobu za tebou, tam není. Chodba je prázdná.
+
+Máš šňůru, světlo i plyn. Tvůj problém je teď jiný: kolik z toho plynu smíš utratit za hledání někoho, kdo už možná plave ven?
+
+</Hook>
+
+<Principle>
+
+Ztráta partnera se liší od ostatních nouzí tím, že **nevíš, co se stalo**. Partner mohl zůstat vzadu kvůli výstroji, odbočit, ztratit šňůru – nebo otočil a čeká u východu.
+
+**Postup:**
+
+1. **Zastav. Zůstaň u šňůry.** Kdo opustí šňůru, aby hledal, přidá k jednomu ztracenému druhého.
+2. **Zakryj světlo** – dlaní nebo o tělo, nezhasínej. Ve tmě je cizí kužel vidět na velkou vzdálenost.
+3. **Rozhlédni se.** Potom světlem pomalu prosvit okolí, zejména místa pod úrovní šňůry a za zády.
+4. **Rozhodni, kolik plynu na hledání máš.** To číslo se počítá hned, ne v průběhu.
+5. **Vrať se po šňůře** k místu, kde jsi partnera viděl naposledy. Hledej ze šňůry; mimo ni jen s vlastní cívkou uvázanou ke šňůře.
+6. **Když limit vyprší, odcházíš.** Na šňůře necháš značku směrem k východu a pokud můžeš, záložní světlo. Partner, který šňůru najde, ví, kudy ven a že jsi odešel.
+
+**Kolik plynu na hledání:** tolik, aby ti po něm zbylo na cestu ven s rezervou. Rezervní třetina, se kterou plán počítal pro partnera, je teď k dispozici – ale jen její část.
+Návrat sám, bez partnerovy rezervy, je sám o sobě ponor se sníženou jistotou.
+
+**Ten, kdo se ztratil,** má vlastní postup: je to ztráta šňůry, kterou znáš z předchozího modulu. Když šňůru najde a na ní značku partnera, jde ven.
+
+**Prevence** je levnější než hledání:
+
+- pořadí v týmu se nemění bez signálu,
+- každý vidí světlo toho za sebou; zmizelý kužel je důvod zastavit hned,
+- kontrola týmu na každém rozhodnutí a v pravidelných intervalech,
+- rychlost určuje nejpomalejší.
+
+Nejtěžší na tomto postupu není technika. Je to šestý krok.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Limit hledání je výpočet spotřeby pozpátku: kolik minut vydrží plyn, který si na hledání smíš dovolit.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Na hledání sis vyhradil 30 bar z dvojčete 2×12 l. Jsi ve 20 m a dýcháš zrychleně, 25 l/min. Kolik je to času?
+
+<Worked fn="minutesOnGas" args={[30, 24, 25, 20]} expected={9.6} tolerance={0.05} unit="min" decimals={0} />
+
+Necelých deset minut. Když se ti dech vymkne a spotřeba stoupne na 40 l/min:
+
+<Worked fn="minutesOnGas" args={[30, 24, 40, 20]} expected={6} tolerance={0.05} unit="min" decimals={0} />
+
+Šest minut. Limit se proto hlídá na manometru, ne na hodinkách: tlak, při kterém odcházíš, si řekni předem jako jedno číslo.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'partnera vidíš mimo šňůru, pár metrů od ní?', effect: 'Posviť mu na šňůru a signalizuj. Když nereaguje, jdi k němu jen s vlastní cívkou uvázanou ke šňůře.' },
+  { label: 'limit vypršel a partnera jsi nenašel?', effect: 'Necháš značku směrem ven a odcházíš. Další minuty hledání nezvyšují jeho šance; snižují tvoje.' },
+  { label: 'jsi ten, kdo zůstal vzadu, a tým odplaval?', effect: 'Zůstaň na šňůře a jdi ven. Tým se vrátí po šňůře k místu, kde tě viděl naposledy – potkáte se na ní.' },
+  { label: 'na šňůře najdeš partnerovu značku ukazující ven?', effect: 'Partner tu byl a odešel. Jdi ven také.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="svetlo-ve-tme" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

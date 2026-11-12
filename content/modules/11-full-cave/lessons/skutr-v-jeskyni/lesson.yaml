@@ -1,0 +1,19 @@
+id: skutr-v-jeskyni
+moduleId: fullcave
+title: "Skútr v jeskyni"
+order: 7
+conceptIds: ["skutr-dpv", "selhani-skutru", "tazeni-partnera", "podil-plynu"]
+checkQuestionIds: ["skutr-dosah", "skutr-otocka", "skutr-selhani-plan", "skutr-tazeni", "skutr-chyby", "skutr-rizika"]
+estimatedMinutes: 11
+audioSummary: >-
+  Skútr zvyšuje rychlost třikrát i víc a snižuje námahu. Za stejný plyn urazíš několikanásobek vzdálenosti.
+  Právě to je riziko. Skútr prodlužuje cestu dovnitř, ale nezaručuje cestu ven.
+  Plyn se plánuje na nejhorší případ. V nejvzdálenějším bodě skútr selže.
+  Bez záložního skútru a bez tažení klesá použitelný podíl plynu na sedminu nebo méně.
+  Baterie se plánuje stejně jako plyn, na třetiny.
+  Rychlost bere čas na rozhodování. Vrtule patří od dna, od stropu a od šňůry.
+  Všechno, co se skútrem uděláš, musíš umět dokončit bez něj.
+sources:
+  - { title: "TDI DPV Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+needs_review: true

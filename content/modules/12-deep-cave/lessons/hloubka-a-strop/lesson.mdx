@@ -1,0 +1,92 @@
+<Hook>
+
+V modulech o trimixu byla nouzovým řešením kontrolovaná cesta nahoru podél lana. V jeskynních modulech to byla cesta ven po šňůře, v hloubce, kde plyn vydrží dlouho.
+
+V hluboké jeskyni neplatí ani jedno. Nahoře je skála a cesta ven vede hloubkou, ve které plyn mizí před očima.
+
+</Hook>
+
+<Principle>
+
+<Term cs="prostředí se stropem" /> a velká hloubka jsou každé samo zvládnutelné. Dohromady se jejich rizika nesčítají, ale násobí:
+
+**Plyn.** Spotřeba roste s absolutním tlakem. Ve 45 m dýcháš 5,5krát víc než na hladině, a stejná třetina tak vystačí na poloviční vzdálenost než ve 20 m.
+Rezerva na cestu ven pro dva, která v mělké jeskyni vycházela s rezervou, se v hloubce nevejde do lahví na zádech.
+
+**Narkóza a hustota.** V jeskyni se rozhoduje pořád: značky, rozcestí, tlak, tým. Narkóza zpomaluje právě rozhodování, a hustý plyn přidává CO2, který ji prohlubuje.
+Proto se v hlubokých jeskyních volí směsi s nižší narkotickou hloubkou než v otevřené vodě.
+
+**Dekomprese.** Vzniká daleko od vchodu a musí se odvést pod skalním stropem. Každé zdržení na dně – hledání značky, zachycená výstroj – ji prodlužuje,
+a v jeskyni jsou zdržení pravidlem.
+
+**Čas na řešení problému.** Ztráta šňůry ve 20 m dává desítky minut. V 60 m minuty.
+
+Co z toho plyne:
+
+- **helium** tak, aby narkotická hloubka i hustota zůstaly nízko,
+- **plyn navíc**: stage lahve, odložené rezervy, dekompresní plyn v dosahu,
+- **kratší průnik**, než by dovolily třetiny z mělké jeskyně,
+- **výcvik v obojím**: jeskynní kvalifikace neopravňuje k hloubce a trimixová k jeskyni.
+
+Hluboká jeskyně je syntéza. Nic v ní není nové; nové je, že všechno platí zároveň.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dosah" />
+
+Absolutní tlak je ve jmenovateli. Čím hlouběji, tím kratší dosah na stejný plyn.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Dosah na třetinu** z dvojčete 2×12 l (70 bar), spotřeba 20 l/min, rychlost 15 m/min. Ve 20 m:
+
+<Worked fn="penetrationDistance" args={[70, 24, 20, 20, 15]} expected={420} tolerance={0.1} unit="m" decimals={0} />
+
+Ve 45 m:
+
+<Worked fn="penetrationDistance" args={[70, 24, 20, 45, 15]} expected={229.09} tolerance={0.1} unit="m" decimals={0} />
+
+**Cesta ven pro dva** z 300 m ve 45 m:
+
+<Worked fn="exitGasBar" args={[300, 15, 20, 45, 24]} expected={183.33} tolerance={0.1} unit="bar" decimals={0} />
+
+Přes 180 bar z jednoho dvojčete, a to bez dekomprese. Samotná záda tu nestačí.
+
+**Směs.** Vzduch v 60 m má narkotickou hloubku <Calc fn="endOfMix" args={[0.21, 0, 60]} decimals={0} unit="m" /> a hustotu <Calc fn="densityOfMix" args={[0.21, 0, 60]} decimals={1} unit="g/l" />.
+Trimix 18/45 ve stejné hloubce: <Calc fn="endOfMix" args={[0.18, 0.45, 60]} decimals={0} unit="m" /> a <Calc fn="densityOfMix" args={[0.18, 0.45, 60]} decimals={1} unit="g/l" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="penetration" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="hluboka-jeskyne-na-vzduch" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,242 @@
+- id: hj-co-se-scita
+  type: multi
+  conceptIds: [hluboka-jeskyne]
+  difficulty: 1
+  prompt: Co se v hluboké jeskyni přidává k rizikům mělké jeskyně?
+  options:
+    - { text: 'Několikanásobná spotřeba plynu na stejnou vzdálenost', correct: true }
+    - { text: 'Narkóza a hustota plynu při neustálém rozhodování', correct: true }
+    - { text: 'Dekomprese daleko od vchodu, pod skalním stropem', correct: true }
+    - { text: 'Nová pravidla pro vodicí šňůru', explanation: 'Šňůra, světla i navigace platí beze změny. Nové je, že všechno platí zároveň.' }
+  explanation: 'Rizika hloubky a stropu se nesčítají, ale násobí: méně plynu, méně času a méně úsudku na stejný problém.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-dosah-hloubka
+  type: numeric
+  conceptIds: [hluboka-jeskyne, dosah-pruniku]
+  difficulty: 2
+  prompt: 'Na cestu dovnitř máš 70 bar v dvojčeti 24 l, spotřeba 20 l/min, rychlost 15 m/min. Jak daleko doplaveš v hloubce {depth} m?'
+  template: { fn: penetrationDistance, params: { depth: { values: [30, 40, 45, 50, 60] } }, fixed: { usable: 70, tank: 24, sac: 20, speed: 15 }, args: [usable, tank, sac, depth, speed], tolerance: 5, unit: m, decimals: 0 }
+  explanation: 'Litry děleno spotřebou v hloubce dají minuty; minuty krát rychlost dají dosah. Ve 20 m by to bylo 420 m.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-vzduch-proc
+  type: why
+  conceptIds: [hluboka-jeskyne, hluboky-vzduch, dusikova-narkoza]
+  difficulty: 2
+  prompt: Proč se v hlubokých jeskyních volí nižší narkotická hloubka než v otevřené vodě?
+  options:
+    - { text: 'V jeskyni se rozhoduje nepřetržitě a chybu nelze napravit výstupem.', correct: true }
+    - { text: 'Narkóza je v jeskyni fyziologicky silnější.', explanation: 'Fyziologie je stejná. Jiné jsou nároky a následky.' }
+    - { text: 'Helium je v jeskyních levnější.', explanation: 'Není.' }
+    - { text: 'Dusík poškozuje krápníky.', explanation: 'Nepoškozuje.' }
+  explanation: 'Značky, rozcestí, tlak, tým – narkóza zpomaluje přesně to, na čem v jeskyni záleží.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-narkoza-sediment
+  type: why
+  conceptIds: [hluboka-jeskyne, nulova-viditelnost, hluboky-vzduch]
+  difficulty: 3
+  prompt: Proč je kombinace narkózy a zvířeného sedimentu ve velkém hlubokém dómu tak nebezpečná?
+  options:
+    - { text: 'Postup při ztrátě šňůry vyžaduje klid a metodu, které narkóza bere jako první, a plyn v hloubce dává jen minuty.', correct: true }
+    - { text: 'Sediment v hloubce neklesá.', explanation: 'Klesá stejně. Jen na čekání není plyn.' }
+    - { text: 'Ve velkém dómu šňůra nevede.', explanation: 'Vede, ale když ji nikdo nedrží, nejsou kolem stěny, podle kterých by se dala najít.' }
+    - { text: 'Narkóza způsobuje ztrátu vztlaku.', explanation: 'Přímo ne.' }
+  explanation: 'Hustý plyn a rychlý dech navíc zvyšují CO2, který narkózu prohlubuje.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-plyn-ven
+  type: numeric
+  conceptIds: [hluboka-jeskyne, sdileni-plynu]
+  difficulty: 3
+  prompt: 'Partner přišel o plyn {distance} m od vchodu v hloubce {depth} m. Ven plavete 15 m/min, oba dýcháte z tvého dvojčete 24 l, každý 20 l/min. Kolik barů cesta ven spotřebuje?'
+  template: { fn: exitGasBar, params: { distance: { values: [150, 200, 300] }, depth: { values: [40, 45, 50] } }, fixed: { speed: 15, sac: 20, tank: 24 }, args: [distance, speed, sac, depth, tank], tolerance: 3, unit: bar, decimals: 0 }
+  explanation: 'Čas krát spotřeba dvou potápěčů v hloubce, děleno objemem. V hloubce se tato rezerva do dvojčete snadno nevejde.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-hustota
+  type: numeric
+  conceptIds: [hluboka-jeskyne, hustota-plynu]
+  difficulty: 2
+  prompt: 'Jaká je hustota trimixu 18/45 v hloubce {depth} m?'
+  template: { fn: densityOfMix, params: { depth: { values: [50, 55, 60, 65] } }, fixed: { fo2: 0.18, fhe: 0.45 }, args: [fo2, fhe, depth], tolerance: 0.2, unit: g/l, decimals: 1 }
+  explanation: 'Hustota na hladině krát absolutní tlak. Doporučená mez je 5,2 g/l, horní 6,2 g/l.'
+  backToLessonId: hloubka-a-strop
+
+- id: hj-chyby
+  type: findError
+  conceptIds: [hluboka-jeskyne, hluboky-vzduch]
+  difficulty: 2
+  prompt: Které úvahy před hlubokým jeskynním ponorem jsou chybné?
+  items:
+    - { text: 'Mám jeskynní kvalifikaci, hloubku zvládnu.', isError: true, explanation: 'Jeskynní kvalifikace neopravňuje k hloubce. Hluboká jeskyně vyžaduje jeskynní i trimixový výcvik.' }
+    - { text: 'Plyn počítám pro skutečnou hloubku trasy.' }
+    - { text: 'Narkózu na vzduchu znám z moře, v jeskyni to bude stejné.', isError: true, explanation: 'Stejná narkóza, jiné následky: nelze vystoupat a rozhoduje se nepřetržitě.' }
+    - { text: 'Průnik plánuji kratší, než by dovolily třetiny z mělké jeskyně.' }
+  explanation: 'Nic z toho není nové. Nové je, že všechno platí zároveň.'
+  backToLessonId: hloubka-a-strop
+
+- id: profil-pilovity
+  type: choice
+  conceptIds: [profil-jeskyne]
+  difficulty: 1
+  prompt: Co je pilovitý profil?
+  options:
+    - { text: 'Profil s opakovanými sestupy a výstupy, který určuje tvar chodby', correct: true }
+    - { text: 'Profil s jedním dnem a přímým výstupem', explanation: 'To je čtvercový profil.' }
+    - { text: 'Profil s velmi rychlým výstupem', explanation: 'Jde o tvar, ne o rychlost.' }
+    - { text: 'Graf spotřeby plynu', explanation: 'Jde o hloubku v čase.' }
+  explanation: 'V jeskyni o hloubce nerozhoduje potápěč, ale chodba – cestou dovnitř i ven.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: profil-bubliny
+  type: why
+  conceptIds: [profil-jeskyne, bubliny]
+  difficulty: 2
+  prompt: Proč se trasy s pilovitým profilem plánují konzervativněji?
+  options:
+    - { text: 'Opakované výstupy a sestupy zatěžují dekompresi způsobem, který modely popisují jen přibližně.', correct: true }
+    - { text: 'Pilovitý profil snižuje spotřebu plynu.', explanation: 'Nesnižuje.' }
+    - { text: 'Počítač ho neumí zaznamenat.', explanation: 'Zaznamená ho. Otázka je, jak dobře ho model vystihuje.' }
+    - { text: 'Při sestupech se dusík neváže.', explanation: 'Váže se při každém sestupu znovu.' }
+  explanation: 'K tomu opakované vyrovnávání tlaku v uších a dutinách.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: profil-plan
+  type: choice
+  conceptIds: [profil-jeskyne, plan-hluboke-jeskyne]
+  difficulty: 2
+  prompt: Pro co se píše dekompresní plán jeskynního ponoru?
+  options:
+    - { text: 'Pro posloupnost úseků konkrétní trasy s jejich hloubkami', correct: true }
+    - { text: 'Pro největší hloubku a celkový čas', explanation: 'To by nadhodnotilo nebo podhodnotilo zátěž podle tvaru trasy a neřeklo by, kde budou zastávky.' }
+    - { text: 'Pro průměrnou hloubku', explanation: 'Průměr skrývá, kdy a kde zátěž vzniká.' }
+    - { text: 'Plán se nepíše, stačí počítač', explanation: 'Počítač neví, kolik plynu a kde budeš potřebovat.' }
+  explanation: 'Plán musí znát profil předem, aby věděl, kolik plynu a jaké zastávky čekat.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: deko-strop-dva
+  type: why
+  conceptIds: [deko-v-jeskyni, strop-dekomprese, profil-jeskyne]
+  difficulty: 2
+  prompt: Chodba cestou ven stoupá ze 30 m do 12 m a tvůj dekompresní strop je 18 m. Co to znamená?
+  options:
+    - { text: 'Musím zastavit před stoupáním a počkat, až strop klesne – na místě, které určila chodba.', correct: true }
+    - { text: 'Proplavu rychle, krátké porušení stropu nevadí.', explanation: 'Porušení stropu je vynechaná dekomprese.' }
+    - { text: 'Dekompresní strop v jeskyni neplatí.', explanation: 'Platí vždy. Skalní strop se k němu přidává.' }
+    - { text: 'Vrátím se hlouběji a počkám tam.', explanation: 'Hlouběji se dál sytíš a spotřebováváš víc plynu.' }
+  explanation: 'Zastávky se plánují na konkrétní místa trasy. Tohle místo musí být v plánu předem.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: deko-zdrzeni
+  type: choice
+  conceptIds: [deko-v-jeskyni]
+  difficulty: 2
+  prompt: Tým se v 60 m zdržel o deset minut. Co se podle výukového modelu stane s dekompresí?
+  options:
+    - { text: 'Prodlouží se o desítky minut a spotřebuje víc plynu, než bylo v plánu', correct: true }
+    - { text: 'Prodlouží se o stejných deset minut', explanation: 'Dekomprese roste rychleji než čas na dně.' }
+    - { text: 'Nezmění se, počítač to vyrovná', explanation: 'Počítač dekompresi přepočítá – směrem nahoru.' }
+    - { text: 'Zkrátí se, tkáně jsou už nasycené', explanation: 'Do nasycení pomalých tkání je daleko.' }
+  explanation: 'Proto má plán varianty „o pět a o deset minut déle“ i s plynem, který na ně stačí.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: deko-kde-plyn
+  type: choice
+  conceptIds: [deko-v-jeskyni, odlozeni-stage]
+  difficulty: 2
+  prompt: První zastávky vycházejí 150 m od vchodu. Kde má být dekompresní plyn?
+  options:
+    - { text: 'Odložený tam, kde zastávky začínají', correct: true }
+    - { text: 'U vchodu, kam se dá nejlépe donést', explanation: 'První zastávky bys pak dělal na dno směs.' }
+    - { text: 'Na dně v nejvzdálenějším bodě', explanation: 'Pod maximální operační hloubkou je nebezpečný a nese se zbytečně.' }
+    - { text: 'Na hladině u podpory', explanation: 'Tam na něj při zastávkách uvnitř nedosáhneš.' }
+  explanation: 'Plyn se odkládá cestou dovnitř u hloubky přepnutí nebo před ní.'
+  backToLessonId: profil-jeskyne-a-dekomprese
+
+- id: stage-proc
+  type: why
+  conceptIds: [odlozeni-stage, stage-lahev]
+  difficulty: 1
+  prompt: Proč se stage lahev po vydýchání dohodnutého podílu odkládá, místo aby se nesla dál?
+  options:
+    - { text: 'Dál je zbytečnou zátěží a plyn v ní je určený pro tento úsek cesty ven.', correct: true }
+    - { text: 'Prázdná lahev je nebezpečná.', explanation: 'Není prázdná – zůstává v ní plyn na cestu ven.' }
+    - { text: 'V hloubce by praskla.', explanation: 'Lahve tlak vydrží.' }
+    - { text: 'Aby ji mohl použít jiný tým.', explanation: 'Je to plyn tvého týmu.' }
+  explanation: 'Cestou ven se lahev sbírá a dýchá se z ní znovu.'
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-kolik
+  type: match
+  conceptIds: [plyn-ze-stage]
+  difficulty: 2
+  prompt: Přiřaď pravidlo k tomu, kde podle něj leží rezerva pro partnera.
+  pairs:
+    - { left: Třetina stage, right: 'Ve stejné lahvi: dvě třetiny zůstávají na cestu ven pro dva' }
+    - { left: Polovina stage, right: 'V zásobě na zádech, která ji musí obsahovat' }
+  explanation: 'Obě pravidla vycházejí ze stejné bilance. Které platí, určuje agentura a plán týmu.'
+  needs_review: true
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-cas
+  type: numeric
+  conceptIds: [plyn-ze-stage, stage-lahev]
+  difficulty: 2
+  prompt: 'Ze stage 11,1 l smíš cestou dovnitř použít {usable} bar. Hloubka {depth} m, spotřeba 20 l/min. Na kolik minut to vystačí?'
+  template: { fn: minutesOnGas, params: { usable: { values: [70, 100] }, depth: { values: [30, 40, 45, 50] } }, fixed: { tank: 11.1, sac: 20 }, args: [usable, tank, sac, depth], tolerance: 0.3, unit: min, decimals: 1 }
+  explanation: 'Bary krát objem lahve jsou litry. Spotřeba v hloubce je povrchová spotřeba krát absolutní tlak.'
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-odlozeni-postup
+  type: order
+  conceptIds: [odlozeni-stage]
+  difficulty: 2
+  prompt: Seřaď kroky při odložení stage lahve.
+  items:
+    - 'Signál týmu při dohodnutém tlaku'
+    - 'Přejdu na zásobu na zádech a ověřím, že dýchám'
+    - 'Uložím automatiku stage a zavřu ventil'
+    - 'Připnu lahev ke šňůře'
+  explanation: 'Nejdřív jistota dýchání, potom manipulace s lahví.'
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-odlozena-znaceni
+  type: multi
+  conceptIds: [odlozeni-stage, znaceni-lahvi]
+  difficulty: 1
+  prompt: Co má být na každé odložené lahvi?
+  options:
+    - { text: 'Jméno potápěče', correct: true }
+    - { text: 'Analyzovaná směs', correct: true }
+    - { text: 'Maximální operační hloubka', correct: true }
+    - { text: 'Cena plynu', explanation: 'Ta v jeskyni nikoho nezachrání.' }
+  explanation: 'V jeskyni mohou ležet lahve několika týmů. Záměna směsi je smrtelná.'
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-chyby
+  type: findError
+  conceptIds: [odlozeni-stage, plyn-ze-stage]
+  difficulty: 2
+  prompt: Popis práce se stage obsahuje chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Cestou dovnitř jsem dýchal nejdřív ze stage.' }
+    - { text: 'Stage jsem vydýchal skoro celou, zásoba na zádech je přece plná.', isError: true, explanation: 'Plyn ve stage je určený na cestu ven tímto úsekem. Pravidlo týmu říká třetinu nebo polovinu.' }
+    - { text: 'Odložil jsem ji s otevřeným ventilem, ať je připravená.', isError: true, explanation: 'Netěsnost nebo zachycená sprcha ji vyprázdní. Ventil se zavírá.' }
+    - { text: 'Při sbírání jsem zkontroloval tlak, než jsem na ni přepnul.' }
+  explanation: 'Odložená lahev je plyn, na který se při návratu spoléháš.'
+  backToLessonId: stage-lahve-a-odkladani
+
+- id: stage-dych-poradi
+  type: why
+  conceptIds: [plyn-ze-stage, stage-lahev]
+  difficulty: 2
+  prompt: Proč se cestou dovnitř dýchá nejdřív ze stage a zásoba na zádech se šetří?
+  options:
+    - { text: 'Zásobu na zádech máš vždy u sebe, s dvěma automatikami a dlouhou hadicí pro partnera.', correct: true }
+    - { text: 'Plyn ve stage se rychleji kazí.', explanation: 'Nekazí se.' }
+    - { text: 'Stage má lepší automatiku.', explanation: 'O kvalitu automatiky nejde.' }
+    - { text: 'Je to jedno, záleží na zvyku.', explanation: 'Není: rozhoduje, kde bude rezerva v nouzi.' }
+  explanation: 'Stage se dá ztratit nebo nenajít. Záda ne.'
+  backToLessonId: stage-lahve-a-odkladani

@@ -1,0 +1,20 @@
+id: proud-a-prutok
+moduleId: fullcave
+title: "Proud a průtok"
+order: 6
+conceptIds: ["proud-v-jeskyni", "podil-plynu", "tlak-otocky"]
+checkQuestionIds: ["proud-ktery-horsi", "proud-otocka", "proud-proc-nestaci", "proud-tretina-max", "proud-technika", "proud-zmena"]
+estimatedMinutes: 11
+audioSummary: >-
+  Směr a síla proudu rozhodují o tom, jak dlouho potrvá cesta ven ve srovnání s cestou dovnitř.
+  Když proud teče ven z jeskyně, plaveš dovnitř s námahou a ven tě nese. Třetiny mají rezervu.
+  Když proud teče do jeskyně, jde to dovnitř samo a ven proti proudu. Třetiny nestačí.
+  Je-li cesta ven dvakrát pomalejší, smíš na cestu dovnitř použít jen pětinu plynu.
+  Víc než třetina se nepoužije nikdy, ani když tě proud ponese ven.
+  V proudu plav u dna a u stěn a přitahuj se po pevné skále.
+  Průtok se mění se srážkami. Stav vody se hodnotí znovu u vchodu.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: true

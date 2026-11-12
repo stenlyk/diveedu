@@ -1,0 +1,100 @@
+<Hook>
+
+Skútr tě za čtvrt hodiny odveze sedm set metrů od vchodu. Skoro jsi u toho nedýchal; z dvojčete ubylo třicet barů.
+
+Pak motor zmlkne. Sedm set metrů zpět už nejsou čtvrthodina a třicet barů.
+
+</Hook>
+
+<Principle>
+
+<Term cs="skútr" /> mění jeskynní potápění víc než jakákoli jiná výstroj. Zvyšuje rychlost třikrát i víc a snižuje námahu, takže za stejný plyn urazíš několikanásobek vzdálenosti.
+
+Právě to je riziko. **Skútr prodlužuje cestu dovnitř, ale nezaručuje cestu ven.**
+
+**Plánování plynu se skútrem** vychází z nejhoršího případu: v nejvzdálenějším bodě skútr selže.
+
+- **Jeden skútr na osobu, bez zálohy:** návrat plaváním. Poměr rychlostí je tři ku jedné i horší a použitelný podíl plynu klesá na sedminu nebo méně.
+- **Tažení:** partner tě odveze na svém skútru. Pomaleji, s vyšším odběrem z baterie – a jen pokud jeho skútr vydrží.
+- **Záložní skútr** vlečený s sebou: návrat skoro plnou rychlostí. Na delších průnicích je to standard.
+
+Nejhorší kombinace je selhání skútru **a** ztráta plynu současně. Proto se na dlouhých skútrových ponorech odkládají cestou lahve s rezervním plynem.
+
+**Baterie** se plánuje stejně jako plyn: třetina dovnitř, třetina ven, třetina rezerva – a tažení partnera zvyšuje spotřebu energie výrazně.
+
+**Další rizika:**
+
+- **Rychlost bere čas na rozhodování.** Rozcestí, značky a změny hloubky přicházejí třikrát rychleji.
+- **Sediment.** Proud od vrtule míří tam, kam ho natočíš. Vrtule patří od dna a od stropu.
+- **Šňůra a vrtule.** Namotaná šňůra zastaví skútr a může přetrhnout vodítko pro všechny.
+- **Hloubka a dekomprese.** Skútr tě donese do hloubky a vzdálenosti, kde dekomprese narůstá rychleji, než si v pohybu všimneš.
+- **Tým se roztrhá.** Rozdíl rychlostí dvou skútrů je za minutu desítky metrů.
+
+Skútr nenahrazuje techniku plavání. Všechno, co s ním uděláš, musíš umět dokončit bez něj.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="podil-plynu" />
+
+<Formula id="dosah" />
+
+Skútr zvyšuje rychlost v druhém vzorci. První vzorec říká, kolik z toho dosahu smíš opravdu použít.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Dosah na skútru.** Na cestu dovnitř 30 bar z dvojčete 2×12 l, klidová spotřeba 15 l/min, hloubka 20 m, rychlost 45 m/min:
+
+<Worked fn="penetrationDistance" args={[30, 24, 15, 20, 45]} expected={720} tolerance={0.1} unit="m" decimals={0} />
+
+**Návrat plaváním** z tohoto místa rychlostí 15 m/min:
+
+<Worked fn="exitMinutes" args={[720, 15]} expected={48} tolerance={0.01} unit="min" decimals={0} />
+
+Jeden potápěč při 20 l/min na něj spotřebuje:
+
+<Worked fn="exitGasBar" args={[720, 15, 20, 20, 24, 1]} expected={120} tolerance={0.1} unit="bar" decimals={0} />
+
+Dovnitř 30 bar, ven 120. Pro dva na jedné zásobě 240 – víc, než v lahvích zbývá.
+
+**Tlak otočky** pro tento poměr rychlostí, bez záložního skútru:
+
+<Worked fn="turnPressureForSpeeds" args={[210, 45, 15]} expected={180} tolerance={0.1} unit="bar" decimals={0} />
+
+Sedmina zásoby. S tažením rychlostí 30 m/min vychází otočka na <Calc fn="turnPressureForSpeeds" args={[210, 45, 30]} decimals={0} unit="bar" />.
+Výpočet je zjednodušený – předpokládá stejnou spotřebu při jízdě i plavání, a ta je při plavání vyšší. Skutečné číslo je tedy ještě přísnější.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="turn-speeds" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="skutr-dosah" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

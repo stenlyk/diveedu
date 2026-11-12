@@ -220,7 +220,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(660_000);
+  test.setTimeout(800_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -228,7 +228,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(64);
+  expect(hrefs.length).toBe(78);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -339,7 +339,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(134);
+  await expect(map.locator('[data-node]')).toHaveCount(157);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -419,7 +419,7 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(134);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(157);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');
@@ -463,3 +463,64 @@ test('scénář: špatná rozhodnutí vedou k neúspěchu a rozbor je pojmenuje'
   await expect(page.getByTestId('scenario-outcome')).toHaveText('Nezvládnuto');
   await expect(page.getByTestId('scenario-debrief')).toContainText('Slepé plavání je to, co při ztrátě šňůry zabíjí.');
 });
+
+test('jeskynní mapa: značky a skok, návrat po hmatu v nulové viditelnosti a rozbor', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje');
+  await page.getByRole('link', { name: /Jeskynní navigační mapa/ }).click();
+  const nav = page.getByTestId('cave-nav');
+  await expect(nav).toHaveAttribute('data-phase', 'in');
+  await expect(page.getByTestId('cave-gas')).toHaveText('210 bar');
+  const tap = (name: string) => page.getByRole('button', { name, exact: true }).click();
+  await tap('Plavat: Síň A · 80 m');
+  await tap('Plavat: Rozcestí T · 80 m');
+  await tap('Označit cestu ven vlastní značkou');
+  await tap('Plavat: Dóm B · 90 m');
+  await tap('Označit cestu ven vlastní značkou');
+  await tap('Položit skok cívkou a plavat');
+  await tap('Plavat: Boční síň · 55 m');
+  await tap('Otočit ponor');
+  await expect(nav).toHaveAttribute('data-phase', 'out');
+  await expect(page.getByTestId('cave-dark')).toBeVisible();
+  await tap('Šňůra bez značek');
+  await tap('Tvoje skoková šňůra bez značek');
+  await tap('Šňůra: je na ní tvoje značka, šipka ukazuje tímto směrem');
+  await tap('Šňůra: je na ní tvoje značka, šipka ukazuje tímto směrem');
+  await tap('Šňůra: šipka ukazuje tímto směrem');
+  await expect(page.getByTestId('cave-outcome')).toHaveText('Čistý ponor');
+  await expect(page.getByTestId('cave-debrief')).toContainText('nejdál 310 m od vchodu');
+});
+
+test('jeskynní mapa: bez značky dovede šipka k cizímu vchodu', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje/simulator/jeskynni-mapa');
+  const tap = (name: string) => page.getByRole('button', { name, exact: true }).click();
+  await tap('Plavat: Síň A · 80 m');
+  await tap('Plavat: Rozcestí T · 80 m');
+  await tap('Plavat: Dóm B · 90 m');
+  await tap('Otočit ponor');
+  await tap('Šňůra: šipka ukazuje tímto směrem');
+  // Na rozcestí ukazují ven dvě šipky; bez vlastní značky je nelze rozlišit. Bereme tu ke Komínu.
+  await expect(page.getByRole('button', { name: 'Šňůra: šipka ukazuje tímto směrem', exact: true })).toHaveCount(2);
+  await page.goto('/nastroje/simulator/jeskynni-mapa');
+  await page.getByRole('checkbox', { name: 'Návrat v nulové viditelnosti' }).uncheck();
+  await tap('Plavat: Síň A · 80 m');
+  await tap('Plavat: Rozcestí T · 80 m');
+  await tap('Otočit ponor');
+  await tap('Komín – šňůra: šipka ukazuje tímto směrem');
+  await tap('Vchod 2 – šňůra: šipka ukazuje tímto směrem');
+  await expect(page.getByTestId('cave-outcome')).toHaveText('Venku, ale s výhradami');
+  await expect(page.getByTestId('cave-debrief')).toContainText('jiným vchodem');
+});
+
+test('diagramová otázka: označení bodu na diagramu a vyhodnocení', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/uceni/znacky-na-snure');
+  await page.getByRole('list', { name: 'Části lekce' }).getByRole('button').nth(7).click();
+  await expect(page.getByTestId('diagram')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Potvrdit' })).toBeDisabled();
+  await page.getByRole('button', { name: 'Bod B' }).click();
+  await page.getByRole('button', { name: 'Potvrdit' }).click();
+  await expect(page.getByText('✓ Správně')).toBeVisible();
+});
+

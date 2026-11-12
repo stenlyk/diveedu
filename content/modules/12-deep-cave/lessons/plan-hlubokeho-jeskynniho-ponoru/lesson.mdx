@@ -1,0 +1,110 @@
+<Hook>
+
+Tři sta metrů od vchodu, pětačtyřicet metrů hluboko, půl hodiny na dně. Na papíře tři čísla.
+
+Než z nich bude plán, musí odpovědět na jedinou otázku: co se stane, když se v nejhorší chvíli pokazí ta nejhorší věc – a vyjde to i potom?
+
+</Hook>
+
+<Principle>
+
+Plán hlubokého jeskynního ponoru spojuje všechno z obou linií. Skládá se odzadu: od toho, co musí vyjít v nouzi.
+
+**1. Trasa a profil.** Vzdálenosti a hloubky úsek po úseku. Rozhodnutí: skoky, rozcestí, zúženiny. Proud. Kde je místo na zastávky.
+
+**2. Směs na dno.** Podle největší hloubky trasy: ppO2, narkotická hloubka a hustota v limitech. V jeskyni se volí konzervativněji než v otevřené vodě.
+
+**3. Dekomprese.** Podle profilu trasy, ne podle „hloubky a času“. Dekompresní plyny a hloubky přepnutí. Varianty pro delší čas na dně.
+
+**4. Plyn – nejdřív cesta ven.**
+
+- Kolik plynu potřebují dva potápěči z nejvzdálenějšího bodu k prvnímu odloženému plynu? To je rezerva, která musí být na zádech.
+- Kolik zbývá na cestu dovnitř? To určuje, zda stačí záda, nebo je potřeba stage.
+- Dekompresní plyn s rezervou a s pravidlem pro ztrátu jedné lahve.
+
+**5. Odkládání.** Kde která lahev zůstane, kdo ji nese, jak je označená.
+
+**6. Navigace.** Značky, cívky, kdo co pokládá a sbírá.
+
+**7. Limity.** Co ponor ukončuje: tlak v každé lahvi, čas, vzdálenost, dekompresní závazek, teplota, jakýkoli problém.
+
+**8. Nouzové varianty.** Ztráta plynu v nejvzdálenějším bodě. Ztráta dekompresního plynu. Ztráta viditelnosti. Selhání světla. Každá má plyn a postup.
+
+**9. Hladina.** Kdo ví, kdy se vynoříš. Kyslík, plán evakuace, nejbližší komora.
+
+Plán je tak dobrý jako jeho nejslabší článek. V hluboké jeskyni to bývá plyn na cestu ven pro dva – proto se počítá jako první.
+
+Tato lekce ukazuje, jak plán vzniká. Skutečný plán se dělá s nástroji a lidmi, kteří danou jeskyni znají; aplikace ho nenahrazuje.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="podil-plynu" />
+
+<Formula id="minimum-gas" />
+
+První vzorec říká, kolik smíš použít dovnitř. Druhý, kolik musí zůstat na výstup z hloubky. V hluboké jeskyni platí oba zároveň.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Zadání:** nejvzdálenější bod 300 m od vchodu ve 45 m, 25 minut v této hloubce. Dvojče 2×12 l s 230 bar, spotřeba 20 l/min.
+
+**Směs.** Trimix 21/35 ve 45 m: ppO2 <Calc fn="ppO2" args={[0.21, 45]} decimals={2} unit="bar" />,
+narkotická hloubka <Calc fn="endOfMix" args={[0.21, 0.35, 45]} decimals={0} unit="m" />, hustota <Calc fn="densityOfMix" args={[0.21, 0.35, 45]} decimals={1} unit="g/l" />. V limitech.
+
+**Plyn na 25 minut ve 45 m** pro jednoho:
+
+<Worked fn="gasConsumed" args={[20, 45, 25]} expected={2750} tolerance={1} unit="l" decimals={0} />
+
+To je <Calc fn="litersToBar" args={[2750, 24]} decimals={0} unit="bar" /> z dvojčete.
+
+**Cesta ven pro dva** z nejvzdálenějšího bodu:
+
+<Worked fn="exitGasBar" args={[300, 15, 20, 45, 24]} expected={183.33} tolerance={0.1} unit="bar" decimals={0} />
+
+Součet: 115 + 183 je skoro 300 bar. V dvojčeti je 230. **Plán na samotná záda nevychází** – a to ještě nezačala dekomprese.
+
+Řešení je stage s dno směsí na cestu dovnitř, zásoba na zádech jako rezerva a kratší čas na dně.
+
+**Dekomprese** s EAN50 od 21 m, GF 50/80, pro 30 minut ve 45 m:
+
+<Worked fn="ascentMinutesMix" args={[45, 30, 50, 80, 0.21, 0.35, 0.5, 21]} expected={36} tolerance={0.5} unit="min" decimals={0} />
+
+Při ztrátě EAN50: <Calc fn="ascentMinutesMix" args={[45, 30, 50, 80, 0.21, 0.35, 0, 0]} decimals={0} unit="min" />. I na tuhle variantu musí mít tým plyn.
+
+Čísla jsou z výukového modelu a slouží k pochopení postupu, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="exley-zacaton-1994" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

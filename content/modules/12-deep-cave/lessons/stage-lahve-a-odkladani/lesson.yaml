@@ -1,0 +1,19 @@
+id: stage-lahve-a-odkladani
+moduleId: deepcave
+title: "Stage lahve a jejich odkládání"
+order: 3
+conceptIds: ["odlozeni-stage", "plyn-ze-stage", "stage-lahev"]
+checkQuestionIds: ["stage-proc", "stage-kolik", "stage-cas", "stage-odlozeni-postup", "stage-odlozena-znaceni", "stage-chyby"]
+estimatedMinutes: 11
+audioSummary: >-
+  Stage lahev prodlužuje průnik a nese dekompresní plyn.
+  Cestou dovnitř se dýchá nejdřív ze stage. Zásoba na zádech zůstává nedotčená co nejdéle.
+  Ze stage se použije třetina nebo polovina, podle pravidel týmu. Součet plynu po otočce musí stačit na cestu ven pro dva.
+  Při odložení přejdi na zásobu na zádech, ověř, že dýcháš, zavři ventil a připni lahev ke šňůře.
+  Dekompresní lahve se odkládají tam, kde začnou být potřeba, a dál do hloubky se nenosí.
+  Každá odložená lahev má jméno, směs a maximální hloubku.
+sources:
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+needs_review: true

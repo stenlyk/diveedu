@@ -1,0 +1,97 @@
+<Hook>
+
+Cestou dovnitř jsi zúžením proplul s rezervou na obou stranách. Cestou ven je voda mléčná, na hadici máš partnera a zúžení je pořád stejně široké.
+
+Jen ty jsi teď dvakrát tak dlouhý.
+
+</Hook>
+
+<Principle>
+
+<Term cs="zúženina" /> je místo, kudy dva potápěči neproplavou vedle sebe. Rozlišují se dva stupně:
+
+- **menší zúženina** – tým musí za sebou, ale s výstrojí na sobě,
+- **větší zúženina** – potápěč musí část výstroje sundat nebo posunout, aby prošel.
+
+Přesné definice se mezi agenturami liší; kurzy Full Cave obvykle končí u menších zúženin.
+
+**Co zúženina mění:**
+
+- **Viditelnost.** Dotyku stěn a dna se nevyhneš. Za zúženinou bývá voda kalná i pro ty, kdo přijdou po tobě.
+- **Sdílení plynu.** Jen za sebou, na plnou délku dlouhé hadice. Hadice se nesmí zaseknout ani natáhnout.
+- **Zachycení.** Ventily, hadice, cívky a světla jsou to, co se o skálu chytá nejčastěji.
+- **Čas.** Tým prochází po jednom a čeká na sebe.
+
+**Průchod:**
+
+1. Před zúženinou zastav a zkontroluj tým a plyn. Dál se nejde s problémem.
+2. První proplave, za zúženinou se otočí a svítí partnerovi na cestu.
+3. Šňůru má každý na dosah po celou dobu.
+4. Kdo se zachytí, zastaví, vydechne a couvne. Síla věci zhoršuje.
+
+**Sdílení plynu zúženinou:** pořadí se dohodne před ní. Hadice jde napřed nebo vzadu podle toho, kdo plave první; v obou případech dárce hlídá, aby se nenapnula.
+
+**Návrat po hmatu** spojuje vše z předchozího modulu:
+
+- šňůra v ruce, partner v druhé ruce, tři dotykové signály,
+- na každém úchytu druhá ruka nejdřív najde šňůru za ním,
+- na každém rozcestí ruka hledá **vlastní značku** – proto musí být hmatem rozpoznatelná,
+- rychlost je třetinová, spotřeba vyšší.
+
+Zúženina je místo, kde se tyhle věci potkají najednou. Proto se plyn pro jeskyně se zúženinami počítá přísněji než třetinami.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Návrat po hmatu mění v tomto vzorci dvě veličiny najednou: čas roste, protože klesá rychlost, a spotřeba roste se stresem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Tým je 200 m od vchodu ve 20 m. Návrat po hmatu se zúženinou zvládá průměrně 5 m/min:
+
+<Worked fn="exitMinutes" args={[200, 5]} expected={40} tolerance={0.01} unit="min" decimals={0} />
+
+Jeden potápěč se spotřebou 25 l/min na to z dvojčete 2×12 l potřebuje:
+
+<Worked fn="exitGasBar" args={[200, 5, 25, 20, 24, 1]} expected={125} tolerance={0.1} unit="bar" decimals={0} />
+
+Po otočce na třetině má 140 bar. Vyjde to – pro jednoho. Dva na jedné zásobě by potřebovali dvojnásobek.
+
+Proto se za zúženinami a v jeskyních se sedimentem otáčí na čtvrtině nebo šestině: dosah se zkrátí, ale kombinace „nulová viditelnost a partner bez plynu“ přestane být neřešitelná.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="ztrata-snury" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="haloklina" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

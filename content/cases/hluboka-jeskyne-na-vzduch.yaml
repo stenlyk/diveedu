@@ -1,0 +1,48 @@
+id: hluboka-jeskyne-na-vzduch
+title: Hluboká jeskyně na vzduch
+location: Anonymizovaný vzorec nehody
+rig: oc
+moduleIds: [fullcave, deepcave, trimix]
+anonymized: true
+context: >-
+  Nejde o jednu konkrétní nehodu, ale o vzorec, který se v rozborech nehod z hlubokých jeskyní opakuje: jeskynně vycvičení potápěči sestoupí
+  na vzduch nebo na směs s vysokou narkotickou hloubkou do prostoru hlubšího než 60 m s jemným sedimentem. Narkóza, sediment a strop
+  se potkají ve stejné minutě. Scénář níže je složený z typických prvků a žádné jeho detaily nepopisují konkrétní osobu ani místo.
+profile:
+  - { minute: 0, depthM: 0 }
+  - { minute: 6, depthM: 40, event: zúžený vstup do dómu }
+  - { minute: 10, depthM: 75, event: dno dómu }
+  - { minute: 14, depthM: 78, event: zvířený sediment }
+  - { minute: 30, depthM: 70, event: hledání šňůry }
+timeline:
+  - { when: Před ponorem, what: 'Dva potápěči s jeskynní kvalifikací, ale bez trimixového výcviku. Jeskyně má pověst „velkého ponoru“. Plán: krátce se podívat na dno dómu.' }
+  - { when: Sestup, what: 'Zúženým vstupem do velkého dómu a volným sestupem podél šňůry. Na dně je narkóza silná; oba ji znají a považují za zvládnutelnou.' }
+  - { when: Na dně, what: 'Jeden se dotkne dna. Jemný sediment se zvedá. Šňůra je metr vedle, ale nikdo ji nedrží.' }
+  - { when: O minutu později, what: 'Viditelnost je nulová. Pod narkózou trvá příliš dlouho, než kdokoli zastaví. Potápěči se rozdělí.' }
+  - { when: Hledání, what: 'Ve velkém prostoru bez stěn na dosah chybí jakákoli orientace. Hustý plyn a rychlý dech zvyšují CO2; narkóza se prohlubuje.' }
+  - { when: Konec, what: 'Plyn při spotřebě v této hloubce vystačí na zlomek času, který by hledání potřebovalo.' }
+errorChain:
+  - { layer: planovani, description: 'Ponor za hranicí výcviku a bez jasného limitu. „Krátce se podívat“ není plán.', conceptIds: [pet-pravidel, plan-hluboke-jeskyne] }
+  - { layer: plyn, description: 'Vzduch v hloubce přes 70 m: narkotická hloubka rovná skutečné, hustota přes 10 g/l, ppO2 nad limitem.', conceptIds: [hluboky-vzduch, limit-hustoty, dusikova-narkoza] }
+  - { layer: prostredi, description: 'Velký dóm s jemným sedimentem: jakmile zmizí viditelnost, není se čeho chytit.', conceptIds: [sediment, nulova-viditelnost, hluboka-jeskyne] }
+  - { layer: vybaveni, description: 'Zásoba plynu dimenzovaná pro mělčí ponory; v této hloubce mizí několikrát rychleji.', conceptIds: [dosah-pruniku, tlak-otocky] }
+  - { layer: lidsky-faktor, description: 'Zkušenost s narkózou z otevřené vody vedla k přesvědčení, že ji zvládnou. Narkóza ale nebere dovednosti, bere čas na reakci.', conceptIds: [dusikova-narkoza, ztrata-snury] }
+physiology: >-
+  Vzduch má v 75 m parciální tlak dusíku přes 6,7 bar a hustotu přes 10 g/l. Narkóza zpomaluje reakce a zužuje pozornost; hustý plyn zvyšuje dechovou práci
+  a tělo zadržuje CO2, který narkózu dál prohlubuje a sám vyvolává úzkost. Parciální tlak kyslíku kolem 1,8 bar je nad limity pro pracovní fázi ponoru.
+  Postup při ztrátě šňůry – zastavit, uvázat cívku, hledat metodicky – vyžaduje přesně ty schopnosti, které narkóza bere jako první.
+calcTasks:
+  - { prompt: 'Jaká je hustota vzduchu v 75 m?', fn: densityOfMix, args: [0.21, 0, 75], unit: g/l, tolerance: 0.2 }
+  - { prompt: 'Jaké je ppO2 vzduchu v 75 m?', fn: ppO2, args: [0.21, 75], unit: bar, tolerance: 0.02 }
+  - { prompt: 'Na kolik minut vystačí 100 bar v dvojčeti 24 l v 75 m při stresové spotřebě 40 l/min?', fn: minutesOnGas, args: [100, 24, 40, 75], unit: min, tolerance: 0.3 }
+  - { prompt: 'Jaká by byla narkotická hloubka směsi Tx 15/55 ve stejné hloubce (kyslík počítán jako narkotický)?', fn: endOfMix, args: [0.15, 0.55, 75], unit: m, tolerance: 0.5 }
+preventions:
+  - 'Hloubku určuje směs a výcvik: pod 30–40 m narkotické hloubky jen s heliem.'
+  - 'Ve velkých prostorech se šňůra drží na dosah po celou dobu, ne jen „na dohled“.'
+  - 'Plyn počítat pro skutečnou hloubku a stresovou spotřebu, ne podle zkušenosti z mělčích jeskyní.'
+  - 'Jeskynní kvalifikace neopravňuje k hloubce a trimixová k jeskyni; hluboká jeskyně vyžaduje obojí.'
+sources:
+  - { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section', year: 1992, note: 'Vzorec nehody; konkrétní případy záměrně neuvedeny.' }
+  - { title: 'Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving', author: 'Anthony G., Mitchell S. J.', year: 2016 }
+certainty: hypotéza
+needs_review: true

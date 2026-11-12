@@ -1,0 +1,20 @@
+id: profil-jeskyne-a-dekomprese
+moduleId: deepcave
+title: "Profil jeskyně a dekomprese pod stropem"
+order: 2
+conceptIds: ["profil-jeskyne", "deko-v-jeskyni", "strop-dekomprese"]
+checkQuestionIds: ["profil-pilovity", "profil-bubliny", "deko-strop-dva", "deko-zdrzeni", "deko-kde-plyn"]
+estimatedMinutes: 10
+audioSummary: >-
+  V jeskyni určuje hloubku chodba, ne potápěč.
+  Plán se proto nepíše pro hloubku a čas, ale pro posloupnost úseků konkrétní trasy.
+  Platí dva stropy. Skalní říká, kudy vystoupat nejde. Dekompresní říká, kam ještě nesmíš.
+  Když chodba stoupá nad tvůj dekompresní strop, zastavíš před stoupáním a čekáš.
+  Pilovitý profil s opakovanými sestupy a výstupy se plánuje konzervativněji.
+  Dekompresní plyn musí být tam, kde zastávky začínají.
+  Zdržení je v jeskyni pravidlo. Deset minut na dně může znamenat půl hodiny dekomprese navíc.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+needs_review: true

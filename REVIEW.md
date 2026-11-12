@@ -4,32 +4,46 @@ Generováno skriptem `npm run content` z polí `needs_review: true`. Needituj ru
 Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 
 - [ ] Lekce **Prostředí se stropem** (`prostredi-se-stropem`, modul `cavern`)
+- [ ] Lekce **Značky na šňůře: šipky a osobní značky** (`znacky-na-snure`, modul `fullcave`)
+- [ ] Lekce **Když se sčítá hloubka a strop** (`hloubka-a-strop`, modul `deepcave`)
 - [ ] Lekce **Travel gas a sestup na hypoxické směsi** (`travel-gas`, modul `fulltrimix`)
+- [ ] Lekce **Skoky, mezery a rozcestí** (`skoky-mezery-rozcesti`, modul `fullcave`)
+- [ ] Lekce **Profil jeskyně a dekomprese pod stropem** (`profil-jeskyne-a-dekomprese`, modul `deepcave`)
 - [ ] Lekce **Kyslíková toxicita CNS** (`cns-toxicita`, modul `nitrox`)
 - [ ] Lekce **Gradient factors: jak nastavit konzervativnost** (`gradient-factors`, modul `deko`)
 - [ ] Lekce **Je kyslík narkotický? Debata** (`je-kyslik-narkoticky`, modul `trimix`)
 - [ ] Lekce **Izobarická protidifuze a pravidlo pětin** (`izobaricka-protidifuze`, modul `fulltrimix`)
 - [ ] Lekce **Vodicí šňůra** (`vodici-snura`, modul `cavern`)
+- [ ] Lekce **Okruhy, traverzy a plán navigace** (`okruhy-a-plan-navigace`, modul `fullcave`)
+- [ ] Lekce **Stage lahve a jejich odkládání** (`stage-lahve-a-odkladani`, modul `deepcave`)
 - [ ] Lekce **CNS hodiny** (`cns-hodiny`, modul `nitrox`)
 - [ ] Lekce **Bubliny a bublinové modely** (`bubliny-a-bublinove-modely`, modul `deko`)
 - [ ] Lekce **Dekompresní nemoc vnitřního ucha** (`dcs-vnitrniho-ucha`, modul `fulltrimix`)
 - [ ] Lekce **Světla a světelné signály** (`svetla-a-signaly`, modul `cavern`)
+- [ ] Lekce **Ztráta partnera** (`ztrata-partnera`, modul `fullcave`)
+- [ ] Lekce **Ztráta stage a dekompresního plynu** (`ztrata-stage-a-deko-plynu`, modul `deepcave`)
 - [ ] Lekce **Plicní toxicita a OTU** (`plicni-toxicita-otu`, modul `nitrox`)
 - [ ] Lekce **Strop, zastávky a rychlost výstupu** (`strop-zastavky-a-vystup`, modul `deko`)
 - [ ] Lekce **Hluboké zastávky: debata** (`hluboke-zastavky-debata`, modul `fulltrimix`)
 - [ ] Lekce **Kontaktní komunikace** (`kontaktni-komunikace`, modul `cavern`)
+- [ ] Lekce **Zúženiny a návrat po hmatu** (`zuzeniny-a-navrat-po-hmatu`, modul `fullcave`)
+- [ ] Lekce **Dlouhá dekomprese: chlad, habitat a podpora** (`dlouha-dekomprese`, modul `deepcave`)
 - [ ] Lekce **Helium: teplo, hlas a vysoký tlak** (`vlastnosti-helia`, modul `trimix`)
 - [ ] Lekce **Plán se třemi až čtyřmi plyny** (`plan-ctyr-plynu`, modul `fulltrimix`)
 - [ ] Lekce **Sediment a viditelnost** (`sediment-a-viditelnost`, modul `cavern`)
+- [ ] Lekce **Proud a průtok** (`proud-a-prutok`, modul `fullcave`)
+- [ ] Lekce **Plán hlubokého jeskynního ponoru** (`plan-hlubokeho-jeskynniho-ponoru`, modul `deepcave`)
 - [ ] Lekce **Best mix: nejlepší směs pro ponor** (`nejlepsi-smes`, modul `nitrox`)
 - [ ] Lekce **Minimum gas: rezerva, která se neplánuje** (`minimum-gas`, modul `deko`)
 - [ ] Lekce **Optimální trimix a standardní směsi** (`optimalni-trimix`, modul `trimix`)
 - [ ] Lekce **Kyslík přes více dní** (`kyslik-pres-vice-dni`, modul `fulltrimix`)
+- [ ] Lekce **Skútr v jeskyni** (`skutr-v-jeskyni`, modul `fullcave`)
 - [ ] Lekce **Kyslíkové okno** (`kyslikove-okno`, modul `nitrox`)
 - [ ] Lekce **Plánování plynu: třetiny, poloviny a rezervy** (`planovani-plynu`, modul `deko`)
 - [ ] Lekce **Dekomprese s heliem** (`dekomprese-s-heliem`, modul `trimix`)
 - [ ] Lekce **Tepelný management a hydratace** (`tepelny-management`, modul `fulltrimix`)
 - [ ] Lekce **Plyn v jeskyni: třetiny a tlak otočky** (`plyn-v-jeskyni`, modul `cavern`)
+- [ ] Lekce **Sidemount a backmount** (`sidemount-a-backmount`, modul `fullcave`)
 - [ ] Lekce **Dekompresní plyny v plánu a run-time** (`dekompresni-plyny-v-planu`, modul `deko`)
 - [ ] Lekce **Míchání a analýza trimixu** (`michani-trimixu`, modul `trimix`)
 - [ ] Lekce **Logistika expedic a hranice otevřeného okruhu** (`logistika-expedic`, modul `fulltrimix`)
@@ -41,14 +55,18 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Dvojče a ventilový drill** (`twinset-a-ventilovy-drill`, modul `deko`)
 - [ ] Lekce **Míchání parciálním tlakem** (`michani-nitroxu`, modul `nitrox`)
 - [ ] Lekce **Ztráta dekompresního plynu a vynechaná dekomprese** (`ztrata-deko-plynu`, modul `deko`)
+- [ ] Otázka `zuzenina-typy`: Přiřaď stupeň zúženiny k popisu.
+- [ ] Otázka `stage-kolik`: Přiřaď pravidlo k tomu, kde podle něj leží rezerva pro partnera.
 - [ ] Scénář **Partner bez plynu v nejvzdálenějším bodě** (`partner-bez-plynu`)
 - [ ] Scénář **Selhání hlavní svítilny** (`selhani-svetla`)
 - [ ] Scénář **Ztráta šňůry v nulové viditelnosti** (`ztrata-snury`)
 - [ ] Případová studie **Blue Hole, Dahab: hluboký ponor na vzduch** (`blue-hole-2000`, jistota: hypotéza)
 - [ ] Případová studie **Zacatón 1994: hranice otevřeného okruhu** (`exley-zacaton-1994`, jistota: hypotéza)
+- [ ] Případová studie **Hluboká jeskyně na vzduch** (`hluboka-jeskyne-na-vzduch`, jistota: hypotéza)
 - [ ] Případová studie **Hypoxie na dno směsi u hladiny** (`hypoxie-u-hladiny`, jistota: hypotéza)
 - [ ] Případová studie **Do jeskyně „jen kousek“, bez šňůry** (`jeskyne-bez-snury`, jistota: hypotéza)
 - [ ] Případová studie **Vrak U-869: hluboký vrakový ponor na vzduch** (`rouse-u869`, jistota: hypotéza)
+- [ ] Případová studie **Tham Luang 2018: plyn a dlouhé průniky pod tlakem záchranné akce** (`tham-luang-2018`, jistota: hypotéza)
 - [ ] Případová studie **Kyslíkové křeče po přepnutí na špatnou lahev** (`zamena-plynu-krece`, jistota: hypotéza)
 - [ ] Zajímavost `hranicka-propast`: Nejhlubší známá zatopená propast světa je sladkovodní – Hranická propast na Moravě. Dálkově řízený robot v ní v roce 2016 dosáhl hloubky 404 m a dna se nedotkl. Ve sladké vodě by tam absolutní tlak byl kolem 40 bar.
 - [ ] Zajímavost `lanphier-co2`: Edward Lanphier při pokusech pro americké námořnictvo v 50. letech zjistil, že někteří potápěči při práci pod tlakem dýchají méně, než by měli, a hromadí CO2, aniž to cítí. Dostali název „CO2 retainers“ a ukázalo se, že mají vyšší riziko kyslíkových křečí.
@@ -71,3 +89,11 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Zajímavost `teplo-nedu`: Pokus amerického námořnictva z roku 2007 nechal potápěče absolvovat stejný ponor ve vodě různé teploty. Nejhůř dopadli ti, kdo byli na dně v teple a na dekompresi v chladu. Nejlépe opačná kombinace – chladno na dně, teplo při výstupu. Rozdíl odpovídal mnoha minutám dekomprese navíc.
 - [ ] Zajímavost `cedule-smrtka`: U vchodů do floridských jeskyní stojí pod vodou cedule se zubatou a nápisem: „V této jeskyni není nic, kvůli čemu by stálo za to zemřít.“ Nainstalovali ji jeskynní potápěči pro ty, kdo sem doplavou s jednou lahví a jednou svítilnou. Od té doby počet nehod nevycvičených potápěčů klesl.
 - [ ] Zajímavost `dotyk-poradi`: Při návratu v nulové viditelnosti plave první ten, kdo má problém – například potápěč bez plynu na dlouhé hadici. Dárce je za ním, drží ho za paži nebo nohu a tlakem řídí tempo. Slabší článek tak udává rychlost a nemůže zůstat pozadu.
+- [ ] Zajímavost `sipky-puvod`: Směrové šipky, kulaté „cookies“ i obdélníkové značky REM vymysleli jeskynní potápěči na Floridě jako odpověď na konkrétní nehody na rozcestích. Šipka je záměrně hmatatelná: její směr se dá přečíst v rukavicích a poslepu.
+- [ ] Zajímavost `zlata-snura`: V řadě floridských systémů je hlavní šňůra zlatá a boční šňůry bílé a od hlavní oddělené mezerou. Mezera je záměr: kdo neumí položit skok, na boční šňůru se omylem nedostane. V jiných oblastech jsou zvyklosti jiné – místní značení se zjišťuje před ponorem.
+- [ ] Zajímavost `haloklina`: V pobřežních jeskyních Yucatánu leží sladká voda na slané. Rozhraní – haloklina – vypadá nedotčené jako hladina uvnitř vody. Když jím tým proplave, vrstvy se promíchají a obraz se rozmaže jako přes olej. Potápěč za ním vidí hůř, i když se nezvedl žádný sediment.
+- [ ] Zajímavost `skutr-dosah`: Průzkumné týmy se skútry a odloženými lahvemi pronikly v zatopených jeskyních na vzdálenosti mnoha kilometrů od vchodu. Na takových ponorech se neplánuje jeden skútr, ale záložní skútry a odložený plyn pro případ, že se bude muset plavat.
+- [ ] Zajímavost `sidemount-puvod`: Sidemount nevznikl kvůli pohodlí. Britští jeskyňáři potřebovali v suchých jeskyních donést lahve k zatopeným sifonům a pak se jimi protáhnout; lahve na boku byly jediná možnost. Teprve později ho převzali potápěči na Floridě a v Mexiku pro nízké chodby.
+- [ ] Zajímavost `stage-pruzkum`: Dlouhé průzkumné ponory se připravují dny předem: podpůrné týmy rozvezou lahve na dohodnutá místa a po ponoru je zase sbírají. Hlavní tým pak cestou dovnitř i ven lahve jen střídá. Každá má jmenovku, směs a maximální hloubku – a místo v plánu.
+- [ ] Zajímavost `plyn-v-zaloze`: Na frekventovaných lokalitách zůstávají v jeskyních trvale uložené nouzové lahve. Plán s nimi nepočítá: nikdo neručí za to, co v nich je a kolik. Jediný plyn, na který se dá spolehnout, je ten, který tým sám analyzoval, označil a uložil.
+- [ ] Zajímavost `deko-habitat`: Při ponorech s mnohahodinovou dekompresí si průzkumné týmy stavějí pod stropem jeskyně habitat: obrácenou vanu nebo zvon naplněný plynem, do kterého se potápěč vynoří po pás nebo celý. Může se najíst, napít a ohřát – a kdyby při dýchání kyslíku přišly křeče, neutopí se.

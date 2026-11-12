@@ -196,6 +196,8 @@ export const QuestionSchema = z.discriminatedUnion('type', [
       .array(z.object({ text: z.string().min(1), isError: z.boolean().default(false), explanation: z.string().optional() }))
       .min(2),
   }),
+  /** Označ na diagramu – diagram je klíč z quiz/diagramDefs, answer je id správného bodu. */
+  z.object({ ...questionBase, type: z.literal('diagram'), diagram: z.string().min(1), answer: z.string().min(1) }),
 ]);
 
 export const CaseStudySchema = z.object({

@@ -1,0 +1,100 @@
+<Hook>
+
+Dvojče na zádech ti ve 45 m dá na cestu dovnitř čtvrt hodiny. Pak je třetina pryč a ty jsi sotva za první zatáčkou.
+
+Další lahev prodlouží cestu o deset minut. Ale kam s ní, když je prázdná – a čí vlastně bude plyn, který v ní necháš?
+
+</Hook>
+
+<Principle>
+
+<Term cs="stage lahev" /> je lahev nesená navíc k zásobě na zádech. V hluboké jeskyni má dvě role: **prodlužuje průnik** a **nese dekompresní plyn**.
+
+**Pořadí dýchání.** Cestou dovnitř se dýchá nejdřív ze stage. Zásoba na zádech zůstává nedotčená co nejdéle:
+je to plyn, který máš vždy u sebe, s dvěma automatikami a dlouhou hadicí.
+
+**Kolik ze stage použít.** Používají se dvě pravidla, obě vycházejí ze stejné bilance jako třetiny:
+
+- **třetina stage** – zbylé dvě třetiny stačí na cestu ven pro dva z té samé lahve,
+- **polovina stage (s malou rezervou navíc)** – druhá polovina je na vlastní cestu ven a partnerovu rezervu nese zásoba na zádech.
+
+Které pravidlo platí, určuje agentura a plán týmu. Podstatné je, aby **součet** všeho plynu po otočce stačil na cestu ven pro dva v nejhorším případě.
+
+**<Term cs="odložení stage" />.** Lahev se nenese dál, než je potřeba:
+
+1. Dosáhneš dohodnutého tlaku. Signál týmu.
+2. Přejdeš na zásobu na zádech a ověříš, že dýcháš.
+3. Automatiku stage uložíš, ventil zavřeš.
+4. Lahev připneš ke šňůře tak, aby šla najít a odepnout po hmatu, a nepřekážela ostatním.
+5. Zkontroluješ, že tým udělal totéž, a pokračuješ.
+
+Cestou ven lahev sbíráš a můžeš z ní znovu dýchat – je v ní plyn právě na tento úsek.
+
+**Dekompresní lahve** se odkládají tam, kde začnou být potřeba: u hloubky přepnutí nebo před ní. Dál do hloubky se nenosí:
+je to zbytečná zátěž a plyn, který je pod jeho maximální operační hloubkou nebezpečné mít po ruce.
+
+**Značení.** Každá odložená lahev má jméno, směs a maximální operační hloubku, čitelné a pokud možno i hmatné. V jeskyni může ležet víc lahví různých týmů.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Stage se počítá stejně jako každá jiná lahev: litry, hloubka, čas. Jen má menší objem, takže její tlak klesá rychleji.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Stage 11,1 l s 200 bar, hloubka 45 m, spotřeba 20 l/min.
+
+**Pravidlo poloviny:** na cestu dovnitř 100 bar.
+
+<Worked fn="minutesOnGas" args={[100, 11.1, 20, 45]} expected={10.09} tolerance={0.05} unit="min" decimals={0} />
+
+Při 15 m/min je to <Calc fn="penetrationDistance" args={[100, 11.1, 20, 45, 15]} decimals={0} unit="m" /> navíc.
+
+**Pravidlo třetiny:** 70 bar.
+
+<Worked fn="minutesOnGas" args={[70, 11.1, 20, 45]} expected={7.06} tolerance={0.05} unit="min" decimals={0} />
+
+Rozdíl jsou tři minuty a necelých padesát metrů. Za to pravidlo třetiny nechává v lahvi rezervu pro partnera přímo na místě,
+kdežto pravidlo poloviny ji přesouvá do zásoby na zádech – a ta ji musí opravdu obsahovat.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'odložíš stage s otevřeným ventilem?', effect: 'Stačí zachycená sprcha nebo netěsnost a lahev, na kterou spoléháš cestou ven, je prázdná. Ventil se zavírá.' },
+  { label: 'necháš dekompresní lahev u vchodu, ale zastávky začínají uvnitř?', effect: 'První zastávky uděláš na dno směsi – delší a s plynem, se kterým plán nepočítal. Plyn patří tam, kde zastávky začínají.' },
+  { label: 'poneseš dekompresní lahev s EAN50 až na dno v 60 m?', effect: 'Zbytečná zátěž a riziko: záměna automatik znamená ppO2 přes 3 bar. Lahev se odkládá nad svou maximální operační hloubkou.' },
+  { label: 'připneš stage ke šňůře tak, že ji napíná?', effect: 'Posuneš šňůru, možná do pasti, a tým za tebou to pocítí. Lahev se připíná tak, aby šňůru neodtahovala.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="stage-pruzkum" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

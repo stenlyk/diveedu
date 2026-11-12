@@ -1,0 +1,20 @@
+id: dlouha-dekomprese
+moduleId: deepcave
+title: "Dlouhá dekomprese: chlad, habitat a podpora"
+order: 5
+conceptIds: ["habitat", "podpurny-tym", "deko-v-jeskyni", "tepelny-management"]
+checkQuestionIds: ["hab-co", "hab-proc", "podpora-ukoly", "deko-chlad", "deko-kyslik"]
+estimatedMinutes: 9
+audioSummary: >-
+  Hluboký jeskynní ponor končí dlouhou dekompresí na místě, kde se nedá vynořit.
+  Bez pohybu tělo chladne. Prochladnutí zpomaluje vyplavování plynu právě tehdy, kdy ho potřebuješ nejvíc.
+  Dlouhé zastávky na kyslíku zatěžují nervový systém. Řeší se přestávkami na chudší směsi.
+  Habitat je suchý prostor pod vodou. Můžeš se v něm napít, najíst a ohřát. Dýcháš ale z automatiky.
+  Podpůrný tým rozváží lahve, čeká na dohodnutém místě a přináší plyn.
+  Plán musí vyjít i bez něj.
+  Dekomprese se plánuje stejně pečlivě jako dno.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "The influence of thermal exposure on diver susceptibility to decompression sickness. NEDU TR 06-07", author: "Gerth W. A., Ruterbusch V. L., Long E. T.", year: 2007 }
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

@@ -164,6 +164,10 @@ describe('validátor obsahu', () => {
     const findError = (items: unknown[]) => (raw: RawContent) => { raw.questions[0]!.data = { id: 'q1', type: 'findError', conceptIds: ['tlak'], difficulty: 1, prompt: 'x', explanation: 'x', items }; };
     expect(errorsOf(findError([{ text: 'a' }, { text: 'b' }]))).toMatch(/žádná položka není označená jako chyba/);
     expect(errorsOf(findError([{ text: 'a', isError: true }, { text: 'b' }]))).toMatch(/chyba #1 nemá vysvětlení/);
+    const diagram = (name: string, answer: string) => (raw: RawContent) => { raw.questions[0]!.data = { id: 'q1', type: 'diagram', conceptIds: ['tlak'], difficulty: 1, prompt: 'x', explanation: 'x', diagram: name, answer }; };
+    expect(errorsOf(diagram('neexistuje', 'a'))).toMatch(/neznámý diagram/);
+    expect(errorsOf(diagram('znacky', 'z'))).toMatch(/nemá bod „z“/);
+    expect(errorsOf(diagram('znacky', 'a'))).not.toMatch(/diagram/);
   });
 
   it('případová studie a zajímavost kontrolují reference', () => {

@@ -30,4 +30,7 @@ dělá, co jsem zamýšlel. Níže jsou místa, kde jsem musel zvolit konvenci �
 | 23 | `cave.ts` `usableFraction` | Použitelný podíl = min(1/3, 1/(1 + 2·v_dovnitř/v_ven)): cesta ven pro dva při jiné rychlosti než dovnitř | Vlastní odvození z bilance plynu, ne vzorec z příručky. Pro stejné rychlosti dává třetinu; nikdy víc než třetinu. Ověřit proti praxi (čtvrtiny, šestiny). |
 | 24 | `consumption.ts` `teamTurnBar` | Potápěč smí na cestu dovnitř použít nejvýš tolik, kolik odpovídá času, za který partner dosáhne své třetiny; nikdy pod vlastní třetinu | Odpovídá obvyklému „přepočtu na menší zásobu“; různé agentury zaokrouhlují různě. Nezaokrouhluje. |
 | 25 | `scenario/engine.ts` | Úbytek plynu = minuty × spotřeba × násobitel stresu při stálé hloubce scénáře; sdílení plynu je vyjádřené násobitelem 2 a víc | Hodnoty minut a násobitelů ve scénářích jsou odhad autora obsahu. |
+| 26 | `cave/nav.ts` | Výuková mapa: stálá hloubka 24 m, rychlost 15 m/min dovnitř a 10 m/min po hmatu, položení skoku 2 min, značka 0,5 min; trvalé šipky ukazují k nejbližšímu východu | Hodnoty jsou zvolené tak, aby třetiny dovolily boční chodbu, ale ne konec hlavní šňůry. Není to model skutečné jeskyně. |
+| 27 | `cave/nav.ts` `navDebrief` | Zbytek plynu pod třetinou je po návratu v nulové viditelnosti jen poznámka, jinak výhrada | Návrat po hmatu z rezervy ukrojí vždy; simulátor to ukazuje, místo aby to trestal. |
+| 28 | `tools/defs.ts` `turn-speeds` | Tlak otočky zaokrouhlený nahoru na desítky | Opatrnější směr. |
 

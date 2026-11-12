@@ -1,0 +1,94 @@
+<Hook>
+
+Na šňůře před tebou je plastová šipka. Ukazuje doleva. Znamená to, že vlevo je východ?
+
+Ano. Jenže ne nutně ten, kterým jsi přišel, u kterého stojí tvoje auto a kde na tebe čeká dekompresní plyn.
+
+</Hook>
+
+<Principle>
+
+Šňůra říká, kudy vede cesta. Značky na ní říkají, **kterým směrem** a **čí**.
+
+**<Term cs="směrová šipka" />** je trvalá značka. Ukazuje k nejbližšímu východu – měřeno po šňůře, ne podle toho, odkud kdo připlaval.
+Je tvarovaná tak, aby se dal směr přečíst po hmatu: špička je úzká, zadní část široká se zářezem.
+
+Šipky jsou součást jeskyně. Umisťují je ti, kdo šňůru spravují, a nikdo jiný s nimi nehýbe.
+
+**<Term cs="osobní značka" />** patří potápěči nebo týmu. Používají se dva tvary:
+
+- **kulatá** (cookie) – nesměrová. Říká jen „tudy jsem přišel“.
+- **obdélníková** (REM) – také osobní; používá se tam, kde by šipka mátla ostatní týmy.
+
+Osobní značku dává tým na šňůru, která vede k **jeho** východu, na každém místě, kde bude při návratu na výběr. Cestou ven ji sbírá.
+Značka, která na šňůře zůstane, znamená, že někdo je ještě uvnitř.
+
+Pravidla zacházení:
+
+- **Na cizí značky se nesahá.** Někomu jinému ukazují cestu ven.
+- **Vlastní značka musí být rozpoznatelná po hmatu** – tvarem, zářezem, uzlem. V nulové viditelnosti iniciály nepřečteš.
+- **Značka se dává na stranu k východu**, těsně u rozcestí, kde ji ruka při návratu najde jako první.
+- **Tým používá stejný systém.** Kdo co pokládá a kdo sbírá, se domlouvá před ponorem.
+
+Zvyklosti se liší mezi oblastmi i agenturami: jinde se osobní šipky používají běžně, jinde vůbec. Místní pravidla se zjišťují dřív, než se namočíš.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Jedno rozlišení si ale zapamatuj přesně:
+
+<Given>šipka: nejbližší východ · osobní značka: můj východ</Given>
+
+</FormulaSection>
+
+<WorkedSection>
+
+Co stojí jedno špatné rozhodnutí na rozcestí?
+
+Vracíš se po hmatu rychlostí 6 m/min. Na rozcestí zvolíš špatnou šňůru a omyl poznáš po 60 m. Zpět na rozcestí je to dalších 60 m:
+
+<Worked fn="exitMinutes" args={[120, 6]} expected={20} tolerance={0.01} unit="min" decimals={0} />
+
+Dvacet minut ve 20 m se stresovou spotřebou 25 l/min, z dvojčete 2×12 l:
+
+<Worked fn="exitGasBar" args={[120, 6, 25, 20, 24, 1]} expected={62.5} tolerance={0.1} unit="bar" decimals={0} />
+
+Přes šedesát barů za omyl, kterému by zabránila značka za pár korun a půl minuty práce.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'na rozcestí najdeš cizí značku na šňůře, kterou potřebuješ?', effect: 'Necháš ji být a svou dáš vedle. Každý tým sbírá jen to, co položil.' },
+  { label: 'cestou ven najdeš na „své“ šňůře značku, kterou nepoznáváš?', effect: 'Zastav. Buď jsi na jiném rozcestí, než si myslíš, nebo je to značka jiného týmu. Rozhoduje hmatový znak tvé značky, ne její tvar obecně.' },
+  { label: 'ti značky dojdou dřív než rozcestí?', effect: 'Ponor se otáčí. Rozhodnutí bez značky je rozhodnutí, na které se při návratu budeš muset rozpomínat.' },
+  { label: 'šipka ukazuje jinam, než kudy jsi přišel?', effect: 'Šipka nelže: tím směrem je bližší východ. Jestli je použitelný a jestli je to tvůj východ, ti ale neřekne.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="sipky-puvod" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

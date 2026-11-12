@@ -460,3 +460,88 @@
     vyrazí naslepo směrem, kde si myslí, že je východ.
   conceptIds: [ztrata-snury, nulova-viditelnost]
   source: { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979 }
+
+- id: sipky-puvod
+  text: >-
+    Směrové šipky, kulaté „cookies“ i obdélníkové značky REM vymysleli jeskynní potápěči na Floridě jako odpověď na konkrétní nehody na rozcestích.
+    Šipka je záměrně hmatatelná: její směr se dá přečíst v rukavicích a poslepu.
+  conceptIds: [smerova-sipka, osobni-znacka]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992, note: 'Autory jednotlivých značek a roky ověřit.' }
+  needs_review: true
+
+- id: zlata-snura
+  text: >-
+    V řadě floridských systémů je hlavní šňůra zlatá a boční šňůry bílé a od hlavní oddělené mezerou. Mezera je záměr:
+    kdo neumí položit skok, na boční šňůru se omylem nedostane. V jiných oblastech jsou zvyklosti jiné – místní značení se zjišťuje před ponorem.
+  conceptIds: [mezera-ve-snure, skok]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992, note: 'Místní konvence ověřit.' }
+  needs_review: true
+
+- id: mapovani-jeskyni
+  text: >-
+    Mapy zatopených jeskyní vznikají ručně: průzkumník měří vzdálenost podle uzlů na šňůře, směr kompasem a hloubku hloubkoměrem, stanici po stanici.
+    Mapa je proto vždy starší a hrubší než jeskyně. Plán navigace se z ní připravuje, ale rozhoduje to, co je na šňůře.
+  conceptIds: [plan-navigace, okruh-a-traverz]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: svetlo-ve-tme
+  text: >-
+    V čisté vodě je kužel svítilny vidět na desítky metrů – ale jen ve tmě. Proto první krok při hledání partnera vypadá paradoxně:
+    zakrýt vlastní světlo.
+  conceptIds: [ztrata-partnera, svetelne-signaly]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: haloklina
+  text: >-
+    V pobřežních jeskyních Yucatánu leží sladká voda na slané. Rozhraní – haloklina – vypadá nedotčené jako hladina uvnitř vody.
+    Když jím tým proplave, vrstvy se promíchají a obraz se rozmaže jako přes olej. Potápěč za ním vidí hůř, i když se nezvedl žádný sediment.
+  conceptIds: [nulova-viditelnost, zuzenina]
+  source: { title: TDI Full Cave Diver Manual, author: Technical Diving International, note: Popis jevu ověřit. }
+  needs_review: true
+
+- id: skutr-dosah
+  text: >-
+    Průzkumné týmy se skútry a odloženými lahvemi pronikly v zatopených jeskyních na vzdálenosti mnoha kilometrů od vchodu.
+    Na takových ponorech se neplánuje jeden skútr, ale záložní skútry a odložený plyn pro případ, že se bude muset plavat.
+  conceptIds: [skutr-dpv, selhani-skutru]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006, note: Konkrétní vzdálenosti a projekty doplnit. }
+  needs_review: true
+
+- id: sidemount-puvod
+  text: >-
+    Sidemount nevznikl kvůli pohodlí. Britští jeskyňáři potřebovali v suchých jeskyních donést lahve k zatopeným sifonům a pak se jimi protáhnout;
+    lahve na boku byly jediná možnost. Teprve později ho převzali potápěči na Floridě a v Mexiku pro nízké chodby.
+  conceptIds: [sidemount]
+  source: { title: TDI Full Cave Diver Manual, author: Technical Diving International, note: Historii a dataci ověřit. }
+  needs_review: true
+
+- id: pilovity-profil
+  text: >-
+    Jeskyně se neptá, v jaké hloubce chceš být. Některé systémy klesnou hned za vchodem hluboko a pak stoupají;
+    jiné vedou stovky metrů mělce a nejhlubší místo mají na konci. Dekompresní plán se proto nepíše pro „hloubku a čas“, ale pro konkrétní trasu.
+  conceptIds: [profil-jeskyne, deko-v-jeskyni]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: stage-pruzkum
+  text: >-
+    Dlouhé průzkumné ponory se připravují dny předem: podpůrné týmy rozvezou lahve na dohodnutá místa a po ponoru je zase sbírají.
+    Hlavní tým pak cestou dovnitř i ven lahve jen střídá. Každá má jmenovku, směs a maximální hloubku – a místo v plánu.
+  conceptIds: [odlozeni-stage, podpurny-tym]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006, note: Popis logistiky ověřit. }
+  needs_review: true
+
+- id: plyn-v-zaloze
+  text: >-
+    Na frekventovaných lokalitách zůstávají v jeskyních trvale uložené nouzové lahve. Plán s nimi nepočítá: nikdo neručí za to, co v nich je a kolik.
+    Jediný plyn, na který se dá spolehnout, je ten, který tým sám analyzoval, označil a uložil.
+  conceptIds: [ztrata-stage, analyza-plynu]
+  source: { title: TDI Full Cave Diver Manual, author: Technical Diving International, note: Praxi na konkrétních lokalitách ověřit. }
+  needs_review: true
+
+- id: deko-habitat
+  text: >-
+    Při ponorech s mnohahodinovou dekompresí si průzkumné týmy stavějí pod stropem jeskyně habitat: obrácenou vanu nebo zvon naplněný plynem,
+    do kterého se potápěč vynoří po pás nebo celý. Může se najíst, napít a ohřát – a kdyby při dýchání kyslíku přišly křeče, neutopí se.
+  conceptIds: [habitat, tepelny-management]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006, note: Konstrukci a použití ověřit. }
+  needs_review: true

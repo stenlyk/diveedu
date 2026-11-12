@@ -6,10 +6,11 @@ import { lessonsById } from '../content';
 import type { Question } from '../content/schema';
 import type { AnswerRow } from '../db/db';
 import { type Recorded, recordAnswer, regrade } from '../srs/record';
+import { Diagram } from './Diagram';
 import { checkNumeric, generateVariant, renderPrompt } from './numeric';
 
 /** Typy otázek, které engine umí. Ostatní typy přibudou s obsahem, který je potřebuje. */
-export const SUPPORTED_TYPES: ReadonlySet<Question['type']> = new Set(['choice', 'why', 'multi', 'numeric', 'order', 'match', 'findError']);
+export const SUPPORTED_TYPES: ReadonlySet<Question['type']> = new Set(['choice', 'why', 'multi', 'numeric', 'order', 'match', 'findError', 'diagram']);
 
 export interface QuizOutcome {
   question: Question;
@@ -171,6 +172,8 @@ function QuestionView({ question, mode, feedback, onNext }: { question: Question
         <OrderBody question={question} locked={verdict !== null} onAnswer={answer} />
       ) : question.type === 'match' ? (
         <MatchBody question={question} locked={verdict !== null} onAnswer={answer} />
+      ) : question.type === 'diagram' ? (
+        <DiagramBody question={question} locked={verdict !== null} onAnswer={answer} />
       ) : (
         <FindErrorBody question={question} locked={verdict !== null} onAnswer={answer} />
       )}
@@ -394,6 +397,19 @@ function FindErrorBody({ question, locked, onAnswer }: { question: Extract<Quest
         })}
       </ul>
       {!locked && <Button className="mt-4 w-full sm:w-auto" disabled={marked.size === 0} onClick={() => onAnswer(question.items.every((item, i) => item.isError === marked.has(i)))}>Potvrdit</Button>}
+    </div>
+  );
+}
+
+/** Označ na diagramu: jeden správný bod. */
+function DiagramBody({ question, locked, onAnswer }: { question: Extract<Question, { type: 'diagram' }>; locked: boolean; onAnswer: (correct: boolean) => void }) {
+  const [selected, setSelected] = useState<string | null>(null);
+  return (
+    <div>
+      <h2 className="text-lg font-semibold">{question.prompt}</h2>
+      <p className="mb-3 mt-1 text-sm text-muted">Označ bod na diagramu.</p>
+      <Diagram id={question.diagram} selected={selected} locked={locked} answer={question.answer} onSelect={setSelected} />
+      {!locked && <Button className="mt-4 w-full sm:w-auto" disabled={selected === null} onClick={() => onAnswer(selected === question.answer)}>Potvrdit</Button>}
     </div>
   );
 }

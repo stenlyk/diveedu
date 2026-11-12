@@ -1,0 +1,253 @@
+- id: zs-moznosti
+  type: order
+  conceptIds: [ztrata-stage, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: Odložená dekompresní lahev není na místě. Seřaď postup.
+  items:
+    - 'Zastavím a dýchám ze zásoby na zádech'
+    - 'Dám vědět týmu'
+    - 'Krátce hledám v nejbližším okolí'
+    - 'Použiji plyn týmu podle plánu'
+    - 'Přepočítám dekompresi pro plyn, který opravdu mám'
+  explanation: 'Limit hledání je plyn. Hlouběji se pro lahev nevrací.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-bez-deko
+  type: why
+  conceptIds: [ztrata-stage, ztrata-deko-plynu, vynechana-dekomprese]
+  difficulty: 2
+  prompt: Proč je ztráta dekompresního plynu v hluboké jeskyni tak vážná?
+  options:
+    - { text: 'Výstup na dno směs trvá několikrát déle a zásoba na zádech na něj nestačí.', correct: true }
+    - { text: 'Bez dekompresního plynu nelze dýchat.', explanation: 'Dno směs se dýchat dá – jen s ní dekomprese trvá mnohem déle.' }
+    - { text: 'Počítač bez něj přestane fungovat.', explanation: 'Počítač se přepne na dýchanou směs.' }
+    - { text: 'Dno směs je v malé hloubce jedovatá.', explanation: 'Normoxická směs ne. U hypoxické by to byl další problém.' }
+  explanation: 'Podle výukového modelu skoro trojnásobek času. Proto plán nesmí stát na jedné lahvi.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-tym-rezerva
+  type: choice
+  conceptIds: [ztrata-stage, tym]
+  difficulty: 2
+  prompt: Jak má být naplánován dekompresní plyn týmu?
+  options:
+    - { text: 'Tak, aby vystačil i při ztrátě jedné lahve', correct: true }
+    - { text: 'Každý přesně pro sebe, bez rezervy', explanation: 'Pak jediná ztráta znamená vynechanou dekompresi.' }
+    - { text: 'Jedna společná lahev pro všechny', explanation: 'Jediný bod selhání.' }
+    - { text: 'Podle toho, co zbylo z minula', explanation: 'Plyn se plánuje a analyzuje pro každý ponor.' }
+  explanation: 'Partneři pak dekomprimují střídavě nebo se o plyn dělí.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-nenasel
+  type: choice
+  conceptIds: [ztrata-stage]
+  difficulty: 2
+  prompt: Lahev nejspíš sklouzla po svahu do hloubky pod šňůrou. Co uděláš?
+  options:
+    - { text: 'Nevracím se hlouběji; řeším situaci plynem týmu', correct: true }
+    - { text: 'Sestoupím pro ni, je to můj plyn', explanation: 'Sestup přidá dekompresi a spotřebu a opouštíš šňůru.' }
+    - { text: 'Pošlu pro ni partnera', explanation: 'Totéž riziko, jen pro někoho jiného.' }
+    - { text: 'Počkám, až vyplave', explanation: 'Nevyplave.' }
+  explanation: 'Lahev se dá nahradit. Plyn a dekomprese utracené hledáním ne.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-prevence
+  type: multi
+  conceptIds: [ztrata-stage, znaceni-lahvi]
+  difficulty: 1
+  prompt: Co snižuje riziko ztráty odložené lahve?
+  options:
+    - { text: 'Připnutí oběma karabinami', correct: true }
+    - { text: 'Zavřený ventil a uložená automatika', correct: true }
+    - { text: 'Značení a přehled týmu, čí lahev kde leží', correct: true }
+    - { text: 'Odložení mimo šňůru, aby nepřekážela', explanation: 'Mimo šňůru ji v nulové viditelnosti nenajdeš.' }
+  explanation: 'A plán psaný tak, aby žádná jednotlivá lahev nebyla nenahraditelná.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-overeni
+  type: why
+  conceptIds: [ztrata-stage, zamena-plynu]
+  difficulty: 2
+  prompt: Proč při sbírání lahve kontroluješ značení a tlak dřív, než z ní začneš dýchat?
+  options:
+    - { text: 'Může to být lahev jiného týmu s jinou směsí, nebo tvoje lahev, která mezitím unikla.', correct: true }
+    - { text: 'Je to formalita z kurzu.', explanation: 'Záměna plynu patří k nejčastějším příčinám smrtelných nehod.' }
+    - { text: 'Automatika se musí zahřát.', explanation: 'Nemusí.' }
+    - { text: 'Aby se nezvířil sediment.', explanation: 'S tím to nesouvisí.' }
+  explanation: 'Postup přepnutí je stejný jako v otevřené vodě: hloubka, lahev, hadice, partner.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: zs-zkratit
+  type: choice
+  conceptIds: [ztrata-stage, vynechana-dekomprese, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: Plyn na celou přepočítanou dekompresi nevychází. Co je nejhorší z možností?
+  options:
+    - { text: 'Mlčky zkrátit zastávky a doufat', correct: true }
+    - { text: 'Požádat o plyn partnera', explanation: 'To je první správný krok.' }
+    - { text: 'Využít podpůrný tým', explanation: 'Přesně k tomu je.' }
+    - { text: 'Dekomprimovat střídavě z jedné lahve', explanation: 'Standardní řešení, pokud s ním plán počítá.' }
+  explanation: 'Problém s plynem je problém týmu. Kdo ho tají, bere týmu možnost ho řešit.'
+  backToLessonId: ztrata-stage-a-deko-plynu
+
+- id: hab-co
+  type: choice
+  conceptIds: [habitat]
+  difficulty: 1
+  prompt: Co je dekompresní habitat?
+  options:
+    - { text: 'Suchý prostor pod vodou, kde potápěč tráví dlouhé zastávky', correct: true }
+    - { text: 'Přetlaková komora na hladině', explanation: 'To je rekompresní komora.' }
+    - { text: 'Lahev s dekompresním plynem', explanation: 'To je stage.' }
+    - { text: 'Vzduchová kapsa, ve které se dá volně dýchat', explanation: 'Atmosféra habitatu se nedýchá; dýchá se z automatiky.' }
+  explanation: 'Zvon nebo obrácená vana pod stropem, naplněná plynem.'
+  backToLessonId: dlouha-dekomprese
+
+- id: hab-proc
+  type: why
+  conceptIds: [habitat, cns-toxicita]
+  difficulty: 2
+  prompt: Proč habitat snižuje riziko dlouhé kyslíkové dekomprese?
+  options:
+    - { text: 'Při křečích má potápěč hlavu nad vodou a neutopí se; navíc se může ohřát a napít.', correct: true }
+    - { text: 'V habitatu je nižší tlak než ve vodě kolem.', explanation: 'Tlak je stejný jako v okolní vodě.' }
+    - { text: 'V habitatu kyslík není toxický.', explanation: 'Toxicita závisí na parciálním tlaku, a ten je stejný.' }
+    - { text: 'Habitat urychluje vyplavování helia.', explanation: 'Přímo ne. Pomáhá teplem a bezpečím.' }
+  explanation: 'Křeče samy nezabíjejí. Zabíjí utonutí.'
+  backToLessonId: dlouha-dekomprese
+
+- id: hab-rizika
+  type: findError
+  conceptIds: [habitat]
+  difficulty: 2
+  prompt: Které představy o habitatu jsou chybné?
+  items:
+    - { text: 'V habitatu se dýchá dekompresní plyn z automatiky.' }
+    - { text: 'Atmosféru habitatu není třeba větrat, je to přece vzduch.', isError: true, explanation: 'Vydýchaný plyn zvyšuje CO2 a snižuje kyslík. Habitat se větrá.' }
+    - { text: 'S habitatem už není potřeba hlídat kyslíkovou zátěž.', isError: true, explanation: 'Zátěž je stejná. Habitat zmírňuje následky křečí, ne jejich pravděpodobnost.' }
+    - { text: 'Tým musí umět habitat postavit i opustit.' }
+  explanation: 'Habitat řeší chlad, tekutiny a utonutí. Přidává vlastní rizika.'
+  backToLessonId: dlouha-dekomprese
+
+- id: podpora-ukoly
+  type: multi
+  conceptIds: [podpurny-tym, odlozeni-stage]
+  difficulty: 1
+  prompt: Co dělá podpůrný tým při velkém jeskynním ponoru?
+  options:
+    - { text: 'Rozváží a kontroluje odložené lahve', correct: true }
+    - { text: 'Čeká v dohodnutý čas na dohodnutém místě', correct: true }
+    - { text: 'Odnáší prázdné lahve a přináší plyn', correct: true }
+    - { text: 'Smí riskovat víc než hlavní tým', explanation: 'Podpůrní potápěči mají vlastní plán a limity.' }
+  explanation: 'Podpora zvyšuje rezervy. Plán ale musí vyjít i bez ní.'
+  backToLessonId: dlouha-dekomprese
+
+- id: deko-chlad
+  type: why
+  conceptIds: [deko-v-jeskyni, ztrata-tepla, tepelny-management]
+  difficulty: 2
+  prompt: Proč je prochladnutí při dekompresi horší než na dně?
+  options:
+    - { text: 'Chlad omezuje prokrvení tkání a tím zpomaluje vyplavování plynu právě ve fázi, kdy se vyplavit má.', correct: true }
+    - { text: 'Chlad zvyšuje parciální tlak dusíku.', explanation: 'Parciální tlak určuje směs a hloubka.' }
+    - { text: 'V chladu se plyn vyplavuje příliš rychle.', explanation: 'Naopak pomaleji.' }
+    - { text: 'Chlad na dekompresi nemá vliv.', explanation: 'Má, a doložený.' }
+  explanation: 'Ideál je být na dně spíš v chladu a při dekompresi v teple – v praxi to bývá naopak, a proto se plánuje ohřev.'
+  backToLessonId: dlouha-dekomprese
+
+- id: deko-kyslik
+  type: choice
+  conceptIds: [habitat, vzduchove-prestavky, cns-toxicita]
+  difficulty: 2
+  prompt: Jak se při dlouhé zastávce na kyslíku omezuje zátěž centrálního nervového systému?
+  options:
+    - { text: 'Pravidelnými přestávkami na směsi s nižším obsahem kyslíku', correct: true }
+    - { text: 'Rychlejším dýcháním', explanation: 'To zvyšuje CO2 a riziko křečí.' }
+    - { text: 'Zadržováním dechu', explanation: 'Nebezpečné a neúčinné.' }
+    - { text: 'Nijak, kyslík v 6 m je bezpečný', explanation: 'Hodina na 1,6 bar překračuje limit sama o sobě.' }
+  explanation: 'Přestávky se do plánu počítají předem, včetně plynu na ně.'
+  backToLessonId: dlouha-dekomprese
+
+- id: plan-poradi
+  type: order
+  conceptIds: [plan-hluboke-jeskyne, profil-jeskyne]
+  difficulty: 2
+  prompt: Seřaď kroky, jak plán hlubokého jeskynního ponoru vzniká.
+  items:
+    - 'Trasa a profil úsek po úseku'
+    - 'Směs na dno podle největší hloubky'
+    - 'Dekomprese podle profilu, s variantami'
+    - 'Plyn: nejdřív cesta ven pro dva, potom cesta dovnitř'
+    - 'Odkládání lahví, navigace a limity'
+  explanation: 'Směs a dekomprese nejdou určit bez trasy; plyn nejde spočítat bez dekomprese.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: plan-co-ukonci
+  type: multi
+  conceptIds: [plan-hluboke-jeskyne, tlak-otocky]
+  difficulty: 1
+  prompt: Co všechno ukončuje hluboký jeskynní ponor?
+  options:
+    - { text: 'Tlak otočky v kterékoli lahvi kteréhokoli člena týmu', correct: true }
+    - { text: 'Dohodnutý čas nebo dekompresní závazek', correct: true }
+    - { text: 'Jakýkoli problém a rozhodnutí kohokoli z týmu', correct: true }
+    - { text: 'Jen dosažení cíle', explanation: 'Cíl ponor neukončuje; limity ano.' }
+  explanation: 'Limitů je víc než v mělké jeskyni a platí ten, který přijde první.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: plan-plyn-dno
+  type: numeric
+  conceptIds: [plan-hluboke-jeskyne, planovani-plynu]
+  difficulty: 2
+  prompt: 'Kolik litrů plynu spotřebuje jeden potápěč za {time} min v hloubce {depth} m při spotřebě 20 l/min?'
+  template: { fn: gasConsumed, params: { depth: { values: [40, 45, 50, 60] }, time: { values: [15, 20, 25, 30] } }, fixed: { sac: 20 }, args: [sac, depth, time], tolerance: 20, unit: l, decimals: 0 }
+  explanation: 'Povrchová spotřeba krát absolutní tlak krát čas. Výsledek porovnej s objemem dvojčete – a nezapomeň na cestu ven pro dva.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: plan-smes
+  type: numeric
+  conceptIds: [plan-hluboke-jeskyne, plan-vice-plynu]
+  difficulty: 2
+  prompt: 'Jaké je ppO2 trimixu 21/35 v hloubce {depth} m?'
+  template: { fn: ppO2, params: { depth: { values: [36, 40, 45, 48] } }, fixed: { fo2: 0.21 }, args: [fo2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'Frakce kyslíku krát absolutní tlak. Pro pracovní fázi ponoru se drží do 1,4 bar; v jeskyni raději níž.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: plan-proc-stage
+  type: why
+  conceptIds: [plan-hluboke-jeskyne, odlozeni-stage, podil-plynu]
+  difficulty: 3
+  prompt: Proč plán na 25 minut ve 45 m, 300 m od vchodu, na samotné dvojče nevychází?
+  options:
+    - { text: 'Cesta ven pro dva v této hloubce spotřebuje většinu dvojčete, takže na cestu dovnitř a dno nezbývá.', correct: true }
+    - { text: 'Dvojče se ve 45 m nesmí používat.', explanation: 'Smí.' }
+    - { text: 'Trimix zabírá v lahvi víc místa.', explanation: 'Objem lahve je stejný.' }
+    - { text: 'Ve 45 m neplatí třetiny.', explanation: 'Platí – a právě proto to nevychází.' }
+  explanation: 'Řešení: stage na cestu dovnitř, záda jako rezerva a kratší čas na dně.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: hjplan-chyby
+  type: findError
+  conceptIds: [plan-hluboke-jeskyne, ztrata-stage]
+  difficulty: 3
+  prompt: V plánu hlubokého jeskynního ponoru jsou chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Plyn počítáme od cesty ven pro dva z nejvzdálenějšího bodu.' }
+    - { text: 'Dekompresi máme spočítanou pro největší hloubku a celkový čas.', isError: true, explanation: 'Plán se píše pro profil trasy. Jinak neví, kde zastávky vyjdou a kde má být plyn.' }
+    - { text: 'Dekompresní plyn má každý přesně na svůj rozvrh.', isError: true, explanation: 'Chybí rezerva a pravidlo pro ztrátu jedné lahve.' }
+    - { text: 'Máme variantu pro čas na dně o deset minut delší.' }
+  explanation: 'Plán je tak dobrý jako jeho nejslabší článek.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru
+
+- id: plan-nejslabsi
+  type: choice
+  conceptIds: [plan-hluboke-jeskyne, podil-plynu]
+  difficulty: 2
+  prompt: Co bývá v plánu hlubokého jeskynního ponoru nejslabším článkem?
+  options:
+    - { text: 'Plyn na cestu ven pro dva z nejvzdálenějšího bodu', correct: true }
+    - { text: 'Výdrž hlavní svítilny', explanation: 'Světla jsou tři a plánují se s rezervou.' }
+    - { text: 'Délka vodicí šňůry', explanation: 'Šňůry bývá dost.' }
+    - { text: 'Počet značek', explanation: 'Značky omezují navigaci, ne přežití.' }
+  explanation: 'Proto se počítá jako první a všechno ostatní se mu přizpůsobí.'
+  backToLessonId: plan-hlubokeho-jeskynniho-ponoru

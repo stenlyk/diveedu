@@ -1,0 +1,9 @@
+id: deepcave
+title: Deep Cave
+subtitle: 'Syntéza: trimix, dekomprese a strop najednou'
+branch: cave
+rig: oc
+prerequisites: [fullcave, trimix]
+order: 12
+passThreshold: 0.8
+status: published

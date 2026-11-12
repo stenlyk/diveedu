@@ -1,0 +1,19 @@
+id: okruhy-a-plan-navigace
+moduleId: fullcave
+title: "Okruhy, traverzy a plán navigace"
+order: 3
+conceptIds: ["okruh-a-traverz", "plan-navigace", "tlak-otocky"]
+checkQuestionIds: ["okruh-co-je", "okruh-plyn", "plan-navigace-co", "plan-zmena"]
+estimatedMinutes: 9
+audioSummary: >-
+  Běžný jeskynní ponor vede tam a zpět. Cestu ven znáš, protože jsi jí právě proplaval.
+  Okruh se vrací ke stejnému vchodu jinou cestou. Traverz končí jiným vchodem.
+  V obou případech je druhá polovina úsek, který jsi neviděl.
+  Proto se nejdřív plave z jedné strany k dohodnutému bodu, pak z druhé strany k vlastní značce. Teprve třetí ponor je okruh.
+  Plán navigace obsahuje každé rozhodnutí, kdo co pokládá a sbírá, a co ponor ukončuje.
+  Pod vodou se plán smí jen zkrátit.
+  Mapa je pomůcka k plánování. V jeskyni rozhoduje šňůra.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

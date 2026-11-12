@@ -1,0 +1,88 @@
+<Hook>
+
+V otevřené vodě si profil ponoru kreslíš sám: dolů, dno, nahoru. V jeskyni ho nakreslila voda před sto tisíci lety.
+
+Chodba klesne do čtyřiceti metrů, vystoupá do patnácti a znovu klesne do třiceti. Cestou ven totéž pozpátku. Kde v tom uděláš zastávku v devíti metrech?
+
+</Hook>
+
+<Principle>
+
+V jeskyni určuje hloubku chodba. Z toho plynou tři věci, které v otevřené vodě neznáš.
+
+**1. Profil je daný trasou.** Plán se nepíše pro „hloubku a čas“, ale pro posloupnost úseků: 200 m v 15 m, 100 m ve 40 m, 150 m ve 25 m.
+Počítač průběžný profil zpracuje sám; plán ho musí znát předem, aby věděl, kolik plynu a jaké zastávky čekat.
+
+**2. Dva stropy.** Skalní strop říká, kudy vystoupat nejde. <Term cs="dekompresní strop" /> říká, kam vystoupat ještě nesmíš. V jeskyni platí oba:
+
+- Když chodba cestou ven stoupá **nad** tvůj dekompresní strop, musíš zastavit před stoupáním a počkat – v hloubce a na místě, které sis nevybral.
+- Když chodba zůstává **hluboko**, dekomprese se dál prohlubuje, i když už plaveš ven.
+
+**3. Pilovitý profil.** Opakované sestupy a výstupy zatěžují uši a dutiny a nejsou dobré pro dekompresi:
+při každém výstupu se tkáně dostávají do přesycení a při dalším sestupu se znovu sytí. Modely s tím počítají jen přibližně. Takové trasy se proto plánují konzervativněji.
+
+**Kde dekomprimovat:**
+
+- zastávky se plánují na konkrétní místa v jeskyni, kde je správná hloubka, prostor pro tým a pokud možno čisté dno,
+- dekompresní plyn musí být **tam, kde zastávky začínají** – odložený cestou dovnitř, ne u vchodu, pokud jsou zastávky uvnitř,
+- poslední mělké zastávky bývají v zóně denního světla nebo ve vstupním jezírku.
+
+**Zdržení je pravidlo.** Zachycená výstroj, hledání značky, pomalý partner: každá minuta navíc v hloubce přidává několik minut dekomprese a další plyn.
+Plán má proto vždy i variantu „o pět a o deset minut déle“ – s plynem, který na ni stačí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Model je stejný jako v otevřené vodě. Mění se to, že o hloubce v každé minutě nerozhoduješ ty.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor do 60 m na trimix 18/45, dekomprese na EAN50 od 21 m, GF 50/80. Při 25 minutách na dně trvá výstup podle výukového modelu:
+
+<Worked fn="ascentMinutesMix" args={[60, 25, 50, 80, 0.18, 0.45, 0.5, 21]} expected={55.67} tolerance={0.5} unit="min" decimals={0} />
+
+Zdržení o deset minut – třeba hledání značky v kalné vodě:
+
+<Worked fn="ascentMinutesMix" args={[60, 35, 50, 80, 0.18, 0.45, 0.5, 21]} expected={86.67} tolerance={0.5} unit="min" decimals={0} />
+
+Deset minut na dně stojí půl hodiny dekomprese navíc. A plyn na ni: v 6 m při 20 l/min je to
+<Calc fn="gasConsumed" args={[20, 6, 30]} decimals={0} unit="l" />, tedy <Calc fn="litersToBar" args={[960, 11.1]} decimals={0} unit="bar" /> ze stage lahve 11,1 l.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="pilovity-profil" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

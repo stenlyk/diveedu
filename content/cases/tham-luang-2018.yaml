@@ -1,0 +1,47 @@
+id: tham-luang-2018
+title: 'Tham Luang 2018: plyn a dlouhé průniky pod tlakem záchranné akce'
+year: 2018
+location: 'Tham Luang Nang Non, provincie Chiang Rai, Thajsko'
+rig: oc
+moduleIds: [cavern, fullcave]
+anonymized: false
+context: >-
+  V červnu 2018 uvěznila stoupající voda v jeskyni Tham Luang dvanáct chlapců z fotbalového týmu a jejich trenéra. Po devíti dnech je našli
+  britští jeskynní potápěči několik kilometrů od vchodu; všichni byli o týden později vyvedeni živí. Záchranná akce vyžadovala rozmístit
+  podél trasy stovky lahví. Při této práci zemřel 6. července dobrovolník Saman Kunan, bývalý příslušník thajského námořnictva:
+  cestou zpět z rozvozu lahví ztratil pod vodou vědomí a nepodařilo se ho oživit. Přesnou příčinu veřejně dostupné zdroje spolehlivě neuvádějí.
+  Uvádíme jen údaje, na kterých se zdroje shodují. Případ zde neslouží k hodnocení jednotlivců – Saman Kunan zemřel při záchraně druhých –,
+  ale k pochopení podmínek, ve kterých se plánování plynu stává nejtěžší částí ponoru.
+timeline:
+  - { when: 23. června, what: 'Skupina vstoupí do jeskyně. Monzunový déšť zaplaví nízké úseky a odřízne jí cestu ven.' }
+  - { when: Následující dny, what: 'Zasahují stovky lidí včetně vojenských potápěčů. Proud, nulová viditelnost a zúžená místa postup opakovaně zastavují; čerpadla snižují hladinu.' }
+  - { when: 2. července, what: 'Dva britští jeskynní potápěči při pokládání šňůry nacházejí všech třináct živých.' }
+  - { when: 2.–6. července, what: 'Podél trasy se rozmísťují lahve s plynem pro potápěče i pro zamýšlený transport. Jde o opakované dlouhé ponory s nákladem.' }
+  - { when: 6. července, what: 'Saman Kunan se vrací z rozvozu lahví, pod vodou ztrácí vědomí. Partner ho dopraví na suché místo, oživování není úspěšné.' }
+  - { when: 8.–10. července, what: 'Chlapci a trenér jsou ve třech dnech vyvedeni ven.' }
+errorChain:
+  - { layer: prostredi, description: 'Proud proti směru postupu, kalná voda s nulovou viditelností, zúženiny a hladina měnící se s deštěm. Podmínky, ve kterých se cesta ven nedá odhadnout z cesty dovnitř.', conceptIds: [proud-v-jeskyni, nulova-viditelnost, zuzenina] }
+  - { layer: planovani, description: 'Časový tlak: voda stoupala a kyslíku v komoře ubývalo. Záchranná akce nedovoluje otočit ponor jen proto, že podmínky nejsou dobré.', conceptIds: [plan-navigace, tlak-otocky] }
+  - { layer: plyn, description: 'Dlouhé průniky s těžkou prací (transport lahví) zvyšují spotřebu nad hodnoty, se kterými se běžně plánuje, a ztěžují sledování vlastního plynu.', conceptIds: [podil-plynu, namaha, dosah-pruniku] }
+  - { layer: vybaveni, description: 'Na akci se sešly týmy s různou výstrojí a různým výcvikem; řada zasahujících měla výcvik pro otevřenou vodu, ne pro zatopené jeskyně.', conceptIds: [pet-pravidel, prostredi-se-stropem] }
+  - { layer: lidsky-faktor, description: 'Únava z mnoha dní nasazení, málo spánku a vědomí, že na výsledku závisí životy dětí. Motivace pokračovat je v takové situaci nejsilnější právě tehdy, kdy je rezerva nejmenší.', conceptIds: [tym, namaha] }
+physiology: >-
+  Těžká práce pod vodou – plavání proti proudu s nákladem – zvyšuje ventilaci na několikanásobek klidové hodnoty a s ní i spotřebu plynu.
+  Zároveň roste produkce CO2; při námaze a zvýšeném dechovém odporu se jeho hladina v krvi zvedá, což zhoršuje úsudek a může vést až ke ztrátě vědomí.
+  Únava a nedostatek spánku tyto účinky prohlubují. Co z toho hrálo roli v tomto případě, není z veřejných zdrojů spolehlivě známo.
+calcTasks:
+  - { prompt: 'Ilustrační výpočet, ne údaje z akce: úsek 400 m proti proudu rychlostí 8 m/min. Kolik minut trvá?', fn: exitMinutes, args: [400, 8], unit: min, tolerance: 0.5 }
+  - { prompt: 'Kolik litrů plynu na něj spotřebuje potápěč při těžké práci (40 l/min) v hloubce 5 m?', fn: gasConsumed, args: [40, 5, 50], unit: l, tolerance: 20 }
+  - { prompt: 'Jaký podíl zásoby smí použít dovnitř, když postupuje s proudem 16 m/min a ven proti němu 8 m/min?', fn: usableFraction, args: [16, 8], unit: '', tolerance: 0.01 }
+preventions:
+  - 'Plyn pro průniky s proudem a nákladem plánovat podle nejpomalejší cesty ven a pracovní spotřeby, ne podle třetin.'
+  - 'Odložený plyn podél trasy s jasným značením a evidencí, kdo co kam uložil.'
+  - 'Do zatopené jeskyně potápěče s jeskynním výcvikem; ostatní na podporu mimo strop.'
+  - 'Střídání a odpočinek i pod časovým tlakem: unavený záchranář je další oběť.'
+  - 'Pravidlo „kdokoli může otočit ponor“ platí i při záchranné akci.'
+sources:
+  - { title: 'Thirteen Lessons That Saved Thirteen Lives: The Thai Cave Rescue', author: 'Volanthen J.', year: 2021, note: 'Průběh akce z pohledu potápěčů; údaje o úmrtí ověřit proti dobovým zprávám.' }
+  - { title: 'Aquanaut: A Life Beneath the Surface', author: 'Stanton R.', year: 2021 }
+  - { title: 'Tham Luang cave rescue – souhrn dobového zpravodajství (BBC, Reuters), červenec 2018', author: 'BBC News, Reuters', year: 2018, note: 'Data a průběh ověřit.' }
+certainty: hypotéza
+needs_review: true

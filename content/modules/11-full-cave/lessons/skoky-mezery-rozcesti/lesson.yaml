@@ -1,0 +1,19 @@
+id: skoky-mezery-rozcesti
+moduleId: fullcave
+title: "Skoky, mezery a rozcestí"
+order: 2
+conceptIds: ["skok", "mezera-ve-snure", "rozcesti-t", "osobni-znacka"]
+checkQuestionIds: ["skok-co-je", "skok-diagram-mezera", "rozcesti-diagram", "skok-poradi", "mezera-proc", "rozcesti-sipky-past"]
+estimatedMinutes: 11
+audioSummary: >-
+  Každý přechod mezi šňůrami a každé rozcestí je rozhodnutí, které budeš při návratu dělat znovu, možná poslepu.
+  Mezera je úsek bez šňůry. Skok je její přemostění vlastní cívkou.
+  Nejdřív si označ cestu ven, pak připoj cívku k hlavní šňůře, odviň ji k boční a zajisti.
+  Skok zůstává na místě, dokud je tým za ním.
+  Na rozcestí dávej osobní značku na šňůru k vlastnímu východu vždy.
+  Trvalé šipky nestačí. Ukazují k nejbližšímu východu a ten nemusí být tvůj.
+  Souvislá šňůra do otevřené vody nemá výjimky.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

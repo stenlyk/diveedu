@@ -1,0 +1,292 @@
+- id: zuzenina-typy
+  type: match
+  conceptIds: [zuzenina]
+  difficulty: 1
+  prompt: Přiřaď stupeň zúženiny k popisu.
+  pairs:
+    - { left: Menší zúženina, right: 'Tým proplave jen za sebou, výstroj zůstává na těle' }
+    - { left: Větší zúženina, right: 'Část výstroje je třeba sundat nebo posunout' }
+  explanation: 'Přesné definice se mezi agenturami liší. Společné je, že dva potápěči vedle sebe neproplavou.'
+  needs_review: true
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: zuzenina-plyn-poradi
+  type: why
+  conceptIds: [zuzenina, sdileni-plynu]
+  difficulty: 2
+  prompt: Proč je zúženina kritické místo pro sdílení plynu?
+  options:
+    - { text: 'Dva potápěči musí za sebou na plnou délku hadice, která se nesmí zaseknout ani napnout.', correct: true }
+    - { text: 'V zúženině je vyšší tlak.', explanation: 'Tlak určuje hloubka.' }
+    - { text: 'Dlouhá hadice tam nefunguje.', explanation: 'Funguje. Právě kvůli zúženinám je dlouhá.' }
+    - { text: 'V zúženině se nesmí dýchat.', explanation: 'Dýchá se normálně.' }
+  explanation: 'Pořadí a vedení hadice se dohodne před zúženinou. Dárce hlídá, aby se hadice nenapnula.'
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: zuzenina-zaseknuti
+  type: order
+  conceptIds: [zuzenina]
+  difficulty: 2
+  prompt: Zachytil ses v zúženině. Seřaď, co uděláš.
+  items:
+    - 'Zastavím'
+    - 'Vydechnu a uvolním tělo'
+    - 'Couvnu o kus zpět'
+    - 'Zjistím, co se zachytilo, a zkusím to znovu jinak'
+  explanation: 'Síla věci zhoršuje: zaklíní tě pevněji a zvíří sediment.'
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: navrat-hmat-cas
+  type: numeric
+  conceptIds: [nulova-viditelnost, zuzenina]
+  difficulty: 2
+  prompt: 'Tým je {distance} m od vchodu. Návrat po hmatu se zúženinou zvládá průměrně {speed} m/min. Kolik minut cesta ven potrvá?'
+  template: { fn: exitMinutes, params: { distance: { values: [150, 200, 250, 300] }, speed: { values: [4, 5, 6] } }, args: [distance, speed], tolerance: 0.5, unit: min, decimals: 0 }
+  explanation: 'Vzdálenost dělená rychlostí. Za dobré viditelnosti by to byla třetina času.'
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: zuzenina-sediment
+  type: why
+  conceptIds: [zuzenina, sediment]
+  difficulty: 1
+  prompt: Proč bývá za zúženinou při návratu špatná viditelnost?
+  options:
+    - { text: 'Při průchodu dovnitř se tým dotyku stěn a dna nevyhnul.', correct: true }
+    - { text: 'V zúženinách je tma.', explanation: 'Tma je v celé jeskyni.' }
+    - { text: 'Zúženina zastavuje proud.', explanation: 'Zúžení proud naopak zrychluje.' }
+    - { text: 'Svítilny v těsném prostoru svítí méně.', explanation: 'Svítí stejně.' }
+  explanation: 'Zúženina je místo, kde se nulová viditelnost, pomalý postup a případné sdílení plynu potkávají najednou.'
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: zuzenina-pred
+  type: choice
+  conceptIds: [zuzenina, kontaktni-komunikace]
+  difficulty: 2
+  prompt: Co tým udělá před průchodem zúženinou cestou dovnitř?
+  options:
+    - { text: 'Zastaví, zkontroluje plyn a tým; s problémem se dál nejde', correct: true }
+    - { text: 'Zrychlí, aby byl průchod co nejkratší', explanation: 'Rychlost znamená dotyky a sediment.' }
+    - { text: 'Projde bez zastavení, zastávky zdržují', explanation: 'Za zúženinou se každý problém řeší hůř.' }
+    - { text: 'Odloží šňůru, aby nepřekážela', explanation: 'Šňůra zůstává na dosah po celou dobu.' }
+  explanation: 'Zúženina je hranice: co za ní vznikne, musí se přes ni dostat zpět.'
+  backToLessonId: zuzeniny-a-navrat-po-hmatu
+
+- id: proud-ktery-horsi
+  type: choice
+  conceptIds: [proud-v-jeskyni]
+  difficulty: 1
+  prompt: Která jeskyně je z hlediska plynu zrádnější?
+  options:
+    - { text: 'Ta, kde proud teče dovnitř', correct: true }
+    - { text: 'Ta, kde proud teče ven', explanation: 'Dovnitř je to dřina, ale ven tě proud nese.' }
+    - { text: 'Obě stejně', explanation: 'Poměr času dovnitř a ven je opačný.' }
+    - { text: 'Žádná, proud na plyn nemá vliv', explanation: 'Má: mění čas cesty ven.' }
+  explanation: 'Proud dovnitř zkracuje cestu tam a prodlužuje cestu zpět. Třetiny pak nestačí.'
+  backToLessonId: proud-a-prutok
+
+- id: proud-otocka
+  type: numeric
+  conceptIds: [proud-v-jeskyni, podil-plynu, tlak-otocky]
+  difficulty: 3
+  prompt: 'Začínáš s {start} bar. Dovnitř postupuješ {speedIn} m/min, ven proti proudu jen {speedOut} m/min. Jaký je tlak otočky, aby plyn stačil na cestu ven pro dva?'
+  template: { fn: turnPressureForSpeeds, params: { start: { values: [200, 210, 220] }, speedIn: { values: [18, 20, 24] }, speedOut: { values: [8, 10, 12] } }, args: [start, speedIn, speedOut], tolerance: 3, unit: bar, decimals: 0 }
+  explanation: 'Podíl je 1 / (1 + 2 × poměr rychlostí). Tlak otočky je počáteční tlak bez tohoto podílu.'
+  backToLessonId: proud-a-prutok
+
+- id: proud-proc-nestaci
+  type: why
+  conceptIds: [podil-plynu, proud-v-jeskyni]
+  difficulty: 2
+  prompt: Proč třetiny nestačí, když proud teče do jeskyně?
+  options:
+    - { text: 'Cesta ven trvá déle než dovnitř, takže na ni dva potápěči spotřebují víc než dvě třetiny.', correct: true }
+    - { text: 'V proudu se manometr zpožďuje.', explanation: 'Manometr ukazuje správně.' }
+    - { text: 'Proud ředí dýchací směs.', explanation: 'Na směs proud vliv nemá.' }
+    - { text: 'Třetiny platí jen v moři.', explanation: 'Platí všude, kde je cesta ven stejně dlouhá jako dovnitř.' }
+  explanation: 'Třetiny předpokládají stejný čas tam i zpět. Proud tenhle předpoklad ruší.'
+  backToLessonId: proud-a-prutok
+
+- id: proud-tretina-max
+  type: why
+  conceptIds: [podil-plynu, tlak-otocky]
+  difficulty: 2
+  prompt: Proud teče ven z jeskyně a cesta zpět bude rychlejší. Proč se přesto nepoužije víc než třetina?
+  options:
+    - { text: 'Na proud se nedá spolehnout: může zeslábnout a nulová viditelnost zpomalí návrat bez ohledu na něj.', correct: true }
+    - { text: 'Je to pravidlo bez důvodu.', explanation: 'Důvod má: rezerva nesmí záviset na podmínkách, které se mění.' }
+    - { text: 'Proud ven zvyšuje spotřebu.', explanation: 'Cestou ven ji spíš snižuje.' }
+    - { text: 'S proudem se plave hlouběji.', explanation: 'Hloubku určuje chodba.' }
+  explanation: 'Třetina je horní mez. Proud ven je rezerva navíc, ne důvod jít dál.'
+  backToLessonId: proud-a-prutok
+
+- id: proud-technika
+  type: multi
+  conceptIds: [proud-v-jeskyni, namaha]
+  difficulty: 2
+  prompt: Jak se plave proti proudu?
+  options:
+    - { text: 'U dna a u stěn, kde je proud slabší', correct: true }
+    - { text: 'Přitahováním po pevné, čisté skále', correct: true }
+    - { text: 'Zúžením rychle a s odpočinkem za ním', correct: true }
+    - { text: 'Středem chodby, kde je nejvíc místa', explanation: 'Ve středu je proud nejrychlejší.' }
+  explanation: 'Námaha proti proudu zvyšuje spotřebu i hladinu CO2. Šetří se technikou, ne silou.'
+  backToLessonId: proud-a-prutok
+
+- id: proud-zmena
+  type: choice
+  conceptIds: [proud-v-jeskyni]
+  difficulty: 2
+  prompt: Minulý týden byla jeskyně bez proudu. Co z toho plyne pro dnešní ponor?
+  options:
+    - { text: 'Nic; stav vody zjistím znovu a zhodnotím u vchodu', correct: true }
+    - { text: 'Dnes bude také bez proudu', explanation: 'Průtok závisí na srážkách v povodí, někdy se zpožděním dnů.' }
+    - { text: 'Proud se mění jen s ročním obdobím', explanation: 'Mění se i během dnů a hodin.' }
+    - { text: 'Stačí se zeptat, jestli ráno pršelo', explanation: 'Rozhodují srážky v celém povodí, i několik dní staré.' }
+  explanation: 'Některé jeskyně po deštích otáčejí směr toku nebo se zcela zatápějí.'
+  backToLessonId: proud-a-prutok
+
+- id: skutr-dosah
+  type: numeric
+  conceptIds: [skutr-dpv, dosah-pruniku]
+  difficulty: 2
+  prompt: 'Na cestu dovnitř máš {usable} bar v dvojčeti 24 l. Na skútru dýcháš 15 l/min, hloubka 20 m, rychlost {speed} m/min. Jak daleko dojedeš?'
+  template: { fn: penetrationDistance, params: { usable: { values: [20, 30, 40] }, speed: { values: [40, 45, 50] } }, fixed: { tank: 24, sac: 15, depth: 20 }, args: [usable, tank, sac, depth, speed], tolerance: 10, unit: m, decimals: 0 }
+  explanation: 'Stejný výpočet jako při plavání, jen s trojnásobnou rychlostí. Tolik metrů bys v nouzi plaval zpět.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: skutr-otocka
+  type: numeric
+  conceptIds: [skutr-dpv, selhani-skutru, podil-plynu]
+  difficulty: 3
+  prompt: 'Začínáš s {start} bar. Na skútru jedeš {speedIn} m/min. Kdyby selhal, plaveš ven {speedOut} m/min. Jaký je tlak otočky, aby plyn stačil na cestu ven pro dva?'
+  template: { fn: turnPressureForSpeeds, params: { start: { values: [200, 210, 230] }, speedIn: { values: [40, 45, 50] }, speedOut: { values: [12, 15] } }, args: [start, speedIn, speedOut], tolerance: 3, unit: bar, decimals: 0 }
+  explanation: 'Poměr rychlostí tři ku jedné dává sedminu zásoby. Skutečnost je ještě přísnější, protože plavání zvyšuje spotřebu.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: skutr-selhani-plan
+  type: why
+  conceptIds: [selhani-skutru, tazeni-partnera]
+  difficulty: 2
+  prompt: Proč se plyn na skútrovém ponoru plánuje podle selhání skútru v nejvzdálenějším bodě?
+  options:
+    - { text: 'Skútr tě odveze dál, než kolik stačí plyn na návrat plaváním nebo tažením.', correct: true }
+    - { text: 'Skútry selhávají při každém ponoru.', explanation: 'Neselhávají. Plán ale musí vyjít i tehdy, když ano.' }
+    - { text: 'Skútr spotřebovává dýchací plyn.', explanation: 'Jede na baterii.' }
+    - { text: 'Na skútru se dýchá víc.', explanation: 'Méně. Právě proto je dosah tak velký.' }
+  explanation: 'Dovnitř třicet barů, ven plaváním sto dvacet: skútr mění poměr cesty tam a zpět víc než jakýkoli proud.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: skutr-tazeni
+  type: choice
+  conceptIds: [tazeni-partnera, selhani-skutru]
+  difficulty: 2
+  prompt: Partnerovi selhal skútr. Táhneš ho na svém. Co se mění?
+  options:
+    - { text: 'Jedete pomaleji a baterie se vybíjí rychleji; plán musel s tažením počítat', correct: true }
+    - { text: 'Nic, skútr utáhne dva stejně jako jednoho', explanation: 'Odpor je dvojnásobný, rychlost nižší a odběr vyšší.' }
+    - { text: 'Partner musí odhodit výstroj', explanation: 'Výstroj zůstává. Odkládá se nanejvýš nefunkční skútr.' }
+    - { text: 'Tažení je zakázané', explanation: 'Je to standardní nouzový postup, který se cvičí.' }
+  explanation: 'Baterie se proto plánuje na třetiny stejně jako plyn.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: skutr-chyby
+  type: findError
+  conceptIds: [skutr-dpv, selhani-skutru, tazeni-partnera]
+  difficulty: 3
+  prompt: V plánu skútrového ponoru jsou chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Baterii plánujeme na třetiny.' }
+    - { text: 'Plyn plánujeme klasickými třetinami, na skútru se přece dýchá málo.', isError: true, explanation: 'Třetiny předpokládají stejně dlouhou cestu ven. Bez skútru je několikrát delší.' }
+    - { text: 'Tažení jsme necvičili, je to intuitivní.', isError: true, explanation: 'Tažení mění trim, rychlost i ovládání. Cvičí se v otevřené vodě.' }
+    - { text: 'Vrtuli držíme dál od šňůry a ode dna.' }
+  explanation: 'Všechno, co se skútrem uděláš, musíš umět dokončit bez něj.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: skutr-rizika
+  type: multi
+  conceptIds: [skutr-dpv, sediment]
+  difficulty: 2
+  prompt: Jaká rizika skútr v jeskyni přidává?
+  options:
+    - { text: 'Rozhodnutí přicházejí rychleji, než je stíháš', correct: true }
+    - { text: 'Proud od vrtule zvedá sediment', correct: true }
+    - { text: 'Šňůra se může namotat do vrtule', correct: true }
+    - { text: 'Skútr zvyšuje spotřebu plynu při jízdě', explanation: 'Naopak ji snižuje – a tím tě pustí dál.' }
+  explanation: 'A tým se snadno roztrhá: rozdíl rychlostí dvou skútrů je za minutu desítky metrů.'
+  backToLessonId: skutr-v-jeskyni
+
+- id: sm-vyhody
+  type: multi
+  conceptIds: [sidemount, zuzenina]
+  difficulty: 1
+  prompt: Co je výhodou sidemountu?
+  options:
+    - { text: 'Ventily a první stupně jsou na dohled a na dosah', correct: true }
+    - { text: 'Nízký profil; lahve jdou posunout před sebe', correct: true }
+    - { text: 'Lahve se dají k vodě nosit po jedné', correct: true }
+    - { text: 'Celá zásoba plynu je dostupná kterékoli automatice', explanation: 'To je vlastnost dvojčete s manifoldem. Lahve v sidemountu jsou nezávislé.' }
+  explanation: 'Výhody se platí kázní při hospodaření s plynem.'
+  backToLessonId: sidemount-a-backmount
+
+- id: sm-plyn
+  type: why
+  conceptIds: [sidemount, pravidlo-tretin]
+  difficulty: 2
+  prompt: Proč se v sidemountu střídají automatiky a lahve se vydýchávají rovnoměrně?
+  options:
+    - { text: 'Při ztrátě jedné lahve musí druhá sama stačit na cestu ven.', correct: true }
+    - { text: 'Aby se automatiky opotřebovávaly stejně.', explanation: 'O opotřebení nejde.' }
+    - { text: 'Kvůli vyvážení – jinak se potápěč převrátí.', explanation: 'Vyvážení je vedlejší efekt. Hlavní důvod je rezerva.' }
+    - { text: 'Nezávislé lahve se jinak přetlakují.', explanation: 'Lahve se navzájem neovlivňují.' }
+  explanation: 'Třetiny platí pro každou lahev zvlášť. Dva manometry, dvě čísla.'
+  backToLessonId: sidemount-a-backmount
+
+- id: sm-prirad
+  type: match
+  conceptIds: [sidemount, twinset]
+  difficulty: 2
+  prompt: Přiřaď vlastnost ke konfiguraci.
+  pairs:
+    - { left: Dvojče s manifoldem, right: 'Jeden manometr, celá zásoba pro obě automatiky' }
+    - { left: Sidemount, right: 'Dva manometry, lahve nezávislé' }
+  explanation: 'Obě konfigurace mají dva první stupně. Liší se tím, co se stane se zásobou při poruše.'
+  backToLessonId: sidemount-a-backmount
+
+- id: sm-zuzenina
+  type: choice
+  conceptIds: [sidemount, zuzenina]
+  difficulty: 2
+  prompt: S dvojčetem ses protáhl zúženinou určenou pro sidemount. Co z toho plyne?
+  options:
+    - { text: 'Nic dobrého: ven musím projít znovu, možná poslepu a s partnerem na hadici', correct: true }
+    - { text: 'Že zúženina je pro dvojče v pořádku', explanation: 'Průchod dovnitř za ideálních podmínek o cestě ven neříká nic.' }
+    - { text: 'Že sidemount je zbytečný', explanation: 'Konfigurace určuje, kam smíš, ne kam se vmáčkneš.' }
+    - { text: 'Že mám příště zkusit ještě užší místo', explanation: 'Takhle se hranice neposouvají.' }
+  explanation: 'Každé místo se posuzuje podle nejhoršího návratu.'
+  backToLessonId: sidemount-a-backmount
+
+- id: sm-ventily
+  type: why
+  conceptIds: [sidemount, twinset, unik-plynu]
+  difficulty: 2
+  prompt: Proč je při úniku plynu výhodou, že má sidemount ventily před sebou?
+  options:
+    - { text: 'Potápěč vidí, odkud plyn uniká, a správný ventil zavře hned.', correct: true }
+    - { text: 'Ventily vpředu neunikají.', explanation: 'Unikat může cokoli.' }
+    - { text: 'Únik vpředu je pomalejší.', explanation: 'Rychlost úniku na poloze nezávisí.' }
+    - { text: 'Lze je zavřít nohou.', explanation: 'Rukou.' }
+  explanation: 'U dvojčete jsou ventily za hlavou: zavřít ten správný vyžaduje nacvičený postup.'
+  backToLessonId: sidemount-a-backmount
+
+- id: sm-tym
+  type: choice
+  conceptIds: [sidemount, twinset, tym]
+  difficulty: 2
+  prompt: Tým tvoří potápěč v sidemountu a potápěč s dvojčetem. Co je nutné?
+  options:
+    - { text: 'Oba znají konfiguraci partnera: kde je dlouhá hadice, jak zavřít ventil a jak se počítá otočka', correct: true }
+    - { text: 'Nic, konfigurace je soukromá věc', explanation: 'V nouzi budeš z partnerovy výstroje dýchat.' }
+    - { text: 'Smíšený tým je zakázaný', explanation: 'Není. Vyžaduje jen víc přípravy.' }
+    - { text: 'Potápěč s dvojčetem plave vždy první', explanation: 'Pořadí se řídí plánem, ne konfigurací.' }
+  explanation: 'Jednotnost je ideál. Kde není, nahrazuje ji důkladná domluva na suchu.'
+  backToLessonId: sidemount-a-backmount

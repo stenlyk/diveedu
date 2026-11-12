@@ -1,0 +1,310 @@
+- id: znacky-sipka-smer
+  type: choice
+  conceptIds: [smerova-sipka]
+  difficulty: 1
+  prompt: Kam ukazuje trvalá směrová šipka na šňůře?
+  options:
+    - { text: 'K nejbližšímu východu, měřeno po šňůře', correct: true }
+    - { text: 'K východu, kterým tým vplaval', explanation: 'Šipka o tvém týmu nic neví. K tvému východu ukazuje tvoje osobní značka.' }
+    - { text: 'Hlouběji do jeskyně', explanation: 'Naopak, ven.' }
+    - { text: 'K nejbližší odbočce', explanation: 'Odbočky se šipkami neznačí.' }
+  explanation: 'Nejbližší východ nemusí být použitelný ani tvůj. Proto šipky nenahrazují osobní značky.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-cookie-ucel
+  type: why
+  conceptIds: [osobni-znacka, rozcesti-t]
+  difficulty: 1
+  prompt: Proč tým na rozcestí dává vlastní značku, i když jsou na šňůrách trvalé šipky?
+  options:
+    - { text: 'Šipky ukazují k nejbližšímu východu; značka říká, která šňůra vede k východu týmu.', correct: true }
+    - { text: 'Šipky bývají špatně otočené.', explanation: 'Šipkám se věří. Jen odpovídají na jinou otázku.' }
+    - { text: 'Značka je vidět z větší dálky.', explanation: 'Značka je určená hlavně pro hmat.' }
+    - { text: 'Vyžadují to správci jeskyně.', explanation: 'Důvod je návrat v nulové viditelnosti, ne předpis.' }
+  explanation: 'V systému s více vchody mohou obě větve rozcestí „ukazovat ven“. Poslepu je rozliší jen tvoje značka.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-diagram-tvar
+  type: diagram
+  conceptIds: [osobni-znacka]
+  difficulty: 1
+  prompt: Na šňůře jsou tři značky. Která je kulatá nesměrová osobní značka?
+  diagram: znacky
+  answer: b
+  explanation: 'Kulatá značka nemá směr; říká jen „tudy jsem přišel“. Trojúhelníková je směrová šipka.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-diagram-sipka
+  type: diagram
+  conceptIds: [smerova-sipka]
+  difficulty: 1
+  prompt: Která ze tří značek je trvalá směrová šipka?
+  diagram: znacky
+  answer: a
+  explanation: 'Šipka má úzkou špičku a širokou zadní část se zářezem, aby se směr dal přečíst po hmatu.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-cizi
+  type: why
+  conceptIds: [osobni-znacka]
+  difficulty: 1
+  prompt: Proč se nesahá na cizí osobní značky?
+  options:
+    - { text: 'Jinému týmu, který je ještě uvnitř, ukazují cestu ven.', correct: true }
+    - { text: 'Jsou majetkem správce jeskyně.', explanation: 'Patří týmu, který je položil.' }
+    - { text: 'Mohou být kluzké.', explanation: 'O to nejde.' }
+    - { text: 'Sahat se na ně smí, jen se nesmí odnášet.', explanation: 'Ani posunout. Posunutá značka je horší než žádná.' }
+  explanation: 'Značka na šňůře znamená, že někdo je uvnitř a spoléhá na ni.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-prirad
+  type: match
+  conceptIds: [smerova-sipka, osobni-znacka]
+  difficulty: 2
+  prompt: Přiřaď značku k tomu, co říká.
+  pairs:
+    - { left: Trvalá šipka, right: 'Tímto směrem je nejbližší východ' }
+    - { left: Kulatá osobní značka, right: 'Po této šňůře jsem přišel' }
+    - { left: Značka zapomenutá na šňůře, right: 'Někdo je možná ještě uvnitř' }
+  explanation: 'Šipka patří jeskyni, osobní značka týmu.'
+  backToLessonId: znacky-na-snure
+
+- id: znacky-hmat
+  type: why
+  conceptIds: [osobni-znacka, nulova-viditelnost]
+  difficulty: 2
+  prompt: Proč musí být vlastní značka rozpoznatelná po hmatu?
+  options:
+    - { text: 'Při návratu v nulové viditelnosti ji od cizích značek jinak nerozeznáš.', correct: true }
+    - { text: 'Aby ji nenašel nikdo jiný.', explanation: 'Jiní ji najít mohou; jen na ni nesahají.' }
+    - { text: 'Protože barvy pod vodou mizí.', explanation: 'Se světlem jsou barvy vidět. Problém je, když nevidíš nic.' }
+    - { text: 'Aby držela na šňůře.', explanation: 'To zajišťuje tvar zářezů, ne rozpoznatelnost.' }
+  explanation: 'Zářez, uzel nebo tvar. Iniciály fixou poslepu nepřečteš.'
+  backToLessonId: znacky-na-snure
+
+- id: skok-co-je
+  type: choice
+  conceptIds: [skok, mezera-ve-snure]
+  difficulty: 1
+  prompt: Co je skok?
+  options:
+    - { text: 'Přemostění mezery mezi dvěma šňůrami vlastní cívkou', correct: true }
+    - { text: 'Rychlé přeplavání úseku bez šňůry', explanation: 'To je právě to, čemu skok brání.' }
+    - { text: 'Sestup do nižšího patra jeskyně', explanation: 'S hloubkou to nesouvisí.' }
+    - { text: 'Přechod z jedné lahve na druhou', explanation: 'To je přepnutí plynu.' }
+  explanation: 'Po položení skoku je šňůra od potápěče do otevřené vody zase souvislá.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: skok-diagram-mezera
+  type: diagram
+  conceptIds: [mezera-ve-snure, skok]
+  difficulty: 2
+  prompt: Chceš z hlavní šňůry na boční. Na kterém místě je souvislá šňůra k východu přerušená?
+  diagram: skok
+  answer: b
+  explanation: 'Mezi hlavní a boční šňůrou je mezera. Přemostíš ji vlastní cívkou.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: rozcesti-diagram
+  type: diagram
+  conceptIds: [rozcesti-t, osobni-znacka, smerova-sipka]
+  difficulty: 2
+  prompt: Vracíš se zdola. Šipky na obou větvích ukazují ven. Která větev vede k tvému východu?
+  diagram: rozcesti-t
+  answer: a
+  explanation: 'Na větvi A je tvoje kulatá značka. Šipka na větvi B ukazuje k jinému, bližšímu východu.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: skok-poradi
+  type: order
+  conceptIds: [skok, osobni-znacka]
+  difficulty: 2
+  prompt: Seřaď kroky při pokládání skoku.
+  items:
+    - 'Označím si na hlavní šňůře cestu ven'
+    - 'Připojím cívku k hlavní šňůře'
+    - 'Odvinu napnutou šňůru k boční šňůře'
+    - 'Připojím ji k boční šňůře a zajistím'
+  explanation: 'Značka první: od chvíle, kdy opustíš hlavní šňůru, je tohle místo rozhodnutím.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: mezera-proc
+  type: why
+  conceptIds: [mezera-ve-snure, ztrata-snury]
+  difficulty: 2
+  prompt: Proč se ani čtyřmetrová mezera nepřeplouvá bez šňůry, když je druhá šňůra vidět?
+  options:
+    - { text: 'Při návratu v nulové viditelnosti druhou šňůru na čtyřech metrech rukou nenajdeš.', correct: true }
+    - { text: 'Čtyři metry jsou dál, než dosvítí svítilna.', explanation: 'Svítilna dosvítí mnohem dál – dokud je voda čistá.' }
+    - { text: 'Je to zakázané správci jeskyně.', explanation: 'Pravidlo vzniklo z nehod.' }
+    - { text: 'Boční šňůry nejsou spolehlivé.', explanation: 'O kvalitu boční šňůry nejde.' }
+  explanation: 'Šňůra se pokládá pro nejhorší chvíli návratu, ne pro podmínky cesty dovnitř.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: rozcesti-sipky-past
+  type: why
+  conceptIds: [rozcesti-t, smerova-sipka]
+  difficulty: 3
+  prompt: V systému se dvěma vchody přicházíš k rozcestí T. Proč tě trvalé šipky mohou dovést jinam, než chceš?
+  options:
+    - { text: 'Každá ukazuje k nejbližšímu východu ze svého úseku, takže obě větve mohou ukazovat od rozcestí.', correct: true }
+    - { text: 'Šipky se po čase samy otočí.', explanation: 'Neotáčejí se.' }
+    - { text: 'Na rozcestích se šipky nedávají.', explanation: 'Dávají se. Jen neříkají, který východ je tvůj.' }
+    - { text: 'Šipky ukazují dovnitř.', explanation: 'Ukazují ven.' }
+  explanation: 'Druhý vchod může být zúžený, bez přístupu, nebo prostě jinde, než máš výstroj a tým.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: skok-chyby
+  type: findError
+  conceptIds: [skok, mezera-ve-snure]
+  difficulty: 2
+  prompt: Popis ponoru obsahuje chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Před skokem jsem si na hlavní šňůře označil cestu ven.' }
+    - { text: 'Druhou mezeru jsem přeplaval, cívky mi došly a byla krátká.', isError: true, explanation: 'Když dojdou cívky, ponor se otáčí. Mezera bez šňůry je přerušená cesta ven.' }
+    - { text: 'Cívku jsem cestou ven sebral jako první z týmu, ať se nezdržujeme.', isError: true, explanation: 'Sbírá poslední. Ostatní by zůstali za mezerou bez šňůry.' }
+    - { text: 'Šňůru skoku jsem vedl napnutou a mimo štěrbiny.' }
+  explanation: 'Skok je kus cesty ven, který si tým nese s sebou.'
+  backToLessonId: skoky-mezery-rozcesti
+
+- id: okruh-co-je
+  type: match
+  conceptIds: [okruh-a-traverz]
+  difficulty: 1
+  prompt: Přiřaď typ trasy k popisu.
+  pairs:
+    - { left: Tam a zpět, right: 'Ven stejnou cestou jako dovnitř' }
+    - { left: Okruh, right: 'Jinou cestou zpět ke stejnému vchodu' }
+    - { left: Traverz, right: 'Ven jiným vchodem' }
+  explanation: 'U okruhu a traverzu je druhá polovina trasy úsek, který tým cestou dovnitř neviděl.'
+  backToLessonId: okruhy-a-plan-navigace
+
+- id: okruh-plyn
+  type: why
+  conceptIds: [okruh-a-traverz, plan-navigace, tlak-otocky]
+  difficulty: 3
+  prompt: Proč se neověřený okruh plánuje plynem jako cesta tam a zpět?
+  options:
+    - { text: 'Zbytek okruhu může být neprůchodný a pak je třeba vrátit se celou cestu zpět.', correct: true }
+    - { text: 'Okruh je vždy delší než cesta zpět.', explanation: 'Za polovinou je kratší – pokud je průchozí.' }
+    - { text: 'Na okruhu se nesmí používat třetiny.', explanation: 'Smí. Jde o to, k čemu se vztahují.' }
+    - { text: 'V druhé polovině okruhu je vždy proud.', explanation: 'Nemusí být.' }
+  explanation: 'Ověřuje se ve dvou ponorech: z první strany k značce, z druhé strany ke stejné značce.'
+  backToLessonId: okruhy-a-plan-navigace
+
+- id: okruh-overeni
+  type: order
+  conceptIds: [okruh-a-traverz]
+  difficulty: 2
+  prompt: Seřaď ponory, kterými se okruh připravuje.
+  items:
+    - 'Ponor z první strany k dohodnutému bodu; tam zůstane značka'
+    - 'Ponor z druhé strany, dokud tým nenajde svou značku'
+    - 'Okruh'
+  explanation: 'Značka nalezená z druhé strany dokazuje, že tým viděl celou trasu.'
+  backToLessonId: okruhy-a-plan-navigace
+
+- id: plan-navigace-co
+  type: multi
+  conceptIds: [plan-navigace, rozcesti-t]
+  difficulty: 1
+  prompt: Co patří do plánu navigace?
+  options:
+    - { text: 'Každý skok a každé rozcestí na trase', correct: true }
+    - { text: 'Kdo pokládá cívky a značky a kdo je sbírá', correct: true }
+    - { text: 'Co ponor ukončuje: tlak, čas, vzdálenost', correct: true }
+    - { text: 'Odbočky, které se rozhodnou až podle nálady', explanation: 'Co není v plánu, se nepoplave.' }
+  explanation: 'Počet rozhodnutí je stejně důležitý limit jako tlak otočky.'
+  backToLessonId: okruhy-a-plan-navigace
+
+- id: plan-zmena
+  type: choice
+  conceptIds: [plan-navigace, okruh-a-traverz]
+  difficulty: 2
+  prompt: Jste před tlakem otočky a partner ukazuje na boční chodbu, která v plánu nebyla. Co uděláš?
+  options:
+    - { text: 'Odmítnu; plán se pod vodou smí jen zkrátit', correct: true }
+    - { text: 'Souhlasím, plynu je dost', explanation: 'Plyn není jediný limit. Chybí cívka, značka a dohoda, kdo co dělá.' }
+    - { text: 'Souhlasím, když to bude jen krátké', explanation: '„Jen kousek“ je začátek mnoha rozborů nehod.' }
+    - { text: 'Nechám ho jít samotného a počkám', explanation: 'Tým se nedělí.' }
+  explanation: 'Chodba tam bude i příště – s plánem.'
+  backToLessonId: okruhy-a-plan-navigace
+
+- id: partner-prvni-krok
+  type: order
+  conceptIds: [ztrata-partnera]
+  difficulty: 2
+  prompt: Partner zmizel. Seřaď postup.
+  items:
+    - 'Zastavím a zůstanu u šňůry'
+    - 'Zakryju světlo a rozhlédnu se'
+    - 'Určím, kolik plynu smím na hledání použít'
+    - 'Vracím se po šňůře k místu, kde jsem ho viděl naposledy'
+    - 'Po vypršení limitu nechám značku a odcházím'
+  explanation: 'Limit se určuje hned. V průběhu hledání ho už nikdo objektivně nestanoví.'
+  backToLessonId: ztrata-partnera
+
+- id: partner-zakryt-svetlo
+  type: why
+  conceptIds: [ztrata-partnera, svetelne-signaly]
+  difficulty: 1
+  prompt: Proč je jedním z prvních kroků zakrýt vlastní světlo?
+  options:
+    - { text: 'Ve tmě je kužel partnerovy svítilny vidět na velkou vzdálenost.', correct: true }
+    - { text: 'Šetří se baterie na hledání.', explanation: 'Světlo se nezhasíná, jen zakrývá.' }
+    - { text: 'Partner se tmy lekne a ozve se.', explanation: 'O to nejde.' }
+    - { text: 'Sediment se ve tmě usazuje rychleji.', explanation: 'Světlo na sediment nemá vliv.' }
+  explanation: 'Zakrýt, ne zhasnout: vypínač pod vodou je zbytečné riziko a světlo budeš hned potřebovat.'
+  backToLessonId: ztrata-partnera
+
+- id: partner-jak-dlouho
+  type: choice
+  conceptIds: [ztrata-partnera, tym]
+  difficulty: 2
+  prompt: Jak dlouho se partner hledá?
+  options:
+    - { text: 'Dokud nedosáhnu tlaku, který jsem si na začátku hledání určil', correct: true }
+    - { text: 'Dokud ho nenajdu', explanation: 'Pak mohou být ztracení dva.' }
+    - { text: 'Přesně pět minut', explanation: 'Pevný čas neexistuje. Rozhoduje plyn a vzdálenost k východu.' }
+    - { text: 'Nehledá se, hned ven', explanation: 'Krátké hledání ze šňůry má smysl; partner bývá blízko.' }
+  explanation: 'Limit je číslo na manometru, které zaručuje cestu ven s rezervou.'
+  backToLessonId: ztrata-partnera
+
+- id: partner-znacka
+  type: why
+  conceptIds: [ztrata-partnera, osobni-znacka]
+  difficulty: 2
+  prompt: Proč při odchodu necháváš na šňůře značku směrem k východu?
+  options:
+    - { text: 'Partner, který šňůru najde, pozná, kudy ven a že jsem už odešel.', correct: true }
+    - { text: 'Aby záchranáři věděli, kde hledat tělo.', explanation: 'Značka je pro živého partnera.' }
+    - { text: 'Je to povinné při každé otočce.', explanation: 'Jen při odchodu bez partnera.' }
+    - { text: 'Abych si místo našel příště.', explanation: 'Značka nezůstává jako památka.' }
+  explanation: 'Bez značky by mohl partner hledat tebe – a utrácet plyn, který potřebuje na cestu ven.'
+  backToLessonId: ztrata-partnera
+
+- id: partner-chyby
+  type: findError
+  conceptIds: [ztrata-partnera, tym]
+  difficulty: 2
+  prompt: Které reakce na ztrátu partnera jsou chybné?
+  items:
+    - { text: 'Zůstal jsem u šňůry a zakryl světlo.' }
+    - { text: 'Viděl jsem záblesk v boční chodbě a vyrazil za ním mimo šňůru.', isError: true, explanation: 'Mimo šňůru jen s vlastní cívkou uvázanou ke šňůře.' }
+    - { text: 'Limit jsem neurčoval, hledal jsem, dokud to šlo.', isError: true, explanation: 'Bez limitu rozhoduje emoce. Číslo se určuje hned.' }
+    - { text: 'Při odchodu jsem nechal na šňůře značku směrem ven.' }
+  explanation: 'Postup chrání hledajícího. Bez něj nikdo nikoho nezachrání.'
+  backToLessonId: ztrata-partnera
+
+- id: partner-prevence
+  type: multi
+  conceptIds: [ztrata-partnera, svetelne-signaly, tym]
+  difficulty: 1
+  prompt: Co ztrátě partnera předchází?
+  options:
+    - { text: 'Každý sleduje světlo toho za sebou', correct: true }
+    - { text: 'Pořadí v týmu se nemění bez signálu', correct: true }
+    - { text: 'Rychlost určuje nejpomalejší', correct: true }
+    - { text: 'Nejzkušenější plave napřed a čeká u východu', explanation: 'To je rozdělení týmu.' }
+  explanation: 'Zmizelý kužel světla je důvod zastavit hned, ne za zatáčkou.'
+  backToLessonId: ztrata-partnera

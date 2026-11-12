@@ -1,0 +1,19 @@
+id: zuzeniny-a-navrat-po-hmatu
+moduleId: fullcave
+title: "Zúženiny a návrat po hmatu"
+order: 5
+conceptIds: ["zuzenina", "nulova-viditelnost", "kontaktni-komunikace"]
+checkQuestionIds: ["zuzenina-typy", "zuzenina-plyn-poradi", "zuzenina-zaseknuti", "navrat-hmat-cas", "zuzenina-sediment"]
+estimatedMinutes: 10
+audioSummary: >-
+  Zúženina je místo, kudy dva potápěči neproplavou vedle sebe.
+  Mění čtyři věci. Viditelnost, sdílení plynu, riziko zachycení a čas.
+  Před zúženinou zastav a zkontroluj tým a plyn. S problémem se dál nejde.
+  První proplave, otočí se a svítí partnerovi.
+  Kdo se zachytí, zastaví, vydechne a couvne.
+  Návrat po hmatu znamená šňůru v jedné ruce, partnera v druhé a na každém rozcestí hledat vlastní značku.
+  Rychlost je třetinová a spotřeba vyšší. Za zúženinami se proto otáčí dřív než na třetině.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

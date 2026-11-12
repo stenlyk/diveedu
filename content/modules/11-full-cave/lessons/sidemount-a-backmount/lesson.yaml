@@ -1,0 +1,19 @@
+id: sidemount-a-backmount
+moduleId: fullcave
+title: "Sidemount a backmount"
+order: 8
+conceptIds: ["sidemount", "twinset", "zuzenina"]
+checkQuestionIds: ["sm-vyhody", "sm-plyn", "sm-prirad", "sm-zuzenina", "sm-ventily"]
+estimatedMinutes: 9
+audioSummary: >-
+  V jeskyních se používají dvě konfigurace, dvojče na zádech a sidemount.
+  Dvojče s manifoldem dává celou zásobu kterékoli automatice. Má jeden manometr a jednoduché třetiny.
+  Ventily jsou ale za hlavou a profil je vysoký.
+  Sidemount má lahve po stranách těla. Ventily vidíš, profil je nízký a lahve jdou posunout před sebe.
+  Zásoba ale není propojená.
+  Proto se automatiky střídají, lahve se vydýchávají rovnoměrně a třetiny platí pro každou lahev zvlášť.
+  Žádná konfigurace není lepší. Důležitá je jednotnost v týmu a znalost výstroje partnera.
+sources:
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+needs_review: true

@@ -1,0 +1,96 @@
+<Hook>
+
+Mapa ukazuje okruh: dovnitř hlavní chodbou, zpět boční. Šest set metrů. Na třetině plynu jsi za polovinou – vracet se by bylo dál než pokračovat.
+
+Platí to ale jen tehdy, když je zbytek okruhu opravdu takový, jak říká mapa. Jak to zjistíš, než na to vsadíš plyn?
+
+</Hook>
+
+<Principle>
+
+Běžný jeskynní ponor je **tam a zpět**: cestu ven znáš, protože jsi jí právě proplaval. Dva typy tras tohle pravidlo porušují.
+
+**Okruh** se vrací ke stejnému vchodu jinou cestou. **Traverz** končí jiným vchodem.
+
+V obou případech je druhá polovina trasy úsek, který jsi neviděl. Může v něm být zúžení, kterým neprojdeš, přerušená šňůra nebo zvířená voda po jiném týmu.
+
+Proto se okruhy a traverzy nedělají napoprvé:
+
+1. **Ponor z první strany** k dohodnutému bodu. Tam tým nechá značku a vrátí se stejnou cestou.
+2. **Ponor z druhé strany**, dokud tým nenajde svou značku. Tím je trasa ověřená celá.
+3. Teprve **třetí ponor** je okruh nebo traverz – a i tehdy musí plyn stačit na návrat z kteréhokoli místa tou kratší z obou cest.
+
+**Plán navigace** je část plánu ponoru. Obsahuje:
+
+- trasu a každé rozhodnutí na ní: skok, rozcestí, směr,
+- kdo pokládá cívky a značky a kdo je sbírá,
+- místa, kde se kontroluje plyn,
+- co ukončuje ponor: tlak, čas, vzdálenost, počet rozhodnutí.
+
+Pod vodou se plán smí jen **zkrátit**. „Pojďme se ještě podívat tamhle“ je věta, kterou začíná mnoho rozborů nehod.
+
+Mapa je pomůcka k plánování, ne k navigaci. V jeskyni rozhoduje šňůra a značky na ní.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dosah" />
+
+U okruhu se dosah neporovnává s délkou cesty dovnitř, ale s delší z obou cest ven z daného místa – dokud druhou polovinu neznáš.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Okruh měří 600 m. Třetina plynu ti dá dosah:
+
+<Worked fn="penetrationDistance" args={[70, 24, 20, 20, 15]} expected={420} tolerance={0.1} unit="m" decimals={0} />
+
+Otočku máš ve 380 m. Zpět stejnou cestou je to:
+
+<Worked fn="exitMinutes" args={[380, 15]} expected={25.33} tolerance={0.01} unit="min" decimals={0} />
+
+Dokončit okruh znamená zbývajících 220 m:
+
+<Worked fn="exitMinutes" args={[220, 15]} expected={14.67} tolerance={0.01} unit="min" decimals={0} />
+
+O deset minut kratší – pokud je úsek průchozí. Když ve 150. metru narazíš na neprůchodné místo, máš za sebou 530 m a k východu 530 m zpět.
+To třetiny nepokryjí. Proto se neověřený okruh počítá jako cesta tam a zpět.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'partner pod vodou ukáže na boční chodbu, která v plánu nebyla?', effect: 'Ne. Plán se pod vodou jen zkracuje. Chodba tam bude i příště – s cívkou, značkou a plynem, které na ni budou naplánované.' },
+  { label: 'na ověřovacím ponoru z druhé strany svou značku nenajdeš?', effect: 'Okruh není ověřený. Buď jsi na jiné šňůře, nebo je mezi oběma body úsek, který nikdo z týmu neviděl.' },
+  { label: 'mapa ukazuje spojení, ale šňůra tam není?', effect: 'Platí šňůra. Mapy jsou starší a hrubší než jeskyně; spojení může být zúžené, zasypané, nebo nikdy neexistovalo.' },
+  { label: 'je traverz ověřený, ale u druhého vchodu nikdo nečeká?', effect: 'Vynoříš se bez dopravy, bez výstroje a možná bez dekompresního plynu. Traverz se plánuje i na hladině.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="mapovani-jeskyni" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router';
 import { Disclaimer } from '../components/Disclaimer';
 import { Badge, Card, PageHeader } from '../components/ui';
 import { CalcPractice, CalcSolve } from '../tools/CalcView';
+import { CaveNavigator } from '../mdx/CaveNavigator';
 import { ProfileSimulator } from '../mdx/ProfileSimulator';
 import { TernaryDiagram } from '../mdx/TernaryDiagram';
 import { TissueSimulator } from '../mdx/TissueSimulator';
@@ -45,6 +46,7 @@ export function Tools() {
 const SIMULATORS: Record<string, { title: string; summary: string; Component: ComponentType }> = {
   tkane: { title: 'Tkáňový simulátor', summary: 'Sycení 16 kompartmentů, M-hodnoty a gradient factors na přehrávaném profilu.', Component: TissueSimulator },
   'profil-ponoru': { title: 'Profil ponoru', summary: 'Úrovně, plyny a GF: rozvrh z výukového modelu a varování MOD, hypoxie, ICD a CNS.', Component: ProfileSimulator },
+  'jeskynni-mapa': { title: 'Jeskynní navigační mapa', summary: 'Skoky, značky a tlak otočky; návrat po hmatu v nulové viditelnosti.', Component: CaveNavigator },
   'ternarni-diagram': { title: 'Ternární diagram směsi', summary: 'Které trimixy jsou pro danou hloubku v limitech ppO2, END a hustoty.', Component: TernaryDiagram },
 };
 

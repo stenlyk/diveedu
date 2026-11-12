@@ -588,6 +588,24 @@ export const CALC_DEFS: CalcDef[] = [
       ];
     },
   },
+  {
+    id: 'turn-speeds',
+    title: 'Otočka s proudem a skútrem',
+    summary: 'Jaký podíl plynu smíš použít dovnitř, když cesta ven potrvá jinak dlouho.',
+    tool: true,
+    inputs: [
+      { key: 'start', label: 'Tlak na začátku', min: 150, max: 300, step: 10, unit: 'bar', initial: 210 },
+      { key: 'speedIn', label: 'Rychlost dovnitř', min: 5, max: 60, step: 1, unit: 'm/min', initial: 20 },
+      { key: 'speedOut', label: 'Rychlost ven (nejhorší případ)', min: 5, max: 60, step: 1, unit: 'm/min', initial: 10 },
+    ],
+    outputs: (v) => {
+      const fraction = c.usableFraction(v.speedIn!, v.speedOut!);
+      return [
+        { label: 'Použitelný podíl plynu', value: fraction * 100, unit: '%', decimals: 0, bar: { max: 34 } },
+        { label: 'Tlak otočky', value: c.ceilTo(c.turnPressureForSpeeds(v.start!, v.speedIn!, v.speedOut!), 10), unit: 'bar', decimals: 0, note: 'Podmínka: po otočce zbývá plyn na cestu ven pro dva. Víc než třetina se nepoužije nikdy, ani když je cesta ven rychlejší.' },
+      ];
+    },
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));

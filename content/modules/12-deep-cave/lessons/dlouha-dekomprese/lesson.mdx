@@ -1,0 +1,102 @@
+<Hook>
+
+Tři hodiny dekomprese. Voda má dvanáct stupňů, nehýbeš se a poslední hodinu dýcháš čistý kyslík v šesti metrech pod skálou.
+
+Nejtěžší část ponoru právě začala – a nemá nic společného s hloubkou.
+
+</Hook>
+
+<Principle>
+
+Hluboký jeskynní ponor končí dlouhou dekompresí na místě, kde se nedá vynořit. Rizika této fáze jsou jiná než na dně.
+
+**Chlad.** Bez pohybu tělo chladne rychle. Prochladnutí při dekompresi zpomaluje prokrvení tkání, a tím vyplavování inertního plynu – právě tehdy, kdy ho potřebuješ nejvíc.
+Tepelná ochrana a ohřev se plánují pro konec ponoru, ne pro jeho začátek.
+
+**Kyslík.** Dlouhé zastávky na kyslíku a bohatém nitroxu zvyšují zátěž centrálního nervového systému. Řeší se přestávkami na směsi s nižším obsahem kyslíku.
+Křeče pod vodou, pod stropem, znamenají utonutí.
+
+**Tekutiny a energie.** Hodiny bez pití a jídla, v chladu, s diurézou z ponoření. Dehydratace zhoršuje dekompresi.
+
+**Soustředění.** Únava a nuda vedou k chybám při přepínání plynu.
+
+**<Term cs="habitat" />** řeší několik těchto problémů najednou. Je to suchý prostor pod vodou – zvon nebo obrácená vana pod stropem, naplněná plynem.
+Potápěč v něm může sundat masku, napít se, najíst a ohřát. Dýchá dekompresní plyn z automatiky, ne atmosféru habitatu.
+Kdyby přišly křeče, neutopí se.
+
+Habitat přidává vlastní rizika: atmosféra uvnitř se musí větrat, kotvení musí držet a tým ho musí umět postavit i opustit.
+
+**<Term cs="podpůrný tým" />** je u velkých ponorů součást plánu:
+
+- před ponorem rozveze a zkontroluje odložené lahve,
+- v dohodnutý čas čeká na dohodnutém místě,
+- přináší plyn, teplé nápoje, zprávy z hladiny,
+- odnáší prázdné lahve a skútry,
+- při problému je spojením s hladinou a první pomocí.
+
+Podpůrní potápěči plavou vlastní ponory s vlastním plánem a limity. Nejsou rezerva, která smí riskovat víc.
+
+Většina ponorů v tomto modulu se obejde bez habitatu i velkého týmu. Princip ale platí vždy: **dekomprese je část ponoru, která se plánuje stejně pečlivě jako dno.**
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="cns" />
+
+Dlouhé zastávky na kyslíku jsou místo, kde se zátěž centrálního nervového systému sčítá nejrychleji.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Šedesát minut na čistém kyslíku v 6 m. Parciální tlak kyslíku:
+
+<Worked fn="ppO2" args={[1, 6]} expected={1.6} tolerance={0.01} unit="bar" decimals={1} />
+
+Zátěž centrálního nervového systému za tuto dobu:
+
+<Worked fn="cnsPercent" args={[1.6, 60]} expected={133.33} tolerance={0.5} unit="%" decimals={0} />
+
+Přes sto procent limitu jen z poslední zastávky – a ponor má za sebou dno i hlubší zastávky. Proto se dlouhá kyslíková dekomprese přerušuje
+přestávkami na směsi s nižším obsahem kyslíku a proto se plánuje s ohledem na celý ponor, ne po částech.
+
+Stejných šedesát minut na EAN50 v 6 m: ppO2 <Calc fn="ppO2" args={[0.5, 6]} decimals={1} unit="bar" /> a zátěž <Calc fn="cnsPercent" args={[0.8, 60]} decimals={0} unit="%" />.
+Méně kyslíku znamená delší dekompresi, ale menší kyslíkovou zátěž. Plán hledá rovnováhu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'ti je na poslední zastávce zima a zkrátíš ji?', effect: 'Chlad zhoršuje vyplavování plynu; zkrácená zastávka k tomu přidává vynechanou dekompresi. Dvě rizika místo jednoho.' },
+  { label: 'v habitatu sundáš automatiku a dýcháš jeho atmosféru?', effect: 'Nevíš, co v ní je. Vydýchaný plyn obsahuje CO2 a méně kyslíku. Dekompresní plyn se dýchá z automatiky.' },
+  { label: 'podpůrný potápěč nepřijde v dohodnutý čas?', effect: 'Plán musí vyjít i bez něj. Podpora zvyšuje rezervy, nenahrazuje je.' },
+  { label: 'vynecháš přestávky od kyslíku, abys byl dřív venku?', effect: 'Kyslíková zátěž roste dál. Křeče pod stropem jsou smrtelné; o pár minut delší dekomprese ne.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="deko-habitat" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

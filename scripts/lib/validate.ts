@@ -5,6 +5,7 @@
 import { callContentFunction, isContentFunction } from '../../src/content/fns';
 import type { z } from 'zod';
 import { CUSTOM_PLAYGROUND_KINDS } from '../../src/mdx/playgroundKinds';
+import { DIAGRAMS } from '../../src/quiz/diagramDefs';
 import { CALC_DEFS } from '../../src/tools/defs';
 import {
   CaseStudySchema,
@@ -284,6 +285,11 @@ export function validateContent(raw: RawContent): ValidationResult {
       question.items.forEach((item, i) => {
         if (item.isError && !item.explanation) errors.push(`${where}: chyba #${i + 1} nemá vysvětlení`);
       });
+    }
+    if (question.type === 'diagram') {
+      const diagram = DIAGRAMS[question.diagram];
+      if (!diagram) errors.push(`${where}: neznámý diagram „${question.diagram}“`);
+      else if (!diagram.hotspots.some((hotspot) => hotspot.id === question.answer)) errors.push(`${where}: diagram „${question.diagram}“ nemá bod „${question.answer}“`);
     }
     if (question.type === 'numeric') {
       const template = question.template;

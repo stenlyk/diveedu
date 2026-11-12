@@ -1,0 +1,19 @@
+id: znacky-na-snure
+moduleId: fullcave
+title: "Značky na šňůře: šipky a osobní značky"
+order: 1
+conceptIds: ["smerova-sipka", "osobni-znacka", "vodici-snura"]
+checkQuestionIds: ["znacky-diagram-tvar", "znacky-sipka-smer", "znacky-cookie-ucel", "znacky-cizi", "znacky-prirad"]
+estimatedMinutes: 9
+audioSummary: >-
+  Šňůra říká, kudy vede cesta. Značky říkají, kterým směrem a čí.
+  Směrová šipka je trvalá. Ukazuje k nejbližšímu východu po šňůře, ne k tomu, kterým jsi přišel.
+  Osobní značka patří týmu. Dává se na šňůru vedoucí k vlastnímu východu všude, kde bude při návratu na výběr.
+  Cestou ven se sbírá. Značka, která zůstala, znamená, že někdo je ještě uvnitř.
+  Na cizí značky se nesahá.
+  Vlastní značka musí být rozpoznatelná po hmatu.
+  Zvyklosti se liší mezi oblastmi, místní pravidla zjisti před ponorem.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

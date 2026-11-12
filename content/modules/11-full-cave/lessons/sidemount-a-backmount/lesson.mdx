@@ -1,0 +1,103 @@
+<Hook>
+
+Dvojče na zádech má ventily tam, kam si nevidíš. Dvě lahve na bocích je mají pod rukama a před očima.
+
+Proč tedy většina jeskynních potápěčů začíná s dvojčetem – a proč část z nich později přechází na sidemount?
+
+</Hook>
+
+<Principle>
+
+V jeskyních se používají dvě konfigurace. Obě nesou dvojnásobnou zásobu a dva nezávislé první stupně; liší se tím, jak s plynem zacházejí.
+
+**Backmount – dvojče s manifoldem.** Dvě lahve na zádech propojené ventilovým mostem.
+
+- Obě automatiky dýchají z celé zásoby. Při poruše jedné zavřeš její ventil a plyn z obou lahví zůstává k dispozici.
+- Jeden manometr, jedno číslo, jednoduché třetiny.
+- Dlouhá hadice a postup sdílení plynu jsou standardní.
+- Ventily jsou za hlavou: zavřít je vyžaduje pohyblivost a nácvik. Profil je vysoký.
+
+**<Term cs="sidemount" />.** Dvě nezávislé lahve zavěšené po stranách těla.
+
+- Ventily a první stupně vidíš a máš je pod rukama.
+- Profil je nízký a lahve jdou odepnout a posunout před sebe – proto zúženiny.
+- Lahve se nosí k vodě po jedné; výhoda při obtížném přístupu.
+- Zásoba **není propojená**. Co je v jedné lahvi, se do druhé automatiky nedostane.
+
+Z posledního bodu plyne kázeň, kterou backmount nepotřebuje:
+
+- **Střídání automatik.** Lahve se vydýchávají rovnoměrně, s rozdílem nejvýš několika desítek barů.
+- **Třetiny pro každou lahev zvlášť.** Dva manometry, dvě čísla.
+- **Při poruše** jedné lahve nebo automatiky máš jen druhou lahev. Proto musí každá sama stačit na cestu ven.
+
+**Která je lepší?** Žádná. Záleží na jeskyni a na týmu:
+
+- nízké chodby, zúženiny, obtížný přístup: sidemount,
+- široké chodby, dlouhé průniky se skútrem a odloženými lahvemi, smíšený tým: backmount bývá jednodušší.
+
+Důležitější než volba je **jednotnost v týmu** a to, aby každý znal konfiguraci partnera: kde má dlouhou hadici, jak mu zavřít ventil, jak z něj dýchat.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+V sidemountu platí pro každou lahev zvlášť. Důvod ukazuje výpočet.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Sidemount, dvě lahve po 12 l, každá 210 bar. Tlak otočky každé lahve:
+
+<Worked fn="thirdsTurnBar" args={[210]} expected={140} tolerance={0.01} unit="bar" decimals={0} />
+
+Cestou dovnitř jsi z obou lahví dohromady spotřeboval:
+
+<Worked fn="barToLiters" args={[70, 24]} expected={1680} tolerance={0.1} unit="l" decimals={0} />
+
+Stejně tolik potřebuješ na cestu ven. V nejvzdálenějším bodě selže jedna lahev úplně. Ve druhé zbývá:
+
+<Worked fn="barToLiters" args={[140, 12]} expected={1680} tolerance={0.1} unit="l" decimals={0} />
+
+Přesně na cestu ven pro jednoho – za předpokladu, že lahve byly vydýchané rovnoměrně. Kdybys dýchal jen z jedné a selhala ta plná, zbylo by ti 70 bar ve dvanáctilitrové lahvi: polovina toho, co potřebuješ.
+
+A na partnera v tomto případě nezbývá nic. Sidemount v týmu proto vyžaduje přísnější plán než třetiny, nebo odložený plyn.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'v sidemountu dýcháš celou cestu dovnitř jen z levé lahve?', effect: 'V levé máš 70 bar, v pravé 210. Selže-li pravá, zbývá polovina toho, co potřebuješ na cestu ven.' },
+  { label: 'v dvojčeti začne unikat plyn z jednoho prvního stupně?', effect: 'Zavřeš jeho ventil. Plyn z obou lahví dál teče přes manifold do druhé automatiky – pokud ventil dosáhneš a poznáš, který to je.' },
+  { label: 'tým tvoří jeden potápěč v sidemountu a jeden s dvojčetem?', effect: 'Jde to, ale oba musí znát konfiguraci toho druhého: kde je dlouhá hadice a jak se počítá tlak otočky.' },
+  { label: 'se s dvojčetem pustíš do zúženiny pro sidemount?', effect: 'Projdeš-li dovnitř, neznamená to, že projdeš ven – s partnerem na hadici a v nulové viditelnosti. Konfigurace určuje, kam smíš.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="sidemount-puvod" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

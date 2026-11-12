@@ -1,0 +1,20 @@
+id: hloubka-a-strop
+moduleId: deepcave
+title: "Když se sčítá hloubka a strop"
+order: 1
+conceptIds: ["hluboka-jeskyne", "hluboky-vzduch", "hustota-plynu"]
+checkQuestionIds: ["hj-co-se-scita", "hj-dosah-hloubka", "hj-vzduch-proc", "hj-narkoza-sediment", "hj-plyn-ven"]
+estimatedMinutes: 10
+audioSummary: >-
+  Prostředí se stropem a velká hloubka jsou každé samo zvládnutelné. Dohromady se jejich rizika násobí.
+  Spotřeba roste s tlakem. Stejná třetina vystačí ve čtyřiceti pěti metrech na poloviční vzdálenost než ve dvaceti.
+  Narkóza zpomaluje rozhodování, a v jeskyni se rozhoduje pořád.
+  Dekomprese vzniká daleko od vchodu a odvádí se pod skalním stropem.
+  Na řešení problému zbývají minuty, ne desítky minut.
+  Proto helium, plyn navíc ve stage lahvích, kratší průnik a výcvik v obojím.
+  Hluboká jeskyně nepřináší nic nového. Nové je, že všechno platí zároveň.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+needs_review: true

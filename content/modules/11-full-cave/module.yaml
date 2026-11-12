@@ -1,0 +1,9 @@
+id: fullcave
+title: Full Cave
+subtitle: Navigace, proud, skútr a návrat po hmatu
+branch: cave
+rig: oc
+prerequisites: [cavern]
+order: 11
+passThreshold: 0.8
+status: published

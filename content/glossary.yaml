@@ -60,3 +60,17 @@
 - { cs: tlak otočky, en: turn pressure, definition: 'Tlak, při kterém se ponor obrací.' }
 - { cs: past na šňůře, en: line trap, definition: 'Místo, kde šňůra vede prostorem užším než potápěč.' }
 - { cs: zóna denního světla, en: daylight (cavern) zone, definition: 'Část jeskyně s viditelným světlem vchodu.' }
+- { cs: směrová šipka, en: line arrow, definition: 'Trvalá značka ukazující k nejbližšímu východu.' }
+- { cs: osobní značka, en: cookie / REM, definition: 'Nesměrová značka potápěče na šňůře k jeho východu.' }
+- { cs: skok, en: jump, definition: 'Přemostění mezery mezi šňůrami vlastní cívkou.' }
+- { cs: mezera, en: gap, definition: 'Úsek bez šňůry mezi dvěma šňůrami.' }
+- { cs: okruh, en: circuit, definition: 'Trasa, která se vrací jinou cestou ke stejnému vchodu.' }
+- { cs: traverz, en: traverse, definition: 'Trasa od jednoho vchodu k jinému.' }
+- { cs: zúženina, en: restriction, definition: 'Místo, kudy dva potápěči neproplavou vedle sebe.' }
+- { cs: skútr, en: DPV (diver propulsion vehicle), definition: 'Podvodní tahač.' }
+- { cs: sidemount, en: sidemount, definition: 'Konfigurace s lahvemi po stranách těla.' }
+- { cs: použitelný podíl plynu, en: usable gas fraction, definition: 'Část zásoby použitelná na cestu dovnitř; nejvýš třetina.' }
+- { cs: pilovitý profil, en: sawtooth profile, definition: 'Profil s opakovanými sestupy a výstupy.' }
+- { cs: odložení stage, en: stage drop, definition: 'Zanechání lahve na šňůře pro cestu ven.' }
+- { cs: habitat, en: decompression habitat, definition: 'Suchý prostor pod vodou pro dlouhou dekompresi.' }
+- { cs: podpůrný tým, en: support team, definition: 'Potápěči a lidé na hladině, kteří zajišťují plyn, logistiku a pomoc hlavnímu týmu.' }

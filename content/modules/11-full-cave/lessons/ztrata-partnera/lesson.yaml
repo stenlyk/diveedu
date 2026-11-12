@@ -1,0 +1,19 @@
+id: ztrata-partnera
+moduleId: fullcave
+title: "Ztráta partnera"
+order: 4
+conceptIds: ["ztrata-partnera", "tym", "svetelne-signaly"]
+checkQuestionIds: ["partner-prvni-krok", "partner-zakryt-svetlo", "partner-jak-dlouho", "partner-znacka", "partner-chyby"]
+estimatedMinutes: 9
+audioSummary: >-
+  Při ztrátě partnera nevíš, co se stalo. Možná zůstal vzadu, možná už plave ven.
+  Zastav a zůstaň u šňůry. Zakryj světlo a hledej cizí kužel ve tmě.
+  Rozhodni hned, kolik plynu na hledání máš, jako jedno číslo na manometru.
+  Vrať se po šňůře k místu, kde jsi partnera viděl naposledy. Hledej ze šňůry.
+  Když limit vyprší, nech na šňůře značku směrem k východu a odejdi.
+  Prevence je levnější. Pořadí v týmu se nemění bez signálu a zmizelý kužel světla je důvod zastavit hned.
+  Nejtěžší není technika, ale rozhodnutí odejít.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

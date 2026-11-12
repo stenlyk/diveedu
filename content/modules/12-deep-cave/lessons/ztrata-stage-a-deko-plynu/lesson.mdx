@@ -1,0 +1,97 @@
+<Hook>
+
+Jednadvacet metrů. Tady měla na šňůře viset tvoje lahev s padesátkou. Karabina tam je. Lahev ne.
+
+Počítač ukazuje čtyřicet minut dekomprese – s plynem, který právě nemáš.
+
+</Hook>
+
+<Principle>
+
+Odložená lahev může chybět z několika důvodů: uvolnila se a klesla, odnesl ji proud, vzal ji omylem jiný tým, nebo je na místě, ale prázdná či s nefunkční automatikou.
+Výsledek je stejný: plán počítal s plynem, který není.
+
+**Postup:**
+
+1. **Zastav a dýchej z toho, co funguje.** Zásoba na zádech je vždy první jistota.
+2. **Dej vědět týmu.** Tohle je problém týmu, ne tvůj.
+3. **Krátce hledej** – pod šňůrou, po proudu, na dosah světla. Limit je plyn, ne naděje.
+4. **Použij plyn týmu.** Plán má obsahovat pravidlo, že dekompresní plyn týmu vystačí i při ztrátě jedné lahve: partneři dekomprimují střídavě nebo se dělí.
+5. **Přepočítej dekompresi** pro plyn, který opravdu máš. Počítač přepni na skutečně dýchanou směs.
+6. **Podpůrný tým,** pokud existuje, přináší plyn. Proto má vědět, kdy a kde tě čekat.
+
+**Co nedělat:**
+
+- **Nezkracovat dekompresi** v naději, že to vyjde. V jeskyni není kam vystoupat a u vchodu není komora.
+- **Nedýchat z cizí lahve**, kterou jsi sám neanalyzoval, pokud je jiná možnost. Když ne, tak aspoň ověřit značení a hloubku.
+- **Nevracet se hlouběji** hledat lahev, která mohla klesnout.
+
+**Ztráta stage s dno směsí** cestou ven je stejný problém v jiné podobě: chybí plyn na úsek, který plán kryl právě touto lahví.
+Řeší ho rezerva v zásobě na zádech a plyn partnera – proto se pravidla pro stage počítají tak, aby ztráta jedné lahve nebyla smrtelná.
+
+**Prevence:**
+
+- lahev připnutá oběma karabinami, ventil zavřený, automatika uložená,
+- značení jménem a hloubkou; tým ví, čí lahev kde leží,
+- kontrola tlaku a funkce při sbírání, **dřív** než na ni přepneš,
+- plán psaný tak, aby žádná jednotlivá lahev nebyla nenahraditelná.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Bez dekompresního plynu se změní obě veličiny najednou: zastávky jsou delší a dýchá se z lahve, která na ně nebyla určená.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor do 60 m na 25 minut, trimix 18/45, GF 50/80. S EAN50 od 21 m trvá výstup:
+
+<Worked fn="ascentMinutesMix" args={[60, 25, 50, 80, 0.18, 0.45, 0.5, 21]} expected={55.67} tolerance={0.5} unit="min" decimals={0} />
+
+Bez dekompresního plynu, celý výstup na dno směs:
+
+<Worked fn="ascentMinutesMix" args={[60, 25, 50, 80, 0.18, 0.45, 0, 0]} expected={158.67} tolerance={0.5} unit="min" decimals={0} />
+
+Skoro třikrát déle. Jen posledních třicet minut v 6 m by ze zásoby na zádech vzalo
+<Calc fn="litersToBar" args={[960, 24]} decimals={0} unit="bar" /> – a takových úseků je v tomto výstupu několik.
+
+Dno směs na dekompresi bez pomoci nestačí. Proto plán nesmí stát na jedné lahvi: druhá lahev v týmu, odložená rezerva nebo podpůrný potápěč
+jsou rozdíl mezi nepříjemnou a neřešitelnou situací.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="plyn-v-zaloze" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

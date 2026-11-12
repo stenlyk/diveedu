@@ -1,0 +1,93 @@
+<Hook>
+
+Dvě jeskyně. V první musíš proti proudu, lopotíš se u dna a třetinu plynu máš pryč za dvě stě metrů. Ve druhé tě proud nese dovnitř sám.
+
+Která z nich je nebezpečnější? Ta, ve které se ti plave dobře.
+
+</Hook>
+
+<Principle>
+
+Jeskyněmi protéká voda. Směr a síla proudu rozhodují o tom, jak dlouho potrvá cesta ven ve srovnání s cestou dovnitř – a přesně na tomto poměru stojí pravidlo třetin.
+
+**Vyvěračka: proud ven z jeskyně.** Dovnitř plaveš proti proudu, pomalu a s námahou. Ven tě proud nese.
+Cesta ven je kratší než cesta dovnitř, takže třetiny mají rezervu navíc.
+
+**Ponor: proud do jeskyně.** Dovnitř to jde samo. Ven plaveš proti proudu, pomaleji, s vyšší spotřebou – a možná s partnerem na hadici.
+Třetiny tu nestačí.
+
+**Kolik stačí,** říká bilance plynu. Když cesta ven trvá k-krát déle než dovnitř a mají na ni vystačit dva lidé z jedné zásoby,
+spotřebuje se na ni 2k-násobek toho, co stála cesta dovnitř. Z toho vychází <Term cs="použitelný podíl plynu" />.
+
+Důležitá je druhá polovina vzorce: **víc než třetina se nepoužije nikdy.** Proud ven z jeskyně cestu zpět zkracuje, ale spoléhat na něj nelze – může zeslábnout
+a nulová viditelnost zpomalí návrat bez ohledu na proud.
+
+**Technika v proudu:**
+
+- plav u dna a u stěn, kde je proud nejslabší; střed chodby je nejrychlejší,
+- místo kopání se přitahuj rukou po skále – jen tam, kde je pevná a čistá,
+- zúžení proud zrychlují; projdi je rychle a odpočiň si za nimi,
+- šňůra v proudu vibruje a odchyluje se; drž se jí blíž.
+
+**Proud se mění.** Průtok závisí na srážkách v povodí, někdy s mnohadenním zpožděním. Jeskyně, která byla minulý týden klidná, může po deštích téct opačně nebo několikrát rychleji.
+Stav vody se zjišťuje před ponorem a hodnotí se znovu u vchodu.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="podil-plynu" />
+
+Pro stejnou rychlost tam i zpět vychází třetina. Když je cesta ven dvakrát pomalejší, vychází pětina.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Ponor s proudem dovnitř.** Proud tě nese, vůči dnu postupuješ 20 m/min. Ven proti němu jen 10 m/min:
+
+<Worked fn="usableFraction" args={[20, 10]} expected={0.2} tolerance={0.001} decimals={2} />
+
+Pětina místo třetiny. S 210 bar na začátku je tlak otočky:
+
+<Worked fn="turnPressureForSpeeds" args={[210, 20, 10]} expected={168} tolerance={0.1} unit="bar" decimals={0} />
+
+Podle třetin bys otáčel na 140 bar – o 28 bar později. Přesně tolik by v nouzi chybělo.
+
+**Vyvěračka.** Dovnitř 10 m/min, ven 20 m/min:
+
+<Worked fn="usableFraction" args={[10, 20]} expected={0.333} tolerance={0.001} decimals={2} />
+
+Výpočet by dovolil polovinu. Vzorec ji ořízne na třetinu – a tak to má zůstat.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="turn-speeds" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="tham-luang-2018" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

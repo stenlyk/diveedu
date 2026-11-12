@@ -339,7 +339,7 @@ Odchylky od plánu:
 
 - Simulátor „Míchací stanice“ (virtuální plnění, analýza, značení) – existují jen kalkulačky míchání.
 - „Kyslíkové okno“ je přepínač dvou stavů s ilustrativními hodnotami, ne animace.
-- Typ otázky „obrázková/diagramová“ – přijde s jeskynní mapou v etapě 5b. Rozhodovací scénáře vznikly v etapě 5a jako samostatný režim tréninku, ne jako typ otázky.
+- Typ otázky „diagramová“ vznikl v etapě 5b se čtyřmi diagramy jeskynní navigace; označování na ternárním diagramu a na profilu ponoru zatím není. Rozhodovací scénáře jsou samostatný režim tréninku, ne typ otázky.
 - Průřezové moduly (Fyziologie a medicína, Vybavení, Lidský faktor, Nouzové situace) jako samostatné moduly nevznikly; jejich témata jsou zatím rozptýlená v lekcích hlavní linie.
 - Míchání podle van der Waalse (volitelné).
 
@@ -360,4 +360,31 @@ Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul
 - K odborné kontrole zvlášť: význam světelných a dotykových signálů (liší se mezi agenturami), postup hledání ztracené šňůry (směr a metoda hledání), pořadí v týmu při sdílení plynu, limity úrovní Cavern/Intro (záměrně uvedené bez čísel), tvrzení o počtech obětí ve floridských jeskyních v 70. letech.
 - Scénář počítá plyn při stálé hloubce a jednou spotřebou s násobitelem; je to pomůcka pro rozhodování, ne plánovač.
 - Dál platí nesplněné kritérium z etapy 4: dekompresní model ověřený na 1 z 10 referenčních profilů.
+
+## 22. Etapa 5b – Full Cave, Deep Cave, navigační mapa a diagramové otázky (hotovo 2026-11-12)
+
+- **Modul C2 Full Cave (`fullcave`, navazuje na C1):** 8 lekcí, 49 otázek, 15 uzlů, 21 vazeb, 7 zajímavostí. Značky na šňůře, skoky a rozcestí, okruhy a plán navigace, ztráta partnera, zúženiny a návrat po hmatu, proud, skútr, sidemount a backmount.
+- **Modul C3 Deep Cave (`deepcave`, navazuje na C2 a Normoxic Trimix):** 6 lekcí, 40 otázek, 8 uzlů, 18 vazeb, 4 zajímavosti. Sčítání hloubky a stropu, profil jeskyně a dekomprese, stage lahve, ztráta stage a dekompresního plynu, dlouhá dekomprese (chlad, habitat, podpora), kompletní plán.
+- **Jeskynní navigační mapa** (`src/cave/nav.ts`, `src/mdx/CaveNavigator.tsx`): výuková jeskyně se dvěma vchody, rozcestím T a boční chodbou za mezerou. Cestou dovnitř se hlídá tlak otočky, pokládá skok a dávají osobní značky; po otočce se vrací po hmatu v nulové viditelnosti (zatemnění, vibrace) a rozhoduje se jen podle toho, co je na šňůře. Rozbor pojmenuje přerušenou šňůru, pozdní otočku, špatnou odbočku a neoznačená rozcestí. Model je čistá logika s testy (100 % řádků).
+- **Diagramové otázky** (`type: diagram`): bod se označuje přímo v SVG nebo tlačítky pod ním. Čtyři diagramy: rozcestí T, skok, uvázání šňůry u vchodu, tvary značek. Validátor kontroluje existenci diagramu i bodu.
+- **Kalkulačka „Otočka s proudem a skútrem“** (`usableFraction`, `turnPressureForSpeeds`).
+- **Případové studie:** Tham Luang 2018 (jen údaje, na kterých se zdroje shodují; bez hodnocení jednotlivců) a anonymizovaný vzorec „hluboká jeskyně na vzduch“.
+
+### Stav etapy 5 proti akceptačním kritériím
+
+| Kritérium | Stav |
+| --- | --- |
+| Moduly C1–C3 | hotovo: 23 lekcí, 140 otázek |
+| Navigační mapa | hotovo; jedna pevná výuková jeskyně, trasa se neplánuje předem, ale plave krok po kroku |
+| Scénáře v nulové viditelnosti | hotovo: 3 scénáře + návrat po hmatu v mapě |
+| Hratelné jednou rukou na telefonu | velká tlačítka ve spodní části obrazovky; ověřeno automatickými testy na profilu Pixel 7, ne na fyzickém telefonu |
+
+### Co je v 5b slabé nebo otevřené
+
+- **Obsah C2 a C3 je psaný z hlavy, ne ze zdrojů**, a všech 14 lekcí má `needs_review`. Jeskynní postupy se mezi agenturami a oblastmi liší víc než cokoli v hloubkové linii.
+- K odborné kontrole zvlášť: zacházení se značkami (kulatá, REM, osobní šipky) a jejich původ; postup pokládání skoku a to, kam se dává značka; definice menší a větší zúženiny; postup při ztrátě partnera včetně značky a světla zanechaného na šňůře; pravidla třetiny a poloviny pro stage; popis habitatu; tvrzení o vlivu pilovitého profilu na dekompresi.
+- **Tham Luang:** příčina úmrtí Samana Kunana není z veřejných zdrojů spolehlivě známa a případovka to říká. Data, průběh a citované knihy je třeba ověřit; řetěz příčin popisuje podmínky akce, ne jednání jednotlivce.
+- Výpočty pro skútr předpokládají stejnou spotřebu při jízdě a plavání (ve skutečnosti je při plavání vyšší); lekce to uvádí.
+- Dekompresní čísla v C3 jsou z výukového modelu, který je ověřený jen na 1 z 10 referenčních profilů (nesplněné kritérium etapy 4), a trimixové profily mezi ověřenými nejsou.
+- Průřezové moduly, míchací stanice a kreslení profilu od ruky dál chybí; etapa 6 (hlas, podcast, mediální balíčky) nezačala.
 

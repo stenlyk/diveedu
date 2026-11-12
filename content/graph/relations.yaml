@@ -293,3 +293,46 @@
 - { from: ztrata-snury, to: nulova-viditelnost, type: zhorsuje, lessonId: nouzove-postupy-cavern, explanation: Hledání bez postupu víří další sediment. }
 - { from: selhani-svetla, to: ztrata-snury, type: zpusobuje, lessonId: nouzove-postupy-cavern, explanation: 'Bez světla šňůru nevidíš; zbývá hmat.' }
 - { from: sdileni-plynu, to: unik-plynu, type: zmirnuje, lessonId: nouzove-postupy-cavern, explanation: Partner bez plynu dýchá z dlouhé hadice až k východu. }
+
+# ── Modul C2: Full Cave ──────────────────────────────────────────────────────
+- { from: vodici-snura, to: smerova-sipka, type: je_predpokladem, lessonId: znacky-na-snure, explanation: Šipka je trvalá součást značení šňůry. }
+- { from: osobni-znacka, to: rozcesti-t, type: zmirnuje, lessonId: znacky-na-snure, explanation: 'Značka říká, která ze šňůr vede k tvému východu.' }
+- { from: smerova-sipka, to: rozcesti-t, type: zhorsuje, lessonId: skoky-mezery-rozcesti, explanation: 'Šipky ukazují k nejbližšímu východu, který nemusí být tvůj.' }
+- { from: skok, to: mezera-ve-snure, type: zmirnuje, lessonId: skoky-mezery-rozcesti, explanation: Vlastní cívka mezeru přemostí. }
+- { from: mezera-ve-snure, to: ztrata-snury, type: zpusobuje, lessonId: skoky-mezery-rozcesti, explanation: 'V nulové viditelnosti se druhá strana mezery nedá najít.' }
+- { from: plan-navigace, to: rozcesti-t, type: zmirnuje, lessonId: okruhy-a-plan-navigace, explanation: 'Každé rozhodnutí je dohodnuté předem.' }
+- { from: okruh-a-traverz, to: tlak-otocky, type: zhorsuje, lessonId: okruhy-a-plan-navigace, explanation: 'Za polovinou okruhu je cesta zpět delší než cesta dál – ale jen když zbytek znáš.' }
+- { from: ztrata-partnera, to: tym, type: zhorsuje, lessonId: ztrata-partnera, explanation: Rezervní plyn partnera je pryč s ním. }
+- { from: svetelne-signaly, to: ztrata-partnera, type: zmirnuje, lessonId: ztrata-partnera, explanation: 'Kužel světla je první, co po partnerovi uvidíš.' }
+- { from: zuzenina, to: sediment, type: zvysuje, lessonId: zuzeniny-a-navrat-po-hmatu, explanation: 'V těsném místě se dotyku stěn nevyhneš.' }
+- { from: zuzenina, to: sdileni-plynu, type: zhorsuje, lessonId: zuzeniny-a-navrat-po-hmatu, explanation: 'Dva potápěči na jedné hadici musí projít za sebou.' }
+- { from: kontaktni-komunikace, to: zuzenina, type: zmirnuje, lessonId: zuzeniny-a-navrat-po-hmatu, explanation: 'Dotyk funguje i tam, kde se tým nevidí.' }
+- { from: proud-v-jeskyni, to: podil-plynu, type: snizuje, lessonId: proud-a-prutok, explanation: 'Proud do jeskyně prodlužuje cestu ven.' }
+- { from: tlak-otocky, to: podil-plynu, type: pocita_se_z, lessonId: proud-a-prutok, explanation: 'Menší podíl znamená vyšší tlak otočky.' }
+- { from: proud-v-jeskyni, to: namaha, type: zvysuje, lessonId: proud-a-prutok, explanation: Plavání proti proudu zvyšuje spotřebu. }
+- { from: skutr-dpv, to: dosah-pruniku, type: zvysuje, lessonId: skutr-v-jeskyni, explanation: Za stejný plyn urazíš několikanásobek vzdálenosti. }
+- { from: selhani-skutru, to: podil-plynu, type: snizuje, lessonId: skutr-v-jeskyni, explanation: 'Plán musí počítat s návratem bez skútru.' }
+- { from: tazeni-partnera, to: selhani-skutru, type: zmirnuje, lessonId: skutr-v-jeskyni, explanation: Druhý skútr doveze oba. }
+- { from: sidemount, to: zuzenina, type: zmirnuje, lessonId: sidemount-a-backmount, explanation: 'Nízký profil; lahve jdou odepnout a posunout před sebe.' }
+- { from: sidemount, to: unik-plynu, type: zmirnuje, lessonId: sidemount-a-backmount, explanation: 'Ventily a první stupně jsou na dohled a na dosah.' }
+- { from: twinset, to: sdileni-plynu, type: zmirnuje, lessonId: sidemount-a-backmount, explanation: 'Propojené lahve dávají celou zásobu jedné automatice.' }
+
+# ── Modul C3: Deep Cave ──────────────────────────────────────────────────────
+- { from: hluboka-jeskyne, to: dosah-pruniku, type: snizuje, lessonId: hloubka-a-strop, explanation: 'Spotřeba roste s tlakem; stejná třetina vystačí na kratší cestu.' }
+- { from: hluboky-vzduch, to: hluboka-jeskyne, type: zhorsuje, lessonId: hloubka-a-strop, explanation: 'Narkóza a hustota berou úsudek i dech tam, kde se nedá vystoupat.' }
+- { from: helium, to: hluboka-jeskyne, type: zmirnuje, lessonId: hloubka-a-strop, explanation: Trimix snižuje narkózu i hustotu. }
+- { from: profil-jeskyne, to: deko-v-jeskyni, type: zhorsuje, lessonId: profil-jeskyne-a-dekomprese, explanation: 'Zastávky nejdou dělat tam, kde je plán chce, ale tam, kde je chodba dovolí.' }
+- { from: strop-dekomprese, to: deko-v-jeskyni, type: je_predpokladem, lessonId: profil-jeskyne-a-dekomprese, explanation: 'Dekompresní strop se přidává ke skalnímu.' }
+- { from: profil-jeskyne, to: bubliny, type: zvysuje, lessonId: profil-jeskyne-a-dekomprese, explanation: Opakované výstupy a sestupy zatěžují dekompresi. }
+- { from: stage-lahev, to: odlozeni-stage, type: je_predpokladem, lessonId: stage-lahve-a-odkladani, explanation: Odkládá se lahev nesená navíc. }
+- { from: odlozeni-stage, to: dosah-pruniku, type: zvysuje, lessonId: stage-lahve-a-odkladani, explanation: Plyn navíc prodlužuje cestu dovnitř. }
+- { from: plyn-ze-stage, to: pravidlo-tretin, type: pocita_se_z, lessonId: stage-lahve-a-odkladani, explanation: 'Stejná bilance: cesta ven pro dva.' }
+- { from: ztrata-stage, to: ztrata-deko-plynu, type: zpusobuje, lessonId: ztrata-stage-a-deko-plynu, explanation: Odložený dekompresní plyn chybí. }
+- { from: ztrata-stage, to: vynechana-dekomprese, type: zpusobuje, lessonId: ztrata-stage-a-deko-plynu, explanation: 'Bez dekompresního plynu se zastávky mnohonásobně prodlouží.' }
+- { from: znaceni-lahvi, to: ztrata-stage, type: zmirnuje, lessonId: ztrata-stage-a-deko-plynu, explanation: 'Označenou lahev poznáš po hmatu a nezaměníš ji.' }
+- { from: habitat, to: ztrata-tepla, type: zmirnuje, lessonId: dlouha-dekomprese, explanation: Suchý prostor zastaví prochladnutí. }
+- { from: podpurny-tym, to: ztrata-stage, type: zmirnuje, lessonId: dlouha-dekomprese, explanation: Podpůrní potápěči přinesou plyn. }
+- { from: deko-v-jeskyni, to: ztrata-tepla, type: zvysuje, lessonId: dlouha-dekomprese, explanation: Hodiny bez pohybu ve studené vodě. }
+- { from: podil-plynu, to: plan-hluboke-jeskyne, type: je_predpokladem, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: Plán začíná bilancí plynu na cestu ven. }
+- { from: plan-vice-plynu, to: plan-hluboke-jeskyne, type: je_predpokladem, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: 'Směsi, přepnutí a dekomprese z hloubkové linie.' }
+- { from: plan-hluboke-jeskyne, to: hluboka-jeskyne, type: zmirnuje, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: 'Každé riziko má v plánu svou rezervu.' }

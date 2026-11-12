@@ -143,3 +143,30 @@
 - { id: ztrata-snury, label: Ztráta šňůry, type: risk, moduleId: cavern, shortDefinition: 'Situace, kdy potápěč nemá šňůru na dosah ani na dohled.' }
 - { id: selhani-svetla, label: Selhání světla, type: risk, moduleId: cavern, shortDefinition: 'Porucha hlavní svítilny; přechod na záložní a ukončení ponoru.' }
 - { id: sdileni-plynu, label: Sdílení plynu při návratu, type: procedure, moduleId: cavern, shortDefinition: 'Výstup dvou potápěčů z jedné zásoby na dlouhé hadici, v zákrytu podél šňůry.' }
+
+# ── Modul C2: Full Cave ──────────────────────────────────────────────────────
+- { id: smerova-sipka, label: Směrová šipka, type: equipment, moduleId: fullcave, shortDefinition: 'Trvalá značka na šňůře ukazující směr k nejbližšímu východu.' }
+- { id: osobni-znacka, label: Osobní značka, type: equipment, moduleId: fullcave, shortDefinition: 'Značka, kterou si potápěč označí šňůru vedoucí k jeho vlastnímu východu; cestou ven ji sbírá.' }
+- { id: skok, label: Skok, type: procedure, moduleId: fullcave, shortDefinition: 'Přemostění mezery mezi dvěma šňůrami vlastní cívkou, aby šňůra k východu zůstala souvislá.' }
+- { id: mezera-ve-snure, label: Mezera ve šňůře, type: risk, moduleId: fullcave, shortDefinition: 'Úsek bez šňůry mezi dvěma trvalými šňůrami nebo mezi šňůrou a otevřenou vodou.' }
+- { id: rozcesti-t, label: Rozcestí T, type: risk, moduleId: fullcave, shortDefinition: 'Místo, kde se trvalé šňůry spojují; při návratu je na výběr víc směrů.' }
+- { id: okruh-a-traverz, label: Okruh a traverz, type: procedure, moduleId: fullcave, shortDefinition: 'Okruh se vrací jinou cestou ke stejnému vchodu, traverz končí jiným vchodem.' }
+- { id: plan-navigace, label: Plán navigace, type: procedure, moduleId: fullcave, shortDefinition: 'Před ponorem dohodnutá trasa, počet rozhodnutí a značení; pod vodou se nerozšiřuje.' }
+- { id: ztrata-partnera, label: Ztráta partnera, type: risk, moduleId: fullcave, shortDefinition: 'Člen týmu není na dohled ani na dosah; hledání omezuje plyn hledajícího.' }
+- { id: zuzenina, label: Zúženina, type: risk, moduleId: fullcave, shortDefinition: 'Místo, kudy dva potápěči neproplavou vedle sebe; zpomaluje, víří a komplikuje sdílení plynu.' }
+- { id: proud-v-jeskyni, label: Proud v jeskyni, type: risk, moduleId: fullcave, shortDefinition: 'Průtok vody chodbou; mění poměr času cesty dovnitř a ven.' }
+- { id: podil-plynu, label: Použitelný podíl plynu, type: quantity, moduleId: fullcave, formulaId: podil-plynu, shortDefinition: 'Část zásoby použitelná na cestu dovnitř, když se rychlost tam a zpět liší; nejvýš třetina.' }
+- { id: skutr-dpv, label: Skútr (DPV), type: equipment, moduleId: fullcave, shortDefinition: 'Podvodní tahač; násobí dosah, a tím i vzdálenost, kterou je při poruše třeba uplavat.' }
+- { id: selhani-skutru, label: Selhání skútru, type: risk, moduleId: fullcave, shortDefinition: 'Porucha tahače daleko od vchodu; návrat tažením nebo plaváním.' }
+- { id: tazeni-partnera, label: Tažení partnera, type: procedure, moduleId: fullcave, shortDefinition: 'Návrat dvou potápěčů na jednom skútru; pomalejší a s vyšší spotřebou energie i plynu.' }
+- { id: sidemount, label: Sidemount, type: equipment, moduleId: fullcave, shortDefinition: 'Dvě nezávislé lahve po stranách těla; nízký profil a ventily na dohled.' }
+
+# ── Modul C3: Deep Cave ──────────────────────────────────────────────────────
+- { id: hluboka-jeskyne, label: Hluboká jeskyně, type: risk, moduleId: deepcave, shortDefinition: 'Ponor, kde se sčítá strop, hloubka a dekomprese: žádný přímý výstup, vysoká spotřeba a dlouhá cesta ven.' }
+- { id: profil-jeskyne, label: Profil jeskyně, type: risk, moduleId: deepcave, shortDefinition: 'Hloubku v každém místě určuje chodba, ne potápěč; pilovitý profil nutí k opakovaným sestupům a výstupům.' }
+- { id: deko-v-jeskyni, label: Dekomprese v jeskyni, type: procedure, moduleId: deepcave, shortDefinition: 'Zastávky pod skalním stropem, na místech daných chodbou, často daleko od vchodu.' }
+- { id: odlozeni-stage, label: Odložení stage lahve, type: procedure, moduleId: deepcave, shortDefinition: 'Lahev se po vydýchání dohodnutého podílu zanechá na šňůře a cestou ven se sbírá.' }
+- { id: plyn-ze-stage, label: Použitelný plyn ze stage, type: quantity, moduleId: deepcave, shortDefinition: 'Podíl stage lahve použitelný cestou dovnitř; zbytek spolu se zásobou na zádech kryje cestu ven.' }
+- { id: ztrata-stage, label: Ztráta stage lahve, type: risk, moduleId: deepcave, shortDefinition: 'Odložená lahev není k nalezení nebo nefunguje; chybí plyn, se kterým plán počítal.' }
+- { id: habitat, label: Dekompresní habitat, type: equipment, moduleId: deepcave, shortDefinition: 'Suchý prostor pod vodou pro dlouhou dekompresi: teplo, jídlo a menší následky kyslíkových křečí.' }
+- { id: plan-hluboke-jeskyne, label: Plán hlubokého jeskynního ponoru, type: procedure, moduleId: deepcave, shortDefinition: 'Spojuje směsi, dekompresi, navigaci a plyn na cestu ven pro dva do jednoho plánu s jedním nejslabším článkem.' }

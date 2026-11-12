@@ -1,0 +1,92 @@
+<Hook>
+
+Boční chodba začíná čtyři metry od hlavní šňůry. Její šňůru vidíš, je přímo před tebou. Čtyři metry – tři kopnutí.
+
+Stejné čtyři metry budou při návratu v nulové viditelnosti prostor, ve kterém druhou šňůru hledáš rukou. A nemusíš ji najít.
+
+</Hook>
+
+<Principle>
+
+Úroveň Intro to Cave zůstává na jedné šňůře. Full Cave přidává navigaci: přechody mezi šňůrami a rozcestí. Každý takový bod je **rozhodnutí**,
+které bude při návratu potřeba udělat znovu – možná poslepu.
+
+**<Term cs="mezera" />** je úsek bez šňůry. Bývá na dvou místech:
+
+- mezi otevřenou vodou a začátkem trvalé šňůry,
+- mezi hlavní šňůrou a začátkem boční šňůry.
+
+Mezera u bočních chodeb je často záměrná: brání tomu, aby se někdo na boční šňůru dostal omylem.
+
+**<Term cs="skok" />** je přemostění mezery vlastní cívkou. Postup:
+
+1. Označ si na hlavní šňůře cestu ven osobní značkou.
+2. Připoj cívku k hlavní šňůře.
+3. Odvíjej k boční šňůře; šňůra napnutá, mimo pasti.
+4. Připoj ji k boční šňůře a zajisti.
+
+Skok zůstává na místě po celou dobu, co je tým za ním. Cestou ven ho sbírá poslední potápěč.
+
+**Rozcestí T** je místo, kde se trvalé šňůry stýkají bez mezery. Cestou dovnitř je to nenápadné – prostě pokračuješ.
+Cestou ven přicházíš z jedné větve a před sebou máš dvě další. Proto se na rozcestí **vždy** dává osobní značka na šňůru k vlastnímu východu.
+
+Proč nestačí trvalé šipky: ukazují k nejbližšímu východu. V systému s více vchody může šipka na jedné větvi ukazovat k tvému vchodu a na druhé k jinému.
+Obě „ukazují ven“. Poslepu je od sebe nerozeznáš.
+
+**Počítej rozhodnutí.** Každý skok a každé rozcestí je jedna značka, jedna cívka a jedno místo, kde se dá udělat chyba. Kurzy proto počet navigačních rozhodnutí na ponor omezují.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Platí v ní jediná rovnice, a ta nemá výjimky:
+
+<Given>souvislá šňůra od potápěče do otevřené vody = žádná mezera, nikdy</Given>
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik plynu stojí jeden skok?
+
+Položení cívky trvá asi dvě minuty, sebrání cestou ven další dvě. Ve 20 m při spotřebě 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 20, 4]} expected={240} tolerance={0.1} unit="l" decimals={0} />
+
+V dvojčeti 2×12 l je to <Calc fn="litersToBar" args={[240, 24]} decimals={0} unit="bar" />.
+
+Deset barů za skok. Dva skoky a rozcestí ukrojí z třetiny přes dvacet barů, a tím i dosah:
+místo <Calc fn="penetrationDistance" args={[70, 24, 20, 20, 15]} decimals={0} unit="m" /> jen <Calc fn="penetrationDistance" args={[50, 24, 20, 20, 15]} decimals={0} unit="m" />.
+Navigace se platí plynem – a proto se plánuje.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="cave-nav" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="zlata-snura" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

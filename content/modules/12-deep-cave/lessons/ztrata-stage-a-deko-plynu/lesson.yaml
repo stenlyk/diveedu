@@ -1,0 +1,21 @@
+id: ztrata-stage-a-deko-plynu
+moduleId: deepcave
+title: "Ztráta stage a dekompresního plynu"
+order: 4
+conceptIds: ["ztrata-stage", "ztrata-deko-plynu", "vynechana-dekomprese"]
+checkQuestionIds: ["zs-moznosti", "zs-bez-deko", "zs-tym-rezerva", "zs-nenasel", "zs-prevence", "zs-overeni"]
+estimatedMinutes: 10
+audioSummary: >-
+  Odložená lahev může chybět, být prázdná nebo nefunkční. Plán počítal s plynem, který není.
+  Zastav a dýchej z toho, co funguje. Dej vědět týmu.
+  Krátce hledej. Limit je plyn, ne naděje.
+  Použij plyn týmu. Plán má vystačit i při ztrátě jedné lahve.
+  Přepočítej dekompresi pro plyn, který opravdu máš.
+  Nezkracuj dekompresi a nevracej se hlouběji hledat lahev.
+  Bez dekompresního plynu trvá výstup několikrát déle a dno směs na něj nestačí.
+  Plán proto nesmí stát na jedné lahvi.
+sources:
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "TDI Full Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+needs_review: true

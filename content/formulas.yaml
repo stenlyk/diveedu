@@ -248,3 +248,12 @@
     - { symbol: 'P_{abs}', name: absolutní tlak v hloubce, unit: bar }
     - { symbol: 'v', name: rychlost plavání, unit: m/min }
   calcFunction: penetrationDistance
+
+- id: podil-plynu
+  title: Použitelný podíl plynu při různé rychlosti
+  latex: 'x = \min\left(\frac{1}{3},\ \frac{1}{1 + 2\,\frac{v_{dovnitr}}{v_{ven}}}\right)'
+  variables:
+    - { symbol: 'x', name: podíl zásoby použitelný na cestu dovnitř, unit: '' }
+    - { symbol: 'v_{dovnitr}', name: rychlost cesty dovnitř vůči dnu, unit: m/min }
+    - { symbol: 'v_{ven}', name: rychlost cesty ven v nejhorším případě, unit: m/min }
+  calcFunction: usableFraction
