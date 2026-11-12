@@ -1,0 +1,92 @@
+<Hook>
+
+Potápěč si pro hluboký ponor připojí hadici suchého obleku k lahvi s trimixem. Je to pohodlné – jedna lahev, jedna hadice.
+
+Po dvaceti minutách se třese tak, že neudrží karabinu. Co je špatně na plynu, který je jinak ve všem lepší?
+
+</Hook>
+
+<Principle>
+
+Helium má kromě nízké hustoty a nulové narkózy několik dalších vlastností, se kterými je třeba počítat.
+
+**Vede teplo.** Tepelná vodivost helia je asi šestkrát vyšší než vzduchu. Vrstva plynu v suchém obleku je tvoje izolace; když ji naplníš směsí s heliem, izolace zmizí.
+Proto se oblek trimixem **nikdy** neplní. Používá se vzduch nebo argon, který vede teplo ještě hůř než vzduch, z malé samostatné lahve.
+
+**Teplo ztrácené dechem** je složitější. Rozšířená představa, že „helium se dýchá studeněji“, neplatí tak jednoduše:
+teplo, které odnáší vydechovaný plyn, závisí hlavně na jeho hustotě a tepelné kapacitě, a helium je řídké.
+V hloubce jsou ale ztráty dechem velké u každého plynu, protože dýcháš plyn několikrát hustší než na hladině.
+
+**Mění hlas.** Zvuk se v heliu šíří rychleji a hlas zní vysoko. Na otevřeném okruhu to nevadí.
+
+**Rychle proniká.** Malý atom se dostane netěsnostmi, kudy vzduch neunikne. Automatiky, hadice i manometry musí být v dobrém stavu.
+
+**Nervový syndrom vysokého tlaku.** Při rychlém sestupu na směsích s heliem hlouběji než zhruba 150 m se objevuje třes, závrať a poruchy soustředění.
+Nezpůsobuje ho helium jako takové, ale tlak, jehož účinek narkotický dusík jinak maskuje. V rozsahu normoxického trimixu se neprojeví;
+je to limit, se kterým pracuje Full Trimix a hlavně komerční potápění.
+
+**Je drahé a nedostatkové.** To je praktický důvod, proč se nepoužívá víc helia, než je potřeba – a proč se u velkých ponorů prosadily rebreathery.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Jedno porovnání ale stojí za zapamatování:
+
+<Given>tepelná vodivost: argon ≈ 2/3 vzduchu · helium ≈ 6× vzduch</Given>
+
+Do obleku tedy argon nebo vzduch, nikdy plyn s heliem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Proč ztráty tepla dechem v hloubce rostou u každého plynu – stačí se podívat, kolik hmoty protáhneš plícemi.
+
+**Vzduch ve 40 m:**
+
+<Worked fn="densityOfMix" args={[0.21, 0, 40]} expected={6.44} tolerance={0.01} unit="g/l" decimals={2} />
+
+**Tx 18/45 v 60 m:**
+
+<Worked fn="densityOfMix" args={[0.18, 0.45, 60]} expected={5.6} tolerance={0.01} unit="g/l" decimals={2} />
+
+Trimix je i o dvacet metrů hlouběji řidší než vzduch ve čtyřicítce. Každý nádech je přesto několikrát hmotnější než na hladině a tělo ho musí ohřát.
+Na dlouhých hlubokých ponorech je proto tepelná ochrana stejně důležitá jako plyn.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'napojíš suchý oblek na lahev s trimixem?', effect: 'Helium vede teplo asi šestkrát lépe než vzduch. Izolační vrstva obleku přestane izolovat a prochladneš během minut. Oblek se plní vzduchem nebo argonem ze samostatné lahve.' },
+  { label: 'prochladneš na dlouhé dekompresi?', effect: 'Stažené cévy v končetinách zpomalí vysycování právě ve chvíli, kdy ho potřebuješ nejvíc. Teplo na dekompresi je součást dekompresního plánu.' },
+  { label: 'má automatika drobnou netěsnost?', effect: 'Helium uniká i místy, kudy vzduch neprojde. Netěsnost, které sis na vzduchu nevšiml, může na trimixu znamenat znatelnou ztrátu drahého plynu.' },
+  { label: 'budeš sestupovat velmi rychle hluboko pod 150 m?', effect: 'Hrozí nervový syndrom vysokého tlaku: třes, závrať, zhoršené soustředění. Je to oblast za hranicemi tohoto modulu; řeší se pomalým sestupem a malým podílem dusíku ve směsi.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hlas-na-heliu" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

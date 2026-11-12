@@ -1,0 +1,87 @@
+<Hook>
+
+Stejný ponor, 60 m a 20 minut. Na trimixu bez dekompresního plynu ukáže výukový model výstup <Calc fn="ascentMinutesMix" args={[60, 20, 50, 80, 0.18, 0.45, 0, 0]} unit="min" />.
+
+S jednou lahví EAN50 <Calc fn="ascentMinutesMix" args={[60, 20, 50, 80, 0.18, 0.45, 0.5, 21]} unit="min" />. U vzduchu byl ten rozdíl menší. Proč je helium na dekompresní plyn tak citlivé?
+
+</Hook>
+
+<Principle>
+
+Helium je malý a rychlý atom. V modelu má každý kompartment pro helium poločas asi 2,65krát kratší než pro dusík. Z toho plyne několik věcí:
+
+**Sytí se rychle.** Za dvacet minut na dně jsou heliem zatížené i středně rychlé kompartmenty, které by dusík sotva stihl ovlivnit.
+
+**Vysycuje se rychle – pokud má kam.** Dokud dýcháš dno směs, je v ní helia pořád hodně a spád z tkání je malý.
+Proto je dekomprese na dno směsi tak dlouhá. Jakmile přepneš na plyn bez helia, helium odchází velmi rychle.
+
+**Dekompresní plyn není volba.** U vzduchových ponorů bohatá směs dekompresi zkracuje. U trimixu ji teprve umožňuje v rozumném čase.
+Ztráta dekompresního plynu je proto na trimixu mnohem vážnější a plán s ní musí počítat.
+
+**Výstup z hloubky.** Rychlé kompartmenty plné helia dosahují limitu dřív, takže první zastávky bývají hlouběji než u vzduchového ponoru.
+Řízená rychlost výstupu je tu důležitější než kdekoli jinde.
+
+**Co říká model a co pokusy.** Bühlmannův model přisuzuje heliu vlastní koeficienty a pro krátké hluboké ponory dává s heliem delší dekompresi než s dusíkem.
+Pokus amerického námořnictva z roku 2015 tento rozdíl při přímém srovnání nepotvrdil. Počítače i plánovače přesto počítají podle modelu – a ty se drž svého počítače.
+
+**Přepnutí na dusíkovou směs.** Při přechodu z helia na plyn s vysokým podílem dusíku se může krátce stát, že dusík do tkáně vstupuje rychleji, než helium odchází.
+Tomu se říká izobarická protidifuze a věnuje se jí modul Full Trimix.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="haldane" />
+
+Stejná rovnice jako pro dusík, jen s kratšími poločasy. Model ji počítá pro oba plyny zvlášť a tlaky v každém kompartmentu sčítá;
+M-hodnota se pak bere jako vážený průměr podle toho, kolik je v kompartmentu kterého plynu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Rychlost sycení.** Kompartment 5 má pro dusík poločas <Calc fn="n2HalfTime" args={[5]} unit="min" />. Pro helium je to 10,2 min.
+Jak velkou část cesty urazí helium za 20 minut?
+
+<Worked fn="saturationFraction" args={[10.21, 20]} expected={0.743} tolerance={0.001} unit="" decimals={2} />
+
+A dusík ve stejném kompartmentu?
+
+<Worked fn="saturationFraction" args={[27, 20]} expected={0.402} tolerance={0.001} unit="" decimals={2} />
+
+Helium je za dvacet minut ve třech čtvrtinách, dusík ve dvou pětinách.
+
+**Co udělá dekompresní plyn** (60 m, 20 min, Tx 18/45, GF 50/80, výukový model):
+bez něj <Calc fn="ascentMinutesMix" args={[60, 20, 50, 80, 0.18, 0.45, 0, 0]} unit="min" />, s EAN50 od 21 m <Calc fn="ascentMinutesMix" args={[60, 20, 50, 80, 0.18, 0.45, 0.5, 21]} unit="min" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="tissue-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="nedu-heliox-trimix" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

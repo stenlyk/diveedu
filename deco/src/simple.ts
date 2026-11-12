@@ -71,3 +71,13 @@ export function gradientPercent(tissueBar: number, ambientPressureBar: number, m
   if (!(mValueBar > ambientPressureBar)) throw new CalcInputError('M-hodnota musí být vyšší než okolní tlak');
   return ((tissueBar - ambientPressureBar) / (mValueBar - ambientPressureBar)) * 100;
 }
+
+/**
+ * Doba výstupu pro ponor na libovolné směsi (frakce kyslíku a helia) s jedním dekompresním nitroxem.
+ * decoFO2 = 0 znamená bez dekompresního plynu.
+ */
+export function ascentMinutesMix(depthM: number, bottomMinutes: number, gfLow: number, gfHigh: number, fO2: number, fHe: number, decoFO2: number, switchDepthM: number): number {
+  const gases: PlanGas[] = [{ gas: { fO2, fHe } }];
+  if (decoFO2 > 0) gases.push({ gas: { fO2: decoFO2, fHe: 0 }, switchDepthM });
+  return planDive({ depthM, bottomMinutes, gases, gfLow, gfHigh }).ascentMin;
+}

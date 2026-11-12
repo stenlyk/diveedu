@@ -120,6 +120,52 @@ test('tkáňový simulátor: rozvrh, přehrávání a reakce na gradient factors
   await expect(page.getByTestId('sim-stops')).toHaveText('Bez zastávek.');
 });
 
+test('ternární diagram: hodnocení směsi podle hloubky a limitů', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje');
+  await page.getByRole('link', { name: /Ternární diagram směsi/ }).click();
+  const verdict = page.getByTestId('ternary-verdict');
+  await expect(verdict).toContainText('Tx 18/45 v 60 m: v limitech');
+  await expect(verdict).toContainText('28,5 m');
+  // V 80 m má 18 % kyslíku ppO2 1,62 bar – nad limitem.
+  for (let i = 0; i < 4; i++) await page.getByRole('button', { name: 'Hloubka: přidat' }).click();
+  await expect(verdict).toContainText('mimo limity');
+  await expect(verdict).toContainText('ppO2 nad limitem');
+  // Klepnutí do diagramu vybere jinou směs.
+  const before = await verdict.innerText();
+  const box = (await page.getByTestId('ternary').locator('svg').boundingBox())!;
+  await page.mouse.click(box.x + box.width * 0.3, box.y + box.height * 0.75);
+  await expect(verdict).not.toHaveText(before);
+});
+
+test('co kdyby: helium přeruší řetěz hustota → CO2 → narkóza', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/graf');
+  await page.getByRole('tab', { name: 'Co kdyby' }).click();
+  const graph = page.getByTestId('whatif-graph');
+  const level = (id: string) => graph.locator(`[data-whatif="${id}"]`);
+  // Výchozí stav: vzduch ve 45 m – hustota nad tvrdým limitem, narkóza zvýšená.
+  await expect(level('hustota-plynu')).toHaveAttribute('data-node-level', '2');
+  await expect(level('dusikova-narkoza')).toHaveAttribute('data-node-level', '2');
+  await expect(level('retence-co2')).toHaveAttribute('data-node-level', '2');
+  // 35 % helia: hustota i narkóza klesnou.
+  for (let i = 0; i < 7; i++) await page.getByRole('button', { name: 'Helium ve směsi: přidat' }).click();
+  await expect(level('hustota-plynu')).toHaveAttribute('data-node-level', '0');
+  await expect(level('dusikova-narkoza')).toHaveAttribute('data-node-level', '0');
+  // Těžká práce zvedne CO2 i s heliem.
+  await graph.getByRole('checkbox').check();
+  await expect(level('retence-co2')).toHaveAttribute('data-node-level', '1');
+});
+
+test('kalkulačka optimální trimix navrhne směs a rozepíše postup', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje/optimal-trimix');
+  await expect(page.locator('[data-output="Kyslík (zaokrouhleno dolů)"]')).toHaveText('18 %');
+  await expect(page.locator('[data-output="Helium (zaokrouhleno nahoru)"]')).toHaveText('43 %');
+  await expect(page.getByText('Nejmenší frakce helia')).toBeVisible();
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+});
+
 test('kalkulačka minimum gas počítá rezervu a rozepíše postup', async ({ page }) => {
   await acceptOnboarding(page);
   await page.goto('/nastroje/rock-bottom');
@@ -146,7 +192,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(300_000);
+  test.setTimeout(420_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -154,7 +200,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(36);
+  expect(hrefs.length).toBe(46);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -265,7 +311,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(77);
+  await expect(map.locator('[data-node]')).toHaveCount(97);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -328,6 +374,10 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await expect(page.getByText(/kyslíkové okno: přibližně/)).toBeVisible();
   await page.goto('/nastroje/simulator/tkane');
   await expect(page.getByTestId('sim-stops')).toContainText('Zastávky:');
+  await page.goto('/nastroje/simulator/ternarni-diagram');
+  await expect(page.getByTestId('ternary-verdict')).toContainText('v limitech');
+  await page.goto('/pripady/rouse-u869');
+  await expect(page.getByRole('heading', { name: '6. Spočítej si to' })).toBeVisible();
   await page.goto('/uceni/gradient-factors');
   await page.getByRole('button', { name: '4. Ukázkový výpočet' }).click();
   await expect(page.locator('[data-worked="ceilingDepthN2"]').first()).toContainText('9,3 m');
@@ -337,7 +387,7 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(77);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(97);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');

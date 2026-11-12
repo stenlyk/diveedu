@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–3 hotové (MVP). Etapa 4 probíhá: dodávka 4a hotová (deco, modul 2, tkáňový simulátor), zbývá 4b (modul 3, ternární diagram) a 4c (modul 4, profil ponoru).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–3 hotové (MVP). Etapa 4 probíhá: dodávky 4a (deco, modul 2, tkáňový simulátor) a 4b (modul 3, ternární diagram, „Co kdyby“) hotové, zbývá 4c (modul 4, profil ponoru). Ověření `deco/` proti referenci je stále jen na 1 profilu z 10.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -304,3 +304,14 @@ Odchylky od plánu:
 - Obsah smí volat funkce z `calc` i `deco` přes jeden seznam (`src/content/fns.ts`).
 - Čísla z dekompresního modelu v lekcích jdou přes `<Calc>` bez ruční reference – ručně je spočítat nelze. Jejich správnost stojí na ověření `deco/`.
 - Nová případová studie pro modul 2 nevznikla; stávající „záměna plynu“ je přiřazená i k němu. Rouseovi (U-869) přijdou s modulem 3.
+
+## 19. Etapa 4b – Normoxic Trimix (hotovo 2026-11-12)
+
+- **Modul 3:** 10 lekcí, 52 otázek, 20 uzlů, 37 vazeb, 10 zajímavostí. Témata: tři limity vzduchu, narkóza a END, debata o narkotičnosti kyslíku, hustota směsi, řetěz CO2 v hloubce, vlastnosti helia, optimální trimix a standardní směsi, dekomprese s heliem, míchání a analýza, plán s více plyny.
+- **Ternární diagram** (Nástroje → Simulátory, a v lekci o hustotě): oblast povolených směsí pro hloubku a limity ppO2, END a hustoty; bod lze táhnout nebo nastavit posuvníky.
+- **Pohled „Co kdyby“** (Graf → Co kdyby, a v lekci o CO2): hloubka, směs a námaha mění stupeň uzlů řetězu hustota → práce dýchání → CO2 → narkóza a CNS. Stupně jsou výukové prahy nad hodnotami z `calc`.
+- **Kalkulačky:** END v obou variantách, hustota směsi, optimální trimix, míchání trimixu – všechny s postupem a režimem „Spočítám sám“.
+- **Případová studie:** vrak U-869 (1992), hluboký vrakový ponor na vzduch. Bez profilu ponoru; průběh podle publikovaných zdrojů, označeno k ověření.
+- **Oprava v modulu 1:** tvrzení, že kyslík je „pravděpodobně narkotický“, bylo příliš silné. Nově je všude formulováno jako nerozhodnutá otázka (teorie pro, měření proti, opatrný plán počítá, že ano).
+- Volitelné míchání podle van der Waalse nevzniklo; lekce o míchání vysvětluje chování reálného plynu slovně a kalkulačka počítá ideální plyn s upozorněním.
+- Nastavení se nově ukládá na disk dřív, než se projeví v aplikaci (potvrzení onboardingu se neztratí při okamžitém zavření).

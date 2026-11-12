@@ -33,11 +33,12 @@ export const useSettings = create<SettingsStore>((set) => ({
     }
   },
   set: async (key, value) => {
-    set({ [key]: value } as Partial<Settings>);
+    // Nejdřív uložit, pak teprve změnit stav: co uživatel vidí jako potvrzené, je už na disku.
     try {
       await db.settings.put({ key, value });
     } catch {
       /* viz load */
     }
+    set({ [key]: value } as Partial<Settings>);
   },
 }));

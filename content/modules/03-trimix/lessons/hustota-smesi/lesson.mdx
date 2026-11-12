@@ -1,0 +1,88 @@
+<Hook>
+
+Směs splňuje limit kyslíku. Splňuje limit narkotické hloubky. Potápěč se přesto v 70 metrech nemůže nadechnout dost na to, aby doplaval k lanu.
+
+Existuje třetí limit, o kterém se před deseti lety skoro nemluvilo.
+
+</Hook>
+
+<Principle>
+
+Z modulu Základy víš, proč hustota vadí: hustý plyn hůř proudí, roste práce dýchání, klesá největší možná ventilace a hromadí se CO2.
+U vzduchu to byl problém od 30 m. U trimixu je to parametr, který si volíš.
+
+Platí dva limity podle Anthonyho a Mitchella:
+
+- **5,2 g/l** – doporučená hranice pro plánování,
+- **6,2 g/l** – tvrdý limit, který se nepřekračuje.
+
+Helium je zdaleka nejúčinnější způsob, jak hustotu snížit: každých 10 % helia místo dusíku ubere z hustoty na hladině asi 0,11 g/l.
+
+**Který limit rozhoduje?** Záleží na hloubce:
+
+- kolem 45–60 m určuje obsah helia obvykle END; směs, která splní END 30 m, splní i tvrdý limit hustoty,
+- hlouběji začne být přísnější hustota. V 75 m a níž potřebuješ víc helia kvůli hustotě než kvůli narkóze.
+
+Kdo plánuje jen podle END, v hloubce hustotu snadno přehlédne. Proto se kontrolují vždy oba limity.
+
+**Nitrox na dekompresi.** Bohaté směsi jsou těžké – kyslík je těžší než dusík. Dýchají se ale mělko, kde je tlak nízký, takže limit nepřekročí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="hustota" />
+
+Nejdřív hustota směsi na hladině jako vážený součet tří složek, pak násobení absolutním tlakem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 18/45 v 60 m.**
+
+<Worked fn="densityOfMix" args={[0.18, 0.45, 60]} expected={5.6} tolerance={0.01} steps="densityOfMixSteps" unit="g/l" decimals={2} />
+
+Nad doporučeným limitem, pod tvrdým. Přijatelné, ale bez rezervy na těžkou práci.
+
+**Tx 21/35 ve 45 m.**
+
+<Worked fn="densityOfMix" args={[0.21, 0.35, 45]} expected={5.02} tolerance={0.01} unit="g/l" decimals={2} />
+
+**Kolik helia by bylo potřeba** v 60 m pro doporučený limit 5,2 g/l při 18 % kyslíku?
+
+<Worked fn="minHeForDensity" args={[0.18, 60, 5.2]} expected={0.5039} tolerance={0.001} unit="" decimals={3} />
+
+Padesát procent – víc než 43 %, která stačí pro END 30 m. Kdo chce v 60 m pracovat, volí proto bohatší směs na helium, než jakou vyžaduje narkóza.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="ternary" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hustota-anthony-mitchell" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

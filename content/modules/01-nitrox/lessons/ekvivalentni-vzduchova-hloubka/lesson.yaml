@@ -10,7 +10,7 @@ audioSummary: >-
   Na e á en třicet dva ve třiceti metrech vychází necelých dvacet pět metrů.
   Slouží k dekompresi. S ní můžeš pro nitrox použít vzduchové tabulky.
   Neslouží ke kyslíku. Maximální hloubka směsi i CNS hodiny se vždy počítají ze skutečné hloubky.
-  A pro narkózu platí jen s výhradou, protože kyslík je pravděpodobně narkotický také.
+  A pro narkózu platí jen s výhradou, protože není rozhodnuto, zda je narkotický i kyslík.
   Pro tabulky zaokrouhluj ekvivalentní hloubku nahoru.
 sources:
   - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }

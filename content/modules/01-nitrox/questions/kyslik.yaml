@@ -33,7 +33,7 @@
     - { text: Nitrox snižuje sycení tkání dusíkem. }
     - { text: S nitroxem se dá potápět hlouběji než se vzduchem., isError: true, explanation: 'Naopak. Bohatší směs má mělčí maximální operační hloubku.' }
     - { text: Každou lahev s nitroxem je třeba před ponorem změřit. }
-    - { text: Nitrox spolehlivě odstraňuje narkózu., isError: true, explanation: 'Kyslík je pravděpodobně narkotický podobně jako dusík; s úbytkem narkózy se nepočítá.' }
+    - { text: Nitrox spolehlivě odstraňuje narkózu., isError: true, explanation: 'Zda je kyslík narkotický, není rozhodnuto. Opatrný plán s úbytkem narkózy nepočítá.' }
   explanation: 'Nitrox je nástroj proti dusíku, ne proti hloubce.'
   backToLessonId: proc-nitrox
 

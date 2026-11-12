@@ -1,0 +1,21 @@
+id: optimalni-trimix
+moduleId: trimix
+title: "Optimální trimix a standardní směsi"
+order: 7
+conceptIds: ["optimalni-trimix", "standardni-smesi", "normoxicka-smes", "vzorec-best-mix", "limit-hustoty"]
+checkQuestionIds: ["opt-kyslik", "opt-helium", "opt-zaokrouhleni", "opt-normoxicka", "opt-standardni", "opt-kontrola"]
+estimatedMinutes: 12
+audioSummary: >-
+  Trimix se navrhuje ve třech krocích.
+  Kyslík spočítáš z limitu parciálního tlaku, stejně jako best mix, a zaokrouhlíš dolů.
+  Helium spočítáš z limitu narkotické hloubky a zaokrouhlíš nahoru.
+  Nakonec zkontroluješ hustotu a případně helium přidáš.
+  Pro šedesát metrů vychází přibližně té iks osmnáct čtyřicet pět.
+  Normoxická směs má nejméně osmnáct procent kyslíku a dá se dýchat od hladiny.
+  Některé týmy používají standardní směsi. Dvacet jedna třicet pět do čtyřiceti pěti metrů, osmnáct čtyřicet pět do šedesáti, patnáct padesát pět do sedmdesáti pěti.
+  Důležité je, aby celý tým používal totéž.
+sources:
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+needs_review: true

@@ -80,3 +80,25 @@
 - { id: vynechana-dekomprese, label: Vynechaná dekomprese, type: risk, moduleId: deko, shortDefinition: 'Výstup nad strop nebo vynoření bez dokončení povinných zastávek.' }
 - { id: tym, label: Týmový postup, type: procedure, moduleId: deko, shortDefinition: 'Společný plán, role a vzájemná kontrola; tým je záložní mozek i záložní plyn.' }
 - { id: plan-ponoru, label: Plán ponoru, type: procedure, moduleId: deko, shortDefinition: 'Písemně stanovené limity, plyny, rozvrh a záložní varianty, které se pod vodou jen plní.' }
+
+# ── Modul 3: Normoxic Trimix ─────────────────────────────────────────────────
+- { id: helium, label: Helium, type: gas, moduleId: trimix, shortDefinition: 'Lehký inertní plyn bez narkotického účinku v potápěčských hloubkách; snižuje narkózu i hustotu směsi.' }
+- { id: trimix, label: Trimix, type: gas, moduleId: trimix, shortDefinition: 'Směs kyslíku, helia a dusíku; značí se Tx kyslík/helium, například Tx 18/45.' }
+- { id: frakce-helia, label: Frakce helia (fHe), type: quantity, moduleId: trimix, shortDefinition: 'Podíl helia ve směsi; určuje narkotickou hloubku i hustotu.' }
+- { id: normoxicka-smes, label: Normoxická směs, type: gas, moduleId: trimix, shortDefinition: 'Trimix s nejméně 18 % kyslíku, dýchatelný od hladiny.' }
+- { id: vzorec-end, label: Vzorec END, type: formula, moduleId: trimix, formulaId: end, shortDefinition: 'Ekvivalentní narkotická hloubka: hloubka na vzduchu se stejným narkotickým účinkem.' }
+- { id: narkoticnost-kysliku, label: Narkotičnost kyslíku, type: physiology, moduleId: trimix, shortDefinition: 'Nerozhodnutá otázka, zda kyslík přispívá k narkóze; od odpovědi závisí výpočet END.' }
+- { id: hluboky-vzduch, label: Hluboké potápění na vzduch, type: risk, moduleId: trimix, shortDefinition: 'Ponory na vzduch pod zhruba 40 m, kde se sčítá narkóza, hustota plynu, CO2 a vysoké ppO2.' }
+- { id: vzorec-hustota, label: Vzorec hustoty směsi, type: formula, moduleId: trimix, formulaId: hustota, shortDefinition: 'Hustota směsi z frakcí kyslíku, dusíku a helia a absolutního tlaku.' }
+- { id: limit-hustoty, label: Limit hustoty plynu, type: quantity, moduleId: trimix, shortDefinition: 'Doporučených 5,2 g/l a tvrdý limit 6,2 g/l pro hustotu dýchaného plynu.' }
+- { id: tepelne-vlastnosti-helia, label: Tepelné vlastnosti helia, type: quantity, moduleId: trimix, shortDefinition: 'Helium vede teplo asi šestkrát lépe než vzduch; proto se nepoužívá k plnění suchého obleku.' }
+- { id: argon, label: Argon, type: gas, moduleId: trimix, shortDefinition: 'Těžký inertní plyn s nízkou tepelnou vodivostí, používaný k plnění suchého obleku.' }
+- { id: hpns, label: 'Nervový syndrom vysokého tlaku (HPNS)', type: physiology, moduleId: trimix, shortDefinition: 'Třes, závratě a poruchy soustředění při rychlém sestupu na heliu pod zhruba 150 m.' }
+- { id: difuze-helia, label: Rychlá difuze helia, type: physiology, moduleId: trimix, shortDefinition: 'Helium se v tkáních sytí i vysycuje asi 2,65krát rychleji než dusík.' }
+- { id: deko-s-heliem, label: Dekomprese s heliem, type: procedure, moduleId: trimix, shortDefinition: 'Helium mění tvar dekomprese: rychlé tkáně jsou zatížené dřív a dekompresní plyn je téměř nutností.' }
+- { id: optimalni-trimix, label: Optimální trimix, type: formula, moduleId: trimix, formulaId: optimalni-trimix, shortDefinition: 'Nejvíc kyslíku a nejméně helia, které pro danou hloubku splní limity ppO2, END a hustoty.' }
+- { id: standardni-smesi, label: Standardní směsi, type: procedure, moduleId: trimix, shortDefinition: 'Malá pevná sada směsí pro pásma hloubek místo směsi počítané pro každý ponor.' }
+- { id: michani-trimixu, label: Míchání trimixu, type: procedure, moduleId: trimix, formulaId: michani-trimixu, shortDefinition: 'Příprava trimixu parciálním tlakem: helium, kyslík a doplnění vzduchem.' }
+- { id: analyza-helia, label: Analýza helia, type: procedure, moduleId: trimix, shortDefinition: 'Změření podílu helia vlastním analyzátorem; bez něj END ani dekompresi neznáš.' }
+- { id: realny-plyn, label: Chování reálného plynu, type: quantity, moduleId: trimix, shortDefinition: 'Odchylka skutečné stlačitelnosti plynu od ideální rovnice; u helia při vysokých tlacích znatelná.' }
+- { id: plan-vice-plynu, label: Plán s více plyny, type: procedure, moduleId: trimix, shortDefinition: 'Plán ponoru s dno směsí a jedním či dvěma dekompresními plyny včetně rezerv a záložních rozvrhů.' }

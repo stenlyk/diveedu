@@ -1,0 +1,89 @@
+<Hook>
+
+Rozbory hlubokých nehod se opakují s podivnou přesností. Potápěč začne těžce pracovat. Zadýchá se. Přestane komunikovat. A pak udělá něco nepochopitelného.
+
+Mezi druhým a třetím krokem se stalo něco, co není vidět: jeho krev se zaplnila oxidem uhličitým.
+
+</Hook>
+
+<Principle>
+
+V modulu Základy jsi viděl jednotlivé články. Tady je celý řetěz, jak funguje v hloubce:
+
+1. **Hustota.** Plyn je několikrát hustší než na hladině a největší možná ventilace klesá.
+2. **Námaha.** Svaly vyrábějí víc CO2 právě ve chvíli, kdy ho plíce odvádějí hůř.
+3. **Retence CO2.** Hladina v krvi stoupá. Dušnost může přijít pozdě, nebo splyne s námahou.
+4. **Zesílená narkóza.** CO2 je sám narkotický a účinek dusíku zvyšuje.
+5. **Nižší práh kyslíkových křečí.** CO2 rozšíří mozkové cévy a k mozku se dostane víc kyslíku.
+6. **Panika, nebo otupělost.** Obojí končí špatným rozhodnutím.
+
+Řetěz je nebezpečný tím, že se **sám zesiluje**. Víc CO2 znamená horší úsudek, horší úsudek znamená další námahu místo zastavení.
+
+**Proč to potápěč necítí včas:**
+
+- dušnost při námaze považuje za normální,
+- narkóza tlumí vnímání varovných signálů,
+- někteří lidé na CO2 reagují slabě a zadržují ho bez pocitu dušení.
+
+**Jak se řetěz přeruší:**
+
+- **Předem:** směs s hustotou pod limitem, automatika v dobrém stavu, plán bez těžké práce v největší hloubce.
+- **Na místě:** zastav. Chyť se. Dlouze vydechuj. Dej znamení partnerovi. Když to nepomáhá, vystoupej o několik metrů – menší hustota pomůže okamžitě.
+
+Zastavení je nejtěžší krok, protože v tu chvíli máš obvykle důvod spěchat. Právě proto se plánuje na souši.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="hustota" />
+
+Hustota je jediný článek řetězu, který se dá spočítat předem. Proto je to místo, kde se řetěz přerušuje nejspolehlivěji.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Stejná práce ve stejné hloubce 60 m, tři různé plyny:
+
+- vzduch: <Calc fn="densityOfMix" args={[0.21, 0, 60]} decimals={2} unit="g/l" />
+- Tx 18/45: <Calc fn="densityOfMix" args={[0.18, 0.45, 60]} decimals={2} unit="g/l" />
+- Tx 15/55: <Calc fn="densityOfMix" args={[0.15, 0.55, 60]} decimals={2} unit="g/l" />
+
+A co udělá výstup o deset metrů se vzduchem?
+
+<Worked fn="densityOfMix" args={[0.21, 0, 50]} expected={7.73} tolerance={0.01} unit="g/l" decimals={2} />
+
+Pořád daleko nad limitem. S trimixem tě výstup o pár metrů dostane do bezpečí; se vzduchem v této hloubce už žádná rozumná rezerva neexistuje.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="what-if-graph" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="lanphier-co2" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

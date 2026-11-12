@@ -1,0 +1,20 @@
+id: narkoza-a-end
+moduleId: trimix
+title: "Narkóza a ekvivalentní narkotická hloubka"
+order: 2
+conceptIds: ["vzorec-end", "dusikova-narkoza", "frakce-helia", "ppn2"]
+checkQuestionIds: ["end-vypocet", "end-co-je", "end-priznaky", "end-helium-potreba", "end-limit"]
+estimatedMinutes: 11
+audioSummary: >-
+  Narkóza je účinek inertního plynu na nervový systém. Roste s parciálním tlakem plynu.
+  Zpomaluje myšlení, zhoršuje paměť, zužuje vnímání a přidává falešnou sebejistotu.
+  Úsudek odchází dřív než pocit, že je něco špatně.
+  Zvykem se narkóza nesnižuje. Snižuje se jen schopnost ji na sobě poznat.
+  Ekvivalentní narkotická hloubka říká, v jaké hloubce bys na vzduchu měl stejný účinek.
+  Počítá se tak, že helium vynecháš. Jedna mínus podíl helia, krát hloubka plus deset, mínus deset.
+  Většina agentur drží narkotickou hloubku do třiceti metrů.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: false

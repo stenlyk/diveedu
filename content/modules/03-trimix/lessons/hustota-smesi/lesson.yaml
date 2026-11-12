@@ -1,0 +1,20 @@
+id: hustota-smesi
+moduleId: trimix
+title: "Hustota směsi: druhý důvod pro helium"
+order: 4
+conceptIds: ["vzorec-hustota", "limit-hustoty", "hustota-plynu", "frakce-helia"]
+checkQuestionIds: ["husm-vypocet", "husm-limity", "husm-helium-ubere", "husm-end-vs-hustota", "husm-nitrox"]
+estimatedMinutes: 10
+audioSummary: >-
+  Hustota dýchaného plynu je třetí limit vedle kyslíku a narkózy.
+  Hustý plyn hůř proudí, roste práce dýchání a hromadí se oxid uhličitý.
+  Doporučený limit je pět celých dva gramu na litr, tvrdý limit šest celých dva.
+  Helium hustotu snižuje nejúčinněji. Každých deset procent helia místo dusíku ubere asi desetinu gramu na litr na hladině.
+  Kolem padesáti metrů určuje obsah helia obvykle narkotická hloubka.
+  Hlouběji začne být přísnější hustota.
+  Kontroluj proto vždy oba limity.
+sources:
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: false

@@ -164,3 +164,51 @@
 - { from: plan-ponoru, to: vynechana-dekomprese, type: zmirnuje, lessonId: tym-a-plan-ponoru, explanation: Záložní rozvrhy připravené předem nahrazují improvizaci pod vodou. }
 - { from: plan-ponoru, to: run-time, type: pocita_se_z, lessonId: tym-a-plan-ponoru, explanation: Jádrem plánu je rozvrh podle run-time. }
 - { from: tym, to: zamena-plynu, type: zmirnuje, lessonId: tym-a-plan-ponoru, explanation: Partner potvrzuje každé přepnutí plynu. }
+
+# ── Modul 3 ──────────────────────────────────────────────────────────────────
+- { from: helium, to: dusikova-narkoza, type: zmirnuje, lessonId: proc-helium, explanation: Helium nahradí část dusíku a samo narkotické není. }
+- { from: helium, to: hustota-plynu, type: snizuje, lessonId: proc-helium, explanation: Helium je asi sedmkrát lehčí než dusík. }
+- { from: hloubka, to: hluboky-vzduch, type: zpusobuje, lessonId: proc-helium, explanation: 'Pod zhruba 40 m překračuje vzduch limity narkózy, hustoty i kyslíku zároveň.' }
+- { from: trimix, to: hluboky-vzduch, type: zmirnuje, lessonId: proc-helium, explanation: Trimix je odpověď na všechny tři limity vzduchu. }
+
+- { from: vzorec-end, to: frakce-helia, type: pocita_se_z, lessonId: narkoza-a-end, explanation: 'END se počítá z podílu narkotických plynů, tedy ze všeho kromě helia.' }
+- { from: frakce-helia, to: ppn2, type: snizuje, lessonId: narkoza-a-end, explanation: Víc helia ve směsi znamená méně dusíku a nižší ppN2. }
+- { from: vzorec-end, to: dusikova-narkoza, type: zmirnuje, lessonId: narkoza-a-end, explanation: Plán drží END pod zvoleným limitem. }
+
+- { from: narkoticnost-kysliku, to: vzorec-end, type: je_predpokladem, lessonId: je-kyslik-narkoticky, explanation: 'Podle toho, zda se kyslík počítá jako narkotický, vychází END jinak.' }
+- { from: kyslik, to: narkoticnost-kysliku, type: je_predpokladem, lessonId: je-kyslik-narkoticky, explanation: 'Kyslík je v tucích rozpustnější než dusík, ale tělo ho spotřebovává.' }
+- { from: narkoticnost-kysliku, to: dusikova-narkoza, type: zhorsuje, lessonId: je-kyslik-narkoticky, explanation: 'Je-li kyslík narkotický, přičítá se jeho účinek k účinku dusíku.' }
+
+- { from: vzorec-hustota, to: frakce-helia, type: pocita_se_z, lessonId: hustota-smesi, explanation: Hustota směsi je vážený součet hustot složek. }
+- { from: frakce-helia, to: hustota-plynu, type: snizuje, lessonId: hustota-smesi, explanation: Každých 10 % helia místo dusíku ubere asi 0,11 g/l hustoty na hladině. }
+- { from: limit-hustoty, to: hustota-plynu, type: zmirnuje, lessonId: hustota-smesi, explanation: Limit určuje nejvyšší přípustnou hustotu v plánované hloubce. }
+- { from: limit-hustoty, to: retence-co2, type: zmirnuje, lessonId: hustota-smesi, explanation: 'Pod limitem hustoty zůstává dýchání dostatečně účinné, aby odvádělo CO2.' }
+
+- { from: hluboky-vzduch, to: retence-co2, type: zpusobuje, lessonId: co2-v-hloubce, explanation: Hustý vzduch v hloubce omezuje ventilaci právě ve chvíli nejvyšší zátěže. }
+- { from: hustota-plynu, to: retence-co2, type: zvysuje, lessonId: co2-v-hloubce, explanation: 'S hustotou klesá největší možná ventilace.' }
+- { from: retence-co2, to: hluboky-vzduch, type: zhorsuje, lessonId: co2-v-hloubce, explanation: 'CO2 zesiluje narkózu a snižuje práh křečí; rizika hlubokého vzduchu se násobí.' }
+
+- { from: tepelne-vlastnosti-helia, to: ztrata-tepla, type: zvysuje, lessonId: vlastnosti-helia, explanation: Helium v suchém obleku by odvádělo teplo několikrát rychleji než vzduch. }
+- { from: argon, to: ztrata-tepla, type: snizuje, lessonId: vlastnosti-helia, explanation: Argon vede teplo hůř než vzduch a zlepšuje izolaci obleku. }
+- { from: helium, to: hpns, type: zpusobuje, lessonId: vlastnosti-helia, explanation: 'Při rychlém sestupu na heliu do velkých hloubek dráždí tlak nervový systém.' }
+
+- { from: optimalni-trimix, to: vzorec-best-mix, type: pocita_se_z, lessonId: optimalni-trimix, explanation: Kyslík v trimixu se počítá stejně jako best mix. }
+- { from: optimalni-trimix, to: vzorec-end, type: pocita_se_z, lessonId: optimalni-trimix, explanation: Helium se počítá z limitu END. }
+- { from: optimalni-trimix, to: limit-hustoty, type: pocita_se_z, lessonId: optimalni-trimix, explanation: Výsledná směs musí splnit i limit hustoty. }
+- { from: standardni-smesi, to: zamena-plynu, type: zmirnuje, lessonId: optimalni-trimix, explanation: 'Stále stejné směsi se stejnými MOD snižují prostor pro chybu.' }
+- { from: normoxicka-smes, to: hypoxie, type: zmirnuje, lessonId: optimalni-trimix, explanation: Směs s aspoň 18 % kyslíku je dýchatelná už na hladině. }
+
+- { from: difuze-helia, to: syceni-tkani, type: zvysuje, lessonId: dekomprese-s-heliem, explanation: Helium se v tkáních sytí rychleji než dusík. }
+- { from: difuze-helia, to: deko-s-heliem, type: je_predpokladem, lessonId: dekomprese-s-heliem, explanation: Rychlost helia určuje tvar dekomprese. }
+- { from: deko-s-heliem, to: deko-zastavka, type: zvysuje, lessonId: dekomprese-s-heliem, explanation: 'Na dno směsi s heliem je dekomprese delší; bohatý plyn bez helia ji zkrátí.' }
+- { from: helium, to: kompartment, type: je_predpokladem, lessonId: dekomprese-s-heliem, explanation: Model sleduje helium v každém kompartmentu zvlášť s vlastními koeficienty. }
+
+- { from: michani-trimixu, to: michani-parcialnim-tlakem, type: je_predpokladem, lessonId: michani-trimixu, explanation: Trimix se míchá stejným postupem jako nitrox s jedním plynem navíc. }
+- { from: realny-plyn, to: michani-trimixu, type: zhorsuje, lessonId: michani-trimixu, explanation: Helium se stlačuje hůř než ideální plyn a směs vyjde jinak než výpočet. }
+- { from: analyza-helia, to: zamena-plynu, type: zmirnuje, lessonId: michani-trimixu, explanation: 'Bez změření helia neznáš END ani dekompresi směsi.' }
+- { from: michani-trimixu, to: analyza-helia, type: je_predpokladem, lessonId: michani-trimixu, explanation: Výsledek míchání se ověřuje analýzou kyslíku i helia. }
+
+- { from: plan-vice-plynu, to: planovani-plynu, type: je_predpokladem, lessonId: plan-vice-plynu, explanation: Každý plyn má vlastní výpočet potřeby a rezervy. }
+- { from: plan-vice-plynu, to: prepnuti-plynu, type: pocita_se_z, lessonId: plan-vice-plynu, explanation: Plán určuje hloubky přepnutí a jejich pořadí. }
+- { from: trimix, to: plan-vice-plynu, type: je_predpokladem, lessonId: plan-vice-plynu, explanation: Trimixový ponor se bez dekompresního plynu prakticky neplánuje. }
+- { from: plan-vice-plynu, to: ztrata-deko-plynu, type: zmirnuje, lessonId: plan-vice-plynu, explanation: Součástí plánu je rozvrh pro ztrátu každého z plynů. }

@@ -5,7 +5,8 @@ import { ead, end } from './narcosis';
 import { bestMix, cnsLimitMinutes, mod, otu, ppO2 } from './oxygen';
 import { absPressure, boyleVolume } from './pressure';
 import { gasConsumed, rockBottomLiters, sacFromPressureDrop } from './consumption';
-import { partialPressureBlend } from './blending';
+import { partialPressureBlend, trimixFillAirBar, trimixFillHeBar, trimixFillO2Bar } from './blending';
+import { minHeForEnd } from './trimix';
 import { CalcInputError } from './errors';
 
 /** Jeden krok rozepsaného postupu výpočtu (metrická konvence 10 m = 1 bar). */
@@ -256,5 +257,43 @@ export function rockBottomSteps(depthM: number, sacLpm: number, tankLiters: numb
     { label: 'Výstup průměrnou hloubkou (jeden potápěč)', latex: `V_2 = ${tex(sacLpm)} \\cdot ${tex(absPressure(depthM / 2))} \\cdot ${tex(ascentMin, 2)}`, value: ascent, unit: 'l' },
     { label: 'Pro dva potápěče', latex: `V = 2 \\cdot (V_1 + V_2) = 2 \\cdot (${tex(atDepth, 1)} + ${tex(ascent, 1)})`, value: liters, unit: 'l' },
     { label: 'Přepočet na tlak v lahvi', latex: `P = \\frac{V}{V_{lahev}} = \\frac{${tex(liters, 1)}}{${tex(tankLiters)}}`, value: liters / tankLiters, unit: 'bar' },
+  ];
+}
+
+/** Postup END při narkotickém kyslíku s číselnými argumenty. */
+export function endOfMixSteps(fO2: number, fHe: number, depthM: number): CalcStep[] {
+  return endSteps({ fO2, fHe }, depthM, true);
+}
+
+/** Postup END, je-li narkotický jen dusík. */
+export function endOfMixN2OnlySteps(fO2: number, fHe: number, depthM: number): CalcStep[] {
+  return endSteps({ fO2, fHe }, depthM, false);
+}
+
+export function densityOfMixSteps(fO2: number, fHe: number, depthM: number): CalcStep[] {
+  return gasDensitySteps({ fO2, fHe }, depthM);
+}
+
+/** Míchání trimixu parciálním tlakem do prázdné lahve: helium, vzduch, kyslík. */
+export function trimixBlendSteps(targetBar: number, targetFO2: number, targetFHe: number): CalcStep[] {
+  const he = trimixFillHeBar(targetBar, targetFHe);
+  const air = trimixFillAirBar(targetBar, targetFO2, targetFHe);
+  const fN2Target = 1 - targetFO2 - targetFHe;
+  return [
+    { label: 'Helium je jen z heliové lahve', latex: `P_{He} = P \\cdot F_{He} = ${tex(targetBar)} \\cdot ${tex(targetFHe)}`, value: he, unit: 'bar' },
+    { label: 'Dusík je jen ve vzduchu – kolik barů vzduchu je potřeba', latex: `P_{vzduch} = \\frac{P \\cdot F_{N_2}}{0{,}79} = \\frac{${tex(targetBar)} \\cdot ${tex(fN2Target)}}{0{,}79}`, value: air, unit: 'bar' },
+    { label: 'Zbytek do cílového tlaku je čistý kyslík', latex: `P_{O_2} = P - P_{He} - P_{vzduch} = ${tex(targetBar)} - ${tex(he, 1)} - ${tex(air, 1)}`, value: trimixFillO2Bar(targetBar, targetFO2, targetFHe), unit: 'bar' },
+  ];
+}
+
+/** Optimální trimix: kyslík z limitu ppO2, helium z limitu END (O2 narkotický). */
+export function optimalTrimixSteps(depthM: number, ppO2MaxBar: number, endMaxM: number): CalcStep[] {
+  const p = absPressure(depthM);
+  const pEnd = absPressure(endMaxM);
+  return [
+    pressureStep(depthM),
+    { label: 'Nejvyšší frakce kyslíku', latex: `F_{O_2} = \\frac{ppO_{2,max}}{P_{abs}} = \\frac{${tex(ppO2MaxBar)}}{${tex(p)}}`, value: bestMix(depthM, ppO2MaxBar), unit: '' },
+    { label: 'Největší narkotická část směsi (kyslík + dusík)', latex: `\\frac{END + 10}{d + 10} = \\frac{${tex(endMaxM)} + 10}{${tex(depthM)} + 10}`, value: pEnd / p, unit: '' },
+    { label: 'Nejmenší frakce helia', latex: `F_{He} = 1 - ${tex(pEnd / p, 3)}`, value: minHeForEnd(depthM, endMaxM), unit: '' },
   ];
 }

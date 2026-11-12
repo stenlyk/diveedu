@@ -1,0 +1,88 @@
+<Hook>
+
+V 60 metrech na vzduchu má potápěč tři problémy najednou. Ani jeden z nich necítí jako problém.
+
+Myslí pomalu a je si tím jistější. Dýchá plyn hustý jako sirup. A kyslík, který ho drží naživu, je za hranicí, kde může vyvolat křeče.
+
+</Hook>
+
+<Principle>
+
+Vzduch má pro hluboké potápění tři limity a všechny tři přicházejí přibližně ve stejné hloubce:
+
+- **Narkóza.** Kolem 30 m začíná být zhoršení úsudku zřetelné; ve 40 m je výrazné a hlouběji vyřazuje schopnost řešit i jednoduché potíže.
+- **Hustota.** Ve 30 m je vzduch na doporučeném limitu 5,2 g/l, před 40 m překročí tvrdý limit 6,2 g/l. Dál rychle roste riziko hromadění CO2.
+- **Kyslík.** Pracovní limit ppO2 1,4 bar dosáhne vzduch v necelých 57 m.
+
+Narkóza a hustota se navíc násobí: hustý plyn zadržuje CO2, a CO2 je sám narkotický a snižuje práh kyslíkových křečí.
+
+**Helium** řeší první dva limity přímo a třetí nepřímo:
+
+- v potápěčských hloubkách není narkotické,
+- je asi sedmkrát lehčí než dusík,
+- nahrazuje část dusíku i kyslíku, takže podíl kyslíku lze nastavit podle hloubky.
+
+Směs kyslíku, helia a dusíku se nazývá <Term cs="trimix" /> a značí se dvěma čísly: Tx 18/45 má 18 % kyslíku, 45 % helia a zbytek dusík.
+
+Zadarmo helium není. Je drahé, mění dekompresi, vyžaduje další analyzátor a přesnější míchání. A samo o sobě nikoho nechrání:
+trimixový ponor má víc lahví, víc přepnutí a víc míst, kde lze udělat chybu.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="hustota" />
+
+Koeficient u helia je sedmkrát menší než u dusíku. To je celý důvod, proč helium „ředí“ hustotu tak účinně.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Vzduch v 60 m, všechny tři limity najednou.
+
+**Narkotická hloubka** se u vzduchu rovná skutečné: <Calc fn="endOfMix" args={[0.21, 0, 60]} unit="m" />. Dvojnásobek běžného limitu 30 m.
+
+**Hustota:**
+
+<Worked fn="densityOfMix" args={[0.21, 0, 60]} expected={9.02} tolerance={0.01} steps="densityOfMixSteps" unit="g/l" decimals={2} />
+
+O polovinu víc než tvrdý limit.
+
+**Kyslík:**
+
+<Worked fn="ppO2" args={[0.21, 60]} expected={1.47} tolerance={0.001} unit="bar" decimals={2} />
+
+Stejná hloubka na Tx 18/45: END <Calc fn="endOfMix" args={[0.18, 0.45, 60]} decimals={1} unit="m" />, hustota <Calc fn="densityOfMix" args={[0.18, 0.45, 60]} decimals={2} unit="g/l" />, ppO2 <Calc fn="ppO2" args={[0.18, 60]} decimals={2} unit="bar" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="density" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="rouse-u869" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

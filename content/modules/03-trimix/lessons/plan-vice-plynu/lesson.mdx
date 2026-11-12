@@ -1,0 +1,99 @@
+<Hook>
+
+Na břehu leží dvojče s trimixem, lahev s EAN50 a lahev s kyslíkem. Tři plyny, tři MOD, tři výpočty potřeby, dvě přepnutí.
+
+Kolik různých způsobů existuje, jak si s tím ublížit? A který papír tě před nimi chrání?
+
+</Hook>
+
+<Principle>
+
+Plán trimixového ponoru je plán z modulu Decompression Procedures, jen každá jeho část existuje vícekrát.
+
+**Pro každý plyn zvlášť:**
+
+- složení změřené analyzátorem a MOD,
+- hloubka, kde se začne a přestane dýchat,
+- potřeba v litrech a rezerva,
+- objem a tlak lahve, která ho ponese.
+
+**Pro dno směs navíc:**
+
+- ppO2, END a hustota v největší hloubce,
+- minimum gas spočítané k první dekompresní lahvi,
+- zásoba na záložní rozvrh bez dekompresního plynu.
+
+**Rozvrh a přepnutí:**
+
+- run-time pro každou zastávku,
+- hloubky přepnutí a pořadí lahví,
+- kyslíková zátěž celého ponoru – CNS hodiny se sčítají přes dno i všechny dekompresní plyny.
+
+**Záložní rozvrhy** pro ztrátu každého dekompresního plynu zvlášť a pro delší nebo hlubší dno.
+
+Trimix přidává jednu věc, kterou vzduchové ponory neznaly: záložní rozvrh na dno směsi může být tak dlouhý, že na něj plyn na zádech nestačí.
+Pak se plán musí změnit – kratší čas, větší lahve, nebo sdílení dekompresního plynu v týmu jako pevná součást plánu.
+
+**Kontrola před ponorem** má u více plynů pevné pořadí: každou lahev analyzovat, označit, zkontrolovat MOD na boku, otevřít a zavřít ventil,
+ověřit umístění a nakonec si to navzájem přečíst nahlas. Většina záměn plynu vzniká na břehu.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Stejný vzorec, třikrát použitý. K němu tři kontroly dno směsi, které už umíš: ppO2, END a hustota.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Plán: 60 m, 20 minut na dně, Tx 18/45, dekomprese na EAN50 od 21 m.
+
+**Dno směs v největší hloubce:** ppO2 <Calc fn="ppO2" args={[0.18, 60]} decimals={2} unit="bar" />, END <Calc fn="endOfMix" args={[0.18, 0.45, 60]} decimals={1} unit="m" />, hustota <Calc fn="densityOfMix" args={[0.18, 0.45, 60]} decimals={2} unit="g/l" />.
+
+**Spotřeba na dně** při 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 60, 20]} expected={2800} tolerance={0.1} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+V dvojčeti 2×12 l je to <Calc fn="litersToBar" args={[2800, 24]} decimals={0} unit="bar" />.
+
+**Minimum gas** pro přímý výstup z 60 m:
+
+<Worked fn="rockBottomBar" args={[60, 20, 24]} expected={56.11} tolerance={0.01} unit="bar" decimals={0} />
+
+Zaokrouhleno nahoru 60 bar. Dno a rezerva dohromady dávají přes 170 bar – a to ještě chybí výstup a záložní dekomprese.
+Dvojče 2×12 l na tento ponor nestačí. Právě k takovému zjištění plán slouží.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="optimal-trimix" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="posledni-ponor" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

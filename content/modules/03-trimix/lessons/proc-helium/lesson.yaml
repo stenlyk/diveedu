@@ -1,0 +1,19 @@
+id: proc-helium
+moduleId: trimix
+title: "Proč helium: tři limity vzduchu"
+order: 1
+conceptIds: ["helium", "trimix", "hluboky-vzduch", "dusikova-narkoza"]
+checkQuestionIds: ["helium-tri-limity", "helium-co-resi", "helium-oznaceni", "helium-vzduch-60"]
+estimatedMinutes: 10
+audioSummary: >-
+  Vzduch má pro hluboké potápění tři limity a všechny přicházejí zhruba ve stejné hloubce.
+  Narkóza je zřetelná kolem třiceti metrů. Hustota plynu překročí tvrdý limit před čtyřicítkou. A kyslík dosáhne pracovního limitu v necelých padesáti sedmi metrech.
+  Narkóza a hustota se navíc násobí přes oxid uhličitý.
+  Helium není v potápěčských hloubkách narkotické a je sedmkrát lehčí než dusík.
+  Směs kyslíku, helia a dusíku se nazývá trimix. Té iks osmnáct čtyřicet pět má osmnáct procent kyslíku a čtyřicet pět procent helia.
+  Helium je drahé, mění dekompresi a přidává složitost. Samo o sobě nikoho nechrání.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: false

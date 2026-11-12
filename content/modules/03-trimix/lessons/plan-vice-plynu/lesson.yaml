@@ -1,0 +1,20 @@
+id: plan-vice-plynu
+moduleId: trimix
+title: "Plán ponoru s více plyny"
+order: 10
+conceptIds: ["plan-vice-plynu", "trimix", "prepnuti-plynu", "planovani-plynu", "ztrata-deko-plynu"]
+checkQuestionIds: ["pvp-co-kontrolovat", "pvp-spotreba-dno", "pvp-poradi-kontrol", "pvp-ztrata", "pvp-mingas"]
+estimatedMinutes: 12
+audioSummary: >-
+  Plán trimixového ponoru je plán dekompresního ponoru, jen každá jeho část existuje vícekrát.
+  Pro každý plyn potřebuješ změřené složení, maximální hloubku, potřebu v litrech a rezervu.
+  Pro směs na dno navíc parciální tlak kyslíku, narkotickou hloubku a hustotu v největší hloubce.
+  Minimum gas se počítá k první dekompresní lahvi.
+  Kyslíková zátěž se sčítá přes dno i všechny dekompresní plyny.
+  Záložní rozvrh bez dekompresního plynu může být na trimixu tak dlouhý, že na něj plyn na zádech nestačí. Pak se plán musí změnit.
+  A většina záměn plynu vzniká na břehu. Proto má kontrola před ponorem pevné pořadí.
+sources:
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+needs_review: true

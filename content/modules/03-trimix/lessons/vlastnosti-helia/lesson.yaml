@@ -1,0 +1,20 @@
+id: vlastnosti-helia
+moduleId: trimix
+title: "Helium: teplo, hlas a vysoký tlak"
+order: 6
+conceptIds: ["tepelne-vlastnosti-helia", "argon", "hpns", "ztrata-tepla", "helium"]
+checkQuestionIds: ["he-oblek", "he-teplo-dech", "he-hpns", "he-vlastnosti", "argon-proc", "hpns-kdy"]
+estimatedMinutes: 9
+audioSummary: >-
+  Helium má kromě nízké hustoty další vlastnosti, se kterými musíš počítat.
+  Vede teplo asi šestkrát lépe než vzduch. Suchý oblek se proto trimixem nikdy neplní.
+  Používá se vzduch nebo argon ze samostatné lahve.
+  Ztráty tepla dechem jsou v hloubce velké u každého plynu, protože dýcháš plyn několikrát hustší než na hladině.
+  Helium mění hlas a uniká i drobnými netěsnostmi.
+  Při rychlém sestupu hlouběji než asi sto padesát metrů hrozí nervový syndrom vysokého tlaku. V rozsahu normoxického trimixu se neprojeví.
+  A helium je drahé. Proto ho neber víc, než je potřeba.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

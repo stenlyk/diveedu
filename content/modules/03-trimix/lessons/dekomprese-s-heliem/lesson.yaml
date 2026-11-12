@@ -1,0 +1,20 @@
+id: dekomprese-s-heliem
+moduleId: trimix
+title: "Dekomprese s heliem"
+order: 8
+conceptIds: ["difuze-helia", "deko-s-heliem", "kompartment", "gradient-factor", "helium"]
+checkQuestionIds: ["dekohe-rychlost", "dekohe-proc-deko-plyn", "dekohe-model", "dekohe-vystup"]
+estimatedMinutes: 11
+audioSummary: >-
+  Helium se v tkáních sytí i vysycuje asi dvaapůlkrát rychleji než dusík.
+  Za dvacet minut na dně jsou heliem zatížené i kompartmenty, které by dusík sotva ovlivnil.
+  Dokud dýcháš směs s heliem, odchází helium z tkání pomalu.
+  Jakmile přepneš na plyn bez helia, odchází velmi rychle.
+  Proto je na trimixu dekompresní plyn nutností, ne jen výhodou. A jeho ztráta je mnohem vážnější.
+  První zastávky bývají hlouběji než u vzduchového ponoru.
+  Model dává s heliem delší dekompresi. Novější pokusy to zpochybňují, ale ty se drž svého počítače.
+sources:
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+  - { title: "Decompression from He-N2-O2 (trimix) bounce dives is not more efficient than from He-O2 (heliox) bounce dives. NEDU TR 15-04", author: "Doolette D. J., Gault K. A., Gerth W. A.", year: 2015 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

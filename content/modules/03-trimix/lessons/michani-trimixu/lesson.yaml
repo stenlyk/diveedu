@@ -1,0 +1,19 @@
+id: michani-trimixu
+moduleId: trimix
+title: "Míchání a analýza trimixu"
+order: 9
+conceptIds: ["michani-trimixu", "analyza-helia", "realny-plyn", "michani-parcialnim-tlakem"]
+checkQuestionIds: ["mtx-helium-bar", "mtx-poradi", "mtx-realny-plyn", "mtx-analyza", "mtx-nelze-vzduchem", "analyza-he-proc"]
+estimatedMinutes: 10
+audioSummary: >-
+  Trimix se míchá parciálním tlakem ze tří složek. Helium, kyslík a doplnění vzduchem.
+  Dusík je jen ve vzduchu, takže množství vzduchu určuje on.
+  Pro té iks osmnáct čtyřicet pět na dvě stě barů je to devadesát barů helia, šestnáct barů kyslíku a zbytek vzduch.
+  Výpočet předpokládá ideální plyn. Helium se při vysokém tlaku stlačuje hůř, takže směs vychází chudší na helium.
+  Tlaky čti po vychladnutí.
+  Analyzují se dva plyny, kyslík a helium. Bez změřeného helia neznáš narkotickou hloubku, hustotu ani dekompresi.
+  Na štítek patří obě hodnoty.
+sources:
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

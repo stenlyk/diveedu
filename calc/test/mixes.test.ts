@@ -305,3 +305,45 @@ describe('ICD – pravidlo pětin', () => {
     expect(icdCheck(AIR, trimix(18, 45)).ok).toBe(true);
   });
 });
+
+import { densityOfMix, densityOfMixSteps, endOfMix, endOfMixN2Only, endOfMixN2OnlySteps, endOfMixSteps, minHeForDensity, optimalTrimixSteps, trimixBlendSteps, trimixFillAirBar, trimixFillHeBar, trimixFillO2Bar } from '../src';
+
+describe('zkratky pro trimix', () => {
+  it('END a hustota ze zadaných frakcí', () => {
+    expect(endOfMix(0.18, 0.45, 60)).toBeCloseTo(28.5, 10);
+    expect(endOfMixN2Only(0.18, 0.45, 60)).toBeCloseTo(22.78, 2);
+    expect(densityOfMix(0.18, 0.45, 60)).toBeCloseTo(5.6, 2);
+  });
+  it('minimální helium pro limit hustoty', () => {
+    // 60 m, 20 % O2, limit 5,2 g/l: (0,2858 + 1,0008 − 0,7429) / 1,072 = 0,5075
+    const he = minHeForDensity(0.2, 60, 5.2);
+    expect(he).toBeCloseTo(0.5075, 3);
+    expect(densityOfMix(0.2, he, 60)).toBeCloseTo(5.2, 6);
+    expect(minHeForDensity(0.21, 20, 5.2)).toBe(0);
+    expect(minHeForDensity(0.2, 61.8, 5.2, FRESH_WATER_ENV)).toBeCloseTo(0.5075, 3);
+    expect(() => minHeForDensity(0.2, 60, 0)).toThrow(CalcInputError);
+    expect(() => minHeForDensity(1.2, 60, 5.2)).toThrow(CalcInputError);
+  });
+  it('plnění Tx 18/45 na 200 bar: 90 bar He, 16,3 bar O2, 93,7 bar vzduchu', () => {
+    expect(trimixFillHeBar(200, 0.45)).toBeCloseTo(90, 10);
+    expect(trimixFillO2Bar(200, 0.18, 0.45)).toBeCloseTo(16.33, 2);
+    expect(trimixFillAirBar(200, 0.18, 0.45)).toBeCloseTo(93.67, 2);
+    expect(() => trimixFillHeBar(0, 0.45)).toThrow(CalcInputError);
+  });
+  it('směs s méně kyslíkem, než dodá vzduch, nejde doplnit vzduchem', () => {
+    // Tx 10/20: dusík 70 % → vzduchu 177 bar, ten sám přinese 37 bar O2, potřeba je jen 20
+    expect(() => trimixFillO2Bar(200, 0.1, 0.2)).toThrow(/doplněním vzduchem/);
+  });
+  it('rozepsané postupy končí stejnou hodnotou jako výpočet', () => {
+    const last = <T>(items: T[]): T => items[items.length - 1]!;
+    expect(last(endOfMixSteps(0.18, 0.45, 60)).value).toBe(endOfMix(0.18, 0.45, 60));
+    expect(last(endOfMixN2OnlySteps(0.18, 0.45, 60)).value).toBe(endOfMixN2Only(0.18, 0.45, 60));
+    expect(last(densityOfMixSteps(0.18, 0.45, 60)).value).toBe(densityOfMix(0.18, 0.45, 60));
+    const blend = trimixBlendSteps(200, 0.18, 0.45);
+    expect(blend.map((s) => Number(s.value.toFixed(2)))).toEqual([90, 93.67, 16.33]);
+    const optimal = optimalTrimixSteps(60, 1.4, 30);
+    expect(optimal).toHaveLength(4);
+    expect(optimal[1]!.value).toBeCloseTo(0.2, 10);
+    expect(last(optimal).value).toBeCloseTo(1 - 4 / 7, 10);
+  });
+});

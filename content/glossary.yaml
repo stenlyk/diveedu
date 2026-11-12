@@ -37,3 +37,10 @@
 - { cs: stage lahev, en: stage cylinder, definition: 'Samostatně nesená lahev s vlastní automatikou.', pronunciation: stejdž lahev }
 - { cs: manifold, en: isolation manifold, definition: 'Propojení dvou lahví s izolačním ventilem uprostřed.' }
 - { cs: ventilový drill, en: valve drill (shutdown drill), definition: 'Nácvik zavírání a otevírání ventilů dvojčete.' }
+- { cs: trimix, en: trimix, definition: 'Směs kyslíku, helia a dusíku.' }
+- { cs: ekvivalentní narkotická hloubka, en: equivalent narcotic depth (END), definition: 'Hloubka na vzduchu se stejným narkotickým účinkem jako směs ve skutečné hloubce.', pronunciation: é en dé }
+- { cs: normoxický trimix, en: normoxic trimix, definition: 'Trimix s nejméně 18 % kyslíku, dýchatelný od hladiny.' }
+- { cs: nervový syndrom vysokého tlaku, en: high pressure nervous syndrome (HPNS), definition: 'Neurologické příznaky při rychlém sestupu na heliu do velkých hloubek.', pronunciation: há pé en es }
+- { cs: standardní směsi, en: standard gases, definition: 'Pevná sada směsí pro pásma hloubek.' }
+- { cs: dusíková narkóza, en: nitrogen narcosis (inert gas narcosis), definition: 'Zhoršení úsudku a koordinace při vysokém parciálním tlaku dusíku.' }
+- { cs: reálný plyn, en: real gas (compressibility), definition: 'Plyn, jehož stlačitelnost se odchyluje od ideální rovnice.' }

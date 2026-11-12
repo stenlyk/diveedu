@@ -1,0 +1,9 @@
+id: trimix
+title: Normoxic Trimix
+subtitle: Helium proti narkóze a hustotě
+branch: depth
+rig: oc
+prerequisites: [deko]
+order: 3
+passThreshold: 0.8
+status: published

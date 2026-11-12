@@ -172,3 +172,33 @@
     - { symbol: 'P_{prumer}', name: absolutní tlak v poloviční hloubce, unit: bar }
     - { symbol: 't_{vystup}', name: doba výstupu, unit: min }
   calcFunction: rockBottomLiters
+
+- id: end
+  title: Ekvivalentní narkotická hloubka
+  latex: 'END = (1 - F_{He}) \cdot (d + 10) - 10 \qquad END_{N_2} = \frac{F_{N_2}}{0{,}79} \cdot (d + 10) - 10'
+  variables:
+    - { symbol: 'END', name: 'narkotická hloubka, je-li kyslík narkotický', unit: m }
+    - { symbol: 'END_{N_2}', name: 'narkotická hloubka, je-li narkotický jen dusík', unit: m }
+    - { symbol: 'F_{He}, F_{N_2}', name: frakce helia a dusíku, unit: '–' }
+    - { symbol: 'd', name: skutečná hloubka, unit: m }
+  calcFunction: endOfMix
+
+- id: optimalni-trimix
+  title: Optimální trimix
+  latex: 'F_{O_2} = \frac{ppO_{2,max}}{P_{abs}} \qquad F_{He} = 1 - \frac{END_{max} + 10}{d + 10}'
+  variables:
+    - { symbol: 'F_{O_2}', name: 'frakce kyslíku (zaokrouhlit dolů)', unit: '–' }
+    - { symbol: 'F_{He}', name: 'frakce helia (zaokrouhlit nahoru)', unit: '–' }
+    - { symbol: 'END_{max}', name: nejvyšší přijatelná narkotická hloubka, unit: m }
+    - { symbol: 'd', name: plánovaná hloubka, unit: m }
+  calcFunction: minHeForEnd
+
+- id: michani-trimixu
+  title: Míchání trimixu do prázdné lahve
+  latex: 'P_{He} = P \cdot F_{He} \qquad P_{vzduch} = \frac{P \cdot F_{N_2}}{0{,}79} \qquad P_{O_2} = P - P_{He} - P_{vzduch}'
+  variables:
+    - { symbol: 'P', name: cílový tlak, unit: bar }
+    - { symbol: 'P_{He}', name: kolik barů helia, unit: bar }
+    - { symbol: 'P_{vzduch}', name: kolik barů vzduchu, unit: bar }
+    - { symbol: 'P_{O_2}', name: kolik barů čistého kyslíku, unit: bar }
+  calcFunction: trimixFillHeBar

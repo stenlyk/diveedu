@@ -4,6 +4,7 @@ import { LocalGraph } from '../components/LocalGraph';
 import { Badge, Card, LinkButton, PageHeader } from '../components/ui';
 import { content, conceptsById, lessonsById } from '../content';
 import { CONCEPT_TYPE_LABELS, CONCEPT_TYPES, RELATION_LABELS, RELATION_TYPES } from '../content/schema';
+import { WhatIfGraph } from '../mdx/WhatIfGraph';
 import { useMastery } from '../srs/hooks';
 import { LEVEL_STYLE } from './Dashboard';
 
@@ -46,7 +47,7 @@ export function GraphPage() {
   const { conceptId } = useParams();
   const [params, setParams] = useSearchParams();
   const mastery = useMastery();
-  const [view, setView] = useState<'map' | 'list'>('map');
+  const [view, setView] = useState<'map' | 'list' | 'whatif'>('map');
   const [moduleId, setModuleId] = useState<string>('all');
   const [relationType, setRelationType] = useState<string>('all');
   const [selectedId, setSelectedId] = useState<string>();
@@ -61,8 +62,8 @@ export function GraphPage() {
   return (
     <div>
       <PageHeader title="Znalostní graf" subtitle="Pojmy a vazby mezi nimi. Barva ukazuje, jak který pojem zvládáš." />
-      <div className="mb-3 grid max-w-xs grid-cols-2 gap-2" role="tablist" aria-label="Zobrazení grafu">
-        {([['map', 'Mapa'], ['list', 'Seznam']] as const).map(([value, label]) => (
+      <div className="mb-3 grid max-w-md grid-cols-3 gap-2" role="tablist" aria-label="Zobrazení grafu">
+        {([['map', 'Mapa'], ['list', 'Seznam'], ['whatif', 'Co kdyby']] as const).map(([value, label]) => (
           <button key={value} type="button" role="tab" aria-selected={view === value} onClick={() => setView(value)} className={`min-h-11 rounded-xl border-2 font-semibold ${view === value ? 'border-accent bg-accent/15' : 'border-border text-muted'}`}>{label}</button>
         ))}
       </div>
@@ -104,6 +105,8 @@ export function GraphPage() {
             </Card>
           )}
         </>
+      ) : view === 'whatif' ? (
+        <WhatIfGraph />
       ) : (
         CONCEPT_TYPES.map((type) => {
           const list = content.concepts.filter((item) => item.type === type);

@@ -108,3 +108,21 @@ export function nitroxFillO2Bar(targetBar: number, targetFO2: number, startBar =
 export function topUpFO2(startBar: number, startFO2: number, endBar: number): number {
   return topUp({ startBar, startGas: { fO2: startFO2, fHe: 0 }, endBar }).fO2;
 }
+
+/** Kolik barů helia naplnit do prázdné lahve pro trimix (ideální plyn). */
+export function trimixFillHeBar(targetBar: number, targetFHe: number): number {
+  assertPositive(targetBar, 'cílový tlak');
+  return targetBar * targetFHe;
+}
+
+/** Kolik barů čistého kyslíku naplnit do prázdné lahve pro trimix doplňovaný vzduchem. */
+export function trimixFillO2Bar(targetBar: number, targetFO2: number, targetFHe: number): number {
+  const blend = partialPressureBlend({ startBar: 0, targetBar, targetGas: { fO2: targetFO2, fHe: targetFHe } });
+  if (!blend.feasible) throw new CalcInputError('směs nejde namíchat doplněním vzduchem');
+  return blend.o2Bar;
+}
+
+/** Kolik barů vzduchu doplnit do prázdné lahve pro trimix. */
+export function trimixFillAirBar(targetBar: number, targetFO2: number, targetFHe: number): number {
+  return targetBar - trimixFillHeBar(targetBar, targetFHe) - trimixFillO2Bar(targetBar, targetFO2, targetFHe);
+}

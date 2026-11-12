@@ -1,0 +1,93 @@
+<Hook>
+
+Výpočet říká: 90 barů helia, 16 barů kyslíku, doplnit vzduchem na 200. Uděláš to přesně.
+
+Analyzátor ukáže 43 % helia místo 45. Kde se ztratila dvě procenta, když manometr nelhal?
+
+</Hook>
+
+<Principle>
+
+Trimix se nejčastěji míchá parciálním tlakem, stejně jako nitrox, jen se třemi složkami:
+
+- **helium** podle manometru,
+- **kyslík** podle manometru,
+- **vzduch** do cílového tlaku.
+
+Pořadí helia a kyslíku se mezi plnírnami liší. Jedni plní kyslík jako první, aby tekl do lahve při co nejnižším tlaku. Druzí začínají heliem.
+Vždy platí zásady z lekce o kyslíkové čistotě: kyslík pomalu, čistá lahev i ventil.
+
+**Proč výsledek nesedí.** Výpočet předpokládá ideální plyn. Helium se při vysokém tlaku stlačuje hůř, než ideální rovnice říká –
+na stejný přírůstek tlaku se ho do lahve vejde méně. Směs proto vychází chudší na helium, než odpovídá manometru.
+Zkušení míchači s tím počítají tabulkami nebo programem pro reálné plyny a helia přidávají o něco víc.
+
+**Teplota.** Plnění lahev ohřívá. Tlak čti po vychladnutí, jinak naplníš méně plynu, než si myslíš.
+
+**Analýza.** U trimixu se měří dva plyny:
+
+- kyslík běžným analyzátorem,
+- helium vlastním analyzátorem.
+
+Bez změřeného helia neznáš END, hustotu ani dekompresi. Na štítek patří obě hodnoty, MOD, datum a jméno.
+Směs se po namíchání nechává promísit; měření hned po plnění může ukázat cokoli.
+
+**Když směs nelze doplnit vzduchem.** Směsi s malým podílem kyslíku a helia narazí na to, že vzduch sám přinese kyslíku víc, než směs smí mít.
+Pak se doplňuje jinou směsí, nebo se míchá jinak. U normoxických trimixů s tím problém není.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="michani-trimixu" />
+
+Dusík je jen ve vzduchu, takže množství vzduchu určuje on. Helium je jen z heliové lahve. Kyslík dorovná zbytek – část ho přinesl vzduch.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 18/45 do prázdné lahve na 200 bar.** Helium:
+
+<Worked fn="trimixFillHeBar" args={[200, 0.45]} expected={90} tolerance={0.01} unit="bar" decimals={0} />
+
+Vzduch:
+
+<Worked fn="trimixFillAirBar" args={[200, 0.18, 0.45]} expected={93.67} tolerance={0.01} unit="bar" decimals={1} />
+
+Kyslík:
+
+<Worked fn="trimixFillO2Bar" args={[200, 0.18, 0.45]} expected={16.33} tolerance={0.01} steps="trimixBlendSteps" unit="bar" decimals={1} />
+
+**Tx 21/35 na 200 bar** pro srovnání: helium <Calc fn="trimixFillHeBar" args={[200, 0.35]} unit="bar" />, kyslík <Calc fn="trimixFillO2Bar" args={[200, 0.21, 0.35]} decimals={1} unit="bar" />, vzduch <Calc fn="trimixFillAirBar" args={[200, 0.21, 0.35]} decimals={1} unit="bar" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="trimix-blend" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="analyzator-helia" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -124,3 +124,28 @@ export function minHeForEnd(depthM: number, endMaxM: number, env: Env = DEFAULT_
   assertNonNegative(endMaxM, 'END max');
   return Math.max(0, 1 - absPressure(endMaxM, env) / absPressure(depthM, env));
 }
+
+// ── Zkratky s číselnými argumenty (lekce, kalkulačky, numerické otázky) ──────
+
+/** END směsi zadané frakcemi; kyslík se počítá jako narkotický. */
+export function endOfMix(fO2: number, fHe: number, depthM: number): number {
+  return end({ fO2, fHe }, depthM, { o2Narcotic: true });
+}
+
+/** END směsi zadané frakcemi; narkotický je jen dusík. */
+export function endOfMixN2Only(fO2: number, fHe: number, depthM: number): number {
+  return end({ fO2, fHe }, depthM, { o2Narcotic: false });
+}
+
+/** Hustota směsi zadané frakcemi v dané hloubce (g/l). */
+export function densityOfMix(fO2: number, fHe: number, depthM: number): number {
+  return gasDensity({ fO2, fHe }, depthM);
+}
+
+/** Nejmenší frakce helia, která v dané hloubce udrží hustotu pod limitem (při dané frakci kyslíku). Nikdy záporná. */
+export function minHeForDensity(fO2: number, depthM: number, densityMaxGL: number, env: Env = DEFAULT_ENV): number {
+  assertPositive(densityMaxGL, 'limit hustoty');
+  validateGas({ fO2, fHe: 0 });
+  const p = absPressure(depthM, env);
+  return Math.max(0, (DENSITY_O2 * fO2 + DENSITY_N2 * (1 - fO2) - densityMaxGL / p) / (DENSITY_N2 - DENSITY_HE));
+}

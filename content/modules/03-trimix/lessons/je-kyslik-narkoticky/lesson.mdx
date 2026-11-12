@@ -1,0 +1,86 @@
+<Hook>
+
+Dva plánovače, stejná směs, stejná hloubka: Tx 18/45 v 60 metrech.
+
+Jeden ukáže END <Calc fn="endOfMix" args={[0.18, 0.45, 60]} decimals={0} unit="m" />, druhý <Calc fn="endOfMixN2Only" args={[0.18, 0.45, 60]} decimals={0} unit="m" />. Žádný z nich nemá chybu.
+
+</Hook>
+
+<Principle>
+
+Rozdíl je v jediném předpokladu: počítá se kyslík mezi narkotické plyny, nebo ne?
+
+**Proč ano:**
+
+- Podle pravidla Meyera a Overtona roste narkotický účinek s rozpustností v tucích. Kyslík je v tucích rozpustnější než dusík, měl by tedy být narkotičtější.
+- Je to opatrnější předpoklad. Když se mýlíš, mýlíš se směrem k bezpečí.
+- Zastává ho řada agentur a je výchozí volbou mnoha plánovačů.
+
+**Proč ne:**
+
+- Tkáně kyslík spotřebovávají. Jeho tlak v mozku je mnohem nižší než v dýchané směsi, zatímco dusík se nespotřebovává vůbec.
+- Přímá měření mozkové aktivity při dýchání kyslíku pod tlakem narkózu neprokázala.
+- Praktická zkušenost s nitroxem nenasvědčuje, že by narkóza byla stejná jako na vzduchu – ale ani že by byla výrazně menší.
+
+**Co s tím:**
+
+- Otázka není rozhodnutá a tato aplikace ji za rozhodnutou nevydává. Všude, kde ukazuje END, ukazuje obě varianty.
+- Pro plánování se nabízí jednoduchá úvaha: varianta „kyslík je narkotický“ dá vždy vyšší END, a tedy víc helia. Stojí to peníze, ne bezpečnost.
+- Tým musí počítat stejně. Dva potápěči se stejným limitem „END 30“ a různou variantou výpočtu si pod tím představují různé směsi.
+
+U běžných trimixů činí rozdíl mezi variantami pět až šest metrů. To je méně, než kolik s narkózou udělá CO2, chlad nebo špatný den.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="end" />
+
+Oba vzorce se liší jen tím, co se pokládá za narkotickou část směsi: v prvním vše kromě helia, ve druhém jen dusík, vztažený k dusíku ve vzduchu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 18/45 v 60 m, kyslík narkotický:**
+
+<Worked fn="endOfMix" args={[0.18, 0.45, 60]} expected={28.5} tolerance={0.01} steps="endOfMixSteps" unit="m" decimals={1} />
+
+**Stejná směs, narkotický jen dusík:**
+
+<Worked fn="endOfMixN2Only" args={[0.18, 0.45, 60]} expected={22.78} tolerance={0.01} steps="endOfMixN2OnlySteps" unit="m" decimals={1} />
+
+**Nitrox je krajní případ.** EAN32 ve 30 m má podle první varianty END <Calc fn="endOfMix" args={[0.32, 0, 30]} decimals={0} unit="m" /> – nitrox narkózu nesnižuje.
+Podle druhé <Calc fn="endOfMixN2Only" args={[0.32, 0, 30]} decimals={1} unit="m" />, což je totéž číslo jako ekvivalentní vzduchová hloubka.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="end" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="meyer-overton" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

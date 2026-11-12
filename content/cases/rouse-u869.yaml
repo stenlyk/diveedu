@@ -1,0 +1,49 @@
+id: rouse-u869
+title: 'Vrak U-869: hluboký vrakový ponor na vzduch'
+year: 1992
+location: 'Atlantik u pobřeží New Jersey, USA'
+rig: oc
+moduleIds: [trimix, deko]
+anonymized: false
+context: >-
+  V říjnu 1992 se zkušení vrakoví potápěči Chris Rouse a jeho syn Chris „Chrissy“ Rouse potápěli na tehdy neidentifikované německé ponorce
+  ležící v hloubce kolem 70 metrů. Trimix se v té době mezi vrakovými potápěči teprve prosazoval a byl drahý; ponor proběhl na vzduchu.
+  Oba měli zkušenosti s jeskynním i vrakovým potápěním. Případ podrobně popisuje kniha Bernieho Chowdhuryho The Last Dive.
+  Uvádíme průběh tak, jak ho popisují publikované zdroje; přesné časy, hloubky a detaily výstroje je třeba ověřit.
+profile: []
+timeline:
+  - { when: Průnik do vraku, what: 'Mladší z dvojice vplouvá do nitra vraku a hledá předměty, které by ponorku identifikovaly. Starší čeká u vstupu.' }
+  - { when: Uvnitř, what: 'Na potápěče se sesune část vybavení vraku a uvězní ho. Viditelnost klesne na nulu.' }
+  - { when: Vyproštění, what: 'Otec vplouvá dovnitř a syna vyprostí. Zabere to čas i plyn; oba jsou daleko za plánovaným časem na dně.' }
+  - { when: Před výstupem, what: 'Potápěči nenajdou své odložené lahve s plynem na dekompresi.' }
+  - { when: Výstup, what: 'Vystoupají na hladinu bez dekomprese, přestože měli povinnost dlouhých zastávek.' }
+  - { when: Na hladině, what: 'Oba mají těžké příznaky dekompresní nemoci. Otec umírá krátce po vytažení, syn později během léčby v komoře.' }
+errorChain:
+  - { layer: planovani, description: 'Průnik do vraku v 70 m plánovaný na vzduch; dekompresní lahve odložené mimo vrak, bez záložní varianty.', conceptIds: [hluboky-vzduch, plan-ponoru] }
+  - { layer: plyn, description: 'Vzduch v této hloubce znamená těžkou narkózu, hustotu plynu daleko nad limitem a ppO2 nad pracovním limitem.', conceptIds: [dusikova-narkoza, limit-hustoty, ppo2] }
+  - { layer: vybaveni, description: 'Dekompresní plyn nebyl u potápěčů, ale odložený; po ztrátě orientace ho nenašli.', conceptIds: [stage-lahev, ztrata-deko-plynu] }
+  - { layer: prostredi, description: 'Stísněný prostor vraku, uvolněné vybavení, zvířený sediment a nulová viditelnost.', conceptIds: [hloubka] }
+  - { layer: lidsky-faktor, description: 'Námaha a stres při vyprošťování na hustém plynu; pod narkózou a s vysokým CO2 se rozhoduje nejhůř právě ve chvíli, kdy na rozhodnutí záleží nejvíc.', conceptIds: [retence-co2, namaha, vynechana-dekomprese] }
+physiology: >-
+  Pravděpodobný mechanismus (hypotéza opřená o publikovaný popis): narkóza na vzduchu v 70 m výrazně zhoršila úsudek a orientaci.
+  Těžká práce při vyprošťování v plynu o hustotě kolem deseti gramů na litr vedla k hromadění CO2, které narkózu dál zesílilo.
+  Dlouhý pobyt nasytil tkáně dusíkem tak, že bezpečný výstup vyžadoval desítky minut dekomprese. Přímý výstup znamenal přesycení mnohonásobně nad limity modelu
+  a masivní tvorbu bublin. Co přesně rozhodlo o tom, že dekompresní lahve nenašli, se už nedá zjistit.
+calcTasks:
+  - { prompt: 'Jaká je narkotická hloubka (END) vzduchu v 70 m?', fn: endOfMix, args: [0.21, 0, 70], unit: m, tolerance: 0.5 }
+  - { prompt: 'Jaká je hustota vzduchu v 70 m?', fn: airDensity, args: [70], unit: g/l, tolerance: 0.15 }
+  - { prompt: 'Jaké je ppO2 vzduchu v 70 m?', fn: ppO2, args: [0.21, 70], unit: bar, tolerance: 0.02 }
+  - { prompt: 'Jaká by byla END na směsi Tx 15/55 ve stejné hloubce?', fn: endOfMix, args: [0.15, 0.55, 70], unit: m, tolerance: 0.5 }
+  - { prompt: 'A jaká hustota směsi Tx 15/55 v 70 m?', fn: densityOfMix, args: [0.15, 0.55, 70], unit: g/l, tolerance: 0.15 }
+preventions:
+  - 'Helium: v 70 m směs s END do 30 m a hustotou pod limitem.'
+  - 'Dekompresní plyn nesený u sebe, nebo odložený tak, aby se dal najít po hmatu – a záložní rozvrh pro jeho ztrátu.'
+  - 'Vodicí šňůra při průniku do vraku, aby cesta ven nezávisela na viditelnosti.'
+  - 'Plán s pevným časem otočky, který se dodrží i tehdy, když cíl ponoru zůstane nesplněný.'
+  - 'Dostatek plynu na zádech pro dekompresi bez dekompresních lahví.'
+sources:
+  - { title: The Last Dive, author: 'Chowdhury B.', year: 2000, note: 'Hlavní zdroj; podrobnosti průběhu ověřit proti textu knihy.' }
+  - { title: Shadow Divers, author: 'Kurson R.', year: 2004, note: 'Souvislosti průzkumu vraku U-869.' }
+  - { title: 'Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving', author: 'Anthony G., Mitchell S. J.', year: 2016, note: 'Limity hustoty plynu.' }
+certainty: hypotéza
+needs_review: true

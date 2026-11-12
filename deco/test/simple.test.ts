@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gradientPercent, ambientAt, ascentMinutesAir, ascentMinutesWithDecoGas, ceilingDepthN2, firstStopAir, gradientPercentN2, mValueN2, n2HalfTime, ndlMinutes, planDive } from '../src';
+import { ascentMinutesMix, gradientPercent, ambientAt, ascentMinutesAir, ascentMinutesWithDecoGas, ceilingDepthN2, firstStopAir, gradientPercentN2, mValueN2, n2HalfTime, ndlMinutes, planDive } from '../src';
 import { AIR } from '@diveedu/calc';
 
 describe('zkratky deco', () => {
@@ -32,6 +32,11 @@ describe('zkratky deco', () => {
   it('bezdekompresní limit: nitrox déle než vzduch, konzervativnější GF kratší', () => {
     expect(ndlMinutes(30, 0.32, 100)).toBeGreaterThan(ndlMinutes(30, 0.21, 100));
     expect(ndlMinutes(30, 0.21, 70)).toBeLessThan(ndlMinutes(30, 0.21, 100));
+  });
+  it('výstup na libovolné směsi, s dekompresním plynem i bez', () => {
+    expect(ascentMinutesMix(45, 30, 30, 85, 0.21, 0, 0, 0)).toBe(ascentMinutesAir(45, 30, 30, 85));
+    expect(ascentMinutesMix(45, 30, 30, 85, 0.21, 0, 0.5, 21)).toBe(ascentMinutesWithDecoGas(45, 30, 30, 85, 0.5, 21));
+    expect(ascentMinutesMix(60, 20, 50, 80, 0.18, 0.45, 0.5, 21)).toBeGreaterThan(10);
   });
   it('zkratky plánu odpovídají planDive', () => {
     const plan = planDive({ depthM: 45, bottomMinutes: 30, gases: [{ gas: AIR }], gfLow: 30, gfHigh: 85 });

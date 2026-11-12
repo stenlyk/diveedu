@@ -1,0 +1,371 @@
+- id: he-oblek
+  type: why
+  conceptIds: [tepelne-vlastnosti-helia, argon, ztrata-tepla]
+  difficulty: 1
+  prompt: Proč se suchý oblek nikdy neplní trimixem?
+  options:
+    - { text: 'Helium vede teplo asi šestkrát lépe než vzduch a zničí izolaci obleku.', correct: true }
+    - { text: 'Helium by oblek nadnášelo.', explanation: 'Vztlak určuje objem plynu, ne jeho druh.' }
+    - { text: 'Helium poškozuje materiál obleku.', explanation: Helium je chemicky netečné. }
+    - { text: 'Trimix v obleku způsobuje dekompresní nemoc kůže.', explanation: 'Důvodem je teplo.' }
+  explanation: 'Oblek se plní vzduchem nebo argonem ze samostatné lahve.'
+  backToLessonId: vlastnosti-helia
+
+- id: he-teplo-dech
+  type: why
+  conceptIds: [ztrata-tepla, hustota-plynu, tepelne-vlastnosti-helia]
+  difficulty: 3
+  prompt: Proč jsou ztráty tepla dechem v hloubce velké u každého plynu?
+  options:
+    - { text: 'Dýcháš plyn několikrát hustší než na hladině a každý nádech musí tělo ohřát.', correct: true }
+    - { text: 'Protože helium je chladnější než dusík.', explanation: 'Plyny mají teplotu okolní vody; nejde o „chlad“ plynu.' }
+    - { text: 'Protože v hloubce dýcháš rychleji.', explanation: 'Frekvence dechu není hlavní příčina.' }
+    - { text: 'Protože automatika plyn ochlazuje jen s heliem.', explanation: 'Plyn se při expanzi ochlazuje vždy.' }
+  explanation: 'Teplo odnášené dechem závisí na hustotě a tepelné kapacitě plynu; s hloubkou roste.'
+  backToLessonId: vlastnosti-helia
+
+- id: he-hpns
+  type: choice
+  conceptIds: [hpns, helium]
+  difficulty: 2
+  prompt: Co je nervový syndrom vysokého tlaku (HPNS)?
+  options:
+    - { text: 'Třes, závrať a poruchy soustředění při rychlém sestupu na heliu hlouběji než zhruba 150 m', correct: true }
+    - { text: 'Jiný název pro dusíkovou narkózu', explanation: 'Narkóza tlumí; HPNS je naopak projev dráždění nervového systému tlakem.' }
+    - { text: 'Kyslíkové křeče na trimixu', explanation: Ty způsobuje vysoké ppO2. }
+    - { text: 'Dekompresní nemoc vnitřního ucha', explanation: To je jiná diagnóza. }
+  explanation: 'V rozsahu normoxického trimixu se neprojeví.'
+  backToLessonId: vlastnosti-helia
+
+- id: he-vlastnosti
+  type: findError
+  conceptIds: [helium, tepelne-vlastnosti-helia, argon]
+  difficulty: 2
+  prompt: Která tvrzení o heliu jsou chybná?
+  items:
+    - { text: 'Helium není v potápěčských hloubkách narkotické.' }
+    - { text: 'Helium je dobrý izolant, proto se hodí do suchého obleku.', isError: true, explanation: 'Vede teplo asi šestkrát lépe než vzduch. Do obleku patří vzduch nebo argon.' }
+    - { text: 'Helium uniká i drobnými netěsnostmi.' }
+    - { text: 'Helium zkracuje dekompresi.', isError: true, explanation: 'Dekomprese s heliem bývá delší a vyžaduje dekompresní plyn.' }
+  explanation: 'Helium řeší narkózu a hustotu; teplo a dekompresi naopak komplikuje.'
+  backToLessonId: vlastnosti-helia
+
+- id: opt-kyslik
+  type: numeric
+  conceptIds: [optimalni-trimix, vzorec-best-mix, ppo2]
+  difficulty: 2
+  prompt: 'Jaká je nejvyšší frakce kyslíku pro dno v {depth} m při limitu ppO2 {limit} bar? (Zadej desetinné číslo.)'
+  template: { fn: bestMix, params: { depth: { values: [45, 50, 55, 60, 65] }, limit: { values: [1.2, 1.3, 1.4] } }, args: [depth, limit], tolerance: 0.01, unit: '', decimals: 3 }
+  explanation: 'Limit ppO2 dělený absolutním tlakem. Zaokrouhluje se dolů.'
+  backToLessonId: optimalni-trimix
+
+- id: opt-helium
+  type: choice
+  conceptIds: [optimalni-trimix, vzorec-end, frakce-helia]
+  difficulty: 2
+  prompt: 'Pro 60 m a END nejvýš 30 m vyšla frakce helia 0,4286. Jakou směs zvolíš, má-li mít 18 % kyslíku?'
+  options:
+    - { text: 'Tx 18/45', correct: true }
+    - { text: 'Tx 18/40', explanation: 'Se 40 % helia by END přesáhla 30 m.' }
+    - { text: 'Tx 18/35', explanation: 'To je málo helia; END by byla kolem 35 m.' }
+    - { text: 'Tx 45/18', explanation: 'První číslo je kyslík; 45 % kyslíku by v 60 m znamenalo ppO2 přes 3 bar.' }
+  explanation: 'Helium se zaokrouhluje nahoru: 43 % → prakticky standardní 45 %.'
+  backToLessonId: optimalni-trimix
+
+- id: opt-zaokrouhleni
+  type: match
+  conceptIds: [optimalni-trimix, standardni-smesi]
+  difficulty: 1
+  prompt: Kterým směrem se zaokrouhluje?
+  pairs:
+    - { left: Kyslík v trimixu, right: 'Dolů – nižší ppO2' }
+    - { left: Helium v trimixu, right: 'Nahoru – nižší END a hustota' }
+  explanation: 'Vždy směrem k bezpečnější hodnotě.'
+  backToLessonId: optimalni-trimix
+
+- id: opt-normoxicka
+  type: choice
+  conceptIds: [normoxicka-smes, hypoxie, ppo2]
+  difficulty: 2
+  prompt: Proč má normoxický trimix nejméně 18 % kyslíku?
+  options:
+    - { text: 'Aby byl dýchatelný už na hladině a nebyl potřeba zvláštní plyn na sestup', correct: true }
+    - { text: 'Protože méně kyslíku nelze namíchat', explanation: 'Lze; takové směsi se používají pro větší hloubky.' }
+    - { text: 'Aby se zkrátila dekomprese', explanation: 'Hranice 18 % je dána dýchatelností na hladině.' }
+    - { text: 'Kvůli limitu hustoty', explanation: Hustotu řeší hlavně helium. }
+  explanation: 'Směs s 18 % má na hladině ppO2 0,18 bar – na hranici, pod kterou hrozí hypoxie.'
+  backToLessonId: optimalni-trimix
+
+- id: opt-standardni
+  type: match
+  conceptIds: [standardni-smesi, trimix, normoxicka-smes]
+  difficulty: 2
+  prompt: Přiřaď standardní směs k největší hloubce použití.
+  pairs:
+    - { left: 'Tx 21/35', right: 45 m }
+    - { left: 'Tx 18/45', right: 60 m }
+    - { left: 'Tx 15/55', right: 75 m }
+  explanation: 'Standardní směsi drží ppO2 kolem 1,2–1,3 bar a END do 30 m.'
+  backToLessonId: optimalni-trimix
+
+- id: opt-kontrola
+  type: multi
+  conceptIds: [optimalni-trimix, limit-hustoty, vzorec-end]
+  difficulty: 2
+  prompt: Které tři hodnoty zkontroluješ u dno směsi v největší hloubce?
+  options:
+    - { text: ppO2, correct: true }
+    - { text: END, correct: true }
+    - { text: Hustotu, correct: true }
+    - { text: Barvu lahve, explanation: Barva není spolehlivý údaj o obsahu. }
+  explanation: 'A čtvrtou na hladině: je směs dýchatelná od začátku ponoru?'
+  backToLessonId: optimalni-trimix
+
+- id: dekohe-rychlost
+  type: choice
+  conceptIds: [difuze-helia, kompartment, polocas-tkane]
+  difficulty: 2
+  prompt: Jak rychle se helium sytí oproti dusíku?
+  options:
+    - { text: 'Asi 2,65krát rychleji – poločasy jsou úměrně kratší', correct: true }
+    - { text: 'Stejně rychle', explanation: 'Helium je menší atom a difunduje rychleji.' }
+    - { text: 'Dvakrát pomaleji', explanation: 'Je to naopak.' }
+    - { text: 'Desetkrát rychleji', explanation: 'Rozdíl je menší, asi 2,65násobný.' }
+  explanation: 'Za dvacet minut na dně jsou heliem zatížené i středně rychlé kompartmenty.'
+  backToLessonId: dekomprese-s-heliem
+
+- id: dekohe-proc-deko-plyn
+  type: why
+  conceptIds: [deko-s-heliem, difuze-helia, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: Proč je dekompresní plyn na trimixu téměř nutností?
+  options:
+    - { text: 'Dokud dýcháš směs s heliem, odchází helium z tkání pomalu; plyn bez helia vytvoří velký spád.', correct: true }
+    - { text: 'Protože trimix nelze dýchat mělčeji než ve 20 m.', explanation: 'Normoxický trimix je dýchatelný až na hladinu.' }
+    - { text: 'Protože helium je mělko toxické.', explanation: Helium toxické není. }
+    - { text: 'Protože to vyžaduje pojišťovna.', explanation: 'Důvod je fyziologický.' }
+  explanation: 'Ztráta dekompresního plynu je proto na trimixu mnohem vážnější než na vzduchu.'
+  backToLessonId: dekomprese-s-heliem
+
+- id: dekohe-model
+  type: choice
+  conceptIds: [deko-s-heliem, gradient-factor, kompartment]
+  difficulty: 3
+  prompt: Jak Bühlmannův model zachází s heliem?
+  options:
+    - { text: 'Sleduje ho v každém kompartmentu zvlášť, s vlastními poločasy a koeficienty, a tlaky sčítá s dusíkem', correct: true }
+    - { text: 'Počítá ho stejně jako dusík', explanation: 'Helium má vlastní, kratší poločasy a jiné koeficienty.' }
+    - { text: 'Ignoruje ho', explanation: 'Pak by trimixové ponory vycházely bez dekomprese.' }
+    - { text: 'Má pro něj zvláštní sadu 8 kompartmentů', explanation: 'Kompartmentů je šestnáct pro oba plyny.' }
+  explanation: 'M-hodnota se bere jako vážený průměr podle podílu obou plynů v kompartmentu.'
+  backToLessonId: dekomprese-s-heliem
+
+- id: dekohe-vystup
+  type: why
+  conceptIds: [deko-s-heliem, rychlost-vystupu, difuze-helia]
+  difficulty: 2
+  prompt: Proč jsou u trimixových ponorů první zastávky obvykle hlouběji?
+  options:
+    - { text: 'Rychlé kompartmenty plné helia dosáhnou limitu dřív.', correct: true }
+    - { text: 'Protože helium je těžší než dusík.', explanation: 'Je sedmkrát lehčí.' }
+    - { text: 'Protože trimix má vyšší ppO2.', explanation: 'Obvykle má nižší.' }
+    - { text: 'Protože počítač nezná helium.', explanation: 'Trimixové počítače helium počítají.' }
+  explanation: 'Řízená rychlost výstupu je na trimixu důležitější než kdekoli jinde.'
+  backToLessonId: dekomprese-s-heliem
+
+- id: mtx-helium-bar
+  type: numeric
+  conceptIds: [michani-trimixu, frakce-helia, realny-plyn]
+  difficulty: 2
+  prompt: 'Kolik barů helia naplníš do prázdné lahve pro trimix s {fHe|percent} % helia na {target} bar? (Ideální plyn.)'
+  template: { fn: trimixFillHeBar, params: { target: { values: [200, 220, 232] }, fHe: { values: [0.35, 0.45, 0.55] } }, args: [target, fHe], tolerance: 1, unit: bar, decimals: 0 }
+  explanation: 'Cílový tlak krát frakce helia.'
+  backToLessonId: michani-trimixu
+
+- id: mtx-poradi
+  type: choice
+  conceptIds: [michani-trimixu, kyslikova-cistota]
+  difficulty: 2
+  prompt: Která zásada platí při míchání trimixu bez ohledu na pořadí plynů?
+  options:
+    - { text: 'Kyslík se plní pomalu do čisté lahve s čistým ventilem', correct: true }
+    - { text: 'Helium se plní co nejrychleji, aby neuniklo', explanation: 'Rychlé plnění lahev ohřívá a zkresluje tlak.' }
+    - { text: 'Vzduch se plní jako první', explanation: 'Vzduch doplňuje do cílového tlaku na konec.' }
+    - { text: 'Analýza není nutná, když je výpočet přesný', explanation: 'Skutečný plyn se od výpočtu liší.' }
+  explanation: 'Pořadí helia a kyslíku se mezi plnírnami liší; zásady kyslíkové čistoty ne.'
+  backToLessonId: michani-trimixu
+
+- id: mtx-realny-plyn
+  type: why
+  conceptIds: [realny-plyn, michani-trimixu, analyza-helia]
+  difficulty: 3
+  prompt: 'Naplnil jsi helium přesně podle výpočtu, ale analyzátor ukazuje méně. Proč?'
+  options:
+    - { text: 'Helium se při vysokém tlaku stlačuje hůř než ideální plyn, takže se ho na stejný tlak vejde méně.', correct: true }
+    - { text: 'Helium uniklo stěnou lahve.', explanation: 'Stěnou lahve během plnění neunikne.' }
+    - { text: 'Helium se rozpustilo v kyslíku.', explanation: 'Plyny se mísí, nerozpouštějí.' }
+    - { text: 'Analyzátory helium vždy podhodnocují.', explanation: 'Zkalibrovaný analyzátor měří správně; odchylka je ve směsi.' }
+  explanation: 'Míchači proto používají tabulky pro reálné plyny a helia přidávají o něco víc.'
+  backToLessonId: michani-trimixu
+
+- id: mtx-analyza
+  type: multi
+  conceptIds: [analyza-helia, analyza-plynu, znaceni-lahvi]
+  difficulty: 1
+  prompt: Co patří na štítek lahve s trimixem?
+  options:
+    - { text: Naměřený podíl kyslíku, correct: true }
+    - { text: Naměřený podíl helia, correct: true }
+    - { text: 'MOD, datum a jméno', correct: true }
+    - { text: Jen objednaná směs, explanation: 'Platí to, co je v lahvi.' }
+  explanation: 'Bez změřeného helia neznáš END, hustotu ani dekompresi.'
+  backToLessonId: michani-trimixu
+
+- id: mtx-nelze-vzduchem
+  type: why
+  conceptIds: [michani-trimixu, realny-plyn, vzduch]
+  difficulty: 3
+  prompt: Proč některé směsi s málo kyslíkem nejde namíchat doplněním vzduchem?
+  options:
+    - { text: 'Vzduch potřebný kvůli dusíku přinese víc kyslíku, než směs smí mít.', correct: true }
+    - { text: 'Protože kompresor nedokáže plnit přes helium.', explanation: 'Kompresor plní vzduch normálně.' }
+    - { text: 'Protože helium a vzduch se nemísí.', explanation: 'Mísí se bez potíží.' }
+    - { text: 'Protože vzduch obsahuje argon.', explanation: 'Argon tu nehraje roli.' }
+  explanation: 'Vzduch má pevný poměr kyslíku a dusíku. U normoxických trimixů to problém není.'
+  backToLessonId: michani-trimixu
+
+- id: pvp-co-kontrolovat
+  type: multi
+  conceptIds: [plan-vice-plynu, trimix, limit-hustoty]
+  difficulty: 2
+  prompt: Co musí plán trimixového ponoru obsahovat pro každý plyn?
+  options:
+    - { text: 'Změřené složení a MOD', correct: true }
+    - { text: 'Potřebu v litrech a rezervu', correct: true }
+    - { text: 'Hloubku, kde se začne a přestane dýchat', correct: true }
+    - { text: 'Cenu plynu', explanation: 'Cena do plánu ponoru nepatří.' }
+  explanation: 'Pro dno směs navíc ppO2, END a hustotu v největší hloubce.'
+  backToLessonId: plan-vice-plynu
+
+- id: pvp-spotreba-dno
+  type: numeric
+  conceptIds: [plan-vice-plynu, planovani-plynu, sac]
+  difficulty: 2
+  prompt: 'O kolik barů za minutu klesá tlak v dvojčeti 2×12 l v hloubce {depth} m při spotřebě 20 l/min?'
+  template: { fn: sacBarPerMinute, params: { depth: { values: [50, 60, 70] } }, fixed: { sac: 20, tank: 24 }, args: [sac, depth, tank], tolerance: 0.3, unit: bar/min, decimals: 1 }
+  explanation: 'Spotřeba v litrech za minutu (20 × absolutní tlak) dělená objemem lahví.'
+  backToLessonId: plan-vice-plynu
+
+- id: pvp-poradi-kontrol
+  type: order
+  conceptIds: [plan-vice-plynu, analyza-plynu, znaceni-lahvi]
+  difficulty: 2
+  prompt: Seřaď kontrolu lahví před ponorem s více plyny.
+  items:
+    - Analyzuj každou lahev
+    - Označ ji naměřeným složením a MOD
+    - Zkontroluj MOD na boku lahve
+    - Ověř umístění lahví a zavřené ventily
+    - Přečtěte si lahve navzájem nahlas
+  explanation: 'Většina záměn plynu vzniká na břehu.'
+  backToLessonId: plan-vice-plynu
+
+- id: pvp-ztrata
+  type: why
+  conceptIds: [plan-vice-plynu, ztrata-deko-plynu, deko-s-heliem]
+  difficulty: 3
+  prompt: Co je na trimixu zvláštní při plánování ztráty dekompresního plynu?
+  options:
+    - { text: 'Záložní rozvrh na dno směsi může být tak dlouhý, že na něj plyn na zádech nestačí; plán se pak musí změnit.', correct: true }
+    - { text: 'Nic, je to stejné jako na vzduchu.', explanation: 'Na trimixu je dekomprese bez bohatého plynu mnohonásobně delší.' }
+    - { text: 'Ztráta dekompresního plynu na trimixu nevadí.', explanation: 'Je naopak vážnější.' }
+    - { text: 'Stačí vystoupat rychleji.', explanation: 'To by přesycení zvětšilo.' }
+  explanation: 'Řešení: kratší čas, větší lahve, nebo sdílení dekompresního plynu jako pevná součást plánu.'
+  backToLessonId: plan-vice-plynu
+
+- id: pvp-mingas
+  type: numeric
+  conceptIds: [plan-vice-plynu, minimum-gas, hloubka]
+  difficulty: 3
+  prompt: 'Spočítej minimum gas v barech pro přímý výstup z {depth} m: stresová spotřeba 20 l/min, dvojče 24 l, dva potápěči, 1 min řešení, výstup 9 m/min.'
+  template: { fn: rockBottomBar, params: { depth: { values: [54, 60, 66] } }, fixed: { sac: 20, tank: 24 }, args: [depth, sac, tank], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Minuta v hloubce plus výstup průměrnou hloubkou, krát dva, děleno objemem lahví. U dekompresního ponoru se počítá k první dekompresní lahvi.'
+  backToLessonId: plan-vice-plynu
+
+- id: norm-hranice
+  type: choice
+  conceptIds: [normoxicka-smes, optimalni-trimix, ppo2]
+  difficulty: 2
+  prompt: Od jaké hloubky přibližně přestává stačit normoxický trimix?
+  options:
+    - { text: 'Pod zhruba 60–65 m – limit ppO2 tam vyžaduje méně než 18 % kyslíku', correct: true }
+    - { text: 'Pod 30 m', explanation: 'Ve 30 m lze dýchat i vzduch nebo nitrox.' }
+    - { text: 'Pod 100 m', explanation: 'V 100 m by 18 % kyslíku znamenalo ppO2 téměř 2 bar.' }
+    - { text: 'Nikdy, 18 % kyslíku lze dýchat v jakékoli hloubce', explanation: 'S hloubkou roste ppO2 a překročí limit.' }
+  explanation: 'Směs s 18 % kyslíku má ppO2 1,3 bar v 62 m. Hlouběji je potřeba méně kyslíku – a taková směs už není dýchatelná u hladiny.'
+  backToLessonId: optimalni-trimix
+
+- id: std-proc
+  type: why
+  conceptIds: [standardni-smesi, tym, zamena-plynu]
+  difficulty: 2
+  prompt: Jaký je hlavní argument pro standardní směsi?
+  options:
+    - { text: 'Celý tým má stejný plyn, stejné MOD a stejnou dekompresi, takže ubývá příležitostí k chybě.', correct: true }
+    - { text: 'Jsou vždy přesně optimální pro danou hloubku.', explanation: 'Nejsou; to je jejich nevýhoda.' }
+    - { text: 'Obsahují méně helia, takže jsou levnější.', explanation: 'Helia bývá spíš víc, než je nutné.' }
+    - { text: 'Není je třeba analyzovat.', explanation: 'Analyzuje se každá lahev vždy.' }
+  explanation: 'Spor „best mix proti standardním směsím“ nemá vítěze. Důležité je, aby tým používal totéž.'
+  backToLessonId: optimalni-trimix
+
+- id: argon-proc
+  type: choice
+  conceptIds: [argon, ztrata-tepla, tepelne-vlastnosti-helia]
+  difficulty: 1
+  prompt: Čím se plní suchý oblek při trimixovém ponoru?
+  options:
+    - { text: 'Vzduchem nebo argonem ze samostatné malé lahve', correct: true }
+    - { text: 'Trimixem z dvojčete, aby byla jen jedna hadice', explanation: 'Helium v obleku odvádí teplo několikrát rychleji.' }
+    - { text: 'Čistým kyslíkem', explanation: 'Kyslík v obleku je riziko požáru a nic nepřináší.' }
+    - { text: 'Čistým heliem, protože je lehké', explanation: 'Helium je nejhorší možná volba pro izolaci.' }
+  explanation: 'Argon vede teplo asi o třetinu hůř než vzduch.'
+  backToLessonId: vlastnosti-helia
+
+- id: hpns-kdy
+  type: multi
+  conceptIds: [hpns, helium, hloubka]
+  difficulty: 2
+  prompt: Co zvyšuje riziko nervového syndromu vysokého tlaku?
+  options:
+    - { text: 'Hloubka větší než zhruba 150 m', correct: true }
+    - { text: 'Rychlý sestup', correct: true }
+    - { text: 'Směs zcela bez dusíku', correct: true }
+    - { text: 'Dlouhá dekomprese', explanation: 'HPNS se týká sestupu a pobytu ve velké hloubce.' }
+  explanation: 'Syndrom vyvolává tlak. Malý podíl narkotického dusíku jeho projevy tlumí.'
+  backToLessonId: vlastnosti-helia
+
+- id: hpns-dusik
+  type: why
+  conceptIds: [hpns, dusikova-narkoza]
+  difficulty: 3
+  prompt: Proč se do směsí pro velmi hluboké ponory záměrně přidává trochu dusíku?
+  options:
+    - { text: 'Jeho tlumivý, narkotický účinek působí proti dráždění nervového systému tlakem.', correct: true }
+    - { text: 'Aby se ušetřilo helium.', explanation: 'Úspora je vedlejší; důvod je fyziologický.' }
+    - { text: 'Aby směs lépe hřála.', explanation: 'Tepelné vlastnosti tu nejsou důvodem.' }
+    - { text: 'Dusík zkracuje dekompresi.', explanation: 'To se nepotvrdilo.' }
+  explanation: 'Narkóza a HPNS působí proti sobě. Odtud použití trimixu místo helioxu ve velkých hloubkách.'
+  backToLessonId: vlastnosti-helia
+
+- id: analyza-he-proc
+  type: multi
+  conceptIds: [analyza-helia, vzorec-end, deko-s-heliem]
+  difficulty: 2
+  prompt: Co neznáš, dokud nezměříš podíl helia ve směsi?
+  options:
+    - { text: Narkotickou hloubku, correct: true }
+    - { text: Hustotu plynu, correct: true }
+    - { text: Dekompresní rozvrh, correct: true }
+    - { text: MOD směsi, explanation: 'MOD závisí jen na kyslíku a limitu ppO2.' }
+  explanation: 'Helium mění END, hustotu i dekompresi. Proto má trimix dva analyzátory.'
+  backToLessonId: michani-trimixu

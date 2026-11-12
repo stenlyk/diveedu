@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { type ComponentType, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { Disclaimer } from '../components/Disclaimer';
 import { Badge, Card, PageHeader } from '../components/ui';
 import { CalcPractice, CalcSolve } from '../tools/CalcView';
+import { TernaryDiagram } from '../mdx/TernaryDiagram';
 import { TissueSimulator } from '../mdx/TissueSimulator';
 import { CALC_DEFS, calcDefsById } from '../tools/defs';
 
@@ -27,23 +28,33 @@ export function Tools() {
       </ul>
       <h2 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">Simulátory</h2>
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <li>
-          <Link to="/nastroje/simulator/tkane" className="block h-full min-h-20 rounded-2xl border border-border bg-surface p-4 hover:border-accent">
-            <span className="text-lg font-semibold">Tkáňový simulátor</span>
-            <span className="mt-1 block text-sm text-muted">Sycení 16 kompartmentů, M-hodnoty a gradient factors na přehrávaném profilu.</span>
-          </Link>
-        </li>
+        {Object.entries(SIMULATORS).map(([id, sim]) => (
+          <li key={id}>
+            <Link to={`/nastroje/simulator/${id}`} className="block h-full min-h-20 rounded-2xl border border-border bg-surface p-4 hover:border-accent">
+              <span className="text-lg font-semibold">{sim.title}</span>
+              <span className="mt-1 block text-sm text-muted">{sim.summary}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
+const SIMULATORS: Record<string, { title: string; summary: string; Component: ComponentType }> = {
+  tkane: { title: 'Tkáňový simulátor', summary: 'Sycení 16 kompartmentů, M-hodnoty a gradient factors na přehrávaném profilu.', Component: TissueSimulator },
+  'ternarni-diagram': { title: 'Ternární diagram směsi', summary: 'Které trimixy jsou pro danou hloubku v limitech ppO2, END a hustoty.', Component: TernaryDiagram },
+};
+
 export function SimulatorPage() {
+  const { simId = '' } = useParams();
+  const sim = SIMULATORS[simId];
+  if (!sim) return <p>Simulátor nenalezen. <Link className="text-accent underline" to="/nastroje">Zpět</Link></p>;
   return (
     <div>
-      <nav className="text-sm text-muted"><Link to="/nastroje" className="underline underline-offset-4">Nástroje</Link> › Tkáňový simulátor</nav>
-      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Tkáňový simulátor</h1>
-      <TissueSimulator />
+      <nav className="text-sm text-muted"><Link to="/nastroje" className="underline underline-offset-4">Nástroje</Link> › {sim.title}</nav>
+      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{sim.title}</h1>
+      <sim.Component />
     </div>
   );
 }

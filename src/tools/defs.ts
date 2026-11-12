@@ -434,6 +434,78 @@ export const CALC_DEFS: CalcDef[] = [
       ];
     },
   },
+  // ── Modul 3: trimix ────────────────────────────────────────────────────────
+  {
+    id: 'end',
+    title: 'END trimixu',
+    summary: 'Ekvivalentní narkotická hloubka v obou variantách – s narkotickým kyslíkem i bez.',
+    tool: true,
+    inputs: [pct('fO2', 'Kyslík', 8, 40, 18), pct('fHe', 'Helium', 0, 90, 45), depth(60, 100)],
+    outputs: (v) => {
+      const fHe = Math.min(v.fHe!, 1 - v.fO2!);
+      const narcotic = c.endOfMix(v.fO2!, fHe, v.depth!);
+      return [
+        { label: 'END, kyslík narkotický', value: narcotic, unit: 'm', decimals: 1, tone: narcotic > 40 ? 'danger' : narcotic > 30 ? 'warn' : 'ok', bar: { max: 100, marks: [{ at: 30, label: '30' }] } },
+        { label: 'END, narkotický jen dusík', value: c.endOfMixN2Only(v.fO2!, fHe, v.depth!), unit: 'm', decimals: 1, bar: { max: 100, marks: [{ at: 30, label: '30' }] }, note: 'Agentury se liší v tom, zda kyslík počítají jako narkotický. Konzervativnější je první varianta.' },
+      ];
+    },
+    steps: (v) => c.endOfMixSteps(v.fO2!, Math.min(v.fHe!, 1 - v.fO2!), v.depth!),
+  },
+  {
+    id: 'density',
+    title: 'Hustota směsi',
+    summary: 'Hustota dýchaného plynu v hloubce proti limitům 5,2 a 6,2 g/l.',
+    tool: true,
+    inputs: [pct('fO2', 'Kyslík', 8, 100, 21), pct('fHe', 'Helium', 0, 90, 0), depth(40, 100)],
+    outputs: (v) => {
+      const density = c.densityOfMix(v.fO2!, Math.min(v.fHe!, 1 - v.fO2!), v.depth!);
+      return [{ label: 'Hustota v hloubce', value: density, unit: 'g/l', decimals: 2, tone: densityTone(density), bar: { max: 10, marks: DENSITY_MARKS }, note: 'Doporučený limit 5,2 g/l, tvrdý limit 6,2 g/l (Anthony & Mitchell, 2016).' }];
+    },
+    steps: (v) => c.densityOfMixSteps(v.fO2!, Math.min(v.fHe!, 1 - v.fO2!), v.depth!),
+  },
+  {
+    id: 'optimal-trimix',
+    title: 'Optimální trimix',
+    summary: 'Nejvíc kyslíku a nejméně helia, které pro danou hloubku splní limity.',
+    tool: true,
+    inputs: [
+      depth(60, 100),
+      { key: 'limit', label: 'Limit ppO2', min: 1, max: 1.6, step: 0.1, unit: 'bar', initial: 1.3 },
+      { key: 'end', label: 'Nejvyšší END', min: 20, max: 40, step: 1, unit: 'm', initial: 30 },
+    ],
+    outputs: (v) => {
+      const depthM = Math.max(v.depth!, 1);
+      const result = c.optimalTrimix({ depthM, ppO2MaxBar: v.limit!, endMaxM: v.end!, densityMaxGL: c.DENSITY_HARD_LIMIT_GL });
+      const practical = c.practicalTrimix(result.gas);
+      return [
+        { label: 'Kyslík (zaokrouhleno dolů)', value: practical.fO2 * 100, unit: '%', decimals: 0 },
+        { label: 'Helium (zaokrouhleno nahoru)', value: practical.fHe * 100, unit: '%', decimals: 0, bar: { max: 100 } },
+        { label: 'Hustota této směsi v hloubce', value: c.gasDensity(practical, depthM), unit: 'g/l', decimals: 2, tone: densityTone(c.gasDensity(practical, depthM)), note: result.feasible ? `Helium určil limit ${result.limitedBy === 'density' ? 'hustoty 6,2 g/l' : result.limitedBy === 'end' ? 'END' : '– žádný, helium není potřeba'}.` : 'Limity nejdou splnit žádnou směsí.' },
+      ];
+    },
+    steps: (v) => c.optimalTrimixSteps(Math.max(v.depth!, 1), v.limit!, v.end!),
+  },
+  {
+    id: 'trimix-blend',
+    title: 'Míchání trimixu',
+    summary: 'Parciální tlaky pro prázdnou lahev: helium, kyslík, vzduch.',
+    tool: true,
+    inputs: [
+      { key: 'target', label: 'Cílový tlak', min: 150, max: 300, step: 10, unit: 'bar', initial: 200 },
+      pct('fO2', 'Kyslík', 10, 30, 18),
+      pct('fHe', 'Helium', 10, 80, 45),
+    ],
+    outputs: (v) => {
+      const blend = c.partialPressureBlend({ startBar: 0, targetBar: v.target!, targetGas: { fO2: v.fO2!, fHe: Math.min(v.fHe!, 1 - v.fO2!) } });
+      if (!blend.feasible) return [{ label: 'Směs', value: null, unit: '', decimals: 0, tone: 'danger', note: 'Tuto směs nelze namíchat doplněním vzduchem – vzduch by přinesl víc kyslíku, než směs má mít. Doplňuje se pak směsí chudší na kyslík.' }];
+      return [
+        { label: 'Helium', value: blend.heBar, unit: 'bar', decimals: 1 },
+        { label: 'Kyslík', value: blend.o2Bar, unit: 'bar', decimals: 1 },
+        { label: 'Vzduch (doplnit do cílového tlaku)', value: blend.topBar, unit: 'bar', decimals: 1, note: 'Ideální plyn. Helium se od ideálního chování liší znatelně – výsledek vždy analyzuj na kyslík i helium.' },
+      ];
+    },
+    steps: (v) => c.trimixBlendSteps(v.target!, v.fO2!, Math.min(v.fHe!, 1 - v.fO2!)),
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));

@@ -1,0 +1,20 @@
+id: co2-v-hloubce
+moduleId: trimix
+title: "CO2 v hloubce: řetěz, který zabíjí"
+order: 5
+conceptIds: ["retence-co2", "prace-dychani", "hluboky-vzduch", "limit-hustoty"]
+checkQuestionIds: ["co2h-retez", "co2h-proc-necitis", "co2h-co-delat", "co2h-prevence"]
+estimatedMinutes: 11
+audioSummary: >-
+  V hloubce tvoří oxid uhličitý řetěz, který se sám zesiluje.
+  Plyn je hustý, takže ventilace klesá. Námaha zvyšuje tvorbu oxidu uhličitého právě ve chvíli, kdy ho plíce odvádějí hůř.
+  Oxid uhličitý zesiluje narkózu a snižuje práh kyslíkových křečí.
+  Horší úsudek vede k další námaze místo zastavení.
+  Potápěč to často necítí včas, protože dušnost při práci považuje za normální.
+  Řetěz se přerušuje předem. Směsí s hustotou pod limitem a plánem bez těžké práce na dně.
+  Na místě pomáhá jediné. Zastavit, chytit se, dlouze vydechovat a případně vystoupat o pár metrů.
+sources:
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: false

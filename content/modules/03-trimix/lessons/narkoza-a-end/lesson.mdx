@@ -1,0 +1,87 @@
+<Hook>
+
+Zkušený potápěč ve 45 metrech na vzduchu se třikrát podívá na manometr. Pokaždé číslo přečte. Ani jednou si ho nezapamatuje.
+
+Kdyby se ho někdo zeptal, řekl by, že je mu skvěle. To je na narkóze to nejhorší.
+
+</Hook>
+
+<Principle>
+
+<Term cs="dusíková narkóza" /> je účinek inertního plynu na nervový systém. Plyn se rozpouští v membránách nervových buněk a zpomaluje přenos signálu;
+čím je plyn v tucích rozpustnější a čím vyšší má parciální tlak, tím je účinek silnější.
+
+**Jak se projevuje:**
+
+- zpomalené myšlení a horší krátkodobá paměť,
+- zúžené vnímání – potápěč se upne na jednu věc a ostatní nevidí,
+- přehnaná sebejistota, nebo naopak úzkost,
+- horší koordinace a delší reakce.
+
+Důležitější než seznam je pořadí: úsudek odchází dřív než pocit, že je něco špatně. Narkotizovaný potápěč si nevede hůř ve svých očích, jen ve skutečnosti.
+
+Narkózu zhoršuje CO2, chlad, tma, únava, stres a rychlý sestup. Zvykem se nesnižuje – snižuje se jen schopnost ji na sobě poznat.
+
+**Jak se plánuje.** <Term cs="ekvivalentní narkotická hloubka" /> říká, v jaké hloubce bys na vzduchu měl stejný narkotický účinek jako na dané směsi ve skutečné hloubce.
+Většina agentur drží END do 30 m; pro náročné prostředí, jako jsou jeskyně a vraky, se volí i méně.
+
+Výpočet je prostý: helium se nepočítá, všechno ostatní ano. Zda „všechno ostatní“ zahrnuje i kyslík, je předmět debaty, kterou řeší další lekce.
+V této lekci počítáme opatrnější variantu – kyslík narkotický je.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="end" />
+
+První vzorec: narkotická část směsi je vše kromě helia. Vynásobíš jí absolutní tlak a dostaneš tlak, který převedeš zpět na hloubku.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 18/45 v 60 m.**
+
+<Worked fn="endOfMix" args={[0.18, 0.45, 60]} expected={28.5} tolerance={0.01} steps="endOfMixSteps" unit="m" decimals={1} />
+
+**Tx 21/35 ve 45 m.**
+
+<Worked fn="endOfMix" args={[0.21, 0.35, 45]} expected={25.75} tolerance={0.01} steps="endOfMixSteps" unit="m" decimals={1} />
+
+**Opačný směr.** Kolik helia potřebuješ v 60 m, aby END nepřesáhlo 30 m?
+
+<Worked fn="minHeForEnd" args={[60, 30]} expected={0.4286} tolerance={0.0001} unit="" decimals={3} />
+
+Tedy nejméně 43 % helia. Směs Tx 18/45 limit splňuje s malou rezervou.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="end" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="opojeni-hlubinou" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

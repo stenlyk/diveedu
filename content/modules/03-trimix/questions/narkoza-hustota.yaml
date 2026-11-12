@@ -1,0 +1,264 @@
+- id: helium-tri-limity
+  type: match
+  conceptIds: [hluboky-vzduch, dusikova-narkoza, hustota-plynu]
+  difficulty: 1
+  prompt: Přiřaď limit vzduchu k hloubce, kde se začne projevovat.
+  pairs:
+    - { left: 'Narkóza je zřetelná', right: kolem 30 m }
+    - { left: 'Hustota překročí tvrdý limit 6,2 g/l', right: těsně před 40 m }
+    - { left: 'ppO2 dosáhne 1,4 bar', right: v necelých 57 m }
+  explanation: 'Všechny tři limity přicházejí blízko sebe a navzájem se zhoršují.'
+  backToLessonId: proc-helium
+
+- id: helium-co-resi
+  type: multi
+  conceptIds: [helium, dusikova-narkoza, hustota-plynu]
+  difficulty: 1
+  prompt: Co helium ve směsi přímo řeší?
+  options:
+    - { text: Snižuje narkózu, correct: true }
+    - { text: Snižuje hustotu plynu, correct: true }
+    - { text: Umožňuje nastavit nižší podíl kyslíku, correct: true }
+    - { text: Zkracuje dekompresi, explanation: 'Naopak, dekomprese s heliem bývá delší a vyžaduje dekompresní plyn.' }
+    - { text: Zlepšuje tepelnou izolaci, explanation: 'Helium vede teplo asi šestkrát lépe než vzduch.' }
+  explanation: 'Helium není narkotické a je sedmkrát lehčí než dusík. Za to se platí dekompresí, cenou a složitostí.'
+  backToLessonId: proc-helium
+
+- id: helium-oznaceni
+  type: choice
+  conceptIds: [trimix, frakce-helia, helium]
+  difficulty: 1
+  prompt: Co znamená označení Tx 18/45?
+  options:
+    - { text: '18 % kyslíku, 45 % helia, zbytek dusík', correct: true }
+    - { text: '18 % helia, 45 % kyslíku, zbytek dusík', explanation: 'První číslo je kyslík, druhé helium.' }
+    - { text: '18 % kyslíku, 45 % dusíku, zbytek helium', explanation: 'Druhé číslo je helium; dusík se dopočítá.' }
+    - { text: 'Směs pro hloubky 18–45 m', explanation: 'Čísla jsou procenta složek, ne hloubky.' }
+  explanation: 'Tx 18/45 obsahuje 37 % dusíku.'
+  backToLessonId: proc-helium
+
+- id: helium-vzduch-60
+  type: numeric
+  conceptIds: [hluboky-vzduch, hustota-plynu, vzorec-hustota]
+  difficulty: 2
+  prompt: 'Jaká je hustota vzduchu v hloubce {depth} m? (Na hladině přibližně 1,29 g/l.)'
+  template: { fn: airDensity, params: { depth: { values: [45, 50, 55, 60, 70] } }, args: [depth], tolerance: 0.15, unit: g/l, decimals: 2 }
+  explanation: 'Hustota na hladině krát absolutní tlak. Všechny tyto hodnoty jsou nad tvrdým limitem 6,2 g/l.'
+  backToLessonId: proc-helium
+
+- id: end-vypocet
+  type: numeric
+  conceptIds: [vzorec-end, frakce-helia]
+  difficulty: 2
+  prompt: 'Jaká je END směsi s {fHe|percent} % helia v hloubce {depth} m? (Kyslík počítej jako narkotický.)'
+  template: { fn: endOfMix, params: { fHe: { values: [0.35, 0.45, 0.55] }, depth: { values: [45, 50, 60, 70] } }, fixed: { fO2: 0.18 }, args: [fO2, fHe, depth], tolerance: 1, unit: m, decimals: 1 }
+  explanation: 'END = (1 − frakce helia) × (hloubka + 10) − 10.'
+  backToLessonId: narkoza-a-end
+
+- id: end-co-je
+  type: choice
+  conceptIds: [vzorec-end, dusikova-narkoza]
+  difficulty: 1
+  prompt: Co vyjadřuje ekvivalentní narkotická hloubka?
+  options:
+    - { text: 'Hloubku na vzduchu se stejným narkotickým účinkem, jaký má směs ve skutečné hloubce', correct: true }
+    - { text: 'Největší hloubku, do které smíš se směsí', explanation: To je MOD. }
+    - { text: 'Hloubku, kde narkóza úplně zmizí', explanation: 'Narkóza nemá ostrý práh; END jen převádí účinek na „vzduchové“ metry.' }
+    - { text: 'Hloubku se stejným ppN2 jako vzduch pro dekompresi', explanation: To je EAD. }
+  explanation: 'Většina agentur drží END do 30 m.'
+  backToLessonId: narkoza-a-end
+
+- id: end-priznaky
+  type: why
+  conceptIds: [dusikova-narkoza, hluboky-vzduch]
+  difficulty: 2
+  prompt: Proč je narkóza nebezpečná, i když ji potápěč „zvládá“?
+  options:
+    - { text: 'Úsudek se zhorší dřív, než potápěč cokoli pocítí; vlastní výkon hodnotí lépe, než jaký je.', correct: true }
+    - { text: 'Protože vždy vyvolá paniku.', explanation: 'Častěji vyvolá falešný klid a sebejistotu.' }
+    - { text: 'Protože trvale poškozuje mozek.', explanation: 'Při výstupu odezní beze stopy.' }
+    - { text: 'Protože zvyšuje spotřebu plynu.', explanation: To není hlavní riziko. }
+  explanation: 'Zvykem se narkóza nesnižuje. Snižuje se jen schopnost ji na sobě poznat.'
+  backToLessonId: narkoza-a-end
+
+- id: end-helium-potreba
+  type: numeric
+  conceptIds: [vzorec-end, frakce-helia, optimalni-trimix]
+  difficulty: 3
+  prompt: 'Jakou nejmenší frakci helia potřebuješ v hloubce {depth} m, aby END nepřesáhlo 30 m? (Zadej desetinné číslo, kyslík narkotický.)'
+  template: { fn: minHeForEnd, params: { depth: { values: [45, 50, 60, 70, 75] } }, fixed: { end: 30 }, args: [depth, end], tolerance: 0.01, unit: '', decimals: 3 }
+  explanation: 'Narkotická část smí být nejvýš (30 + 10) / (hloubka + 10). Helium je zbytek do jedné.'
+  backToLessonId: narkoza-a-end
+
+- id: end-limit
+  type: multi
+  conceptIds: [dusikova-narkoza, retence-co2, vzorec-end]
+  difficulty: 2
+  prompt: Co narkózu při stejné END zhoršuje?
+  options:
+    - { text: Zvýšený CO2, correct: true }
+    - { text: 'Chlad, tma a stres', correct: true }
+    - { text: Rychlý sestup, correct: true }
+    - { text: Vyšší podíl helia ve směsi, explanation: 'Helium narkózu snižuje.' }
+  explanation: 'Proto se pro jeskyně a vraky volí END nižší než 30 m.'
+  backToLessonId: narkoza-a-end
+
+- id: o2nark-dve-varianty
+  type: choice
+  conceptIds: [narkoticnost-kysliku, vzorec-end]
+  difficulty: 2
+  prompt: 'Proč mohou dva plánovače ukázat pro stejnou směs a hloubku různou END?'
+  options:
+    - { text: 'Jeden počítá kyslík jako narkotický, druhý ne.', correct: true }
+    - { text: 'Jeden z nich má chybu.', explanation: 'Oba výpočty jsou správné; liší se předpokladem.' }
+    - { text: 'Liší se v zaokrouhlení hloubky.', explanation: Rozdíl několika metrů zaokrouhlením nevznikne. }
+    - { text: 'Jeden počítá sladkou vodu.', explanation: 'Rozdíl hustoty vody dělá zlomky metru.' }
+  explanation: 'U běžných trimixů činí rozdíl pět až šest metrů.'
+  backToLessonId: je-kyslik-narkoticky
+
+- id: o2nark-argumenty
+  type: match
+  conceptIds: [narkoticnost-kysliku, kyslik]
+  difficulty: 3
+  prompt: Přiřaď argument ke straně sporu.
+  pairs:
+    - { left: 'Kyslík je v tucích rozpustnější než dusík', right: 'Pro: kyslík je narkotický' }
+    - { left: 'Tkáně kyslík spotřebovávají, v mozku je ho málo', right: 'Proti: kyslík narkotický není' }
+  explanation: 'Otázka není rozhodnutá. Opatrnější plán počítá kyslík jako narkotický.'
+  backToLessonId: je-kyslik-narkoticky
+
+- id: o2nark-rozdil-vypocet
+  type: numeric
+  conceptIds: [vzorec-end, narkoticnost-kysliku, frakce-helia]
+  difficulty: 3
+  prompt: 'Jaká je END směsi Tx 18/{fHe|percent} v hloubce {depth} m, pokud je narkotický jen dusík? (END = fN2 / 0,79 × (d + 10) − 10)'
+  template: { fn: endOfMixN2Only, params: { fHe: { values: [0.35, 0.45, 0.55] }, depth: { values: [50, 60, 70] } }, fixed: { fO2: 0.18 }, args: [fO2, fHe, depth], tolerance: 1, unit: m, decimals: 1 }
+  explanation: 'Frakce dusíku je 1 − 0,18 − frakce helia. Vyděl ji 0,79, vynásob (hloubka + 10) a odečti 10.'
+  backToLessonId: je-kyslik-narkoticky
+
+- id: o2nark-co-zvolit
+  type: why
+  conceptIds: [narkoticnost-kysliku, tym]
+  difficulty: 2
+  prompt: Co je při volbě varianty výpočtu END nejdůležitější?
+  options:
+    - { text: 'Aby celý tým počítal stejně a věděl, co znamená „END 30“.', correct: true }
+    - { text: 'Zvolit variantu s nižší END, protože ušetří helium.', explanation: 'Úspora helia není bezpečnostní argument.' }
+    - { text: 'Střídat obě varianty podle nálady.', explanation: 'Plán musí být jednoznačný.' }
+    - { text: 'Na variantě nezáleží, výsledek je stejný.', explanation: 'Liší se o pět až šest metrů.' }
+  explanation: 'Opatrnější varianta dá víc helia. Stojí peníze, ne bezpečnost.'
+  backToLessonId: je-kyslik-narkoticky
+
+- id: husm-vypocet
+  type: numeric
+  conceptIds: [vzorec-hustota, hustota-plynu, frakce-helia]
+  difficulty: 3
+  prompt: 'Jaká je hustota směsi Tx {fO2|percent}/{fHe|percent} v hloubce {depth} m? (Hustoty na hladině: O2 1,43; N2 1,25; He 0,18 g/l.)'
+  template: { fn: densityOfMix, params: { fO2: { values: [0.18, 0.21] }, fHe: { values: [0.35, 0.45] }, depth: { values: [45, 50, 60] } }, args: [fO2, fHe, depth], tolerance: 0.15, unit: g/l, decimals: 2 }
+  explanation: 'Nejdřív hustota na hladině jako vážený součet tří složek, pak krát absolutní tlak.'
+  backToLessonId: hustota-smesi
+
+- id: husm-limity
+  type: choice
+  conceptIds: [limit-hustoty, hustota-plynu]
+  difficulty: 1
+  prompt: 'Směs má v plánované hloubce hustotu 5,6 g/l. Jak ji hodnotíš?'
+  options:
+    - { text: 'Nad doporučeným limitem 5,2, pod tvrdým limitem 6,2 – přijatelná bez rezervy na těžkou práci', correct: true }
+    - { text: 'V pořádku s velkou rezervou', explanation: 'Doporučený limit 5,2 g/l je už překročený.' }
+    - { text: 'Nepoužitelná', explanation: 'Tvrdý limit je 6,2 g/l.' }
+    - { text: 'Hustota se u trimixu nehodnotí', explanation: 'Hodnotí se vždy; hlouběji je přísnější než END.' }
+  explanation: 'Mezi limity je pásmo, kde se plánuje jen lehká práce.'
+  backToLessonId: hustota-smesi
+
+- id: husm-helium-ubere
+  type: why
+  conceptIds: [frakce-helia, vzorec-hustota, limit-hustoty]
+  difficulty: 2
+  prompt: Proč helium snižuje hustotu směsi tak účinně?
+  options:
+    - { text: 'Je asi sedmkrát lehčí než dusík, který nahrazuje.', correct: true }
+    - { text: 'Snižuje okolní tlak.', explanation: 'Tlak určuje hloubka.' }
+    - { text: 'Protože se v plicích rozpíná.', explanation: Plyn v plicích má tlak okolí bez ohledu na složení. }
+    - { text: 'Protože nahrazuje kyslík.', explanation: 'Hlavní úspora je z náhrady dusíku; kyslíku je ve směsi málo.' }
+  explanation: 'Každých 10 % helia místo dusíku ubere asi 0,11 g/l hustoty na hladině.'
+  backToLessonId: hustota-smesi
+
+- id: husm-end-vs-hustota
+  type: choice
+  conceptIds: [limit-hustoty, vzorec-end, optimalni-trimix]
+  difficulty: 3
+  prompt: Který limit obvykle určuje obsah helia u hlubších ponorů (75 m a víc)?
+  options:
+    - { text: 'Hustota – vyžaduje víc helia než END 30 m', correct: true }
+    - { text: 'END – hustota je splněná vždy', explanation: 'Hlouběji je hustota přísnější.' }
+    - { text: 'ppO2', explanation: 'ppO2 určuje kyslík, ne helium.' }
+    - { text: 'Cena helia', explanation: 'Cena není limit bezpečnosti.' }
+  explanation: 'Kdo plánuje jen podle END, v hloubce hustotu snadno přehlédne.'
+  backToLessonId: hustota-smesi
+
+- id: husm-nitrox
+  type: why
+  conceptIds: [hustota-plynu, limit-hustoty, ean50]
+  difficulty: 2
+  prompt: 'Bohaté dekompresní směsi jsou těžší než vzduch. Proč limit hustoty nepřekročí?'
+  options:
+    - { text: 'Dýchají se mělko, kde je nízký absolutní tlak.', correct: true }
+    - { text: 'Kyslík je lehčí než dusík.', explanation: 'Kyslík je o něco těžší.' }
+    - { text: 'Na dekompresi se limit hustoty neuplatňuje.', explanation: 'Uplatňuje se vždy; mělko je jen snadné ho splnit.' }
+    - { text: 'Protože obsahují helium.', explanation: 'EAN50 ani kyslík helium neobsahují.' }
+  explanation: 'Kyslík v 6 m: 1,6 bar × 1,43 g/l = 2,3 g/l.'
+  backToLessonId: hustota-smesi
+
+- id: co2h-retez
+  type: order
+  conceptIds: [retence-co2, prace-dychani, hluboky-vzduch]
+  difficulty: 2
+  prompt: Seřaď řetěz, kterým hustý plyn a námaha vedou k nehodě.
+  items:
+    - Hustý plyn omezí největší možnou ventilaci
+    - Námaha zvýší tvorbu CO2
+    - CO2 se hromadí v krvi
+    - Narkóza zesílí a práh kyslíkových křečí klesne
+    - Špatné rozhodnutí místo zastavení
+  explanation: 'Řetěz se sám zesiluje: horší úsudek vede k další námaze.'
+  backToLessonId: co2-v-hloubce
+
+- id: co2h-proc-necitis
+  type: multi
+  conceptIds: [retence-co2, dusikova-narkoza]
+  difficulty: 2
+  prompt: Proč potápěč hromadění CO2 v hloubce často nepozná včas?
+  options:
+    - { text: Dušnost při práci považuje za normální, correct: true }
+    - { text: Narkóza tlumí vnímání varovných signálů, correct: true }
+    - { text: Někteří lidé na CO2 reagují slabě, correct: true }
+    - { text: CO2 nemá žádné příznaky, explanation: 'Má: dušnost, bolest hlavy, úzkost. Jen se snadno přehlédnou.' }
+  explanation: 'Proto se řetěz přerušuje plánem a směsí, ne sebepozorováním.'
+  backToLessonId: co2-v-hloubce
+
+- id: co2h-co-delat
+  type: order
+  conceptIds: [retence-co2, prace-dychani, namaha]
+  difficulty: 1
+  prompt: 'V hloubce se zadýcháš a nemůžeš popadnout dech. Seřaď správnou reakci.'
+  items:
+    - Přestaň pracovat a chyť se
+    - Dlouze a úplně vydechuj
+    - Dej znamení partnerovi
+    - 'Pokud to nepomáhá, vystoupej o několik metrů'
+  explanation: 'Menší hloubka znamená menší hustotu a okamžitou úlevu.'
+  backToLessonId: co2-v-hloubce
+
+- id: co2h-prevence
+  type: choice
+  conceptIds: [limit-hustoty, hluboky-vzduch, retence-co2]
+  difficulty: 2
+  prompt: Kterým opatřením se řetěz CO2 přeruší nejspolehlivěji?
+  options:
+    - { text: 'Směsí, jejíž hustota je v plánované hloubce pod limitem', correct: true }
+    - { text: 'Tréninkem zadržování dechu', explanation: 'To učí CO2 ignorovat, ne odvádět.' }
+    - { text: 'Výkonnější automatikou', explanation: 'Úzké hrdlo jsou dýchací cesty, ne automatika.' }
+    - { text: 'Rychlejším plaváním, aby byla práce dřív hotová', explanation: 'Vyšší námaha vyrobí víc CO2.' }
+  explanation: 'Hustota je jediný článek řetězu, který se dá spočítat předem.'
+  backToLessonId: co2-v-hloubce

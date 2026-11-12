@@ -1,0 +1,19 @@
+id: je-kyslik-narkoticky
+moduleId: trimix
+title: "Je kyslík narkotický? Debata"
+order: 3
+conceptIds: ["narkoticnost-kysliku", "vzorec-end", "kyslik"]
+checkQuestionIds: ["o2nark-dve-varianty", "o2nark-argumenty", "o2nark-rozdil-vypocet", "o2nark-co-zvolit"]
+estimatedMinutes: 9
+audioSummary: >-
+  Zda je kyslík narkotický, není rozhodnuto.
+  Pro mluví teorie. Narkotický účinek roste s rozpustností v tucích a kyslík je rozpustnější než dusík.
+  Proti mluví to, že tkáně kyslík spotřebovávají, a přímá měření mozkové aktivity narkózu neprokázala.
+  Proto existují dva výpočty narkotické hloubky. Opatrnější počítá kyslík jako narkotický a vychází o pět až šest metrů hlouběji.
+  Důležité je, aby celý tým počítal stejně.
+  Rozdíl mezi variantami je menší než to, co s narkózou udělá oxid uhličitý, chlad nebo špatný den.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Does hyperbaric oxygen cause narcosis or hyperexcitability? A quantitative EEG analysis. Physiological Reports 10(14)", author: "Vrijdag X. C. E., van Waart H., Sames C., Mitchell S. J., Sleigh J. W.", year: 2022 }
+  - { title: "TDI Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

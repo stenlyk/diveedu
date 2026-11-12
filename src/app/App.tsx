@@ -60,7 +60,7 @@ export function App() {
             <Route path="graf" element={<GraphPage />} />
             <Route path="graf/:conceptId" element={<GraphPage />} />
             <Route path="nastroje" element={<Tools />} />
-            <Route path="nastroje/simulator/tkane" element={<SimulatorPage />} />
+            <Route path="nastroje/simulator/:simId" element={<SimulatorPage />} />
             <Route path="nastroje/:toolId" element={<ToolPage />} />
             <Route path="pripady" element={<Cases />} />
             <Route path="pripady/:caseId" element={<CasePage />} />

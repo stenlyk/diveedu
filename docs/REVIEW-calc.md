@@ -20,4 +20,6 @@ dělá, co jsem zamýšlel. Níže jsou místa, kde jsem musel zvolit konvenci �
 | 14 | `deco/plan.ts` | GF low ukotvený na hloubce první zastávky; zastávky v celých minutách; přepnutí plynu po příchodu na zastávku; výchozí výstup 9 m/min | Subsurface kotví GF low na nejhlubším stropu, ne na zaokrouhlené zastávce – u GF < 100 se plány mohou lišit o minuty. Ověřeno jen pro GF 100/100. |
 | 15 | `deco/model.ts` | Výuková konvence 10 m = 1 bar, hladina 1 bar, vodní pára 0,0627 bar, vzduch 79 % N2 | Čísla v lekcích se proto mírně liší od počítače s 1,013 bar a slanou vodou. |
 | 16 | `deco/simple.ts` `ndlMinutes` | GF low = GF high, celé minuty, čas na dně včetně sestupu 20 m/min | Limity v lekcích jsou „podle výukového modelu“, ne tabulkové hodnoty. |
+| 17 | `mdx/WhatIfGraph.tsx` | Stupně uzlů: ppO2 1,4 / 1,6 bar, END 30 / 40 m, hustota 5,2 / 6,2 g/l; námaha posune CO2 o stupeň, vysoký CO2 posune narkózu o stupeň | Prahy a pravidla posunu jsou výukové zjednodušení, ne fyziologický model. |
+| 18 | `trimix.ts` `minHeForEnd`, `optimalTrimixSteps` | Kyslík se počítá jako narkotický | Opatrnější varianta; kalkulačka END ukazuje obě. |
 | 10 | `blending.ts` | Ideální plyn | Trimix při 200+ bar se od ideálního plynu liší znatelně; van der Waals přijde s modulem 3. |

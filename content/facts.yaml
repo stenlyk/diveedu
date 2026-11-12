@@ -254,3 +254,78 @@
     Letadlo nebylo příliš složité na pilotování – jen příliš složité na paměť jednoho člověka. Řešením byl list papíru.
   conceptIds: [plan-ponoru, tym]
   source: { title: The Checklist Manifesto, author: 'Gawande A.', year: 2009 }
+
+- id: squalus-helium
+  text: >-
+    Helium v dýchací směsi poprvé zachraňovalo životy roku 1939. Když se u pobřeží Nové Anglie potopila ponorka USS Squalus do 74 metrů,
+    potápěči amerického námořnictva při vyprošťování použili helioxové směsi, které do té doby existovaly jen v pokusech.
+  conceptIds: [helium, hluboky-vzduch]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7 – History of Diving', author: Naval Sea Systems Command, year: 2016, note: Hloubku ověřit. }
+  needs_review: true
+
+- id: meyer-overton
+  text: >-
+    Kolem roku 1900 si Hans Meyer a Charles Overton nezávisle všimli, že narkotický účinek látky roste s její rozpustností v tucích.
+    Pravidlo dobře vysvětluje pořadí helium – dusík – argon. Právě podle něj by měl být kyslík narkotičtější než dusík.
+  conceptIds: [dusikova-narkoza, narkoticnost-kysliku]
+  source: { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition – Inert Gas Narcosis", author: 'Bennett P. B., Rostain J. C.', year: 2003 }
+
+- id: opojeni-hlubinou
+  text: >-
+    Jacques-Yves Cousteau nazval narkózu „opojení velkých hloubek“. V knize Svět ticha popisuje, jak jeho kolega Frédéric Dumas
+    při pokusném sestupu na vzduchu podepsal tabulku v 62 metrech a později si z toho pamatoval jen zlomky.
+  conceptIds: [dusikova-narkoza, hluboky-vzduch]
+  source: { title: 'Le Monde du silence (Svět ticha)', author: 'Cousteau J.-Y., Dumas F.', year: 1953, note: Hloubku a podrobnosti ověřit. }
+  needs_review: true
+
+- id: hlas-na-heliu
+  text: >-
+    „Kačeří“ hlas po nadechnutí helia nezpůsobuje změna hlasivek. Zvuk se v heliu šíří téměř třikrát rychleji než ve vzduchu
+    a dutiny úst a hrtanu proto rezonují na vyšších tónech. Saturační potápěči používají elektronické korektory řeči.
+  conceptIds: [helium]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7 – Mixed Gas Diving', author: Naval Sea Systems Command, year: 2016 }
+
+- id: argon-v-obleku
+  text: >-
+    Argon vede teplo asi o třetinu hůř než vzduch, a proto si ho někteří potápěči plní do suchého obleku z malé samostatné lahve.
+    Měřený přínos je menší, než by odpovídalo teorii – záleží hlavně na tom, zda se z obleku vzduch předem vypláchne.
+  conceptIds: [argon, ztrata-tepla]
+  source: { title: 'Argon used as dry suit insulation gas for cold-water diving. Extreme Physiology & Medicine 2:17', author: 'Vrijdag X. C. E. et al.', year: 2013, note: Závěr studie ověřit. }
+  needs_review: true
+
+- id: atlantis-hpns
+  text: >-
+    Nervový syndrom vysokého tlaku zkoumal Peter Bennett na Dukeově univerzitě. V sérii pokusů Atlantis kolem roku 1980 dosáhli dobrovolníci v komoře
+    tlaku odpovídajícího 686 metrům. Pomohlo přidat do helia trochu dusíku: jeho narkotický účinek třes tlumí.
+  conceptIds: [hpns]
+  source: { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition – The High Pressure Nervous Syndrome", author: 'Bennett P. B., Rostain J. C.', year: 2003, note: Hloubku a rok ověřit. }
+  needs_review: true
+
+- id: helium-cena
+  text: >-
+    Helium se nevyrábí, těží se: je vedlejším produktem zpracování zemního plynu a vzniklo radioaktivním rozpadem v zemské kůře.
+    Co unikne do atmosféry, je pro Zemi ztraceno. Proto je trimix drahý a proto se u velkých ponorů prosadily rebreathery.
+  conceptIds: [helium, trimix]
+  source: { title: 'Mineral Commodity Summaries – Helium', author: U.S. Geological Survey }
+
+- id: nedu-heliox-trimix
+  text: >-
+    Dlouho se věřilo, že dusík v trimixu dekompresi oproti helioxu urychluje. Pokus amerického námořnictva z roku 2015 srovnal oba plyny na stejném profilu
+    a rozdíl nenašel. Dekompresní modely přitom s heliem stále počítají jinak než s dusíkem.
+  conceptIds: [deko-s-heliem, difuze-helia]
+  source: { title: 'Decompression from He-N2-O2 (trimix) bounce dives is not more efficient than from He-O2 (heliox) bounce dives. NEDU TR 15-04', author: 'Doolette D. J., Gault K. A., Gerth W. A.', year: 2015 }
+  needs_review: true
+
+- id: analyzator-helia
+  text: >-
+    Podíl helia se měří jinak než kyslík. Analyzátory využívají buď jeho vysokou tepelnou vodivost, nebo rychlost zvuku ve směsi –
+    obojí se u helia výrazně liší od dusíku i kyslíku.
+  conceptIds: [analyza-helia]
+  source: { title: 'TDI Trimix Diver Manual', author: Technical Diving International }
+
+- id: posledni-ponor
+  text: >-
+    Kniha Bernieho Chowdhuryho The Last Dive popisuje komunitu vrakových potápěčů na východním pobřeží USA začátkem 90. let,
+    kdy byl trimix nový, drahý a mnohými odmítaný. Právě tehdejší nehody na vzduchu přispěly k tomu, že se helium stalo samozřejmostí.
+  conceptIds: [hluboky-vzduch, trimix]
+  source: { title: The Last Dive, author: 'Chowdhury B.', year: 2000 }
