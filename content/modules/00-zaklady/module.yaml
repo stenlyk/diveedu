@@ -6,4 +6,4 @@ rig: oc
 prerequisites: []
 order: 0
 passThreshold: 0.8
-status: draft
+status: published

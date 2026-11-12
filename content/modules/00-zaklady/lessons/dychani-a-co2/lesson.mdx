@@ -1,0 +1,88 @@
+<Hook>
+
+Zadrž dech. Po minutě tě tělo donutí se nadechnout.
+
+To nutkání není nedostatek kyslíku – toho máš v krvi ještě na minuty. Je to oxid uhličitý. A pod vodou se s ním dá udělat chyba, o které nevíš, dokud není pozdě.
+
+</Hook>
+
+<Principle>
+
+V plicních sklípcích přechází kyslík do krve a opačným směrem odchází CO2, který vzniká v tkáních při spalování živin. Čím víc pracuješ, tím víc CO2 vyrábíš.
+
+Dýchání řídí hlavně **CO2**, ne kyslík. Dechové centrum hlídá jeho hladinu v krvi a podle ní zrychluje nebo prohlubuje dech. Na pokles kyslíku reaguje tělo slabě a pozdě.
+Z toho plynou dvě nepříjemné vlastnosti:
+
+- <Term cs="retence CO2" /> **se ozve**: dušnost, zrychlený dech, bolest hlavy, úzkost. Jenže pod tlakem a při soustředění na úkol si jí potápěč často nevšimne včas.
+- **Hypoxie nevaruje.** Při nedostatku kyslíku přichází zmatenost a bezvědomí bez pocitu dušení.
+
+Pod vodou se CO2 hromadí snadněji než na souši:
+
+- hustý plyn zvyšuje odpor a omezuje ventilaci,
+- automatika a náustek přidávají odpor a mrtvý prostor,
+- tělo ponořené ve vodě dýchá proti tlakovému rozdílu mezi plícemi a automatikou,
+- potápěč „šetří plyn“ a záměrně dýchá méně.
+
+Šetření dechem je past. Ušetří pár barů a zaplatí se vyšším CO2 – a ten zesiluje dusíkovou narkózu, snižuje práh kyslíkových křečí a může spustit paniku.
+
+Správná reakce na dušnost: **zastav, přestaň pracovat, vydechuj dlouze a úplně**, případně vystoupej o pár metrů do menší hustoty. Dýchej pomalu a zhluboka, ne mělce a rychle.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Povrchová spotřeba (SAC) je to, co prodýcháš za minutu na hladině. Není konstantní: při námaze nebo stresu se snadno zdvojnásobí a ztrojnásobí.
+Stejně roste i výroba CO2 – spotřeba plynu je tak hrubý ukazatel toho, kolik CO2 musíš právě vydýchat.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Klidný ponor.** SAC 20 l/min, 20 minut ve 30 m:
+
+<Worked fn="gasConsumed" args={[20, 30, 20]} expected={1600} tolerance={0.01} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+**Stejný ponor proti proudu.** Námaha zvedne SAC na 40 l/min:
+
+<Worked fn="gasConsumed" args={[40, 30, 20]} expected={3200} tolerance={0.01} unit="l" decimals={0} />
+
+Dvojnásobek plynu znamená i zhruba dvojnásobek CO2, který musí projít plícemi – ve vzduchu čtyřikrát hustším než na hladině.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'šetříš plyn a po každém nádechu chvíli zadržuješ dech?', effect: 'Ventilace klesne, CO2 stoupne. Ušetříš několik barů, ale zesílíš narkózu, snížíš odolnost vůči kyslíkovým křečím a po ponoru tě bude bolet hlava.' },
+  { label: 'plaveš tvrdě proti proudu ve 40 m na vzduchu?', effect: 'Svaly vyrobí několikanásobek CO2 a plyn o hustotě přes 6 g/l ho nestihne odvést. Dušnost se stupňuje, i když dýcháš ze všech sil. Jediné řešení je zastavit a chytit se.' },
+  { label: 'máš špatně seřízenou automatiku, která dýchá ztuha?', effect: 'Odpor automatiky se sčítá s odporem dýchacích cest. Na hladině to nepoznáš, v hloubce to může být rozdíl mezi klidným ponorem a retencí CO2.' },
+  { label: 'cítíš dušnost a začneš dýchat rychle a mělce?', effect: 'Mělký dech provětrává hlavně mrtvý prostor – dýchací cesty, kde výměna plynů neprobíhá. CO2 dál stoupá. Pomůže opak: pomalý, hluboký dech s důrazem na výdech.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="lanphier-co2" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

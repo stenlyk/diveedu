@@ -1,17 +1,107 @@
-- from: hloubka
-  to: absolutni-tlak
-  type: zvysuje
-  explanation: Každých 10 m mořské vody přidá k okolnímu tlaku 1 bar.
-  lessonId: tlak-a-hloubka
+# from → to, typ, jednovětné vysvětlení, lekce
+# ── Modul 0 ──────────────────────────────────────────────────────────────────
+- { from: hloubka, to: absolutni-tlak, type: zvysuje, lessonId: tlak-a-hloubka, explanation: Každých 10 m mořské vody přidá k okolnímu tlaku 1 bar. }
+- { from: vzorec-p-abs, to: hloubka, type: pocita_se_z, lessonId: tlak-a-hloubka, explanation: Jediným vstupem vzorce je hloubka; atmosféra se přičítá jako konstanta 1 bar. }
+- { from: vzorec-p-abs, to: absolutni-tlak, type: je_predpokladem, lessonId: tlak-a-hloubka, explanation: 'Bez vzorce nejde absolutní tlak spočítat a s ním ani ppO2, spotřebu nebo hustotu plynu.' }
 
-- from: vzorec-p-abs
-  to: hloubka
-  type: pocita_se_z
-  explanation: Jediným vstupem vzorce je hloubka; atmosféra se přičítá jako konstanta 1 bar.
-  lessonId: tlak-a-hloubka
+- { from: absolutni-tlak, to: objem-plynu, type: snizuje, lessonId: boyle-objem, explanation: 'Při dvojnásobném tlaku zabere stejné množství plynu poloviční objem.' }
+- { from: vzorec-boyle, to: absolutni-tlak, type: pocita_se_z, lessonId: boyle-objem, explanation: Boyleův zákon pracuje s poměrem absolutních tlaků na začátku a na konci. }
+- { from: objem-plynu, to: barotrauma-plic, type: zpusobuje, lessonId: boyle-objem, explanation: 'Plyn, který se při výstupu rozpíná a nemůže z plic ven, je roztrhne.' }
+- { from: objem-plynu, to: vztlak, type: zvysuje, lessonId: boyle-objem, explanation: 'Větší objem plynu v kompenzátoru nebo obleku vytlačí víc vody.' }
 
-- from: vzorec-p-abs
-  to: absolutni-tlak
-  type: je_predpokladem
-  explanation: Bez vzorce nejde absolutní tlak spočítat a s ním ani ppO2, spotřebu nebo hustotu plynu.
-  lessonId: tlak-a-hloubka
+- { from: absolutni-tlak, to: hustota-plynu, type: zvysuje, lessonId: hustota-vzduchu, explanation: 'Stlačený plyn má v každém litru víc molekul, takže je úměrně těžší.' }
+- { from: hustota-plynu, to: prace-dychani, type: zvysuje, lessonId: hustota-vzduchu, explanation: 'Hustší plyn klade v dýchacích cestách a v automatice větší odpor.' }
+- { from: prace-dychani, to: retence-co2, type: zpusobuje, lessonId: hustota-vzduchu, explanation: 'Když dýchání stojí příliš úsilí, tělo ventiluje méně a CO2 se hromadí.' }
+
+- { from: absolutni-tlak, to: parcialni-tlak, type: zvysuje, lessonId: dalton-parcialni-tlaky, explanation: Parciální tlak každé složky roste ve stejném poměru jako celkový tlak. }
+- { from: vzorec-dalton, to: absolutni-tlak, type: pocita_se_z, lessonId: dalton-parcialni-tlaky, explanation: Parciální tlak je frakce plynu krát absolutní tlak. }
+- { from: parcialni-tlak, to: ppo2, type: je_predpokladem, lessonId: dalton-parcialni-tlaky, explanation: ppO2 je parciální tlak jedné konkrétní složky – kyslíku. }
+- { from: parcialni-tlak, to: ppn2, type: je_predpokladem, lessonId: dalton-parcialni-tlaky, explanation: ppN2 je parciální tlak dusíku. }
+- { from: vzduch, to: kyslik, type: je_predpokladem, lessonId: dalton-parcialni-tlaky, explanation: 'Vzduch je výchozí směs: z jeho 21 % kyslíku se odvozují všechny ostatní.' }
+- { from: vzduch, to: dusik, type: je_predpokladem, lessonId: dalton-parcialni-tlaky, explanation: 'Zbylých 79 % vzduchu se ve výpočtech bere jako dusík.' }
+- { from: ppn2, to: dusikova-narkoza, type: zpusobuje, lessonId: dalton-parcialni-tlaky, explanation: 'Čím vyšší parciální tlak dusíku, tím silnější narkotický účinek.' }
+- { from: ppo2, to: hypoxie, type: zmirnuje, lessonId: dalton-parcialni-tlaky, explanation: 'Dostatečné ppO2 chrání před hypoxií; pod přibližně 0,16 bar ochrana končí.' }
+
+- { from: parcialni-tlak, to: rozpustnost-plynu, type: zvysuje, lessonId: henry-rozpousteni, explanation: 'Podle Henryho zákona kapalina pojme tím víc plynu, čím vyšší je jeho parciální tlak.' }
+- { from: ppn2, to: syceni-tkani, type: zpusobuje, lessonId: henry-rozpousteni, explanation: 'Dusík se rozpouští v tkáních, dokud se jeho tlak v tkáni nevyrovná s ppN2 v dýchaném plynu.' }
+- { from: syceni-tkani, to: dcs, type: je_predpokladem, lessonId: henry-rozpousteni, explanation: 'Bez nasycení tkání inertním plynem nemá při výstupu co tvořit bubliny.' }
+- { from: rozpustnost-plynu, to: syceni-tkani, type: je_predpokladem, lessonId: henry-rozpousteni, explanation: 'Různé tkáně pojmou různé množství plynu a sytí se různě rychle.' }
+
+- { from: teplota, to: tlak-v-lahvi, type: zvysuje, lessonId: teplota-a-tlak, explanation: 'Při stálém objemu roste tlak plynu úměrně absolutní teplotě.' }
+- { from: tlak-v-lahvi, to: objem-plynu, type: zvysuje, lessonId: teplota-a-tlak, explanation: 'Zásoba plynu v litrech je objem lahve krát tlak – ale jen když je lahev vychladlá.' }
+
+- { from: vztlak, to: trim, type: je_predpokladem, lessonId: vztlak-a-trim, explanation: 'Vodorovnou polohu lze udržet jen s neutrálním vztlakem a správně rozloženou zátěží.' }
+- { from: hloubka, to: vztlak, type: snizuje, lessonId: vztlak-a-trim, explanation: 'S hloubkou se stlačuje plyn v obleku a kompenzátoru a potápěč těžkne.' }
+- { from: trim, to: namaha, type: snizuje, lessonId: vztlak-a-trim, explanation: Vodorovná poloha má nejmenší odpor a nevyžaduje stálé kopání k udržení hloubky. }
+
+- { from: hloubka, to: ztrata-tepla, type: zvysuje, lessonId: svetlo-zvuk-teplo, explanation: 'Hlouběji bývá chladněji, izolace je stlačená a hustší plyn odvádí dechem víc tepla.' }
+- { from: ztrata-tepla, to: dcs, type: zhorsuje, lessonId: svetlo-zvuk-teplo, explanation: Prochladnutí během dekomprese omezí prokrvení a zpomalí vysycování. }
+- { from: teplota, to: ztrata-tepla, type: snizuje, lessonId: svetlo-zvuk-teplo, explanation: 'Čím teplejší voda, tím pomaleji tělo ztrácí teplo.' }
+
+- { from: namaha, to: retence-co2, type: zvysuje, lessonId: dychani-a-co2, explanation: Pracující svaly produkují několikanásobně víc CO2. }
+- { from: retence-co2, to: dusikova-narkoza, type: zhorsuje, lessonId: dychani-a-co2, explanation: 'CO2 je sám narkotický a rozšiřuje mozkové cévy, takže narkózu zesiluje.' }
+- { from: retence-co2, to: cns-toxicita, type: zhorsuje, lessonId: dychani-a-co2, explanation: 'Rozšířené mozkové cévy přivedou k mozku víc kyslíku a sníží práh křečí.' }
+- { from: prace-dychani, to: namaha, type: zvysuje, lessonId: dychani-a-co2, explanation: 'Dýchací svaly při vysokém odporu samy spotřebují významnou část kyslíku.' }
+- { from: hypoxie, to: namaha, type: zhorsuje, lessonId: dychani-a-co2, explanation: Při nedostatku kyslíku svaly i mozek selhávají dřív. }
+
+- { from: ppo2, to: transport-kysliku, type: zvysuje, lessonId: obeh-a-transport, explanation: 'Hemoglobin je nasycený už na hladině; vyšší ppO2 přidává hlavně kyslík rozpuštěný v plazmě.' }
+- { from: transport-kysliku, to: hypoxie, type: zmirnuje, lessonId: obeh-a-transport, explanation: Fungující přenos kyslíku krví udržuje zásobení tkání. }
+- { from: transport-kysliku, to: syceni-tkani, type: je_predpokladem, lessonId: obeh-a-transport, explanation: 'Stejná krev, která nese kyslík, roznáší do tkání i rozpuštěný inertní plyn.' }
+
+- { from: absolutni-tlak, to: barotrauma-ucha, type: zpusobuje, lessonId: usi-a-vyrovnani, explanation: 'Rostoucí tlak stlačí vzduch ve středouší a vtlačí bubínek dovnitř.' }
+- { from: vyrovnani-tlaku, to: barotrauma-ucha, type: zmirnuje, lessonId: usi-a-vyrovnani, explanation: Včasné a časté vyrovnávání udrží tlak ve středouší stejný jako v okolí. }
+- { from: vzorec-boyle, to: vyrovnani-tlaku, type: je_predpokladem, lessonId: usi-a-vyrovnani, explanation: 'Boyle říká, proč je vyrovnávat nejvíc potřeba v prvních metrech.' }
+
+# ── Modul 1 ──────────────────────────────────────────────────────────────────
+- { from: frakce-kysliku, to: ppn2, type: snizuje, lessonId: proc-nitrox, explanation: 'Víc kyslíku ve směsi znamená méně dusíku, a tedy nižší ppN2 ve stejné hloubce.' }
+- { from: frakce-kysliku, to: ppo2, type: zvysuje, lessonId: proc-nitrox, explanation: 'Bohatší směs má ve stejné hloubce vyšší parciální tlak kyslíku.' }
+- { from: nitrox, to: syceni-tkani, type: snizuje, lessonId: proc-nitrox, explanation: 'Nižší ppN2 znamená pomalejší sycení a kratší nebo žádnou dekompresi.' }
+- { from: nitrox, to: frakce-kysliku, type: je_predpokladem, lessonId: proc-nitrox, explanation: Každý nitrox je určen právě svou frakcí kyslíku. }
+
+- { from: vzorec-mod, to: frakce-kysliku, type: pocita_se_z, lessonId: ppo2-a-mod, explanation: 'MOD se počítá z frakce kyslíku a zvoleného limitu ppO2.' }
+- { from: hloubka, to: prekroceni-mod, type: zpusobuje, lessonId: ppo2-a-mod, explanation: Sestup pod MOD vyžene ppO2 nad plánovaný limit. }
+- { from: prekroceni-mod, to: cns-toxicita, type: zpusobuje, lessonId: ppo2-a-mod, explanation: 'Nad limitem ppO2 prudce roste riziko kyslíkových křečí.' }
+- { from: vzorec-mod, to: prekroceni-mod, type: zmirnuje, lessonId: ppo2-a-mod, explanation: 'Kdo zná MOD své směsi a má ji na lahvi, ví, kde se zastavit.' }
+
+- { from: ppo2, to: cns-toxicita, type: zpusobuje, lessonId: cns-toxicita, explanation: 'Riziko křečí roste s parciálním tlakem kyslíku a s délkou expozice.' }
+- { from: namaha, to: cns-toxicita, type: zhorsuje, lessonId: cns-toxicita, explanation: 'Těžká práce zvyšuje tvorbu CO2 a prokrvení mozku, práh křečí klesá.' }
+- { from: ztrata-tepla, to: cns-toxicita, type: zhorsuje, lessonId: cns-toxicita, explanation: Chlad patří mezi faktory spojované s nižší tolerancí kyslíku. }
+
+- { from: vzorec-cns, to: ppo2, type: pocita_se_z, lessonId: cns-hodiny, explanation: 'Limit expozice se čte z tabulky NOAA podle ppO2.' }
+- { from: vzorec-cns, to: cns-toxicita, type: zmirnuje, lessonId: cns-hodiny, explanation: Sledování CNS hodin drží expozici v mezích ověřených praxí. }
+
+- { from: ppo2, to: plicni-toxicita, type: zpusobuje, lessonId: plicni-toxicita-otu, explanation: 'Nad 0,5 bar kyslík při dlouhé expozici dráždí a poškozuje plíce.' }
+- { from: vzorec-otu, to: ppo2, type: pocita_se_z, lessonId: plicni-toxicita-otu, explanation: OTU se počítá z ppO2 a doby expozice. }
+- { from: vzorec-otu, to: plicni-toxicita, type: zmirnuje, lessonId: plicni-toxicita-otu, explanation: Sčítání OTU přes dny hlídá plicní zátěž na expedicích a při léčbě. }
+
+- { from: vzorec-ead, to: frakce-kysliku, type: pocita_se_z, lessonId: ekvivalentni-vzduchova-hloubka, explanation: EAD vychází z podílu dusíku ve směsi a ze skutečné hloubky. }
+- { from: vzorec-ead, to: ppn2, type: je_predpokladem, lessonId: ekvivalentni-vzduchova-hloubka, explanation: 'EAD převádí ppN2 nitroxu na hloubku, kde by stejné ppN2 měl vzduch.' }
+- { from: vzorec-ead, to: syceni-tkani, type: je_predpokladem, lessonId: ekvivalentni-vzduchova-hloubka, explanation: Díky EAD lze pro nitrox použít vzduchové dekompresní tabulky. }
+
+- { from: vzorec-best-mix, to: absolutni-tlak, type: pocita_se_z, lessonId: nejlepsi-smes, explanation: Best mix je limit ppO2 dělený absolutním tlakem v plánované hloubce. }
+- { from: vzorec-best-mix, to: vzorec-mod, type: je_predpokladem, lessonId: nejlepsi-smes, explanation: 'Best mix a MOD jsou tentýž vzorec čtený opačným směrem.' }
+- { from: vzorec-best-mix, to: nitrox, type: je_predpokladem, lessonId: nejlepsi-smes, explanation: Výsledkem výpočtu je konkrétní nitrox pro daný ponor. }
+
+- { from: transport-kysliku, to: kyslikove-okno, type: zpusobuje, lessonId: kyslikove-okno, explanation: 'Tkáně kyslík spotřebují, takže ve venózní krvi jeho parciální tlak chybí.' }
+- { from: ppo2, to: kyslikove-okno, type: zvysuje, lessonId: kyslikove-okno, explanation: 'Čím víc kyslíku a méně inertního plynu dýcháš, tím je okno širší.' }
+- { from: kyslikove-okno, to: syceni-tkani, type: snizuje, lessonId: kyslikove-okno, explanation: 'Širší okno znamená větší spád, kterým inertní plyn odchází z tkání.' }
+
+- { from: analyza-plynu, to: zamena-plynu, type: zmirnuje, lessonId: analyza-a-znaceni, explanation: 'Kdo si lahev sám změřil, ví, co v ní je.' }
+- { from: analyzator-kysliku, to: analyza-plynu, type: je_predpokladem, lessonId: analyza-a-znaceni, explanation: Bez zkalibrovaného analyzátoru nelze složení ověřit. }
+- { from: znaceni-lahvi, to: zamena-plynu, type: zmirnuje, lessonId: analyza-a-znaceni, explanation: 'Čitelná MOD na lahvi umožní chybu zachytit potápěči i partnerovi.' }
+- { from: zamena-plynu, to: prekroceni-mod, type: zpusobuje, lessonId: analyza-a-znaceni, explanation: Bohatá směs dýchaná hlouběji než její MOD znamená okamžité překročení limitu ppO2. }
+- { from: analyza-plynu, to: znaceni-lahvi, type: je_predpokladem, lessonId: analyza-a-znaceni, explanation: Na štítek se píše naměřená hodnota, ne objednaná. }
+
+- { from: ean50, to: kyslikove-okno, type: zvysuje, lessonId: deko-plyny-a-prepnuti, explanation: Bohatá směs na mělkých zastávkách otevírá kyslíkové okno a zkracuje dekompresi. }
+- { from: prepnuti-plynu, to: zamena-plynu, type: zmirnuje, lessonId: deko-plyny-a-prepnuti, explanation: 'Postup s kontrolou hloubky, štítku a potvrzením partnera zachytí sáhnutí po špatné lahvi.' }
+- { from: deko-lahev, to: prepnuti-plynu, type: je_predpokladem, lessonId: deko-plyny-a-prepnuti, explanation: Dekompresní plyn se nese v samostatné označené lahvi s vlastní automatikou. }
+- { from: ean50, to: prekroceni-mod, type: zhorsuje, lessonId: deko-plyny-a-prepnuti, explanation: 'Čím bohatší směs, tím mělčí MOD a tím vážnější následek záměny.' }
+
+- { from: kyslik, to: kyslikovy-pozar, type: zpusobuje, lessonId: kyslikova-cistota, explanation: 'Ve vysoké koncentraci kyslíku hoří i materiály, které na vzduchu nehoří.' }
+- { from: kyslikova-cistota, to: kyslikovy-pozar, type: zmirnuje, lessonId: kyslikova-cistota, explanation: Čisté vybavení s kompatibilním mazivem a těsněním odstraní palivo. }
+- { from: tlak-v-lahvi, to: kyslikovy-pozar, type: zhorsuje, lessonId: kyslikova-cistota, explanation: Rychlé otevření ventilu pod vysokým tlakem plyn prudce ohřeje – to je zdroj zapálení. }
+
+- { from: michani-parcialnim-tlakem, to: kyslikova-cistota, type: je_predpokladem, lessonId: michani-nitroxu, explanation: 'Při míchání parciálním tlakem teče do lahve čistý kyslík, takže lahev i ventil musí být kyslíkově čisté.' }
+- { from: michani-parcialnim-tlakem, to: nitrox, type: zpusobuje, lessonId: michani-nitroxu, explanation: Výsledkem míchání je nitrox požadovaného složení. }
+- { from: michani-parcialnim-tlakem, to: analyza-plynu, type: je_predpokladem, lessonId: michani-nitroxu, explanation: 'Výpočet předpokládá ideální plyn; skutečné složení ukáže až analýza.' }
+- { from: teplota, to: michani-parcialnim-tlakem, type: zhorsuje, lessonId: michani-nitroxu, explanation: 'Ohřátá lahev ukazuje vyšší tlak, než jaký bude po vychladnutí, a směs vyjde jinak.' }

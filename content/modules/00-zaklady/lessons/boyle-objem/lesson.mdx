@@ -1,0 +1,77 @@
+<Hook>
+
+Potápěč ve 30 m se zhluboka nadechne – v plicích má šest litrů vzduchu. Pak se něco pokazí a on vyrazí k hladině se zadrženým dechem.
+
+Těch šest litrů by na hladině chtělo zabrat <Calc fn="boyleVolume" args={[6, 30, 0]} unit="l" />. Plíce jich pojmou šest. Zbytek si cestu najde.
+
+</Hook>
+
+<Principle>
+
+Plyn je stlačitelný, voda a tkáně prakticky ne. Když na plyn zatlačíš dvakrát větší silou, zmenší se na polovinu – a naopak.
+Součin tlaku a objemu zůstává stejný.
+
+Pro potápěče z toho plynou čtyři věci:
+
+- **Plíce.** Při výstupu se plyn v plicích rozpíná. Pokud nemůže ven, plicní sklípky prasknou a bubliny se dostanou do krve – <Term cs="arteriální plynová embolie" />. Proto platí první pravidlo potápění: nikdy nezadržuj dech.
+- **Vztlak.** Plyn v kompenzátoru a v suchém obleku se při sestupu stlačuje a při výstupu rozpíná. Kdo ho včas nevypouští, zrychluje.
+- **Dutiny.** Uši, vedlejší nosní dutiny a maska jsou vzduchové prostory, které je třeba vyrovnávat.
+- **Spotřeba.** V hloubce obsahuje každý nádech víc molekul plynu, takže lahev ubývá rychleji.
+
+Nejdůležitější je, **kde** se objem mění nejvíc. Mezi 10 m a hladinou se zdvojnásobí. Mezi 40 a 30 m vzroste jen <Calc fn="pressureRatio" args={[30, 40]} decimals={2} />krát.
+Posledních deset metrů je proto nejnebezpečnější část každého výstupu.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="boyle" />
+
+Do vzorce patří vždy <Term cs="absolutní tlak" />, nikdy hloubka. Nejčastější chyba je dosadit „30“ a „10“ místo tlaků v těchto hloubkách –
+výsledek pak vyjde trojnásobek místo dvojnásobku.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Kompenzátor při výstupu.** Ve 30 m máš v kompenzátoru 4 l plynu. Kolik ho bude v 10 m, když nic nevypustíš?
+
+<Worked fn="boyleVolume" args={[4, 30, 10]} expected={8} tolerance={0.001} steps="boyleSteps" unit="l" decimals={1} />
+
+**Plíce v mělčině.** Plný nádech 6 l v 10 m a výstup na hladinu se zadrženým dechem:
+
+<Worked fn="boyleVolume" args={[6, 10, 0]} expected={12} tolerance={0.001} steps="boyleSteps" unit="l" decimals={1} />
+
+K roztržení plic stačí přetlak, který odpovídá výstupu o jediný metr až dva s plnými plícemi. Stává se to i v bazénu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="boyle" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="boyle-1662" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

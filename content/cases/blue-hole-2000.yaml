@@ -1,0 +1,47 @@
+id: blue-hole-2000
+title: 'Blue Hole, Dahab: hluboký ponor na vzduch'
+year: 2000
+location: 'Blue Hole, Dahab, Egypt'
+rig: oc
+moduleIds: [nitrox, zaklady]
+anonymized: false
+context: >-
+  Blue Hole u Dahabu je zatopená krasová prohlubeň hned u břehu. Do otevřeného moře z ní vede tunel zvaný Arch,
+  jehož strop leží přibližně v 55 metrech. Místo je snadno dostupné a láká potápěče, kteří chtějí Archem proplavat na jedné lahvi vzduchu.
+  V dubnu 2000 zde při ponoru na vzduch zahynul mladý instruktor potápění Yuri Lipski. Měl u sebe kameru, jejíž záznam se dochoval;
+  případ je proto jedním z nejznámějších dokladů toho, jak vypadá ztráta kontroly v hloubce na vzduchu.
+  Uvádíme jen údaje, které se ve veřejných zdrojích shodují. Přesná data, hloubky a vybavení je třeba ověřit.
+profile: []
+timeline:
+  - { when: Sestup, what: 'Potápěč sestupuje sám, na vzduchu, s jednou lahví.' }
+  - { when: Pod stropem Archu, what: 'Sestup pokračuje pod hloubku, ve které je vzduch použitelný. Podle veřejně popisovaného záznamu se nezastaví.' }
+  - { when: Dno, what: 'Potápěč dosáhne dna v hloubce výrazně přes 90 m. Uvádí se, že záznam zachycuje zmatené jednání a potíže s dýcháním.' }
+  - { when: Následující den, what: 'Tělo vyzvedl místní technický potápěč Tarek Omar.' }
+errorChain:
+  - { layer: planovani, description: 'Ponor do hloubky přes 50 m plánovaný na vzduch, bez helia, bez dekompresních plynů a bez týmu.', conceptIds: [dusikova-narkoza, hustota-plynu] }
+  - { layer: plyn, description: 'Vzduch v cílové hloubce překračuje limit ppO2, limit hustoty i jakoukoli rozumnou narkotickou hloubku. Jedna lahev nedává na takový ponor rezervu.', conceptIds: [ppo2, prekroceni-mod, hustota-plynu] }
+  - { layer: vybaveni, description: 'Podle popisů jednoduchá rekreační konfigurace bez záložních zdrojů plynu a vztlaku. Podrobnosti nejsou spolehlivě doložené.', conceptIds: [vztlak] }
+  - { layer: prostredi, description: 'Strop Archu leží hluboko, dno pod ním ještě hlouběji a stěna svádí k dalšímu klesání. Čistá teplá voda zkresluje vnímání hloubky.', conceptIds: [hloubka] }
+  - { layer: lidsky-faktor, description: 'Ponor o samotě: nikdo nezastaví sestup a nikdo nepomůže. Narkóza bere úsudek dřív, než si to potápěč uvědomí.', conceptIds: [dusikova-narkoza, retence-co2] }
+physiology: >-
+  Pravděpodobný mechanismus (hypotéza): s hloubkou roste parciální tlak dusíku a narkóza zhoršuje úsudek i schopnost řešit jednoduché úkoly,
+  například zastavit sestup přifouknutím kompenzátoru. Vzduch je v této hloubce zároveň několikanásobně hustší, práce dýchání prudce roste a hromadí se CO2.
+  Ten narkózu dál zesiluje a vyvolává dušnost a paniku. Parciální tlak kyslíku je nad pracovním limitem. Řetěz se uzavírá sám do sebe:
+  čím hlouběji, tím horší úsudek, a čím horší úsudek, tím menší šance sestup zastavit.
+calcTasks:
+  - { prompt: 'Jaké je ppO2 vzduchu u stropu Archu v 55 m?', fn: ppO2, args: [0.21, 55], unit: bar, tolerance: 0.02 }
+  - { prompt: 'Jaká je hustota vzduchu v 55 m?', fn: airDensity, args: [55], unit: g/l, tolerance: 0.1 }
+  - { prompt: 'Jaké je ppO2 vzduchu v 90 m?', fn: ppO2, args: [0.21, 90], unit: bar, tolerance: 0.02 }
+  - { prompt: 'Jaká je hustota vzduchu v 90 m?', fn: airDensity, args: [90], unit: g/l, tolerance: 0.1 }
+  - { prompt: 'Kolik litrů vzduchu spotřebuješ za 5 minut v 90 m při stresové spotřebě 30 l/min?', fn: gasConsumed, args: [30, 90, 5], unit: l, tolerance: 20 }
+preventions:
+  - 'Hloubkový limit vzduchu daný narkózou a hustotou (kolem 30–40 m) – a pod ním helium.'
+  - 'Plán ponoru s pevnou maximální hloubkou a plynem spočítaným včetně rezervy.'
+  - 'Tým: partner, který sestup zastaví, když ty už nemůžeš.'
+  - 'Výcvik odpovídající prostředí. Průplav stropem v 55 m je technický ponor, ne rekreační výzva.'
+sources:
+  - { title: 'Veřejně dostupné popisy nehody a rozhovory s Tarekem Omarem', note: 'Sekundární zdroje; data, hloubky a vybavení ověřit proti primárním zdrojům.' }
+  - { title: 'Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving', author: 'Anthony G., Mitchell S. J.', year: 2016, note: 'Limity hustoty plynu.' }
+  - { title: 'NOAA Diving Manual, 6th Edition', author: NOAA, year: 2017 }
+certainty: hypotéza
+needs_review: true

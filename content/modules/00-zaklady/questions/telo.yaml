@@ -1,0 +1,181 @@
+- id: co2-co-ridi-dech
+  type: choice
+  conceptIds: [retence-co2, hypoxie]
+  difficulty: 1
+  prompt: Co je hlavním podnětem, který tě nutí nadechnout se?
+  options:
+    - { text: Stoupající hladina CO2 v krvi, correct: true }
+    - { text: Klesající hladina kyslíku v krvi, explanation: 'Na pokles kyslíku reaguje tělo slabě a pozdě. Proto hypoxie nevaruje.' }
+    - { text: Stoupající hladina dusíku v krvi, explanation: Dusík dýchání neřídí. }
+    - { text: Tlak vody na hrudník, explanation: 'Tlak dýchání ztěžuje, ale potřebu nádechu nevyvolává.' }
+  explanation: 'Dechové centrum hlídá CO2. Proto můžeš ztratit vědomí z nedostatku kyslíku bez pocitu dušení.'
+  backToLessonId: dychani-a-co2
+
+- id: co2-setreni-dechem
+  type: why
+  conceptIds: [retence-co2, prace-dychani, dusikova-narkoza]
+  difficulty: 2
+  prompt: Proč je „šetření plynu“ zadržováním dechu špatný nápad?
+  options:
+    - { text: 'Snížená ventilace zvedne CO2, který zesiluje narkózu a snižuje práh kyslíkových křečí.', correct: true }
+    - { text: Zadržený dech v hloubce poškodí plíce., explanation: 'Plíce ohrožuje zadržený dech při výstupu. Tady je problém CO2.' }
+    - { text: 'Tělo při zadržení dechu spotřebuje víc kyslíku.', explanation: 'Spotřeba kyslíku se tím nezvýší; hromadí se CO2.' }
+    - { text: Automatika při přerušovaném dýchání zamrzá., explanation: Zamrzání s tím nesouvisí. }
+  explanation: 'Pár ušetřených barů nestojí za bolest hlavy, silnější narkózu a nižší odolnost vůči kyslíku.'
+  backToLessonId: dychani-a-co2
+
+- id: co2-dusledky
+  type: multi
+  conceptIds: [retence-co2, dusikova-narkoza, namaha]
+  difficulty: 2
+  prompt: Co způsobuje zvýšená hladina CO2 pod vodou?
+  options:
+    - { text: Zesiluje dusíkovou narkózu, correct: true }
+    - { text: Snižuje odolnost vůči kyslíkovým křečím, correct: true }
+    - { text: Vyvolává dušnost a může spustit paniku, correct: true }
+    - { text: Zpomaluje sycení tkání dusíkem, explanation: 'CO2 rozšiřuje cévy, sycení spíš zrychlí.' }
+  explanation: 'CO2 je za velkou částí vážných incidentů v hloubce – často nepřímo, přes narkózu, křeče nebo paniku.'
+  backToLessonId: dychani-a-co2
+
+- id: co2-spotreba-namaha
+  type: numeric
+  conceptIds: [namaha, hloubka, absolutni-tlak]
+  difficulty: 2
+  prompt: 'Při námaze máš povrchovou spotřebu {sac} l/min. Kolik litrů plynu spotřebuješ za {time} min v hloubce {depth} m?'
+  template: { fn: gasConsumed, params: { sac: { values: [15, 20, 30, 40] }, depth: { values: [10, 20, 30, 40] }, time: { values: [10, 20, 30] } }, args: [sac, depth, time], tolerance: 10, unit: l, decimals: 0 }
+  explanation: 'Spotřeba = SAC × absolutní tlak × čas. S námahou roste SAC, a s ní i množství CO2, které musíš vydýchat.'
+  backToLessonId: dychani-a-co2
+
+- id: co2-hypoxie-varovani
+  type: why
+  conceptIds: [hypoxie, ppo2, retence-co2]
+  difficulty: 2
+  prompt: Proč je hypoxie zrádnější než nadbytek CO2?
+  options:
+    - { text: 'Nevyvolá pocit dušení; přichází zmatenost a bezvědomí bez varování.', correct: true }
+    - { text: Protože je vždy doprovázena prudkou bolestí hlavy., explanation: Bolest hlavy patří spíš k CO2. Hypoxie často nebolí vůbec. }
+    - { text: Protože nastává jen ve velkých hloubkách., explanation: 'Naopak, hrozí mělko: s hypoxickou směsí u hladiny nebo při poruše přístroje.' }
+    - { text: Protože ji nelze odstranit., explanation: 'Odstraní ji směs s dostatečným ppO2. Problém je, že postižený neví, že ji potřebuje.' }
+  explanation: 'Dýchání řídí CO2, ne kyslík. Když je CO2 v normě, tělo o nedostatku kyslíku „neví“.'
+  backToLessonId: dychani-a-co2
+
+- id: co2-priznaky
+  type: match
+  conceptIds: [retence-co2, hypoxie, dusikova-narkoza]
+  difficulty: 2
+  prompt: Přiřaď typické projevy k příčině.
+  pairs:
+    - { left: 'Dušnost, zrychlený dech, bolest hlavy', right: Nadbytek CO2 }
+    - { left: 'Zmatenost a bezvědomí bez pocitu dušení', right: Hypoxie }
+    - { left: 'Zpomalené myšlení, zúžené vnímání, přehnaná sebejistota', right: Dusíková narkóza }
+  explanation: 'Projevy se v praxi překrývají a potápěč je na sobě pozná pozdě. Proto se jim předchází plánem, ne sebepozorováním.'
+  backToLessonId: dychani-a-co2
+
+- id: obeh-hemoglobin
+  type: choice
+  conceptIds: [transport-kysliku, ppo2, kyslik]
+  difficulty: 2
+  prompt: Jak je hemoglobin nasycený kyslíkem při dýchání vzduchu na hladině?
+  options:
+    - { text: 'Téměř úplně, z 97–98 %', correct: true }
+    - { text: Z 21 %, explanation: 'To je podíl kyslíku ve vzduchu, ne nasycení hemoglobinu.' }
+    - { text: Asi z poloviny, explanation: 'Tak nízké nasycení by znamenalo těžkou hypoxii.' }
+    - { text: 'Ze 75 %', explanation: 'To je přibližně nasycení žilní krve, která se vrací z tkání.' }
+  explanation: 'Hemoglobin je plný už na vzduchu. Vyšší ppO2 přidává hlavně kyslík rozpuštěný v plazmě.'
+  backToLessonId: obeh-a-transport
+
+- id: obeh-rozpusteny-kyslik
+  type: why
+  conceptIds: [transport-kysliku, ppo2, rozpustnost-plynu]
+  difficulty: 3
+  prompt: 'Proč dýchání kyslíku pod tlakem zlepší zásobení tkání, když je hemoglobin už plný?'
+  options:
+    - { text: 'Roste množství kyslíku rozpuštěného v plazmě, které je úměrné ppO2.', correct: true }
+    - { text: 'Hemoglobin pod tlakem naváže několikanásobně víc kyslíku.', explanation: Hemoglobin má pevný počet vazebných míst a je téměř plný už na hladině. }
+    - { text: Srdce pod tlakem pumpuje víc krve., explanation: Srdeční výdej tlak okolí nezvyšuje. }
+    - { text: Kyslík pod tlakem vytěsní z krve CO2., explanation: 'CO2 se odvádí dýcháním; kyslík ho nevytěsňuje.' }
+  explanation: 'Henryho zákon: rozpuštěného plynu je tolik, kolik odpovídá jeho parciálnímu tlaku. Na tom stojí hyperbarická léčba.'
+  backToLessonId: obeh-a-transport
+
+- id: obeh-prokrveni-syceni
+  type: why
+  conceptIds: [transport-kysliku, syceni-tkani, namaha]
+  difficulty: 2
+  prompt: Proč těžká práce na dně zvyšuje dekompresní zátěž?
+  options:
+    - { text: 'Zrychlený oběh přivede do tkání víc rozpuštěného inertního plynu.', correct: true }
+    - { text: Svaly při práci vyrábějí dusík., explanation: 'Tělo dusík nevyrábí; jen ho přijímá z dýchaného plynu.' }
+    - { text: Při práci se zvětší objem plic., explanation: Objem plic sycení tkání neurčuje. }
+    - { text: Rychlejší dýchání zvyšuje ppN2 v plicích., explanation: 'ppN2 je dán směsí a hloubkou, ne frekvencí dechu.' }
+  explanation: 'Inertní plyn roznáší krev. Čím lépe je tkáň prokrvená, tím rychleji se sytí – a při výstupu i vysycuje.'
+  backToLessonId: obeh-a-transport
+
+- id: obeh-ppo2-kyslik-6m
+  type: numeric
+  conceptIds: [ppo2, kyslik, transport-kysliku]
+  difficulty: 1
+  prompt: Jaké je ppO2 při dýchání čistého kyslíku v hloubce {depth} m?
+  template: { fn: ppO2, params: { depth: { values: [0, 3, 4, 5, 6] } }, fixed: { fO2: 1 }, args: [fO2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'U čistého kyslíku (frakce 1) se ppO2 rovná absolutnímu tlaku.'
+  backToLessonId: obeh-a-transport
+
+- id: usi-kde-nejvic
+  type: why
+  conceptIds: [barotrauma-ucha, vzorec-boyle, absolutni-tlak]
+  difficulty: 1
+  prompt: Proč jsou uši nejvíc ohrožené v prvních metrech sestupu?
+  options:
+    - { text: 'Tlak se tam poměrně mění nejrychleji, takže se vzduch ve středouší stlačuje nejvíc.', correct: true }
+    - { text: Voda u hladiny je chladnější., explanation: Teplota tu nehraje roli; a u hladiny bývá voda teplejší. }
+    - { text: 'Bubínek si na tlak postupně zvykne.', explanation: 'Bubínek si nezvyká. V hloubce jen stejné metry znamenají menší poměrnou změnu tlaku.' }
+    - { text: Eustachova trubice se v hloubce sama otevře., explanation: 'Sama se neotevře; otevíráš ji vyrovnáním v každé hloubce.' }
+  explanation: 'Z hladiny do 3 m se objem vzduchu zmenší skoro o čtvrtinu, ze 30 do 33 m jen o pár procent.'
+  backToLessonId: usi-a-vyrovnani
+
+- id: usi-kdy-vyrovnavat
+  type: choice
+  conceptIds: [vyrovnani-tlaku, barotrauma-ucha]
+  difficulty: 1
+  prompt: Kdy je správný okamžik na vyrovnání tlaku v uších?
+  options:
+    - { text: 'Brzy a často, vždy dřív, než přijde bolest', correct: true }
+    - { text: 'Až ucho začne bolet', explanation: 'Bolest znamená, že je bubínek už napnutý a trubice se otevírá hůř.' }
+    - { text: 'Jednou na dně', explanation: 'Na dně už by byl rozdíl tlaků dávno za hranicí poranění.' }
+    - { text: 'Jen při výstupu', explanation: 'Při výstupu vzduch ze středouší odchází většinou sám.' }
+  explanation: 'Poprvé hned pod hladinou, potom každý metr. Bolest je známka, že jsi vyrovnal pozdě.'
+  backToLessonId: usi-a-vyrovnani
+
+- id: usi-nejde-to
+  type: order
+  conceptIds: [vyrovnani-tlaku, barotrauma-ucha]
+  difficulty: 2
+  prompt: 'Při sestupu nejde vyrovnat jedno ucho. Seřaď správný postup.'
+  items:
+    - Zastav sestup
+    - Vystoupej o metr až dva
+    - Zkus vyrovnat znovu a jemně
+    - 'Pokud to nejde, ukonči ponor'
+  explanation: 'Nikdy nevyrovnávej silou. Prudký tlak při ucpané trubici může poškodit vnitřní ucho.'
+  backToLessonId: usi-a-vyrovnani
+
+- id: usi-ryma
+  type: why
+  conceptIds: [vyrovnani-tlaku, barotrauma-ucha, objem-plynu]
+  difficulty: 2
+  prompt: Proč se nemá potápět s rýmou ani s nosními kapkami?
+  options:
+    - { text: 'Oteklá sliznice ucpe Eustachovu trubici; když kapky v hloubce přestanou působit, vzduch při výstupu nemá kudy ven.', correct: true }
+    - { text: 'Rýma zvyšuje spotřebu plynu.', explanation: 'Spotřebu může mírně ovlivnit, ale důvod zákazu je barotrauma.' }
+    - { text: 'Kapky do nosu zvyšují riziko narkózy.', explanation: Souvislost s narkózou tu není. }
+    - { text: 'S rýmou se hůř drží automatika.', explanation: 'Problém není v ústech, ale ve středouší a dutinách.' }
+  explanation: 'Uzavřený vzduch se při výstupu rozpíná podle Boylea. Ve středouší nebo dutině bez odtoku způsobí barotrauma.'
+  backToLessonId: usi-a-vyrovnani
+
+- id: usi-objem-3m
+  type: numeric
+  conceptIds: [vzorec-boyle, objem-plynu, vyrovnani-tlaku]
+  difficulty: 2
+  prompt: 'Na kolik procent původního objemu se stlačí vzduch ve středouší při sestupu z hladiny do {depth} m bez vyrovnání? (Objem na hladině je 100 %.)'
+  template: { fn: boyleVolume, params: { depth: { values: [1, 2, 3, 5, 10] } }, fixed: { start: 100, surface: 0 }, args: [start, surface, depth], tolerance: 1, unit: '%', decimals: 0 }
+  explanation: 'Objem klesne v poměru tlaků: 100 % děleno absolutním tlakem v cílové hloubce.'
+  backToLessonId: usi-a-vyrovnani

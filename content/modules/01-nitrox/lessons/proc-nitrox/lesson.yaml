@@ -1,0 +1,19 @@
+id: proc-nitrox
+moduleId: nitrox
+title: "Proč nitrox: méně dusíku za cenu kyslíku"
+order: 1
+conceptIds: ["nitrox", "frakce-kysliku", "ppn2", "syceni-tkani"]
+checkQuestionIds: ["nitrox-co-prinasi", "nitrox-ppn2-porovnani", "nitrox-myty", "nitrox-cena", "nitrox-oznaceni"]
+estimatedMinutes: 9
+audioSummary: >-
+  Nitrox je vzduch, ve kterém část dusíku nahradil kyslík. E á en třicet dva má třicet dva procent kyslíku.
+  Méně dusíku znamená pomalejší sycení tkání. Můžeš zůstat déle, nebo mít kratší dekompresi, nebo větší rezervu.
+  Cenou je vyšší parciální tlak kyslíku. Každá směs má proto maximální hloubku a kyslíková expozice má časový limit.
+  Nitrox neumožňuje jít hlouběji. Čím bohatší směs, tím mělčí limit.
+  A spolehlivě nesnižuje narkózu, protože kyslík je pravděpodobně narkotický také.
+  Každou lahev musíš sám změřit a označit.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: false

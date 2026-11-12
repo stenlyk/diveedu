@@ -1,0 +1,90 @@
+<Hook>
+
+Na zastávce v 6 m přepneš ze vzduchu na kyslík. Okolní tlak se nezměnil ani o milibar.
+
+Přesto začne dusík z tvých tkání odcházet několikrát rychleji. Kde se vzal ten spád?
+
+</Hook>
+
+<Principle>
+
+Odpověď má dvě části.
+
+**První je jednoduchá.** V kyslíku žádný dusík není. Jeho parciální tlak v plicích spadne na nulu a rozdíl mezi tkání a plícemi – spád, který plyn žene ven – je největší možný.
+
+**Druhá je <Term cs="kyslíkové okno" />.** Tkáně kyslík spotřebovávají a vracejí CO2. Jenže CO2 je v krvi mnohem rozpustnější než kyslík,
+takže jeho parciální tlak ve venózní krvi stoupne jen málo, zatímco parciální tlak kyslíku klesne hodně.
+Součet parciálních tlaků všech plynů ve venózní krvi a v tkáních je proto **nižší** než okolní tlak.
+
+Tomu rozdílu se říká kyslíkové okno. Na vzduchu na hladině je malé. Když dýcháš vyšší ppO2, roste:
+krev přiveze víc kyslíku, tkáně ho spotřebují stejně, a „chybějící“ tlak je větší.
+
+Co to znamená pro dekompresi:
+
+- Tkáň je vůči okolí v mírném podtlaku. To působí proti růstu bublin.
+- Bohatá směs na mělkých zastávkách spojuje oba účinky: nulový nebo malý přísun inertního plynu a široké okno.
+
+Jak velkou část zrychlení dekomprese má na svědomí okno samotné a jak velkou prostý nedostatek inertního plynu v dechu, je předmětem diskuse.
+Pro praxi je závěr stejný: dekomprese na bohatých směsích je kratší a účinnější.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+<Given>kyslíkové okno ≈ okolní tlak − součet parciálních tlaků plynů ve venózní krvi</Given>
+
+Okno se neplánuje ani nepočítá; dekompresní model s ním pracuje nepřímo přes složení dýchané směsi.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Porovnej, co dýcháš na zastávce v 6 m.
+
+**Dusík při dýchání vzduchu:**
+
+<Worked fn="ppN2" args={[{ fO2: 0.21, fHe: 0 }, 6]} expected={1.264} tolerance={0.001} unit="bar" decimals={2} />
+
+**Dusík při dýchání kyslíku:**
+
+<Worked fn="ppN2" args={[{ fO2: 1, fHe: 0 }, 6]} expected={0} tolerance={0.001} unit="bar" decimals={2} />
+
+**Kyslík při dýchání kyslíku:**
+
+<Worked fn="ppO2" args={[1, 6]} expected={1.6} tolerance={0.001} unit="bar" decimals={2} />
+
+Tkáň nasycená dusíkem tak má proti sobě nulu místo více než jednoho baru. A ppO2 je přesně na dekompresním limitu – proto je kyslík plynem pro 6 m a mělčeji, ne hlouběji.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="oxygen-window" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="behnke-okno" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

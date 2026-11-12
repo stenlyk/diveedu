@@ -1,0 +1,19 @@
+id: dychani-a-co2
+moduleId: zaklady
+title: "Dýchání a oxid uhličitý"
+order: 9
+conceptIds: ["retence-co2", "namaha", "hypoxie", "prace-dychani"]
+checkQuestionIds: ["co2-co-ridi-dech", "co2-setreni-dechem", "co2-dusledky", "co2-spotreba-namaha", "co2-hypoxie-varovani", "co2-priznaky"]
+estimatedMinutes: 12
+audioSummary: >-
+  Dýchání řídí hlavně oxid uhličitý, ne kyslík. Tělo hlídá jeho hladinu a podle ní zrychluje dech.
+  Pod vodou se oxid uhličitý hromadí snadněji než na souši. Plyn je hustý, automatika klade odpor a potápěči často zbytečně šetří dechem.
+  Příznaky jsou dušnost, zrychlený dech, bolest hlavy a úzkost.
+  Zvýšený oxid uhličitý zesiluje narkózu, snižuje odolnost vůči kyslíkovým křečím a může vyvolat paniku.
+  Když cítíš dušnost, zastav se, přestaň pracovat a dlouze vydechuj.
+  Nedostatek kyslíku naopak nevaruje. Přichází zmatenost a bezvědomí bez pocitu dušení.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: false

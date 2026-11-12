@@ -1,0 +1,83 @@
+<Hook>
+
+Na lahvi je napsáno „MOD 33 m“. Co se stane ve 34 metrech? Nic. A ve 45? Možná také nic.
+
+A možná křeče, ztráta automatiky a utonutí. MOD není zeď, za kterou číhá jistá smrt. Je to hranice, za kterou už nikdo neumí říct, kdy to přijde.
+
+</Hook>
+
+<Principle>
+
+Kyslík je při vysokém parciálním tlaku toxický pro mozek. Proto se pro ppO2 stanovují horní limity:
+
+- **1,4 bar** pro pracovní část ponoru, kdy plaveš a něco děláš,
+- **1,6 bar** pro dekompresi v klidu.
+
+Jsou to konvence většiny agentur, ne fyziologické konstanty. Pro dlouhé, studené nebo namáhavé ponory volí zkušení potápěči limity nižší.
+
+<Term cs="maximální operační hloubka" /> je hloubka, ve které tvoje směs zvoleného limitu dosáhne. Každá směs má svou a platí pro ni tři pravidla:
+
+- **Zaokrouhluje se dolů.** MOD 33,75 m je 33 m, nikdy 34.
+- **Patří na lahev.** Velkými číslicemi, aby ji přečetl i partner.
+- **Počítá se z naměřené směsi**, ne z objednané.
+
+Co hrozí při překročení? Riziko křečí roste s ppO2 i s časem, ale nepředvídatelně. Stejný člověk snese jeden den vysoké ppO2 dlouho a jindy dostane křeče po několika minutách.
+Protože pod vodou končí křeče většinou utonutím, limit se nepokouší.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Vzorec je Daltonův zákon obrácený naruby. Z ppO2 vyjádříš tlak, při kterém směs dosáhne limitu, a tlak převedeš na hloubku.
+
+Pro počítání z hlavy při limitu 1,4 bar: vyděl 140 procentem kyslíku, odečti jedna a vynásob deseti.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**EAN32, limit 1,4 bar.**
+
+<Worked fn="mod" args={[0.32, 1.4]} expected={33.75} tolerance={0.01} steps="modSteps" unit="m" decimals={2} />
+
+Na lahev napíšeš 33 m.
+
+**EAN50 jako dekompresní plyn, limit 1,6 bar.**
+
+<Worked fn="mod" args={[0.5, 1.6]} expected={22} tolerance={0.01} steps="modSteps" unit="m" decimals={0} />
+
+V praxi se na EAN50 přepíná na zastávce ve 21 m.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="mod" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="blue-hole-2000" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

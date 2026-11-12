@@ -1,0 +1,131 @@
+- id: dalton-ppo2-vzduch
+  type: numeric
+  conceptIds: [ppo2, vzorec-dalton, vzduch]
+  difficulty: 1
+  prompt: Jaké je ppO2 vzduchu (21 % kyslíku) v hloubce {depth} m?
+  template: { fn: ppO2, params: { depth: { values: [10, 20, 30, 40, 50, 56] } }, fixed: { fO2: 0.21 }, args: [fO2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'ppO2 = frakce kyslíku × absolutní tlak; pro vzduch 0,21 × (hloubka / 10 + 1).'
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: dalton-procenta-vs-tlak
+  type: why
+  conceptIds: [parcialni-tlak, ppo2, kyslik]
+  difficulty: 1
+  prompt: 'Vzduch má všude 21 % kyslíku. Proč je v 60 m toxický a ve velké nadmořské výšce ho je málo?'
+  options:
+    - { text: 'Tělo reaguje na parciální tlak kyslíku, a ten se mění s celkovým tlakem.', correct: true }
+    - { text: Podíl kyslíku ve vzduchu se s hloubkou zvyšuje., explanation: 'Složení směsi se tlakem nemění, pořád je to 21 %.' }
+    - { text: 'V hloubce se kyslík hůř váže na hemoglobin.', explanation: Hemoglobin je nasycený už na hladině; toxicita souvisí s vysokým ppO2. }
+    - { text: Ve výšce je vzduch chladnější a kyslík se smršťuje., explanation: 'Rozhoduje nízký celkový tlak, ne teplota.' }
+  explanation: 'Frakce je stálá, parciální tlak je frakce krát celkový tlak.'
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: dalton-ppn2-vzduch
+  type: choice
+  conceptIds: [ppn2, dusik, parcialni-tlak]
+  difficulty: 2
+  prompt: Jaký je parciální tlak dusíku při dýchání vzduchu ve 30 m?
+  options:
+    - { text: '3,16 bar', correct: true }
+    - { text: '0,79 bar', explanation: 'To je ppN2 na hladině. Ve 30 m je celkový tlak 4 bar.' }
+    - { text: '2,37 bar', explanation: 'To vyjde, když násobíš tlakem vody 3 bar a zapomeneš atmosféru.' }
+    - { text: '4,00 bar', explanation: 'To je celkový tlak; dusík z něj tvoří 79 %.' }
+  explanation: '0,79 × 4 bar = 3,16 bar.'
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: dalton-soucet
+  type: choice
+  conceptIds: [vzorec-dalton, parcialni-tlak, absolutni-tlak]
+  difficulty: 1
+  prompt: Čemu se rovná součet parciálních tlaků všech plynů ve směsi?
+  options:
+    - { text: Absolutnímu tlaku v dané hloubce, correct: true }
+    - { text: Vždy 1 bar, explanation: To platí jen na hladině. }
+    - { text: Tlaku vody bez atmosféry, explanation: Plyn v plicích má tlak absolutní – včetně atmosféry. }
+    - { text: Tlaku v lahvi, explanation: 'Automatika redukuje tlak lahve na tlak okolí; dýcháš plyn o absolutním tlaku hloubky.' }
+  explanation: Každá složka přispívá svým dílem a díly dohromady dají celek – tak si výpočet vždy zkontroluješ.
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: dalton-narkoza
+  type: why
+  conceptIds: [dusikova-narkoza, ppn2, hloubka]
+  difficulty: 1
+  prompt: Proč se dusíková narkóza s hloubkou zhoršuje?
+  options:
+    - { text: 'Roste parciální tlak dusíku, a s ním jeho účinek na nervový systém.', correct: true }
+    - { text: Ve vzduchu v hloubce přibývá procento dusíku., explanation: Složení vzduchu se nemění; mění se parciální tlak. }
+    - { text: Mozek v hloubce dostává méně kyslíku., explanation: 'ppO2 v hloubce naopak roste. Narkóza není hypoxie.' }
+    - { text: Dusík v hloubce chemicky reaguje s krví., explanation: 'Dusík je inertní, nereaguje – jen se rozpouští, mimo jiné v nervové tkáni.' }
+  explanation: 'Narkotický účinek závisí na parciálním tlaku plynu. Nastupuje plynule; úsudek je zhoršený dřív, než si toho potápěč všimne.'
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: dalton-slozeni-vzduchu
+  type: match
+  conceptIds: [vzduch, kyslik, dusik]
+  difficulty: 1
+  prompt: Přiřaď ke složce vzduchu její roli pro potápěče.
+  pairs:
+    - { left: 'Kyslík, 21 %', right: 'Tělo ho spotřebovává; při vysokém parciálním tlaku je toxický' }
+    - { left: 'Dusík, 78 %', right: 'Tělo ho jen rozpouští; zdroj dekompresní zátěže a narkózy' }
+    - { left: 'Argon, asi 1 %', right: 'Ve výpočtech se přičítá k dusíku; je o něco těžší' }
+  explanation: 'Ve výpočtech se vzduch bere jako 21 % kyslíku a 79 % dusíku.'
+  backToLessonId: dalton-parcialni-tlaky
+
+- id: henry-polocas
+  type: choice
+  conceptIds: [syceni-tkani, rozpustnost-plynu]
+  difficulty: 2
+  prompt: 'Tkáň má poločas 10 minut. Z jaké části vyrovná rozdíl tlaku dusíku po 20 minutách v hloubce?'
+  options:
+    - { text: Ze 75 %, correct: true }
+    - { text: Ze 100 %, explanation: 'Sycení není lineární. Každý poločas ubere polovinu toho, co zbývá.' }
+    - { text: Z 50 %, explanation: 'To je po jednom poločasu, tedy po 10 minutách.' }
+    - { text: Z 20 %, explanation: 'Dvacet minut jsou dva poločasy: 50 % a pak polovina zbytku.' }
+  explanation: 'Po prvním poločasu 50 %, po druhém polovina zbytku, celkem 75 %.'
+  backToLessonId: henry-rozpousteni
+
+- id: henry-sodovka
+  type: why
+  conceptIds: [dcs, rozpustnost-plynu, syceni-tkani]
+  difficulty: 1
+  prompt: Co mají společného otevřená sodovka a dekompresní nemoc?
+  options:
+    - { text: 'Při rychlém poklesu tlaku se rozpuštěný plyn uvolní jako bubliny.', correct: true }
+    - { text: V obou případech jde o chemickou reakci plynu s kapalinou., explanation: Jde o fyzikální rozpouštění a uvolňování. Dusík s tkáněmi nereaguje. }
+    - { text: Bubliny vznikají ohřátím kapaliny., explanation: 'Teplota hraje vedlejší roli; spouštěčem je pokles tlaku.' }
+    - { text: Plyn se uvolní jen tehdy, když se kapalinou zatřese., explanation: 'Pohyb tvorbu bublin podpoří, ale příčinou je přesycení po poklesu tlaku.' }
+  explanation: 'Kapalina pod tlakem pojme víc plynu (Henry). Když tlak rychle klesne, je plynu víc, než kapalina udrží.'
+  backToLessonId: henry-rozpousteni
+
+- id: henry-rychle-pomale
+  type: match
+  conceptIds: [syceni-tkani, dcs]
+  difficulty: 2
+  prompt: Přiřaď typ tkáně k jejímu chování.
+  pairs:
+    - { left: 'Rychlá tkáň (krev, mozek)', right: 'Nasytí se v minutách; rozhoduje u krátkých hlubokých ponorů' }
+    - { left: 'Pomalá tkáň (tuk, klouby)', right: 'Sytí se hodiny; rozhoduje u dlouhých a opakovaných ponorů' }
+  explanation: 'Rychlost sycení závisí hlavně na prokrvení tkáně a na tom, kolik plynu pojme.'
+  backToLessonId: henry-rozpousteni
+
+- id: henry-kyslik-vs-dusik
+  type: why
+  conceptIds: [syceni-tkani, dusik, kyslik]
+  difficulty: 2
+  prompt: Proč dekompresní modely sledují dusík a helium, ale ne kyslík?
+  options:
+    - { text: 'Kyslík tkáně spotřebovávají, inertní plyn se v nich jen hromadí.', correct: true }
+    - { text: Kyslík se v tkáních vůbec nerozpouští., explanation: 'Rozpouští se, ale tkáně ho průběžně spotřebovávají, takže se nehromadí.' }
+    - { text: Kyslíku je ve směsi vždy příliš málo., explanation: 'V bohatých směsích ho je většina, a přesto se do dekomprese nepočítá.' }
+    - { text: Kyslík tvoří jen velmi malé bubliny., explanation: 'Jde o to, že se kyslík v tkáních nehromadí, takže nemá z čeho bubliny tvořit.' }
+  explanation: 'Inertní plyn tělo neumí zpracovat – co se v hloubce rozpustilo, musí při výstupu zase odejít plícemi.'
+  backToLessonId: henry-rozpousteni
+
+- id: henry-tkan-vypocet
+  type: numeric
+  conceptIds: [syceni-tkani, ppn2, rozpustnost-plynu]
+  difficulty: 3
+  prompt: 'Tkáň začíná na 0,79 bar dusíku. V hloubce dýcháš dusík o parciálním tlaku {ambient} bar. Jaký tlak dusíku bude v tkáni s poločasem {half} min po {time} min?'
+  template: { fn: haldaneTissuePressure, params: { ambient: { values: [2.37, 3.16, 3.95] }, half: { values: [10, 20] }, time: { values: [10, 20, 40] } }, fixed: { start: 0.79 }, args: [start, ambient, half, time], tolerance: 0.05, unit: bar, decimals: 2 }
+  explanation: 'Spočítej počet poločasů. Po jednom zmizí polovina rozdílu, po dvou tři čtvrtiny, po čtyřech 15/16.'
+  backToLessonId: henry-rozpousteni

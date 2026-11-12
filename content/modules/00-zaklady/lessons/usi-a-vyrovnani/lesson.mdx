@@ -1,0 +1,80 @@
+<Hook>
+
+Uši tě nejvíc zabolí ve dvou metrech, ne ve třiceti.
+
+Ve třiceti metrech je přitom tlak čtyřikrát větší. Proč tělo protestuje právě v mělčině?
+
+</Hook>
+
+<Principle>
+
+Střední ucho je malá dutina plná vzduchu, uzavřená bubínkem. S nosohltanem ji spojuje Eustachova trubice, která je většinu času zavřená.
+
+Při sestupu roste tlak vody na bubínek, ale vzduch ve středouší zůstává na původním tlaku. Bubínek se prohýbá dovnitř – to je ta bolest.
+<Term cs="vyrovnání tlaku" /> znamená otevřít Eustachovu trubici a pustit do středouší vzduch z nosohltanu.
+
+Pravidla jsou jednoduchá:
+
+- **Vyrovnávej brzy a často.** Poprvé hned pod hladinou, pak každý metr. Vždy **před** bolestí, ne až po ní.
+- **Nikdy silou.** Když to nejde, vystoupej o metr a zkus to znovu. Prudký tlak při ucpané trubici může poškodit vnitřní ucho – následkem bývá závrať, hučení a trvalá ztráta sluchu.
+- **S rýmou se nepotápí.** Oteklá sliznice trubici ucpe. Kapky do nosu mohou přestat účinkovat v hloubce a při výstupu pak rozpínající se vzduch nemá kudy ven.
+
+Stejně se chovají vedlejší nosní dutiny a prostor pod maskou – ten vyrovnáš výdechem nosem.
+
+Zvláštní případ je nestejné vyrovnání obou uší při výstupu. Mozek dostane ze dvou rovnovážných ústrojí různé signály a přijde krátká prudká závrať.
+Pomůže zastavit, chytit se a počkat.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="boyle" />
+
+Na Boyleově zákonu je vidět odpověď na úvodní otázku. O bolesti nerozhoduje, jak velký je tlak, ale jak rychle se **poměrně** mění –
+a to je nejvíc těsně pod hladinou.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Z hladiny do 3 m.** Na kolik procent se stlačí vzduch ve středouší, když nevyrovnáš?
+
+<Worked fn="boyleVolume" args={[100, 0, 3]} expected={76.92} tolerance={0.01} steps="boyleSteps" unit="%" decimals={0} />
+
+**Ze 30 do 33 m.** Stejné tři metry v hloubce:
+
+<Worked fn="boyleVolume" args={[100, 30, 33]} expected={93.02} tolerance={0.01} unit="%" decimals={0} />
+
+Tři metry u hladiny uberou skoro čtvrtinu objemu, tři metry v hloubce jen pár procent. Proto se uši hlásí v mělčině a proto tam vyrovnáváš nejčastěji.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="ears" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="valsalva" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

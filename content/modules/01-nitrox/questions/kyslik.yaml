@@ -1,0 +1,303 @@
+- id: nitrox-co-prinasi
+  type: why
+  conceptIds: [nitrox, ppn2, syceni-tkani]
+  difficulty: 1
+  prompt: Proč nitrox prodlužuje bezdekompresní časy?
+  options:
+    - { text: 'Má méně dusíku, takže je ve stejné hloubce nižší ppN2 a tkáně se sytí pomaleji.', correct: true }
+    - { text: Kyslík vytlačuje dusík z tkání., explanation: 'Kyslík dusík nevytlačuje. Jde jen o to, že ho dýcháš méně.' }
+    - { text: Nitrox se dýchá pod nižším tlakem., explanation: 'Dýcháš ho pod stejným okolním tlakem; liší se složení.' }
+    - { text: Kyslík se v tkáních rozpouští místo dusíku a bubliny netvoří., explanation: 'Kyslík tkáně spotřebovávají. Výhoda je v nižším ppN2.' }
+  explanation: 'Dekompresní zátěž řídí parciální tlak inertního plynu. Méně dusíku ve směsi = nižší ppN2.'
+  backToLessonId: proc-nitrox
+
+- id: nitrox-ppn2-porovnani
+  type: choice
+  conceptIds: [frakce-kysliku, ppn2, nitrox]
+  difficulty: 2
+  prompt: Jaké je ppN2 při dýchání EAN32 ve 30 m?
+  options:
+    - { text: '2,72 bar', correct: true }
+    - { text: '3,16 bar', explanation: 'To je ppN2 vzduchu ve 30 m.' }
+    - { text: '1,28 bar', explanation: 'To je ppO2 EAN32 ve 30 m.' }
+    - { text: '0,68 bar', explanation: 'To je ppN2 EAN32 na hladině.' }
+  explanation: 'EAN32 má 68 % dusíku: 0,68 × 4 bar = 2,72 bar.'
+  backToLessonId: proc-nitrox
+
+- id: nitrox-myty
+  type: findError
+  conceptIds: [nitrox, prekroceni-mod, dusikova-narkoza]
+  difficulty: 2
+  prompt: 'Které z těchto tvrzení o nitroxu jsou chybná?'
+  items:
+    - { text: Nitrox snižuje sycení tkání dusíkem. }
+    - { text: S nitroxem se dá potápět hlouběji než se vzduchem., isError: true, explanation: 'Naopak. Bohatší směs má mělčí maximální operační hloubku.' }
+    - { text: Každou lahev s nitroxem je třeba před ponorem změřit. }
+    - { text: Nitrox spolehlivě odstraňuje narkózu., isError: true, explanation: 'Kyslík je pravděpodobně narkotický podobně jako dusík; s úbytkem narkózy se nepočítá.' }
+  explanation: 'Nitrox je nástroj proti dusíku, ne proti hloubce.'
+  backToLessonId: proc-nitrox
+
+- id: nitrox-cena
+  type: multi
+  conceptIds: [nitrox, frakce-kysliku, cns-toxicita]
+  difficulty: 1
+  prompt: Jaká omezení přináší vyšší podíl kyslíku ve směsi?
+  options:
+    - { text: Maximální operační hloubku směsi, correct: true }
+    - { text: Časový limit kyslíkové expozice, correct: true }
+    - { text: Nutnost každou lahev analyzovat a označit, correct: true }
+    - { text: Kratší bezdekompresní časy, explanation: 'Ty se s nitroxem naopak prodlužují.' }
+  explanation: 'Méně dusíku se platí vyšším ppO2 a přísnější disciplínou kolem lahví.'
+  backToLessonId: proc-nitrox
+
+- id: nitrox-oznaceni
+  type: choice
+  conceptIds: [frakce-kysliku, nitrox]
+  difficulty: 1
+  prompt: Co znamená označení EAN36?
+  options:
+    - { text: 'Směs s 36 % kyslíku a 64 % dusíku', correct: true }
+    - { text: 'Směs s 36 % dusíku a 64 % kyslíku', explanation: 'Číslo v označení udává podíl kyslíku.' }
+    - { text: 'Směs s maximální hloubkou 36 m', explanation: 'Číslo je podíl kyslíku; MOD se z něj teprve počítá.' }
+    - { text: 'Vzduch obohacený o 36 % kyslíku, celkem 57 %', explanation: 'Číslo je výsledný podíl kyslíku ve směsi.' }
+  explanation: 'EANx: enriched air nitrox, x je procento kyslíku. Frakce kyslíku EAN36 je 0,36.'
+  backToLessonId: proc-nitrox
+
+- id: mod-vypocet
+  type: numeric
+  conceptIds: [vzorec-mod, frakce-kysliku, ppo2]
+  difficulty: 2
+  prompt: Jaká je maximální operační hloubka směsi EAN{fO2|percent} při limitu ppO2 {limit} bar? (Nezaokrouhluj.)
+  template: { fn: mod, params: { fO2: { values: [0.28, 0.3, 0.32, 0.36, 0.4, 0.5] }, limit: { values: [1.4, 1.6] } }, args: [fO2, limit], tolerance: 1, unit: m, decimals: 1 }
+  explanation: 'MOD = (limit ppO2 / frakce kyslíku − 1) × 10. Na lahev se píše zaokrouhlená dolů.'
+  backToLessonId: ppo2-a-mod
+
+- id: mod-limity
+  type: match
+  conceptIds: [ppo2, vzorec-mod, cns-toxicita]
+  difficulty: 1
+  prompt: Přiřaď limit ppO2 k situaci.
+  pairs:
+    - { left: '1,4 bar', right: Pracovní část ponoru }
+    - { left: '1,6 bar', right: Dekomprese v klidu }
+    - { left: '0,21 bar', right: Vzduch na hladině }
+  explanation: 'Limity 1,4 a 1,6 bar jsou konvence většiny agentur. Pro dlouhé, studené nebo namáhavé ponory se volí nižší.'
+  backToLessonId: ppo2-a-mod
+
+- id: mod-zaokrouhleni
+  type: choice
+  conceptIds: [vzorec-mod, prekroceni-mod, znaceni-lahvi]
+  difficulty: 1
+  prompt: 'MOD vyšla 33,75 m. Co napíšeš na lahev?'
+  options:
+    - { text: 33 m, correct: true }
+    - { text: 34 m, explanation: 'Zaokrouhlením nahoru bys limit ppO2 na štítku už překročil.' }
+    - { text: 35 m, explanation: 'To je nad vypočtenou hodnotou; limit by byl překročený.' }
+    - { text: '33,75 m', explanation: 'Na desetiny metru se pod vodou neřídíš; píše se celé číslo zaokrouhlené dolů.' }
+  explanation: 'MOD se vždy zaokrouhluje dolů, směrem k nižšímu ppO2.'
+  backToLessonId: ppo2-a-mod
+
+- id: mod-prekroceni-ppo2
+  type: numeric
+  conceptIds: [prekroceni-mod, ppo2, frakce-kysliku]
+  difficulty: 2
+  prompt: 'Potápěč s EAN{fO2|percent} klesne do {depth} m. Jaké ppO2 dýchá?'
+  template: { fn: ppO2, params: { fO2: { values: [0.32, 0.36, 0.4] }, depth: { values: [35, 40, 45, 50] } }, args: [fO2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'ppO2 = frakce kyslíku × absolutní tlak. Porovnej výsledek s limitem 1,4 bar.'
+  backToLessonId: ppo2-a-mod
+
+- id: mod-neni-zed
+  type: why
+  conceptIds: [prekroceni-mod, cns-toxicita]
+  difficulty: 2
+  prompt: 'Proč se limit ppO2 „nezkouší“, i když jeho překročení často projde bez následků?'
+  options:
+    - { text: 'Nástup křečí je nepředvídatelný a pod vodou obvykle končí utonutím.', correct: true }
+    - { text: 'Protože za limitem přicházejí křeče vždy a okamžitě.', explanation: 'Nepřicházejí vždy ani okamžitě – právě proto je to zrádné.' }
+    - { text: 'Protože počítač při překročení přestane počítat dekompresi.', explanation: 'Počítač upozorní, ale počítá dál. Důvod je fyziologický.' }
+    - { text: 'Protože se nad limitem prudce zvýší spotřeba plynu.', explanation: Spotřeba s ppO2 nesouvisí. }
+  explanation: 'Tolerance kyslíku se liší mezi lidmi i ze dne na den. Co včera prošlo, dnes nemusí.'
+  backToLessonId: ppo2-a-mod
+
+- id: mod-odvozeni
+  type: order
+  conceptIds: [vzorec-mod, vzorec-dalton, vzorec-p-abs]
+  difficulty: 2
+  prompt: Seřaď kroky výpočtu MOD z hlavy.
+  items:
+    - Zvol limit ppO2
+    - Vyděl limit frakcí kyslíku – dostaneš absolutní tlak
+    - Odečti 1 bar atmosféry
+    - Vynásob deseti – dostaneš hloubku v metrech
+    - Zaokrouhli dolů
+  explanation: 'MOD je Daltonův zákon obrácený naruby a převod tlaku na hloubku.'
+  backToLessonId: ppo2-a-mod
+
+- id: cns-proc-smrtelne
+  type: why
+  conceptIds: [cns-toxicita, ppo2]
+  difficulty: 1
+  prompt: Proč jsou kyslíkové křeče pod vodou tak nebezpečné?
+  options:
+    - { text: 'Potápěč ztratí automatiku a vědomí a bez pomoci utone.', correct: true }
+    - { text: Kyslík při křečích trvale poškodí mozek., explanation: 'Samotné křeče z kyslíku mozek trvale nepoškodí. Zabíjí voda.' }
+    - { text: Křeče vždy způsobí dekompresní nemoc., explanation: 'Ta může následovat po nouzovém výstupu, ale hlavní riziko je utonutí.' }
+    - { text: Křeče poškodí automatiku., explanation: Automatika zůstane v pořádku; potápěč ji jen neudrží. }
+  explanation: 'Na souši by stejné křeče odezněly bez následků. Pod vodou rozhodují minuty a přítomnost partnera.'
+  backToLessonId: cns-toxicita
+
+- id: cns-priznaky
+  type: multi
+  conceptIds: [cns-toxicita]
+  difficulty: 2
+  prompt: 'Které příznaky patří mezi varovné známky kyslíkové toxicity CNS (ConVENTID)?'
+  options:
+    - { text: Tunelové vidění, correct: true }
+    - { text: Zvonění v uších, correct: true }
+    - { text: Záškuby rtů a tváře, correct: true }
+    - { text: Bolest kloubů, explanation: Bolest kloubů patří k dekompresní nemoci. }
+    - { text: Suchý kašel a pálení za hrudní kostí, explanation: To jsou příznaky plicní kyslíkové toxicity. }
+  explanation: 'Příznaky nejsou spolehlivé. Křeče často přijdou jako první.'
+  backToLessonId: cns-toxicita
+
+- id: cns-faktory
+  type: multi
+  conceptIds: [cns-toxicita, retence-co2, namaha]
+  difficulty: 2
+  prompt: Co zvyšuje riziko kyslíkových křečí při stejném ppO2?
+  options:
+    - { text: Zvýšený CO2, correct: true }
+    - { text: Těžká fyzická práce, correct: true }
+    - { text: Chlad, correct: true }
+    - { text: Vyšší podíl helia ve směsi, explanation: 'Helium samo riziko nezvyšuje; snížením hustoty a CO2 spíš pomáhá.' }
+  explanation: 'CO2 rozšiřuje mozkové cévy a k mozku se dostane víc kyslíku. Námaha i chlad působí stejným směrem.'
+  backToLessonId: cns-toxicita
+
+- id: cns-ppo2-zamena
+  type: numeric
+  conceptIds: [cns-toxicita, zamena-plynu, ppo2]
+  difficulty: 2
+  prompt: 'Potápěč si omylem nasadí EAN50 v hloubce {depth} m. Jaké ppO2 dýchá?'
+  template: { fn: ppO2, params: { depth: { values: [30, 36, 40, 45, 50] } }, fixed: { fO2: 0.5 }, args: [fO2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'Polovina absolutního tlaku. Všechny tyto hodnoty jsou hluboko nad limitem 1,6 bar.'
+  backToLessonId: cns-toxicita
+
+- id: cns-varovani
+  type: choice
+  conceptIds: [cns-toxicita, prekroceni-mod]
+  difficulty: 2
+  prompt: 'Na dně ti začne cukat ret a zúží se ti zorné pole. Co uděláš?'
+  options:
+    - { text: 'Okamžitě snížím ppO2 – vystoupám nebo přejdu na chudší směs – a ukončím ponor.', correct: true }
+    - { text: 'Počkám, jestli to přejde.', explanation: 'Dalším příznakem mohou být křeče. Na čekání není čas.' }
+    - { text: 'Zrychlím dech, abych kyslík vydýchal.', explanation: 'Kyslík se „vydýchat“ nedá; ppO2 určuje směs a hloubka.' }
+    - { text: 'Sestoupám, tlak příznaky potlačí.', explanation: 'Sestupem ppO2 ještě zvýšíš.' }
+  explanation: 'Varovné příznaky jsou dar, který nemusí přijít. Když přijdou, jedná se hned.'
+  backToLessonId: cns-toxicita
+
+- id: cnsh-vypocet
+  type: numeric
+  conceptIds: [vzorec-cns, ppo2]
+  difficulty: 2
+  prompt: 'Kolik procent CNS limitu vyčerpáš za {time} min při ppO2 {pp} bar? (Limity NOAA: 1,2 bar 210 min; 1,3 bar 180 min; 1,4 bar 150 min; 1,5 bar 120 min; 1,6 bar 45 min.)'
+  template: { fn: cnsPercent, params: { pp: { values: [1.2, 1.3, 1.4, 1.5, 1.6] }, time: { values: [15, 30, 45] } }, args: [pp, time], tolerance: 2, unit: '%', decimals: 0 }
+  explanation: 'CNS % = čas / limit pro dané ppO2 × 100.'
+  backToLessonId: cns-hodiny
+
+- id: cnsh-limit-16
+  type: choice
+  conceptIds: [vzorec-cns, cns-toxicita]
+  difficulty: 1
+  prompt: Jaký je limit jedné expozice podle NOAA při ppO2 1,6 bar?
+  options:
+    - { text: 45 minut, correct: true }
+    - { text: 150 minut, explanation: 'To je limit pro 1,4 bar.' }
+    - { text: 120 minut, explanation: 'To je limit pro 1,5 bar.' }
+    - { text: 16 minut, explanation: Číslo 16 s limitem nesouvisí. }
+  explanation: 'Mezi 1,5 a 1,6 bar limit klesne ze 120 na 45 minut – nejprudší zlom v celé tabulce.'
+  backToLessonId: cns-hodiny
+
+- id: cnsh-scitani
+  type: choice
+  conceptIds: [vzorec-cns, ppo2]
+  difficulty: 2
+  prompt: 'Ponor: 30 min při ppO2 1,4 bar (limit 150 min) a pak 15 min při 1,6 bar (limit 45 min). Kolik CNS % celkem?'
+  options:
+    - { text: Přibližně 53 %, correct: true }
+    - { text: Přibližně 33 %, explanation: 'To je jen dekompresní část. Úseky se sčítají.' }
+    - { text: Přibližně 20 %, explanation: 'To je jen část na dně. Úseky se sčítají.' }
+    - { text: Přibližně 23 %, explanation: 'Nejde sečíst časy a dělit jedním limitem; každý úsek má svůj.' }
+  explanation: '30 / 150 = 20 %, 15 / 45 = 33 %, dohromady 53 %.'
+  backToLessonId: cns-hodiny
+
+- id: cnsh-nelinearni
+  type: why
+  conceptIds: [vzorec-cns, cns-toxicita, ean50]
+  difficulty: 3
+  prompt: Proč krátká dekomprese na bohaté směsi často „stojí“ víc CNS hodin než dlouhý pobyt na dně?
+  options:
+    - { text: 'Limity s rostoucím ppO2 prudce klesají; při 1,6 bar je každá minuta více než třikrát dražší než při 1,4 bar.', correct: true }
+    - { text: Na dekompresi se dýchá rychleji., explanation: 'Frekvence dechu do CNS hodin nevstupuje.' }
+    - { text: Bohatá směs obsahuje víc dusíku., explanation: Bohatá směs má dusíku méně. CNS hodiny se dusíku netýkají. }
+    - { text: 'Na mělčině je vyšší okolní tlak.', explanation: 'Tlak je tam nižší; vysoké ppO2 je dané bohatou směsí.' }
+  explanation: 'Limit 150 min při 1,4 bar a 45 min při 1,6 bar: stejná minuta ubere třikrát víc.'
+  backToLessonId: cns-hodiny
+
+- id: cnsh-co-neni
+  type: choice
+  conceptIds: [vzorec-cns, cns-toxicita, retence-co2]
+  difficulty: 2
+  prompt: Co CNS hodiny nezohledňují?
+  options:
+    - { text: 'Tvůj CO2, námahu, chlad a denní kolísání tolerance', correct: true }
+    - { text: Parciální tlak kyslíku, explanation: Ten je hlavním vstupem výpočtu. }
+    - { text: Dobu expozice, explanation: Čas je druhým vstupem výpočtu. }
+    - { text: Součet více úseků ponoru, explanation: Úseky se sčítají. }
+  explanation: 'Proto 100 % není záruka křečí a 50 % není záruka bezpečí.'
+  backToLessonId: cns-hodiny
+
+- id: otu-vypocet
+  type: numeric
+  conceptIds: [vzorec-otu, ppo2]
+  difficulty: 2
+  prompt: 'Kolik OTU nasbíráš za {time} min při ppO2 1,0 bar?'
+  template: { fn: otu, params: { time: { values: [20, 30, 45, 60, 90] } }, fixed: { pp: 1 }, args: [pp, time], tolerance: 1, unit: OTU, decimals: 0 }
+  explanation: 'Při ppO2 přesně 1 bar přibude za každou minutu jedna jednotka – tak je OTU definovaná.'
+  backToLessonId: plicni-toxicita-otu
+
+- id: otu-rozdil-cns
+  type: match
+  conceptIds: [plicni-toxicita, cns-toxicita, vzorec-otu]
+  difficulty: 2
+  prompt: Přiřaď vlastnost k typu kyslíkové toxicity.
+  pairs:
+    - { left: 'Nastupuje během minut, hrozí křeče', right: Toxicita CNS }
+    - { left: 'Rozvíjí se hodiny až dny, pálení za hrudní kostí a kašel', right: Plicní toxicita }
+  explanation: 'CNS se hlídá procenty limitu NOAA pro jeden ponor, plíce jednotkami OTU sčítanými přes dny.'
+  backToLessonId: plicni-toxicita-otu
+
+- id: otu-priznaky
+  type: choice
+  conceptIds: [plicni-toxicita, ppo2]
+  difficulty: 1
+  prompt: Od jakého ppO2 se počítá plicní kyslíková zátěž?
+  options:
+    - { text: 'Nad 0,5 bar', correct: true }
+    - { text: 'Nad 0,21 bar', explanation: 'To je normální ppO2 na hladině; plíce jsou na něj stavěné.' }
+    - { text: 'Nad 1,4 bar', explanation: 'To je pracovní limit pro CNS. Plicní zátěž vzniká už mnohem níž.' }
+    - { text: 'Nad 1,6 bar', explanation: 'To je dekompresní limit pro CNS.' }
+  explanation: 'Pod 0,5 bar se OTU nepočítají. Proto vzorec od ppO2 odečítá 0,5.'
+  backToLessonId: plicni-toxicita-otu
+
+- id: otu-kdy-resit
+  type: multi
+  conceptIds: [plicni-toxicita, vzorec-otu]
+  difficulty: 2
+  prompt: Kdy začíná plicní toxicita v praxi rozhodovat?
+  options:
+    - { text: 'Na expedicích s mnoha dlouhými ponory za sebou', correct: true }
+    - { text: Při léčbě v hyperbarické komoře, correct: true }
+    - { text: 'Při jednom nitroxovém ponoru na 30 minut', explanation: 'Takový ponor dá desítky OTU; denní limit je v řádu stovek.' }
+    - { text: 'Při dýchání vzduchu na hladině', explanation: 'ppO2 0,21 bar je pod prahem 0,5 bar.' }
+  explanation: 'U krátkých ponorů vždy dřív narazíš na CNS hodiny nebo na dekompresi.'
+  backToLessonId: plicni-toxicita-otu

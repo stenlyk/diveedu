@@ -1,0 +1,81 @@
+<Hook>
+
+Dva potápěči, stejný ponor: 30 m, 30 minut. Jeden vystoupá přímo. Druhému počítač předepíše dekompresní zastávky.
+
+Jediný rozdíl mezi nimi je jedenáct procent kyslíku v lahvi.
+
+</Hook>
+
+<Principle>
+
+<Term cs="nitrox" /> je vzduch, ve kterém část dusíku nahradil kyslík. Značí se EAN a číslem – EAN32 má 32 % kyslíku a 68 % dusíku.
+
+Méně dusíku ve směsi znamená nižší ppN2 v každé hloubce. Tkáně se sytí pomaleji, takže si můžeš vybrat:
+
+- **delší čas na dně** při stejné dekompresi,
+- **kratší dekompresi** při stejném čase,
+- nebo stejný ponor s **větší rezervou**.
+
+Zadarmo to není. Víc kyslíku znamená vyšší ppO2, a s ním dva nové limity: maximální hloubku směsi a čas strávený na zvýšeném ppO2. O obojím jsou další lekce.
+
+Co nitrox **nedělá**:
+
+- **Neumožňuje jít hlouběji.** Naopak – čím bohatší směs, tím mělčí je její maximální hloubka.
+- **Spolehlivě nesnižuje narkózu.** Kyslík je podle dostupných poznatků pravděpodobně narkotický podobně jako dusík. Agentury se v tom liší; debatě se věnuje modul Normoxic Trimix.
+- **Nenahrazuje postupy.** Každou lahev je třeba změřit a označit. Záměna směsi patří k nejčastějším příčinám smrtelných nehod v technickém potápění.
+
+Advanced Nitrox rozšiřuje použití na směsi do 100 % kyslíku. Tím se z nitroxu stává hlavně nástroj dekomprese.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+Jediná nová věc je zápis směsi. Frakce kyslíku <Given>fO2 = 0,32</Given> znamená EAN32; frakce dusíku je zbytek do jedné.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Vzduch ve 30 m.**
+
+<Worked fn="ppN2" args={[{ fO2: 0.21, fHe: 0 }, 30]} expected={3.16} tolerance={0.001} unit="bar" decimals={2} />
+
+**EAN32 ve 30 m.**
+
+<Worked fn="ppN2" args={[{ fO2: 0.32, fHe: 0 }, 30]} expected={2.72} tolerance={0.001} unit="bar" decimals={2} />
+
+Na EAN32 dýcháš ve 30 m stejné ppN2 jako na vzduchu v necelých 25 m. Tento přepočet má jméno – ekvivalentní vzduchová hloubka – a vlastní lekci.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="nitrox-vs-air" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="nitrox-rutkowski" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,117 @@
+- id: boyle-plice-vystup
+  type: numeric
+  conceptIds: [objem-plynu, vzorec-boyle, barotrauma-plic]
+  difficulty: 2
+  prompt: Potápěč má v {depth} m v plicích {volume} l plynu a vystoupá na hladinu se zadrženým dechem. Jaký objem by plyn chtěl zabrat na hladině?
+  template: { fn: boyleVolume, params: { volume: { values: [4, 5, 6] }, depth: { values: [5, 10, 20, 30, 40] } }, fixed: { surface: 0 }, args: [volume, depth, surface], tolerance: 0.2, unit: l, decimals: 1 }
+  explanation: Objem na hladině je původní objem krát absolutní tlak v hloubce (na hladině je tlak 1 bar).
+  backToLessonId: boyle-objem
+
+- id: boyle-nejvetsi-zmena
+  type: choice
+  conceptIds: [objem-plynu, absolutni-tlak, hloubka]
+  difficulty: 1
+  prompt: Ve kterém úseku výstupu se objem plynu zvětší nejvíc?
+  options:
+    - { text: Z 10 m na hladinu, correct: true }
+    - { text: Ze 40 m do 30 m, explanation: 'Tlak klesne z 5 na 4 bar, objem vzroste jen 1,25krát.' }
+    - { text: Z 30 m do 20 m, explanation: 'Tlak klesne ze 4 na 3 bar, objem vzroste asi 1,33krát.' }
+    - { text: 'Všude stejně, je to vždy 10 m', explanation: 'Rozhoduje poměr tlaků, ne rozdíl hloubek.' }
+  explanation: 'Z 10 m na hladinu klesne tlak z 2 na 1 bar, objem se zdvojnásobí. Nikde jinde není poměr tak velký.'
+  backToLessonId: boyle-objem
+
+- id: boyle-zadrzeny-dech
+  type: why
+  conceptIds: [barotrauma-plic, objem-plynu, vzorec-boyle]
+  difficulty: 1
+  prompt: Proč je zadržení dechu při výstupu nebezpečné i ze dvou metrů?
+  options:
+    - { text: 'Plyn v plicích se rozpíná a nemá kudy uniknout; plicní sklípky prasknou i při malém přetlaku.', correct: true }
+    - { text: Protože se v plicích rychle spotřebuje kyslík., explanation: Kyslíku je v plicích na minuty. Problém je mechanický – rozpínání plynu. }
+    - { text: Protože se v zadrženém dechu hromadí dusík., explanation: 'Dusík se v plicích nehromadí; jeho množství v plicích se zadržením dechu nemění.' }
+    - { text: 'Není nebezpečné, pokud je výstup pomalý.', explanation: 'Rychlost nerozhoduje. S plnými plícemi a zavřenou hlasivkovou štěrbinou stačí k poškození výstup o metr až dva.' }
+  explanation: 'U hladiny se objem mění nejrychleji, proto k barotraumatu plic dochází i v bazénu.'
+  backToLessonId: boyle-objem
+
+- id: boyle-kompenzator
+  type: numeric
+  conceptIds: [objem-plynu, vzorec-boyle, vztlak]
+  difficulty: 2
+  prompt: V {from} m máš v kompenzátoru {volume} l plynu. Vystoupáš do {to} m a nic nevypustíš. Kolik litrů plynu v něm bude?
+  template: { fn: boyleVolume, params: { volume: { values: [2, 3, 4, 6] }, from: { values: [30, 40] }, to: { values: [10, 20] } }, args: [volume, from, to], tolerance: 0.2, unit: l, decimals: 1 }
+  explanation: 'Objem se změní v poměru absolutních tlaků: V2 = V1 · P1 / P2. Každý litr navíc je kilogram vztlaku, který tě táhne nahoru.'
+  backToLessonId: boyle-objem
+
+- id: boyle-absolutni-tlak
+  type: findError
+  conceptIds: [vzorec-boyle, absolutni-tlak, vzorec-p-abs]
+  difficulty: 2
+  prompt: 'Student počítá, na kolik se roztáhnou 3 l plynu při výstupu ze 30 m do 10 m. Kde udělal chybu?'
+  items:
+    - { text: 'Zákon: P1 · V1 = P2 · V2' }
+    - { text: 'Dosadím P1 = 30 a P2 = 10', isError: true, explanation: 'Do vzorce patří absolutní tlaky 4 bar a 2 bar, ne hloubky.' }
+    - { text: 'V2 = V1 · P1 / P2' }
+    - { text: 'Výsledek: plyn se roztáhne na 9 l', isError: true, explanation: 'Správně je 3 · 4 / 2 = 6 l. Devítka vyšla z dosazení hloubek.' }
+  explanation: 'Boyleův zákon pracuje s absolutním tlakem. Poměr tlaků mezi 30 m a 10 m je 2, ne 3.'
+  backToLessonId: boyle-objem
+
+- id: hustota-vzduch-hloubka
+  type: numeric
+  conceptIds: [hustota-plynu, absolutni-tlak, vzduch]
+  difficulty: 2
+  prompt: Jaká je hustota dýchaného vzduchu v hloubce {depth} m? (Vzduch má na hladině přibližně 1,29 g/l.)
+  template: { fn: airDensity, params: { depth: { values: [10, 20, 30, 40, 50] } }, args: [depth], tolerance: 0.1, unit: g/l, decimals: 2 }
+  explanation: Hustota roste přímo úměrně absolutnímu tlaku – hustotu na hladině vynásob tlakem v hloubce.
+  backToLessonId: hustota-vzduchu
+
+- id: hustota-proc-vadi
+  type: why
+  conceptIds: [hustota-plynu, prace-dychani, retence-co2]
+  difficulty: 2
+  prompt: Jakým řetězcem vede vysoká hustota plynu k problému?
+  options:
+    - { text: Vyšší odpor v dýchacích cestách → větší práce dýchání a nižší ventilace → hromadění CO2, correct: true }
+    - { text: Hustý plyn obsahuje méně kyslíku → hypoxie, explanation: 'Naopak, v hustším plynu je ppO2 vyšší. Problém je CO2, ne kyslík.' }
+    - { text: Hustý plyn rychleji ochlazuje automatiku → zamrznutí, explanation: 'Zamrzání automatiky souvisí s průtokem a teplotou vody; hlavní fyziologický problém hustoty je CO2.' }
+    - { text: Hustý plyn se hůř rozpouští v tkáních → pomalejší dekomprese, explanation: 'Rozpouštění řídí parciální tlak, ne hustota.' }
+  explanation: 'Hustota → odpor → práce dýchání → retence CO2. CO2 pak zesiluje narkózu a snižuje práh kyslíkových křečí.'
+  backToLessonId: hustota-vzduchu
+
+- id: hustota-limity
+  type: choice
+  conceptIds: [hustota-plynu, prace-dychani]
+  difficulty: 1
+  prompt: Jaké limity hustoty dýchaného plynu se dnes běžně doporučují?
+  options:
+    - { text: 'Doporučený 5,2 g/l, tvrdý 6,2 g/l', correct: true }
+    - { text: 'Doporučený 1,4 g/l, tvrdý 1,6 g/l', explanation: 'To jsou limity ppO2 v barech, ne hustoty.' }
+    - { text: 'Doporučený 3,2 g/l, tvrdý 4,0 g/l', explanation: 'Takové hodnoty má vzduch v 15–20 m; limity jsou výš.' }
+    - { text: 'Doporučený 8 g/l, tvrdý 10 g/l', explanation: 'To odpovídá vzduchu v 50–70 m, hluboko za hranicí bezpečného dýchání.' }
+  explanation: 'Hodnoty 5,2 a 6,2 g/l pocházejí z práce Anthonyho a Mitchella (2016).'
+  backToLessonId: hustota-vzduchu
+
+- id: hustota-usili-nepomuze
+  type: why
+  conceptIds: [prace-dychani, retence-co2, namaha]
+  difficulty: 3
+  prompt: Proč při vysoké hustotě plynu nepomůže „dýchat víc“?
+  options:
+    - { text: 'Při usilovném výdechu se dýchací cesty zužují a průtok se zastropuje; další úsilí jen vyrábí víc CO2.', correct: true }
+    - { text: Automatika nestačí dodat dost plynu., explanation: 'Moderní automatika dodá plynu dost. Úzké hrdlo jsou tvé dýchací cesty.' }
+    - { text: Plíce se v hloubce zmenší a nepojmou víc., explanation: 'Při dýchání z přístroje mají plíce normální objem; plyn v nich má tlak okolí.' }
+    - { text: Hluboké dýchání vyplavuje příliš mnoho CO2., explanation: 'To je hyperventilace na souši. V hustém plynu je problém opačný.' }
+  explanation: 'Dýchací svaly při maximálním úsilí samy vyrábějí tolik CO2, že ho zvýšená ventilace nestačí odvést.'
+  backToLessonId: hustota-vzduchu
+
+- id: boyle-embolie
+  type: choice
+  conceptIds: [barotrauma-plic, dcs]
+  difficulty: 2
+  prompt: Co je nejzávažnějším následkem barotraumatu plic při výstupu?
+  options:
+    - { text: 'Arteriální plynová embolie – bubliny vniknou do tepen a mohou ucpat cévy v mozku', correct: true }
+    - { text: Dusíková narkóza, explanation: 'Narkóza je účinek ppN2 v hloubce a s výstupem mizí.' }
+    - { text: Kyslíkové křeče, explanation: 'Ty způsobuje vysoké ppO2, ne poranění plic.' }
+    - { text: Zánět středního ucha, explanation: Ucho s plícemi nesouvisí. }
+  explanation: 'Příznaky embolie přicházejí během minut po vynoření: bezvědomí, ochrnutí, poruchy zraku a řeči. Od dekompresní nemoci se liší příčinou – jde o mechanické poranění, ne o přesycení tkání.'
+  backToLessonId: boyle-objem

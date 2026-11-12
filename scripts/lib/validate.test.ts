@@ -195,8 +195,27 @@ describe('validátor obsahu', () => {
     expect(items.join('\n')).toMatch(/Lekce \*\*Lekce\*\*[\s\S]*Otázka `q1`[\s\S]*Případ[\s\S]*Zajímavost `f`/);
   });
 
+  it('odkazy z MDX a ručně psané výsledky', () => {
+    const errors = errorsOf((raw) => {
+      raw.lessons[0]!.refs = [
+        { element: 'Playground', value: 'mod' },
+        { element: 'Playground', value: 'depth-pressure' },
+        { element: 'Playground', value: 'neni' },
+        { element: 'Fact', value: 'neni' },
+        { element: 'CaseLink', value: 'neni' },
+        { element: 'Formula', value: 'p-abs' },
+        { element: 'Formula', value: 'neni' },
+        { element: 'Term', value: 'Neni' },
+      ];
+      raw.lessons[0]!.handWritten = ['30 / 10 + 1 = 4 bar'];
+    });
+    expect(errors.match(/neznámou položku/g)).toHaveLength(5);
+    expect(errors).not.toMatch(/„mod“|„depth-pressure“|„p-abs“/);
+    expect(errors).toMatch(/ručně psaný výsledek „30 \/ 10 \+ 1 = 4 bar“/);
+  });
+
   it('krajní kombinace parametrů šablony', () => {
-    expect(templateCorners({ fn: 'x', params: { a: { min: 1, max: 2, step: 1 }, b: { values: [5, 6, 7] }, c: { values: [9] } }, args: ['a'], tolerance: 0, unit: '', decimals: 1 })).toHaveLength(4);
+    expect(templateCorners({ fn: 'x', params: { a: { min: 1, max: 2, step: 1 }, b: { values: [5, 6, 7] }, c: { values: [9] } }, args: ['a'], tolerance: 0, unit: '', decimals: 1, fixed: {} })).toHaveLength(4);
   });
 });
 
@@ -206,6 +225,10 @@ describe('MDX lekce', () => {
       ['<Hook>', '', 'Text s <Calc fn="absPressure" args={[30]} unit="bar" /> uvnitř.', '', '</Hook>', '', '<WorkedSection>', '', '<Worked fn="mod" args={[0.32, 1.4]} expected={33.75} tolerance={0.01} />', '', '</WorkedSection>'].join('\n'),
     );
     expect(parsed.topLevelElements).toEqual(['Hook', 'WorkedSection']);
+    expect(parsed.handWritten).toEqual([]);
+    const bad = parseLessonMdx(['<WorkedSection>', '', 'Tlak je 30 / 10 + 1 = 4 bar. Hotovo.', '', '<Playground kind="mod" />', '', '</WorkedSection>', '', '<Hook>', '', 'Tady a = 5 nevadí.', '', '</Hook>'].join('\n'));
+    expect(bad.handWritten).toEqual(['Tlak je 30 / 10 + 1 = 4 bar']);
+    expect(bad.refs).toEqual([{ element: 'Playground', value: 'mod' }]);
     expect(parsed.calcCalls).toEqual([
       { element: 'Calc', fn: 'absPressure', args: [30], unit: 'bar' },
       { element: 'Worked', fn: 'mod', args: [0.32, 1.4], expected: 33.75, tolerance: 0.01 },

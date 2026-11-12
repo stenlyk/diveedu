@@ -1,0 +1,19 @@
+id: cns-hodiny
+moduleId: nitrox
+title: "CNS hodiny"
+order: 4
+conceptIds: ["vzorec-cns", "cns-toxicita", "ppo2"]
+checkQuestionIds: ["cnsh-vypocet", "cnsh-limit-16", "cnsh-scitani", "cnsh-nelinearni", "cnsh-co-neni"]
+estimatedMinutes: 10
+audioSummary: >-
+  CNS hodiny říkají, jakou část časového limitu pro kyslík jsi vyčerpal.
+  Limity jsou z tabulky NOAA a prudce klesají s rostoucím parciálním tlakem.
+  Při jedna celá čtyři baru je limit sto padesát minut. Při jedna celá šest baru jen čtyřicet pět.
+  Půl hodiny při jedna celá čtyři je tedy dvacet procent.
+  Procenta za jednotlivé části ponoru se sčítají. Plánuje se obvykle do osmdesáti procent.
+  Hodiny ale neznají tvůj oxid uhličitý, námahu ani chlad.
+  Sto procent není záruka křečí a padesát procent není záruka bezpečí.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: true

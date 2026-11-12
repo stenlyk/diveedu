@@ -8,7 +8,7 @@ import { type AnswerRow, db } from '../db/db';
 import { checkNumeric, generateVariant, renderPrompt } from './numeric';
 
 /** Typy otázek, které engine umí. Ostatní typy přibudou s obsahem, který je potřebuje. */
-export const SUPPORTED_TYPES: ReadonlySet<Question['type']> = new Set(['choice', 'why', 'multi', 'numeric']);
+export const SUPPORTED_TYPES: ReadonlySet<Question['type']> = new Set(['choice', 'why', 'multi', 'numeric', 'order', 'match', 'findError']);
 
 export interface QuizResult {
   total: number;
@@ -95,7 +95,13 @@ function QuestionView({ question, mode, onNext }: { question: Question; mode: An
         <NumericBody question={question} locked={verdict !== null} onAnswer={answer} />
       ) : question.type === 'choice' || question.type === 'why' || question.type === 'multi' ? (
         <ChoiceBody question={question} locked={verdict !== null} onAnswer={answer} />
-      ) : null}
+      ) : question.type === 'order' ? (
+        <OrderBody question={question} locked={verdict !== null} onAnswer={answer} />
+      ) : question.type === 'match' ? (
+        <MatchBody question={question} locked={verdict !== null} onAnswer={answer} />
+      ) : (
+        <FindErrorBody question={question} locked={verdict !== null} onAnswer={answer} />
+      )}
       {verdict !== null && (
         <div className="mt-4" role="status">
           <div className={`font-semibold ${verdict ? 'text-ok' : 'text-danger'}`}>{verdict ? '✓ Správně' : '✗ Špatně'}</div>
@@ -217,5 +223,104 @@ function NumericBody({ question, locked, onAnswer }: { question: NumericQuestion
         </p>
       )}
     </form>
+  );
+}
+
+/** Seřaď: klepáním skládáš postup; klepnutím na složený krok ho vrátíš zpět. */
+function OrderBody({ question, locked, onAnswer }: { question: Extract<Question, { type: 'order' }>; locked: boolean; onAnswer: (correct: boolean) => void }) {
+  const pool = useMemo(() => shuffled(question.items.map((_, i) => i)), [question]);
+  const [picked, setPicked] = useState<number[]>([]);
+  const rest = pool.filter((i) => !picked.includes(i));
+  const row = 'flex min-h-12 w-full items-center gap-3 rounded-xl border-2 px-4 py-2 text-left';
+  return (
+    <div>
+      <h2 className="text-lg font-semibold">{question.prompt}</h2>
+      <p className="mt-1 text-sm text-muted">Klepej na kroky ve správném pořadí.</p>
+      <ol className="mt-4 space-y-2" aria-label="Tvoje pořadí">
+        {picked.map((item, position) => {
+          const ok = item === position;
+          return (
+            <li key={item}>
+              <button type="button" disabled={locked} onClick={() => setPicked(picked.filter((i) => i !== item))} className={`${row} ${!locked ? 'border-accent bg-accent/10' : ok ? 'border-ok bg-ok/10' : 'border-danger bg-danger/10'}`}>
+                <span className="font-bold tabular-nums">{position + 1}.</span><span>{question.items[item]}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+      {rest.length > 0 && (
+        <ul className="mt-3 space-y-2" aria-label="Zbývající kroky">
+          {rest.map((item) => (
+            <li key={item}><button type="button" disabled={locked} onClick={() => setPicked([...picked, item])} className={`${row} border-border`}>{question.items[item]}</button></li>
+          ))}
+        </ul>
+      )}
+      {!locked && <Button className="mt-4 w-full sm:w-auto" disabled={rest.length > 0} onClick={() => onAnswer(picked.every((item, position) => item === position))}>Potvrdit</Button>}
+      {locked && (
+        <div className="mt-3 text-sm">
+          <div className="font-semibold">Správné pořadí:</div>
+          <ol className="list-decimal pl-5 text-muted">{question.items.map((item) => <li key={item}>{item}</li>)}</ol>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Přiřaď: ke každé položce vlevo vyber odpovídající z nabídky. */
+function MatchBody({ question, locked, onAnswer }: { question: Extract<Question, { type: 'match' }>; locked: boolean; onAnswer: (correct: boolean) => void }) {
+  const rights = useMemo(() => shuffled(question.pairs.map((pair) => pair.right)), [question]);
+  const [chosen, setChosen] = useState<string[]>(() => question.pairs.map(() => ''));
+  return (
+    <div>
+      <h2 className="text-lg font-semibold">{question.prompt}</h2>
+      <ul className="mt-4 space-y-3">
+        {question.pairs.map((pair, i) => {
+          const ok = chosen[i] === pair.right;
+          return (
+            <li key={pair.left} className={`rounded-xl border-2 p-3 ${!locked ? 'border-border' : ok ? 'border-ok bg-ok/10' : 'border-danger bg-danger/10'}`}>
+              <label className="block font-medium" htmlFor={`match-${i}`}>{pair.left}</label>
+              <select id={`match-${i}`} disabled={locked} value={chosen[i]} onChange={(event) => setChosen(chosen.map((c, j) => (j === i ? event.target.value : c)))} className="mt-2 min-h-12 w-full rounded-xl border-2 border-border bg-bg px-3">
+                <option value="">— vyber —</option>
+                {rights.map((right) => <option key={right} value={right}>{right}</option>)}
+              </select>
+              {locked && !ok && <p className="mt-1 text-sm text-muted">Správně: {pair.right}</p>}
+            </li>
+          );
+        })}
+      </ul>
+      {!locked && <Button className="mt-4 w-full sm:w-auto" disabled={chosen.some((c) => c === '')} onClick={() => onAnswer(question.pairs.every((pair, i) => chosen[i] === pair.right))}>Potvrdit</Button>}
+    </div>
+  );
+}
+
+/** Najdi chybu: označ položky, které jsou v plánu nebo postupu špatně. */
+function FindErrorBody({ question, locked, onAnswer }: { question: Extract<Question, { type: 'findError' }>; locked: boolean; onAnswer: (correct: boolean) => void }) {
+  const [marked, setMarked] = useState<Set<number>>(new Set());
+  const toggle = (i: number) => {
+    const next = new Set(marked);
+    if (next.has(i)) next.delete(i);
+    else next.add(i);
+    setMarked(next);
+  };
+  return (
+    <div>
+      <h2 className="text-lg font-semibold">{question.prompt}</h2>
+      <p className="mt-1 text-sm text-muted">Označ všechny řádky, které obsahují chybu.</p>
+      <ul className="mt-4 space-y-2">
+        {question.items.map((item, i) => {
+          const chosen = marked.has(i);
+          const state = !locked ? (chosen ? 'border-warn bg-warn/10' : 'border-border') : item.isError ? 'border-danger bg-danger/10' : chosen ? 'border-warn bg-warn/10' : 'border-border opacity-70';
+          return (
+            <li key={item.text}>
+              <button type="button" disabled={locked} aria-pressed={chosen} onClick={() => toggle(i)} className={`min-h-12 w-full rounded-xl border-2 px-4 py-2 text-left ${state}`}>
+                <span className="block">{locked && item.isError ? '✗ ' : ''}{item.text}</span>
+                {locked && item.explanation && <span className="mt-1 block text-sm text-muted">{item.explanation}</span>}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {!locked && <Button className="mt-4 w-full sm:w-auto" disabled={marked.size === 0} onClick={() => onAnswer(question.items.every((item, i) => item.isError === marked.has(i)))}>Potvrdit</Button>}
+    </div>
   );
 }

@@ -6,4 +6,4 @@ rig: oc
 prerequisites: [zaklady]
 order: 1
 passThreshold: 0.8
-status: draft
+status: published

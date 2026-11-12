@@ -1,0 +1,77 @@
+<Hook>
+
+Vzduch obsahuje 21 % kyslíku na hladině, v 60 m i na vrcholu Mount Everestu.
+
+Přesto je na Everestu kyslíku tak málo, že tam většina lidí bez přístroje nepřežije, a v 60 m je ho tolik, že může vyvolat křeče.
+Procenta se nezměnila. Co tedy?
+
+</Hook>
+
+<Principle>
+
+Ve směsi plynů se každá složka chová, jako by v prostoru byla sama. Vytváří svůj díl celkového tlaku – <Term cs="parciální tlak" />.
+Součet parciálních tlaků všech složek dá celkový tlak.
+
+Tělo nereaguje na procenta. Reaguje na parciální tlaky:
+
+- **ppO2** rozhoduje, jestli máš kyslíku málo, akorát, nebo příliš. Pod přibližně 0,16 bar nastupuje hypoxie. Na hladině dýcháš 0,21 bar. Nad 1,4 až 1,6 bar roste riziko kyslíkových křečí.
+- **ppN2** řídí, kolik dusíku se rozpustí v tkáních, a s ním i dekompresní zátěž. Zároveň působí na nervový systém: s rostoucím ppN2 se zhoršuje úsudek, krátkodobá paměť a jemná motorika – dusíková narkóza. Většina lidí ji na vzduchu zřetelně pocítí kolem 30 m, měřitelná je už dřív.
+
+Vzduch se ve výpočtech bere jako 21 % kyslíku a 79 % dusíku. Asi 1 % argonu a stopy dalších plynů se počítají k dusíku.
+
+Stejná myšlenka funguje oběma směry. Hluboko je nebezpečné to, čeho je ve směsi málo procent. A mělko může chybět to, čeho je ve směsi „dost“ – s tím pracují hypoxické trimixy.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+Frakce je podíl plynu ve směsi zapsaný desetinným číslem: 21 % kyslíku je frakce 0,21. Absolutní tlak znáš z první lekce.
+Celý Daltonův zákon je tedy jedno násobení.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Kyslík ve vzduchu ve 40 m.**
+
+<Worked fn="ppO2" args={[0.21, 40]} expected={1.05} tolerance={0.001} steps="ppO2Steps" unit="bar" decimals={2} />
+
+**Dusík ve vzduchu ve 40 m.**
+
+<Worked fn="ppN2" args={[{ fO2: 0.21, fHe: 0 }, 40]} expected={3.95} tolerance={0.001} unit="bar" decimals={2} />
+
+Oba parciální tlaky dohromady dávají absolutní tlak ve 40 m, tedy <Calc fn="absPressure" args={[40]} unit="bar" />. Tak si výsledek vždy zkontroluješ.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="dalton" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="dalton-1801" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

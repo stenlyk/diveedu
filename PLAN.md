@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapa 0 schválena 2026-11-12. Etapa 1 hotová, čeká na kontrolu.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–1 hotové. Etapa 2 (moduly 0 a 1) hotová, čeká na odbornou kontrolu obsahu.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -265,4 +265,15 @@ Pokrytí: 50 uzlů × 3 otázky = min. 150 vazeb otázka→uzel. Plán: ~55 otá
 - Vzorce v lekcích jdou přes `<Formula id>` z `formulas.yaml` (entita Formula ze SPEC), ne přes `$…$` v textu.
 - Typy otázek `diagram` a `scenario` doplní schéma v etapách 4 a 5 spolu s komponentami, které je vykreslí (rozšíření je aditivní).
 - `vdwBlend` (van der Waals, ve SPEC „volitelně“) a jeskynní rozšíření turn pressure (proud, skútr) přijdou s moduly 3 a C2.
-- Stav etap: 0 ✓ · 1 ✓ (čeká na kontrolu) · 2–6 nezahájeno.
+- Stav etap: 0 ✓ · 1 ✓ · 2 ✓ (čeká na kontrolu) · 3–6 nezahájeno.
+
+## 16. Etapa 2 – co vzniklo a co se změnilo proti plánu
+
+- Obsah: 23 lekcí (11 + 12), 114 otázek, 51 uzlů, 82 vazeb, 22 zajímavostí, 2 případové studie. Plán počítal s ~110 vazbami; 82 stačí na pravidlo „každá lekce ≥ 2 vazby“ a další přibudou s moduly 2–4, které na tyto uzly navazují.
+- Lint ručně psaných výsledků je zapnutý: text „= číslo“ v částech Vzorec a Ukázkový výpočet zastaví build. Daná zadání a konvence se obalují `<Given>`.
+- Validátor nově kontroluje i odkazy z MDX (`<Playground>`, `<Fact>`, `<CaseLink>`, `<Formula>`, `<Term>`).
+- Kalkulačky: 12 v Nástrojích, 10 s rozepsaným postupem a režimem „Spočítám sám“. Stejné definice slouží jako hračky v lekcích (`src/tools/defs.ts`).
+- Typy otázek: přibyly Seřaď, Přiřaď a Najdi chybu. Numerické šablony umí pevné vstupy (`fixed`) a zobrazení frakce v procentech (`{fO2|percent}`).
+- Dvě hračky používají ilustrativní data místo výpočtu (pohlcování barev, kyslíkové okno) – obě jsou tak v aplikaci označené.
+- Jádro má 1,38 MB z limitu 1,5 MB. Před etapou 4 bude potřeba přestat precachovat lekce všech modulů najednou a stahovat text modulu při prvním otevření (nebo zvednout limit) – rozhodnutí před etapou 4.
+- Případová studie Blue Hole: bez profilu ponoru a s minimem detailů, protože spolehlivá data nemám; vše označeno k ověření.

@@ -1,0 +1,20 @@
+id: deko-plyny-a-prepnuti
+moduleId: nitrox
+title: "Dekompresní plyny a přepnutí"
+order: 10
+conceptIds: ["ean50", "prepnuti-plynu", "deko-lahev", "zamena-plynu"]
+checkQuestionIds: ["prepnuti-poradi", "prepnuti-hloubky", "prepnuti-partner", "prepnuti-proc-bohate", "prepnuti-chyby"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dekomprese se dělá na bohatých směsích, protože chceš dýchat co nejméně inertního plynu.
+  E á en padesát se používá od dvaceti jedna metrů, čistý kyslík od šesti metrů.
+  Stejná lahev je ale smrtelně nebezpečná hlouběji, než kam patří.
+  Přepnutí plynu je proto postup se čtyřmi kontrolami.
+  Hloubka: jsi tam, kde máš být. Lahev: přečti maximální hloubku na jejím boku. Hadice: sleduj ji rukou od ventilu k automatice. Partner: počkej na jeho potvrzení.
+  Teprve pak přepni a změň plyn i na počítači.
+  Nikdy nepřepínej hlouběji, abys ušetřil čas.
+sources:
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: true

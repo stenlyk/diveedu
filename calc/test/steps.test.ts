@@ -10,6 +10,7 @@ import {
   otuSteps,
   ppO2Steps,
   tex,
+  texResult,
   trimix,
   AIR,
   mod,
@@ -23,6 +24,14 @@ import {
 } from '../src';
 
 const last = <T>(items: T[]): T => items[items.length - 1]!;
+
+describe('texResult', () => {
+  it('přidá jednotku a escapuje procenta', () => {
+    expect(texResult(20, '%')).toBe('20\\ \\text{\\%}');
+    expect(texResult(4.375, 'bar')).toBe('4{,}375\\ \\text{bar}');
+    expect(texResult(0.28, '', 2)).toBe('0{,}28');
+  });
+});
 
 describe('tex', () => {
   it('desetinná čárka pro LaTeX, bez koncových nul', () => {

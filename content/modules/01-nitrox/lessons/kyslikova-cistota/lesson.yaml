@@ -1,0 +1,20 @@
+id: kyslikova-cistota
+moduleId: nitrox
+title: "Kyslíková kompatibilita a čistota"
+order: 11
+conceptIds: ["kyslikova-cistota", "kyslikovy-pozar", "kyslik", "tlak-v-lahvi"]
+checkQuestionIds: ["cistota-trojuhelnik", "cistota-ventil-pomalu", "cistota-40-procent", "cistota-co-hori", "cistota-teplota"]
+estimatedMinutes: 9
+audioSummary: >-
+  K hoření je potřeba palivo, okysličovadlo a zdroj zapálení.
+  V čistém kyslíku pod tlakem hoří téměř všechno. Mazivo, těsnění, prach a nakonec i kov.
+  Zdrojem zapálení bývá prudké stlačení plynu při rychlém otevření ventilu. Plyn se tím ohřeje na stovky stupňů.
+  Proto se ventily otevírají vždy pomalu.
+  Palivo se odstraňuje čištěním a použitím materiálů určených pro kyslík.
+  V potápění se běžně používá pravidlo čtyřiceti procent, některé normy jsou přísnější.
+  Při míchání parciálním tlakem teče do lahve čistý kyslík, takže lahev i ventil musí být kyslíkově čisté vždy.
+sources:
+  - { title: "ASTM G88 – Standard Guide for Designing Systems for Oxygen Service", author: "ASTM International" }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: true

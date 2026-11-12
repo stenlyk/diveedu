@@ -1,0 +1,19 @@
+id: usi-a-vyrovnani
+moduleId: zaklady
+title: "Uši, dutiny a vyrovnání tlaku"
+order: 11
+conceptIds: ["barotrauma-ucha", "vyrovnani-tlaku", "vzorec-boyle"]
+checkQuestionIds: ["usi-kde-nejvic", "usi-kdy-vyrovnavat", "usi-nejde-to", "usi-ryma", "usi-objem-3m"]
+estimatedMinutes: 9
+audioSummary: >-
+  Střední ucho je vzduchová dutina za bubínkem. Při sestupu se vzduch v ní stlačuje a bubínek se prohýbá dovnitř.
+  Tlak vyrovnáš otevřením Eustachovy trubice.
+  Vyrovnávej brzy a často. Poprvé hned pod hladinou a vždy dřív, než přijde bolest.
+  Nejvíc je to potřeba v prvních metrech, protože tam se tlak poměrně mění nejrychleji.
+  Nikdy nevyrovnávej silou. Když to nejde, vystoupej o metr a zkus to znovu.
+  S rýmou se nepotápí.
+  Prudký tlak při ucpané trubici může poškodit vnitřní ucho a způsobit trvalou ztrátu sluchu.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: false

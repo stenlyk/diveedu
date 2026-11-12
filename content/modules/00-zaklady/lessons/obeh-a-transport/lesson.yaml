@@ -1,0 +1,18 @@
+id: obeh-a-transport
+moduleId: zaklady
+title: "Krevní oběh a transport plynů"
+order: 10
+conceptIds: ["transport-kysliku", "syceni-tkani", "ppo2"]
+checkQuestionIds: ["obeh-hemoglobin", "obeh-rozpusteny-kyslik", "obeh-prokrveni-syceni", "obeh-ppo2-kyslik-6m"]
+estimatedMinutes: 9
+audioSummary: >-
+  Krev vozí kyslík dvěma způsoby. Většinu váže hemoglobin, který je téměř plný už při dýchání vzduchu na hladině.
+  Malá část je rozpuštěná v plazmě a ta roste přímo úměrně parciálnímu tlaku kyslíku.
+  Proto dýchání kyslíku pod tlakem dostane kyslík i tam, kam se krvinky nedostanou.
+  Inertní plyn se na nic neváže. Krev ho jen roznáší do tkání a zase odnáší.
+  Rychlost sycení a vysycování proto závisí na prokrvení.
+  Námaha na dně sycení zrychlí. Chlad a dehydratace na dekompresi vysycování zpomalí.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: false

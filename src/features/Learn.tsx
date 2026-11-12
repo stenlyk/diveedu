@@ -56,6 +56,15 @@ export function Learn() {
           </section>
         );
       })}
+      {content.cases.length > 0 && (
+        <section className="mb-8">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">Ze skutečnosti</h2>
+          <Link to="/pripady" className="flex min-h-14 items-center justify-between rounded-2xl border border-border bg-surface px-4 py-3 hover:border-accent">
+            <span><span className="block font-semibold">Případové studie</span><span className="text-sm text-muted">{content.cases.length} rozborů skutečných ponorů a nehod</span></span>
+            <span aria-hidden="true" className="text-muted">›</span>
+          </Link>
+        </section>
+      )}
     </div>
   );
 }

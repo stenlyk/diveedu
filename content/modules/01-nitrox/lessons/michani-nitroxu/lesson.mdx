@@ -1,0 +1,82 @@
+<Hook>
+
+Do prázdné lahve pustíš 28 barů kyslíku a doplníš vzduchem na 200.
+
+Osmadvacet z dvou set je čtrnáct procent. Analyzátor přesto ukáže dvaatřicet. Odkud se vzal zbytek?
+
+</Hook>
+
+<Principle>
+
+Zbytek přinesl vzduch – má v sobě vlastních 21 % kyslíku. Při míchání se proto nepočítá, kolik kyslíku chceš, ale kolik **dusíku**: ten je jen ve vzduchu a určí, kolik vzduchu musíš doplnit.
+
+<Term cs="míchání parciálním tlakem" /> probíhá ve dvou krocích:
+
+1. Do lahve se pomalu napustí vypočtený tlak **čistého kyslíku**.
+2. Lahev se doplní **vzduchem** na cílový tlak.
+
+Na co si dát pozor:
+
+- **Kyslíková čistota.** Lahví a ventilem teče čistý kyslík. Doplňovaný vzduch musí být zbavený oleje – běžný kompresorový nestačí.
+- **Pomalu.** Rychlé plnění plyn ohřívá. Je to riziko požáru i zdroj chyby: teplá lahev ukazuje vyšší tlak.
+- **Teplota.** Tlaky se čtou po ustálení teploty.
+- **Promíchání.** Čerstvě namíchaná směs není stejnorodá. Než měříš, nech lahev odstát nebo ji převal.
+- **Skutečný plyn.** Výpočet předpokládá ideální plyn. Při 200 bar se skutečnost o něco liší.
+
+Proto má poslední slovo vždy analýza. Výpočet říká, co plnit; analyzátor říká, co v lahvi je.
+
+Jiné způsoby přípravy nitroxu čistý kyslík pod vysokým tlakem nepotřebují: průběžné míchání na sání kompresoru nebo membránový systém, který ze vzduchu část dusíku odstraní.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="michani" />
+
+Postup platí pro prázdnou lahev. Když v lahvi zbyl plyn, musíš od potřebného dusíku i kyslíku nejdřív odečíst to, co v ní už je.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**EAN32 do prázdné lahve na 200 bar.** Kolik barů kyslíku naplnit jako první?
+
+<Worked fn="nitroxFillO2Bar" args={[200, 0.32]} expected={27.85} tolerance={0.01} steps="nitroxBlendSteps" unit="bar" decimals={1} />
+
+**Zbytek doplněný vzduchem.** V lahvi zůstalo 60 bar EAN32 a doplníš jen vzduch na 200 bar. Jaká frakce kyslíku vznikne?
+
+<Worked fn="topUpFO2" args={[60, 0.32, 200]} expected={0.243} tolerance={0.0001} unit="" decimals={3} />
+
+Z EAN32 je necelý EAN25. Kdo by s takovou lahví plánoval dekompresi jako s EAN32, počítal by s méně dusíkem, než kolik skutečně dýchá.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="blend" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="realny-plyn" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

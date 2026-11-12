@@ -1,0 +1,20 @@
+id: henry-rozpousteni
+moduleId: zaklady
+title: "Henryho zákon: plyn se rozpouští"
+order: 5
+conceptIds: ["rozpustnost-plynu", "syceni-tkani", "dcs", "ppn2"]
+checkQuestionIds: ["henry-polocas", "henry-sodovka", "henry-rychle-pomale", "henry-kyslik-vs-dusik", "henry-tkan-vypocet"]
+estimatedMinutes: 12
+audioSummary: >-
+  Henryho zákon říká, že kapalina pohltí tím víc plynu, čím vyšší je jeho parciální tlak.
+  V hloubce se proto v tkáních rozpouští víc dusíku než na hladině.
+  Sycení neproběhne naráz. Za jeden poločas tkáň vyrovná polovinu rozdílu, za dva poločasy tři čtvrtiny a po šesti je prakticky nasycená.
+  Rychlé tkáně, jako krev a mozek, se sytí v minutách. Pomalé, jako tuk a klouby, v hodinách.
+  Při výstupu je tkáň přesycená. Když tlak klesá pomalu, plyn odejde krví do plic.
+  Když klesne příliš rychle, uvolní se jako bubliny, podobně jako v otevřené sodovce. To je dekompresní nemoc.
+  Kyslík se nepočítá, protože ho tkáně spotřebují. Problém dělá inertní plyn.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: false

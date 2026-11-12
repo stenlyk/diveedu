@@ -88,3 +88,23 @@ export function topUp(input: TopUpInput): Gas {
     fHe: (input.startBar * input.startGas.fHe + added * topGas.fHe) / input.endBar,
   };
 }
+
+/**
+ * Kolik barů čistého kyslíku naplnit před doplněním vzduchem (zkratka pro nitrox a numerické otázky).
+ * Vyhodí chybu, když směs nejde namíchat bez upuštění zbytku.
+ */
+export function nitroxFillO2Bar(targetBar: number, targetFO2: number, startBar = 0, startFO2 = AIR.fO2): number {
+  const blend = partialPressureBlend({
+    startBar,
+    startGas: { fO2: startFO2, fHe: 0 },
+    targetBar,
+    targetGas: { fO2: targetFO2, fHe: 0 },
+  });
+  if (!blend.feasible) throw new CalcInputError('směs nejde namíchat bez upuštění zbytku');
+  return blend.o2Bar;
+}
+
+/** Frakce kyslíku po doplnění zbytku nitroxu vzduchem. */
+export function topUpFO2(startBar: number, startFO2: number, endBar: number): number {
+  return topUp({ startBar, startGas: { fO2: startFO2, fHe: 0 }, endBar }).fO2;
+}

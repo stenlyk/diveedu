@@ -1,0 +1,20 @@
+id: kyslikove-okno
+moduleId: nitrox
+title: "Kyslíkové okno"
+order: 8
+conceptIds: ["kyslikove-okno", "transport-kysliku", "ppo2", "syceni-tkani"]
+checkQuestionIds: ["okno-co-je", "okno-proc-vznika", "okno-kyslik-deko", "okno-ppn2-6m"]
+estimatedMinutes: 10
+audioSummary: >-
+  Když na dekompresi přepneš na kyslík, dusík odchází z tkání rychleji ze dvou důvodů.
+  První je prostý. V kyslíku žádný dusík není, takže spád mezi tkání a plícemi je největší možný.
+  Druhý je kyslíkové okno. Tkáně kyslík spotřebují a vrátí oxid uhličitý, který je mnohem rozpustnější.
+  Součet tlaků plynů ve venózní krvi je proto nižší než okolní tlak.
+  Čím vyšší parciální tlak kyslíku dýcháš, tím je okno širší.
+  Tkáň je vůči okolí v mírném podtlaku a to působí proti růstu bublin.
+  Proto je dekomprese na bohatých směsích kratší a účinnější.
+sources:
+  - { title: "The isobaric (oxygen window) principle of decompression", author: "Behnke A. R.", year: 1967 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: true

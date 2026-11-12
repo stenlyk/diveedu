@@ -1,0 +1,18 @@
+id: nejlepsi-smes
+moduleId: nitrox
+title: "Best mix: nejlepší směs pro ponor"
+order: 7
+conceptIds: ["vzorec-best-mix", "vzorec-mod", "nitrox", "absolutni-tlak"]
+checkQuestionIds: ["bestmix-vypocet", "bestmix-zaokrouhleni", "bestmix-inverze", "bestmix-rezerva"]
+estimatedMinutes: 8
+audioSummary: >-
+  Best mix je nejbohatší směs, kterou smíš dýchat v plánované hloubce.
+  Spočítáš ji jako limit parciálního tlaku kyslíku dělený absolutním tlakem.
+  Pro třicet šest metrů a limit jedna celá čtyři vychází třicet celých čtyři procenta. Objednáš e á en třicet.
+  Frakci kyslíku vždy zaokrouhluj dolů a počítej pro největší hloubku, do které se můžeš dostat.
+  Po analýze přepočítej maximální hloubku podle toho, co jsi skutečně naměřil.
+  Některé týmy místo toho používají malou sadu standardních směsí. Důležité je, aby byl tým jednotný.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: true

@@ -4,13 +4,16 @@
  */
 import * as calc from '@diveedu/calc';
 import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { LocalGraph as LocalGraphView } from '../components/LocalGraph';
 import { Tex } from '../components/Math';
 import { Steps } from '../components/Steps';
 import { Card, ReviewBadge } from '../components/ui';
-import { factsById, formulasById, glossaryByCs, questionsById } from '../content';
+import { casesById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
 import { LESSON_SECTIONS, type Lesson } from '../content/schema';
 import { QuizRunner } from '../quiz/QuizRunner';
+import { CalcToy } from '../tools/CalcView';
+import { calcDefsById } from '../tools/defs';
 import { PLAYGROUNDS } from './playgrounds';
 
 type SectionName = (typeof LESSON_SECTIONS)[number];
@@ -105,7 +108,10 @@ function Term({ cs }: { cs: string }) {
 
 function Playground({ kind }: { kind: string }) {
   const Toy = PLAYGROUNDS[kind];
-  return Toy ? <div className="not-prose my-2 max-w-none"><Toy /></div> : <p className="text-muted">Hračka „{kind}“ zatím není k dispozici.</p>;
+  const def = calcDefsById.get(kind);
+  if (Toy) return <div className="my-2 max-w-none"><Toy /></div>;
+  if (def) return <div className="my-2 max-w-none"><CalcToy def={def} /></div>;
+  return <p className="text-muted">Hračka „{kind}“ zatím není k dispozici.</p>;
 }
 
 function LocalGraph() {
@@ -124,7 +130,7 @@ function LocalGraph() {
               onClick={() => setConceptId(id)}
               className={`min-h-11 rounded-full border px-4 text-sm ${id === conceptId ? 'border-accent bg-accent/15 text-text' : 'border-border text-muted'}`}
             >
-              {id.replace(/-/g, ' ')}
+              {conceptsById.get(id)?.label ?? id}
             </button>
           ))}
         </div>
@@ -183,7 +189,44 @@ function AudioSummaryPlayer() {
   );
 }
 
+/** „Co kdyby“: přepínače situací s vysvětlením důsledku. Obsah je v lekci, ne v kódu. */
+function WhatIf({ items }: { items: { label: string; effect: string }[] }) {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <ul className="!list-none space-y-2 !pl-0">
+      {items.map((item, i) => (
+        <li key={item.label}>
+          <button type="button" aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)} className={`flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border-2 px-4 py-2 text-left font-medium ${open === i ? 'border-accent bg-accent/10' : 'border-border'}`}>
+            <span>Co kdyby… {item.label}</span><span aria-hidden="true">{open === i ? '−' : '+'}</span>
+          </button>
+          {open === i && <p className="!mb-0 mt-2 rounded-xl bg-surface-2 px-4 py-3">{item.effect}</p>}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function CaseLink({ id }: { id: string }) {
+  const study = casesById.get(id);
+  if (!study) return null;
+  return (
+    <Card className="my-2">
+      <div className="text-sm text-muted">Případová studie{study.year ? ` · ${study.year}` : ''}</div>
+      <Link to={`/pripady/${study.id}`} className="text-lg font-semibold text-accent underline underline-offset-4">{study.title}</Link>
+      <p className="!mb-0 mt-1 text-sm text-muted">{study.location}</p>
+    </Card>
+  );
+}
+
+/** Daná konvence nebo zadání (ne výsledek výpočtu) – např. „10 m mořské vody = 1 bar“. */
+function Given({ children }: { children?: ReactNode }) {
+  return <strong className="whitespace-nowrap">{children}</strong>;
+}
+
 export const mdxComponents = {
+  Given,
+  WhatIf,
+  CaseLink,
   Hook: section('Hook'),
   Principle: section('Principle'),
   FormulaSection: section('FormulaSection'),

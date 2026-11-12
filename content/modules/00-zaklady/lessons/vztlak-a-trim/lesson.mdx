@@ -1,0 +1,81 @@
+<Hook>
+
+Na začátku ponoru s dvojčetem jsi vyvážený přesně. Na konci, na zastávce v 6 m, tě to táhne k hladině a kompenzátor je prázdný.
+
+Olovo ti nikdo nevzal. Co chybí?
+
+</Hook>
+
+<Principle>
+
+Na každé těleso ve vodě působí <Term cs="vztlak" /> – síla rovná tíze vody, kterou těleso vytlačí.
+Je-li větší než tíha tělesa, těleso stoupá. Je-li menší, klesá. Potápěč chce být přesně mezi tím: neutrální.
+
+Vztlak během ponoru mění tři věci:
+
+- **Plyn v lahvích váží.** Dvojče 2×12 l plněné na 200 bar obsahuje přes šest kilogramů vzduchu. Co vydýcháš, o to jsi lehčí.
+- **Hloubka stlačuje plyn** v kompenzátoru, v suchém obleku i v bublinkách neoprenu. Při sestupu těžkneš, při výstupu lehkneš.
+- **Hustota vody.** Mořská voda nese asi o 3 % víc než sladká.
+
+Vyvažuje se proto na **nejhorší okamžik**: konec ponoru, téměř prázdné lahve, poslední zastávka. Tam musíš být schopen zůstat neutrální s prázdným kompenzátorem.
+Na začátku ponoru jsi pak nutně těžší právě o hmotnost plynu, kterou hodláš spotřebovat.
+
+<Term cs="trim" /> je poloha těla. Vodorovná poloha má nejmenší čelní odpor, kopy tlačí vodu dozadu, a ne ke dnu, a dekomprese probíhá ve stejné hloubce pro celé tělo.
+V jeskyni nebo ve vraku rozhoduje trim o tom, jestli za sebou necháš čistou vodu, nebo zvířený sediment a nulovou viditelnost.
+Trim se nastavuje rozložením zátěže a lahví, ne máváním rukama.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="archimedes" />
+
+Jednotkou je tu kilogram síly: výsledek říká, kolik kilogramů olova by těleso vyvážilo. Kladné číslo nadnáší, záporné táhne ke dnu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Kolik váží plyn.** Dvojče 2×12 l při 200 bar:
+
+<Worked fn="gasMassKg" args={[24, 200]} expected={6.18} tolerance={0.01} unit="kg" decimals={1} />
+
+Při 50 bar v něm zbývá <Calc fn="gasMassKg" args={[24, 50]} decimals={1} unit="kg" />. Rozdíl je to, o co jsi na konci ponoru lehčí.
+
+**Těleso ve vodě.** Lahev s výbavou má objem 15 l a hmotnost 17 kg. V moři:
+
+<Worked fn="netBuoyancyKg" args={[15, 17]} expected={-1.55} tolerance={0.001} unit="kg" decimals={2} />
+
+Záporný výsledek znamená, že táhne ke dnu. Ve sladké vodě by táhla ještě o něco víc: <Calc fn="netBuoyancyKg" args={[15, 17, 1]} decimals={2} unit="kg" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="buoyancy" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="archimedes" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

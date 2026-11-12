@@ -1,18 +1,54 @@
-- id: hloubka
-  label: Hloubka
-  type: quantity
-  shortDefinition: Svislá vzdálenost pod hladinou v metrech; vstup téměř každého výpočtu.
-  moduleId: zaklady
+# ── Modul 0: Základy fyziky a fyziologie ─────────────────────────────────────
+- { id: hloubka, label: Hloubka, type: quantity, moduleId: zaklady, shortDefinition: Svislá vzdálenost pod hladinou v metrech; vstup téměř každého výpočtu. }
+- { id: absolutni-tlak, label: Absolutní tlak, type: quantity, moduleId: zaklady, shortDefinition: Součet tlaku atmosféry a tlaku vodního sloupce v barech. }
+- { id: vzorec-p-abs, label: Vzorec absolutního tlaku, type: formula, moduleId: zaklady, formulaId: p-abs, shortDefinition: Hloubka dělená deseti plus jedna. }
+- { id: objem-plynu, label: Objem plynu, type: quantity, moduleId: zaklady, shortDefinition: 'Prostor, který zabírá dané množství plynu; s rostoucím tlakem se zmenšuje.' }
+- { id: vzorec-boyle, label: Boyleův zákon, type: formula, moduleId: zaklady, formulaId: boyle, shortDefinition: Při stálé teplotě je součin tlaku a objemu plynu stálý. }
+- { id: barotrauma-plic, label: Barotrauma plic, type: risk, moduleId: zaklady, shortDefinition: 'Poškození plic rozpínajícím se plynem při výstupu se zadrženým dechem; může vést k arteriální plynové embolii.' }
+- { id: hustota-plynu, label: Hustota plynu, type: quantity, moduleId: zaklady, shortDefinition: 'Hmotnost litru dýchaného plynu v dané hloubce; roste přímo úměrně tlaku.' }
+- { id: prace-dychani, label: Práce dýchání, type: physiology, moduleId: zaklady, shortDefinition: 'Úsilí potřebné k protlačení plynu dýchacími cestami a automatikou; roste s hustotou plynu.' }
+- { id: parcialni-tlak, label: Parciální tlak, type: quantity, moduleId: zaklady, shortDefinition: 'Část celkového tlaku, kterou ve směsi vytváří jeden plyn.' }
+- { id: ppo2, label: ppO2, type: quantity, moduleId: zaklady, shortDefinition: Parciální tlak kyslíku; rozhoduje o hypoxii i o kyslíkové toxicitě. }
+- { id: ppn2, label: ppN2, type: quantity, moduleId: zaklady, shortDefinition: Parciální tlak dusíku; řídí sycení tkání a narkózu. }
+- { id: vzorec-dalton, label: Daltonův zákon, type: formula, moduleId: zaklady, formulaId: dalton, shortDefinition: Parciální tlak plynu je jeho podíl ve směsi krát celkový tlak. }
+- { id: vzduch, label: Vzduch, type: gas, moduleId: zaklady, shortDefinition: 'Směs přibližně 21 % kyslíku a 79 % dusíku (včetně asi 1 % argonu a dalších plynů).' }
+- { id: kyslik, label: Kyslík, type: gas, moduleId: zaklady, shortDefinition: 'Plyn nutný pro život; při vysokém parciálním tlaku toxický a v koncentraci silně podporuje hoření.' }
+- { id: dusik, label: Dusík, type: gas, moduleId: zaklady, shortDefinition: 'Inertní plyn vzduchu; tělo ho nespotřebovává, jen rozpouští – zdroj dekompresní zátěže a narkózy.' }
+- { id: dusikova-narkoza, label: Dusíková narkóza, type: physiology, moduleId: zaklady, shortDefinition: 'Zhoršení úsudku, paměti a koordinace při vysokém parciálním tlaku dusíku.' }
+- { id: rozpustnost-plynu, label: Rozpustnost plynu, type: quantity, moduleId: zaklady, shortDefinition: 'Množství plynu, které kapalina pojme; je úměrné parciálnímu tlaku plynu nad ní.' }
+- { id: syceni-tkani, label: Sycení tkání, type: physiology, moduleId: zaklady, shortDefinition: 'Postupné rozpouštění inertního plynu v tkáních, dokud se tlak v tkáni nevyrovná s okolím.' }
+- { id: dcs, label: Dekompresní nemoc (DCS), type: risk, moduleId: zaklady, shortDefinition: 'Onemocnění způsobené bublinami inertního plynu, které se uvolní v tkáních a krvi při příliš rychlém poklesu tlaku.' }
+- { id: teplota, label: Teplota, type: quantity, moduleId: zaklady, shortDefinition: Teplota plynu nebo vody; mění tlak v lahvi i tepelné ztráty potápěče. }
+- { id: tlak-v-lahvi, label: Tlak v lahvi, type: quantity, moduleId: zaklady, shortDefinition: 'Údaj manometru; spolu s objemem lahve určuje zásobu plynu.' }
+- { id: vztlak, label: Vztlak, type: quantity, moduleId: zaklady, shortDefinition: Síla nadnášející těleso; rovná se tíze vytlačené vody. }
+- { id: trim, label: Trim, type: procedure, moduleId: zaklady, shortDefinition: 'Poloha těla ve vodě; vodorovný trim snižuje odpor, spotřebu i víření sedimentu.' }
+- { id: ztrata-tepla, label: Ztráta tepla, type: physiology, moduleId: zaklady, shortDefinition: 'Odvod tepla z těla do vody a do dýchaného plynu; vede k podchlazení.' }
+- { id: retence-co2, label: Retence CO2, type: physiology, moduleId: zaklady, shortDefinition: 'Hromadění oxidu uhličitého v těle, když ho dýchání nestíhá odvádět.' }
+- { id: namaha, label: Námaha, type: physiology, moduleId: zaklady, shortDefinition: Fyzická zátěž; zvyšuje spotřebu kyslíku a tvorbu CO2. }
+- { id: hypoxie, label: Hypoxie, type: risk, moduleId: zaklady, shortDefinition: 'Nedostatek kyslíku v tkáních; pod ppO2 přibližně 0,16 bar se zhoršuje výkon a úsudek, hlouběji pod touto hranicí hrozí bezvědomí bez varování.' }
+- { id: transport-kysliku, label: Transport kyslíku, type: physiology, moduleId: zaklady, shortDefinition: 'Přenos kyslíku krví, převážně vázaného na hemoglobin, z plic do tkání.' }
+- { id: barotrauma-ucha, label: Barotrauma ucha, type: risk, moduleId: zaklady, shortDefinition: 'Poškození středního nebo vnitřního ucha rozdílem tlaků při nevyrovnání.' }
+- { id: vyrovnani-tlaku, label: Vyrovnání tlaku, type: procedure, moduleId: zaklady, shortDefinition: 'Doplnění vzduchu do středouší a dutin Eustachovou trubicí při sestupu.' }
 
-- id: absolutni-tlak
-  label: Absolutní tlak
-  type: quantity
-  shortDefinition: Součet tlaku atmosféry a tlaku vodního sloupce v barech.
-  moduleId: zaklady
-
-- id: vzorec-p-abs
-  label: Vzorec absolutního tlaku
-  type: formula
-  shortDefinition: Hloubka dělená deseti plus jedna.
-  moduleId: zaklady
-  formulaId: p-abs
+# ── Modul 1: Advanced Nitrox ─────────────────────────────────────────────────
+- { id: nitrox, label: Nitrox, type: gas, moduleId: nitrox, shortDefinition: 'Směs kyslíku a dusíku s více než 21 % kyslíku (EANx).' }
+- { id: frakce-kysliku, label: Frakce kyslíku (fO2), type: quantity, moduleId: nitrox, shortDefinition: 'Podíl kyslíku ve směsi jako desetinné číslo; EAN32 má fO2 0,32.' }
+- { id: vzorec-mod, label: Vzorec MOD, type: formula, moduleId: nitrox, formulaId: mod, shortDefinition: 'Maximální operační hloubka: hloubka, kde směs dosáhne limitu ppO2.' }
+- { id: prekroceni-mod, label: Překročení MOD, type: risk, moduleId: nitrox, shortDefinition: Sestup pod maximální operační hloubku směsi; ppO2 překročí zvolený limit. }
+- { id: cns-toxicita, label: Kyslíková toxicita CNS, type: risk, moduleId: nitrox, shortDefinition: 'Působení vysokého ppO2 na mozek; může skončit křečemi a utonutím bez varování.' }
+- { id: vzorec-cns, label: CNS hodiny, type: formula, moduleId: nitrox, formulaId: cns, shortDefinition: Podíl vyčerpaného časového limitu NOAA pro dané ppO2. }
+- { id: plicni-toxicita, label: Plicní kyslíková toxicita, type: physiology, moduleId: nitrox, shortDefinition: 'Podráždění a poškození plic dlouhodobým dýcháním ppO2 nad 0,5 bar.' }
+- { id: vzorec-otu, label: Vzorec OTU, type: formula, moduleId: nitrox, formulaId: otu, shortDefinition: Jednotky plicní kyslíkové zátěže z ppO2 a času. }
+- { id: vzorec-ead, label: Vzorec EAD, type: formula, moduleId: nitrox, formulaId: ead, shortDefinition: 'Ekvivalentní vzduchová hloubka: hloubka na vzduchu se stejným ppN2.' }
+- { id: vzorec-best-mix, label: Best mix, type: formula, moduleId: nitrox, formulaId: best-mix, shortDefinition: Nejbohatší směs pro plánovanou hloubku a limit ppO2. }
+- { id: kyslikove-okno, label: Kyslíkové okno, type: physiology, moduleId: nitrox, shortDefinition: 'Rozdíl mezi součtem tlaků plynů v arteriální a venózní krvi, vzniklý spotřebou kyslíku v tkáních.' }
+- { id: analyza-plynu, label: Analýza plynu, type: procedure, moduleId: nitrox, shortDefinition: Osobní změření podílu kyslíku v každé lahvi před ponorem. }
+- { id: analyzator-kysliku, label: Analyzátor kyslíku, type: equipment, moduleId: nitrox, shortDefinition: 'Přístroj s galvanickým článkem, který měří podíl kyslíku; před měřením se kalibruje.' }
+- { id: znaceni-lahvi, label: Značení lahví, type: procedure, moduleId: nitrox, shortDefinition: 'Štítek s naměřeným složením, MOD, datem a podpisem; MOD čitelně i pro partnera.' }
+- { id: zamena-plynu, label: Záměna plynu, type: risk, moduleId: nitrox, shortDefinition: 'Dýchání jiné směsi, než si potápěč myslí – nejčastěji bohaté směsi příliš hluboko.' }
+- { id: ean50, label: EAN50, type: gas, moduleId: nitrox, shortDefinition: Nitrox s 50 % kyslíku; běžný dekompresní plyn od 21 m. }
+- { id: prepnuti-plynu, label: Přepnutí plynu, type: procedure, moduleId: nitrox, shortDefinition: 'Řízený postup změny dýchané směsi s kontrolou hloubky, lahve a potvrzením partnera.' }
+- { id: deko-lahev, label: Dekompresní lahev, type: equipment, moduleId: nitrox, shortDefinition: Samostatná lahev (stage) s bohatou směsí pro dekompresi. }
+- { id: kyslikova-cistota, label: Kyslíková čistota, type: procedure, moduleId: nitrox, shortDefinition: 'Vyčištění a použití kompatibilních materiálů u vybavení, které přijde do styku s vysokým podílem kyslíku.' }
+- { id: kyslikovy-pozar, label: Kyslíkový požár, type: risk, moduleId: nitrox, shortDefinition: 'Vznícení maziva, těsnění nebo nečistot v prostředí bohatém na kyslík.' }
+- { id: michani-parcialnim-tlakem, label: Míchání parciálním tlakem, type: procedure, moduleId: nitrox, shortDefinition: 'Příprava směsi postupným plněním složek podle tlaku: nejdřív kyslík, pak vzduch.' }

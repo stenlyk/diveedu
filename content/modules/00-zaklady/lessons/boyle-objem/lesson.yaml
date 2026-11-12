@@ -1,0 +1,18 @@
+id: boyle-objem
+moduleId: zaklady
+title: "Boyleův zákon: objem a hloubka"
+order: 2
+conceptIds: ["objem-plynu", "vzorec-boyle", "barotrauma-plic", "absolutni-tlak"]
+checkQuestionIds: ["boyle-plice-vystup", "boyle-nejvetsi-zmena", "boyle-zadrzeny-dech", "boyle-kompenzator", "boyle-absolutni-tlak", "boyle-embolie"]
+estimatedMinutes: 10
+audioSummary: >-
+  Boyleův zákon říká, že objem plynu se mění opačně než tlak. Dvakrát větší tlak, poloviční objem.
+  Počítá se vždy s absolutním tlakem, ne s hloubkou.
+  Plyn ze třiceti metrů se na hladině roztáhne čtyřikrát, z deseti metrů dvakrát.
+  Nejvíc se objem mění těsně pod hladinou, a proto je posledních deset metrů výstupu nejrizikovějších.
+  Odtud první pravidlo potápění: nikdy nezadržuj dech. Rozpínající se plyn v plicích je roztrhne a bubliny se dostanou do tepen.
+  Stejný zákon řídí i tvůj vztlak. Plyn v kompenzátoru a v suchém obleku se při výstupu rozpíná, takže ho musíš průběžně vypouštět.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: false

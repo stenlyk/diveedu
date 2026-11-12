@@ -1,0 +1,18 @@
+id: ekvivalentni-vzduchova-hloubka
+moduleId: nitrox
+title: "Ekvivalentní vzduchová hloubka"
+order: 6
+conceptIds: ["vzorec-ead", "ppn2", "syceni-tkani", "frakce-kysliku"]
+checkQuestionIds: ["ead-vypocet", "ead-co-znamena", "ead-k-cemu-ne", "ead-vzduch"]
+estimatedMinutes: 8
+audioSummary: >-
+  Ekvivalentní vzduchová hloubka je hloubka, ve které bys na vzduchu dýchal stejný parciální tlak dusíku jako na nitroxu ve skutečné hloubce.
+  Na e á en třicet dva ve třiceti metrech vychází necelých dvacet pět metrů.
+  Slouží k dekompresi. S ní můžeš pro nitrox použít vzduchové tabulky.
+  Neslouží ke kyslíku. Maximální hloubka směsi i CNS hodiny se vždy počítají ze skutečné hloubky.
+  A pro narkózu platí jen s výhradou, protože kyslík je pravděpodobně narkotický také.
+  Pro tabulky zaokrouhluj ekvivalentní hloubku nahoru.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: false

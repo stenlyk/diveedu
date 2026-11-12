@@ -1,0 +1,79 @@
+<Hook>
+
+Ve 40 m dýcháš vzduch <Calc fn="pressureRatio" args={[0, 40]} />krát hustší než na hladině. Automatika ti ho dodá, kolik chceš.
+
+Tak proč zkušení potápěči říkají, že se v hloubce na vzduchu „nedá udýchat“ ani mírná námaha?
+
+</Hook>
+
+<Principle>
+
+Stlačený plyn má v každém litru víc molekul, takže je těžší. <Term cs="hustota plynu" /> roste přímo úměrně absolutnímu tlaku.
+
+Hustý plyn proudí dýchacími cestami hůř. Proudění je vířivé a odpor roste s hustotou. Tělo to pozná dvakrát:
+
+- **Roste <Term cs="práce dýchání" />.** Dýchací svaly samy spotřebují víc kyslíku a vyrobí víc CO2.
+- **Klesá největší možná ventilace.** Při usilovném výdechu se průdušky zužují a průtok se zastropuje. Od určité hustoty nepomůže dýchat silněji – víc plynu už plícemi neprojde.
+
+Výsledkem je <Term cs="retence CO2" />: oxid uhličitý vzniká rychleji, než ho stíháš vydýchat. A CO2 zesiluje narkózu, snižuje odolnost vůči kyslíkovým křečím a vyvolává dušnost a paniku.
+
+Z rozboru testů dýchacích přístrojů vzešla dvě čísla, která dnes používá většina technických potápěčů:
+doporučený limit hustoty 5,2 g/l a tvrdý limit 6,2 g/l. Řešením ve větších hloubkách není silnější automatika, ale lehčí plyn – helium (modul Normoxic Trimix).
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="hustota" />
+
+Koeficienty jsou hustoty čistého kyslíku, dusíku a helia na hladině při 0 °C. Pro vzduch na hladině vychází <Calc fn="airDensity" args={[0]} decimals={2} unit="g/l" />
+a v hloubce se toto číslo násobí absolutním tlakem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Vzduch ve 30 m.**
+
+<Worked fn="gasDensity" args={[{ fO2: 0.21, fHe: 0 }, 30]} expected={5.15} tolerance={0.01} steps="gasDensitySteps" unit="g/l" decimals={2} />
+
+Vzduch ve 30 m je tedy těsně pod doporučeným limitem. V tabulkách najdeš i hodnotu 5,17 g/l – ta platí pro skutečný vzduch,
+který obsahuje asi 1 % těžšího argonu. Vzorec se dvěma složkami ho zanedbává.
+
+**Vzduch ve 40 m.**
+
+<Worked fn="gasDensity" args={[{ fO2: 0.21, fHe: 0 }, 40]} expected={6.44} tolerance={0.01} unit="g/l" decimals={2} />
+
+To už je nad tvrdým limitem. Ponor na vzduch do 40 m je z pohledu hustoty na hraně i bez jakékoli námahy.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="air-density" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hustota-anthony-mitchell" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

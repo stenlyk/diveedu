@@ -1,0 +1,83 @@
+<Hook>
+
+Otevřeš ventil kyslíkové lahve jedním prudkým pohybem. Plyn vrazí do hadice a o její slepý konec se stlačí.
+
+Na zlomek sekundy tam teoreticky vznikne teplota kolem <Calc fn="adiabaticTempC" args={[20, 1, 200]} unit="°C" />. Stačí, aby tam bylo co zapálit.
+
+</Hook>
+
+<Principle>
+
+K hoření jsou potřeba tři věci: palivo, okysličovadlo a zdroj zapálení. Ve vzduchu je okysličovadla pětina a většina materiálů hoří neochotně.
+V čistém kyslíku pod tlakem hoří skoro všechno – mazivo, těsnění, prach, a když se oheň rozběhne, i kov.
+
+**Zdroje zapálení** v potápěčské výstroji:
+
+- **<Term cs="adiabatické stlačení" />.** Plyn, který se prudce stlačí, se prudce ohřeje. Děje se to při každém rychlém otevření ventilu.
+- **Částice** unášené proudem plynu, které narazí do stěny.
+- **Tření** při pohybu ventilu.
+
+**Palivo** se odstraňuje dvěma kroky, které dohromady tvoří <Term cs="kyslíková čistota" />:
+
+- **čištění** – odmaštění všech dílů, které přijdou do styku s kyslíkem,
+- **kompatibilita** – těsnění a maziva určená pro kyslík; běžný silikonový tuk mezi ně nepatří.
+
+**Kde je hranice?** V potápění se běžně používá pravidlo 40 %: do tohoto podílu kyslíku stačí standardní výstroj, nad něj musí být čistá a kompatibilní.
+Některé normy a výrobci ale požadují kyslíkovou čistotu už nad 23,5 %. Řiď se pokyny výrobce a místními předpisy.
+Pozor: při míchání parciálním tlakem teče do lahve **čistý kyslík**. Lahev a ventil proto musí být kyslíkově čisté, i když výsledná směs má jen 32 %.
+
+**Zásady:** ventily otevírej pomalu, výstroj drž čistou, nepoužívej nevhodná maziva a po servisu nebo znečištění nech výstroj znovu vyčistit.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="adiabata" />
+
+Vzorec dává horní mez pro ideální případ, kdy teplo nestihne nikam uniknout. Skutečná teplota je nižší, ale i zlomek stačí k zapálení mastnoty v kyslíku.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Prudké otevření lahve s 200 bar.** Plyn v hadici měl 20 °C a tlak 1 bar:
+
+<Worked fn="adiabaticTempC" args={[20, 1, 200]} expected={1059} tolerance={2} unit="°C" decimals={0} />
+
+**Lahev s 50 bar.**
+
+<Worked fn="adiabaticTempC" args={[20, 1, 50]} expected={623} tolerance={2} unit="°C" decimals={0} />
+
+I skoro prázdná lahev stačí. Pomalé otevření dá teplu čas odejít do kovu a tlak roste postupně.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="adiabatic" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="adiabaticke-ohrati" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

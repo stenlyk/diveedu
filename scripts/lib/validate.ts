@@ -4,6 +4,8 @@
  */
 import * as calc from '@diveedu/calc';
 import type { z } from 'zod';
+import { CUSTOM_PLAYGROUND_KINDS } from '../../src/mdx/playgroundKinds';
+import { CALC_DEFS } from '../../src/tools/defs';
 import {
   CaseStudySchema,
   ConceptSchema,
@@ -27,6 +29,10 @@ export interface RawLesson {
   topLevelElements: string[];
   /** Všechny <Calc> a <Worked> v lekci. */
   calcCalls: CalcCall[];
+  /** Odkazy na další obsah: <Playground kind>, <Fact id>, <CaseLink id>, <Formula id>, <Term cs>. */
+  refs?: { element: string; value: string }[];
+  /** Úryvky textu s ručně psaným výsledkem v částech Vzorec a Ukázkový výpočet. */
+  handWritten?: string[];
 }
 
 export interface CalcCall {
@@ -87,7 +93,7 @@ function duplicates(ids: string[]): string[] {
 
 /** Krajní kombinace parametrů šablony (min/max nebo první/poslední hodnota). */
 export function templateCorners(template: NumericTemplate): Record<string, number>[] {
-  let combos: Record<string, number>[] = [{}];
+  let combos: Record<string, number>[] = [{ ...template.fixed }];
   for (const [name, param] of Object.entries(template.params)) {
     const ends = 'values' in param ? [param.values[0]!, param.values[param.values.length - 1]!] : [param.min, param.max];
     combos = combos.flatMap((combo) => [...new Set(ends)].map((value) => ({ ...combo, [name]: value })));
@@ -148,6 +154,10 @@ export function validateContent(raw: RawContent): ValidationResult {
   const formulaIds = new Set(formulas.map((f) => f.id));
   const questionIds = new Set(questions.map((q) => q.id));
   const mediaIds = new Set(media.map((m) => m.id));
+  const factIds = new Set(facts.map((f) => f.id));
+  const caseIds = new Set(cases.map((c) => c.id));
+  const glossaryTerms = new Set(glossary.map((g) => g.cs.toLowerCase()));
+  const playgroundKinds = new Set<string>([...CUSTOM_PLAYGROUND_KINDS, ...CALC_DEFS.map((def) => def.id)]);
   const needConcepts = (ids: string[], where: string) => {
     for (const conceptId of ids) if (!conceptIds.has(conceptId)) errors.push(`${where}: neznámý uzel „${conceptId}“`);
   };
@@ -183,6 +193,19 @@ export function validateContent(raw: RawContent): ValidationResult {
     const relationCount = relations.filter((r) => r.lessonId === lesson.id).length;
     if (relationCount < MIN_RELATIONS_PER_LESSON) {
       errors.push(`${where}: má ${relationCount} vazeb do grafu, potřebuje alespoň ${MIN_RELATIONS_PER_LESSON}`);
+    }
+    for (const snippet of lesson.raw.handWritten ?? []) {
+      errors.push(`${where}: ručně psaný výsledek „${snippet}“ – použij <Calc> nebo <Worked>`);
+    }
+    for (const ref of lesson.raw.refs ?? []) {
+      const known: Record<string, (value: string) => boolean> = {
+        Playground: (value) => playgroundKinds.has(value),
+        Fact: (value) => factIds.has(value),
+        CaseLink: (value) => caseIds.has(value),
+        Formula: (value) => formulaIds.has(value),
+        Term: (value) => glossaryTerms.has(value.toLowerCase()),
+      };
+      if (!known[ref.element]!(ref.value)) errors.push(`${where}: <${ref.element}> odkazuje na neznámou položku „${ref.value}“`);
     }
     for (const call of lesson.raw.calcCalls) {
       const tag = `${where}: <${call.element}>`;
@@ -263,10 +286,10 @@ export function validateContent(raw: RawContent): ValidationResult {
         continue;
       }
       for (const arg of template.args) {
-        if (!(arg in template.params)) errors.push(`${where}: argument „${arg}“ nemá definici v params`);
+        if (!(arg in template.params) && !(arg in template.fixed)) errors.push(`${where}: argument „${arg}“ nemá definici v params ani fixed`);
       }
       for (const name of Object.keys(template.params)) {
-        if (!question.prompt.includes(`{${name}}`)) errors.push(`${where}: prompt neobsahuje {${name}}`);
+        if (!question.prompt.includes(`{${name}}`) && !question.prompt.includes(`{${name}|percent}`)) errors.push(`${where}: prompt neobsahuje {${name}}`);
       }
       for (const [name, param] of Object.entries(template.params)) {
         if ('min' in param && param.min > param.max) errors.push(`${where}: parametr ${name} má min > max`);

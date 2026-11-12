@@ -4,9 +4,157 @@
     Dálkově řízený robot v ní v roce 2016 dosáhl hloubky 404 m a dna se nedotkl.
     Ve sladké vodě by tam absolutní tlak byl kolem 40 bar.
   conceptIds: [hloubka, absolutni-tlak]
-  source:
-    title: Hranická propast – průzkum ROV 2016
-    author: Česká speleologická společnost, ZO 7-02 Hranický kras
-    year: 2016
-    note: Hloubku a rok ověřit proti primárnímu zdroji.
+  source: { title: Hranická propast – průzkum ROV 2016, author: 'Česká speleologická společnost, ZO 7-02 Hranický kras', year: 2016, note: Hloubku a rok ověřit proti primárnímu zdroji. }
   needs_review: true
+
+- id: boyle-1662
+  text: >-
+    Robert Boyle publikoval vztah mezi tlakem a objemem vzduchu roku 1662 po pokusech se rtutí v zahnuté skleněné trubici.
+    Ve Francii se stejný zákon učí jako Mariottův – Edme Mariotte k němu došel nezávisle o několik let později.
+  conceptIds: [vzorec-boyle]
+  source: { title: 'A Defence of the Doctrine Touching the Spring and Weight of the Air', author: Robert Boyle, year: 1662 }
+
+- id: hustota-anthony-mitchell
+  text: >-
+    Doporučení držet hustotu dýchaného plynu pod 5,2 g/l a nikdy nepřekročit 6,2 g/l pochází z rozboru testů dýchacích přístrojů,
+    který v roce 2016 publikovali Gavin Anthony a Simon Mitchell. Nad horní hranicí prudce přibývalo testů ukončených nebezpečným hromaděním CO2.
+  conceptIds: [hustota-plynu, prace-dychani, retence-co2]
+  source: { title: 'Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving', author: 'Anthony G., Mitchell S. J.', year: 2016 }
+
+- id: dalton-1801
+  text: >-
+    John Dalton, učitel z Manchesteru a autor atomové teorie, formuloval zákon parciálních tlaků roku 1801.
+    Byl také první, kdo vědecky popsal barvoslepost – trpěl jí sám a dodnes se jí podle něj říká daltonismus.
+  conceptIds: [vzorec-dalton, parcialni-tlak]
+  source: { title: Zákon parciálních tlaků, author: John Dalton, year: 1801 }
+
+- id: haldane-kozy
+  text: >-
+    První dekompresní tabulky vznikly z pokusů na kozách. John Scott Haldane s kolegy je v letech 1905–1907 vystavoval tlaku v komoře
+    a zjistil, že pokles tlaku na polovinu snášejí bez příznaků. Tabulky publikované roku 1908 převzalo britské námořnictvo.
+  conceptIds: [syceni-tkani, dcs]
+  source: { title: The Prevention of Compressed-Air Illness, author: 'Boycott A. E., Damant G. C. C., Haldane J. S.', year: 1908, note: Journal of Hygiene 8(3) }
+
+- id: horka-lahev
+  text: >-
+    Při rychlém plnění se lahev ohřeje klidně na 40–50 °C. Proto plnírny lahve chladí ve vodní lázni nebo plní pomalu:
+    „dvě stě barů“ na teplé lahvi ve studené vodě znamená citelně méně.
+  conceptIds: [teplota, tlak-v-lahvi]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Physics of Diving', author: NOAA, year: 2017 }
+
+- id: archimedes
+  text: >-
+    Archimédův zákon je přes 2200 let starý a pro potápěče platí beze změny: nadnáší tě síla rovná tíze vody, kterou vytlačíš.
+    V moři je to asi o 3 % víc než ve sladké vodě – proto v jezeře potřebuješ méně olova.
+  conceptIds: [vztlak]
+  source: { title: O plovoucích tělesech, author: Archimédés ze Syrakus, note: 3. století př. n. l. }
+
+- id: zvuk-ve-vode
+  text: >-
+    Zvuk se ve vodě šíří rychlostí kolem 1500 m/s, tedy víc než čtyřikrát rychleji než ve vzduchu.
+    Mozek určuje směr podle zpoždění mezi ušima – a to je pod vodou tak krátké, že zvuk zní, jako by přicházel odevšad.
+  conceptIds: [ztrata-tepla]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7 – Underwater Physics', author: Naval Sea Systems Command, year: 2016 }
+
+- id: lanphier-co2
+  text: >-
+    Edward Lanphier při pokusech pro americké námořnictvo v 50. letech zjistil, že někteří potápěči při práci pod tlakem
+    dýchají méně, než by měli, a hromadí CO2, aniž to cítí. Dostali název „CO2 retainers“ a ukázalo se, že mají vyšší riziko kyslíkových křečí.
+  conceptIds: [retence-co2, cns-toxicita]
+  source: { title: 'Nitrogen-Oxygen Mixture Physiology, Phases 1–6', author: 'Lanphier E. H., US Navy Experimental Diving Unit', year: 1955, note: Rok a přesný název zprávy ověřit. }
+  needs_review: true
+
+- id: hemoglobin
+  text: >-
+    Gram hemoglobinu naváže asi 1,34 ml kyslíku a na hladině je nasycený z 97–98 %. Dýchání čistého kyslíku proto hemoglobinu skoro nic nepřidá –
+    přibude jen kyslík fyzikálně rozpuštěný v plazmě. Právě ten je podstatou hyperbarické léčby.
+  conceptIds: [transport-kysliku]
+  source: { title: 'Bennett and Elliott''s Physiology and Medicine of Diving, 5th Edition', author: 'Brubakk A. O., Neuman T. S. (eds.)', year: 2003 }
+
+- id: valsalva
+  text: >-
+    Manévr, kterým si většina potápěčů vyrovnává uši, popsal italský anatom Antonio Maria Valsalva roku 1704 –
+    původně jako způsob, jak z ucha vypudit hnis. Šetrnější Frenzelův manévr vymyslel až za druhé světové války lékař Luftwaffe pro piloty střemhlavých bombardérů.
+  conceptIds: [vyrovnani-tlaku]
+  source: { title: De aure humana tractatus, author: Antonio Maria Valsalva, year: 1704, note: Údaj o Frenzelovi ověřit. }
+  needs_review: true
+
+- id: nitrox-rutkowski
+  text: >-
+    Nitrox používala americká NOAA pro vědecké potápěče od 70. let; standardní směs NOAA Nitrox I měla 32 % kyslíku.
+    Rekreačním potápěčům ho roku 1985 zpřístupnil bývalý šéf potápění NOAA Dick Rutkowski. Část oboru tehdy nitrox nazývala „ďáblovým plynem“.
+  conceptIds: [nitrox]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Nitrox Diving', author: NOAA, year: 2017, note: Rok 1985 a založení IAND ověřit. }
+  needs_review: true
+
+- id: paul-bert
+  text: >-
+    Křeče z kyslíku pod tlakem popsal francouzský fyziolog Paul Bert roku 1878 v knize La Pression barométrique.
+    Toxicitě kyslíku pro centrální nervový systém se proto dodnes říká efekt Paula Berta.
+  conceptIds: [cns-toxicita]
+  source: { title: La Pression barométrique, author: Paul Bert, year: 1878 }
+
+- id: noaa-limity
+  text: >-
+    Tabulka limitů, podle které se počítají CNS hodiny, je z NOAA Diving Manual. Nejde o ostrou hranici mezi bezpečím a křečemi,
+    ale o provozní limity odvozené z praxe a pokusů – tolerance kyslíku se liší mezi lidmi i ze dne na den.
+  conceptIds: [vzorec-cns, cns-toxicita]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Oxygen Exposure Limits', author: NOAA, year: 2017 }
+
+- id: lorrain-smith
+  text: >-
+    Poškození plic dlouhodobým dýcháním kyslíku popsal roku 1899 skotský patolog James Lorrain Smith.
+    Plicní toxicitě se proto říká efekt Lorraina Smithe – na rozdíl od efektu Paula Berta nastupuje pomalu, během hodin až dnů.
+  conceptIds: [plicni-toxicita]
+  source: { title: The pathological effects due to increase of oxygen tension in the air breathed, author: 'Lorrain Smith J.', year: 1899, note: Journal of Physiology 24(1) }
+
+- id: ead-tabulky
+  text: >-
+    Než se rozšířily potápěčské počítače, byla EAD jediný praktický způsob, jak s nitroxem plánovat:
+    potápěč spočítal ekvivalentní hloubku a pak použil obyčejné vzduchové tabulky. Dnešní počítač dělá totéž – jen průběžně.
+  conceptIds: [vzorec-ead]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Nitrox Diving', author: NOAA, year: 2017 }
+
+- id: standardni-smesi
+  text: >-
+    Některé agentury místo počítání best mixu pro každý ponor používají malou sadu standardních směsí, například EAN32 do 30 m.
+    Argument: tým má vždy stejný plyn, stejné MOD a stejnou dekompresi – a méně příležitostí k chybě.
+  conceptIds: [vzorec-best-mix, nitrox]
+  source: { title: 'GUE Standards and Procedures – standard gases', author: Global Underwater Explorers, note: Aktuální verzi standardů ověřit. }
+  needs_review: true
+
+- id: behnke-okno
+  text: >-
+    Pojem kyslíkové okno zavedl roku 1967 Albert Behnke, lékař amerického námořnictva. Jiní autoři stejný jev nazývají
+    „inherent unsaturation“ (Hills) nebo „partial pressure vacancy“ (Momsen) – tři jména pro totéž.
+  conceptIds: [kyslikove-okno]
+  source: { title: The isobaric (oxygen window) principle of decompression, author: 'Behnke A. R.', year: 1967 }
+
+- id: galvanicky-clanek
+  text: >-
+    Čidlo v analyzátoru je malý galvanický článek: kyslík v něm reaguje a vyrábí proud úměrný svému parciálnímu tlaku.
+    Článek se tím spotřebovává – vydrží obvykle jeden až tři roky a ke konci života měří nízko nebo nestabilně.
+  conceptIds: [analyzator-kysliku]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Nitrox Diving', author: NOAA, year: 2017 }
+
+- id: kyslik-na-deku
+  text: >-
+    Dekomprese na čistém kyslíku není vynález technického potápění. Americké námořnictvo ji zkoušelo už ve 30. letech
+    a kyslíkové dekompresní tabulky pro povrchovou dekompresi v komoře používá dodnes.
+  conceptIds: [ean50, kyslikove-okno]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7', author: Naval Sea Systems Command, year: 2016, note: Dataci prvních pokusů ověřit. }
+  needs_review: true
+
+- id: adiabaticke-ohrati
+  text: >-
+    Dieselový motor nemá svíčky – směs v něm zapálí samotné stlačení vzduchu. Stejný jev nastane v hadici nebo v prvním stupni,
+    když prudce otevřeš ventil lahve. Proto se ventily kyslíkových lahví otevírají vždy pomalu.
+  conceptIds: [kyslikovy-pozar, kyslikova-cistota]
+  source: { title: 'ASTM G88 – Standard Guide for Designing Systems for Oxygen Service', author: ASTM International }
+
+- id: realny-plyn
+  text: >-
+    Skutečné plyny se při 200 barech nechovají přesně podle ideální rovnice: kyslík a dusík jsou o něco méně stlačitelné, než teorie říká.
+    U nitroxu je odchylka malá, u trimixu s heliem už znatelná – proto míchači používají tabulky stlačitelnosti a výsledek vždy analyzují.
+  conceptIds: [michani-parcialnim-tlakem, analyza-plynu]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Gas Mixing', author: NOAA, year: 2017 }

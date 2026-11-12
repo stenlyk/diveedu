@@ -1,0 +1,19 @@
+id: hustota-vzduchu
+moduleId: zaklady
+title: "Hustota dýchaného plynu"
+order: 3
+conceptIds: ["hustota-plynu", "prace-dychani", "retence-co2"]
+checkQuestionIds: ["hustota-vzduch-hloubka", "hustota-proc-vadi", "hustota-limity", "hustota-usili-nepomuze"]
+estimatedMinutes: 9
+audioSummary: >-
+  Hustota dýchaného plynu roste s hloubkou stejně jako tlak. Ve čtyřiceti metrech je vzduch pětkrát hustší než na hladině.
+  Hustý plyn klade v dýchacích cestách větší odpor. Dýchání stojí víc práce a od určité hustoty už plícemi víc plynu neprotlačíš, ani když se snažíš.
+  Oxid uhličitý se pak hromadí rychleji, než ho stíháš vydýchat.
+  Zapamatuj si dvě čísla: doporučený limit pět celých dva gramu na litr a tvrdý limit šest celých dva gramu na litr.
+  Vzduch dosáhne prvního limitu zhruba ve třiceti metrech a druhý překročí před čtyřicítkou.
+  Proto se hlouběji přidává helium. Ne kvůli automatice, ale kvůli tvým plicím.
+sources:
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: false

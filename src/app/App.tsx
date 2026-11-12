@@ -13,6 +13,9 @@ const Train = lazy(() => import('../features/Train').then((m) => ({ default: m.T
 const QuickCheck = lazy(() => import('../features/Train').then((m) => ({ default: m.QuickCheck })));
 const GraphPage = lazy(() => import('../features/GraphPage').then((m) => ({ default: m.GraphPage })));
 const Tools = lazy(() => import('../features/Tools').then((m) => ({ default: m.Tools })));
+const ToolPage = lazy(() => import('../features/Tools').then((m) => ({ default: m.ToolPage })));
+const Cases = lazy(() => import('../features/Cases').then((m) => ({ default: m.Cases })));
+const CasePage = lazy(() => import('../features/Cases').then((m) => ({ default: m.CasePage })));
 const Settings = lazy(() => import('../features/Settings').then((m) => ({ default: m.Settings })));
 
 export function App() {
@@ -44,6 +47,9 @@ export function App() {
             <Route path="graf" element={<GraphPage />} />
             <Route path="graf/:conceptId" element={<GraphPage />} />
             <Route path="nastroje" element={<Tools />} />
+            <Route path="nastroje/:toolId" element={<ToolPage />} />
+            <Route path="pripady" element={<Cases />} />
+            <Route path="pripady/:caseId" element={<CasePage />} />
             <Route path="nastaveni" element={<Settings />} />
             <Route path="*" element={<p>Stránka nenalezena.</p>} />
           </Route>

@@ -1,0 +1,77 @@
+<Hook>
+
+Jsi ve 30 m na EAN32. Hloubkoměr ukazuje třicet.
+
+Tvoje tkáně jsou ale přesvědčené, že jsi ve <Calc fn="ead" args={[0.32, 30]} decimals={1} unit="m" />. Komu věřit?
+
+</Hook>
+
+<Principle>
+
+Tkáně nevnímají hloubku. Vnímají parciální tlak dusíku. <Term cs="ekvivalentní vzduchová hloubka" /> je hloubka,
+ve které bys na **vzduchu** dýchal stejné ppN2 jako na nitroxu ve své skutečné hloubce.
+
+K čemu je dobrá:
+
+- **Dekomprese.** S EAD můžeš pro nitroxový ponor použít vzduchové tabulky. Počítač dělá totéž průběžně, jen to neukazuje.
+- **Porozumění.** EAD ukáže, kolik „hloubky“ ti nitrox ušetřil.
+
+K čemu dobrá **není**:
+
+- **Ke kyslíku.** MOD, ppO2 i CNS hodiny se počítají ze skutečné hloubky. Na EAN32 ve 30 m máš ppO2 pro 30 m, ne pro 24.
+- **K narkóze** – aspoň ne bez výhrad. Pokud je kyslík narkotický stejně jako dusík, nitrox narkózu nesnižuje a „narkotická hloubka“ se rovná skutečné.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="ead" />
+
+Odvození: ppN2 nitroxu ve skutečné hloubce se má rovnat ppN2 vzduchu v hloubce ekvivalentní. Vlevo je frakce dusíku nitroxu krát tlak,
+vpravo 0,79 krát tlak v ekvivalentní hloubce. Zbytek je úprava rovnice a převod tlaku na metry.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**EAN32 ve 30 m.**
+
+<Worked fn="ead" args={[0.32, 30]} expected={24.43} tolerance={0.01} steps="eadSteps" unit="m" decimals={1} />
+
+**EAN36 ve 28 m.**
+
+<Worked fn="ead" args={[0.36, 28]} expected={20.78} tolerance={0.01} steps="eadSteps" unit="m" decimals={1} />
+
+Pro dekompresní tabulky se EAD zaokrouhluje **nahoru** na nejbližší hlubší řádek – opačně než MOD. V obou případech směrem k bezpečí.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="ead" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="ead-tabulky" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

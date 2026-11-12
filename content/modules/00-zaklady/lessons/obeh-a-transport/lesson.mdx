@@ -1,0 +1,85 @@
+<Hook>
+
+Na hladině veze skoro všechen kyslík hemoglobin a je jím téměř plný. Dýchat čistý kyslík mu tedy skoro nic nepřidá.
+
+A přesto právě na dýchání kyslíku pod tlakem stojí léčba dekompresní nemoci. Kde se ten kyslík navíc veze?
+
+</Hook>
+
+<Principle>
+
+Srdce žene krev dvěma okruhy. V plicním si krev vymění plyny se vzduchem ve sklípcích, v tělním je rozveze tkáním a vrátí se zpět.
+
+**Kyslík** cestuje dvěma způsoby:
+
+- **Vázaný na hemoglobin.** To je naprostá většina. Hemoglobin je nasycený z 97–98 % už při dýchání vzduchu na hladině.
+- **Rozpuštěný v plazmě.** Na hladině zanedbatelné množství, ale podle Henryho zákona roste úměrně ppO2. Při dýchání kyslíku pod tlakem ho je řádově víc.
+
+Tkáně si z krve vezmou asi čtvrtinu kyslíku; žilní krev se vrací zhruba ze tří čtvrtin nasycená. Opačným směrem odchází CO2.
+
+**Inertní plyn** – dusík, helium – se na nic neváže. Je v krvi jen rozpuštěný a krev ho roznáší do tkání a zase odnáší.
+Rychlost sycení i vysycování tkáně proto závisí hlavně na jejím **prokrvení**:
+
+- námaha na dně zrychlí oběh a tkáně naberou plyn rychleji,
+- chlad a dehydratace na dekompresi oběh v končetinách omezí a plyn odchází pomaleji.
+
+Žilní krev po ponoru běžně nese drobné bublinky. Plíce je odfiltrují. U zhruba čtvrtiny lidí ale mezi srdečními síněmi zůstává malý průchod (PFO), kterým může část žilní krve plíce obejít –
+tématu se věnuje modul Fyziologie a medicína.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+K tomu jedna úměra z Henryho zákona:
+
+<Given>množství rozpuštěného kyslíku ∝ ppO2</Given>
+
+Hemoglobin má strop, rozpuštěný kyslík ne. Proto ppO2 rozhoduje o tom, kolik kyslíku se dostane do tkáně, kam se červené krvinky nedostanou – třeba za bublinu, která ucpala cévu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Vzduch na hladině.**
+
+<Worked fn="ppO2" args={[0.21, 0]} expected={0.21} tolerance={0.001} unit="bar" decimals={2} />
+
+**Čistý kyslík na dekompresní zastávce v 6 m.**
+
+<Worked fn="ppO2" args={[1, 6]} expected={1.6} tolerance={0.001} steps="ppO2Steps" unit="bar" decimals={2} />
+
+Parciální tlak kyslíku je více než sedmkrát vyšší, a ve stejném poměru přibylo kyslíku rozpuštěného v plazmě. Hemoglobin přitom veze prakticky totéž co předtím.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="ppo2" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hemoglobin" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

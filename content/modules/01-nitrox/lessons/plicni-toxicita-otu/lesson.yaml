@@ -1,0 +1,20 @@
+id: plicni-toxicita-otu
+moduleId: nitrox
+title: "Plicní toxicita a OTU"
+order: 5
+conceptIds: ["plicni-toxicita", "vzorec-otu", "ppo2"]
+checkQuestionIds: ["otu-vypocet", "otu-rozdil-cns", "otu-priznaky", "otu-kdy-resit"]
+estimatedMinutes: 8
+audioSummary: >-
+  Kyslík má vedle rychlého účinku na mozek i pomalý účinek na plíce.
+  Plicní toxicita vzniká při parciálním tlaku nad půl baru a rozvíjí se hodiny až dny.
+  Projevuje se pálením za hrudní kostí, suchým kašlem a poklesem kapacity plic. Po přerušení expozice odezní.
+  Měří se v jednotkách ó té ú. Jedna jednotka je jedna minuta kyslíku při jednom baru.
+  Jednotky se sčítají přes celé dny.
+  U běžných nitroxových ponorů je nepotkáš. Rozhodují na expedicích, u rebreatherů a při léčbě v komoře.
+  U krátkých ponorů vždy dřív narazíš na CNS hodiny.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Tolerating exposure to high oxygen levels: Repex and other methods. Marine Technology Society Journal 23(4)", author: "Hamilton R. W.", year: 1989 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: true

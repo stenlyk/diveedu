@@ -5,6 +5,7 @@ export * from './gas';
 export * from './oxygen';
 export * from './narcosis';
 export * from './density';
+export * from './physics';
 export * from './trimix';
 export * from './consumption';
 export * from './blending';

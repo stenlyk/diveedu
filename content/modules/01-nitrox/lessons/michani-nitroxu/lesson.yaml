@@ -1,0 +1,19 @@
+id: michani-nitroxu
+moduleId: nitrox
+title: "Míchání parciálním tlakem"
+order: 12
+conceptIds: ["michani-parcialnim-tlakem", "nitrox", "analyza-plynu", "kyslikova-cistota"]
+checkQuestionIds: ["michani-kyslik-bar", "michani-proc-ne-14", "michani-poradi", "michani-doplneni", "michani-po-michani"]
+estimatedMinutes: 10
+audioSummary: >-
+  Při míchání parciálním tlakem se do lahve nejdřív pomalu napustí čistý kyslík a pak se doplní vzduch.
+  Vzduch přinese vlastních dvacet jedna procent kyslíku. Proto na e á en třicet dva při dvou stech barech stačí necelých dvacet osm barů kyslíku.
+  Lahev i ventil musí být kyslíkově čisté a doplňovaný vzduch nesmí obsahovat olej.
+  Plň pomalu a tlaky čti až po vychladnutí.
+  Výpočet předpokládá ideální plyn a skutečnost se trochu liší.
+  Poslední slovo má proto vždy analýza.
+  A pozor na doplňování zbytku vzduchem. Směs tím zchudne.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: true

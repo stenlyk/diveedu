@@ -73,14 +73,70 @@ test('lekce má 9 částí, čísla z calc a ověřovací otázky', async ({ pag
   await expect(page.getByLabel('dokončeno')).toBeVisible();
 });
 
-test('kalkulačka MOD počítá přes calc a ukazuje disclaimer', async ({ page }) => {
+test('kalkulačka MOD: režim Spočti mi počítá přes calc a ukazuje disclaimer', async ({ page }) => {
   await acceptOnboarding(page);
   await page.goto('/nastroje');
-  await expect(page.getByRole('note')).toContainText('Neplánuj podle něj skutečný ponor');
-  await expect(page.getByTestId('tool-mod')).toHaveText('33 m'); // EAN32 při 1,4 bar = 33,75 m, dolů
-  await expect(page.getByTestId('tool-ppo2')).toHaveText('1,28 bar');
-  await page.getByRole('button', { name: '1,6 bar' }).click();
-  await expect(page.getByTestId('tool-mod')).toHaveText('40 m');
+  await page.getByRole('link', { name: /^MOD/ }).click();
+  await expect(page.getByRole('note').first()).toContainText('Neplánuj podle něj skutečný ponor');
+  const mod = page.locator('[data-output="MOD (zaokrouhleno dolů)"]');
+  await expect(mod).toHaveText('33 m'); // EAN32 při 1,4 bar = 33,75 m, dolů
+  await expect(page.getByText('Postup')).toBeVisible();
+  await page.getByRole('button', { name: 'Limit ppO2: přidat' }).click();
+  await page.getByRole('button', { name: 'Limit ppO2: přidat' }).click();
+  await expect(mod).toHaveText('40 m');
+});
+
+test('kalkulačka MOD: režim Spočítám sám dá zpětnou vazbu u chybného kroku', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje/mod');
+  await page.getByRole('tab', { name: 'Spočítám sám' }).click();
+  await page.locator('#practice-0').fill('999');
+  await page.locator('#practice-1').fill('999');
+  await page.getByRole('button', { name: 'Zkontrolovat' }).click();
+  await expect(page.getByText('Tady se postup rozchází.')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Nové zadání' }).click();
+  await expect(page.locator('#practice-0')).toHaveValue('');
+});
+
+test('případová studie má všech osm částí, označení jistoty a výpočet', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/uceni');
+  await page.getByRole('link', { name: /Případové studie/ }).click();
+  await page.getByRole('link', { name: /Kyslíkové křeče po přepnutí/ }).click();
+  await expect(page.getByText('Příčina: hypotéza')).toBeVisible();
+  await expect(page.getByText('čeká na odbornou kontrolu')).toBeVisible();
+  for (const heading of ['1. Kontext', '2. Profil', '3. Časová osa', '4. Řetěz chyb', '5. Fyziologický mechanismus', '6. Spočítej si to', '7. Co by řetěz přerušilo', '8. Zdroje']) {
+    await expect(page.getByRole('heading', { name: heading })).toBeVisible();
+  }
+  const task = page.locator('form').filter({ hasText: 'Jaké je ppO2 při dýchání EAN50 ve 40 m?' });
+  await task.getByRole('textbox').fill('2,5');
+  await task.getByRole('button', { name: 'Ověřit' }).click();
+  await expect(task.getByText('✓ Správně.')).toBeVisible();
+});
+
+test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
+  test.setTimeout(180_000);
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  await acceptOnboarding(page);
+  await page.goto('/uceni');
+  await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
+  const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
+  expect(hrefs.length).toBe(23);
+  for (const href of hrefs) {
+    await page.goto(href);
+    for (let part = 1; part <= 9; part++) {
+      await page.getByRole('list', { name: 'Části lekce' }).getByRole('button').nth(part - 1).click();
+      await expect(page.locator('section[data-section]')).toBeVisible();
+      await expect(page.locator('section[data-section]')).not.toBeEmpty();
+      // KaTeX při chybě vzorce nevyhodí výjimku, jen vykreslí zdroj červeně.
+      await expect(page.locator('.katex-error')).toHaveCount(0);
+    }
+    // Poslední část obsahuje zdroje lekce.
+    await expect(page.getByRole('heading', { name: 'Zdroje' })).toBeVisible();
+  }
+  expect(errors).toEqual([]);
 });
 
 test('numerická otázka: špatná odpověď vede zpět k principu', async ({ page }) => {
@@ -130,8 +186,13 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await expect(page.getByRole('heading', { name: 'Tlak a hloubka' })).toBeVisible();
   await page.getByRole('button', { name: '3. Vzorec a odvození' }).click();
   await expect(page.locator('.katex').first()).toBeVisible();
-  await page.goto('/nastroje');
-  await expect(page.getByTestId('tool-mod')).toHaveText('33 m');
+  await page.goto('/nastroje/mod');
+  await expect(page.locator('[data-output="MOD (zaokrouhleno dolů)"]')).toHaveText('33 m');
+  await page.goto('/pripady/blue-hole-2000');
+  await expect(page.getByRole('heading', { name: '4. Řetěz chyb' })).toBeVisible();
+  await page.goto('/uceni/kyslikove-okno');
+  await page.getByRole('button', { name: '5. Vyzkoušej si' }).click();
+  await expect(page.getByText(/kyslíkové okno: přibližně/)).toBeVisible();
   await page.goto('/trenink/rychly-check');
   await expect(page.getByText('Otázka 1 z 10')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');

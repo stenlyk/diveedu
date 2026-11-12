@@ -1,0 +1,76 @@
+<Hook>
+
+Plnič ti podá lahev: 220 bar, hřeje do ruky. O dvacet minut později visíš v osmistupňové vodě a manometr ukazuje pod 200.
+
+Nic neuniká. Kdo ti vzal dvacet barů?
+
+</Hook>
+
+<Principle>
+
+Molekuly teplého plynu se pohybují rychleji a narážejí do stěn lahve silněji. Lahev se nemůže zvětšit, takže roste tlak.
+Když plyn vychladne, tlak zase klesne. Množství plynu v lahvi se přitom nezměnilo ani o molekulu.
+
+Tlak je při stálém objemu úměrný **absolutní** teplotě, tedy teplotě v kelvinech. Proto je pokles menší, než by člověk čekal:
+z 45 °C na 8 °C neklesne teplota „na pětinu“, ale jen asi o dvanáct procent.
+
+Co z toho plyne v praxi:
+
+- Tlak kontroluj na **vychladlé** lahvi, nejlépe až ve vodě. Podle něj počítej zásobu plynu a tlak otočky.
+- Lahev nechaná na slunci nebo v rozpáleném autě ukáže víc. Plynu v ní víc není.
+- Při míchání směsí se tlaky čtou po ustálení teploty. Horká lahev zkreslí výsledné složení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gay-lussac" />
+
+Zákon se uvádí pod jmény Gay-Lussac nebo Amontons; v potápěčských příručkách ho často najdeš jako Charlesův.
+Charlesův zákon v přísném smyslu popisuje objem a teplotu při stálém tlaku – pro potápěče je důležitější varianta se stálým objemem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Vychladnutí po plnění.** Lahev má 220 bar při 45 °C. Kolik ukáže v 8 °C vodě?
+
+<Worked fn="gayLussacPressure" args={[220, 45, 8]} expected={194.4} tolerance={0.1} unit="bar" decimals={0} />
+
+**Lahev na slunci.** Lahev s 200 bar při 15 °C se v autě ohřeje na 50 °C:
+
+<Worked fn="gayLussacPressure" args={[200, 15, 50]} expected={224.3} tolerance={0.1} unit="bar" decimals={0} />
+
+Pojistná membrána ventilu je dimenzovaná výš, ale plná lahev do rozpáleného auta nepatří.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="gay-lussac" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="horka-lahev" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,86 @@
+<Hook>
+
+Při ppO2 1,6 bar smíš podle tabulky NOAA strávit <Calc fn="cnsLimitMinutes" args={[1.6]} unit="min" />. Při 1,5 bar je to <Calc fn="cnsLimitMinutes" args={[1.5]} unit="min" />.
+
+Desetina baru, skoro trojnásobek času. Kde se bere tak prudký zlom?
+
+</Hook>
+
+<Principle>
+
+Toxicita závisí na ppO2 **a** na čase. NOAA proto pro každé ppO2 udává nejdelší dobu jedné expozice:
+
+- 1,6 bar: <Calc fn="cnsLimitMinutes" args={[1.6]} unit="min" />
+- 1,5 bar: <Calc fn="cnsLimitMinutes" args={[1.5]} unit="min" />
+- 1,4 bar: <Calc fn="cnsLimitMinutes" args={[1.4]} unit="min" />
+- 1,3 bar: <Calc fn="cnsLimitMinutes" args={[1.3]} unit="min" />
+- 1,2 bar: <Calc fn="cnsLimitMinutes" args={[1.2]} unit="min" />
+- 1,0 bar: <Calc fn="cnsLimitMinutes" args={[1.0]} unit="min" />
+
+**CNS hodiny** vyjadřují, jakou část limitu jsi vyčerpal. Půl hodiny při 1,4 bar je pětina limitu, tedy 20 %.
+Když ponor prochází různými ppO2, procenta za jednotlivé úseky se **sčítají**.
+
+Jak s hodinami pracovat:
+
+- Plánuje se obvykle do 80 %. Nad 100 % se nechodí.
+- Pod ppO2 0,5 bar se zátěž nepočítá.
+- Mezi ponory hodiny klesají. Řada počítačů a plánovačů používá poločas 90 minut; je to provozní konvence, ne změřená fyziologie.
+- Tabulka má i limity na 24 hodin, důležité při více ponorech denně.
+
+Hodiny mají dvě slabiny. Jsou to provozní limity odvozené z praxe, ne hranice mezi bezpečím a křečemi. A neznají tvůj CO2, námahu ani chlad.
+Sto procent tedy není záruka křečí a padesát procent není záruka bezpečí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="cns" />
+
+Limit pro ppO2 mezi řádky tabulky se dopočítá přímkou mezi sousedními hodnotami. Nad 1,6 bar tabulka nepokračuje a neextrapoluje se – taková expozice se neplánuje.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Dno.** 30 minut při ppO2 1,4 bar:
+
+<Worked fn="cnsPercent" args={[1.4, 30]} expected={20} tolerance={0.01} steps="cnsSteps" unit="%" decimals={0} />
+
+**Dekomprese.** 20 minut na kyslíku v 6 m, tedy při 1,6 bar:
+
+<Worked fn="cnsPercent" args={[1.6, 20]} expected={44.44} tolerance={0.01} steps="cnsSteps" unit="%" decimals={0} />
+
+Celý ponor: <Calc fn="cnsTotalPercent" args={[[{ ppO2Bar: 1.4, minutes: 30 }, { ppO2Bar: 1.6, minutes: 20 }]]} unit="%" />.
+Dvacet minut dekomprese stálo víc než dvojnásobek toho, co třicet minut na dně.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="cns" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="noaa-limity" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

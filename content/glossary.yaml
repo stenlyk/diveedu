@@ -1,8 +1,26 @@
-- cs: absolutní tlak
-  en: absolute pressure
-  definition: Celkový tlak působící v hloubce – tlak atmosféry plus tlak vodního sloupce.
-  pronunciation: absolutní tlak
-
-- cs: hydrostatický tlak
-  en: hydrostatic (gauge) pressure
-  definition: Tlak samotného vodního sloupce bez atmosféry; ten ukazuje hloubkoměr.
+- { cs: absolutní tlak, en: absolute pressure, definition: 'Celkový tlak působící v hloubce – tlak atmosféry plus tlak vodního sloupce.' }
+- { cs: hydrostatický tlak, en: hydrostatic (gauge) pressure, definition: 'Tlak samotného vodního sloupce bez atmosféry; ten ukazuje hloubkoměr.' }
+- { cs: parciální tlak, en: partial pressure, definition: 'Část celkového tlaku, kterou ve směsi vytváří jeden plyn.' }
+- { cs: hustota plynu, en: gas density, definition: 'Hmotnost litru dýchaného plynu v dané hloubce v g/l.' }
+- { cs: práce dýchání, en: work of breathing, definition: 'Úsilí potřebné k pohybu plynu dýchacími cestami a automatikou.', pronunciation: práce dýchání }
+- { cs: retence CO2, en: CO2 retention (hypercapnia), definition: 'Hromadění oxidu uhličitého v těle.', pronunciation: retence cé ó dva }
+- { cs: sycení tkání, en: on-gassing, definition: 'Rozpouštění inertního plynu v tkáních při zvýšeném tlaku.' }
+- { cs: dekompresní nemoc, en: decompression sickness (DCS), definition: 'Onemocnění způsobené bublinami inertního plynu po příliš rychlém poklesu tlaku.', pronunciation: dekompresní nemoc }
+- { cs: arteriální plynová embolie, en: arterial gas embolism (AGE), definition: 'Vniknutí bublin plynu do tepenného oběhu, typicky po barotraumatu plic.' }
+- { cs: vztlak, en: buoyancy, definition: 'Síla nadnášející těleso v kapalině.' }
+- { cs: trim, en: trim, definition: 'Poloha těla potápěče ve vodě.' }
+- { cs: kyslíková toxicita CNS, en: CNS oxygen toxicity, definition: 'Toxické působení vysokého ppO2 na centrální nervový systém.', pronunciation: kyslíková toxicita cé en es }
+- { cs: plicní kyslíková toxicita, en: pulmonary oxygen toxicity, definition: 'Poškození plic dlouhodobou expozicí zvýšenému ppO2.' }
+- { cs: maximální operační hloubka, en: maximum operating depth (MOD), definition: 'Největší hloubka, ve které směs nepřekročí zvolený limit ppO2.', pronunciation: em ó dé }
+- { cs: ekvivalentní vzduchová hloubka, en: equivalent air depth (EAD), definition: 'Hloubka, ve které by vzduch měl stejné ppN2 jako nitrox ve skutečné hloubce.', pronunciation: é á dé }
+- { cs: nitrox, en: enriched air nitrox (EANx), definition: 'Směs kyslíku a dusíku s více než 21 % kyslíku.' }
+- { cs: kyslíkové okno, en: oxygen window, definition: 'Rozdíl mezi součtem parciálních tlaků plynů v arteriální a venózní krvi.' }
+- { cs: jednotky plicní toxicity, en: oxygen toxicity units (OTU), definition: 'Míra plicní kyslíkové zátěže.', pronunciation: ó té ú }
+- { cs: dekompresní lahev, en: decompression (stage) cylinder, definition: 'Samostatná lahev s bohatou směsí pro dekompresi.' }
+- { cs: přepnutí plynu, en: gas switch, definition: 'Řízená změna dýchané směsi během ponoru.' }
+- { cs: kyslíková čistota, en: oxygen clean / oxygen service, definition: 'Stav vybavení vyčištěného a sestaveného pro styk s vysokým podílem kyslíku.' }
+- { cs: adiabatické stlačení, en: adiabatic compression, definition: 'Rychlé stlačení plynu bez odvodu tepla; plyn se prudce ohřeje.' }
+- { cs: míchání parciálním tlakem, en: partial pressure blending, definition: 'Příprava směsi postupným plněním složek podle manometru.' }
+- { cs: vyrovnání tlaku, en: equalization, definition: 'Doplnění vzduchu do středouší a dutin při sestupu.' }
+- { cs: poločas tkáně, en: tissue half-time, definition: 'Doba, za kterou tkáň vyrovná polovinu rozdílu mezi svým a okolním tlakem inertního plynu.' }
+- { cs: best mix, en: best mix, definition: 'Nejbohatší směs použitelná v plánované hloubce.' }

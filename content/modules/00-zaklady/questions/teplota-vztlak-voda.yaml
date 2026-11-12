@@ -1,0 +1,186 @@
+- id: teplota-vychladnuti
+  type: numeric
+  conceptIds: [tlak-v-lahvi, teplota]
+  difficulty: 3
+  prompt: 'Lahev má po naplnění {pressure} bar při {hot} °C. Jaký tlak ukáže, až vychladne na {cold} °C?'
+  template: { fn: gayLussacPressure, params: { pressure: { values: [200, 220, 232] }, hot: { values: [40, 50] }, cold: { values: [4, 10, 20] } }, args: [pressure, hot, cold], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Tlak je úměrný absolutní teplotě: P2 = P1 · (t2 + 273) / (t1 + 273).'
+  backToLessonId: teplota-a-tlak
+
+- id: teplota-kam-zmizel-plyn
+  type: choice
+  conceptIds: [tlak-v-lahvi, teplota, objem-plynu]
+  difficulty: 1
+  prompt: 'Teplá lahev po naplnění ukazovala 220 bar, ve studené vodě ukazuje 195 bar. Kolik plynu ubylo?'
+  options:
+    - { text: 'Žádný. Množství plynu je stejné, klesl jen tlak.', correct: true }
+    - { text: Asi 11 % plynu uniklo ventilem., explanation: 'Nic neuniklo. Chladnější plyn tlačí na stěny menší silou.' }
+    - { text: 'Plyn se ve studené vodě smrštil, takže ho je v litrech méně.', explanation: 'Objem lahve se nemění. Počet molekul také ne.' }
+    - { text: 'Plyn nezmizel, ale v hloubce ho bude k dispozici o 11 % víc.', explanation: 'Množství plynu se nezměnilo ani jedním směrem.' }
+  explanation: 'Pro plánování plynu se počítá s tlakem vychladlé lahve – ten odpovídá skutečné zásobě.'
+  backToLessonId: teplota-a-tlak
+
+- id: teplota-kelviny
+  type: why
+  conceptIds: [teplota, tlak-v-lahvi]
+  difficulty: 2
+  prompt: 'Lahev vychladne ze 40 °C na 20 °C. Proč tlak neklesne na polovinu?'
+  options:
+    - { text: 'Tlak je úměrný absolutní teplotě v kelvinech; 313 K a 293 K se liší jen o šest procent.', correct: true }
+    - { text: Protože ocel lahve teplo zadržuje., explanation: 'Materiál lahve ovlivní jen to, jak rychle plyn vychladne, ne o kolik klesne tlak.' }
+    - { text: Protože stlačený plyn se zákonem neřídí., explanation: 'Při běžných tlacích se jím řídí s dobrou přesností.' }
+    - { text: Protože se zároveň zmenší objem lahve., explanation: Objem ocelové nebo hliníkové lahve se s teplotou prakticky nemění. }
+  explanation: 'Nula stupňů Celsia není nulová teplota. Počítat se musí od absolutní nuly.'
+  backToLessonId: teplota-a-tlak
+
+- id: teplota-auto-slunce
+  type: choice
+  conceptIds: [teplota, tlak-v-lahvi]
+  difficulty: 1
+  prompt: 'Plná lahev zůstala v létě v rozpáleném autě. Co platí?'
+  options:
+    - { text: 'Tlak v ní vzrostl, množství plynu se nezměnilo.', correct: true }
+    - { text: Tlak i množství plynu vzrostly., explanation: Plyn v uzavřené lahvi nemá odkud přibýt. }
+    - { text: 'Nic se nezměnilo, lahev je uzavřená.', explanation: 'Uzavřená lahev drží objem, ne tlak. S teplotou tlak roste.' }
+    - { text: 'Tlak klesl, protože se plyn roztáhl.', explanation: 'Plyn se v pevné lahvi roztáhnout nemůže, proto roste tlak.' }
+  explanation: 'Vyšší tlak na teplé lahvi neznamená víc plynu. Navíc zbytečně namáhá ventil a pojistnou membránu.'
+  backToLessonId: teplota-a-tlak
+
+- id: vztlak-lehci-na-konci
+  type: why
+  conceptIds: [vztlak, tlak-v-lahvi, objem-plynu]
+  difficulty: 1
+  prompt: 'Proč jsi na konci ponoru lehčí než na začátku, i když máš stejné olovo?'
+  options:
+    - { text: 'Vydýchal jsi několik kilogramů plynu, který byl v lahvích.', correct: true }
+    - { text: Olovo ve vodě postupně ztrácí hmotnost., explanation: Hmotnost olova se nemění. }
+    - { text: Oblek během ponoru nasákne a nadnáší víc., explanation: 'Nasáknutí vztlak spíš snižuje. Rozhoduje spotřebovaný plyn.' }
+    - { text: Hliníkové lahve se v chladu smršťují., explanation: 'Změna objemu lahve je zanedbatelná. Hliníkové lahve jsou na konci plovoucí proto, že v nich chybí plyn.' }
+  explanation: 'Plyn váží. Dvojče 2×12 l na 200 bar obsahuje přes 6 kg vzduchu.'
+  backToLessonId: vztlak-a-trim
+
+- id: vztlak-hmotnost-plynu
+  type: choice
+  conceptIds: [vztlak, hustota-plynu, tlak-v-lahvi]
+  difficulty: 2
+  prompt: 'Kolik přibližně váží vzduch v jedné lahvi 12 l naplněné na 200 bar?'
+  options:
+    - { text: Asi 3 kg, correct: true }
+    - { text: Asi 0,3 kg, explanation: 'V lahvi je 2400 l vzduchu a litr váží přes gram: vyjdou kilogramy, ne stovky gramů.' }
+    - { text: Asi 12 kg, explanation: 'To by vzduch musel být čtyřikrát hustší.' }
+    - { text: Vzduch nic neváží, explanation: 'Litr vzduchu váží na hladině asi 1,29 g.' }
+  explanation: '12 l × 200 bar = 2400 l vzduchu; při 1,29 g/l je to asi 3,1 kg.'
+  backToLessonId: vztlak-a-trim
+
+- id: vztlak-sladka-voda
+  type: choice
+  conceptIds: [vztlak, hloubka]
+  difficulty: 1
+  prompt: 'Vyvážil ses v moři. Co uděláš se zátěží před ponorem ve sladkovodním lomu se stejnou výbavou?'
+  options:
+    - { text: 'Uberu, sladká voda nese méně.', correct: true }
+    - { text: 'Přidám, sladká voda nese víc.', explanation: 'Je to naopak: mořská voda je hustší a nadnáší víc.' }
+    - { text: 'Nic, vztlak na vodě nezávisí.', explanation: 'Vztlak je tíha vytlačené vody, a ta závisí na její hustotě.' }
+    - { text: 'Přidám, protože v lomu je chladněji.', explanation: 'Teplota vody má na vztlak nepatrný vliv; rozhoduje slanost.' }
+  explanation: 'Mořská voda má hustotu asi 1,03 kg/l, sladká 1,00 kg/l. V moři tě stejný objem nadnáší o 3 % víc.'
+  backToLessonId: vztlak-a-trim
+
+- id: trim-proc-vodorovne
+  type: multi
+  conceptIds: [trim, namaha, vztlak]
+  difficulty: 2
+  prompt: Co přináší vodorovný trim?
+  options:
+    - { text: Menší odpor vody a nižší spotřebu plynu, correct: true }
+    - { text: Kopy nevíří sediment na dně, correct: true }
+    - { text: Celé tělo je na dekompresi ve stejné hloubce, correct: true }
+    - { text: Vyšší MOD dýchané směsi, explanation: 'MOD závisí jen na směsi a limitu ppO2.' }
+  explanation: 'Vodorovná poloha je základ efektivního pohybu; v jeskyni a ve vraku je navíc podmínkou zachování viditelnosti.'
+  backToLessonId: vztlak-a-trim
+
+- id: vztlak-vyvazeni-kdy
+  type: choice
+  conceptIds: [vztlak, trim, tlak-v-lahvi]
+  difficulty: 2
+  prompt: Na jakou situaci se správně vyvažuje?
+  options:
+    - { text: 'Na poslední zastávku s téměř prázdnými lahvemi a prázdným kompenzátorem.', correct: true }
+    - { text: Na hladinu s plnými lahvemi., explanation: 'Pak budeš na konci ponoru o hmotnost spotřebovaného plynu lehčí a neudržíš zastávku.' }
+    - { text: 'Na největší hloubku ponoru.', explanation: 'V hloubce jsi nejtěžší; to vyřeší kompenzátor. Kritický je konec ponoru v mělčině.' }
+    - { text: 'Na polovinu ponoru, aby se chyba rozdělila.', explanation: 'Na konci ponoru bys pak byl příliš lehký právě tam, kde potřebuješ držet hloubku.' }
+  explanation: 'Nejlehčí jsi na konci ponoru v mělčině. Tam musíš zůstat neutrální.'
+  backToLessonId: vztlak-a-trim
+
+- id: voda-barvy
+  type: order
+  conceptIds: [hloubka, ztrata-tepla]
+  difficulty: 1
+  prompt: 'Seřaď barvy podle toho, jak s hloubkou mizí – od první po poslední.'
+  items: [červená, oranžová, žlutá, zelená, modrá]
+  explanation: Voda pohlcuje nejdřív dlouhé vlnové délky. Proto je hluboko všechno modrozelené.
+  backToLessonId: svetlo-zvuk-teplo
+
+- id: voda-zvuk-smer
+  type: why
+  conceptIds: [hloubka, teplota]
+  difficulty: 2
+  prompt: Proč pod vodou nepoznáš, odkud přijíždí loď?
+  options:
+    - { text: 'Zvuk je ve vodě tak rychlý, že rozdíl v době příchodu k oběma uším je příliš malý.', correct: true }
+    - { text: Voda zvuk tlumí a k potápěči nedolehne., explanation: 'Naopak, zvuk se vodou nese dobře a daleko.' }
+    - { text: Kapuce zakrývá uši., explanation: 'Kapuce zvuk tlumí, ale směr nepoznáš ani bez ní.' }
+    - { text: Zvuk se odráží od hladiny a ode dna., explanation: 'Odrazy přispívají, ale hlavní důvod je rychlost šíření.' }
+  explanation: 'Zvuk se ve vodě šíří kolem 1500 m/s, víc než čtyřikrát rychleji než ve vzduchu.'
+  backToLessonId: svetlo-zvuk-teplo
+
+- id: voda-teplo-proc
+  type: multi
+  conceptIds: [ztrata-tepla, teplota, hustota-plynu]
+  difficulty: 2
+  prompt: Kterými cestami potápěč ztrácí teplo?
+  options:
+    - { text: 'Vedením do vody, která odvádí teplo mnohokrát rychleji než vzduch', correct: true }
+    - { text: Ohříváním a zvlhčováním každého nádechu studeného plynu, correct: true }
+    - { text: Stlačením izolace obleku v hloubce, correct: true }
+    - { text: Rozpouštěním dusíku v tkáních, explanation: Rozpouštění plynu tělo neochlazuje. }
+  explanation: 'S hloubkou rostou všechny tři: voda je chladnější, plyn hustší a izolace stlačenější.'
+  backToLessonId: svetlo-zvuk-teplo
+
+- id: voda-chlad-deko
+  type: why
+  conceptIds: [ztrata-tepla, dcs, syceni-tkani]
+  difficulty: 3
+  prompt: Proč je nebezpečné prochladnout právě na dekompresi?
+  options:
+    - { text: 'Tělo omezí prokrvení okrajových tkání a inertní plyn z nich odchází pomaleji.', correct: true }
+    - { text: Chlad zvyšuje rozpustnost dusíku a tkáně ho naberou víc., explanation: 'Na zastávce už tkáně plyn vydávají. Problém je, že ho vydávají pomaleji.' }
+    - { text: Chladná krev nese méně kyslíku., explanation: Přenos kyslíku tím podstatně netrpí; jde o prokrvení. }
+    - { text: 'Chlad snižuje okolní tlak.', explanation: 'Okolní tlak určuje hloubka, ne teplota.' }
+  explanation: 'Nejhorší kombinace je teplo na dně (rychlé sycení) a zima na dekompresi (pomalé vysycování).'
+  backToLessonId: svetlo-zvuk-teplo
+
+- id: voda-lom
+  type: choice
+  conceptIds: [hloubka]
+  difficulty: 1
+  prompt: Jak vypadají předměty pod vodou při pohledu přes masku?
+  options:
+    - { text: 'Asi o třetinu větší a o čtvrtinu blíž', correct: true }
+    - { text: 'Menší a dál', explanation: 'Je to naopak – lom světla na rozhraní vody a vzduchu předměty zvětšuje a přibližuje.' }
+    - { text: 'Stejně velké, jen rozmazané', explanation: Rozmazaně vidíš bez masky. S maskou je obraz ostrý, ale zvětšený. }
+    - { text: 'Dvakrát větší', explanation: 'Zvětšení odpovídá indexu lomu vody, tedy přibližně 4 : 3.' }
+  explanation: 'Index lomu vody je asi 1,33. Proto ryby v lodním deníku bývají větší než ve skutečnosti.'
+  backToLessonId: svetlo-zvuk-teplo
+
+- id: trim-jak-nastavit
+  type: choice
+  conceptIds: [trim, vztlak]
+  difficulty: 2
+  prompt: 'Při zastavení ti klesají nohy a musíš stále kopat, abys zůstal vodorovně. Jak to správně vyřešíš?'
+  options:
+    - { text: 'Přesunu část zátěže nebo lahve tak, aby těžiště leželo pod působištěm vztlaku', correct: true }
+    - { text: 'Budu vyrovnávat rukama', explanation: 'Ruce mají zůstat volné a v klidu. Mávání zvyšuje námahu a spotřebu.' }
+    - { text: 'Přidám olovo na opasek', explanation: 'Další zátěž v pase nohy stáhne ještě víc a zhorší vyvážení.' }
+    - { text: 'Přifouknu kompenzátor', explanation: 'To změní vztlak, ne polohu. Budeš stoupat se stále svěšenýma nohama.' }
+  explanation: 'Trim je otázka rozložení hmotnosti. Správně vyvážený potápěč zůstane vodorovně i bez pohybu.'
+  backToLessonId: vztlak-a-trim

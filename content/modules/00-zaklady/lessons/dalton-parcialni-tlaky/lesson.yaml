@@ -1,0 +1,20 @@
+id: dalton-parcialni-tlaky
+moduleId: zaklady
+title: "Daltonův zákon: parciální tlaky"
+order: 4
+conceptIds: ["parcialni-tlak", "ppo2", "ppn2", "vzorec-dalton", "vzduch", "kyslik", "dusik", "dusikova-narkoza"]
+checkQuestionIds: ["dalton-ppo2-vzduch", "dalton-procenta-vs-tlak", "dalton-ppn2-vzduch", "dalton-soucet", "dalton-narkoza", "dalton-slozeni-vzduchu"]
+estimatedMinutes: 11
+audioSummary: >-
+  Daltonův zákon říká, že každý plyn ve směsi vytváří svůj díl celkového tlaku. Tomu dílu se říká parciální tlak.
+  Spočítáš ho jako podíl plynu ve směsi krát absolutní tlak.
+  Vzduch má dvacet jedna procent kyslíku. Na hladině je to nula celá dvacet jedna baru, ve čtyřiceti metrech už jedna celá nula pět baru.
+  Tělo nereaguje na procenta, ale na parciální tlaky.
+  Parciální tlak kyslíku rozhoduje mezi hypoxií, normálem a toxicitou.
+  Parciální tlak dusíku určuje sycení tkání a sílu narkózy.
+  Proto může být stejná směs na hladině neškodná a v hloubce nebezpečná.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: false

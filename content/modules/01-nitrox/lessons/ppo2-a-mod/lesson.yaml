@@ -1,0 +1,19 @@
+id: ppo2-a-mod
+moduleId: nitrox
+title: "ppO2 a maximální operační hloubka"
+order: 2
+conceptIds: ["vzorec-mod", "prekroceni-mod", "ppo2", "frakce-kysliku"]
+checkQuestionIds: ["mod-vypocet", "mod-limity", "mod-zaokrouhleni", "mod-prekroceni-ppo2", "mod-neni-zed", "mod-odvozeni"]
+estimatedMinutes: 11
+audioSummary: >-
+  Maximální operační hloubka, zkráceně em ó dé, je hloubka, ve které směs dosáhne limitu parciálního tlaku kyslíku.
+  Pracovní limit je jedna celá čtyři baru, dekompresní v klidu jedna celá šest baru.
+  Výpočet: limit vyděl frakcí kyslíku, odečti jedna a vynásob deseti.
+  Pro e á en třicet dva a limit jedna celá čtyři vychází třicet tři celých sedmdesát pět metru. Na lahev napíšeš třicet tři.
+  Vždy zaokrouhluj dolů a počítej z naměřené směsi.
+  Překročení limitu neznamená okamžité křeče. Znamená, že už nikdo neumí říct, kdy přijdou.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: false

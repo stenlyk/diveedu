@@ -1,0 +1,18 @@
+id: vztlak-a-trim
+moduleId: zaklady
+title: "Vztlak a trim"
+order: 7
+conceptIds: ["vztlak", "trim", "objem-plynu"]
+checkQuestionIds: ["vztlak-lehci-na-konci", "vztlak-hmotnost-plynu", "vztlak-sladka-voda", "trim-proc-vodorovne", "vztlak-vyvazeni-kdy", "trim-jak-nastavit"]
+estimatedMinutes: 10
+audioSummary: >-
+  Vztlak je síla, která tě nadnáší. Rovná se tíze vody, kterou vytlačíš.
+  Během ponoru se mění. Plyn v lahvích váží, dvojče na dvě stě barech obsahuje přes šest kilogramů vzduchu, a co vydýcháš, o to jsi lehčí.
+  Hloubka navíc stlačuje plyn v obleku a v kompenzátoru.
+  Vyvažuj se proto na konec ponoru: skoro prázdné lahve, poslední zastávka, prázdný kompenzátor.
+  Trim je poloha těla. Vodorovná poloha znamená nejmenší odpor, nižší spotřebu a žádný zvířený sediment.
+  Nastavuje se rozložením zátěže, ne pohybem rukou.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: false

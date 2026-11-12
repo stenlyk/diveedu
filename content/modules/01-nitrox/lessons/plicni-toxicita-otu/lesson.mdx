@@ -1,0 +1,79 @@
+<Hook>
+
+Po týdnu expedice s dlouhými dekompresemi na kyslíku tě začne pálit za hrudní kostí a přidá se suchý kašel.
+
+Nachlazení to není. Je to druhá, pomalá tvář kyslíku.
+
+</Hook>
+
+<Principle>
+
+Vedle rychlého účinku na mozek má kyslík i pomalý účinek na plíce. <Term cs="plicní kyslíková toxicita" /> vzniká při ppO2 nad 0,5 bar a rozvíjí se hodiny až dny.
+
+**Příznaky:** pálení a tlak za hrudní kostí, dráždivý suchý kašel, bolest při hlubokém nádechu, pokles vitální kapacity plic.
+Po přerušení expozice se plíce během dnů zotaví.
+
+Zátěž se měří v jednotkách <Term cs="jednotky plicní toxicity" />. Jedna jednotka odpovídá jedné minutě dýchání kyslíku při 1 bar.
+Na rozdíl od CNS hodin se OTU sčítají **přes celé dny**.
+
+Hamiltonova metoda REPEX uvádí pro jediný den limit <Calc fn="repexDailyLimit" args={[1]} /> OTU a pro vícedenní série průměrné denní dávky nižší –
+při deseti dnech kolem <Calc fn="repexDailyLimit" args={[10]} /> OTU denně.
+
+Kdy to řešit? U běžných nitroxových ponorů prakticky nikdy – dřív narazíš na CNS hodiny nebo na dekompresi.
+OTU začnou rozhodovat u expedic s mnoha dlouhými ponory za sebou, u rebreatherů se stálým vysokým ppO2 a při léčbě v komoře.
+Proto se část kyslíkové rezervy vždy nechává pro případnou léčbu dekompresní nemoci.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="otu" />
+
+Při ppO2 přesně 1 bar je výraz v závorce roven jedné a za každou minutu přibude jedna jednotka. Pod 0,5 bar se OTU nepočítají.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Dno.** 30 minut při ppO2 1,4 bar:
+
+<Worked fn="otu" args={[1.4, 30]} expected={48.87} tolerance={0.01} steps="otuSteps" unit="OTU" decimals={0} />
+
+**Dekomprese.** 20 minut při 1,6 bar:
+
+<Worked fn="otu" args={[1.6, 20]} expected={38.48} tolerance={0.01} steps="otuSteps" unit="OTU" decimals={0} />
+
+Celý ponor: <Calc fn="otuTotal" args={[[{ ppO2Bar: 1.4, minutes: 30 }, { ppO2Bar: 1.6, minutes: 20 }]]} unit="OTU" /> – zlomek denního limitu.
+Stejný ponor přitom vyčerpal skoro dvě třetiny CNS hodin. U krátkých ponorů vždy rozhoduje CNS.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="otu" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="lorrain-smith" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,87 @@
+<Hook>
+
+Plnič řekl „třicet dva“. Na lahvi je páska s číslem 32. Uvnitř je padesát.
+
+Kdo na to přijde? A hlavně: kdy?
+
+</Hook>
+
+<Principle>
+
+Jedno pravidlo nemá výjimku: **každou lahev analyzuje ten, kdo z ní bude dýchat.** Ne plnič, ne partner, ne včera.
+
+**Postup měření:**
+
+1. Zkalibruj analyzátor na vzduchu na 20,9 % (u bohatých směsí i na čistém kyslíku).
+2. Pusť přes čidlo slabý stálý proud plynu z lahve.
+3. Počkej, až se údaj ustálí.
+4. Odečti hodnotu a hned ji zapiš na lahev.
+
+**Štítek obsahuje:**
+
+- naměřený podíl kyslíku (a helia, je-li ve směsi),
+- MOD spočítanou z naměřené hodnoty,
+- datum a jméno toho, kdo měřil.
+
+MOD navíc patří **velkými číslicemi na bok lahve** tak, aby ji ve vodě přečetl partner. To je poslední pojistka při přepínání plynů.
+
+**Když se naměřená hodnota liší od objednané:** přepočítej MOD a plán podle skutečnosti. Je-li rozdíl větší, než s jakým umíš počítat, lahev nepoužij.
+
+Analyzátor není neomylný. Čidlo stárne, vadí mu vlhkost a změna teploty a příliš silný proud plynu zkreslí údaj směrem nahoru.
+Výsledek, který nedává smysl, se měří znovu – ideálně druhým přístrojem.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+MOD na štítek se počítá vždy z **naměřené** frakce kyslíku a zaokrouhluje se dolů.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Objednal jsi EAN32. Analyzátor ukázal 33,5 %.
+
+**MOD objednané směsi:**
+
+<Worked fn="mod" args={[0.32, 1.4]} expected={33.75} tolerance={0.01} unit="m" decimals={1} />
+
+**MOD skutečné směsi:**
+
+<Worked fn="mod" args={[0.335, 1.4]} expected={31.79} tolerance={0.01} steps="modSteps" unit="m" decimals={1} />
+
+Půldruhého procenta kyslíku navíc ubralo dva metry. Na štítek patří 33,5 % a MOD 31 m – a plán ponoru na 33 m se musí změnit.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="label" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="zamena-plynu-krece" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

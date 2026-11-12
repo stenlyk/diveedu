@@ -1,0 +1,77 @@
+<Hook>
+
+Ve 20 m se škrábneš o vrak a z prstu ti teče zelená krev.
+
+S krví je všechno v pořádku. Co se stalo se světlem?
+
+</Hook>
+
+<Principle>
+
+**Světlo.** Voda pohlcuje barvy postupně, nejdřív ty s dlouhou vlnovou délkou. Červená mizí během prvních metrů, pak oranžová a žlutá; hluboko zbývá modrá a zelená.
+Svítilna barvy vrátí, protože její světlo urazí jen krátkou dráhu. Na rozhraní vody a vzduchu v masce se navíc světlo láme: předměty vypadají asi o třetinu větší a o čtvrtinu blíž.
+
+**Zvuk.** Ve vodě se šíří víc než čtyřikrát rychleji než ve vzduchu a nese se daleko. Mozek určuje směr podle zpoždění mezi ušima – pod vodou je to zpoždění příliš krátké.
+Motor lodi proto slyšíš zřetelně, ale nepoznáš, odkud přijíždí.
+
+**Teplo.** Voda odvádí teplo z těla přibližně pětadvacetkrát rychleji než vzduch stejné teploty. Teplo ztrácíš i dechem: každý nádech studeného hustého plynu musí tělo ohřát a zvlhčit.
+S hloubkou ztráty rostou – voda bývá chladnější, izolace obleku stlačená a plyn hustší.
+
+Prochladnutí není jen nepohodlí:
+
+- Tělo stáhne cévy v končetinách a kůži. Hůř prokrvené tkáně se pomaleji zbavují inertního plynu. Být v teple na dně a prochladnout na dekompresi je nejhorší kombinace.
+- Klesá zručnost i úsudek. Zkřehlé prsty neotevřou ventil a nezvládnou karabinu.
+- Chlad patří mezi faktory, které snižují toleranci kyslíku.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Stačí si pamatovat dvě čísla lomu světla na masce:
+
+<Given>zdánlivá velikost ≈ 4/3 skutečné · zdánlivá vzdálenost ≈ 3/4 skutečné</Given>
+
+Poměr 4 : 3 je index lomu vody. Proto ryba, kterou sis prohlédl „z metru“, byla ve skutečnosti o třetinu dál a menší, než se zdála.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Proč neopren v hloubce nehřeje.** Izolaci neoprenu tvoří bublinky plynu a ty se řídí Boyleovým zákonem. Kolik procent původního objemu plynu zbude ve 30 m?
+
+<Worked fn="boyleVolume" args={[100, 0, 30]} expected={25} tolerance={0.001} steps="boyleSteps" unit="%" decimals={0} />
+
+Skutečný materiál se stlačí o něco méně, protože guma klade odpor, ale směr je jasný: ve 30 m izoluje neopren zlomkem toho, co na hladině – a zároveň ztratil vztlak.
+Suchý oblek tento problém nemá, protože plyn do něj doplňuješ.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="light-absorption" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="zvuk-ve-vode" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

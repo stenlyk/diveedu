@@ -1,0 +1,98 @@
+<Hook>
+
+Epileptický záchvat na souši je vážná, ale většinou přežitelná událost.
+
+Stejný záchvat ve 20 metrech, s automatikou v ústech, končí bez okamžité pomoci utonutím. A kyslíkové křeče mají jednu zlou vlastnost: často přijdou bez jakéhokoli varování.
+
+</Hook>
+
+<Principle>
+
+Vysoký parciální tlak kyslíku narušuje činnost mozku. Přesný mechanismus není plně objasněn; za hlavní příčinu se považují reaktivní formy kyslíku, které vznikají rychleji, než je buňky stačí zneškodnit.
+
+**Příznaky** se učí pod zkratkou ConVENTID:
+
+- **Con** – křeče (convulsions),
+- **V** – poruchy vidění, tunelové vidění,
+- **E** – zvonění v uších,
+- **N** – nevolnost,
+- **T** – záškuby, typicky rtů a tváře,
+- **I** – podrážděnost, úzkost,
+- **D** – závrať.
+
+Žádný z nich není spolehlivý. Křeče jsou často **první** příznak. Kdo některý z ostatních zaznamená, sníží ppO2 – vystoupá nebo přejde na chudší směs – a ponor ukončí.
+
+**Co riziko zvyšuje:**
+
+- vyšší ppO2 a delší čas,
+- CO2 – rozšiřuje mozkové cévy a přivádí k mozku víc kyslíku,
+- námaha,
+- chlad,
+- samotné ponoření do vody; limity ze suchých komor pro ponor neplatí.
+
+Tolerance se liší mezi lidmi a u téhož člověka ze dne na den. Test tolerance kyslíku proto nic nezaručí.
+
+**Průběh křečí:** nejdřív ztuhnutí celého těla se zadrženým dechem, potom záškuby, nakonec ochabnutí a bezvědomí. Sám kyslík poté mozek trvale nepoškodí – zabíjí voda.
+
+**Prevence** je jednoduchá a celá organizační: analýza a značení lahví, dodržení MOD, kontrolované přepínání plynů, žádná těžká práce na vysokém ppO2 a sledování celkové expozice.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+Toxicitu řídí ppO2. Dvě hranice k zapamatování:
+
+<Given>pracovní limit ppO2 = 1,4 bar · dekompresní limit v klidu = 1,6 bar</Given>
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Správně použitý dekompresní plyn.** EAN50 na zastávce ve 21 m:
+
+<Worked fn="ppO2" args={[0.5, 21]} expected={1.55} tolerance={0.001} steps="ppO2Steps" unit="bar" decimals={2} />
+
+**Záměna lahve.** Stejný EAN50 omylem nasazený ve 40 m:
+
+<Worked fn="ppO2" args={[0.5, 40]} expected={2.5} tolerance={0.001} unit="bar" decimals={2} />
+
+To je hodnota daleko za všemi tabulkami. Křeče mohou přijít během minut.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'na dně tvrdě pracuješ proti proudu při ppO2 1,4 bar?', effect: 'Námaha zvedne CO2, ten rozšíří mozkové cévy a práh křečí klesne. Limit 1,4 bar platí pro mírnou zátěž; pro těžkou práci se plánuje nižší ppO2.' },
+  { label: 'je ti na dlouhé dekompresi na kyslíku zima?', effect: 'Chlad patří mezi faktory spojované s nižší tolerancí kyslíku. Na dlouhých zastávkách při 1,6 bar se proto dělají přestávky na chudší směsi a řeší se tepelná ochrana.' },
+  { label: 'partner dostane křeče a automatiku má v ústech?', effect: 'Doporučení (Mitchell et al., 2012): automatiku mu v ústech přidrž a s výstupem počkej, až odezní fáze ztuhnutí se zadrženým dechem – jinak hrozí roztržení plic. Pak ho vynes. Postupy agentur se v detailech liší; podrobně v modulu Nouzové situace.' },
+  { label: 'partner dostane křeče a automatika mu vypadla?', effect: 'Doporučení (Mitchell et al., 2012): nesnaž se ji vracet a zahaj výstup okamžitě. Riziko utonutí je větší než riziko barotraumatu.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="paul-bert" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

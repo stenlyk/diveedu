@@ -1,0 +1,20 @@
+id: cns-toxicita
+moduleId: nitrox
+title: "Kyslíková toxicita CNS"
+order: 3
+conceptIds: ["cns-toxicita", "retence-co2", "namaha", "ppo2"]
+checkQuestionIds: ["cns-proc-smrtelne", "cns-priznaky", "cns-faktory", "cns-ppo2-zamena", "cns-varovani"]
+estimatedMinutes: 12
+audioSummary: >-
+  Vysoký parciální tlak kyslíku působí toxicky na mozek. Nejvážnějším projevem jsou křeče.
+  Pod vodou končí křeče bez pomoci většinou utonutím.
+  Varovné příznaky existují: poruchy vidění, zvonění v uších, nevolnost, záškuby v obličeji, podrážděnost a závrať. Nejsou ale spolehlivé a křeče často přijdou jako první.
+  Riziko zvyšuje vyšší parciální tlak, delší čas, oxid uhličitý, námaha a chlad.
+  Tolerance se mění ze dne na den, takže žádný test nic nezaručí.
+  Prevence je organizační. Analyzuj a označ každou lahev, dodrž maximální hloubku směsi, přepínej plyny kontrolovaně a nepracuj těžce na vysokém kyslíku.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)", author: "Mitchell S. J. et al.", year: 2012 }
+  - { title: "Hyperbaric conditions. Comprehensive Physiology 1(1)", author: "Doolette D. J., Mitchell S. J.", year: 2011 }
+needs_review: true

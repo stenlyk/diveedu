@@ -1,0 +1,20 @@
+id: svetlo-zvuk-teplo
+moduleId: zaklady
+title: "Světlo, zvuk a teplo ve vodě"
+order: 8
+conceptIds: ["ztrata-tepla", "teplota", "hloubka"]
+checkQuestionIds: ["voda-barvy", "voda-zvuk-smer", "voda-teplo-proc", "voda-chlad-deko", "voda-lom"]
+estimatedMinutes: 9
+audioSummary: >-
+  Voda mění světlo, zvuk i teplo.
+  Barvy mizí s hloubkou. Nejdřív červená, pak oranžová a žlutá. Hluboko je všechno modrozelené, dokud nerozsvítíš svítilnu.
+  Kvůli lomu světla na masce vypadají předměty o třetinu větší a o čtvrtinu blíž.
+  Zvuk se ve vodě šíří víc než čtyřikrát rychleji než ve vzduchu. Slyšíš ho dobře, ale nepoznáš, odkud přichází.
+  Teplo odvádí voda asi pětadvacetkrát rychleji než vzduch a další teplo ztrácíš dechem.
+  Prochladnutí zhoršuje zručnost a úsudek a zpomaluje vysycování tkání.
+  Nejhorší kombinace je teplo na dně a zima na dekompresi.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: false

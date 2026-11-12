@@ -1,0 +1,405 @@
+- id: ead-vypocet
+  type: numeric
+  conceptIds: [vzorec-ead, frakce-kysliku, ppn2]
+  difficulty: 2
+  prompt: Jaká je ekvivalentní vzduchová hloubka pro EAN{fO2|percent} v hloubce {depth} m?
+  template: { fn: ead, params: { fO2: { values: [0.28, 0.32, 0.36, 0.4] }, depth: { values: [20, 25, 30, 33] } }, args: [fO2, depth], tolerance: 1, unit: m, decimals: 1 }
+  explanation: 'EAD = (1 − frakce kyslíku) / 0,79 × (hloubka + 10) − 10.'
+  backToLessonId: ekvivalentni-vzduchova-hloubka
+
+- id: ead-co-znamena
+  type: choice
+  conceptIds: [vzorec-ead, ppn2, syceni-tkani]
+  difficulty: 1
+  prompt: Co vyjadřuje ekvivalentní vzduchová hloubka?
+  options:
+    - { text: 'Hloubku, ve které bys na vzduchu dýchal stejné ppN2 jako na nitroxu ve skutečné hloubce', correct: true }
+    - { text: 'Hloubku, ve které má nitrox stejné ppO2 jako vzduch', explanation: 'EAD se týká dusíku, ne kyslíku.' }
+    - { text: Maximální hloubku nitroxu, explanation: To je MOD. }
+    - { text: Hloubku, do které smíš se vzduchem, explanation: 'EAD je přepočet pro nitrox, ne limit vzduchu.' }
+  explanation: 'Tkáně „vidí“ parciální tlak dusíku. EAD ho převádí na hloubku, ke které se vztahují vzduchové tabulky.'
+  backToLessonId: ekvivalentni-vzduchova-hloubka
+
+- id: ead-k-cemu-ne
+  type: why
+  conceptIds: [vzorec-ead, vzorec-mod, ppo2]
+  difficulty: 2
+  prompt: 'Proč se EAD nesmí použít pro výpočet kyslíkové expozice?'
+  options:
+    - { text: 'ppO2 závisí na skutečné hloubce a skutečné frakci kyslíku; EAD popisuje jen dusík.', correct: true }
+    - { text: 'Protože je EAD vždy větší než skutečná hloubka.', explanation: 'Pro nitrox je EAD vždy menší než skutečná hloubka.' }
+    - { text: 'Protože kyslík v nitroxu toxický není.', explanation: 'Je – a tím víc, čím je směs bohatší.' }
+    - { text: 'Smí se, výsledek je stejný.', explanation: 'Na EAN32 ve 30 m je ppO2 1,28 bar; vzduch ve 24 m má 0,71 bar.' }
+  explanation: 'MOD, ppO2 i CNS hodiny se počítají vždy ze skutečné hloubky.'
+  backToLessonId: ekvivalentni-vzduchova-hloubka
+
+- id: ead-vzduch
+  type: choice
+  conceptIds: [vzorec-ead, vzduch]
+  difficulty: 1
+  prompt: 'Jaká je EAD při dýchání vzduchu ve 30 m?'
+  options:
+    - { text: '30 m', correct: true }
+    - { text: '24 m', explanation: 'To je EAD pro EAN32 ve 30 m.' }
+    - { text: '0 m', explanation: 'Nulu by dal jen čistý kyslík, který dusík neobsahuje.' }
+    - { text: '40 m', explanation: 'EAD nemůže být větší než hloubka, pokud směs nemá méně kyslíku než vzduch.' }
+  explanation: 'Pro vzduch se EAD rovná skutečné hloubce – dobrá kontrola, že vzorec používáš správně.'
+  backToLessonId: ekvivalentni-vzduchova-hloubka
+
+- id: bestmix-vypocet
+  type: numeric
+  conceptIds: [vzorec-best-mix, absolutni-tlak, nitrox]
+  difficulty: 2
+  prompt: 'Jaká je nejvyšší frakce kyslíku pro hloubku {depth} m při limitu ppO2 {limit} bar? (Zadej desetinné číslo, např. 0,32.)'
+  template: { fn: bestMix, params: { depth: { values: [18, 25, 30, 33, 36, 40] }, limit: { values: [1.4, 1.6] } }, args: [depth, limit], tolerance: 0.01, unit: '', decimals: 3 }
+  explanation: 'Frakce kyslíku = limit ppO2 / absolutní tlak v plánované hloubce.'
+  backToLessonId: nejlepsi-smes
+
+- id: bestmix-zaokrouhleni
+  type: choice
+  conceptIds: [vzorec-best-mix, vzorec-mod, prekroceni-mod]
+  difficulty: 1
+  prompt: 'Best mix vyšel 30,4 %. Jakou směs objednáš?'
+  options:
+    - { text: EAN30, correct: true }
+    - { text: EAN31, explanation: 'S EAN31 bys v plánované hloubce limit ppO2 už překročil.' }
+    - { text: EAN32, explanation: 'EAN32 má MOD mělčí než plánovaná hloubka.' }
+    - { text: 'Na zaokrouhlení nezáleží', explanation: 'Záleží: nahoru znamená překročení limitu ppO2.' }
+  explanation: 'Frakce kyslíku se zaokrouhluje dolů – stejným směrem jako MOD, k nižšímu ppO2.'
+  backToLessonId: nejlepsi-smes
+
+- id: bestmix-inverze
+  type: why
+  conceptIds: [vzorec-best-mix, vzorec-mod]
+  difficulty: 2
+  prompt: Jaký je vztah mezi best mixem a MOD?
+  options:
+    - { text: 'Je to tentýž vztah: jednou z něj počítáš směs pro danou hloubku, podruhé hloubku pro danou směs.', correct: true }
+    - { text: 'Best mix se týká dusíku, MOD kyslíku.', explanation: 'Oba vycházejí z limitu ppO2.' }
+    - { text: 'Nesouvisejí spolu.', explanation: 'MOD best mixu vyjde přesně plánovaná hloubka.' }
+    - { text: 'Best mix platí jen pro dekompresní plyny.', explanation: 'Platí pro jakoukoli směs a hloubku.' }
+  explanation: 'ppO2 = fO2 × P. Znáš-li dvě veličiny, třetí dopočítáš.'
+  backToLessonId: nejlepsi-smes
+
+- id: bestmix-rezerva
+  type: choice
+  conceptIds: [vzorec-best-mix, prekroceni-mod, hloubka]
+  difficulty: 2
+  prompt: 'Dno je ve 36 m, ale u vraku je prohlubeň do 39 m. Pro jakou hloubku počítáš směs?'
+  options:
+    - { text: 'Pro 39 m – největší hloubku, do které se můžu dostat', correct: true }
+    - { text: 'Pro 36 m, kde strávím většinu času', explanation: 'V prohlubni bys pak byl pod MOD své směsi.' }
+    - { text: 'Pro průměr 37,5 m', explanation: 'Limit ppO2 se týká okamžité hodnoty, ne průměru.' }
+    - { text: 'Pro 30 m, zbytek pokryje rezerva limitu', explanation: 'Limit 1,4 bar není rezerva k čerpání.' }
+  explanation: 'Směs se volí podle největší možné hloubky ponoru, ne podle obvyklé.'
+  backToLessonId: nejlepsi-smes
+
+- id: okno-co-je
+  type: choice
+  conceptIds: [kyslikove-okno, transport-kysliku]
+  difficulty: 2
+  prompt: Co je kyslíkové okno?
+  options:
+    - { text: 'Rozdíl mezi okolním tlakem a součtem parciálních tlaků plynů ve venózní krvi a tkáních', correct: true }
+    - { text: 'Rozsah hloubek, ve kterých se smí dýchat kyslík', explanation: 'To je dáno MOD. Okno je fyziologický jev.' }
+    - { text: 'Doba, po kterou lze dýchat čistý kyslík', explanation: 'To popisují CNS hodiny.' }
+    - { text: 'Otvor mezi srdečními síněmi', explanation: 'To je PFO.' }
+  explanation: 'Tkáně spotřebují kyslík a CO2, který vrátí, zvýší tlak jen málo. Vznikne „chybějící“ tlak.'
+  backToLessonId: kyslikove-okno
+
+- id: okno-proc-vznika
+  type: why
+  conceptIds: [kyslikove-okno, transport-kysliku, rozpustnost-plynu]
+  difficulty: 3
+  prompt: Proč součet tlaků plynů ve venózní krvi nedosáhne okolního tlaku?
+  options:
+    - { text: 'Kyslíku spotřebou ubude hodně, ale CO2 je velmi rozpustný a jeho parciální tlak stoupne jen málo.', correct: true }
+    - { text: 'Protože žíly jsou pod nižším tlakem než tepny.', explanation: Krevní tlak s parciálními tlaky plynů nesouvisí. }
+    - { text: 'Protože dusík v tkáních zaniká.', explanation: 'Dusík je inertní; nespotřebovává se.' }
+    - { text: 'Protože se v žilách sráží vodní pára.', explanation: 'Tlak vodní páry je v tepnách i žilách stejný.' }
+  explanation: 'Výměna kyslíku za CO2 není z pohledu parciálních tlaků „jedna ku jedné“.'
+  backToLessonId: kyslikove-okno
+
+- id: okno-kyslik-deko
+  type: multi
+  conceptIds: [kyslikove-okno, syceni-tkani, ean50]
+  difficulty: 2
+  prompt: Proč bohatá směs na mělkých zastávkách zkracuje dekompresi?
+  options:
+    - { text: 'V dechu je málo nebo žádný inertní plyn, takže spád z tkání je velký', correct: true }
+    - { text: 'Vyšší ppO2 rozšiřuje kyslíkové okno', correct: true }
+    - { text: 'Kyslík chemicky váže dusík v krvi', explanation: Kyslík s dusíkem v krvi nereaguje. }
+    - { text: 'Bohatá směs snižuje okolní tlak', explanation: 'Okolní tlak určuje hloubka.' }
+  explanation: 'Oba účinky působí stejným směrem. Jak velký podíl má každý z nich, je předmětem diskuse.'
+  backToLessonId: kyslikove-okno
+
+- id: okno-ppn2-6m
+  type: choice
+  conceptIds: [kyslikove-okno, ppn2, kyslik]
+  difficulty: 2
+  prompt: 'Jaké ppN2 dýcháš na zastávce v 6 m na čistém kyslíku?'
+  options:
+    - { text: '0 bar', correct: true }
+    - { text: '1,26 bar', explanation: 'To je ppN2 vzduchu v 6 m.' }
+    - { text: '1,6 bar', explanation: 'To je ppO2 kyslíku v 6 m.' }
+    - { text: '0,79 bar', explanation: 'To je ppN2 vzduchu na hladině.' }
+  explanation: 'V čistém kyslíku dusík není. Tkáň nasycená dusíkem má proti sobě nulu.'
+  backToLessonId: kyslikove-okno
+
+- id: analyza-kdo
+  type: choice
+  conceptIds: [analyza-plynu, zamena-plynu]
+  difficulty: 1
+  prompt: Kdo má analyzovat směs v lahvi?
+  options:
+    - { text: 'Ten, kdo z ní bude dýchat – osobně a před ponorem', correct: true }
+    - { text: 'Plnič; má na to vybavení', explanation: 'Plnič měří pro sebe. Ty potřebuješ vědět, co je v lahvi, kterou si bereš.' }
+    - { text: 'Kterýkoli člen týmu', explanation: Každý odpovídá za své lahve; cizí měření si nelze ověřit. }
+    - { text: 'Nikdo, pokud je lahev označená', explanation: 'Štítek říká, co si někdo myslel. Analyzátor říká, co v lahvi je.' }
+  explanation: 'Pravidlo nemá výjimku. Záměna směsi patří k nejčastějším smrtelným chybám.'
+  backToLessonId: analyza-a-znaceni
+
+- id: analyza-postup
+  type: order
+  conceptIds: [analyza-plynu, analyzator-kysliku]
+  difficulty: 2
+  prompt: Seřaď kroky analýzy plynu.
+  items:
+    - Zkalibruj analyzátor na vzduchu
+    - Pusť přes čidlo slabý stálý proud plynu z lahve
+    - Počkej na ustálení údaje
+    - Odečti hodnotu
+    - Zapiš na lahev naměřenou hodnotu a MOD
+  explanation: 'Bez kalibrace měříš neznámým přístrojem. Bez okamžitého zápisu měříš zbytečně.'
+  backToLessonId: analyza-a-znaceni
+
+- id: analyza-stitek
+  type: multi
+  conceptIds: [znaceni-lahvi, analyza-plynu]
+  difficulty: 1
+  prompt: Co patří na štítek lahve po analýze?
+  options:
+    - { text: Naměřený podíl kyslíku, correct: true }
+    - { text: MOD spočítaná z naměřené hodnoty, correct: true }
+    - { text: 'Datum a jméno toho, kdo měřil', correct: true }
+    - { text: Objednaná směs místo naměřené, explanation: 'Platí to, co je v lahvi, ne to, co mělo být.' }
+  explanation: 'MOD navíc patří velkými číslicemi na bok lahve, aby ji pod vodou přečetl partner.'
+  backToLessonId: analyza-a-znaceni
+
+- id: analyza-odchylka-mod
+  type: numeric
+  conceptIds: [znaceni-lahvi, vzorec-mod, analyza-plynu]
+  difficulty: 2
+  prompt: 'Analyzátor ukázal {o2|percent} % kyslíku. Jaká je MOD této směsi při limitu 1,4 bar? (Nezaokrouhluj.)'
+  template: { fn: mod, params: { o2: { values: [0.305, 0.315, 0.33, 0.345, 0.37] } }, fixed: { limit: 1.4 }, args: [o2, limit], tolerance: 1, unit: m, decimals: 1 }
+  explanation: 'MOD se počítá z naměřené frakce: (1,4 / frakce − 1) × 10.'
+  backToLessonId: analyza-a-znaceni
+
+- id: analyza-kalibrace
+  type: why
+  conceptIds: [analyzator-kysliku, analyza-plynu]
+  difficulty: 2
+  prompt: Proč se analyzátor před každým měřením kalibruje?
+  options:
+    - { text: 'Čidlo je galvanický článek, který stárne a reaguje na teplotu a vlhkost; jeho výstup se mění.', correct: true }
+    - { text: 'Aby se čidlo zahřálo na provozní teplotu.', explanation: 'Kalibrace čidlo nezahřívá; nastavuje, jakému signálu odpovídá známá směs.' }
+    - { text: 'Kalibrace je formalita, čidlo je z výroby přesné.', explanation: Výstup čidla se v čase mění; ke konci života měří nízko nebo nestabilně. }
+    - { text: 'Aby se z hadičky vypláchl starý plyn.', explanation: 'Propláchnutí je součást měření, ale kalibrace má jiný účel.' }
+  explanation: 'Kalibrace na vzduchu (20,9 %) přiřadí aktuálnímu signálu čidla známou hodnotu.'
+  backToLessonId: analyza-a-znaceni
+
+- id: prepnuti-poradi
+  type: order
+  conceptIds: [prepnuti-plynu, deko-lahev, zamena-plynu]
+  difficulty: 2
+  prompt: Seřaď kontroly při přepnutí na dekompresní plyn.
+  items:
+    - Ověř hloubku a stabilizuj se
+    - Najdi lahev a přečti MOD na jejím boku
+    - Sleduj hadici rukou od ventilu k automatice
+    - Ukaž lahev partnerovi a počkej na potvrzení
+    - Přepni a změň plyn na počítači
+  explanation: 'Hloubka, lahev, hadice, partner. Pořadí detailů se mezi agenturami liší, čtyři kontroly mají všechny.'
+  backToLessonId: deko-plyny-a-prepnuti
+
+- id: prepnuti-hloubky
+  type: match
+  conceptIds: [ean50, prepnuti-plynu, kyslik]
+  difficulty: 1
+  prompt: Přiřaď dekompresní plyn k hloubce přepnutí.
+  pairs:
+    - { left: EAN50, right: 21 m }
+    - { left: Čistý kyslík, right: 6 m }
+  explanation: 'Obě hloubky vycházejí z limitu ppO2 1,6 bar: EAN50 má MOD 22 m, kyslík 6 m.'
+  backToLessonId: deko-plyny-a-prepnuti
+
+- id: prepnuti-partner
+  type: why
+  conceptIds: [prepnuti-plynu, zamena-plynu]
+  difficulty: 2
+  prompt: Proč má přepnutí potvrdit partner?
+  options:
+    - { text: 'Je to jediná kontrola, kterou neovlivní tvoje vlastní narkóza, únava nebo spěch.', correct: true }
+    - { text: 'Partner musí přepnout ve stejnou vteřinu.', explanation: 'Současnost není podstatná; jde o nezávislou kontrolu.' }
+    - { text: 'Je to zdvořilost.', explanation: 'Je to bezpečnostní pojistka. Záměna plynu bývá smrtelná.' }
+    - { text: 'Partner potřebuje vidět tvůj manometr.', explanation: 'Jde o kontrolu správné lahve a hloubky, ne zásoby plynu.' }
+  explanation: 'Vlastní chybu člověk nevidí. Proto je MOD na boku lahve čitelná právě pro partnera.'
+  backToLessonId: deko-plyny-a-prepnuti
+
+- id: prepnuti-proc-bohate
+  type: choice
+  conceptIds: [ean50, deko-lahev, kyslikove-okno]
+  difficulty: 1
+  prompt: Proč se dekompresní plyn nese v samostatné lahvi a nedýchá se celý ponor?
+  options:
+    - { text: 'Na dně by jeho ppO2 bylo daleko nad limitem; použitelný je až mělko.', correct: true }
+    - { text: 'Protože je dražší.', explanation: 'Cena tu nehraje roli.' }
+    - { text: 'Protože v hloubce hůř proudí automatikou.', explanation: 'Proudí stejně. Důvodem je kyslíková toxicita.' }
+    - { text: 'Protože by zkrátil čas na dně.', explanation: 'Na dně ho dýchat nelze vůbec, bez ohledu na čas.' }
+  explanation: 'EAN50 má MOD 22 m. Hlouběji je smrtelně nebezpečný, mělčeji je nejlepším nástrojem dekomprese.'
+  backToLessonId: deko-plyny-a-prepnuti
+
+- id: prepnuti-chyby
+  type: findError
+  conceptIds: [prepnuti-plynu, deko-lahev, znaceni-lahvi]
+  difficulty: 3
+  prompt: 'Potápěč popisuje, jak nosí a používá dekompresní lahev. Co je špatně?'
+  items:
+    - { text: 'MOD mám napsanou na štítku u ventilu.', isError: true, explanation: 'Štítek u ventilu pod vodou nepřečteš ty ani partner. MOD patří velkými číslicemi na bok lahve.' }
+    - { text: 'Ventil dekompresní lahve mám během ponoru zavřený.' }
+    - { text: 'Na EAN50 přepínám už ve 24 m, ať mám dekompresi dřív za sebou.', isError: true, explanation: 'Ve 24 m má EAN50 ppO2 1,7 bar. Přepíná se ve 21 m.' }
+    - { text: 'Před přepnutím sleduji hadici od ventilu k automatice.' }
+  explanation: 'Dvě nejčastější chyby: nečitelné značení a přepnutí hlouběji, než směs dovoluje.'
+  backToLessonId: deko-plyny-a-prepnuti
+
+- id: cistota-trojuhelnik
+  type: multi
+  conceptIds: [kyslikovy-pozar, kyslikova-cistota]
+  difficulty: 1
+  prompt: Co je potřeba ke vzniku požáru v kyslíkovém systému?
+  options:
+    - { text: 'Palivo – mazivo, těsnění, nečistoty', correct: true }
+    - { text: 'Okysličovadlo – kyslík', correct: true }
+    - { text: 'Zdroj zapálení – například ohřátí prudkým stlačením', correct: true }
+    - { text: 'Otevřený plamen', explanation: 'Plamen není nutný; stačí teplo z adiabatického stlačení nebo náraz částice.' }
+  explanation: 'Kyslík odstranit nelze a zapálení nelze vyloučit. Proto se odstraňuje palivo – čištěním.'
+  backToLessonId: kyslikova-cistota
+
+- id: cistota-ventil-pomalu
+  type: why
+  conceptIds: [kyslikovy-pozar, tlak-v-lahvi, kyslikova-cistota]
+  difficulty: 2
+  prompt: Proč se ventil kyslíkové lahve otevírá pomalu?
+  options:
+    - { text: 'Prudké stlačení plynu v hadici ho ohřeje na stovky stupňů a může zapálit nečistoty.', correct: true }
+    - { text: 'Aby se nepoškodil manometr tlakovým rázem.', explanation: 'Manometr ráz vydrží. Jde o teplotu plynu.' }
+    - { text: 'Aby kyslík nezmrzl.', explanation: 'Ochlazuje se plyn při rozpínání; při stlačení se ohřívá.' }
+    - { text: 'Aby se ušetřil plyn.', explanation: 'Rychlost otevření spotřebu neovlivní.' }
+  explanation: 'Adiabatické stlačení: stejný princip, kterým dieselový motor zapaluje palivo bez svíčky.'
+  backToLessonId: kyslikova-cistota
+
+- id: cistota-40-procent
+  type: choice
+  conceptIds: [kyslikova-cistota, michani-parcialnim-tlakem, kyslik]
+  difficulty: 2
+  prompt: 'Lahev bude obsahovat EAN32 namíchaný parciálním tlakem. Musí být kyslíkově čistá?'
+  options:
+    - { text: 'Ano – při míchání do ní teče čistý kyslík.', correct: true }
+    - { text: 'Ne, 32 % je pod hranicí 40 %.', explanation: 'Výsledná směs ano, ale během plnění je v lahvi a ventilu čistý kyslík pod tlakem.' }
+    - { text: 'Jen ventil, lahev ne.', explanation: Kyslík prochází ventilem i lahví; čisté musí být obojí. }
+    - { text: 'Jen pokud je hliníková.', explanation: Materiál lahve pravidlo nemění. }
+  explanation: 'Pravidlo 40 % se týká směsi, se kterou výstroj přijde do styku. Při míchání parciálním tlakem je to 100 %.'
+  backToLessonId: kyslikova-cistota
+
+- id: cistota-co-hori
+  type: choice
+  conceptIds: [kyslikovy-pozar, kyslik]
+  difficulty: 1
+  prompt: Jak se změní hořlavost materiálů v čistém kyslíku pod tlakem?
+  options:
+    - { text: 'Hoří i materiály, které na vzduchu nehoří nebo hoří neochotně – včetně kovů.', correct: true }
+    - { text: 'Nezmění se, kyslík sám nehoří.', explanation: 'Kyslík nehoří, ale hoření silně podporuje.' }
+    - { text: 'Sníží se, protože chybí dusík.', explanation: 'Dusík hoření brzdí. Bez něj hoří vše prudčeji.' }
+    - { text: 'Hoří jen maziva.', explanation: 'Maziva jsou nejčastějším palivem, ale hořet může i těsnění, plast a kov.' }
+  explanation: 'Kyslík je okysličovadlo. Čím vyšší koncentrace a tlak, tím snáze se cokoli vznítí.'
+  backToLessonId: kyslikova-cistota
+
+- id: cistota-teplota
+  type: numeric
+  conceptIds: [kyslikovy-pozar, tlak-v-lahvi, teplota]
+  difficulty: 3
+  prompt: 'Na jakou teplotu se teoreticky ohřeje plyn o teplotě 20 °C a tlaku 1 bar, když se prudce stlačí na {p2} bar? (T2 = T1 · (P2/P1)^0,286, T v kelvinech.)'
+  template: { fn: adiabaticTempC, params: { p2: { values: [50, 100, 200] } }, fixed: { t1: 20, p1: 1 }, args: [t1, p1, p2], tolerance: 25, unit: '°C', decimals: 0 }
+  explanation: 'Je to horní mez pro ideální případ. Ve skutečnosti část tepla uteče, ale k zapálení mastnoty v kyslíku stačí řádově méně.'
+  backToLessonId: kyslikova-cistota
+
+- id: michani-kyslik-bar
+  type: numeric
+  conceptIds: [michani-parcialnim-tlakem, nitrox, frakce-kysliku]
+  difficulty: 3
+  prompt: 'Kolik barů čistého kyslíku naplníš do prázdné lahve, aby po doplnění vzduchem na {target} bar vznikl EAN{fO2|percent}?'
+  template: { fn: nitroxFillO2Bar, params: { target: { values: [200, 220] }, fO2: { values: [0.28, 0.32, 0.36, 0.4] } }, args: [target, fO2], tolerance: 1, unit: bar, decimals: 1 }
+  explanation: 'Nejdřív vzduch: cílový tlak × (1 − fO2) / 0,79. Kyslík je zbytek do cílového tlaku.'
+  backToLessonId: michani-nitroxu
+
+- id: michani-proc-ne-14
+  type: why
+  conceptIds: [michani-parcialnim-tlakem, vzduch, nitrox]
+  difficulty: 2
+  prompt: 'Do prázdné lahve dáš 28 bar kyslíku a doplníš vzduchem na 200 bar. Proč nevznikne směs se 14 % kyslíku?'
+  options:
+    - { text: 'Doplněný vzduch přinese vlastních 21 % kyslíku.', correct: true }
+    - { text: 'Kyslík se při plnění stlačí víc než vzduch.', explanation: 'Oba plyny se stlačují téměř stejně.' }
+    - { text: 'Část dusíku při plnění unikne.', explanation: Nic neuniká. }
+    - { text: 'Analyzátor měří nepřesně.', explanation: 'Analyzátor má pravdu; chyba je v úvaze.' }
+  explanation: '28 bar kyslíku + 172 bar vzduchu × 0,21 = 28 + 36 = 64 bar kyslíku z 200, tedy 32 %.'
+  backToLessonId: michani-nitroxu
+
+- id: michani-poradi
+  type: order
+  conceptIds: [michani-parcialnim-tlakem, kyslikova-cistota, analyza-plynu]
+  difficulty: 2
+  prompt: Seřaď kroky míchání nitroxu parciálním tlakem.
+  items:
+    - Spočítej tlak kyslíku a vzduchu
+    - Pomalu naplň vypočtený tlak čistého kyslíku
+    - Doplň čistým vzduchem bez oleje na cílový tlak
+    - Nech lahev vychladnout a směs promíchat
+    - Analyzuj a označ lahev
+  explanation: 'Kyslík jde do lahve první a pomalu. Poslední slovo má analýza.'
+  backToLessonId: michani-nitroxu
+
+- id: michani-doplneni
+  type: numeric
+  conceptIds: [michani-parcialnim-tlakem, frakce-kysliku, nitrox]
+  difficulty: 3
+  prompt: 'V lahvi zbylo {start} bar EAN{fO2|percent}. Doplníš ji jen vzduchem na 200 bar. Jaká bude výsledná frakce kyslíku? (Zadej desetinné číslo.)'
+  template: { fn: topUpFO2, params: { start: { values: [40, 50, 80, 100] }, fO2: { values: [0.32, 0.36, 0.5] } }, fixed: { end: 200 }, args: [start, fO2, end], tolerance: 0.01, unit: '', decimals: 3 }
+  explanation: 'Sečti kyslík ze zbytku (tlak × frakce) a z doplněného vzduchu (tlak × 0,21) a vyděl cílovým tlakem.'
+  backToLessonId: michani-nitroxu
+
+- id: michani-po-michani
+  type: multi
+  conceptIds: [michani-parcialnim-tlakem, analyza-plynu, teplota]
+  difficulty: 2
+  prompt: Proč se výsledek míchání může lišit od výpočtu?
+  options:
+    - { text: 'Lahev byla při odečtu tlaku teplá', correct: true }
+    - { text: 'Skutečné plyny se nechovají přesně jako ideální', correct: true }
+    - { text: 'Směs ještě není promíchaná', correct: true }
+    - { text: 'Kyslík se v lahvi postupně spotřebovává', explanation: 'V čisté lahvi se kyslík nespotřebovává.' }
+  explanation: 'Výpočet říká, co plnit. Co v lahvi skutečně je, řekne až analyzátor.'
+  backToLessonId: michani-nitroxu
+
+- id: analyza-nesmysl
+  type: choice
+  conceptIds: [analyzator-kysliku, analyza-plynu, zamena-plynu]
+  difficulty: 2
+  prompt: 'Analyzátor ukáže 26 % u lahve, do které ti měli naplnit EAN32. Co uděláš?'
+  options:
+    - { text: 'Znovu zkalibruji a změřím, případně jiným přístrojem; platí naměřená hodnota a plán podle ní přepočítám', correct: true }
+    - { text: 'Napíšu na lahev 32 %, plnič to určitě namíchal správně', explanation: 'Štítek má říkat, co v lahvi je. Jinak plánuješ dekompresi s jiným plynem, než dýcháš.' }
+    - { text: 'Napíšu průměr 29 %', explanation: 'Průměr odhadu a měření neodpovídá ničemu, co v lahvi je.' }
+    - { text: 'Lahev použiji bez označení a budu se držet mělko', explanation: 'Neoznačená lahev je přesně to, co vede k záměně plynu.' }
+  explanation: 'Chybovat může plnič i přístroj. Nesouhlasící výsledek se měří znovu; na lahev patří to, co se potvrdilo.'
+  backToLessonId: analyza-a-znaceni

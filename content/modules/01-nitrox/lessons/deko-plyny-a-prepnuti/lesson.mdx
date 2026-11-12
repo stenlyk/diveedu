@@ -1,0 +1,90 @@
+<Hook>
+
+Největší výhoda technického potápění a jeho nejčastější smrtelná chyba jsou jedna a tatáž lahev.
+
+Ta s padesáti procenty kyslíku, kterou si neseš na boku.
+
+</Hook>
+
+<Principle>
+
+Na mělkých zastávkách chceš dýchat co nejméně inertního plynu a co nejvíc kyslíku. Proto se dekomprese dělá na bohatých směsích:
+
+- **EAN50** od 21 m, kde má ppO2 těsně pod 1,6 bar,
+- **čistý kyslík** od 6 m.
+
+Směs se nese v samostatné lahvi. <Term cs="dekompresní lahev" /> má vlastní automatiku a manometr a je označená obsahem a MOD.
+
+Stejná lahev je ale smrtelně nebezpečná hlouběji, než kam patří. <Term cs="přepnutí plynu" /> proto není „vezmu druhou automatiku“, ale postup, ve kterém se každý krok kontroluje:
+
+1. **Hloubka.** Jsi na hloubce přepnutí a stabilní.
+2. **Lahev.** Najdi ji a přečti MOD na jejím boku.
+3. **Hadice.** Sleduj ji rukou od ventilu lahve až k druhému stupni, který držíš.
+4. **Partner.** Ukaž mu lahev a automatiku a počkej na jeho potvrzení.
+5. **Přepni**, několikrát se nadechni a přepni plyn i na počítači.
+
+Přesné pořadí a provedení se mezi agenturami liší. Čtyři kontroly – hloubka, lahev, hadice, partner – mají všechny.
+
+Jak se chybě předchází ještě před ponorem: ventil dekompresní lahve je během ponoru zavřený, automatika je uložená tak, aby se nedala vzít omylem,
+lahve s různými směsmi se nosí vždy na stejném místě a tým používá stejné značení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Hloubky přepnutí jsou MOD dekompresních směsí při limitu 1,6 bar, zaokrouhlené na nejbližší mělčí zastávku.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**EAN50.**
+
+<Worked fn="mod" args={[0.5, 1.6]} expected={22} tolerance={0.01} steps="modSteps" unit="m" decimals={0} />
+
+Zastávky jsou po třech metrech, přepíná se tedy ve 21 m.
+
+**Kyslík.**
+
+<Worked fn="mod" args={[1, 1.6]} expected={6} tolerance={0.01} steps="modSteps" unit="m" decimals={0} />
+
+Kyslík se dýchá v 6 m a mělčeji. O jedinou zastávku hlouběji, v 9 m, by ppO2 bylo <Calc fn="ppO2" args={[1, 9]} decimals={1} unit="bar" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'přepneš o jednu zastávku hlouběji, „ať to mám za sebou“?', effect: 'Na EAN50 ve 24 m je ppO2 1,7 bar, na kyslíku v 9 m 1,9 bar. To jsou hodnoty mimo tabulku NOAA. Ušetřené minuty za to nestojí.' },
+  { label: 'partner se při přepnutí dívá jinam?', effect: 'Přijdeš o jedinou kontrolu, kterou neděláš ty sám – a tedy o jedinou, kterou neovlivní tvoje narkóza, únava nebo spěch. Počkej na něj.' },
+  { label: 'máš dvě stejné lahve bez MOD na boku?', effect: 'Pod vodou, v rukavicích a po dlouhém ponoru je nerozeznáš. Štítek u ventilu není ve vodě čitelný. Bez MOD na boku se lahev do vody nebere.' },
+  { label: 'zapomeneš přepnout plyn na počítači?', effect: 'Počítač počítá dekompresi na původní směs. Zastávky vyjdou delší než nutné – nepříjemné, ale bezpečné. Opačná chyba, přepnout počítač a dýchat dál původní plyn, je nebezpečná.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="kyslik-na-deku" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

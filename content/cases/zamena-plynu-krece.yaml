@@ -1,0 +1,49 @@
+id: zamena-plynu-krece
+title: Kyslíkové křeče po přepnutí na špatnou lahev
+location: Anonymizovaný vzorec nehody
+rig: oc
+moduleIds: [nitrox]
+anonymized: true
+context: >-
+  Nejde o jednu konkrétní nehodu, ale o vzorec, který se v rozborech smrtelných nehod technických potápěčů opakuje:
+  potápěč nese dno směs a jednu nebo dvě dekompresní lahve, na dně nebo při výstupu sáhne po nesprávné automatice
+  a začne dýchat bohatou směs hluboko pod její maximální operační hloubkou. Během minut přicházejí křeče.
+  Scénář níže je složený z typických prvků a žádné jeho detaily nepopisují konkrétní osobu.
+profile:
+  - { minute: 0, depthM: 0 }
+  - { minute: 4, depthM: 42 }
+  - { minute: 24, depthM: 42, event: řešení problému }
+  - { minute: 25, depthM: 40, event: nesprávná automatika }
+  - { minute: 28, depthM: 38, event: křeče }
+timeline:
+  - { when: Před ponorem, what: 'Lahve analyzoval den předem někdo jiný. Dekompresní lahev má štítek u ventilu, na boku žádné označení.' }
+  - { when: Na dně, what: 'Potápěč řeší drobný problém s výstrojí; je zadýchaný a pod vlivem narkózy.' }
+  - { when: Začátek výstupu, what: 'Při úpravě výstroje si nasadí automatiku dekompresní lahve s EAN50. Partner se v tu chvíli dívá jinam.' }
+  - { when: O několik minut později, what: 'Bez varování přicházejí křeče. Automatika vypadne z úst.' }
+  - { when: Výstup, what: 'Partner potápěče vynáší. Výsledek závisí na vteřinách a na tom, zda byl partner nablízku.' }
+errorChain:
+  - { layer: planovani, description: 'Tým neměl dohodnutý jednotný postup přepínání ani značení lahví.', conceptIds: [prepnuti-plynu, znaceni-lahvi] }
+  - { layer: plyn, description: 'Lahev neanalyzoval ten, kdo z ní dýchal. MOD nebyla na boku lahve.', conceptIds: [analyza-plynu, znaceni-lahvi] }
+  - { layer: vybaveni, description: 'Automatika dekompresní lahve byla snadno po ruce a ventil otevřený, takže šla nasadit omylem.', conceptIds: [deko-lahev] }
+  - { layer: prostredi, description: 'Hloubka, narkóza a námaha – podmínky, ve kterých se chybuje nejsnáz a ve kterých CO2 snižuje práh křečí.', conceptIds: [dusikova-narkoza, retence-co2] }
+  - { layer: lidsky-faktor, description: 'Přepnutí proběhlo mimo postup, bez kontroly hloubky a bez potvrzení partnera.', conceptIds: [prepnuti-plynu, zamena-plynu] }
+physiology: >-
+  EAN50 má při limitu 1,6 bar maximální operační hloubku 22 m. Ve 40 m je jeho ppO2 2,5 bar – daleko mimo tabulku limitů NOAA.
+  Při takovém parciálním tlaku mohou křeče přijít během minut. Zvýšený CO2 z námahy na dně rozšiřuje mozkové cévy a nástup ještě urychluje.
+  Křeče samy mozek trvale nepoškodí; potápěč ale ztratí automatiku a vědomí a bez okamžité pomoci utone.
+calcTasks:
+  - { prompt: 'Jaké je ppO2 při dýchání EAN50 ve 40 m?', fn: ppO2, args: [0.5, 40], unit: bar, tolerance: 0.02 }
+  - { prompt: 'Jaká je MOD směsi EAN50 při limitu 1,6 bar?', fn: mod, args: [0.5, 1.6], unit: m, tolerance: 0.5 }
+  - { prompt: 'Jaké je ppO2 stejné směsi na správné hloubce přepnutí, ve 21 m?', fn: ppO2, args: [0.5, 21], unit: bar, tolerance: 0.02 }
+preventions:
+  - 'Každou lahev analyzuje ten, kdo z ní bude dýchat, a hned ji označí.'
+  - 'MOD velkými číslicemi na boku lahve, čitelná pro partnera.'
+  - 'Ventil dekompresní lahve zavřený až do přepnutí; automatika uložená tak, aby nešla vzít omylem.'
+  - 'Přepnutí vždy postupem: hloubka, lahev, hadice, partner.'
+  - 'Tým používá stejné směsi, stejné umístění lahví a stejné značení.'
+sources:
+  - { title: 'DAN Annual Diving Report (řada výročních zpráv o nehodách)', author: Divers Alert Network, note: 'Vzorec nehody; konkrétní ročník a případy doplnit.' }
+  - { title: 'Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)', author: 'Mitchell S. J. et al.', year: 2012 }
+  - { title: 'NOAA Diving Manual, 6th Edition – Oxygen Exposure Limits', author: NOAA, year: 2017 }
+certainty: hypotéza
+needs_review: true

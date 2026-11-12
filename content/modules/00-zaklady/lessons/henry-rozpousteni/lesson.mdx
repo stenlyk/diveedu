@@ -1,0 +1,84 @@
+<Hook>
+
+Otevřeš lahev sodovky a během vteřiny je plná bublin. Před otevřením v ní žádné nebyly – plyn byl rozpuštěný a neviditelný, dokud ho držel tlak.
+
+Po ponoru jsou tvoje tkáně ta lahev. Jak rychle ji smíš otevřít?
+
+</Hook>
+
+<Principle>
+
+Kapalina pohltí tím víc plynu, čím vyšší je jeho parciální tlak nad ní. To je Henryho zákon.
+Krev a tkáně jsou z velké části voda a tuk, takže v hloubce pohltí víc dusíku než na hladině.
+
+<Term cs="sycení tkání" /> neproběhne naráz. Tkáň se k tlaku okolí blíží nejdřív rychle a pak čím dál pomaleji.
+Dobu, za kterou vyrovná polovinu zbývajícího rozdílu, popisuje <Term cs="poločas tkáně" />. Po šesti poločasech je tkáň nasycená z více než 98 %.
+
+Různé tkáně mají různé poločasy:
+
+- **Rychlé** (krev, mozek, mícha) jsou dobře prokrvené, sytí se v minutách a stejně rychle se zbavují plynu.
+- **Pomalé** (tuk, chrupavky, klouby) se sytí hodiny. Při krátkém ponoru se skoro nezapojí, při dlouhém nebo opakovaném rozhodují o dekompresi.
+
+Při výstupu běží všechno pozpátku. Tkáň má víc rozpuštěného plynu, než odpovídá okolnímu tlaku – je přesycená.
+Mírné přesycení tělo zvládne a plyn odejde krví do plic. Když tlak klesne příliš rychle, plyn se uvolní jako bubliny přímo v tkáních a v krvi.
+To je <Term cs="dekompresní nemoc" />.
+
+Proč se neřeší kyslík? Tkáně ho spotřebovávají. Inertní plyn – dusík nebo helium – tělo neumí zpracovat, jen ho rozpouští a zase vydává.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="haldane" />
+
+Rovnice jen říká „s každým poločasem zmiz polovina zbývajícího rozdílu“. Na stejné rovnici stojí i dekompresní modely v potápěčských počítačích –
+počítají ji pro šestnáct tkání najednou. Podrobně v modulu Decompression Procedures.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Zadání.** Tkáň s poločasem 20 min, ponor na vzduch do 30 m. Na hladině je tkáň nasycená dusíkem na 0,79 bar.
+V hloubce dýcháš dusík o parciálním tlaku <Calc fn="ppN2" args={[{ fO2: 0.21, fHe: 0 }, 30]} decimals={2} unit="bar" />.
+
+**Po 20 minutách** (jeden poločas) je tkáň v polovině cesty:
+
+<Worked fn="haldaneTissuePressure" args={[0.79, 3.16, 20, 20]} expected={1.975} tolerance={0.001} unit="bar" decimals={2} />
+
+**Po 40 minutách** (dva poločasy) ve třech čtvrtinách:
+
+<Worked fn="haldaneTissuePressure" args={[0.79, 3.16, 20, 40]} expected={2.5675} tolerance={0.001} unit="bar" decimals={2} />
+
+Kdybys teď vystoupil rovnou na hladinu, měla by tkáň víc než trojnásobek tlaku dusíku, na jaký je na hladině zvyklá.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="henry" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="haldane-kozy" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

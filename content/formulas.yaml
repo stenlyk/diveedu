@@ -5,3 +5,130 @@
     - { symbol: 'P_{abs}', name: absolutní tlak, unit: bar }
     - { symbol: 'd', name: hloubka, unit: m }
   calcFunction: absPressure
+
+- id: boyle
+  title: Boyleův zákon
+  latex: 'P_1 \cdot V_1 = P_2 \cdot V_2 \qquad V_2 = V_1 \cdot \frac{P_1}{P_2}'
+  variables:
+    - { symbol: 'P_1, P_2', name: absolutní tlak na začátku a na konci, unit: bar }
+    - { symbol: 'V_1, V_2', name: objem plynu na začátku a na konci, unit: l }
+  calcFunction: boyleVolume
+
+- id: hustota
+  title: Hustota plynu v hloubce
+  latex: '\rho = P_{abs} \cdot (1{,}429\,F_{O_2} + 1{,}251\,F_{N_2} + 0{,}179\,F_{He})'
+  variables:
+    - { symbol: '\rho', name: hustota dýchaného plynu, unit: g/l }
+    - { symbol: 'P_{abs}', name: absolutní tlak, unit: bar }
+    - { symbol: 'F_{O_2}, F_{N_2}, F_{He}', name: 'frakce kyslíku, dusíku a helia', unit: '–' }
+  calcFunction: gasDensity
+
+- id: dalton
+  title: Daltonův zákon
+  latex: 'pp_{plyn} = F_{plyn} \cdot P_{abs}'
+  variables:
+    - { symbol: 'pp_{plyn}', name: parciální tlak plynu, unit: bar }
+    - { symbol: 'F_{plyn}', name: frakce plynu ve směsi, unit: '–' }
+    - { symbol: 'P_{abs}', name: absolutní tlak, unit: bar }
+  calcFunction: ppO2
+
+- id: gay-lussac
+  title: Tlak a teplota při stálém objemu
+  latex: '\frac{P_1}{T_1} = \frac{P_2}{T_2} \qquad T\,[\text{K}] = t\,[^\circ\text{C}] + 273{,}15'
+  variables:
+    - { symbol: 'P_1, P_2', name: tlak v lahvi před a po, unit: bar }
+    - { symbol: 'T_1, T_2', name: absolutní teplota před a po, unit: K }
+  calcFunction: gayLussacPressure
+
+- id: haldane
+  title: Sycení tkáně (Haldane)
+  latex: 'p_t = p_{okoli} + (p_0 - p_{okoli}) \cdot 2^{-t / T_{1/2}}'
+  variables:
+    - { symbol: 'p_t', name: tlak inertního plynu v tkáni po čase t, unit: bar }
+    - { symbol: 'p_0', name: tlak v tkáni na začátku, unit: bar }
+    - { symbol: 'p_{okoli}', name: parciální tlak inertního plynu v dýchané směsi, unit: bar }
+    - { symbol: 'T_{1/2}', name: poločas tkáně, unit: min }
+  calcFunction: haldaneTissuePressure
+
+- id: archimedes
+  title: Výsledný vztlak
+  latex: 'F = V \cdot \rho_{voda} - m'
+  variables:
+    - { symbol: 'F', name: 'výsledný vztlak (kladný nadnáší)', unit: kg }
+    - { symbol: 'V', name: objem vytlačené vody, unit: l }
+    - { symbol: '\rho_{voda}', name: 'hustota vody (moře 1,03; sladká 1,00)', unit: kg/l }
+    - { symbol: 'm', name: hmotnost tělesa, unit: kg }
+  calcFunction: netBuoyancyKg
+
+- id: mod
+  title: Maximální operační hloubka
+  latex: 'MOD = \left(\frac{ppO_{2,max}}{F_{O_2}} - 1\right) \cdot 10'
+  variables:
+    - { symbol: 'MOD', name: maximální operační hloubka, unit: m }
+    - { symbol: 'ppO_{2,max}', name: zvolený limit parciálního tlaku kyslíku, unit: bar }
+    - { symbol: 'F_{O_2}', name: frakce kyslíku ve směsi, unit: '–' }
+  calcFunction: mod
+
+- id: best-mix
+  title: Best mix
+  latex: 'F_{O_2} = \frac{ppO_{2,max}}{P_{abs}}'
+  variables:
+    - { symbol: 'F_{O_2}', name: nejvyšší frakce kyslíku pro danou hloubku, unit: '–' }
+    - { symbol: 'ppO_{2,max}', name: zvolený limit ppO2, unit: bar }
+    - { symbol: 'P_{abs}', name: absolutní tlak v plánované hloubce, unit: bar }
+  calcFunction: bestMix
+
+- id: ead
+  title: Ekvivalentní vzduchová hloubka
+  latex: 'EAD = \frac{1 - F_{O_2}}{0{,}79} \cdot (d + 10) - 10'
+  variables:
+    - { symbol: 'EAD', name: ekvivalentní vzduchová hloubka, unit: m }
+    - { symbol: 'F_{O_2}', name: frakce kyslíku v nitroxu, unit: '–' }
+    - { symbol: 'd', name: skutečná hloubka, unit: m }
+  calcFunction: ead
+
+- id: cns
+  title: CNS hodiny
+  latex: 'CNS\,\% = \frac{t}{t_{max}(ppO_2)} \cdot 100'
+  variables:
+    - { symbol: 't', name: čas strávený na daném ppO2, unit: min }
+    - { symbol: 't_{max}', name: limit jedné expozice z tabulky NOAA, unit: min }
+  calcFunction: cnsPercent
+
+- id: otu
+  title: Jednotky plicní toxicity
+  latex: 'OTU = t \cdot \left(\frac{ppO_2 - 0{,}5}{0{,}5}\right)^{0{,}83}'
+  variables:
+    - { symbol: 'OTU', name: jednotky plicní kyslíkové zátěže, unit: OTU }
+    - { symbol: 't', name: čas, unit: min }
+    - { symbol: 'ppO_2', name: parciální tlak kyslíku (nad 0,5 bar), unit: bar }
+  calcFunction: otu
+
+- id: michani
+  title: Míchání nitroxu do prázdné lahve
+  latex: 'P_{vzduch} = \frac{P \cdot (1 - F_{O_2})}{0{,}79} \qquad P_{O_2} = P - P_{vzduch}'
+  variables:
+    - { symbol: 'P', name: cílový tlak v lahvi, unit: bar }
+    - { symbol: 'F_{O_2}', name: cílová frakce kyslíku, unit: '–' }
+    - { symbol: 'P_{vzduch}', name: kolik barů doplnit vzduchem, unit: bar }
+    - { symbol: 'P_{O_2}', name: 'kolik barů naplnit čistým kyslíkem (plní se první)', unit: bar }
+  calcFunction: partialPressureBlend
+
+- id: adiabata
+  title: Ohřátí plynu při rychlém stlačení
+  latex: 'T_2 = T_1 \cdot \left(\frac{P_2}{P_1}\right)^{\frac{\kappa - 1}{\kappa}}'
+  variables:
+    - { symbol: 'T_1, T_2', name: absolutní teplota před a po stlačení, unit: K }
+    - { symbol: 'P_1, P_2', name: tlak před a po stlačení, unit: bar }
+    - { symbol: '\kappa', name: 'adiabatický exponent (vzduch, kyslík ≈ 1,4)', unit: '–' }
+  calcFunction: adiabaticTempC
+
+- id: spotreba
+  title: Spotřeba plynu
+  latex: 'V = SAC \cdot P_{abs} \cdot t'
+  variables:
+    - { symbol: 'V', name: spotřebovaný plyn přepočtený na hladinu, unit: l }
+    - { symbol: 'SAC', name: povrchová spotřeba, unit: l/min }
+    - { symbol: 'P_{abs}', name: absolutní tlak v hloubce, unit: bar }
+    - { symbol: 't', name: čas, unit: min }
+  calcFunction: gasConsumed

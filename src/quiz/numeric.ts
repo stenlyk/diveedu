@@ -19,7 +19,7 @@ function pick(param: NumericTemplate['params'][string], rng: Rng): number {
 }
 
 export function generateVariant(template: NumericTemplate, rng: Rng = Math.random): NumericVariant {
-  const values = Object.fromEntries(Object.entries(template.params).map(([name, param]) => [name, pick(param, rng)]));
+  const values = { ...template.fixed, ...Object.fromEntries(Object.entries(template.params).map(([name, param]) => [name, pick(param, rng)])) };
   const fn = fns[template.fn];
   if (typeof fn !== 'function') throw new Error(`Neznámá funkce calc: ${template.fn}`);
   return { values, answer: fn(...template.args.map((arg) => values[arg]!)) };
@@ -27,9 +27,11 @@ export function generateVariant(template: NumericTemplate, rng: Rng = Math.rando
 
 /** Dosadí hodnoty do promptu; čísla formátuje česky. */
 export function renderPrompt(prompt: string, values: Record<string, number>): string {
-  return prompt.replace(/\{(\w+)\}/g, (match, name: string) => {
-    const value = values[name];
-    if (value === undefined) return match;
+  return prompt.replace(/\{(\w+)(\|percent)?\}/g, (match, name: string, percent?: string) => {
+    const raw = values[name];
+    if (raw === undefined) return match;
+    // {fO2|percent}: frakce 0,32 se v zadání ukáže jako 32
+    const value = percent ? Number((raw * 100).toFixed(4)) : raw;
     const decimals = Number.isInteger(value) ? 0 : Math.min(3, (String(value).split('.')[1] ?? '').length);
     return calc.formatCs(value, decimals);
   });

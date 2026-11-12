@@ -167,6 +167,8 @@ export const NumericTemplateSchema = z.object({
   fn: z.string().min(1),
   /** Náhodné vstupy; v promptu se na ně odkazuje jako {jmeno}. */
   params: z.record(z.string(), ParamSchema),
+  /** Pevné vstupy, které se nelosují a v zadání se nezmiňují (např. cílová hloubka 0 m). */
+  fixed: z.record(z.string(), z.number()).default({}),
   /** Pořadí parametrů při volání funkce. */
   args: z.array(z.string()).min(1),
   tolerance: z.number().nonnegative(),

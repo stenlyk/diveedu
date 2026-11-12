@@ -1,0 +1,18 @@
+id: analyza-a-znaceni
+moduleId: nitrox
+title: "Analýza plynu a značení lahví"
+order: 9
+conceptIds: ["analyza-plynu", "analyzator-kysliku", "znaceni-lahvi", "zamena-plynu"]
+checkQuestionIds: ["analyza-kdo", "analyza-postup", "analyza-stitek", "analyza-odchylka-mod", "analyza-kalibrace", "analyza-nesmysl"]
+estimatedMinutes: 10
+audioSummary: >-
+  Každou lahev analyzuje ten, kdo z ní bude dýchat. Bez výjimky.
+  Analyzátor nejdřív zkalibruj na vzduchu. Pak pusť přes čidlo slabý proud plynu, počkej na ustálení a hodnotu hned zapiš.
+  Na štítek patří naměřený podíl kyslíku, maximální hloubka směsi, datum a jméno.
+  Maximální hloubku napiš také velkými číslicemi na bok lahve, aby ji pod vodou přečetl partner.
+  Liší-li se naměřená hodnota od objednané, přepočítej plán podle skutečnosti.
+  Výsledek, který nedává smysl, změř znovu.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "A Guide to Advanced Nitrox (TDI Advanced Nitrox Diver Manual)", author: "Technical Diving International" }
+needs_review: false

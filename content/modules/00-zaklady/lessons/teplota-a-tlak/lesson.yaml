@@ -1,0 +1,18 @@
+id: teplota-a-tlak
+moduleId: zaklady
+title: "Teplota a tlak v lahvi"
+order: 6
+conceptIds: ["teplota", "tlak-v-lahvi"]
+checkQuestionIds: ["teplota-vychladnuti", "teplota-kam-zmizel-plyn", "teplota-kelviny", "teplota-auto-slunce"]
+estimatedMinutes: 7
+audioSummary: >-
+  Tlak plynu v uzavřené lahvi roste a klesá s teplotou. Množství plynu se přitom nemění.
+  Počítá se s absolutní teplotou v kelvinech, tedy stupně Celsia plus dvě stě sedmdesát tři.
+  Lahev naplněná na dvě stě dvacet barů při čtyřiceti pěti stupních ukáže v osmistupňové vodě asi sto devadesát čtyři.
+  Proto kontroluj tlak na vychladlé lahvi a podle něj počítej zásobu plynu.
+  Lahev ohřátá na slunci ukáže víc, ale plynu v ní víc není.
+  A při míchání směsí vždy počkej, až se teplota ustálí.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: false

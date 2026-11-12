@@ -33,7 +33,9 @@ function attributeValue(value: unknown): unknown {
   return new Function(`return (${source});`)();
 }
 
-export function parseLessonMdx(source: string): Pick<RawLesson, 'topLevelElements' | 'calcCalls'> {
+const REF_ELEMENTS = new Set(['Playground', 'Fact', 'CaseLink', 'Formula', 'Term']);
+
+export function parseLessonMdx(source: string): Pick<RawLesson, 'topLevelElements' | 'calcCalls' | 'refs' | 'handWritten'> {
   const tree = unified().use(remarkParse).use(remarkMdx).parse(source) as MdxNode;
   const topLevelElements = (tree.children ?? [])
     .filter((node) => node.type === 'mdxJsxFlowElement' && node.name)
@@ -47,10 +49,29 @@ export function parseLessonMdx(source: string): Pick<RawLesson, 'topLevelElement
       }
       calcCalls.push(call as unknown as CalcCall);
     }
+    if ((node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') && node.name && REF_ELEMENTS.has(node.name)) {
+      const attribute = (node.attributes ?? []).find((a) => a.type === 'mdxJsxAttribute' && ['id', 'kind', 'cs'].includes(a.name ?? ''));
+      refs.push({ element: node.name, value: String(attributeValue(attribute?.value)) });
+    }
     node.children?.forEach(walk);
   };
+  const refs: { element: string; value: string }[] = [];
   walk(tree);
-  return { topLevelElements, calcCalls };
+
+  // Ručně psaný výsledek („= 4 bar“) v částech Vzorec a Ukázkový výpočet: čísla tam smí jít jen z calc.
+  const handWritten: string[] = [];
+  const scan = (node: MdxNode & { value?: string }) => {
+    // <Given> označuje dané konvence a zadání („10 m = 1 bar“), ne výsledek výpočtu.
+    if (node.name === 'Given') return;
+    if (node.type === 'text' && typeof node.value === 'string') {
+      for (const match of node.value.matchAll(/[^.\n]*=\s*-?\d[^.\n]*/g)) handWritten.push(match[0].trim());
+    }
+    node.children?.forEach(scan);
+  };
+  for (const node of tree.children ?? []) {
+    if (node.type === 'mdxJsxFlowElement' && (node.name === 'FormulaSection' || node.name === 'WorkedSection')) scan(node);
+  }
+  return { topLevelElements, calcCalls, refs, handWritten };
 }
 
 export function loadContent(contentDir: string): RawContent {
