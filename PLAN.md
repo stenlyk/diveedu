@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–6 hotové s výhradami: zvuk a pět animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–6 hotové s výhradami: zvuk a osm animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -432,15 +432,15 @@ Systémový hlas macOS uživatel po poslechu odmítl. Generátor proto umí Elev
 
 **Odchylka od zadání.** Zadání chce videa 1–3 minuty renderovaná z animací v Remotionu. Vznikly místo nich animace kreslené přímo v aplikaci (SVG) a řízené namluveným výkladem. Důvody: zůstávají ostré a v tmavém režimu, čísla ve scéně počítá `calc`, fungují offline, celý balíček má stovky kB místo stovek MB a nepřibyla těžká závislost. Scéna je čistá funkce „věta a postup v ní“, takže ji lze později beze změny vyrenderovat do videa.
 
-- **Pět výkladů** (`src/anim/defs.ts`, scény v `src/anim/scenes.tsx`): tlak a objem plynu; parciální tlak kyslíku a MOD; sycení tkání a dekomprese; pravidlo třetin v jeskyni; rozcestí, šipky a vlastní značka. Každý je vložený do své lekce (`<Animation id>`) a všechny jsou v přehledu `/animace`.
+- **Osm výkladů** (`src/anim/defs.ts`, scény v `src/anim/scenes.tsx`): tlak a objem plynu; parciální tlak kyslíku a MOD; sycení tkání a dekomprese; gradient factors; hustota plynu a helium; pravidlo třetin v jeskyni; rozcestí, šipky a vlastní značka; skok cívkou. Každý je vložený do své lekce (`<Animation id>`) a všechny jsou v přehledu `/animace`.
 - **Hlas a časování:** výklad namlouvá stejný generátor jako shrnutí lekcí. ElevenLabs vrací čas každého znaku, takže kroky scény a titulky jsou svázané se skutečným začátkem každé věty. Bez nahrávky běží výklad potichu podle odhadu tempa čtení, s titulky.
 - **Ovládání:** přehrát a pozastavit, krok po větách vpřed a zpět; titulky jsou vidět vždy.
 - **Kontroly:** test hlídá, že čísla vyslovená ve výkladu odpovídají funkcím z `calc`, že výklad neobsahuje zkratku mimo slovník výslovnosti a že každý výklad patří k existující lekci. Scény jsem prošel na snímcích z mobilního zobrazení a opravil čtyři vady (překryv popisků, balonek nad hladinou, zaokrouhlený poločas, šipky mimo kruh hmatu).
 
 ### Co je slabé nebo otevřené
 
-- **Délka:** výklady mají 39–54 s, zadání chce 1–3 minuty.
-- **Počet:** pět výkladů na 78 lekcí. Výběr je můj; další kandidáti jsou izobarická protidifuze, gradient factors, skok cívkou a hustota plynu s heliem.
+- **Délka:** výklady mají 36–54 s, zadání chce 1–3 minuty.
+- **Počet:** osm výkladů na 78 lekcí; výběr je můj. Izobarickou protidifuzi jsem záměrně vynechal: její fyziologie je sporná a animace by ji podala jistěji, než odpovídá stavu poznání.
 - **Poslech a plynulost jsem neověřil.** Viděl jsem jednotlivé snímky, ne pohyb; souhru hlasu se scénou musí posoudit člověk.
 - Předrenderovaná videa (MP4) nevznikla.
 

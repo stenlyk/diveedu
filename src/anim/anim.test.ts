@@ -1,4 +1,5 @@
-import { absPressure, boyleVolume, mod, ppO2, thirdsTurnBar } from '@diveedu/calc';
+import { absPressure, boyleVolume, DENSITY_HARD_LIMIT_GL, DENSITY_RECOMMENDED_GL, densityOfMix, mod, ppO2, thirdsTurnBar } from '@diveedu/calc';
+import { mValueN2 } from '@diveedu/deco';
 import { describe, expect, it } from 'vitest';
 import content from '../content/generated/content.json';
 import { unknownAbbreviations } from '../audio/pronounce';
@@ -32,6 +33,16 @@ describe('definice výkladů', () => {
     expect(Math.floor(mod(0.32, 1.4))).toBe(33);
     expect(mod(0.5, 1.6)).toBeCloseTo(22, 6);
     expect(mod(1, 1.6)).toBeCloseTo(6, 6);
+    // Hustota a helium.
+    expect(densityOfMix(0.21, 0, 0)).toBeCloseTo(1.3, 1);
+    expect(densityOfMix(0.21, 0, 40)).toBeGreaterThan(6.4);
+    expect(densityOfMix(0.21, 0, 40)).toBeLessThan(6.5);
+    expect(DENSITY_RECOMMENDED_GL).toBe(5.2);
+    expect(DENSITY_HARD_LIMIT_GL).toBe(6.2);
+    expect(densityOfMix(0.18, 0.45, 60)).toBeCloseTo(5.6, 1);
+    expect(densityOfMix(0.21, 0, 60)).toBeCloseTo(9.0, 1);
+    // Gradient factors: M-hodnota roste s okolním tlakem.
+    expect(mValueN2(5, 5)).toBeGreaterThan(mValueN2(5, 1));
     // Třetiny: 210 bar, otočka na 140, zbylé dvě třetiny = cesta ven pro dva.
     expect(thirdsTurnBar(210)).toBe(140);
     expect(2 * (210 - thirdsTurnBar(210))).toBe(140);

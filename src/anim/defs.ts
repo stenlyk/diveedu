@@ -85,6 +85,48 @@ export const ANIMATIONS: readonly AnimationDef[] = [
       'Bez ní by sis vybíral naslepo.',
     ],
   },
+  {
+    id: 'gradient-faktory',
+    title: 'Gradient factors: kolik přesycení si dovolíš',
+    moduleId: 'deko',
+    lessonId: 'gradient-factors',
+    cues: [
+      'M-hodnota je nejvyšší tlak plynu, který model v tkáni připouští. Čím hlouběji, tím je vyšší.',
+      'Mezi okolním tlakem a M-hodnotou je pásmo přesycení. Gradient faktor říká, kolik procent z něj smíš využít.',
+      'První číslo, dolní gradient faktor, platí pro první a nejhlubší zastávku. Třicet procent znamená zastavit brzy a hluboko.',
+      'Druhé číslo, horní gradient faktor, platí pro vynoření. Osmdesát pět procent nechává patnáct procent pásma jako rezervu.',
+      'Mezi nimi vede přímka. Cestou nahoru smíš z pásma využívat postupně víc.',
+      'Nižší čísla znamenají delší dekompresi a menší přesycení. Nejsou zárukou. Jen posouvají hranici dál od M-hodnoty.',
+    ],
+  },
+  {
+    id: 'hustota-a-helium',
+    title: 'Hustota plynu a proč helium',
+    moduleId: 'trimix',
+    lessonId: 'hustota-smesi',
+    cues: [
+      'Vzduch má na hladině hustotu asi jedna celá tři gramu na litr.',
+      'S hloubkou roste hustota stejně jako tlak. Ve čtyřiceti metrech je to skoro šest a půl gramu na litr.',
+      'Hustý plyn se hůř dýchá. Tělo se nestíhá zbavit oxidu uhličitého a ten zhoršuje narkózu i riziko křečí.',
+      'Doporučená mez je pět celých dva gramu na litr, horní mez šest celých dva.',
+      'Helium je sedmkrát lehčí než dusík. Trimix osmnáct čtyřicet pět má v šedesáti metrech hustotu pět celých šest.',
+      'Vzduch by ve stejné hloubce měl devět gramů na litr. Proto se do hloubky přidává helium, nejen kvůli narkóze.',
+    ],
+  },
+  {
+    id: 'skok-civkou',
+    title: 'Skok: přemostění mezery cívkou',
+    moduleId: 'fullcave',
+    lessonId: 'skoky-mezery-rozcesti',
+    cues: [
+      'Hlavní šňůra vede chodbou. Boční chodba má vlastní šňůru, která začíná o pár metrů dál.',
+      'Mezi nimi je mezera. Teď ji vidíš celou. Při návratu v nulové viditelnosti bys druhou šňůru hledal rukou.',
+      'Nejdřív si na hlavní šňůře označíš cestu ven.',
+      'Potom připojíš cívku k hlavní šňůře a odvineš ji k boční.',
+      'Teď vede od tebe souvislá šňůra až do otevřené vody. Mezera zmizela.',
+      'Cestou ven sebere cívku ten, kdo plave poslední. Až když jsou všichni zpátky na hlavní šňůře.',
+    ],
+  },
 ];
 
 export const animationsById: ReadonlyMap<string, AnimationDef> = new Map(ANIMATIONS.map((animation) => [animation.id, animation]));

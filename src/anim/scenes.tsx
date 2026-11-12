@@ -1,4 +1,5 @@
-import { absPressure, boyleVolume, formatCs, haldaneTissuePressure, ppO2 } from '@diveedu/calc';
+import { absPressure, boyleVolume, DENSITY_HARD_LIMIT_GL, DENSITY_RECOMMENDED_GL, densityOfMix, formatCs, haldaneTissuePressure, ppO2 } from '@diveedu/calc';
+import { mValueN2 } from '@diveedu/deco';
 import type { ComponentType, ReactNode } from 'react';
 import { ease, lerp, type Position, span } from './timing';
 
@@ -207,10 +208,126 @@ const RozcestiAZnacky: Scene = ({ cue, p }) => {
   );
 };
 
+// ── Gradient factors ─────────────────────────────────────────────────────────
+const GF_COMPARTMENT = 5;
+const GF_LOW = 0.3;
+const GF_HIGH = 0.85;
+const FIRST_STOP_BAR = 2.5; // okolní tlak v 15 m
+
+const GradientFaktory: Scene = ({ cue, p }) => {
+  const px = (bar: number) => 44 + (bar - 1) * 62;
+  const py = (bar: number) => 176 - bar * 21;
+  const m = (ambient: number) => mValueN2(GF_COMPARTMENT, ambient);
+  const allowed = (ambient: number, gf: number) => ambient + gf * (m(ambient) - ambient);
+  const low: [number, number] = [FIRST_STOP_BAR, allowed(FIRST_STOP_BAR, GF_LOW)];
+  const high: [number, number] = [1, allowed(1, GF_HIGH)];
+  const travel = cue === 4 ? ease(span(p, 0.15, 0.9)) : cue > 4 ? 1 : 0;
+  const dot: [number, number] = [lerp(low[0], high[0], travel), lerp(low[1], high[1], travel)];
+  const band = cue >= 1 ? (cue === 1 ? span(p, 0, 0.3) : 1) : 0;
+  return (
+    <Frame label="Graf tlaku v tkáni proti okolnímu tlaku: okolní tlak, M-hodnota a čára gradient factors">
+      <polygon points={`${px(1)},${py(1)} ${px(5)},${py(5)} ${px(5)},${py(m(5))} ${px(1)},${py(m(1))}`} fill="var(--warn)" opacity={band * 0.18} />
+      <line x1={px(1)} y1={py(1)} x2={px(5)} y2={py(5)} stroke="var(--text)" strokeWidth="1.5" />
+      <text x={px(5) - 2} y={py(5) + 14} textAnchor="end" fontSize="8.5" fill="var(--text)">okolní tlak</text>
+      <line x1={px(1)} y1={py(m(1))} x2={px(5)} y2={py(m(5))} stroke="var(--danger)" strokeWidth="2" />
+      <text x={px(5) - 2} y={py(m(5)) - 5} textAnchor="end" fontSize="8.5" fill="var(--danger)">M-hodnota</text>
+      {band > 0 && <text x={px(2.9)} y={py((2.9 + m(2.9)) / 2) + 3} textAnchor="middle" fontSize="8.5" fill="var(--warn)" opacity={band}>pásmo přesycení</text>}
+      {cue >= 2 && <g opacity={cue === 2 ? span(p, 0.1, 0.3) : 1}><circle cx={px(low[0])} cy={py(low[1])} r="4.5" fill="var(--accent)" /><text x={px(low[0]) + 4} y={py(low[0]) + 18} fontSize="8.5" fill="var(--accent)">30 % · první zastávka</text></g>}
+      {cue >= 3 && <g opacity={cue === 3 ? span(p, 0.1, 0.3) : 1}><circle cx={px(high[0])} cy={py(high[1])} r="4.5" fill="var(--accent)" /><text x={px(high[0]) + 4} y={py(high[0]) + 18} fontSize="8.5" fill="var(--accent)">85 % · hladina</text></g>}
+      {cue >= 4 && <line x1={px(low[0])} y1={py(low[1])} x2={px(high[0])} y2={py(high[1])} stroke="var(--accent)" strokeWidth="2" strokeDasharray="5 3" opacity={cue === 4 ? span(p, 0, 0.15) : 1} />}
+      {cue >= 4 && <circle cx={px(dot[0])} cy={py(dot[1])} r="6" fill="var(--text)" stroke="var(--bg)" strokeWidth="1.5" />}
+      <line x1={px(1)} y1="182" x2={px(5)} y2="182" stroke="var(--muted)" />
+      <text x={px(1)} y="194" fontSize="8" fill="var(--muted)">hladina</text>
+      <text x={px(5)} y="194" textAnchor="end" fontSize="8" fill="var(--muted)">hloubka →</text>
+      <text x="12" y="16" fontSize="8" fill="var(--muted)">tlak dusíku v tkáni ↑</text>
+    </Frame>
+  );
+};
+
+// ── Hustota a helium ─────────────────────────────────────────────────────────
+const HustotaAHelium: Scene = ({ cue, p }) => {
+  const morph = ease(span(p, 0.1, 0.7));
+  const state: [number, number, number][] = [
+    [0.21, 0, 0],
+    [0.21, 0, lerp(0, 40, ease(span(p, 0.1, 0.7)))],
+    [0.21, 0, 40],
+    [0.21, 0, 40],
+    [lerp(0.21, 0.18, morph), lerp(0, 0.45, morph), lerp(40, 60, morph)],
+    [0.18, 0.45, 60],
+  ];
+  const [fO2, fHe, depth] = state[cue] ?? [0.21, 0, 0];
+  const density = densityOfMix(fO2, fHe, depth);
+  const air = densityOfMix(0.21, 0, 60) * (cue === 5 ? ease(span(p, 0, 0.4)) : 0);
+  const base = 178;
+  const scale = 15;
+  const tone = (value: number) => (value > DENSITY_HARD_LIMIT_GL ? 'var(--danger)' : value > DENSITY_RECOMMENDED_GL ? 'var(--warn)' : 'var(--ok)');
+  const limits = cue >= 3;
+  return (
+    <Frame label={`Hustota dýchané směsi v ${formatCs(depth, 0)} m: ${formatCs(density, 1)} g/l`}>
+      <rect x="26" y={base - density * scale} width="36" height={density * scale} fill={tone(density)} fillOpacity="0.75" />
+      <text x="44" y={base + 12} textAnchor="middle" fontSize="8.5" fill="var(--muted)">{fHe > 0.01 ? 'trimix' : 'vzduch'}</text>
+      {cue === 5 && <><rect x="68" y={base - air * scale} width="36" height={air * scale} fill={tone(air)} fillOpacity="0.75" /><text x="86" y={base + 12} textAnchor="middle" fontSize="8.5" fill="var(--muted)">vzduch</text></>}
+      <line x1="20" y1={base} x2="110" y2={base} stroke="var(--muted)" />
+      {limits && [[DENSITY_RECOMMENDED_GL, 'doporučená mez', 10], [DENSITY_HARD_LIMIT_GL, 'horní mez', -4]].map(([limit, text, dy]) => (
+        <g key={text} opacity={cue === 3 ? span(p, 0, 0.2) : 1}>
+          <line x1="20" y1={base - Number(limit) * scale} x2="196" y2={base - Number(limit) * scale} stroke="var(--danger)" strokeDasharray="4 3" />
+          <text x="112" y={base - Number(limit) * scale + Number(dy)} fontSize="7.5" fill="var(--danger)">{formatCs(Number(limit), 1)} · {text}</text>
+        </g>
+      ))}
+      {cue === 2 && <text x="44" y={base - density * scale - 8} textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--warn)" opacity={span(p, 0.1, 0.3)}>CO₂ ↑</text>}
+      <Readout x={208} y={40} label="Směs" value={fHe > 0.01 ? `Tx ${formatCs(fO2 * 100, 0)}/${formatCs(fHe * 100, 0)}` : 'vzduch'} />
+      <Readout x={208} y={86} label="Hloubka" value={`${formatCs(depth, 0)} m`} />
+      <Readout x={208} y={132} label="Hustota" value={`${formatCs(density, 1)} g/l`} tone={tone(density)} />
+      {cue === 5 && <text x="208" y="186" fontSize="9" fill="var(--danger)" opacity={span(p, 0.4, 0.6)}>vzduch v 60 m: {formatCs(densityOfMix(0.21, 0, 60), 1)} g/l</text>}
+    </Frame>
+  );
+};
+
+// ── Skok cívkou ──────────────────────────────────────────────────────────────
+const SkokCivkou: Scene = ({ cue, p }) => {
+  const JUMP: [number, number] = [176, 142];
+  const SIDE: [number, number] = [196, 88];
+  const FAR: [number, number] = [286, 44];
+  const along = (from: [number, number], to: [number, number], q: number): [number, number] => [lerp(from[0], to[0], q), lerp(from[1], to[1], q)];
+  const back = ease(span(p, 0, 0.45));
+  const diver: [number, number] = [
+    [lerp(40, 150, ease(p)), 142],
+    [lerp(150, 168, ease(p)), 142],
+    [168, 142],
+    along(JUMP, SIDE, ease(span(p, 0.2, 0.9))),
+    along(SIDE, [250, 62], ease(p)),
+    back < 1 ? along([250, 62], JUMP, back) : [lerp(JUMP[0], 110, ease(span(p, 0.75, 1))), 142],
+  ][cue] as [number, number] ?? [40, 142];
+  const spool = cue === 3 ? ease(span(p, 0.2, 0.9)) : cue === 4 ? 1 : cue === 5 ? 1 - ease(span(p, 0.5, 0.75)) : 0;
+  const end = along(JUMP, SIDE, spool);
+  const cookie = cue > 2 || (cue === 2 && p > 0.3);
+  const continuous = cue === 4;
+  return (
+    <Frame label="Hlavní a boční šňůra oddělené mezerou; skok cívkou je spojí">
+      <line x1="16" y1="142" x2="304" y2="142" stroke="var(--warn)" strokeWidth={continuous ? 4 : 3} />
+      <line x1={SIDE[0]} y1={SIDE[1]} x2={FAR[0]} y2={FAR[1]} stroke="var(--text)" strokeWidth={continuous ? 3 : 2} />
+      <polygon points="8,0 -6,-6 -2,0 -6,6" fill="var(--warn)" transform="translate(90 142) rotate(180)" />
+      <text x="18" y="160" fontSize="8.5" fill="var(--muted)">← východ · hlavní šňůra</text>
+      <text x="230" y="86" fontSize="8.5" fill="var(--muted)">boční šňůra</text>
+      {spool < 1 && <line x1={end[0]} y1={end[1]} x2={SIDE[0]} y2={SIDE[1]} stroke={cue === 1 ? 'var(--danger)' : 'var(--muted)'} strokeWidth="2" strokeDasharray="2 6" opacity={cue === 1 ? 0.5 + 0.5 * Math.abs(Math.sin(p * Math.PI * 4)) : 0.7} />}
+      {cue === 1 && <text x="120" y="112" fontSize="9" fontWeight="700" fill="var(--danger)">mezera</text>}
+      {spool > 0 && <line x1={JUMP[0]} y1={JUMP[1]} x2={end[0]} y2={end[1]} stroke="var(--accent)" strokeWidth="2.5" />}
+      {cookie && <circle cx="160" cy="142" r="6" fill="var(--accent)" stroke="var(--bg)" strokeWidth="2" />}
+      {cue === 5 && <circle cx={Math.max(60, diver[0] - 34)} cy={diver[1] === 142 ? 142 : lerp(142, diver[1], 0.4)} r="6" fill="var(--ok)" stroke="var(--bg)" strokeWidth="1.5" opacity={back >= 1 ? 1 : span(p, 0.3, 0.45)} />}
+      <circle cx={diver[0]} cy={diver[1]} r="6" fill="var(--text)" stroke="var(--bg)" strokeWidth="1.5" />
+      {continuous && <text x="160" y="186" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--ok)" opacity={span(p, 0, 0.2)}>souvislá šňůra až do otevřené vody</text>}
+      {cue === 5 && <text x="160" y="186" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text)" opacity={span(p, 0.5, 0.65)}>cívku sbírá poslední</text>}
+    </Frame>
+  );
+};
+
 export const SCENES: Readonly<Record<string, Scene>> = {
   'tlak-a-objem': TlakAObjem,
   'ppo2-a-mod': Ppo2AMod,
   'syceni-a-dekomprese': SyceniADekomprese,
   'tretiny-v-jeskyni': TretinyVJeskyni,
   'rozcesti-a-znacky': RozcestiAZnacky,
+  'gradient-faktory': GradientFaktory,
+  'hustota-a-helium': HustotaAHelium,
+  'skok-civkou': SkokCivkou,
 };
