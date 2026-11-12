@@ -1,0 +1,98 @@
+<Hook>
+
+Dva potápěči, oba 200 bar. Jeden má dvojče, druhý jednu patnáctku. „Otočíme na sto čtyřiceti,“ dohodnou se.
+
+Jeden z nich si právě naplánoval, že v nouzi nedoveze partnera ven. Který – a proč o tom neví?
+
+</Hook>
+
+<Principle>
+
+<Term cs="tlak otočky" /> je číslo, které si každý člen týmu spočítá před ponorem. Když kdokoli svého tlaku dosáhne, otáčí celý tým.
+
+**Základ: třetiny.** Třetina dovnitř, třetina ven, třetina rezerva. Rezerva není pro tebe; je pro partnera, který přišel o plyn v nejvzdálenějším bodě.
+
+**Různé lahve.** Třetina je třetina tlaku, ale partner potřebuje litry. Kdo má větší lahve, musí si rezervu přepočítat podle menší zásoby v týmu:
+
+- potápěč s menší zásobou otáčí na své třetině,
+- potápěč s větší zásobou smí na cestu dovnitř použít jen tolik litrů, kolik použil ten první – jeho tlak otočky je proto vyšší.
+
+**Různá spotřeba.** Úspornější potápěč dosáhne svého tlaku otočky později, takže ponor otočí ten s vyšší spotřebou. To je v pořádku: tým se řídí nejslabším článkem.
+
+**Kdy otočit dřív než na třetině:**
+
+- proud směřuje do jeskyně a cesta ven potrvá déle,
+- sediment, který může zrušit viditelnost,
+- pokládání a navíjení vlastní šňůry,
+- zúžená místa, kde se sdílí plyn obtížně,
+- nováček v týmu, nová jeskyně, nová výstroj.
+
+V takových podmínkách se používá čtvrtina nebo šestina. Agentury předepisují přísnější limit i pro nižší stupně výcviku.
+
+**Kromě tlaku se otáčí i na:** dohodnutý čas, dohodnutou vzdálenost, limit dekomprese, jakýkoli problém a kdykoli to kdokoli řekne.
+Otočka není neúspěch. Je to plánovaná část ponoru.
+
+**Přepočet během ponoru.** Když se podmínky změní – silnější proud, vyšší spotřeba, horší viditelnost – platí přísnější číslo. Nikdy naopak.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+<Formula id="dosah" />
+
+První vzorec říká, kdy otočit. Druhý, jak daleko se do té doby dostaneš.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Dvojče a patnáctka, oba 200 bar, stejná spotřeba 20 l/min.** Potápěč s lahví 15 l otáčí na své třetině:
+
+<Worked fn="teamTurnBar" args={[15, 20, 24, 20, 200]} expected={133.33} tolerance={0.01} unit="bar" decimals={0} />
+
+Potápěč s dvojčetem 24 l smí použít stejný počet litrů, což je v jeho lahvích menší pokles tlaku:
+
+<Worked fn="teamTurnBar" args={[24, 20, 15, 20, 200]} expected={158.33} tolerance={0.01} unit="bar" decimals={0} />
+
+Kdyby i on otočil „na sto čtyřiceti“, nic by se nestalo – tým by totiž dávno otočil kvůli patnáctce. Chyba je jinde:
+potápěč s patnáctkou, který by čekal, až na 140 bar klesne dvojče, by měl v tu chvíli sám hluboko pod třetinou.
+
+**Stejné lahve, různá spotřeba** – dvojčata 24 l, 210 bar, spotřeby 20 a 15 l/min. Úspornější potápěč je na otočce na:
+
+<Worked fn="teamTurnBar" args={[24, 15, 24, 20, 210]} expected={157.5} tolerance={0.01} unit="bar" decimals={0} />
+
+V tu chvíli má jeho partner 140 bar a ponor otáčí. Každý sleduje svůj manometr a svoje číslo.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="team-turn" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="tretiny-nestaci" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

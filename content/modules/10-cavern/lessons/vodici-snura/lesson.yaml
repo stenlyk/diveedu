@@ -1,0 +1,20 @@
+id: vodici-snura
+moduleId: cavern
+title: "Vodicí šňůra"
+order: 3
+conceptIds: ["vodici-snura", "navijak", "uvazani-snury", "past-na-snure"]
+checkQuestionIds: ["snura-nepretrzita", "snura-uvazani-poradi", "snura-past", "snura-kde-vest", "snura-poradi-tymu"]
+estimatedMinutes: 11
+audioSummary: >-
+  Vodicí šňůra spojuje každé místo, kam vplaveš, s otevřenou vodou. Musí být nepřerušená.
+  Začíná v otevřené vodě, kde je možný přímý výstup.
+  Primární uvázání je venku, sekundární těsně uvnitř, další podle potřeby.
+  Šňůru veď tam, kudy proplave potápěč. Nízko, stranou a napnutou.
+  Místo, kde šňůra vede štěrbinou užší než potápěč, je past. V nulové viditelnosti tě dovede tam, kudy neprojdeš.
+  Při zhoršené viditelnosti ber šňůru do ruky, palcem a ukazovákem, bez tahu.
+  Šňůra je ukazatel směru, ne zábradlí.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: true

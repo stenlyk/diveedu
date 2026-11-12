@@ -205,3 +205,11 @@ export function decoGasLiters(sacLpm: number, stops: readonly Stop[], reserveFac
   assertPositive(reserveFactor, 'rezerva');
   return reserveFactor * stops.reduce((sum, stop) => sum + gasConsumed(sacLpm, stop.depthM, stop.minutes, env), 0);
 }
+
+/**
+ * Tlak otočky jednoho potápěče z dvojice s různými lahvemi nebo spotřebou (oba začínají na stejném tlaku).
+ * Zkratka nad teamTurnPressure pro lekce a numerické otázky.
+ */
+export function teamTurnBar(tankLiters: number, sacLpm: number, buddyTankLiters: number, buddySacLpm: number, startBar: number): number {
+  return teamTurnPressure({ tankLiters, startBar, sacLpm }, { tankLiters: buddyTankLiters, startBar, sacLpm: buddySacLpm }).a.turnBar;
+}

@@ -253,3 +253,43 @@
 - { from: odlozeny-plyn, to: planovani-plynu, type: je_predpokladem, lessonId: logistika-expedic, explanation: 'Plyn, který se neunese, se předem rozmístí na trase.' }
 - { from: evakuacni-plan, to: dcs, type: zmirnuje, lessonId: logistika-expedic, explanation: 'Čas do léčby rozhoduje o výsledku; plán ho zkracuje.' }
 - { from: hloubka, to: limit-otevreneho-okruhu, type: zpusobuje, lessonId: logistika-expedic, explanation: 'Spotřeba plynu roste s tlakem a dekomprese s hloubkou i časem.' }
+
+# ── Modul C1 ─────────────────────────────────────────────────────────────────
+- { from: prostredi-se-stropem, to: pravidlo-tretin, type: je_predpokladem, lessonId: prostredi-se-stropem, explanation: 'Bez přímé cesty na hladinu musí rezerva pokrýt celou cestu ven pro dva.' }
+- { from: zona-denniho-svetla, to: prostredi-se-stropem, type: zmirnuje, lessonId: prostredi-se-stropem, explanation: 'Dokud je vidět světlo vchodu, zůstává směr ven zřejmý i bez šňůry.' }
+- { from: prostredi-se-stropem, to: minimum-gas, type: je_predpokladem, lessonId: prostredi-se-stropem, explanation: 'Rezerva se nepočítá k hladině nad hlavou, ale k východu.' }
+
+- { from: pet-pravidel, to: prostredi-se-stropem, type: zmirnuje, lessonId: pravidla-z-nehod, explanation: Pravidla pokrývají příčiny naprosté většiny smrtelných nehod v jeskyních. }
+- { from: pet-pravidel, to: vodici-snura, type: je_predpokladem, lessonId: pravidla-z-nehod, explanation: Nepřerušená šňůra k otevřené vodě je druhé z pěti pravidel. }
+- { from: pet-pravidel, to: pravidlo-tretin, type: je_predpokladem, lessonId: pravidla-z-nehod, explanation: Pravidlo třetin je třetí z pěti pravidel. }
+- { from: pet-pravidel, to: tri-svetla, type: je_predpokladem, lessonId: pravidla-z-nehod, explanation: Tři světla jsou páté z pěti pravidel. }
+
+- { from: vodici-snura, to: ztrata-snury, type: zmirnuje, lessonId: vodici-snura, explanation: Správně vedená a napnutá šňůra je vždy na dosah. }
+- { from: navijak, to: vodici-snura, type: je_predpokladem, lessonId: vodici-snura, explanation: Šňůru od vchodu pokládá vedoucí z navijáku. }
+- { from: uvazani-snury, to: vodici-snura, type: je_predpokladem, lessonId: vodici-snura, explanation: Bez uvázání šňůra nedrží směr ani napnutí. }
+- { from: past-na-snure, to: ztrata-snury, type: zpusobuje, lessonId: vodici-snura, explanation: 'Šňůra, která vede štěrbinou, se nedá sledovat tělem.' }
+
+- { from: tri-svetla, to: selhani-svetla, type: zmirnuje, lessonId: svetla-a-signaly, explanation: Porucha jedné svítilny neznamená tmu. }
+- { from: svetelne-signaly, to: kontaktni-komunikace, type: je_predpokladem, lessonId: svetla-a-signaly, explanation: 'Dokud je vidět, mluví se světlem; když ne, dotykem.' }
+- { from: selhani-svetla, to: nulova-viditelnost, type: zpusobuje, lessonId: svetla-a-signaly, explanation: Bez světla je za zónou denního světla úplná tma. }
+
+- { from: nulova-viditelnost, to: kontaktni-komunikace, type: je_predpokladem, lessonId: kontaktni-komunikace, explanation: 'Když není vidět, zbývá jen dotyk.' }
+- { from: kontaktni-komunikace, to: sdileni-plynu, type: je_predpokladem, lessonId: kontaktni-komunikace, explanation: Při sdílení plynu drží tým kontakt celou cestu ven. }
+- { from: kontaktni-komunikace, to: ztrata-snury, type: zmirnuje, lessonId: kontaktni-komunikace, explanation: 'Potápěč v kontaktu se šňůrou i partnerem se neztratí.' }
+
+- { from: sediment, to: nulova-viditelnost, type: zpusobuje, lessonId: sediment-a-viditelnost, explanation: Zvířený jíl zruší viditelnost během vteřin. }
+- { from: trim, to: sediment, type: zmirnuje, lessonId: sediment-a-viditelnost, explanation: Vodorovná poloha drží ploutve nad dnem. }
+- { from: nulova-viditelnost, to: ztrata-snury, type: zhorsuje, lessonId: sediment-a-viditelnost, explanation: 'Šňůra, kterou nevidíš a nedržíš, je ztracená.' }
+
+- { from: zabi-kop, to: sediment, type: zmirnuje, lessonId: techniky-kopu, explanation: Žabí kop tlačí vodu dozadu a nevíří dno. }
+- { from: manevrovaci-kopy, to: sediment, type: zmirnuje, lessonId: techniky-kopu, explanation: Otočení a couvání bez rukou nevíří stěny ani dno. }
+- { from: zabi-kop, to: namaha, type: snizuje, lessonId: techniky-kopu, explanation: Kop s fází skluzu šetří síly i plyn. }
+
+- { from: tlak-otocky, to: pravidlo-tretin, type: pocita_se_z, lessonId: plyn-v-jeskyni, explanation: Tlak otočky je počáteční tlak minus třetina. }
+- { from: dosah-pruniku, to: sac, type: pocita_se_z, lessonId: plyn-v-jeskyni, explanation: Dosah je čas na třetinu plynu krát rychlost plavání. }
+- { from: tlak-otocky, to: sdileni-plynu, type: je_predpokladem, lessonId: plyn-v-jeskyni, explanation: 'Dvě třetiny po otočce jsou plyn na cestu ven pro dva.' }
+- { from: hloubka, to: dosah-pruniku, type: snizuje, lessonId: plyn-v-jeskyni, explanation: Hlouběji je spotřeba vyšší a stejný plyn vystačí na kratší vzdálenost. }
+
+- { from: ztrata-snury, to: nulova-viditelnost, type: zhorsuje, lessonId: nouzove-postupy-cavern, explanation: Hledání bez postupu víří další sediment. }
+- { from: selhani-svetla, to: ztrata-snury, type: zpusobuje, lessonId: nouzove-postupy-cavern, explanation: 'Bez světla šňůru nevidíš; zbývá hmat.' }
+- { from: sdileni-plynu, to: unik-plynu, type: zmirnuje, lessonId: nouzove-postupy-cavern, explanation: Partner bez plynu dýchá z dlouhé hadice až k východu. }

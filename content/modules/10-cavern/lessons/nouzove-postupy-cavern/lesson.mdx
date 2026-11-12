@@ -1,0 +1,97 @@
+<Hook>
+
+Sáhneš vedle sebe a šňůra tam není. Před vteřinou tam byla.
+
+Tep vyskočí, dech se zrychlí a všechno v tobě křičí, že je třeba okamžitě něco udělat. Právě tahle první vteřina rozhoduje – a správná odpověď je nedělat nic.
+
+</Hook>
+
+<Principle>
+
+Všechny nouzové postupy v jeskyni začínají stejně: **zastav, dýchej, mysli.** Problém, který máš, se za pět vteřin nezhorší. To, co uděláš v panice, ano.
+
+**Selhání světla.**
+
+1. Rozsviť záložní světlo.
+2. Dej signál týmu.
+3. Ponor končí; ven plaveš uprostřed týmu.
+
+**Ztráta šňůry.** Šňůra bývá na dosah. Zabíjí slepé plavání směrem, kde si myslíš, že je východ.
+
+1. Zastav a nehýbej se z místa. Uklidni dech.
+2. Rozhlédni se – světlo partnera, šňůra v kuželu svítilny.
+3. Když ji nevidíš: uvaž vlastní cívku k pevnému bodu tam, kde jsi. Od této chvíle máš místo, kam se vrátit.
+4. Hledej metodicky: nízko, po obvodu, směrem, kde šňůra byla naposledy. Cívku odvíjíš.
+5. Po nalezení šňůru spoj s cívkou a urči směr ven podle značek.
+
+**Ztráta partnera.** Zastav a zakryj světlo – ve tmě je vidět kužel partnerovy svítilny. Když není, označ své místo na šňůře, hledej jen po dobu, kterou ti dovolí plyn, a pak odcházíš.
+Podrobný postup včetně značení patří do modulu Full Cave.
+
+**Partner bez plynu.**
+
+1. Podej dlouhou hadici – tu, ze které dýcháš. Víš, že funguje.
+2. Přejdi na záložní automatiku pod bradou.
+3. Uklidněte dech, zkontrolujte tlak.
+4. Ven v kontaktu: potápěč bez plynu vpředu, dárce za ním.
+
+**Zamotání do šňůry.** Zastav. Netoč se a netahej. Dej signál partnerovi; ten vidí, kde jsi zachycený. Řezat šňůru je poslední možnost – a konce se pak musí znovu spojit.
+
+Postupy se liší v detailech mezi agenturami. Stejné je pořadí priorit: **dýchání, šňůra, tým, východ.**
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Každá nouze stojí čas a čas stojí plyn. Kolik, spočítáš tímto vzorcem se stresovou spotřebou – a právě na to je třetí třetina.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik plynu stojí hledání šňůry?
+
+Potápěč ve 20 m se stresovou spotřebou 30 l/min. Deset minut hledání z dvojčete 2×12 l:
+
+<Worked fn="gasConsumed" args={[30, 20, 10]} expected={900} tolerance={0.1} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+To je <Calc fn="litersToBar" args={[900, 24]} decimals={0} unit="bar" /> – víc než polovina rezervní třetiny.
+
+V panice, se spotřebou 50 l/min, stojí stejných deset minut:
+
+<Worked fn="gasConsumed" args={[50, 20, 10]} expected={1500} tolerance={0.1} unit="l" decimals={0} />
+
+Přes šedesát barů. Uklidnit dech tedy není rada pro duševní pohodu. Je to nejúčinnější způsob, jak si prodloužit čas na vyřešení problému.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="ztrata-snury" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="ztracena-snura-statistika" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

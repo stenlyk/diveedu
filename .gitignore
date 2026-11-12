@@ -8,3 +8,4 @@ src/content/generated
 *.local
 .DS_Store
 .wrangler
+*.tsbuildinfo

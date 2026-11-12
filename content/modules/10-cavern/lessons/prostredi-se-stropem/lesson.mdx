@@ -1,0 +1,87 @@
+<Hook>
+
+V otevřené vodě má každý problém stejné poslední řešení: nahoru. Dojde plyn, selže automatika, ztratíš partnera – hladina je vždy nad tebou.
+
+V jeskyni je nad tebou skála. Poslední řešení tam neexistuje. Co ho nahradí?
+
+</Hook>
+
+<Principle>
+
+<Term cs="prostředí se stropem" /> je každé místo, odkud nemůžeš vystoupat přímo na hladinu: jeskyně, vrak, voda pod ledem. Dekompresní povinnost je strop neviditelný; tady je skutečný.
+
+Mění to tři věci najednou:
+
+- **Cesta ven je jen jedna** a je stejně dlouhá jako cesta dovnitř. Každý problém se řeší na místě a pak se ještě musí doplavat k východu.
+- **Orientaci nezajišťuje světlo hladiny.** Bez svítilny a bez šňůry není poznat, kudy ven.
+- **Viditelnost se může ztratit během vteřin** a nevrátí se, dokud jsi uvnitř.
+
+Na to odpovídá celý systém jeskynního potápění: nepřerušená šňůra k východu, tři světla, plyn počítaný na cestu ven pro dva, a postupy nacvičené tak, aby šly provést poslepu.
+
+**Úrovně výcviku** se liší podle toho, jak daleko od vchodu smíš:
+
+- **Cavern** – <Term cs="zóna denního světla" />. Vchod je stále vidět, hloubka i vzdálenost jsou omezené a neprolézají se zúžená místa.
+- **Intro to Cave** – za hranici denního světla, ale jen po hlavní šňůře, bez odboček a s přísnějším limitem plynu.
+- **Full Cave** – navigace v systému chodeb, odbočky, okruhy.
+
+Přesné limity – vzdálenost, hloubka, podíl použitelného plynu – stanovuje každá agentura jinak. Společné je, že se zvyšují postupně a že se nepřeskakují.
+
+Nejnebezpečnější jeskynní potápěč je zkušený potápěč z otevřené vody bez jeskynního výcviku. Umí se potápět, takže se nebojí. A neví, co neví.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+Pravidlo třetin znáš z modulu Decompression Procedures. V prostředí se stropem přestává být jednou z možností a stává se horní mezí:
+víc než třetinu plynu na cestu dovnitř nepoužije nikdo a nikdy.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tlak otočky** s 210 bar na začátku:
+
+<Worked fn="thirdsTurnBar" args={[210]} expected={140} tolerance={0.01} unit="bar" decimals={0} />
+
+**S 200 bar** se třetina zaokrouhluje dolů na desítky:
+
+<Worked fn="thirdsTurnBar" args={[200]} expected={140} tolerance={0.01} unit="bar" decimals={0} />
+
+Na cestu dovnitř máš jen 60 bar, ne 67. Rozdíl propadá do rezervy.
+
+Kolik času to je? Dvojče 2×12 l, spotřeba 20 l/min, hloubka 20 m: 60 bar vystačí na <Calc fn="minutesOnGas" args={[60, 24, 20, 20]} unit="min" />.
+Tolik trvá cesta dovnitř. Stejně dlouho potrvá cesta ven – když se nic nepokazí.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="thirds" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="cedule-smrtka" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -339,6 +339,25 @@ Odchylky od plánu:
 
 - Simulátor „Míchací stanice“ (virtuální plnění, analýza, značení) – existují jen kalkulačky míchání.
 - „Kyslíkové okno“ je přepínač dvou stavů s ilustrativními hodnotami, ne animace.
-- Typy otázek „obrázková/diagramová“ a „scénář“ – přijdou s jeskynní mapou a rozhodovacími scénáři v etapě 5.
+- Typ otázky „obrázková/diagramová“ – přijde s jeskynní mapou v etapě 5b. Rozhodovací scénáře vznikly v etapě 5a jako samostatný režim tréninku, ne jako typ otázky.
 - Průřezové moduly (Fyziologie a medicína, Vybavení, Lidský faktor, Nouzové situace) jako samostatné moduly nevznikly; jejich témata jsou zatím rozptýlená v lekcích hlavní linie.
 - Míchání podle van der Waalse (volitelné).
+
+## 21. Etapa 5a – Cavern / Intro to Cave a rozhodovací scénáře (hotovo 2026-11-12)
+
+Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul C1; **5b** = moduly C2 Full Cave a C3 Deep Cave, simulátor navigace po jeskynní mapě, případové studie (Tham Luang 2018, vzorec Eagle's Nest) a diagramové otázky.
+
+- **Modul C1 (`cavern`, větev jeskyně, navazuje na nitrox):** 9 lekcí, 51 otázek, 19 uzlů, 30 vazeb, 9 zajímavostí. Témata: prostředí se stropem a úrovně výcviku, pět pravidel z rozboru nehod, vodicí šňůra, světla a světelné signály, kontaktní komunikace, sediment, techniky kopu, plyn (třetiny, tlak otočky v týmu, dosah), nouzové postupy.
+- **`calc/cave.ts`:** čas na plynu, dosah průniku, čas a plyn na cestu ven (pro jednoho i pro dva), použitelný podíl plynu při různé rychlosti dovnitř a ven. V `consumption.ts` přibyl `teamTurnBar` (tlak otočky při různých lahvích a spotřebách). Kalkulačka „Dosah průniku“.
+- **Rozhodovací scénáře:** větvený příběh v YAML (`content/scenarios/`), každé rozhodnutí stojí minuty a plyn, některé uzly mají časový limit. Nulová viditelnost zatemní obrazovku; zvuk dechu a vibrace jsou volitelné. Na konci rozbor každého rozhodnutí. Validátor hlídá odkazy, dosažitelnost uzlů, existenci správné možnosti v každém uzlu a to, že správná cesta končí úspěchem se zbytkem plynu.
+- **Tři scénáře:** ztráta šňůry v nulové viditelnosti, selhání hlavní svítilny, partner bez plynu v nejvzdálenějším bodě. Jsou vložené do lekcí (`<Scenario id>`) a dostupné z Tréninku.
+- **Případová studie:** anonymizovaný vzorec „do jeskyně jen kousek, bez šňůry“ – složený z typických prvků, nepopisuje konkrétní osobu ani místo.
+- Možnosti ve scénáři se zobrazují v pořadí pootočeném podle uzlu, aby správná nebyla vždy první.
+
+### Co je v 5a slabé nebo otevřené
+
+- **Obsah je psaný z hlavy, ne ze zdrojů.** Uvedené zdroje (Exley 1979, NSS Cave Diving Manual, příručka TDI) říkají, kde tvrzení ověřit; neznamená to, že jsem je proti nim kontroloval. Všechny tři scénáře, případovka a sedm z devíti lekcí mají `needs_review`.
+- K odborné kontrole zvlášť: význam světelných a dotykových signálů (liší se mezi agenturami), postup hledání ztracené šňůry (směr a metoda hledání), pořadí v týmu při sdílení plynu, limity úrovní Cavern/Intro (záměrně uvedené bez čísel), tvrzení o počtech obětí ve floridských jeskyních v 70. letech.
+- Scénář počítá plyn při stálé hloubce a jednou spotřebou s násobitelem; je to pomůcka pro rozhodování, ne plánovač.
+- Dál platí nesplněné kritérium z etapy 4: dekompresní model ověřený na 1 z 10 referenčních profilů.
+

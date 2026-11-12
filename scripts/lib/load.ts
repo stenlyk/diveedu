@@ -33,7 +33,7 @@ function attributeValue(value: unknown): unknown {
   return new Function(`return (${source});`)();
 }
 
-const REF_ELEMENTS = new Set(['Playground', 'Fact', 'CaseLink', 'Formula', 'Term']);
+const REF_ELEMENTS = new Set(['Playground', 'Fact', 'CaseLink', 'Formula', 'Term', 'Scenario']);
 
 export function parseLessonMdx(source: string): Pick<RawLesson, 'topLevelElements' | 'calcCalls' | 'refs' | 'handWritten'> {
   const tree = unified().use(remarkParse).use(remarkMdx).parse(source) as MdxNode;
@@ -83,6 +83,7 @@ export function loadContent(contentDir: string): RawContent {
     formulas: yamlList(join(contentDir, 'formulas.yaml')),
     questions: [],
     cases: [],
+    scenarios: [],
     facts: yamlList(join(contentDir, 'facts.yaml')),
     glossary: yamlList(join(contentDir, 'glossary.yaml')),
     media: yamlList(join(contentDir, 'media.yaml')),
@@ -104,6 +105,10 @@ export function loadContent(contentDir: string): RawContent {
       const path = join(base, 'questions', file);
       yamlList(path).forEach((data, i) => raw.questions.push({ path: `${relative(contentDir, path)}[${i}]`, data }));
     }
+  }
+  for (const file of files(join(contentDir, 'scenarios'), '.yaml')) {
+    const path = join(contentDir, 'scenarios', file);
+    raw.scenarios!.push({ path: relative(contentDir, path), data: yamlFile(path) });
   }
   for (const file of files(join(contentDir, 'cases'), '.yaml')) {
     const path = join(contentDir, 'cases', file);

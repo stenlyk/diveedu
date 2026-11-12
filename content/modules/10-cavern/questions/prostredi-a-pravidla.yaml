@@ -1,0 +1,137 @@
+- id: strop-co-meni
+  type: why
+  conceptIds: [prostredi-se-stropem]
+  difficulty: 1
+  prompt: Proč se problémy v prostředí se stropem řeší jinak než v otevřené vodě?
+  options:
+    - { text: 'Přímý výstup na hladinu není možný; problém se musí vyřešit na místě a pak ještě doplavat k východu.', correct: true }
+    - { text: 'Pod stropem je vyšší tlak než ve stejné hloubce v otevřené vodě.', explanation: 'Tlak určuje hloubka, ne strop.' }
+    - { text: 'V jeskyni se dýchá jiný plyn.', explanation: 'Plyn může být stejný. Mění se to, že chybí cesta nahoru.' }
+    - { text: 'V jeskyni neplatí dekompresní pravidla.', explanation: 'Platí beze změny. Strop skály se k nim jen přidává.' }
+  explanation: 'Cesta ven je jen jedna a je stejně dlouhá jako cesta dovnitř. Z toho vychází šňůra, tři světla i plánování plynu.'
+  backToLessonId: prostredi-se-stropem
+
+- id: strop-zona-svetla
+  type: choice
+  conceptIds: [zona-denniho-svetla, prostredi-se-stropem]
+  difficulty: 1
+  prompt: Co vymezuje zónu denního světla, ve které se pohybuje potápěč úrovně Cavern?
+  options:
+    - { text: 'Oblast, odkud je stále vidět denní světlo vchodu', correct: true }
+    - { text: 'Oblast, kam dosvítí hlavní svítilna', explanation: 'Zóna se řídí přirozeným světlem vchodu, ne svítilnou.' }
+    - { text: 'Prvních 100 m jakékoli jeskyně', explanation: 'Rozhoduje viditelnost vchodu. Přesné limity vzdálenosti a hloubky si navíc každá agentura stanovuje sama.' }
+    - { text: 'Oblast, kde je trvalá šňůra', explanation: 'Trvalá šňůra často začíná až za zónou denního světla.' }
+  explanation: 'V zóně denního světla zůstává vchod vidět jako záložní orientace. Šňůra a světla se používají i tam.'
+  backToLessonId: prostredi-se-stropem
+
+- id: strop-proc-vycvik
+  type: why
+  conceptIds: [prostredi-se-stropem, pet-pravidel]
+  difficulty: 2
+  prompt: Proč je v jeskyni ohrožený právě zkušený potápěč z otevřené vody bez jeskynního výcviku?
+  options:
+    - { text: 'Umí se potápět, takže se nebojí, ale nezná rizika, která v otevřené vodě neexistují.', correct: true }
+    - { text: 'Má horší fyzickou kondici než začátečník.', explanation: 'Kondice s tím nesouvisí.' }
+    - { text: 'Jeho výstroj v jeskyni nefunguje.', explanation: 'Výstroj funguje. Chybí šňůra, záložní světla, plán plynu a nacvičené postupy.' }
+    - { text: 'Zkušení potápěči dýchají víc.', explanation: 'Obvykle naopak.' }
+  explanation: 'Rozbory nehod ukazují, že většina obětí neměla žádný jeskynní výcvik. Zkušenost z otevřené vody dodá sebedůvěru, ne postupy.'
+  backToLessonId: prostredi-se-stropem
+
+- id: strop-plyn
+  type: numeric
+  conceptIds: [prostredi-se-stropem, pravidlo-tretin, tlak-otocky]
+  difficulty: 2
+  prompt: 'Začínáš s {start} bar. Jaký je tlak otočky podle pravidla třetin, když třetinu zaokrouhlíš dolů na celé desítky barů?'
+  template: { fn: thirdsTurnBar, params: { start: { values: [180, 190, 200, 210, 220, 230] } }, args: [start], tolerance: 0, unit: bar, decimals: 0 }
+  explanation: 'Třetinu zaokrouhli dolů a odečti od počátečního tlaku. Zaokrouhlením dolů se rozdíl přesune do rezervy.'
+  backToLessonId: prostredi-se-stropem
+
+- id: zona-urovne
+  type: match
+  conceptIds: [zona-denniho-svetla, prostredi-se-stropem]
+  difficulty: 2
+  prompt: Přiřaď úroveň výcviku k tomu, kam potápěče pouští.
+  pairs:
+    - { left: Cavern, right: 'Zóna denního světla, vchod stále na dohled' }
+    - { left: Intro to Cave, right: 'Za hranici světla, jen po hlavní šňůře bez odboček' }
+    - { left: Full Cave, right: 'Navigace v systému chodeb včetně odboček' }
+  explanation: 'Úrovně na sebe navazují a nepřeskakují se. Přesné limity stanovuje každá agentura jinak.'
+  backToLessonId: prostredi-se-stropem
+
+- id: zona-soumrak
+  type: why
+  conceptIds: [zona-denniho-svetla]
+  difficulty: 2
+  prompt: Proč se ponor v zóně denního světla nedá naplánovat na pozdní odpoledne bez ohledu na čas?
+  options:
+    - { text: 'Po setmění zóna denního světla přestane existovat a ponor se stává jeskynním ponorem.', correct: true }
+    - { text: 'Večer je v jeskyni chladnější voda.', explanation: 'Teplota vody v jeskyni se během dne téměř nemění.' }
+    - { text: 'Večer se zvedá sediment.', explanation: 'Sediment zvedají potápěči, ne denní doba.' }
+    - { text: 'Svítilny ve tmě svítí slaběji.', explanation: 'Svítí stejně. Chybí přirozené světlo vchodu.' }
+  explanation: 'Zóna je určená přirozeným světlem. Když zmizí – soumrakem nebo zvířeným sedimentem – zmizí i záložní orientace podle vchodu.'
+  backToLessonId: prostredi-se-stropem
+
+- id: pravidla-vyjmenuj
+  type: multi
+  conceptIds: [pet-pravidel]
+  difficulty: 1
+  prompt: Která z těchto pravidel patří mezi pět základních pravidel jeskynního potápění?
+  options:
+    - { text: 'Nepotápěj se nad úroveň svého výcviku', correct: true }
+    - { text: 'Udržuj nepřerušenou šňůru do otevřené vody', correct: true }
+    - { text: 'Měj tři nezávislá světla', correct: true }
+    - { text: 'Vždy se potápěj nejméně ve třech', explanation: 'Velikost týmu mezi pěti pravidly není. Zbývající dvě jsou plyn a hloubka.' }
+  explanation: 'Výcvik, šňůra, plyn, hloubka, světla. Každé odpovídá chybě, která se v nehodách opakovala.'
+  backToLessonId: pravidla-z-nehod
+
+- id: pravidla-proc-snura
+  type: why
+  conceptIds: [pet-pravidel, vodici-snura]
+  difficulty: 1
+  prompt: Proč pravidlo žádá šňůru už od otevřené vody, a ne až od místa, kde přestává být vidět vchod?
+  options:
+    - { text: 'Viditelnost může zmizet během vteřin i blízko vchodu a bez šňůry pak není poznat, kudy ven.', correct: true }
+    - { text: 'Šňůra slouží hlavně k měření vzdálenosti.', explanation: 'Uzly nebo značky vzdálenost ukázat mohou, ale hlavní úkol šňůry je cesta ven.' }
+    - { text: 'Bez šňůry by správa jeskyně ponor nepovolila.', explanation: 'Pravidlo vzniklo z nehod, ne z předpisů.' }
+    - { text: 'Šňůra chrání dno před poškozením.', explanation: 'Dno chrání technika plavání.' }
+  explanation: 'Lidé umírali pár desítek metrů od vchodu, který přestali vidět. Mezera ve šňůře je místo, kde systém přestává fungovat.'
+  backToLessonId: pravidla-z-nehod
+
+- id: pravidla-kdo-umira
+  type: choice
+  conceptIds: [pet-pravidel, prostredi-se-stropem]
+  difficulty: 2
+  prompt: Co mají podle rozborů nehod společného smrtelné nehody v jeskyních nejčastěji?
+  options:
+    - { text: 'Porušení několika základních pravidel najednou', correct: true }
+    - { text: 'Selhání automatiky', explanation: 'Technická závada bývá spouštěč, málokdy jediná příčina.' }
+    - { text: 'Zával', explanation: 'Závaly jsou mezi příčinami nehod potápěčů vzácné.' }
+    - { text: 'Útok živočichů', explanation: 'V rozborech nehod se neobjevuje.' }
+  explanation: 'Typický vzorec: bez výcviku, bez šňůry, s jedním světlem. Jedno porušené pravidlo obvykle zachytí ostatní; několik najednou ne.'
+  backToLessonId: pravidla-z-nehod
+
+- id: pravidla-hloubka
+  type: why
+  conceptIds: [pet-pravidel, dusikova-narkoza]
+  difficulty: 2
+  prompt: Proč je mezi pěti pravidly i omezení hloubky?
+  options:
+    - { text: 'Narkóza v hloubce bere úsudek právě tam, kde se nedá vystoupat a chyby se sčítají.', correct: true }
+    - { text: 'Hluboké jeskyně mají vždy horší viditelnost.', explanation: 'Viditelnost s hloubkou přímo nesouvisí.' }
+    - { text: 'Šňůra v hloubce praská.', explanation: 'Šňůře hloubka nevadí.' }
+    - { text: 'V hloubce nesvítí svítilny.', explanation: 'Svítilny jsou na hloubku stavěné.' }
+  explanation: 'Hloubka navíc zvyšuje spotřebu a přidává dekompresi. Pravidlo dnes zní: jen tak hluboko, jak dovoluje plyn a výcvik.'
+  backToLessonId: pravidla-z-nehod
+
+- id: pravidla-prirad
+  type: match
+  conceptIds: [pet-pravidel, tri-svetla, pravidlo-tretin]
+  difficulty: 2
+  prompt: Přiřaď pravidlo k chybě, ze které vzniklo.
+  pairs:
+    - { left: Šňůra, right: 'Potápěč nenašel vchod, i když byl blízko' }
+    - { left: Třetiny, right: 'Otočka na polovině plynu' }
+    - { left: Tři světla, right: 'Jediná svítilna zhasla' }
+    - { left: Výcvik, right: 'Zkušený potápěč z otevřené vody vplaval do jeskyně' }
+  explanation: 'Pravidla nejsou názory na techniku. Každé popisuje chybu, která se tomu, kdo ji udělal, zdála rozumná.'
+  backToLessonId: pravidla-z-nehod

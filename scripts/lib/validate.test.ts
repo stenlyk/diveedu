@@ -214,6 +214,37 @@ describe('validátor obsahu', () => {
     expect(errors).toMatch(/ručně psaný výsledek „30 \/ 10 \+ 1 = 4 bar“/);
   });
 
+  it('scénář: odkazy, dosažitelnost, časový limit a průchodnost správné cesty', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- volně tvarovaná testovací data, která se záměrně kazí
+    type Loose = Record<string, any>;
+    const scenario = (patch: (s: Loose) => void) => (raw: RawContent) => {
+      const data: Loose = {
+        id: 's', title: 'S', summary: 'x', moduleIds: ['m'], conceptIds: ['tlak'], intro: 'x',
+        setup: { startBar: 100, tankLiters: 24, depthM: 20, sacLpm: 20 }, start: 'a',
+        nodes: [
+          { id: 'a', text: 'x', options: [{ text: 'dobře', next: 'win', minutes: 2, verdict: 'good', feedback: 'x' }, { text: 'špatně', next: 'fail', minutes: 2, verdict: 'bad', feedback: 'x' }] },
+          { id: 'win', text: 'x', end: { outcome: 'success', text: 'x' } },
+          { id: 'fail', text: 'x', end: { outcome: 'fail', text: 'x' } },
+        ],
+        sources: [source],
+      };
+      patch(data);
+      raw.scenarios = [{ path: 'scenarios/s.yaml', data }];
+    };
+    expect(errorsOf(scenario(() => undefined))).toBe('');
+    expect(errorsOf(scenario((s) => { s.start = 'nic'; }))).toMatch(/neznámý počáteční uzel/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].options[0].next = 'nic'; }))).toMatch(/vede do neznámého uzlu „nic“/);
+    expect(errorsOf(scenario((s) => { s.nodes.push({ id: 'sirotek', text: 'x', end: { outcome: 'fail', text: 'x' } }); }))).toMatch(/uzel „sirotek“ je nedosažitelný/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].options.pop(); }))).toMatch(/potřebuje alespoň 2 možnosti/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].options[0].verdict = 'ok'; }))).toMatch(/nemá žádnou správnou možnost/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].timeLimitSec = 10; }))).toMatch(/chybí timeout/);
+    expect(errorsOf(scenario((s) => { s.nodes[1].options = [{ text: 'a', next: 'fail', minutes: 1, verdict: 'good', feedback: 'x' }]; }))).toMatch(/koncový uzel „win“ nesmí mít možnosti/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].options[0].next = 'fail'; s.nodes[0].options[1].next = 'win'; }))).toMatch(/nekončí úspěchem/);
+    expect(errorsOf(scenario((s) => { s.nodes[0].options[0].minutes = 60; }))).toMatch(/dojde plyn/);
+    expect(errorsOf(scenario((s) => { s.conceptIds = ['nic']; s.moduleIds = ['x']; }))).toMatch(/neznámý modul „x“[\s\S]*neznámý uzel „nic“/);
+    expect(errorsOf(scenario((s) => { s.nodes.push({ ...s.nodes[1] }); }))).toMatch(/duplicitní uzel „win“/);
+  });
+
   it('krajní kombinace parametrů šablony', () => {
     expect(templateCorners({ fn: 'x', params: { a: { min: 1, max: 2, step: 1 }, b: { values: [5, 6, 7] }, c: { values: [9] } }, args: ['a'], tolerance: 0, unit: '', decimals: 1, fixed: {} })).toHaveLength(4);
   });

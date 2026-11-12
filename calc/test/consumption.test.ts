@@ -212,3 +212,16 @@ describe('zkratky pro plánování plynu', () => {
     expect(rb[4]!.value).toBeCloseTo(rockBottomBar(30, 20, 24), 10);
   });
 });
+
+import { teamTurnBar } from '../src';
+
+describe('otočka jednoho z dvojice', () => {
+  it('malá lahev otáčí na své třetině, velká drží rezervu pro oba', () => {
+    expect(teamTurnBar(12, 20, 24, 20, 200)).toBeCloseTo(133.33, 2);
+    expect(teamTurnBar(24, 20, 12, 20, 200)).toBeCloseTo(166.67, 2);
+  });
+  it('stejné lahve a různá spotřeba: úspornější otáčí dřív na manometru', () => {
+    expect(teamTurnBar(24, 20, 24, 15, 210)).toBeCloseTo(140, 8);
+    expect(teamTurnBar(24, 15, 24, 20, 210)).toBeCloseTo(157.5, 8);
+  });
+});

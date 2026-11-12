@@ -226,6 +226,47 @@ export const CaseStudySchema = z.object({
   needs_review: z.boolean().default(true),
 });
 
+const ScenarioOptionSchema = z.object({
+  text: z.string().min(1),
+  /** Kam rozhodnutí vede. */
+  next: id,
+  /** Kolik minut rozhodnutí stojí; plyn ubývá podle spotřeby a hloubky. */
+  minutes: z.number().nonnegative(),
+  /** Násobitel spotřeby (stres, námaha); výchozí 1. */
+  stress: z.number().positive().default(1),
+  verdict: z.enum(['good', 'ok', 'bad']),
+  /** Vysvětlení pro závěrečný rozbor. */
+  feedback: z.string().min(1),
+});
+
+const ScenarioNodeSchema = z.object({
+  id,
+  text: z.string().min(1),
+  /** Viditelnost: none = normální, dim = zvířený sediment, black = nulová viditelnost. */
+  darkness: z.enum(['none', 'dim', 'black']).default('none'),
+  /** Časový limit na rozhodnutí v sekundách; po vypršení se použije timeout. */
+  timeLimitSec: z.number().int().positive().optional(),
+  timeout: z.object({ next: id, minutes: z.number().nonnegative(), stress: z.number().positive().default(2), feedback: z.string().min(1) }).optional(),
+  options: z.array(ScenarioOptionSchema).default([]),
+  /** Koncový uzel scénáře. */
+  end: z.object({ outcome: z.enum(['success', 'partial', 'fail']), text: z.string().min(1) }).optional(),
+});
+
+/** Rozhodovací scénář: větvený příběh s časovým limitem a stavem plynu. */
+export const ScenarioSchema = z.object({
+  id,
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  moduleIds: z.array(id).min(1),
+  conceptIds: z.array(id).min(1),
+  intro: z.string().min(1),
+  setup: z.object({ startBar: z.number().positive(), tankLiters: z.number().positive(), depthM: z.number().nonnegative(), sacLpm: z.number().positive() }),
+  start: id,
+  nodes: z.array(ScenarioNodeSchema).min(2),
+  sources: z.array(SourceSchema).min(1),
+  needs_review: z.boolean().default(true),
+});
+
 export const FactSchema = z.object({
   id,
   text: z.string().min(1),
@@ -262,6 +303,9 @@ export type Question = z.infer<typeof QuestionSchema>;
 export type NumericTemplate = z.infer<typeof NumericTemplateSchema>;
 export type CaseStudy = z.infer<typeof CaseStudySchema>;
 export type Fact = z.infer<typeof FactSchema>;
+export type Scenario = z.infer<typeof ScenarioSchema>;
+export type ScenarioNode = Scenario['nodes'][number];
+export type ScenarioOption = ScenarioNode['options'][number];
 export type GlossaryTerm = z.infer<typeof GlossaryTermSchema>;
 export type Media = z.infer<typeof MediaSchema>;
 
@@ -274,6 +318,7 @@ export interface Content {
   formulas: Formula[];
   questions: Question[];
   cases: CaseStudy[];
+  scenarios: Scenario[];
   facts: Fact[];
   glossary: GlossaryTerm[];
   media: Media[];

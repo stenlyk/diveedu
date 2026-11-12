@@ -1,0 +1,20 @@
+id: plyn-v-jeskyni
+moduleId: cavern
+title: "Plyn v jeskyni: třetiny a tlak otočky"
+order: 8
+conceptIds: ["tlak-otocky", "dosah-pruniku", "pravidlo-tretin", "sdileni-plynu"]
+checkQuestionIds: ["plynj-otocka", "plynj-ruzne-lahve", "plynj-dosah", "plynj-kdo-otaci", "plynj-kdy-driv", "plynj-chyby"]
+estimatedMinutes: 12
+audioSummary: >-
+  Tlak otočky si každý spočítá před ponorem. Když ho kdokoli dosáhne, otáčí celý tým.
+  Základem jsou třetiny. Třetina dovnitř, třetina ven, třetina pro partnera.
+  S různými lahvemi otáčí potápěč s menší zásobou na své třetině. Ten s větší zásobou smí použít jen stejný počet litrů.
+  S různou spotřebou otáčí ponor ten, kdo dýchá víc.
+  Dřív než na třetině se otáčí při proudu do jeskyně, v sedimentu, při pokládání šňůry a v zúžených místech.
+  Otáčí se také na čas, na vzdálenost, při jakémkoli problému a kdykoli to kdokoli řekne.
+  Když se podmínky zhorší, platí přísnější číslo. Nikdy naopak.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: true

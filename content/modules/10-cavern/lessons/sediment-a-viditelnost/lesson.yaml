@@ -1,0 +1,18 @@
+id: sediment-a-viditelnost
+moduleId: cavern
+title: "Sediment a viditelnost"
+order: 6
+conceptIds: ["sediment", "nulova-viditelnost", "trim"]
+checkQuestionIds: ["sediment-priciny", "sediment-co-delat", "sediment-druhy", "sediment-prevence"]
+estimatedMinutes: 9
+audioSummary: >-
+  Dno i stěny jeskyní pokrývá usazenina, kterou zvedne vír od ploutve, dotek ruky nebo bubliny.
+  Písek se usadí za vteřiny, bahno za minuty, jíl zůstane ve vodě hodiny.
+  Prevence je hlavně technika. Vodorovný trim, neutrální vztlak, žabí kop, ruce u těla a vzdálenost ode dna i od stropu.
+  Když se viditelnost ztratí, zastav. Najdi šňůru rukou a už ji nepouštěj. Najdi partnera. Ponor končí.
+  Zvířený sediment sám nikoho nezabil. Zabíjí ztráta šňůry v něm.
+  A návrat po hmatu stojí několikrát víc plynu. V jeskyních s jílem se proto otáčí dřív.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

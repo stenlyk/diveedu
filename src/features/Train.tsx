@@ -48,6 +48,7 @@ export function Train() {
         <ModeCard to="/trenink/rychly-check" title="Rychlý check" time="2 min" text="10 náhodných otázek napříč vším a přehled, co zopakovat." />
         <ModeCard to="/trenink/z-hlavy" title="Z hlavy na čas" time="3–10 min" text="Mentální výpočty MOD, ppO2, EAD, END a hustoty s rostoucí obtížností a tipy na odhady." />
         <ModeCard to="/trenink/slabiny" title="Slabiny" time="10 min" text="Otázky z pojmů, které ti jdou nejhůř." />
+        {content.scenarios.length > 0 && <ModeCard to="/trenink/scenare" title="Scénáře" time="5 min" text="Větvené situace s časovým limitem a ubývajícím plynem, včetně nulové viditelnosti." />}
         <ModeCard to="/trenink/tema" title="Trénink tématu" time="volitelná" text="Otázky z vybraného modulu nebo jednoho pojmu grafu." />
       </div>
       <h2 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">Zkouška modulu</h2>

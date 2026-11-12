@@ -1,0 +1,108 @@
+<Hook>
+
+Jedno kopnutí. Ploutev se dotkne dna a za ní se zvedne oblak, který vypadá jako kouř ve zpomaleném filmu.
+
+Za deset vteřin vyplní chodbu. Za minutu v ní nevidíš svítilnu, kterou držíš v ruce. A usazovat se bude ještě zítra.
+
+</Hook>
+
+<Principle>
+
+Dno i stěny jeskyní pokrývá usazenina, která tam ležela nerušeně stovky let. Stačí vír od ploutve, dotek ruky nebo bubliny a zvedne se.
+
+**Druhy sedimentu** se liší tím, jak rychle klesají:
+
+- **písek** – těžký, usadí se během vteřin,
+- **bahno a organický kal** – minuty až desítky minut,
+- **jíl** – nejjemnější; ve vodě zůstane hodiny a viditelnost zruší úplně.
+
+**Odkud se bere:**
+
+- **zdola** – ploutve, kolena, ruce, vlečená výstroj,
+- **shora** – bubliny uvolňují usazeninu ze stropu; říká se tomu perkolace a nejde jí zabránit jinak než tím, že se na místě nezdržíš,
+- **ze stěn** – dotek, opření, protahování zúženým místem.
+
+**Prevence** je z devíti desetin technika:
+
+- vodorovný trim a neutrální vztlak – ploutve výš než trup, nikdy pod ním,
+- žabí kop a jeho varianty místo kraulového kopu,
+- ruce u těla, nic nevisí a nevleče se,
+- vzdálenost ode dna i od stropu; střed chodby je nejčistší místo,
+- poslední v týmu vidí, co tým zvedá – a řekne to.
+
+**Když se viditelnost ztratí:**
+
+1. Zastav. Další pohyb víří další sediment.
+2. Najdi šňůru rukou. Od této chvíle ji nepouštíš.
+3. Najdi partnera – světlem, pak dotykem.
+4. Ponor končí. Ven se plave v kontaktu, pomalu a po hmatu.
+
+Zvířený sediment sám nikoho nezabil. Zabíjí ztráta šňůry v něm.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Stojí za to znát jedno srovnání:
+
+<Given>písek: vteřiny · bahno: minuty · jíl: hodiny</Given>
+
+Jak dlouho potrvá, než se viditelnost vrátí, tedy závisí na tom, co máš pod sebou.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Co udělá ztráta viditelnosti s plynem?
+
+Tým otočil na třetině, 315 m od vchodu ve 20 m. Za dobré viditelnosti plave ven 15 m/min a cesta trvá:
+
+<Worked fn="exitMinutes" args={[315, 15]} expected={21} tolerance={0.01} unit="min" decimals={0} />
+
+Jeden potápěč na ni spotřebuje z dvojčete 2×12 l při 20 l/min:
+
+<Worked fn="exitGasBar" args={[315, 15, 20, 20, 24, 1]} expected={52.5} tolerance={0.1} unit="bar" decimals={0} />
+
+Ve zvířeném sedimentu, po hmatu rychlostí 6 m/min a se spotřebou 25 l/min:
+
+<Worked fn="exitGasBar" args={[315, 6, 25, 20, 24, 1]} expected={164.06} tolerance={0.1} unit="bar" decimals={0} />
+
+Trojnásobek. Po otočce na třetině má každý 140 bar. Stačí tedy jen ztráta viditelnosti, bez jakékoli další poruchy, a plyn nevyjde.
+V jeskyních s jílem se proto otáčí výrazně dřív.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'plaveš nízko nad dnem, abys lépe viděl?', effect: 'Vír od ploutví zvedá sediment i bez dotyku. Plav ve středu chodby; nízko jen tam, kde je dno skalnaté.' },
+  { label: 'se zastavíš pod stropem a díváš se do mapy?', effect: 'Bubliny uvolňují usazeninu ze stropu a ta padá přímo na tebe. Zastavuj tam, kde je strop vysoko nebo čistý.' },
+  { label: 'se opřeš rukou o stěnu, abys udržel polohu?', effect: 'Ze stěny se zvedne oblak. Poloha se drží vztlakem a ploutvemi, ne rukama.' },
+  { label: 'za sebou vidíš oblak a pokračuješ dál?', effect: 'Cesta ven povede tím oblakem. Poslední v týmu má dát signál a tým má zvážit otočku dřív, než sediment zaplní chodbu.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="jil-hodiny" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

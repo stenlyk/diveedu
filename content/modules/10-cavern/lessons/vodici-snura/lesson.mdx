@@ -1,0 +1,89 @@
+<Hook>
+
+Pětimilimetrová bílá šňůrka. Stojí pár korun za metr a je to jediná věc v jeskyni, která ví, kudy ven.
+
+Ví to ale jen tehdy, když vede až do otevřené vody a když ji najdeš rukou, i když nevidíš vůbec nic.
+
+</Hook>
+
+<Principle>
+
+<Term cs="vodicí šňůra" /> spojuje každé místo, kam vplaveš, s otevřenou vodou. Slovo, na kterém záleží, je **nepřerušená**: žádná mezera, kterou „stačí přeplavat“.
+
+**Odkud kam.** Šňůra začíná v otevřené vodě, kde je možný přímý výstup, a ne až ve vchodu. V mnoha jeskyních je trvalá šňůra instalovaná až kus za vchodem;
+úsek mezi otevřenou vodou a jejím začátkem si tým pokládá vlastní šňůrou z navijáku.
+
+**Uvázání:**
+
+- **primární** – v otevřené vodě, na pevném bodě,
+- **sekundární** – těsně uvnitř; pojistka pro případ, že se primární uvolní,
+- **další úchyty** podle potřeby, aby šňůra držela směr a napnutí.
+
+**Kudy šňůru vést:**
+
+- tam, kudy proplave potápěč – ne nejkratší cestou štěrbinou, kam se vejde jen šňůra,
+- nízko a stranou, aby se do ní nikdo nezamotal, ale aby šla sledovat rukou,
+- napnutou; volná šňůra se zamotává a v proudu odplave.
+
+Místo, kde šňůra vede užším prostorem než potápěč, se nazývá <Term cs="past na šňůře" />. Při dobré viditelnosti ji obeplaveš. V nulové viditelnosti tě dovede ke štěrbině, kterou neprojdeš.
+
+**Pořadí v týmu.** Šňůru pokládá první potápěč. Při návratu ji navíjí ten, kdo jde poslední – a nikdo nesmí být za ním.
+
+**Kontakt se šňůrou.** Za dobré viditelnosti stačí mít ji na dohled a na dosah. Jakmile viditelnost klesá, bere se do ruky: palec a ukazovák kolem šňůry, bez tahu.
+Šňůra se netahá a nevisí se na ní. Je to ukazatel směru, ne zábradlí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dosah" />
+
+Délka šňůry, kterou položíš, je tvůj dosah. Z plynu a rychlosti se dá předem odhadnout, kolik jí bude potřeba.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik šňůry tým položí, než dosáhne tlaku otočky?
+
+Dvojče 2×12 l, 60 bar na cestu dovnitř, spotřeba 20 l/min, hloubka 20 m. Při pokládání šňůry se plave pomalu, asi 10 m/min:
+
+<Worked fn="penetrationDistance" args={[60, 24, 20, 20, 10]} expected={240} tolerance={0.1} unit="m" decimals={0} />
+
+Bez pokládání, po hotové šňůře a rychlostí 15 m/min:
+
+<Worked fn="penetrationDistance" args={[60, 24, 20, 20, 15]} expected={360} tolerance={0.1} unit="m" decimals={0} />
+
+Pokládání stojí čas, a tedy dosah. Cestou ven se navíjí – i to zdržuje. Proto týmy, které kladou vlastní šňůru, otáčejí dřív, než by vyšlo podle prostých třetin.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="penetration" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="snura-uzly" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

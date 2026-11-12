@@ -1,0 +1,95 @@
+<Hook>
+
+Viditelnost je nulová. Partnera nevidíš, on nevidí tebe. Signály světlem nefungují, ruční signály také ne.
+
+Zbývá jediný smysl, který v té chvíli funguje stejně dobře jako na světle. Jak jím říct „stůj“, „plav“ a „mám problém“?
+
+</Hook>
+
+<Principle>
+
+<Term cs="kontaktní komunikace" /> je dorozumívání dotykem. Používá se vždy, když viditelnost nedovolí světelné signály, a při každém sdílení plynu.
+
+**Základní uspořádání:**
+
+- jedna ruka drží šňůru – palec a ukazovák kolem ní, bez tahu,
+- druhá ruka drží partnera – za paži nad loktem nebo za nohu,
+- tým plave v zákrytu za sebou, na stejné straně šňůry.
+
+**Signály dotykem** jsou jen tři a musí je znát celý tým stejně:
+
+- **tlak dopředu:** plav,
+- **stisk:** stůj,
+- **tah dozadu:** couvej, vrať se.
+
+Nouzi signalizuje opakovaný rychlý stisk. Vše ostatní se řeší zastavením.
+
+**Pořadí.** Vpředu plave ten, kdo má problém – potápěč bez plynu, bez světla, s poraněním. Ten za ním ho drží a udává tempo.
+Slabší článek nemůže zůstat pozadu a silnější vidí, lépe řečeno cítí, co se s ním děje.
+
+**Co nedělat:**
+
+- nepouštět šňůru ani partnera „jen na chvíli“,
+- netahat za šňůru – můžeš ji vytrhnout z úchytu nebo zamotat,
+- nepředbíhat; v nulové viditelnosti to znamená ztratit kontakt.
+
+**Na úchytech a kolem překážek** se zastavuje. Šňůru na úchytu nepouštíš: druhá ruka ji nejdřív najde za úchytem a teprve pak první pustí.
+
+Kontaktní komunikace se nedá vymyslet na místě. Tým si ji před ponorem zopakuje na suchu a cvičí ji se zavřenýma očima, dokud nejde bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Tři signály stojí za zapamatování přesně:
+
+<Given>tlak vpřed: plav · stisk: stůj · tah vzad: zpět</Given>
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik času a plynu stojí návrat v kontaktu?
+
+Tým je 240 m od vchodu ve 20 m hloubky. Po hmatu se plave asi 6 m/min:
+
+<Worked fn="exitMinutes" args={[240, 6]} expected={40} tolerance={0.01} unit="min" decimals={0} />
+
+Jeden z dvojice je bez plynu, oba dýchají z jednoho dvojčete 2×12 l, každý stresovou spotřebou 30 l/min:
+
+<Worked fn="exitGasBar" args={[240, 6, 30, 20, 24]} expected={300} tolerance={0.1} unit="bar" decimals={0} />
+
+Tři sta barů. Tolik v dvojčeti není ani na začátku ponoru. Proto se nulová viditelnost a sdílení plynu nesmějí potkat daleko od vchodu –
+a proto se v jeskyních se sedimentem otáčí dřív než na třetině.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="partner-bez-plynu" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="dotyk-poradi" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

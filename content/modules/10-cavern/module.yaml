@@ -1,0 +1,9 @@
+id: cavern
+title: Cavern / Intro Cave
+subtitle: Prostředí se stropem, šňůra, světla a plyn
+branch: cave
+rig: oc
+prerequisites: [nitrox]
+order: 10
+passThreshold: 0.8
+status: published

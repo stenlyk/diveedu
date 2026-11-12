@@ -1,0 +1,75 @@
+id: partner-bez-plynu
+title: Partner bez plynu v nejvzdálenějším bodě
+summary: Sdílení plynu 300 m od vchodu. Rezervní třetina vyjde jen při klidném dechu a správném pořadí.
+moduleIds: [cavern]
+conceptIds: [sdileni-plynu, kontaktni-komunikace, tlak-otocky]
+intro: >-
+  Dvoučlenný tým právě dosáhl tlaku otočky: 300 m od vchodu, hloubka 20 m, v dvojčeti máš 140 bar. Dýcháš z dlouhé hadice.
+  Ukazatel plynu ve scénáři počítá spotřebu vás obou z tvých lahví. Scénář je cvičení rozhodování, ne náhrada výcviku.
+setup: { startBar: 140, tankLiters: 24, depthM: 20, sacLpm: 20 }
+start: start
+nodes:
+  - id: start
+    text: >-
+      Partner rychle mává světlem. Když se otočíš, ukazuje rukou přes krk: nemám plyn.
+    timeLimitSec: 10
+    timeout: { next: vytrzena, minutes: 1, stress: 2, feedback: 'Potápěč bez plynu nečeká. Když automatiku nedostane, vezme si ji.' }
+    options:
+      - { text: 'Podám mu dlouhou hadici, ze které dýchám, a přejdu na záložní automatiku pod bradou.', next: dychate, minutes: 1, stress: 2, verdict: good, feedback: 'Dostává automatiku, o které víš, že funguje. Tvoje záložní je na místě, kde ji najdeš poslepu.' }
+      - { text: 'Podám mu svou záložní automatiku.', next: dychate, minutes: 1, stress: 2.5, verdict: ok, feedback: 'Dýchá, ale na krátké hadici se ven v zákrytu plavat nedá. V konfiguraci s dlouhou hadicí se podává ta z úst.' }
+      - { text: 'Nejdřív mu zkontroluji manometr a ventily.', next: vytrzena, minutes: 1, stress: 2, verdict: bad, feedback: 'Nejdřív plyn, potom diagnostika. Člověk bez dechu nepočká.' }
+  - id: vytrzena
+    text: >-
+      Partner ti vytrhl automatiku z úst. Při tom se oba dotknete dna a zvedá se sediment.
+    darkness: dim
+    options:
+      - { text: 'Nechám mu ji, vezmu si záložní pod bradou a chytím ho pevně za paži.', next: dychate, minutes: 1, stress: 3, verdict: good, feedback: 'Přesně pro tuhle chvíli je záložní automatika pod bradou. Dotyk partnera uklidní.' }
+      - { text: 'Vezmu si ji zpátky, dýchat budeme na střídačku.', next: konec, minutes: 3, stress: 3, verdict: bad, feedback: 'Boj o automatiku se dvěma funkčními automatikami na jedněch lahvích nedává smysl a končí špatně.' }
+  - id: dychate
+    text: >-
+      Oba dýcháte. Partner má vytřeštěné oči a dýchá rychle. Co dál?
+    options:
+      - { text: 'Zůstaneme na místě, uklidníme dech, zkontroluji tlak. Teprve pak ven.', next: poradi, minutes: 2, stress: 2.5, verdict: good, feedback: 'Dvě minuty klidu se vrátí několikrát: rozdíl mezi klidným a panickým dechem dvou lidí jsou desítky barů.' }
+      - { text: 'Okamžitě ven, co nejrychleji.', next: sprint, minutes: 4, stress: 4, verdict: bad, feedback: 'Sprint dvou vyděšených potápěčů na jedné hadici spotřebuje rezervu dřív, než dorazí k východu.' }
+  - id: poradi
+    text: >-
+      Dech se zklidnil. Do vchodu je 300 m. V jakém pořadí poplavete?
+    options:
+      - { text: 'Partner vpředu, já za ním s rukou na jeho paži. Oba na stejné straně šňůry.', next: zuzeni, minutes: 8, stress: 2, verdict: good, feedback: 'Potápěč bez plynu je pod kontrolou a tempo udává dárce.' }
+      - { text: 'Já vpředu, partner za mnou na hadici.', next: zuzeni, minutes: 8, stress: 2.4, verdict: ok, feedback: 'Nevidíš na něj. Když zpomalí nebo se zasekne, poznáš to až podle tahu hadice.' }
+  - id: zuzeni
+    text: >-
+      Polovina cesty. V zúžení partner zavadil o dno a viditelnost klesá k nule.
+    darkness: black
+    timeLimitSec: 15
+    timeout: { next: vychod, minutes: 10, stress: 3, feedback: 'Bez dohodnutých signálů jste se zúžením protlačili zmateně a pomalu.' }
+    options:
+      - { text: 'Stiskem ho zastavím. Ruka na šňůře, druhá na něm – a tlakem vpřed pomalu skrz.', next: vychod, minutes: 8, stress: 2, verdict: good, feedback: 'Kontaktní komunikace: stisk znamená stůj, tlak vpřed plav. Šňůra a partner zůstávají v rukou.' }
+      - { text: 'Pustím ho, ať proplave první. Sejdeme se za zúžením.', next: konec, minutes: 3, stress: 3, verdict: bad, feedback: 'Jste spojeni hadicí a nevidíte se. Pustit partnera znamená riskovat, že mu automatika vypadne z úst.' }
+      - { text: 'Zabereme, ať jsme z toho rychle venku.', next: vychod, minutes: 6, stress: 3.5, verdict: bad, feedback: 'Spěch poslepu stojí víc plynu než pomalý postup a hrozí ztrátou šňůry.' }
+  - id: sprint
+    text: >-
+      Po čtyřech minutách sprintu oba lapáte po dechu. Manometr padá před očima a za vámi se valí oblak sedimentu.
+    darkness: dim
+    options:
+      - { text: 'Zastavím ho stiskem. Uklidníme dech a dál pomalu, v kontaktu.', next: zuzeni, minutes: 8, stress: 2.3, verdict: good, feedback: 'Zastavit se, když plyn mizí, jde proti instinktu. Je to ale jediné, co spotřebu sníží.' }
+      - { text: 'Pokračujeme stejným tempem.', next: konec, minutes: 10, stress: 4, verdict: bad, feedback: 'Čtyřnásobná spotřeba na 300 m z rezervní třetiny nevyjde.' }
+  - id: vychod
+    text: >-
+      Voda se čistí a před vámi je denní světlo vchodu.
+    options:
+      - { text: 'Dál sdílíme, řízený výstup obvyklou rychlostí.', next: uspech, minutes: 5, stress: 2, verdict: good, feedback: 'Ponor končí na hladině, ne ve vchodu. Rychlý výstup by k jednomu problému přidal druhý.' }
+      - { text: 'Hladina je na dohled – rovnou nahoru.', next: castecne, minutes: 1, stress: 2, verdict: bad, feedback: 'Rychlý výstup po ponoru ve 20 m je zbytečné riziko, když plyn na řízený výstup ještě je.' }
+  - id: uspech
+    text: Hladina.
+    end: { outcome: success, text: 'Oba jste venku. Podívej se na zbývající tlak: rezervní třetina vyšla jen proto, že jste dýchali klidně. Proto se v náročných podmínkách otáčí dřív.' }
+  - id: castecne
+    text: Hladina.
+    end: { outcome: partial, text: 'Oba jste venku, ale výstup byl rychlejší, než měl být. Sdílení plynu jste zvládli; poslední minuta ponoru patří k němu.' }
+  - id: konec
+    text: Situace se vymkla kontrole dřív, než jste se dostali k východu.
+    end: { outcome: fail, text: 'Scénář končí. Rezervní třetina je spočítaná na klidný návrat dvou lidí – ne na boj, sprint nebo rozdělení týmu. Projdi si rozbor.' }
+sources:
+  - { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section', year: 1992 }
+  - { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006 }
+needs_review: true

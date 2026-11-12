@@ -564,6 +564,30 @@ export const CALC_DEFS: CalcDef[] = [
       ];
     },
   },
+  // ── Jeskynní moduly ────────────────────────────────────────────────────────
+  {
+    id: 'penetration',
+    title: 'Dosah a návrat',
+    summary: 'Jak daleko doplaveš na třetinu plynu a kolik stojí cesta ven pro dva.',
+    tool: true,
+    inputs: [
+      { key: 'start', label: 'Tlak na začátku', min: 150, max: 300, step: 10, unit: 'bar', initial: 210 },
+      { key: 'tank', label: 'Objem lahví', min: 10, max: 30, step: 1, unit: 'l', initial: 24 },
+      { key: 'sac', label: 'Spotřeba (SAC)', min: 10, max: 30, step: 1, unit: 'l/min', initial: 20 },
+      depth(20, 40),
+      { key: 'speed', label: 'Rychlost plavání', min: 5, max: 25, step: 1, unit: 'm/min', initial: 15 },
+    ],
+    outputs: (v) => {
+      const usable = c.ruleOfThirdsPractical(v.start!).usableBar;
+      const distance = c.penetrationDistance(usable, v.tank!, v.sac!, v.depth!, v.speed!);
+      return [
+        { label: 'Třetina na cestu dovnitř', value: usable, unit: 'bar', decimals: 0 },
+        { label: 'Dosah', value: c.floorTo(distance, 10), unit: 'm', decimals: 0, bar: { max: 800 } },
+        { label: 'Návrat z tohoto místa', value: c.exitMinutes(distance, v.speed!), unit: 'min', decimals: 0 },
+        { label: 'Plyn na cestu ven pro dva', value: c.ceilTo(c.exitGasBar(distance, v.speed!, v.sac!, v.depth!, v.tank!), 10), unit: 'bar', decimals: 0, note: 'Dvě třetiny, které po otočce zbývají, jsou právě plyn na cestu ven pro dva potápěče.' },
+      ];
+    },
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));

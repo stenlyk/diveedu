@@ -8,6 +8,7 @@ export * from './density';
 export * from './physics';
 export * from './trimix';
 export * from './consumption';
+export * from './cave';
 export * from './blending';
 export * from './icd';
 export * from './format';

@@ -3,19 +3,24 @@
 Generováno skriptem `npm run content` z polí `needs_review: true`. Needituj ručně.
 Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 
+- [ ] Lekce **Prostředí se stropem** (`prostredi-se-stropem`, modul `cavern`)
 - [ ] Lekce **Travel gas a sestup na hypoxické směsi** (`travel-gas`, modul `fulltrimix`)
 - [ ] Lekce **Kyslíková toxicita CNS** (`cns-toxicita`, modul `nitrox`)
 - [ ] Lekce **Gradient factors: jak nastavit konzervativnost** (`gradient-factors`, modul `deko`)
 - [ ] Lekce **Je kyslík narkotický? Debata** (`je-kyslik-narkoticky`, modul `trimix`)
 - [ ] Lekce **Izobarická protidifuze a pravidlo pětin** (`izobaricka-protidifuze`, modul `fulltrimix`)
+- [ ] Lekce **Vodicí šňůra** (`vodici-snura`, modul `cavern`)
 - [ ] Lekce **CNS hodiny** (`cns-hodiny`, modul `nitrox`)
 - [ ] Lekce **Bubliny a bublinové modely** (`bubliny-a-bublinove-modely`, modul `deko`)
 - [ ] Lekce **Dekompresní nemoc vnitřního ucha** (`dcs-vnitrniho-ucha`, modul `fulltrimix`)
+- [ ] Lekce **Světla a světelné signály** (`svetla-a-signaly`, modul `cavern`)
 - [ ] Lekce **Plicní toxicita a OTU** (`plicni-toxicita-otu`, modul `nitrox`)
 - [ ] Lekce **Strop, zastávky a rychlost výstupu** (`strop-zastavky-a-vystup`, modul `deko`)
 - [ ] Lekce **Hluboké zastávky: debata** (`hluboke-zastavky-debata`, modul `fulltrimix`)
+- [ ] Lekce **Kontaktní komunikace** (`kontaktni-komunikace`, modul `cavern`)
 - [ ] Lekce **Helium: teplo, hlas a vysoký tlak** (`vlastnosti-helia`, modul `trimix`)
 - [ ] Lekce **Plán se třemi až čtyřmi plyny** (`plan-ctyr-plynu`, modul `fulltrimix`)
+- [ ] Lekce **Sediment a viditelnost** (`sediment-a-viditelnost`, modul `cavern`)
 - [ ] Lekce **Best mix: nejlepší směs pro ponor** (`nejlepsi-smes`, modul `nitrox`)
 - [ ] Lekce **Minimum gas: rezerva, která se neplánuje** (`minimum-gas`, modul `deko`)
 - [ ] Lekce **Optimální trimix a standardní směsi** (`optimalni-trimix`, modul `trimix`)
@@ -24,9 +29,11 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Plánování plynu: třetiny, poloviny a rezervy** (`planovani-plynu`, modul `deko`)
 - [ ] Lekce **Dekomprese s heliem** (`dekomprese-s-heliem`, modul `trimix`)
 - [ ] Lekce **Tepelný management a hydratace** (`tepelny-management`, modul `fulltrimix`)
+- [ ] Lekce **Plyn v jeskyni: třetiny a tlak otočky** (`plyn-v-jeskyni`, modul `cavern`)
 - [ ] Lekce **Dekompresní plyny v plánu a run-time** (`dekompresni-plyny-v-planu`, modul `deko`)
 - [ ] Lekce **Míchání a analýza trimixu** (`michani-trimixu`, modul `trimix`)
 - [ ] Lekce **Logistika expedic a hranice otevřeného okruhu** (`logistika-expedic`, modul `fulltrimix`)
+- [ ] Lekce **Nouzové postupy: světlo, šňůra, plyn** (`nouzove-postupy-cavern`, modul `cavern`)
 - [ ] Lekce **Dekompresní plyny a přepnutí** (`deko-plyny-a-prepnuti`, modul `nitrox`)
 - [ ] Lekce **Stage lahve: nošení, značení a objem** (`stage-lahve`, modul `deko`)
 - [ ] Lekce **Plán ponoru s více plyny** (`plan-vice-plynu`, modul `trimix`)
@@ -34,9 +41,13 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Dvojče a ventilový drill** (`twinset-a-ventilovy-drill`, modul `deko`)
 - [ ] Lekce **Míchání parciálním tlakem** (`michani-nitroxu`, modul `nitrox`)
 - [ ] Lekce **Ztráta dekompresního plynu a vynechaná dekomprese** (`ztrata-deko-plynu`, modul `deko`)
+- [ ] Scénář **Partner bez plynu v nejvzdálenějším bodě** (`partner-bez-plynu`)
+- [ ] Scénář **Selhání hlavní svítilny** (`selhani-svetla`)
+- [ ] Scénář **Ztráta šňůry v nulové viditelnosti** (`ztrata-snury`)
 - [ ] Případová studie **Blue Hole, Dahab: hluboký ponor na vzduch** (`blue-hole-2000`, jistota: hypotéza)
 - [ ] Případová studie **Zacatón 1994: hranice otevřeného okruhu** (`exley-zacaton-1994`, jistota: hypotéza)
 - [ ] Případová studie **Hypoxie na dno směsi u hladiny** (`hypoxie-u-hladiny`, jistota: hypotéza)
+- [ ] Případová studie **Do jeskyně „jen kousek“, bez šňůry** (`jeskyne-bez-snury`, jistota: hypotéza)
 - [ ] Případová studie **Vrak U-869: hluboký vrakový ponor na vzduch** (`rouse-u869`, jistota: hypotéza)
 - [ ] Případová studie **Kyslíkové křeče po přepnutí na špatnou lahev** (`zamena-plynu-krece`, jistota: hypotéza)
 - [ ] Zajímavost `hranicka-propast`: Nejhlubší známá zatopená propast světa je sladkovodní – Hranická propast na Moravě. Dálkově řízený robot v ní v roce 2016 dosáhl hloubky 404 m a dna se nedotkl. Ve sladké vodě by tam absolutní tlak byl kolem 40 bar.
@@ -58,3 +69,5 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Zajímavost `ucho-doolette`: Proč zrovna vnitřní ucho? David Doolette a Simon Mitchell v roce 2003 spočítali, že jeho tekutiny jsou malé, špatně prokrvené a helia se zbavují pomalu. Při dekompresi hlubokého ponoru tak v uchu vzniká přesycení větší než v mozku – a přepnutí plynu ho může na chvíli ještě zvýšit.
 - [ ] Zajímavost `rekord-oc`: Nejhlubší ponor na otevřeném okruhu, 332 metrů, uskutečnil roku 2014 v Rudém moři Ahmed Gabr. Sestup trval čtvrt hodiny, výstup téměř čtrnáct hodin a o plyn se staraly desítky lahví a podpůrný tým. Je to dobrá ilustrace toho, kde otevřený okruh končí.
 - [ ] Zajímavost `teplo-nedu`: Pokus amerického námořnictva z roku 2007 nechal potápěče absolvovat stejný ponor ve vodě různé teploty. Nejhůř dopadli ti, kdo byli na dně v teple a na dekompresi v chladu. Nejlépe opačná kombinace – chladno na dně, teplo při výstupu. Rozdíl odpovídal mnoha minutám dekomprese navíc.
+- [ ] Zajímavost `cedule-smrtka`: U vchodů do floridských jeskyní stojí pod vodou cedule se zubatou a nápisem: „V této jeskyni není nic, kvůli čemu by stálo za to zemřít.“ Nainstalovali ji jeskynní potápěči pro ty, kdo sem doplavou s jednou lahví a jednou svítilnou. Od té doby počet nehod nevycvičených potápěčů klesl.
+- [ ] Zajímavost `dotyk-poradi`: Při návratu v nulové viditelnosti plave první ten, kdo má problém – například potápěč bez plynu na dlouhé hadici. Dárce je za ním, drží ho za paži nebo nohu a tlakem řídí tempo. Slabší článek tak udává rychlost a nemůže zůstat pozadu.

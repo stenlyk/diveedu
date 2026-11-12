@@ -220,7 +220,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(540_000);
+  test.setTimeout(660_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -228,7 +228,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(55);
+  expect(hrefs.length).toBe(64);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -339,7 +339,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(115);
+  await expect(map.locator('[data-node]')).toHaveCount(134);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -419,9 +419,47 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(115);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(134);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');
   await expect(page.getByTestId('local-graph')).toBeVisible();
+  await page.goto('/trenink/scenare/selhani-svetla');
+  await page.getByRole('button', { name: 'Začít scénář' }).click();
+  await expect(page.getByTestId('scenario-play')).toBeVisible();
+  await page.goto('/uceni/plyn-v-jeskyni');
+  await expect(page.getByRole('heading', { name: 'Plyn v jeskyni: třetiny a tlak otočky' })).toBeVisible();
+});
+
+test('scénář ztráty šňůry: tma, úbytek plynu a rozbor rozhodnutí', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/trenink');
+  await page.getByRole('link', { name: /Scénáře/ }).click();
+  await page.getByRole('link', { name: /Ztráta šňůry v nulové viditelnosti/ }).click();
+  await page.getByRole('button', { name: 'Začít scénář' }).click();
+  const play = page.getByTestId('scenario-play');
+  await expect(play).toHaveAttribute('data-darkness', 'dim');
+  await expect(page.getByTestId('scenario-gas')).toHaveText('130 bar');
+  const choose = (text: string) => page.getByRole('button', { name: text }).click();
+  await choose('Zastavím, zůstanu na místě a uklidním dech.');
+  await expect(play).toHaveAttribute('data-darkness', 'black');
+  await expect(page.getByText(/nulová viditelnost/)).toBeVisible();
+  await choose('Zakryju světlo a hledám kužel partnera, pak pomalu ohmatám okolí na dosah paže.');
+  await choose('Uvážu záložní cívku k pevnému bodu tam, kde jsem.');
+  await choose('Nízko nade dnem napříč chodbou, od stěny ke stěně.');
+  await choose('Připojím cívku ke šňůře a ohmatám nejbližší značku.');
+  await choose('Signál v pořádku, kontrola plynu, ven společně a pomalu.');
+  await expect(page.getByTestId('scenario-outcome')).toHaveText('Zvládnuto');
+  await expect(page.getByTestId('scenario-debrief')).toContainText('6 správně, 0 přijatelně, 0 chyb');
+  await expect(page.getByTestId('scenario-debrief')).toContainText('zbylo 79 bar');
+});
+
+test('scénář: špatná rozhodnutí vedou k neúspěchu a rozbor je pojmenuje', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/trenink/scenare/ztrata-snury');
+  await page.getByRole('button', { name: 'Začít scénář' }).click();
+  await page.getByRole('button', { name: 'Plavu rychle směrem, kde je východ.' }).click();
+  await page.getByRole('button', { name: 'Zkusím jiný směr.' }).click();
+  await expect(page.getByTestId('scenario-outcome')).toHaveText('Nezvládnuto');
+  await expect(page.getByTestId('scenario-debrief')).toContainText('Slepé plavání je to, co při ztrátě šňůry zabíjí.');
 });

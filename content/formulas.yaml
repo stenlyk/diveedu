@@ -227,3 +227,24 @@
     - { symbol: 'OTU_{den}', name: průměrná denní dávka, unit: OTU }
     - { symbol: 'L(n)', name: 'limit pro sérii n dní: 850 pro jeden den, kolem 300 pro dlouhé série', unit: OTU }
   calcFunction: repexDailyLimit
+
+- id: tretiny
+  title: Tlak otočky podle třetin
+  latex: 'P_{otocka} = P_{start} - \left\lfloor \frac{P_{start}}{3} \right\rfloor_{10}'
+  variables:
+    - { symbol: 'P_{start}', name: tlak na začátku ponoru, unit: bar }
+    - { symbol: 'P_{otocka}', name: 'tlak, při kterém se ponor obrací', unit: bar }
+    - { symbol: '\lfloor\ \rfloor_{10}', name: zaokrouhlení třetiny dolů na desítky barů, unit: '–' }
+  calcFunction: thirdsTurnBar
+
+- id: dosah
+  title: Dosah průniku
+  latex: 's = \frac{P_{pouzitelny} \cdot V_{lahev}}{SAC \cdot P_{abs}} \cdot v'
+  variables:
+    - { symbol: 's', name: vzdálenost, unit: m }
+    - { symbol: 'P_{pouzitelny}', name: tlak určený na cestu dovnitř, unit: bar }
+    - { symbol: 'V_{lahev}', name: objem lahví, unit: l }
+    - { symbol: 'SAC', name: povrchová spotřeba, unit: l/min }
+    - { symbol: 'P_{abs}', name: absolutní tlak v hloubce, unit: bar }
+    - { symbol: 'v', name: rychlost plavání, unit: m/min }
+  calcFunction: penetrationDistance

@@ -1,0 +1,279 @@
+- id: sediment-priciny
+  type: multi
+  conceptIds: [sediment]
+  difficulty: 1
+  prompt: Co zvedá sediment?
+  options:
+    - { text: 'Vír od ploutví mířících ke dnu', correct: true }
+    - { text: 'Bubliny uvolňující usazeninu ze stropu', correct: true }
+    - { text: 'Dotek ruky nebo výstroje na stěně', correct: true }
+    - { text: 'Světlo svítilny', explanation: 'Světlo sediment nezvedá, jen ho ukáže.' }
+  explanation: 'Zdola, shora a ze stěn. Uvolňování ze stropu bublinami se nedá zabránit jinak než tím, že se na místě nezdržíš.'
+  backToLessonId: sediment-a-viditelnost
+
+- id: sediment-co-delat
+  type: order
+  conceptIds: [nulova-viditelnost, sediment, vodici-snura]
+  difficulty: 2
+  prompt: Viditelnost se během vteřin ztratila. Seřaď, co uděláš.
+  items:
+    - 'Zastavím'
+    - 'Najdu šňůru rukou a už ji nepustím'
+    - 'Najdu partnera – světlem, pak dotykem'
+    - 'Ven v kontaktu, pomalu a po hmatu'
+  explanation: 'Další pohyb víří další sediment. Zvířený sediment sám nezabíjí; zabíjí ztráta šňůry v něm.'
+  backToLessonId: sediment-a-viditelnost
+
+- id: sediment-druhy
+  type: order
+  conceptIds: [sediment]
+  difficulty: 1
+  prompt: Seřaď sedimenty podle toho, jak rychle se usadí – od nejrychlejšího.
+  items: [písek, 'bahno a organický kal', jíl]
+  explanation: 'Písek vteřiny, bahno minuty, jíl hodiny. Čím jemnější částice, tím déle zůstávají ve vodě.'
+  backToLessonId: sediment-a-viditelnost
+
+- id: sediment-prevence
+  type: findError
+  conceptIds: [sediment, trim, zabi-kop]
+  difficulty: 2
+  prompt: Které z těchto návyků víří sediment?
+  items:
+    - { text: 'Plavu vodorovně, ploutve mám výš než trup.' }
+    - { text: 'Držím se těsně nade dnem, abych lépe viděl šňůru.', isError: true, explanation: 'Vír od ploutví zvedne sediment i bez dotyku.' }
+    - { text: 'Polohu si udržuji lehkým opřením prstů o stěnu.', isError: true, explanation: 'Dotek uvolní usazeninu. Poloha se drží vztlakem.' }
+    - { text: 'Hadice a doplňky mám připnuté u těla.' }
+  explanation: 'Prevence je z velké části technika: trim, vztlak, kop a ruce u těla.'
+  backToLessonId: sediment-a-viditelnost
+
+- id: kopy-proc-zabi
+  type: why
+  conceptIds: [zabi-kop, sediment]
+  difficulty: 1
+  prompt: Proč je základním kopem v jeskyni žabí kop?
+  options:
+    - { text: 'Voda od ploutví odchází dozadu a mírně vzhůru, ne ke dnu.', correct: true }
+    - { text: 'Je to nejrychlejší kop.', explanation: 'Nejrychlejší není. Vybírá se podle směru, kam posílá vodu.' }
+    - { text: 'Nevyžaduje ploutve.', explanation: 'Ploutve potřebuje jako každý kop.' }
+    - { text: 'Je nejtišší.', explanation: 'Hluk nerozhoduje.' }
+  explanation: 'Kraulový kop posílá polovinu vody dolů. Žabí kop má navíc fázi skluzu, ve které se odpočívá.'
+  backToLessonId: techniky-kopu
+
+- id: kopy-prirad
+  type: match
+  conceptIds: [zabi-kop, manevrovaci-kopy]
+  difficulty: 2
+  prompt: Přiřaď techniku k situaci.
+  pairs:
+    - { left: Žabí kop, right: 'Běžné plavání chodbou' }
+    - { left: Modifikovaný žabí kop, right: 'Nízká chodba bez místa na plný záběr' }
+    - { left: Couvání, right: 'Slepá chodba nebo udržení odstupu' }
+    - { left: Otočení na místě, right: 'Změna směru bez posunu' }
+  explanation: 'Všechny techniky mají společné: vodorovný trim, pokrčená kolena, ploutve jako nejvyšší bod těla.'
+  backToLessonId: techniky-kopu
+
+- id: kopy-ruce
+  type: why
+  conceptIds: [manevrovaci-kopy, trim]
+  difficulty: 2
+  prompt: Proč se v jeskyni nemanévruje rukama?
+  options:
+    - { text: 'Jedna ruka drží světlo a druhá musí být volná pro šňůru; pohyb rukou navíc víří.', correct: true }
+    - { text: 'Ruce jsou pomalejší než ploutve.', explanation: 'O rychlost nejde.' }
+    - { text: 'V rukavicích to nejde.', explanation: 'Šlo by to. Důvod je jinde.' }
+    - { text: 'Ruce spotřebují víc kyslíku než nohy.', explanation: 'Nohy mají větší svaly. Zbytečný pohyb ale spotřebu zvyšuje vždy.' }
+  explanation: 'Když bez rukou nejde udržet poloha, chyba je ve vyvážení. Otáčení i couvání se dělají ploutvemi.'
+  backToLessonId: techniky-kopu
+
+- id: kopy-chyby
+  type: findError
+  conceptIds: [zabi-kop, trim]
+  difficulty: 2
+  prompt: Které popisy žabího kopu jsou chybné?
+  items:
+    - { text: 'Kolena mám pokrčená, ploutve nad úrovní těla.' }
+    - { text: 'Kopu bez přestávky, aby mě to neslo plynule.', isError: true, explanation: 'Chybí fáze skluzu. Pracuješ a dýcháš víc, než je třeba.' }
+    - { text: 'Při záběru mi kolena klesají pod trup.', isError: true, explanation: 'Ploutve pak míří ke dnu. Bývá to chyba vyvážení.' }
+    - { text: 'Záběr jde do stran a dozadu.' }
+  explanation: 'Žabí kop je záběr a klouzání. Učí se nad pískem v otevřené vodě.'
+  backToLessonId: techniky-kopu
+
+- id: kopy-couvani
+  type: choice
+  conceptIds: [manevrovaci-kopy]
+  difficulty: 2
+  prompt: K čemu je v jeskyni couvání?
+  options:
+    - { text: 'Vycouvat ze slepé chodby a udržet odstup, aniž se otáčím a dotýkám stěn', correct: true }
+    - { text: 'K rychlejšímu návratu', explanation: 'Couvání je pomalé. Je to manévr, ne způsob přesunu.' }
+    - { text: 'K šetření plynu', explanation: 'Plyn nešetří.' }
+    - { text: 'K ničemu, je to dovednost na předvádění', explanation: 'Patří k základům. Otočka v úzkém místě znamená oblak sedimentu.' }
+  explanation: 'Opačný žabí kop: ploutve nabírají vodu a tlačí ji dopředu.'
+  backToLessonId: techniky-kopu
+
+- id: plynj-otocka
+  type: choice
+  conceptIds: [tlak-otocky, pravidlo-tretin]
+  difficulty: 1
+  prompt: Tříčlenný tým. První potápěč dosáhl svého tlaku otočky. Co následuje?
+  options:
+    - { text: 'Otáčí celý tým', correct: true }
+    - { text: 'Otáčí jen on, ostatní pokračují', explanation: 'Tým se nedělí. Rezervy jsou spočítané na společný návrat.' }
+    - { text: 'Tým pokračuje, dokud otočku nemá většina', explanation: 'Řídí se nejslabším článkem.' }
+    - { text: 'Počká na místě, než se ostatní vrátí', explanation: 'Čekání uvnitř stojí plyn, který je určený na cestu ven.' }
+  explanation: 'Otočka není neúspěch. Je to plánovaná část ponoru a může ji dát kdokoli kdykoli.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: plynj-ruzne-lahve
+  type: numeric
+  conceptIds: [tlak-otocky, sdileni-plynu]
+  difficulty: 3
+  prompt: 'Máš lahve o objemu {tank} l, partner {buddyTank} l. Oba začínáte na {start} bar a máte stejnou spotřebu 20 l/min. Na jakém tlaku otáčíš ty, aby tvá rezerva dovezla ven i partnera?'
+  template: { fn: teamTurnBar, params: { tank: { values: [24, 30] }, buddyTank: { values: [15, 18, 24] }, start: { values: [200, 210] } }, fixed: { sac: 20, buddySac: 20 }, args: [tank, sac, buddyTank, buddySac, start], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Potápěč s menší zásobou otáčí na své třetině. Ty smíš na cestu dovnitř použít jen stejný počet litrů – ve větších lahvích je to menší pokles tlaku.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: plynj-dosah
+  type: numeric
+  conceptIds: [dosah-pruniku, tlak-otocky]
+  difficulty: 2
+  prompt: 'Na cestu dovnitř máš {usable} bar v dvojčeti 24 l. Spotřeba {sac} l/min, hloubka {depth} m, rychlost {speed} m/min. Jak daleko doplaveš, než dosáhneš tlaku otočky?'
+  template: { fn: penetrationDistance, params: { usable: { values: [50, 60, 70] }, sac: { values: [16, 20, 24] }, depth: { values: [10, 20, 30] }, speed: { values: [10, 15] } }, fixed: { tank: 24 }, args: [usable, tank, sac, depth, speed], tolerance: 5, unit: m, decimals: 0 }
+  explanation: 'Bary převeď na litry, vyděl spotřebou v hloubce a dostaneš minuty. Minuty krát rychlost je dosah.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: plynj-kdo-otaci
+  type: why
+  conceptIds: [tlak-otocky]
+  difficulty: 2
+  prompt: Dva potápěči mají stejné lahve a stejný počáteční tlak, jeden dýchá o třetinu víc. Proč ponor otočí právě on?
+  options:
+    - { text: 'Svého tlaku otočky dosáhne dřív; tým se řídí nejslabším článkem.', correct: true }
+    - { text: 'Má nižší tlak otočky.', explanation: 'Se stejnými lahvemi má tlak otočky na své třetině. Vyšší číslo má úspornější partner. Rozhoduje, kdo svého čísla dosáhne dřív.' }
+    - { text: 'Úspornější potápěč otočku nepočítá.', explanation: 'Počítá ji každý.' }
+    - { text: 'Tak to určuje velitel ponoru.', explanation: 'Určuje to manometr.' }
+  explanation: 'Každý sleduje svůj manometr a svoje číslo. Úspornější potápěč se přizpůsobí.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: plynj-kdy-driv
+  type: multi
+  conceptIds: [tlak-otocky, dosah-pruniku, sediment]
+  difficulty: 2
+  prompt: Kdy se otáčí dřív než na třetině?
+  options:
+    - { text: 'Proud směřuje do jeskyně', correct: true }
+    - { text: 'Dno pokrývá jemný sediment', correct: true }
+    - { text: 'Tým pokládá a navíjí vlastní šňůru', correct: true }
+    - { text: 'Proud směřuje ven z jeskyně', explanation: 'Proud ven cestu zpět zkracuje. Třetiny se tím ale neuvolňují.' }
+  explanation: 'Třetiny předpokládají, že cesta ven trvá stejně jako dovnitř. Kde to neplatí, používá se čtvrtina nebo šestina.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: plynj-chyby
+  type: findError
+  conceptIds: [tlak-otocky, sdileni-plynu, pravidlo-tretin]
+  difficulty: 3
+  prompt: V plánu plynu pro jeskyni jsou chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Každý má svůj tlak otočky napsaný před ponorem.' }
+    - { text: 'Mám dvojče, partner jednu patnáctku; oba otočíme na stejném tlaku.', isError: true, explanation: 'Třetina tlaku ve větších lahvích je víc litrů. Rozhoduje menší zásoba v týmu.' }
+    - { text: 'Cestou dovnitř zesílil proud do jeskyně, tlak otočky nechávám.', isError: true, explanation: 'Cesta ven potrvá déle. Když se podmínky zhorší, platí přísnější číslo.' }
+    - { text: 'Rezervní třetina je pro partnera, který přijde o plyn.' }
+  explanation: 'Tlak otočky se během ponoru smí jen zpřísnit.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: dosah-pokladani
+  type: why
+  conceptIds: [dosah-pruniku, navijak]
+  difficulty: 2
+  prompt: Proč tým, který pokládá vlastní šňůru, doplave na stejný plyn kratší vzdálenost?
+  options:
+    - { text: 'Pokládání zpomaluje, takže za stejný čas urazí méně metrů.', correct: true }
+    - { text: 'Naviják zvyšuje odpor vody.', explanation: 'Zanedbatelně. Zdržuje uvazování a napínání.' }
+    - { text: 'Šňůra spotřebovává plyn.', explanation: 'Plyn spotřebovává potápěč; šňůra jen čas.' }
+    - { text: 'S navijákem se nesmí hlouběji.', explanation: 'Hloubka se šňůrou nesouvisí.' }
+  explanation: 'Dosah je čas na plynu krát rychlost. Navíjení zdržuje i cestou ven, proto se otáčí dřív.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: dosah-cas
+  type: numeric
+  conceptIds: [dosah-pruniku]
+  difficulty: 2
+  prompt: 'Na cestu dovnitř máš {usable} bar v lahvích o objemu {tank} l. Spotřeba 20 l/min, hloubka {depth} m. Kolik minut potrvá, než dosáhneš tlaku otočky?'
+  template: { fn: minutesOnGas, params: { usable: { values: [50, 60, 70] }, tank: { values: [15, 24] }, depth: { values: [10, 20, 30] } }, fixed: { sac: 20 }, args: [usable, tank, sac, depth], tolerance: 0.5, unit: min, decimals: 0 }
+  explanation: 'Litry jsou bary krát objem lahví. Spotřeba v hloubce je povrchová spotřeba krát absolutní tlak.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: sdileni-vychod
+  type: numeric
+  conceptIds: [sdileni-plynu, tlak-otocky]
+  difficulty: 3
+  prompt: 'Partner přišel o plyn {distance} m od vchodu ve 20 m. Ven plavete {speed} m/min, oba dýcháte z tvého dvojčete 24 l, každý {sac} l/min. Kolik barů cesta ven spotřebuje?'
+  template: { fn: exitGasBar, params: { distance: { values: [180, 240, 300] }, speed: { values: [6, 10, 12] }, sac: { values: [20, 25, 30] } }, fixed: { depth: 20, tank: 24 }, args: [distance, speed, sac, depth, tank], tolerance: 3, unit: bar, decimals: 0 }
+  explanation: 'Čas cesty krát spotřeba dvou potápěčů v hloubce, děleno objemem lahví. Proto je rezervní třetina partnerova, ne tvoje.'
+  backToLessonId: plyn-v-jeskyni
+
+- id: nouze-snura-poradi
+  type: order
+  conceptIds: [ztrata-snury, navijak]
+  difficulty: 2
+  prompt: Ztratil jsi šňůru a nevidíš ji. Seřaď postup.
+  items:
+    - 'Zastavím a zůstanu na místě, uklidním dech'
+    - 'Rozhlédnu se po šňůře a po světle partnera'
+    - 'Uvážu záložní cívku k pevnému bodu'
+    - 'Hledám metodicky a cívku odvíjím'
+    - 'Nalezenou šňůru spojím s cívkou a určím směr ven'
+  explanation: 'Uvázaná cívka ti dává místo, kam se dá vrátit. Bez ní každý pohyb zhoršuje to, co o své poloze víš.'
+  backToLessonId: nouzove-postupy-cavern
+
+- id: nouze-svetlo
+  type: choice
+  conceptIds: [selhani-svetla]
+  difficulty: 1
+  prompt: Selhala ti hlavní svítilna a záložní svítí bez problémů. Do tlaku otočky zbývá 40 bar. Jak ponor pokračuje?
+  options:
+    - { text: 'Ponor končí, tým otáčí', correct: true }
+    - { text: 'Pokračuje se do tlaku otočky', explanation: 'Na záložní světlo se dovnitř neplave. Další porucha by tě nechala s posledním světlem.' }
+    - { text: 'Pokračuje se, ale pomaleji', explanation: 'Rychlost nic neřeší. Chybí záloha.' }
+    - { text: 'Půjčím si záložní světlo od partnera a pokračujeme', explanation: 'Pak chybí záloha jemu.' }
+  explanation: 'Každé selhání, které spotřebuje zálohu, ukončuje ponor.'
+  backToLessonId: nouzove-postupy-cavern
+
+- id: nouze-plyn-poradi
+  type: order
+  conceptIds: [sdileni-plynu, kontaktni-komunikace]
+  difficulty: 2
+  prompt: Partner signalizuje, že nemá plyn. Seřaď postup.
+  items:
+    - 'Podám dlouhou hadici, ze které dýchám'
+    - 'Přejdu na záložní automatiku pod bradou'
+    - 'Uklidníme dech a zkontrolujeme tlak'
+    - 'Ven v kontaktu, potápěč bez plynu vpředu'
+  explanation: 'Podává se automatika z úst: víš, že funguje, a potápěč bez plynu po ní sáhne tak jako tak.'
+  backToLessonId: nouzove-postupy-cavern
+
+- id: nouze-prvni-reakce
+  type: why
+  conceptIds: [ztrata-snury, nulova-viditelnost]
+  difficulty: 1
+  prompt: Proč je první krok při ztrátě šňůry zastavit, a ne hledat?
+  options:
+    - { text: 'Šňůra bývá na dosah; každý pohyb naslepo tě od ní může vzdálit.', correct: true }
+    - { text: 'Zastavení šetří baterie svítilny.', explanation: 'Baterie s tím nesouvisí.' }
+    - { text: 'Partner tě v klidu uslyší.', explanation: 'Sluch pod vodou směr neurčí.' }
+    - { text: 'Pohyb je v jeskyni zakázaný.', explanation: 'Jde o to nezhoršit situaci, ne o zákaz.' }
+  explanation: 'Problém se za pět vteřin nezhorší. Slepé plavání směrem, kde si myslíš, že je východ, ano.'
+  backToLessonId: nouzove-postupy-cavern
+
+- id: nouze-co-ne
+  type: findError
+  conceptIds: [ztrata-snury, nulova-viditelnost, selhani-svetla]
+  difficulty: 2
+  prompt: Které reakce na nouzi v jeskyni jsou chybné?
+  items:
+    - { text: 'Ztratil jsem šňůru: zastavím a uklidním dech.' }
+    - { text: 'Ztratil jsem šňůru: plavu rychle tam, kde tuším východ.', isError: true, explanation: 'Tohle zabíjí. Bez pevného bodu se vzdaluješ od šňůry, která byla na dosah.' }
+    - { text: 'Zamotal jsem se do šňůry: otáčím se, abych viděl, kde držím.', isError: true, explanation: 'Otáčením se namotáš víc. Zastav a dej signál partnerovi.' }
+    - { text: 'Zhaslo mi světlo: rozsvítím záložní a dám signál.' }
+  explanation: 'Všechny postupy začínají stejně: zastav, dýchej, mysli.'
+  backToLessonId: nouzove-postupy-cavern

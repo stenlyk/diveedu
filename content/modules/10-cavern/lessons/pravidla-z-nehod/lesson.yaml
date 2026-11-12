@@ -1,0 +1,21 @@
+id: pravidla-z-nehod
+moduleId: cavern
+title: "Pět pravidel psaných nehodami"
+order: 2
+conceptIds: ["pet-pravidel", "prostredi-se-stropem", "vodici-snura", "tri-svetla"]
+checkQuestionIds: ["pravidla-vyjmenuj", "pravidla-proc-snura", "pravidla-kdo-umira", "pravidla-hloubka", "pravidla-prirad"]
+estimatedMinutes: 10
+audioSummary: >-
+  Pět pravidel jeskynního potápění vzniklo z rozboru smrtelných nehod.
+  První: nepotápěj se nad úroveň svého výcviku.
+  Druhé: udržuj nepřerušenou šňůru až do otevřené vody.
+  Třetí: na cestu dovnitř použij nejvýš třetinu plynu.
+  Čtvrté: nepřekračuj hloubku, kterou dovoluje tvůj plyn a výcvik.
+  Páté: měj tři nezávislá světla.
+  Každé pravidlo popisuje chybu, která se opakovala a která se tomu, kdo ji udělal, zdála rozumná.
+  Nehoda málokdy porušuje jen jedno z nich.
+  A třetiny nejsou opatrnost navíc. Je to nejmenší rezerva, se kterou vyjde plyn na cestu ven pro dva.
+sources:
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+needs_review: false

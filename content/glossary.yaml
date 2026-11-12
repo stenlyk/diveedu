@@ -51,3 +51,12 @@
 - { cs: hluboké zastávky, en: deep stops, definition: 'Zastávky hlouběji, než předepisuje model rozpuštěného plynu.' }
 - { cs: aktivní ohřev, en: active heating, definition: 'Elektricky vyhřívané prvky pod suchým oblekem.' }
 - { cs: podpůrný potápěč, en: support diver, definition: 'Potápěč, který zajišťuje hluboký tým na dekompresi.' }
+- { cs: prostředí se stropem, en: overhead environment, definition: 'Místo bez přímé cesty na hladinu.' }
+- { cs: vodicí šňůra, en: guideline, definition: 'Nepřerušená šňůra vedoucí k otevřené vodě.' }
+- { cs: naviják, en: reel, definition: 'Naviják se šňůrou pro pokládání hlavní šňůry.' }
+- { cs: zvíření sedimentu, en: silt-out, definition: 'Ztráta viditelnosti zvířeným sedimentem.' }
+- { cs: žabí kop, en: frog kick, definition: 'Kop tlačící vodu dozadu, bez víření dna.' }
+- { cs: kontaktní komunikace, en: touch contact, definition: 'Dorozumívání dotykem při nulové viditelnosti.' }
+- { cs: tlak otočky, en: turn pressure, definition: 'Tlak, při kterém se ponor obrací.' }
+- { cs: past na šňůře, en: line trap, definition: 'Místo, kde šňůra vede prostorem užším než potápěč.' }
+- { cs: zóna denního světla, en: daylight (cavern) zone, definition: 'Část jeskyně s viditelným světlem vchodu.' }

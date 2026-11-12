@@ -20,6 +20,7 @@ import {
   type NumericTemplate,
   QuestionSchema,
   RelationSchema,
+  ScenarioSchema,
 } from '../../src/content/schema';
 
 export interface RawLesson {
@@ -52,6 +53,7 @@ export interface RawContent {
   formulas: unknown[];
   questions: { path: string; data: unknown }[];
   cases: { path: string; data: unknown }[];
+  scenarios?: { path: string; data: unknown }[];
   facts: unknown[];
   glossary: unknown[];
   media: unknown[];
@@ -128,6 +130,8 @@ export function validateContent(raw: RawContent): ValidationResult {
   const formulas = parseAll(FormulaSchema, raw.formulas, (i) => `formulas.yaml[${i}]`, errors);
   const questions = parseAll(QuestionSchema, raw.questions.map((q) => q.data), (i) => raw.questions[i]!.path, errors);
   const cases = parseAll(CaseStudySchema, raw.cases.map((c) => c.data), (i) => raw.cases[i]!.path, errors);
+  const rawScenarios = raw.scenarios ?? [];
+  const scenarios = parseAll(ScenarioSchema, rawScenarios.map((s) => s.data), (i) => rawScenarios[i]!.path, errors);
   const facts = parseAll(FactSchema, raw.facts, (i) => `facts.yaml[${i}]`, errors);
   const glossary = parseAll(GlossaryTermSchema, raw.glossary, (i) => `glossary.yaml[${i}]`, errors);
   const media = parseAll(MediaSchema, raw.media, (i) => `media.yaml[${i}]`, errors);
@@ -140,6 +144,7 @@ export function validateContent(raw: RawContent): ValidationResult {
     ['vzorec', formulas.map((f) => f.id)],
     ['otázka', questions.map((q) => q.id)],
     ['případová studie', cases.map((c) => c.id)],
+    ['scénář', scenarios.map((s) => s.id)],
     ['zajímavost', facts.map((f) => f.id)],
     ['médium', media.map((m) => m.id)],
   ];
@@ -155,6 +160,7 @@ export function validateContent(raw: RawContent): ValidationResult {
   const mediaIds = new Set(media.map((m) => m.id));
   const factIds = new Set(facts.map((f) => f.id));
   const caseIds = new Set(cases.map((c) => c.id));
+  const scenarioIds = new Set(scenarios.map((s) => s.id));
   const glossaryTerms = new Set(glossary.map((g) => g.cs.toLowerCase()));
   const playgroundKinds = new Set<string>([...CUSTOM_PLAYGROUND_KINDS, ...CALC_DEFS.map((def) => def.id)]);
   const needConcepts = (ids: string[], where: string) => {
@@ -203,6 +209,7 @@ export function validateContent(raw: RawContent): ValidationResult {
         CaseLink: (value) => caseIds.has(value),
         Formula: (value) => formulaIds.has(value),
         Term: (value) => glossaryTerms.has(value.toLowerCase()),
+        Scenario: (value) => scenarioIds.has(value),
       };
       if (!known[ref.element]!(ref.value)) errors.push(`${where}: <${ref.element}> odkazuje na neznámou položku „${ref.value}“`);
     }
@@ -318,6 +325,49 @@ export function validateContent(raw: RawContent): ValidationResult {
     if (fact.image && !mediaIds.has(fact.image)) errors.push(`zajímavost ${fact.id}: neznámé médium „${fact.image}“`);
   }
 
+  // Scénáře: odkazy mezi uzly, dosažitelnost, časové limity a průchodnost správné cesty
+  for (const scenario of scenarios) {
+    const where = `scénář ${scenario.id}`;
+    for (const moduleId of scenario.moduleIds) if (!moduleIds.has(moduleId)) errors.push(`${where}: neznámý modul „${moduleId}“`);
+    needConcepts(scenario.conceptIds, where);
+    const nodes = new Map(scenario.nodes.map((node) => [node.id, node]));
+    for (const dup of duplicates(scenario.nodes.map((n) => n.id))) errors.push(`${where}: duplicitní uzel „${dup}“`);
+    if (!nodes.has(scenario.start)) errors.push(`${where}: neznámý počáteční uzel „${scenario.start}“`);
+    for (const node of scenario.nodes) {
+      if (node.end) {
+        if (node.options.length > 0) errors.push(`${where}: koncový uzel „${node.id}“ nesmí mít možnosti`);
+        continue;
+      }
+      if (node.options.length < 2) errors.push(`${where}: uzel „${node.id}“ potřebuje alespoň 2 možnosti`);
+      if (!node.options.some((o) => o.verdict === 'good')) errors.push(`${where}: uzel „${node.id}“ nemá žádnou správnou možnost`);
+      if (node.timeLimitSec !== undefined && !node.timeout) errors.push(`${where}: uzel „${node.id}“ má časový limit, ale chybí timeout`);
+      for (const target of [...node.options.map((o) => o.next), ...(node.timeout ? [node.timeout.next] : [])]) {
+        if (!nodes.has(target)) errors.push(`${where}: uzel „${node.id}“ vede do neznámého uzlu „${target}“`);
+      }
+    }
+    const reached = new Set<string>();
+    const visit = (nodeId: string) => {
+      const node = nodes.get(nodeId);
+      if (!node || reached.has(nodeId)) return;
+      reached.add(nodeId);
+      node.options.forEach((o) => visit(o.next));
+      if (node.timeout) visit(node.timeout.next);
+    };
+    visit(scenario.start);
+    for (const node of scenario.nodes) if (!reached.has(node.id)) errors.push(`${where}: uzel „${node.id}“ je nedosažitelný`);
+    // Cesta samých správných rozhodnutí musí skončit úspěchem a s plynem v lahvi.
+    let cursor = nodes.get(scenario.start);
+    let gas = scenario.setup.startBar;
+    for (let step = 0; cursor && !cursor.end && step < 100; step++) {
+      const good = cursor.options.find((o) => o.verdict === 'good');
+      if (!good) break;
+      gas -= (callContentFunction('sacBarPerMinute', [scenario.setup.sacLpm * good.stress, scenario.setup.depthM, scenario.setup.tankLiters]) as number) * good.minutes;
+      cursor = nodes.get(good.next);
+    }
+    if (cursor?.end?.outcome !== 'success') errors.push(`${where}: cesta správných rozhodnutí nekončí úspěchem`);
+    else if (gas <= 0) errors.push(`${where}: na cestě správných rozhodnutí dojde plyn`);
+  }
+
   // Pokrytí – vynucuje se jen u publikovaných modulů
   const published = new Set(modules.filter((m) => m.status === 'published').map((m) => m.id));
   const moduleOfQuestion = (conceptIdsOfQuestion: string[]) =>
@@ -349,6 +399,7 @@ export function validateContent(raw: RawContent): ValidationResult {
     formulas,
     questions,
     cases,
+    scenarios,
     facts,
     glossary,
     media,
@@ -361,6 +412,7 @@ export function reviewItems(content: Content): string[] {
   return [
     ...content.lessons.filter((l) => l.needs_review).map((l) => `Lekce **${l.title}** (\`${l.id}\`, modul \`${l.moduleId}\`)`),
     ...content.questions.filter((q) => q.needs_review).map((q) => `Otázka \`${q.id}\`: ${q.prompt}`),
+    ...content.scenarios.filter((s) => s.needs_review).map((s) => `Scénář **${s.title}** (\`${s.id}\`)`),
     ...content.cases.filter((c) => c.needs_review).map((c) => `Případová studie **${c.title}** (\`${c.id}\`, jistota: ${c.certainty})`),
     ...content.facts.filter((f) => f.needs_review).map((f) => `Zajímavost \`${f.id}\`: ${f.text}`),
   ];

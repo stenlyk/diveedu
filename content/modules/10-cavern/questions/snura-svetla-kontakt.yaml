@@ -1,0 +1,212 @@
+- id: snura-nepretrzita
+  type: choice
+  conceptIds: [vodici-snura, uvazani-snury]
+  difficulty: 1
+  prompt: Trvalá šňůra v jeskyni začíná 30 m za vchodem. Co s tím úsekem tým udělá?
+  options:
+    - { text: 'Položí vlastní šňůru z navijáku od otevřené vody až k trvalé šňůře', correct: true }
+    - { text: 'Přeplave ho, vchod je přece vidět', explanation: 'Vidět je teď. Po zvíření sedimentu nebo po setmění už ne.' }
+    - { text: 'Položí šňůru jen při špatné viditelnosti', explanation: 'Viditelnost se ztrácí během ponoru, ne před ním.' }
+    - { text: 'Uváže šňůru až ve vchodu', explanation: 'Primární uvázání patří do otevřené vody, kde je možný přímý výstup.' }
+  explanation: 'Nepřerušená znamená bez jediné mezery. Úsek, který „stačí přeplavat“, je přesně ten, ve kterém se umíralo.'
+  backToLessonId: vodici-snura
+
+- id: snura-uvazani-poradi
+  type: order
+  conceptIds: [uvazani-snury, navijak]
+  difficulty: 2
+  prompt: Seřaď kroky při pokládání šňůry od hladiny dovnitř.
+  items:
+    - 'Primární uvázání v otevřené vodě'
+    - 'Sekundární uvázání těsně uvnitř'
+    - 'Další úchyty podle potřeby, šňůra napnutá'
+    - 'Připojení k trvalé šňůře'
+  explanation: 'Sekundární uvázání je pojistka pro případ, že se primární uvolní.'
+  backToLessonId: vodici-snura
+
+- id: snura-past
+  type: choice
+  conceptIds: [past-na-snure]
+  difficulty: 2
+  prompt: Co je past na šňůře?
+  options:
+    - { text: 'Místo, kde šňůra vede prostorem užším, než kterým proplave potápěč', correct: true }
+    - { text: 'Uzel, který nejde rozvázat', explanation: 'To je nepříjemnost. Past se týká vedení šňůry prostorem.' }
+    - { text: 'Místo, kde se šňůra větví', explanation: 'To je odbočka; patří do navigace.' }
+    - { text: 'Šňůra zachycená o ventily', explanation: 'To je zamotání. Past je vlastnost položené šňůry.' }
+  explanation: 'Napnutá šňůra si v zatáčce najde nejkratší cestu, třeba štěrbinou. Proto se vede přes úchyty tam, kudy plave potápěč.'
+  backToLessonId: vodici-snura
+
+- id: snura-kde-vest
+  type: findError
+  conceptIds: [vodici-snura, uvazani-snury, past-na-snure]
+  difficulty: 2
+  prompt: Popis položené šňůry obsahuje chyby. Které řádky jsou špatně?
+  items:
+    - { text: 'Primární uvázání je v otevřené vodě.' }
+    - { text: 'Šňůra vede středem chodby ve výšce hrudníku.', isError: true, explanation: 'Uprostřed se do ní tým zamotá. Vede se nízko a stranou, ale na dosah.' }
+    - { text: 'V zatáčce jsem ji nechal napnout přímo přes štěrbinu, ušetří to šňůru.', isError: true, explanation: 'To je past na šňůře. V nulové viditelnosti dovede potápěče tam, kudy neprojde.' }
+    - { text: 'Šňůra je napnutá mezi úchyty.' }
+  explanation: 'Šňůra se pokládá pro nejhorší chvíli: pro návrat po hmatu.'
+  backToLessonId: vodici-snura
+
+- id: snura-poradi-tymu
+  type: choice
+  conceptIds: [navijak, vodici-snura]
+  difficulty: 2
+  prompt: Kdo při návratu navíjí šňůru, kterou tým položil?
+  options:
+    - { text: 'Poslední potápěč; nikdo nesmí zůstat za ním', correct: true }
+    - { text: 'První potápěč, aby cestu uvolnil', explanation: 'Ostatní by pak plavali úsekem, ze kterého šňůra už zmizela.' }
+    - { text: 'Nikdo, šňůra se v jeskyni nechává', explanation: 'Vlastní šňůra se odnáší. Zůstává jen trvalá.' }
+    - { text: 'Ten, kdo má nejvíc plynu', explanation: 'Rozhoduje pořadí v týmu, ne tlak v lahvích.' }
+  explanation: 'Šňůra musí existovat pro každého, kdo je ještě uvnitř.'
+  backToLessonId: vodici-snura
+
+- id: navijak-civka
+  type: match
+  conceptIds: [navijak, uvazani-snury, ztrata-snury]
+  difficulty: 2
+  prompt: K čemu která pomůcka slouží?
+  pairs:
+    - { left: Primární naviják, right: 'Šňůra od otevřené vody k trvalé šňůře' }
+    - { left: Záložní cívka, right: 'Hledání ztracené šňůry a nouzové situace' }
+    - { left: Úchyt na skále, right: 'Udržení směru a napnutí šňůry' }
+  explanation: 'Záložní cívku nese každý člen týmu. Je to jeho vlastní kus šňůry pro chvíli, kdy tu společnou ztratí.'
+  backToLessonId: vodici-snura
+
+- id: past-nulova
+  type: why
+  conceptIds: [past-na-snure, nulova-viditelnost]
+  difficulty: 3
+  prompt: Proč je past na šňůře nebezpečná hlavně při nulové viditelnosti?
+  options:
+    - { text: 'Potápěč jde po hmatu přesně po šňůře a ta ho dovede ke štěrbině, kterou neprojde.', correct: true }
+    - { text: 'Šňůra se v pasti přetrhne.', explanation: 'Přetržení je jiný problém.' }
+    - { text: 'V pasti je vždy víc sedimentu.', explanation: 'Nemusí být.' }
+    - { text: 'Past zhoršuje viditelnost.', explanation: 'Past viditelnost nemění; ztráta viditelnosti ji jen odhalí.' }
+  explanation: 'Za světla past obeplaveš a ani si jí nevšimneš. Poslepu se zastavíš u skály se šňůrou v ruce a nevíš, kudy dál.'
+  backToLessonId: vodici-snura
+
+- id: svetla-proc-tri
+  type: why
+  conceptIds: [tri-svetla]
+  difficulty: 1
+  prompt: Proč tři světla, a ne dvě?
+  options:
+    - { text: 'Po selhání jednoho musí zůstat záloha i pro to druhé, na které se plave ven.', correct: true }
+    - { text: 'Tři světla osvětlí větší část chodby.', explanation: 'Svítí se jedním. Ostatní jsou zálohy.' }
+    - { text: 'Třetí světlo je pro partnera.', explanation: 'Každý člen týmu nese svoje tři.' }
+    - { text: 'Je to tradice bez praktického důvodu.', explanation: 'Pravidlo vzniklo z nehod potápěčů s jediným světlem.' }
+  explanation: 'S dvěma světly bys po první poruše plaval ven bez jakékoli rezervy.'
+  backToLessonId: svetla-a-signaly
+
+- id: svetla-signaly-prirad
+  type: match
+  conceptIds: [svetelne-signaly]
+  difficulty: 1
+  prompt: Přiřaď světelný signál k významu.
+  pairs:
+    - { left: Pomalý kruh, right: 'V pořádku' }
+    - { left: Pomalý pohyb ze strany na stranu, right: 'Pozor, podívej se na mě' }
+    - { left: Rychlé mávání, right: Nouze }
+  explanation: 'Signál se dává na místo, kam se partner dívá – na stěnu nebo dno před ním, ne do očí.'
+  backToLessonId: svetla-a-signaly
+
+- id: svetla-selhani-co
+  type: order
+  conceptIds: [selhani-svetla, tri-svetla]
+  difficulty: 1
+  prompt: Zhasla ti hlavní svítilna. Seřaď, co uděláš.
+  items:
+    - 'Rozsvítím záložní světlo'
+    - 'Dám signál týmu'
+    - 'Tým otáčí a plave ven'
+  explanation: 'Na záložní světlo se dovnitř nepokračuje. Je to světlo na cestu ven.'
+  backToLessonId: svetla-a-signaly
+
+- id: svetla-vydrz
+  type: numeric
+  conceptIds: [tri-svetla, selhani-svetla]
+  difficulty: 2
+  prompt: 'Tým je {distance} m od vchodu. Ve zvířeném sedimentu plave po hmatu {speed} m/min. Kolik minut musí vydržet záložní světlo, aby stačilo na cestu ven?'
+  template: { fn: exitMinutes, params: { distance: { values: [180, 240, 300, 360] }, speed: { values: [5, 6, 10] } }, args: [distance, speed], tolerance: 0.5, unit: min, decimals: 0 }
+  explanation: 'Čas je vzdálenost dělená rychlostí. Výdrž světla se plánuje na pomalý návrat, ne na ideální.'
+  backToLessonId: svetla-a-signaly
+
+- id: signal-kazen
+  type: findError
+  conceptIds: [svetelne-signaly]
+  difficulty: 2
+  prompt: Které z těchto návyků se světlem jsou chybné?
+  items:
+    - { text: 'Při signálu mířím kužel na stěnu před partnerem.' }
+    - { text: 'Když chci partnera upozornit, posvítím mu do masky.', isError: true, explanation: 'Oslníš ho. Signál patří tam, kam se dívá.' }
+    - { text: 'Při plavání držím světlo před tělem, aby tým viděl můj kužel.' }
+    - { text: 'Na ukázání ručního signálu světlo zhasnu, ať neruší.', isError: true, explanation: 'Ruční signál se ukazuje v kuželu vlastní svítilny, jinak není vidět.' }
+  explanation: 'Světlo v jeskyni mluví neustále. Klidný kužel znamená, že je všechno v pořádku.'
+  backToLessonId: svetla-a-signaly
+
+- id: signal-zmizel
+  type: choice
+  conceptIds: [svetelne-signaly, kontaktni-komunikace]
+  difficulty: 2
+  prompt: Plaveš první. Kužel partnerovy svítilny, který jsi celou dobu viděl na stěně vedle sebe, zmizel. Co to znamená?
+  options:
+    - { text: 'Je to zpráva: zastavím a ověřím, co se s partnerem děje', correct: true }
+    - { text: 'Nic, partner jen svítí jinam', explanation: 'Možná. Dokud to neověříš, nevíš to.' }
+    - { text: 'Partner chce, abych zrychlil', explanation: 'Takový signál neexistuje.' }
+    - { text: 'Mám zhasnout také', explanation: 'Zhasnutím bys partnerovi vzal jedinou informaci o tom, kde jsi.' }
+  explanation: 'Zmizelý nebo zmítající se kužel je signál, i když ho nikdo neposlal.'
+  backToLessonId: svetla-a-signaly
+
+- id: kontakt-signaly-prirad
+  type: match
+  conceptIds: [kontaktni-komunikace]
+  difficulty: 1
+  prompt: Přiřaď dotykový signál k významu.
+  pairs:
+    - { left: Tlak dopředu, right: Plav }
+    - { left: Stisk, right: Stůj }
+    - { left: Tah dozadu, right: 'Couvej, vrať se' }
+  explanation: 'Tři signály musí znát celý tým stejně. Zopakují se před ponorem na suchu.'
+  backToLessonId: kontaktni-komunikace
+
+- id: kontakt-poradi
+  type: why
+  conceptIds: [kontaktni-komunikace, sdileni-plynu]
+  difficulty: 2
+  prompt: Proč při návratu v kontaktu plave potápěč s problémem vpředu?
+  options:
+    - { text: 'Nemůže zůstat pozadu a ten za ním cítí, co se s ním děje, a udává tempo.', correct: true }
+    - { text: 'Vpředu je čistší voda.', explanation: 'To je vedlejší výhoda, ne důvod.' }
+    - { text: 'Má víc plynu.', explanation: 'Obvykle má naopak méně nebo žádný.' }
+    - { text: 'Zná cestu lépe.', explanation: 'Cestu ukazuje šňůra.' }
+  explanation: 'Slabší článek je pod kontrolou. Kdyby plaval vzadu, jeho zastavení by si nikdo nevšiml.'
+  backToLessonId: kontaktni-komunikace
+
+- id: kontakt-kdy
+  type: multi
+  conceptIds: [kontaktni-komunikace, nulova-viditelnost, sdileni-plynu]
+  difficulty: 1
+  prompt: Kdy tým přechází na kontaktní komunikaci?
+  options:
+    - { text: 'Při nulové viditelnosti', correct: true }
+    - { text: 'Při sdílení plynu', correct: true }
+    - { text: 'Když viditelnost klesá a světelné signály přestávají být spolehlivé', correct: true }
+    - { text: 'Vždy od vchodu, i v čisté vodě', explanation: 'V dobré viditelnosti stačí světlo a šňůra na dosah.' }
+  explanation: 'Dotyk je jediný kanál, který funguje stejně ve tmě jako na světle.'
+  backToLessonId: kontaktni-komunikace
+
+- id: kontakt-snura
+  type: choice
+  conceptIds: [kontaktni-komunikace, vodici-snura]
+  difficulty: 2
+  prompt: Jak se drží šňůra při plavání po hmatu?
+  options:
+    - { text: 'Palcem a ukazovákem kolem šňůry, bez tahu', correct: true }
+    - { text: 'Pevně v dlani, s přitahováním', explanation: 'Tahem ji vytrhneš z úchytu nebo zamotáš.' }
+    - { text: 'Omotaná kolem zápěstí', explanation: 'To je zamotání, které si způsobíš sám.' }
+    - { text: 'Nedrží se, stačí vědět, kde je', explanation: 'V nulové viditelnosti to po dvou metrech nevíš.' }
+  explanation: 'Šňůra je ukazatel směru, ne zábradlí. Na úchytu ji druhá ruka nejdřív najde za ním a teprve pak první pustí.'
+  backToLessonId: kontaktni-komunikace

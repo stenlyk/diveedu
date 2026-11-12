@@ -1,0 +1,109 @@
+id: ztrata-snury
+title: Ztráta šňůry v nulové viditelnosti
+summary: Cestou ven zmizí viditelnost i šňůra. Rozhoduje první vteřina a metoda hledání.
+moduleIds: [cavern]
+conceptIds: [ztrata-snury, nulova-viditelnost, navijak]
+intro: >-
+  Jste dva, vracíte se po trvalé šňůře z jeskyně v 18 m. Do vchodu zbývá asi 150 m. Dno pokrývá jemný jíl.
+  Scénář je cvičení rozhodování, ne náhrada výcviku: postupy se učí s instruktorem a liší se v detailech mezi agenturami.
+setup: { startBar: 130, tankLiters: 24, depthM: 18, sacLpm: 20 }
+start: start
+nodes:
+  - id: start
+    text: >-
+      Partner před tebou se v zúžení dotkl dna. Oblak jílu tě pohltil během vteřin. Sáhneš vedle sebe po šňůře – není tam.
+    darkness: dim
+    timeLimitSec: 15
+    timeout: { next: stojis, minutes: 1, stress: 2, feedback: 'Váhal jsi a dech se zrychlil. Zůstat na místě je správně – ale má to být rozhodnutí, ne ochromení.' }
+    options:
+      - { text: 'Zastavím, zůstanu na místě a uklidním dech.', next: stojis, minutes: 1, verdict: good, feedback: 'Šňůra bývá na dosah. Kdo se nehne, ten se od ní nevzdálí.' }
+      - { text: 'Plavu rychle směrem, kde je východ.', next: naslepo, minutes: 3, stress: 2.5, verdict: bad, feedback: 'Směr k východu bez šňůry neznáš. Slepé plavání je to, co při ztrátě šňůry zabíjí.' }
+      - { text: 'Vystoupám ke stropu, kde bývá čistší voda.', next: u-stropu, minutes: 2, stress: 1.5, verdict: bad, feedback: 'Opustil jsi jediné místo, o kterém jsi věděl, že je blízko šňůry. Bubliny navíc uvolňují sediment ze stropu.' }
+  - id: stojis
+    text: >-
+      Stojíš na místě. Svítilna osvětluje jen mléčnou stěnu těsně před maskou. Slyšíš vlastní dech.
+    darkness: black
+    options:
+      - { text: 'Zakryju světlo a hledám kužel partnera, pak pomalu ohmatám okolí na dosah paže.', next: nic-na-dosah, minutes: 1, verdict: good, feedback: 'Nejdřív to, co nic nestojí: rozhlédnout se a ohmatat nejbližší okolí bez změny polohy.' }
+      - { text: 'Hned uvážu cívku a začnu hledat.', next: civka, minutes: 2, verdict: ok, feedback: 'Postup není chybný, ale šňůra bývá na dosah paže. Nejdřív se rozhlédni a ohmatej okolí.' }
+      - { text: 'Čekám, až mě partner najde.', next: cekani, minutes: 4, verdict: bad, feedback: 'Partner neví, kde jsi, a ve stejném oblaku nevidí o nic víc. Čekání stojí plyn a nic neřeší.' }
+  - id: nic-na-dosah
+    text: >-
+      Na dosah paže není nic než dno. Partnerovo světlo nevidíš.
+    darkness: black
+    options:
+      - { text: 'Uvážu záložní cívku k pevnému bodu tam, kde jsem.', next: civka, minutes: 2, verdict: good, feedback: 'Od této chvíle máš místo, kam se můžeš vrátit. Žádný další pohyb už tvou situaci nezhorší.' }
+      - { text: 'Posunu se o pár metrů tam, kde šňůra nejspíš byla.', next: naslepo, minutes: 2, stress: 1.5, verdict: bad, feedback: 'Bez uvázané cívky ztrácíš i to poslední, co víš: že šňůra je blízko místa, kde jsi stál.' }
+  - id: civka
+    text: >-
+      Cívka je uvázaná na skalním výstupku. Chodba je asi čtyři metry široká. Jak budeš hledat?
+    darkness: black
+    timeLimitSec: 20
+    timeout: { next: podel, minutes: 6, stress: 1.5, feedback: 'Bez rozmyšlené metody jsi vyrazil prvním směrem. Hledání má mít plán dřív, než se pohneš.' }
+    options:
+      - { text: 'Nízko nade dnem napříč chodbou, od stěny ke stěně.', next: nalezena, minutes: 4, verdict: good, feedback: 'Šňůra vede podél chodby. Pohybem napříč ji zkřížíš.' }
+      - { text: 'V kruzích kolem úvazu se stále větším poloměrem.', next: nalezena, minutes: 7, stress: 1.2, verdict: ok, feedback: 'Funguje to, ale v chodbě to stojí víc času a cívka se zachytává o překážky.' }
+      - { text: 'Podél chodby směrem k východu.', next: podel, minutes: 6, verdict: bad, feedback: 'Plaveš rovnoběžně se šňůrou. Tak ji nemusíš zkřížit nikdy.' }
+  - id: podel
+    text: >-
+      Odvinul jsi třicet metrů cívky podél chodby. Šňůra nikde. Manometr klesá.
+    darkness: black
+    options:
+      - { text: 'Vrátím se po cívce k úvazu a hledám napříč chodbou.', next: nalezena, minutes: 6, stress: 1.3, verdict: good, feedback: 'Cívka tě dovedla zpět na známé místo. Právě k tomu je.' }
+      - { text: 'Odvážu cívku a pokračuji k východu bez ní.', next: naslepo, minutes: 3, stress: 2, verdict: bad, feedback: 'Vzdal ses jediného pevného bodu.' }
+  - id: nalezena
+    text: >-
+      Ruka narazí na napnutou šňůru. Kterým směrem je východ?
+    darkness: black
+    options:
+      - { text: 'Připojím cívku ke šňůře a ohmatám nejbližší značku.', next: ven, minutes: 2, verdict: good, feedback: 'Směrová značka ukazuje k východu a dá se přečíst po hmatu. Pocit směru v nulové viditelnosti neplatí.' }
+      - { text: 'Vydám se směrem, odkud jsem podle všeho přišel.', next: spatny-smer, minutes: 5, stress: 1.3, verdict: bad, feedback: 'Po několika minutách hledání poslepu svému smyslu pro směr věřit nemůžeš.' }
+      - { text: 'Zůstanu u šňůry a počkám na partnera.', next: ven, minutes: 5, verdict: ok, feedback: 'Partner tě u šňůry hledat bude. Čekání ale stojí plyn a směr ven si stejně musíš ověřit značkou.' }
+  - id: spatny-smer
+    text: >-
+      Po pěti minutách nahmatáš na šňůře šipku. Ukazuje proti tobě. Plaveš dovnitř.
+    darkness: black
+    options:
+      - { text: 'Otočím a jdu po šňůře podle šipek.', next: ven, minutes: 5, verdict: good, feedback: 'Značka má přednost před pocitem. Chybu jsi opravil, stála deset minut plynu.' }
+      - { text: 'Šipka je asi špatně, pokračuji.', next: konec-plyn, minutes: 10, verdict: bad, feedback: 'Značky na šňůře jsou spolehlivější než orientace člověka, který deset minut nic neviděl.' }
+  - id: ven
+    text: >-
+      Jdeš po šňůře, palec a ukazovák kolem ní. Po chvíli se v mléčné vodě objeví světlo: partner čeká na šňůře.
+    darkness: dim
+    options:
+      - { text: 'Signál v pořádku, kontrola plynu, ven společně a pomalu.', next: uspech, minutes: 12, verdict: good, feedback: 'Problém je vyřešený až na hladině. Do té doby platí stejná kázeň jako předtím.' }
+      - { text: 'Konečně – ven co nejrychleji.', next: castecne, minutes: 9, stress: 1.8, verdict: ok, feedback: 'Spěch víří další sediment a zvyšuje spotřebu právě ve chvíli, kdy je plynu nejméně.' }
+  - id: naslepo
+    text: >-
+      Plaveš naslepo. Ruka narazí do stěny. Nevíš, kde jsi ani kterým směrem je šňůra. Dech je rychlý.
+    darkness: black
+    options:
+      - { text: 'Zastavím, uklidním dech a uvážu cívku tam, kde jsem.', next: civka, minutes: 2, stress: 1.5, verdict: good, feedback: 'Pozdě, ale správně. Odteď máš pevný bod.' }
+      - { text: 'Zkusím jiný směr.', next: konec-plyn, minutes: 12, stress: 2.5, verdict: bad, feedback: 'Každý další pokus naslepo stojí plyn a vzdaluje tě od místa, kde šňůra byla.' }
+  - id: u-stropu
+    text: >-
+      U stropu není vidět o nic lépe; bubliny z něj uvolňují další usazeninu. Už nevíš, jak daleko jsi od místa, kde jsi šňůru ztratil.
+    darkness: black
+    options:
+      - { text: 'Zastavím, klesnu ke dnu a uvážu cívku.', next: civka, minutes: 2, stress: 1.3, verdict: good, feedback: 'Pevný bod je první věc, kterou potřebuješ.' }
+      - { text: 'Plavu podél stropu směrem k východu.', next: naslepo, minutes: 3, stress: 2, verdict: bad, feedback: 'Směr k východu neznáš.' }
+  - id: cekani
+    text: >-
+      Čtyři minuty. Nikdo nepřichází. Sediment se neusazuje.
+    darkness: black
+    options:
+      - { text: 'Uvážu cívku a začnu hledat sám.', next: civka, minutes: 2, verdict: good, feedback: 'Vlastní cívka je tu právě pro tuhle chvíli.' }
+      - { text: 'Čekám dál.', next: konec-plyn, minutes: 20, stress: 1.5, verdict: bad, feedback: 'Jíl zůstává ve vodě hodiny. Plyn tak dlouho nevydrží.' }
+  - id: uspech
+    text: Denní světlo vchodu.
+    end: { outcome: success, text: 'Jsi venku s rezervou plynu. Rozhodlo to, že ses v první vteřině nehnul z místa a že jsi hledal s pevným bodem a s metodou.' }
+  - id: castecne
+    text: Denní světlo vchodu.
+    end: { outcome: partial, text: 'Jsi venku. Poslední úsek jste ale plavali ve spěchu a v oblaku vlastního sedimentu – stačila by další drobnost a rezerva by chyběla.' }
+  - id: konec-plyn
+    text: Pevný bod nemáš, směr neznáš a manometr dál klesá.
+    end: { outcome: fail, text: 'Scénář končí: touto cestou by plyn k východu nevyšel. Projdi si rozbor – rozhodnutí, které to způsobilo, padlo dřív, než se zdálo.' }
+sources:
+  - { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section', year: 1992 }
+  - { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979 }
+needs_review: true

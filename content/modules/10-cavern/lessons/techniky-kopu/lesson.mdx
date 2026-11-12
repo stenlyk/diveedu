@@ -1,0 +1,93 @@
+<Hook>
+
+Kraulový kop funguje výborně. Každým záběrem pošle polovinu vody dozadu a polovinu přímo ke dnu.
+
+V bazénu je to jedno. Půl metru nad jílem je to rozdíl mezi ponorem a hledáním šňůry poslepu.
+
+</Hook>
+
+<Principle>
+
+V jeskyni se nevybírá kop, který je nejrychlejší, ale ten, který posílá vodu správným směrem.
+
+**<Term cs="žabí kop" />.** Nohy pokrčené v kolenou, ploutve nad úrovní těla. Záběr jde do stran a dozadu, pak následuje fáze skluzu.
+Voda odchází dozadu a mírně vzhůru. Je to základní kop pro většinu situací: šetří síly, nevíří dno a ve fázi skluzu se dá odpočívat.
+
+**Modifikovaný žabí kop.** Menší rozsah, pohyb hlavně z kotníků. Pro nízké chodby, kde není místo na plný záběr.
+
+**Modifikovaný kraulový kop.** Krátký střídavý pohyb z kolen s ploutvemi nahoře. Pro úzká místa, kde nejde kopat do stran.
+
+**Otočení na místě.** Jedna ploutev zabírá dopředu, druhá dozadu. Tělo se otočí kolem svislé osy bez posunu a bez rukou.
+
+**Couvání.** Opačný žabí kop: ploutve nabírají vodu a tlačí ji dopředu. Dovolí vycouvat ze slepé chodby, udržet odstup nebo se zastavit u partnera, aniž do něj narazíš.
+
+**Odrážení a přitahování.** V silném proudu se místo kopání přitahuješ rukou po skále – jen tam, kde je pevná a čistá.
+
+Společný jmenovatel všech technik:
+
+- vodorovný trim, kolena pokrčená, ploutve nejvyšší bod těla,
+- ruce se k pohybu nepoužívají – jedna drží světlo, druhá je volná pro šňůru,
+- pohyb je pomalý a s pauzami; spěch víří a stojí plyn.
+
+Techniky se učí v otevřené vodě, nad pískem, s někým, kdo se dívá. V jeskyni už mají být hotové.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Technika kopu se v tomto vzorci projeví dvakrát: nižší spotřebou a tím, že se neztratí viditelnost, a tedy ani rychlost.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik plynu ušetří klidná technika na stejné trase?
+
+Úsek 300 m ve 20 m hloubky. Uspěchaný potápěč plave 20 m/min a prodýchá 30 l/min. Z dvojčete 2×12 l spotřebuje:
+
+<Worked fn="exitGasBar" args={[300, 20, 30, 20, 24, 1]} expected={56.25} tolerance={0.1} unit="bar" decimals={0} />
+
+Klidný potápěč plave 15 m/min žabím kopem se skluzem a prodýchá 16 l/min:
+
+<Worked fn="exitGasBar" args={[300, 15, 16, 20, 24, 1]} expected={40} tolerance={0.1} unit="bar" decimals={0} />
+
+Pomalejší dorazil o pět minut později a spotřeboval o třetinu méně. V prostředí, kde plyn určuje, jak daleko smíš, je pomalejší potápěč ten, kdo doplave dál.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'ti při kopu klesají kolena pod úroveň těla?', effect: 'Ploutve míří ke dnu a každý záběr víří sediment. Příčinou bývá špatné vyvážení – těžké nohy nebo zátěž příliš nízko.' },
+  { label: 'si pomáháš rukama?', effect: 'Ruce víří, zabírají místo světlu a šňůře a zvyšují spotřebu. Když bez nich nejde držet poloha, chyba je ve vyvážení.' },
+  { label: 'neumíš couvat?', effect: 'Ze slepé chodby se budeš otáčet, a to v úzkém místě znamená dotek stěn a oblak sedimentu. Couvání patří k základům, ne k pokročilým dovednostem.' },
+  { label: 'kopeš bez přestávky?', effect: 'Chybí fáze skluzu, takže pracuješ víc a dýcháš víc. Žabí kop má být kop a pak klouzání.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="zabi-kop-puvod" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

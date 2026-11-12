@@ -26,3 +26,8 @@ dělá, co jsem zamýšlel. Níže jsou místa, kde jsem musel zvolit konvenci �
 | 20 | `deco/plan.ts` víceúrovňový profil | Přesun mezi úrovněmi se neřídí stropem; porušení ohlásí rozbor | Záměrně – simulátor má ukázat, že takový profil je chybný. |
 | 21 | `icd.ts` | Pravidlo pětin počítané z frakcí, bez ohledu na hloubku přepnutí | Porušují ho i běžná přepnutí mezi standardními směsmi; prezentováno jako konvence. |
 | 10 | `blending.ts` | Ideální plyn | Trimix při 200+ bar se od ideálního plynu liší znatelně; van der Waals přijde s modulem 3. |
+| 22 | `cave.ts` `penetrationDistance`, `exitMinutes`, `exitGasBar` | Stálá hloubka, stálá rychlost a spotřeba; `exitGasBar` počítá ve výchozím stavu dva potápěče z jedné zásoby | Odhad pro výuku. Skutečná jeskyně má proměnný profil; proud a zúžení se promítají jen přes zadanou rychlost. |
+| 23 | `cave.ts` `usableFraction` | Použitelný podíl = min(1/3, 1/(1 + 2·v_dovnitř/v_ven)): cesta ven pro dva při jiné rychlosti než dovnitř | Vlastní odvození z bilance plynu, ne vzorec z příručky. Pro stejné rychlosti dává třetinu; nikdy víc než třetinu. Ověřit proti praxi (čtvrtiny, šestiny). |
+| 24 | `consumption.ts` `teamTurnBar` | Potápěč smí na cestu dovnitř použít nejvýš tolik, kolik odpovídá času, za který partner dosáhne své třetiny; nikdy pod vlastní třetinu | Odpovídá obvyklému „přepočtu na menší zásobu“; různé agentury zaokrouhlují různě. Nezaokrouhluje. |
+| 25 | `scenario/engine.ts` | Úbytek plynu = minuty × spotřeba × násobitel stresu při stálé hloubce scénáře; sdílení plynu je vyjádřené násobitelem 2 a víc | Hodnoty minut a násobitelů ve scénářích jsou odhad autora obsahu. |
+

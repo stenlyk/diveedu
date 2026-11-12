@@ -15,6 +15,8 @@ const Review = lazy(() => import('../features/Train').then((m) => ({ default: m.
 const Weaknesses = lazy(() => import('../features/Train').then((m) => ({ default: m.Weaknesses })));
 const Topic = lazy(() => import('../features/Train').then((m) => ({ default: m.Topic })));
 const Exam = lazy(() => import('../features/Train').then((m) => ({ default: m.Exam })));
+const Scenarios = lazy(() => import('../features/Scenarios').then((m) => ({ default: m.Scenarios })));
+const ScenarioPage = lazy(() => import('../features/Scenarios').then((m) => ({ default: m.ScenarioPage })));
 const Mental = lazy(() => import('../features/Mental').then((m) => ({ default: m.Mental })));
 const Dashboard = lazy(() => import('../features/Dashboard').then((m) => ({ default: m.Dashboard })));
 const GraphPage = lazy(() => import('../features/GraphPage').then((m) => ({ default: m.GraphPage })));
@@ -56,6 +58,8 @@ export function App() {
             <Route path="trenink/tema" element={<Topic />} />
             <Route path="trenink/zkouska/:moduleId" element={<Exam />} />
             <Route path="trenink/z-hlavy" element={<Mental />} />
+            <Route path="trenink/scenare" element={<Scenarios />} />
+            <Route path="trenink/scenare/:scenarioId" element={<ScenarioPage />} />
             <Route path="prehled" element={<Dashboard />} />
             <Route path="graf" element={<GraphPage />} />
             <Route path="graf/:conceptId" element={<GraphPage />} />

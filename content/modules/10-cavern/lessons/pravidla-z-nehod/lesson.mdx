@@ -1,0 +1,86 @@
+<Hook>
+
+V 70. letech umíraly ve floridských jeskyních desítky potápěčů ročně. Nikdo nevěděl proč – jeskyně byly prostě nebezpečné.
+
+Pak si jeden člověk sedl nad záznamy nehod a zjistil, že nebezpečné nejsou jeskyně. Nebezpečných je pět konkrétních chyb.
+
+</Hook>
+
+<Principle>
+
+Sheck Exley rozebral dostupné záznamy o smrtelných nehodách a hledal, co mají společného. Výsledkem bylo několik pravidel; každé odpovídá chybě,
+která se v nehodách opakovala. Dnes se učí jako pět:
+
+1. **Výcvik.** Nepotápěj se v jeskyni nad úroveň svého výcviku. Většina obětí neměla jeskynní výcvik žádný.
+2. **Šňůra.** Udržuj nepřerušenou vodicí šňůru až do otevřené vody. Lidé umírali pár desítek metrů od vchodu, který neviděli.
+3. **Plyn.** Použij nejvýš třetinu na cestu dovnitř. Oběti otáčely na polovině a cestou ven jim došel plyn.
+4. **Hloubka.** Nepřekračuj hloubku, kterou dovoluje tvůj plyn a výcvik. Narkóza na vzduchu v hloubce brala úsudek právě tam, kde na něm záleželo nejvíc.
+5. **Světla.** Měj tři nezávislá světla. Kdo měl jedno, zůstal po jeho selhání ve tmě.
+
+Na pravidlech je důležité, jak vznikla. Nejsou to něčí názory na správnou techniku. Každé je vykoupené konkrétními lidmi a každé popisuje chybu, která se zdála rozumná tomu, kdo ji udělal.
+
+Dvě věci k zapamatování:
+
+- **Nehoda málokdy porušuje jedno pravidlo.** Typicky jich porušuje několik zároveň: bez výcviku, bez šňůry, s jedním světlem.
+- **Pravidla neřeší všechno.** Pozdější rozbory přidaly další opakující se příčiny – sólo ponory za hranicí schopností, nezvládnutou výstroj, zdravotní stav.
+  Pět pravidel je minimum, ne celý kurz.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+Třetí z pěti pravidel je jediné, které se počítá. Ostatní čtyři se dodržují.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Proč třetiny, a ne poloviny? Stačí spočítat, co zbude.
+
+Dva potápěči, každý dvojče 2×12 l s 210 bar. Otočí na polovině, tedy na 105 bar. V nejvzdálenějším bodě jeden z nich přijde o plyn.
+
+Cesta dovnitř stála každého 105 bar. Cesta ven pro dva z jedné zásoby proto stojí:
+
+<Worked fn="exitGasBar" args={[630, 15, 20, 20, 24]} expected={210} tolerance={0.1} unit="bar" decimals={0} />
+
+Potřebují 210 bar, mají 105. Plyn dojde v polovině cesty ven.
+
+Stejná situace s otočkou podle třetin – cesta dovnitř 70 bar:
+
+<Worked fn="exitGasBar" args={[420, 15, 20, 20, 24]} expected={140} tolerance={0.1} unit="bar" decimals={0} />
+
+Potřebují 140 bar a přesně tolik dárci zbývá. Třetiny nejsou opatrnost navíc – je to nejmenší rezerva, se kterou výpočet vůbec vychází.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="penetration" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="jeskyne-bez-snury" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

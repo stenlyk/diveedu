@@ -1,0 +1,48 @@
+id: jeskyne-bez-snury
+title: Do jeskyně „jen kousek“, bez šňůry
+location: Anonymizovaný vzorec nehody
+rig: oc
+moduleIds: [cavern]
+anonymized: true
+context: >-
+  Nejde o jednu konkrétní nehodu, ale o vzorec, který se v rozborech smrtelných nehod v jeskyních opakoval nejčastěji a ze kterého
+  vzniklo pět základních pravidel: potápěči s výcvikem pro otevřenou vodu vplavou do vchodu jeskyně bez šňůry, s jedním světlem
+  a s jednou lahví. Scénář níže je složený z typických prvků a žádné jeho detaily nepopisují konkrétní osobu ani místo.
+profile:
+  - { minute: 0, depthM: 0 }
+  - { minute: 3, depthM: 9 }
+  - { minute: 6, depthM: 12, event: vchod do jeskyně }
+  - { minute: 12, depthM: 14, event: zvířený sediment }
+  - { minute: 32, depthM: 13, event: došel plyn }
+timeline:
+  - { when: Před ponorem, what: 'Dva potápěči s kvalifikací pro otevřenou vodu se u jezírka s vyvěračkou rozhodnou nahlédnout do vchodu. Každý má jednu lahev a jednu svítilnu. Varovnou ceduli u vchodu minou.' }
+  - { when: Vchod, what: 'Voda je křišťálově čistá, chodba široká. Plavou dál, než plánovali; vchod za nimi je stále vidět jako modrá skvrna.' }
+  - { when: O několik minut později, what: 'Za první zatáčkou vchod zmizí z dohledu. Kraulový kop těsně nade dnem zvedá jemný sediment.' }
+  - { when: Otočka, what: 'Otočí se a před sebou mají vlastní oblak. Viditelnost je nulová. Šňůra neexistuje.' }
+  - { when: Hledání, what: 'Hledají východ po paměti. Chodba, která cestou dovnitř vypadala jako jediná, má poslepu několik výklenků. Dech se zrychluje.' }
+  - { when: Konec, what: 'Plyn dochází několik desítek metrů od vchodu.' }
+errorChain:
+  - { layer: planovani, description: 'Ponor do prostředí se stropem bez výcviku a bez plánu; „jen kousek“ nemělo žádnou hranici.', conceptIds: [prostredi-se-stropem, pet-pravidel] }
+  - { layer: vybaveni, description: 'Žádná šňůra do otevřené vody. Jedna svítilna na osobu, žádná záloha.', conceptIds: [vodici-snura, tri-svetla] }
+  - { layer: plyn, description: 'Jedna lahev bez rezervy pro partnera a bez tlaku otočky; otáčelo se podle pocitu.', conceptIds: [tlak-otocky, pravidlo-tretin] }
+  - { layer: prostredi, description: 'Jemný sediment a technika kopu z otevřené vody. Čistá voda cestou dovnitř nic neříká o cestě ven.', conceptIds: [sediment, nulova-viditelnost] }
+  - { layer: lidsky-faktor, description: 'Zkušenost z otevřené vody dodala sebedůvěru. Po ztrátě viditelnosti následovalo slepé hledání a panický dech.', conceptIds: [ztrata-snury, prostredi-se-stropem] }
+physiology: >-
+  Nikdo z dvojice neudělal nic, co by v otevřené vodě bylo nebezpečné. Rozhodl stres: při panice stoupá minutová ventilace
+  na několikanásobek klidové hodnoty a zásoba plynu, která by v klidu vystačila na desítky minut, mizí za zlomek té doby.
+  Zrychlený dech navíc zhoršuje úsudek a z hledání se stává bezcílný pohyb.
+calcTasks:
+  - { prompt: 'Lahev 12 l, zbývá 150 bar, hloubka 12 m. Na kolik minut plyn vystačí při klidné spotřebě 20 l/min?', fn: minutesOnGas, args: [150, 12, 20, 12], unit: min, tolerance: 0.5 }
+  - { prompt: 'A na kolik minut při panické spotřebě 50 l/min?', fn: minutesOnGas, args: [150, 12, 50, 12], unit: min, tolerance: 0.5 }
+  - { prompt: 'Vchod je 60 m daleko. Kolik minut trvá cesta ven rychlostí 15 m/min – pokud víš, kudy?', fn: exitMinutes, args: [60, 15], unit: min, tolerance: 0.1 }
+preventions:
+  - 'Do prostředí se stropem jen s odpovídajícím výcvikem; „jen kousek“ je také jeskyně.'
+  - 'Nepřerušená šňůra od otevřené vody. Se šňůrou je 60 m k východu otázka minut, i poslepu.'
+  - 'Tři světla na osobu.'
+  - 'Plyn podle třetin a rezerva pro partnera.'
+  - 'Technika, která nevíří: trim, vztlak, žabí kop.'
+sources:
+  - { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979, note: 'Rozbor nehod, ze kterého vzešla základní pravidla; vzorec, ne konkrétní případ.' }
+  - { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section', year: 1992 }
+certainty: hypotéza
+needs_review: true

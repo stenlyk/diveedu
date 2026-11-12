@@ -14,6 +14,7 @@ export const questionsById = byId(content.questions);
 export const formulasById = byId(content.formulas);
 export const factsById = byId(content.facts);
 export const casesById = byId(content.cases);
+export const scenariosById = byId(content.scenarios);
 export const glossaryByCs = new Map(content.glossary.map((term) => [term.cs.toLowerCase(), term]));
 
 export const lessonsOfModule = (moduleId: string): Lesson[] => content.lessons.filter((lesson) => lesson.moduleId === moduleId);

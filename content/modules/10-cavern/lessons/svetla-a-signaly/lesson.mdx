@@ -1,0 +1,92 @@
+<Hook>
+
+Padesát metrů za posledním paprskem denního světla zhasneš na zkoušku svítilnu. Tma, kterou uvidíš, se nedá s ničím srovnat.
+
+Oči si nezvyknou. Není na co. A teď si představ, že ta svítilna nezhasla na zkoušku.
+
+</Hook>
+
+<Principle>
+
+V jeskyni je světlo zároveň zrak, dorozumívací prostředek a ukazatel, že tým je pohromadě. Proto platí pravidlo tří světel:
+
+- **hlavní svítilna** – silná, s výdrží na celý plánovaný ponor a rezervou,
+- **dvě záložní** – menší, uložené na postroji tak, aby šly rozsvítit jednou rukou; každá sama musí vystačit na cestu ven.
+
+Tři proto, že po selhání jednoho světla musí zůstat záloha i pro to druhé. S dvěma světly bys cestu ven nastupoval bez jakékoli rezervy.
+
+**Když selže hlavní svítilna:** rozsviť záložní, dej signál týmu a ponor končí. Na záložní světlo se dovnitř nepokračuje – je to světlo na cestu ven.
+
+**Světelné signály.** Kužel světla je vidět z dálky a nevyžaduje, aby se partner otočil:
+
+- **pomalý kruh** na stěně nebo dně: „jsem v pořádku“ a zároveň otázka „jsi v pořádku?“,
+- **pomalý pohyb ze strany na stranu**: „pozor, podívej se na mě“,
+- **rychlé mávání**: nouze.
+
+Kromě signálů mluví i to, co světlo dělá samo. Klidný kužel partnera za tebou znamená, že je všechno v pořádku. Kužel, který zmizel nebo se zmítá, je zpráva.
+
+**Světelná kázeň:**
+
+- nesviť partnerovi do očí,
+- při signalizaci miř na místo, kam se partner dívá,
+- neschovávej světlo za tělo; tým má tvůj kužel vidět stále.
+
+Ruční signály platí dál – „otočka“, „problém“, „plyn“ – jen se ukazují v kuželu vlastní svítilny.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec. Výdrž světla se ale plánuje stejně jako plyn:
+
+<Given>výdrž hlavní svítilny ≥ 1,5 × plánovaný čas ponoru · každá záložní ≥ čas cesty ven</Given>
+
+Přesné násobky se mezi agenturami liší.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Jak dlouho potrvá cesta ven, na kterou musí vystačit záložní světlo?
+
+Tým je 360 m od vchodu. Za normálních podmínek plave 15 m/min:
+
+<Worked fn="exitMinutes" args={[360, 15]} expected={24} tolerance={0.01} unit="min" decimals={0} />
+
+Ve zvířeném sedimentu, po hmatu po šňůře, sotva třetinovou rychlostí:
+
+<Worked fn="exitMinutes" args={[360, 5]} expected={72} tolerance={0.01} unit="min" decimals={0} />
+
+Záložní světlo, které „vydrží hodinu“, tedy na tuhle cestu nestačí – a plyn také ne. Výdrž světla i zásoba plynu se plánují na pomalý návrat, ne na ten ideální.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="selhani-svetla" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="svetlo-led" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

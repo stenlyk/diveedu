@@ -1,0 +1,18 @@
+id: svetla-a-signaly
+moduleId: cavern
+title: "Světla a světelné signály"
+order: 4
+conceptIds: ["tri-svetla", "svetelne-signaly", "selhani-svetla"]
+checkQuestionIds: ["svetla-proc-tri", "svetla-signaly-prirad", "svetla-selhani-co", "svetla-vydrz"]
+estimatedMinutes: 9
+audioSummary: >-
+  V jeskyni je světlo zároveň zrak, dorozumívací prostředek a důkaz, že tým je pohromadě.
+  Platí pravidlo tří světel. Jedna hlavní svítilna a dvě záložní, z nichž každá sama vystačí na cestu ven.
+  Když hlavní svítilna selže, rozsviť záložní, dej signál a ponor končí.
+  Světelné signály jsou tři. Pomalý kruh znamená v pořádku. Pomalý pohyb ze strany na stranu znamená pozor. Rychlé mávání znamená nouzi.
+  Nesviť partnerovi do očí a neschovávej světlo za tělo.
+  Výdrž světla plánuj na pomalý návrat, ne na ideální.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

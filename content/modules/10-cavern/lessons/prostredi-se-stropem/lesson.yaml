@@ -1,0 +1,19 @@
+id: prostredi-se-stropem
+moduleId: cavern
+title: "Prostředí se stropem"
+order: 1
+conceptIds: ["prostredi-se-stropem", "zona-denniho-svetla", "pravidlo-tretin"]
+checkQuestionIds: ["strop-co-meni", "strop-zona-svetla", "strop-proc-vycvik", "strop-plyn"]
+estimatedMinutes: 9
+audioSummary: >-
+  Prostředí se stropem je každé místo, odkud nemůžeš vystoupat přímo na hladinu. Jeskyně, vrak nebo voda pod ledem.
+  Cesta ven je jen jedna a je stejně dlouhá jako cesta dovnitř.
+  Každý problém se řeší na místě a potom se ještě musí doplavat k východu.
+  Na to odpovídá systém jeskynního potápění. Nepřerušená šňůra, tři světla, plyn na cestu ven pro dva a postupy nacvičené poslepu.
+  Výcvik postupuje po úrovních. Cavern zůstává v zóně denního světla, intro jde po hlavní šňůře, full cave řeší navigaci.
+  Nejnebezpečnější je zkušený potápěč z otevřené vody bez jeskynního výcviku.
+sources:
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

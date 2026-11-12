@@ -1,0 +1,19 @@
+id: kontaktni-komunikace
+moduleId: cavern
+title: "Kontaktní komunikace"
+order: 5
+conceptIds: ["kontaktni-komunikace", "nulova-viditelnost", "sdileni-plynu"]
+checkQuestionIds: ["kontakt-signaly-prirad", "kontakt-poradi", "kontakt-kdy", "kontakt-snura"]
+estimatedMinutes: 8
+audioSummary: >-
+  Kontaktní komunikace je dorozumívání dotykem. Používá se při nulové viditelnosti a při každém sdílení plynu.
+  Jedna ruka drží šňůru palcem a ukazovákem, bez tahu. Druhá ruka drží partnera.
+  Signály jsou tři. Tlak dopředu znamená plav. Stisk znamená stůj. Tah dozadu znamená zpět.
+  Vpředu plave ten, kdo má problém. Ten za ním ho drží a udává tempo.
+  Nepouštěj šňůru ani partnera, ani na chvíli.
+  Na úchytech zastav a šňůru nejdřív najdi druhou rukou za úchytem.
+  Tým si signály před ponorem zopakuje na suchu.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+needs_review: true

@@ -1,0 +1,21 @@
+id: nouzove-postupy-cavern
+moduleId: cavern
+title: "Nouzové postupy: světlo, šňůra, plyn"
+order: 9
+conceptIds: ["ztrata-snury", "selhani-svetla", "sdileni-plynu", "nulova-viditelnost"]
+checkQuestionIds: ["nouze-snura-poradi", "nouze-svetlo", "nouze-plyn-poradi", "nouze-prvni-reakce", "nouze-co-ne"]
+estimatedMinutes: 11
+audioSummary: >-
+  Všechny nouzové postupy v jeskyni začínají stejně. Zastav, dýchej, mysli.
+  Když selže světlo, rozsviť záložní, dej signál a ponor končí.
+  Když ztratíš šňůru, zastav a nehýbej se z místa. Šňůra bývá na dosah.
+  Když ji nevidíš, uvaž vlastní cívku k pevnému bodu a hledej metodicky.
+  Partnerovi bez plynu podej dlouhou hadici, ze které dýcháš, a přejdi na záložní automatiku.
+  Ven se plave v kontaktu, potápěč s problémem vpředu.
+  Pořadí priorit je vždy stejné. Dýchání, šňůra, tým, východ.
+  A uklidnit dech je nejúčinnější způsob, jak si prodloužit čas.
+sources:
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: true

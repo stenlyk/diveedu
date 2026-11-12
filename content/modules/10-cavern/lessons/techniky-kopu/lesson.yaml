@@ -1,0 +1,19 @@
+id: techniky-kopu
+moduleId: cavern
+title: "Techniky kopu"
+order: 7
+conceptIds: ["zabi-kop", "manevrovaci-kopy", "sediment", "trim"]
+checkQuestionIds: ["kopy-proc-zabi", "kopy-prirad", "kopy-ruce", "kopy-chyby"]
+estimatedMinutes: 8
+audioSummary: >-
+  V jeskyni se nevybírá nejrychlejší kop, ale ten, který posílá vodu správným směrem.
+  Základem je žabí kop. Nohy pokrčené, ploutve nad tělem, záběr do stran a dozadu a potom skluz.
+  V nízkých chodbách se používá jeho menší varianta, v úzkých krátký střídavý kop z kolen.
+  Otočení na místě a couvání se dělají ploutvemi, bez rukou.
+  Ruce se k pohybu nepoužívají. Jedna drží světlo, druhá je volná pro šňůru.
+  Pomalý potápěč s dobrou technikou spotřebuje méně plynu a doplave dál.
+  Techniky se učí v otevřené vodě. V jeskyni už mají být hotové.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI Cavern and Intro to Cave Diver Manual", author: "Technical Diving International" }
+needs_review: false

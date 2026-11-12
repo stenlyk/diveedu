@@ -395,3 +395,68 @@
     Mnohahodinová dekomprese se tak změní z boje s chladem na čekání.
   conceptIds: [odlozeny-plyn, tepelny-management]
   source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006 }
+
+- id: cedule-smrtka
+  text: >-
+    U vchodů do floridských jeskyní stojí pod vodou cedule se zubatou a nápisem: „V této jeskyni není nic, kvůli čemu by stálo za to zemřít.“
+    Nainstalovali ji jeskynní potápěči pro ty, kdo sem doplavou s jednou lahví a jednou svítilnou. Od té doby počet nehod nevycvičených potápěčů klesl.
+  conceptIds: [prostredi-se-stropem, pet-pravidel]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section', year: 1992, note: Přesné znění a údaj o poklesu nehod ověřit. }
+  needs_review: true
+
+- id: exley-rozbor
+  text: >-
+    Sheck Exley prošel záznamy o smrtelných nehodách ve floridských jeskyních a zjistil, že se v nich stále opakuje několik stejných chyb.
+    Většina obětí neměla žádný jeskynní výcvik – často šlo o zkušené potápěče, a dokonce instruktory z otevřené vody.
+  conceptIds: [pet-pravidel]
+  source: { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979 }
+
+- id: snura-uzly
+  text: >-
+    Jeskynní šňůra bývá bílá a po celé délce značená uzly v pravidelných rozestupech. Uzly neslouží k držení –
+    díky nim se dá vzdálenost měřit hmatem a při mapování počítat.
+  conceptIds: [vodici-snura, navijak]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: svetlo-led
+  text: >-
+    První jeskynní potápěči nosili světla s olověnými akumulátory velikosti cihly a žárovkou, která vydržela desítky minut.
+    Dnešní hlavní svítilna svítí několik hodin – a pravidlo tří světel přesto platí beze změny, protože selhat může vypínač, kabel i těsnění.
+  conceptIds: [tri-svetla, selhani-svetla]
+  source: { title: 'Caverns Measureless to Man', author: 'Exley S.', year: 1994 }
+
+- id: dotyk-poradi
+  text: >-
+    Při návratu v nulové viditelnosti plave první ten, kdo má problém – například potápěč bez plynu na dlouhé hadici.
+    Dárce je za ním, drží ho za paži nebo nohu a tlakem řídí tempo. Slabší článek tak udává rychlost a nemůže zůstat pozadu.
+  conceptIds: [kontaktni-komunikace, sdileni-plynu]
+  source: { title: 'TDI Cavern and Intro to Cave Diver Manual', author: Technical Diving International, note: 'Pořadí a úchopy se mezi agenturami liší.' }
+  needs_review: true
+
+- id: jil-hodiny
+  text: >-
+    Nejjemnější jíl se v klidné vodě usazuje celé hodiny, někdy dny. Chodba, kterou tým zvířil cestou dovnitř, tak může být při návratu neprůhledná –
+    a zůstane taková i pro ty, kdo přijdou po něm.
+  conceptIds: [sediment, nulova-viditelnost]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: zabi-kop-puvod
+  text: >-
+    Žabí kop není vynález jeskyňářů; je to záběr nohou z prsou. Jeskynní potápěči ho převzali, protože voda od ploutví odchází dozadu a vzhůru, ne ke dnu.
+    Dnes ho učí i kurzy pro otevřenou vodu – šetří síly a korály.
+  conceptIds: [zabi-kop]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006 }
+
+- id: tretiny-nestaci
+  text: >-
+    Pravidlo třetin počítá s tím, že cesta ven trvá stejně dlouho jako dovnitř a že se nic dalšího nepokazí. Proud do jeskyně, zvířený sediment nebo dva zadýchaní lidé na jedné lahvi to mění.
+    Proto zkušené týmy v náročných jeskyních otáčejí dřív – na čtvrtině nebo šestině.
+  conceptIds: [tlak-otocky, pravidlo-tretin]
+  source: { title: NSS Cave Diving Manual, author: 'Prosser J., Grey H. V. (eds.)', year: 1992 }
+
+- id: ztracena-snura-statistika
+  text: >-
+    Ztráta šňůry málokdy znamená, že šňůra zmizela. Bývá půl metru daleko. Zabíjí to, co potápěč udělá v prvních vteřinách:
+    vyrazí naslepo směrem, kde si myslí, že je východ.
+  conceptIds: [ztrata-snury, nulova-viditelnost]
+  source: { title: 'Basic Cave Diving: A Blueprint for Survival', author: 'Exley S.', year: 1979 }

@@ -122,3 +122,24 @@
 - { id: odlozeny-plyn, label: Odložený plyn, type: procedure, moduleId: fulltrimix, shortDefinition: 'Lahve předem rozmístěné na trase výstupu nebo na dekompresní stanici.' }
 - { id: evakuacni-plan, label: Evakuační plán, type: procedure, moduleId: fulltrimix, shortDefinition: 'Předem známá cesta k hyperbarické komoře: kyslík, transport, kontakty a časy.' }
 - { id: limit-otevreneho-okruhu, label: Hranice otevřeného okruhu, type: risk, moduleId: fulltrimix, shortDefinition: 'Hloubka, ve které už spotřeba plynu, logistika a čas dekomprese přestávají být na otevřeném okruhu zvládnutelné.' }
+
+# ── Modul C1: Cavern / Intro Cave ────────────────────────────────────────────
+- { id: prostredi-se-stropem, label: Prostředí se stropem, type: risk, moduleId: cavern, shortDefinition: 'Místo, odkud nelze vystoupat přímo na hladinu: jeskyně, vrak, led.' }
+- { id: zona-denniho-svetla, label: Zóna denního světla, type: quantity, moduleId: cavern, shortDefinition: 'Část jeskyně, ze které je vidět přirozené světlo vchodu; hranice ponorů úrovně cavern.' }
+- { id: pet-pravidel, label: Pět pravidel jeskynního potápění, type: procedure, moduleId: cavern, shortDefinition: 'Výcvik, šňůra, třetiny, hloubka, světla – pravidla odvozená z rozboru smrtelných nehod.' }
+- { id: vodici-snura, label: Vodicí šňůra, type: equipment, moduleId: cavern, shortDefinition: 'Nepřerušená šňůra od otevřené vody ke každému místu, kam potápěč vplave.' }
+- { id: navijak, label: Naviják a cívka, type: equipment, moduleId: cavern, shortDefinition: 'Naviják pro hlavní šňůru od vchodu; malé cívky pro spojky a nouzové hledání.' }
+- { id: uvazani-snury, label: Uvázání šňůry, type: procedure, moduleId: cavern, shortDefinition: 'Primární uvázání v otevřené vodě, sekundární uvnitř a další úchyty podle tvaru chodby.' }
+- { id: past-na-snure, label: Past na šňůře, type: risk, moduleId: cavern, shortDefinition: 'Místo, kde šňůra vede užším prostorem, než kudy projde potápěč.' }
+- { id: tri-svetla, label: Tři světla, type: equipment, moduleId: cavern, shortDefinition: 'Hlavní svítilna a dvě záložní; každá musí sama vystačit na cestu ven.' }
+- { id: svetelne-signaly, label: Světelné signály, type: procedure, moduleId: cavern, shortDefinition: 'Kruh = v pořádku, pomalý pohyb = pozor, rychlé mávání = nouze.' }
+- { id: kontaktni-komunikace, label: Kontaktní komunikace, type: procedure, moduleId: cavern, shortDefinition: 'Dorozumívání dotykem při nulové viditelnosti: stisk, tlak vpřed, tah vzad.' }
+- { id: sediment, label: Zvíření sedimentu, type: risk, moduleId: cavern, shortDefinition: 'Jemný sediment zvednutý ploutví, rukou nebo bublinami; může na hodiny zrušit viditelnost.' }
+- { id: nulova-viditelnost, label: Nulová viditelnost, type: risk, moduleId: cavern, shortDefinition: 'Stav, kdy nevidíš světlo ani vlastní ruku; orientace jen hmatem po šňůře.' }
+- { id: zabi-kop, label: Žabí kop, type: procedure, moduleId: cavern, shortDefinition: 'Kop, který tlačí vodu dozadu, ne dolů; základ pohybu nad sedimentem.' }
+- { id: manevrovaci-kopy, label: Manévrovací kopy, type: procedure, moduleId: cavern, shortDefinition: 'Otočení na místě a couvání bez použití rukou.' }
+- { id: tlak-otocky, label: Tlak otočky, type: quantity, moduleId: cavern, formulaId: tretiny, shortDefinition: 'Tlak, při kterém se ponor obrací; vychází z pravidla třetin a určuje ho nejslabší článek týmu.' }
+- { id: dosah-pruniku, label: Dosah průniku, type: quantity, moduleId: cavern, formulaId: dosah, shortDefinition: 'Vzdálenost, kterou lze uplavat na plyn určený pro cestu dovnitř.' }
+- { id: ztrata-snury, label: Ztráta šňůry, type: risk, moduleId: cavern, shortDefinition: 'Situace, kdy potápěč nemá šňůru na dosah ani na dohled.' }
+- { id: selhani-svetla, label: Selhání světla, type: risk, moduleId: cavern, shortDefinition: 'Porucha hlavní svítilny; přechod na záložní a ukončení ponoru.' }
+- { id: sdileni-plynu, label: Sdílení plynu při návratu, type: procedure, moduleId: cavern, shortDefinition: 'Výstup dvou potápěčů z jedné zásoby na dlouhé hadici, v zákrytu podél šňůry.' }

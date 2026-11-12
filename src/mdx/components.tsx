@@ -9,10 +9,11 @@ import { LocalGraph as LocalGraphView } from '../components/LocalGraph';
 import { Tex } from '../components/Math';
 import { Steps } from '../components/Steps';
 import { Card, ReviewBadge } from '../components/ui';
-import { casesById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
+import { scenariosById, casesById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
 import { callContentFunction } from '../content/fns';
 import { LESSON_SECTIONS, type Lesson } from '../content/schema';
 import { QuizRunner } from '../quiz/QuizRunner';
+import { ScenarioPlayer } from '../scenario/ScenarioPlayer';
 import { CalcToy } from '../tools/CalcView';
 import { calcDefsById } from '../tools/defs';
 import { PLAYGROUNDS } from './playgrounds';
@@ -222,7 +223,14 @@ function Given({ children }: { children?: ReactNode }) {
   return <strong className="whitespace-nowrap">{children}</strong>;
 }
 
+/** Scénář vložený do lekce. */
+function ScenarioEmbed({ id }: { id: string }) {
+  const scenario = scenariosById.get(id);
+  return scenario ? <div className="max-w-none"><ScenarioPlayer scenario={scenario} /></div> : null;
+}
+
 export const mdxComponents = {
+  Scenario: ScenarioEmbed,
   Given,
   WhatIf,
   CaseLink,

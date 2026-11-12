@@ -17,7 +17,7 @@ export interface AnswerRow {
   correct: boolean;
   durationMs: number;
   /** Kde otázka padla: lekce, rychlý check, trénink, zkouška. */
-  mode: 'lesson' | 'quick' | 'training' | 'exam' | 'review' | 'mental';
+  mode: 'lesson' | 'quick' | 'training' | 'exam' | 'review' | 'mental' | 'scenario';
 }
 export interface CardRow {
   questionId: string;
