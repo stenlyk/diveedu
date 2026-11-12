@@ -528,3 +528,12 @@ test('diagramová otázka: označení bodu na diagramu a vyhodnocení', async ({
   await expect(page.getByText('✓ Správně')).toBeVisible();
 });
 
+test('neznámá adresa vysvětlí možnou starší verzi a nabídne cestu dál', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/tohle-neexistuje');
+  await expect(page.getByRole('heading', { name: 'Stránka nenalezena' })).toBeVisible();
+  await expect(page.getByText(/starší verzi aplikace/)).toBeVisible();
+  await page.getByRole('link', { name: 'Na úvod' }).click();
+  await expect(page.getByRole('link', { name: /Rychlý check/ })).toBeVisible();
+});
+

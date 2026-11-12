@@ -8,6 +8,7 @@ import { UpdatePrompt } from './UpdatePrompt';
 
 // Stránky mimo úvodní obrazovku se načítají líně, aby první načtení zůstalo malé.
 const Learn = lazy(() => import('../features/Learn').then((m) => ({ default: m.Learn })));
+const NotFound = lazy(() => import('../features/NotFound').then((m) => ({ default: m.NotFound })));
 const Podcast = lazy(() => import('../features/Podcast').then((m) => ({ default: m.Podcast })));
 const LessonPage = lazy(() => import('../features/LessonPage').then((m) => ({ default: m.LessonPage })));
 const Train = lazy(() => import('../features/Train').then((m) => ({ default: m.Train })));
@@ -71,7 +72,7 @@ export function App() {
             <Route path="pripady" element={<Cases />} />
             <Route path="pripady/:caseId" element={<CasePage />} />
             <Route path="nastaveni" element={<Settings />} />
-            <Route path="*" element={<p>Stránka nenalezena.</p>} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>
