@@ -47,13 +47,20 @@ docs/      poznámky k odborné kontrole výpočtů
 ## Zvuk
 
 ```bash
-npm run tts            # vygeneruje chybějící a změněná shrnutí do public/media (jen macOS, hlas Zuzana)
-npm run tts -- --all   # přegeneruje všechno
+npm run tts -- --dry               # vypíše, co by se generovalo a kolik znaků to je; nic nevolá
+npm run tts -- --only <id-lekce>   # jedna lekce na zkoušku
+npm run tts                        # chybějící a změněná shrnutí do public/media
+npm run tts -- --all               # všechno znovu
 ```
 
-Zvuk se čte systémovým hlasem počítače, nic se neposílá ven. Výstup (asi 14 MB) není v gitu.
-Bez něj aplikace funguje dál a shrnutí čte systémový hlas zařízení. Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`;
-nová zkratka v názvu nebo shrnutí lekce bez záznamu ve slovníku zastaví build.
+Dva zdroje hlasu:
+
+- **ElevenLabs** – použije se, když soubor `.env.tts` v kořeni projektu (není v gitu) obsahuje `ELEVENLABS_API_KEY` a `ELEVENLABS_VOICE_ID`.
+  Texty shrnutí (asi 45 tisíc znaků) odcházejí službě. Nepovinně `ELEVENLABS_MODEL` a `ELEVENLABS_SPEED`.
+- **macOS** – systémový hlas Zuzana, nic neopouští počítač. Výchozí, když klíč není.
+
+Výstup není v gitu. Bez něj aplikace funguje dál a shrnutí čte systémový hlas zařízení.
+Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`; nová zkratka v názvu nebo shrnutí lekce bez záznamu ve slovníku zastaví build.
 
 ## Nasazení (Cloudflare Pages)
 

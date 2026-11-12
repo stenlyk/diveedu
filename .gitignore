@@ -13,3 +13,4 @@ src/content/generated
 __pycache__/
 public/media/
 public/media-manifest.json
+.env.tts
