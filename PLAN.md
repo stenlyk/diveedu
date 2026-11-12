@@ -424,3 +424,7 @@ Etapa 5 je rozdělená: **5a** = jeskynní výpočty, engine scénářů a modul
 - Zvuk se generuje jen na macOS; CI ho nevytváří.
 - Dál chybí: videa a animace, průřezové moduly, míchací stanice, kreslení profilu od ruky.
 
+### Dodatek k etapě 6: hlas ElevenLabs (2026-11-12)
+
+Systémový hlas macOS uživatel po poslechu odmítl. Generátor proto umí ElevenLabs (klíč a ID hlasu v `.env.tts`, mimo git) a všech 78 shrnutí je nahraných znovu: MP3 64 kb/s, 26,4 MB, 58 minut, model `eleven_multilingual_v2`. Hlas macOS zůstal jako výchozí zdroj bez klíče. Texty shrnutí (asi 45 tisíc znaků) byly odeslány službě; jiný obsah ne. Slovník výslovnosti platí beze změny; jak zkratky s tímto hlasem zní, posoudil jen uživatel na jednom vzorku.
+
