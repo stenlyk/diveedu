@@ -1,0 +1,18 @@
+id: svycarsky-syr
+moduleId: lidskyfaktor
+title: "Model švýcarského sýra"
+order: 1
+conceptIds: ["svycarsky-syr", "latentni-podminky", "zamena-plynu"]
+checkQuestionIds: ["syr-co-rika", "syr-vrstvy", "syr-posledni", "syr-latentni", "syr-ppo2"]
+estimatedMinutes: 9
+audioSummary: >-
+  Mezi nebezpečím a nehodou stojí několik vrstev obrany. Žádná není dokonalá, každá má díry jako plátek sýra.
+  Nehoda nastane, když se díry ve všech vrstvách sejdou v jedné přímce.
+  Chyba člověka na místě je jen poslední díra.
+  Projít k ní bylo možné proto, že předchozí vrstvy byly děravé už dlouho. Lahve bez značení, zvyk analyzovat jen občas, tým, kde se nesluší upozorňovat na chyby.
+  Otázka, kdo to zavinil, najde poslední vrstvu. Otázka, které vrstvy selhaly, najde to, co se dá opravit.
+  Bezpečnost nestojí na tom, že nikdo neudělá chybu. Stojí na tom, že jedna chyba nestačí.
+sources:
+  - { title: "Human Error", author: "Reason J.", year: 1990 }
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+needs_review: true

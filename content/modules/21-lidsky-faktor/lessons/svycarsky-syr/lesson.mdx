@@ -1,0 +1,100 @@
+<Hook>
+
+Po každé nehodě se někdo zeptá: „Jak mohl udělat takovou hloupost?“
+
+Je to špatná otázka. Ten člověk tu hloupost dělal nejspíš už mnohokrát – a pokaždé to dopadlo dobře. Lepší otázka zní: co tentokrát chybělo, aby to dopadlo dobře znovu?
+
+</Hook>
+
+<Principle>
+
+<Term cs="model švýcarského sýra" /> popisuje, jak vznikají nehody ve složitých činnostech. Mezi nebezpečím a nehodou stojí několik vrstev obrany.
+Žádná není dokonalá; každá má díry jako plátek sýra. Nehoda nastane, když se díry ve všech vrstvách sejdou v jedné přímce.
+
+**Vrstvy v potápění:**
+
+- **organizace a kultura** – jak se v klubu, centru nebo týmu věci dělají a co se toleruje,
+- **plánování** – plyn, dekomprese, limity, nouzové varianty,
+- **výstroj** – konfigurace, servis, značení,
+- **postupy** – analýza, kontrola před ponorem, přepnutí plynu,
+- **tým** – partner, který se dívá a smí zasáhnout,
+- **jednotlivec** – pozornost, kondice, rozhodnutí v dané chvíli.
+
+**Dva druhy děr:**
+
+- **Aktivní selhání** – chyba člověka na místě: sáhl po špatné automatice, přehlédl manometr. Je vidět a po nehodě se o ní mluví.
+- **Skryté podmínky** – slabiny, které existovaly dlouho předtím: lahve bez značení, zvyk analyzovat „jen občas“, tým, kde se nesluší upozorňovat na chyby.
+  Nejsou vidět a po nehodě se o nich většinou mlčí.
+
+Aktivní selhání je poslední díra. Projít k ní ale bylo možné jen proto, že předchozí vrstvy byly děravé už dlouho.
+
+**Co z toho plyne:**
+
+- Otázka „kdo to zavinil“ najde jen poslední vrstvu. Otázka „které vrstvy selhaly a proč“ najde to, co se dá opravit.
+- Bezpečnost nestojí na tom, že nikdo neudělá chybu. Stojí na tom, že jedna chyba nestačí.
+- Každá vrstva, kterou vynecháš, „protože na to stejně dohlédne partner“, je vrstva, na kterou spoléhá i on.
+
+Případové studie v této aplikaci jsou psané právě takhle: jako řetěz vrstev, ne jako příběh jednoho viníka.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Vzorec je jedna z vrstev: říká, kde je hranice. Ostatní vrstvy zajišťují, že ji nepřekročíš omylem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Vezměme záměnu plynu z případové studie. Potápěč ve 40 m nasadí automatiku lahve s EAN50:
+
+<Worked fn="ppO2" args={[0.5, 40]} expected={2.5} tolerance={0.01} unit="bar" decimals={1} />
+
+Hranice této směsi je <Calc fn="mod" args={[0.5, 1.6]} decimals={0} unit="m" />. Aby k té chybě došlo, muselo selhat několik vrstev:
+
+- lahev neanalyzoval ten, kdo z ní dýchal,
+- maximální hloubka nebyla napsaná na boku lahve,
+- ventil byl otevřený a automatika po ruce,
+- přepnutí proběhlo bez postupu,
+- partner se v tu chvíli nedíval.
+
+Každá z těch pěti věcí sama nikoho nezabije. Stačilo, aby kterákoli jediná fungovala, a chyba by skončila zvednutým obočím partnera.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'po nehodě řekneš „byl to idiot“?', effect: 'Našel jsi poslední díru a přestal hledat. Skryté podmínky, které chybu umožnily, zůstanou – a čekají na dalšího.' },
+  { label: 'vynecháš kontrolu, protože ji dělá partner?', effect: 'Partner možná uvažuje stejně. Dvě vrstvy, které spoléhají jedna na druhou, jsou jedna vrstva.' },
+  { label: 'přidáš další vrstvu, ale nikdo ji nedodržuje?', effect: 'Vrstva, která existuje jen na papíře, je díra přes celý plátek. Méně pravidel, která se opravdu dělají, je lepší.' },
+  { label: 'se ti stokrát nic nestalo?', effect: 'Znamená to, že díry se zatím nesešly. O jejich velikosti to neříká nic.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="zamena-plynu-krece" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

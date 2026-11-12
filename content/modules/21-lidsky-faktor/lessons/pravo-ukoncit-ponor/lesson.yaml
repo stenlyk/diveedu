@@ -1,0 +1,19 @@
+id: pravo-ukoncit-ponor
+moduleId: lidskyfaktor
+title: "Kdokoli může ponor kdykoli ukončit"
+order: 7
+conceptIds: ["pravo-ukoncit", "tlak-na-dokonceni", "normalizace-odchylky"]
+checkQuestionIds: ["ukon-pravidlo", "ukon-proc-tezke", "ukon-utopene", "ukon-reakce", "ukon-deko"]
+estimatedMinutes: 9
+audioSummary: >-
+  Kdokoli může kterýkoli ponor kdykoli ukončit, z jakéhokoli důvodu, a nikdo se neptá proč.
+  Kdokoli znamená i nejméně zkušený člen týmu. Z jakéhokoli důvodu znamená i špatný pocit.
+  Použít to právo je těžké. Tlačí proti němu utopené náklady, cíl na dosah, ohled na ostatní a vlastní závazek.
+  Všechny působí nejsilněji tehdy, kdy je rezerva nejmenší.
+  Pravidlo se udržuje tím, že se říká nahlas před každým ponorem a že tým poděkuje tomu, kdo ho použil.
+  Limity dohodnuté na břehu se pod vodou neposuzují, jen dodržují.
+  Ukončený ponor se dá zopakovat. To je celý argument.
+sources:
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+  - { title: "Basic Cave Diving: A Blueprint for Survival", author: "Exley S.", year: 1979 }
+needs_review: true

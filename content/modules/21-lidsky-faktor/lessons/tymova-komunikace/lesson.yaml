@@ -1,0 +1,19 @@
+id: tymova-komunikace
+moduleId: lidskyfaktor
+title: "Týmová komunikace a rozbor po ponoru"
+order: 6
+conceptIds: ["uzavrena-smycka", "debriefing", "tym", "normalizace-odchylky"]
+checkQuestionIds: ["kom-smycka", "kom-briefing", "kom-autorita", "kom-debrief", "kom-otocka"]
+estimatedMinutes: 10
+audioSummary: >-
+  Většina nedorozumění vzniká tím, že oba slyšeli totéž a rozuměli něčemu jinému.
+  Uzavřená smyčka to zachytí. Sdělení, zopakování vlastními slovy a potvrzení.
+  Signál, na který nepřišla odpověď, nebyl přijat.
+  Porada před ponorem má vždy stejnou osnovu a končí otázkou, jestli někomu něco nesedí.
+  Když je v týmu někdo výrazně zkušenější, ostatní mlčí. Zkušenější proto musí výslovně říct, že chce být upozorněn.
+  Po ponoru pět minut rozboru. Co jsme plánovali, co se stalo, proč se to lišilo a co příště jinak.
+  Bez hledání viníka. A začíná nejzkušenější, vlastní chybou.
+sources:
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+  - { title: "The Checklist Manifesto: How to Get Things Right", author: "Gawande A.", year: 2009 }
+needs_review: true

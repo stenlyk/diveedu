@@ -577,3 +577,34 @@
   conceptIds: [bezvladny-potapec]
   source: { title: 'Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)', author: 'Mitchell S. J. et al.', year: 2012 }
   needs_review: true
+
+- id: challenger-1986
+  text: >-
+    Pojem normalizace odchylky vznikl při rozboru zkázy raketoplánu Challenger v roce 1986. Těsnicí kroužky pomocných motorů se poškozovaly už při dřívějších letech.
+    Protože každý let dopadl dobře, poškození se postupně začalo považovat za přijatelné – až do startu za mrazu, kdy těsnění selhalo.
+  conceptIds: [normalizace-odchylky]
+  source: { title: 'The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA', author: 'Vaughan D.', year: 1996 }
+
+- id: yerkes-dodson
+  text: >-
+    Trocha napětí výkon zlepšuje, příliš ho ničí. Vztah popsali psychologové Yerkes a Dodson už roku 1908 a platí hlavně pro složité úkoly:
+    čím náročnější úkon, tím méně stresu snese. Proto se nouzové postupy cvičí tak dlouho, až přestanou být složité.
+  conceptIds: [stres-zuzeni, panika]
+  source: { title: 'The relation of strength of stimulus to rapidity of habit-formation. Journal of Comparative Neurology and Psychology 18', author: 'Yerkes R. M., Dodson J. D.', year: 1908, note: Výklad zákona je zjednodušený. }
+  needs_review: true
+
+- id: who-checklist
+  text: >-
+    Když osm nemocnic v různých zemích zavedlo před operací devatenáctibodový kontrolní seznam, počet vážných komplikací klesl zhruba o třetinu a úmrtí téměř na polovinu.
+    Seznam neobsahoval nic, co by chirurgové neznali. Jen zajistil, že se to opravdu udělá pokaždé.
+  conceptIds: [checklist]
+  source: { title: 'A Surgical Safety Checklist to Reduce Morbidity and Mortality in a Global Population. New England Journal of Medicine 360', author: 'Haynes A. B. et al.', year: 2009, note: 'Přesná čísla (komplikace 11,0 → 7,0 %, úmrtí 1,5 → 0,8 %) ověřit.' }
+  needs_review: true
+
+- id: tenerife-1977
+  text: >-
+    Nejhorší nehoda v dějinách letectví, srážka dvou letadel na Tenerife roku 1977, nebyla selháním techniky. Posádka zahájila vzlet v mlze v přesvědčení,
+    že má povolení; nejednoznačná věta ve vysílačce nebyla zopakována a ověřena. Letectví z ní vyvodilo standardní frázi a povinné potvrzování – uzavřenou smyčku.
+  conceptIds: [uzavrena-smycka, tlak-na-dokonceni]
+  source: { title: 'Tenerife airport disaster – zpráva vyšetřovací komise (souhrn)', author: 'Subsecretaría de Aviación Civil, Španělsko', year: 1978, note: Podrobnosti komunikace ověřit proti zprávě. }
+  needs_review: true

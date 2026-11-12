@@ -1,0 +1,19 @@
+id: normalizace-odchylky
+moduleId: lidskyfaktor
+title: "Normalizace odchylky"
+order: 2
+conceptIds: ["normalizace-odchylky", "latentni-podminky", "tlak-otocky"]
+checkQuestionIds: ["norm-co-je", "norm-proc-funguje", "norm-priklady", "norm-plyn", "norm-obrana"]
+estimatedMinutes: 9
+audioSummary: >-
+  Normalizace odchylky je proces, ve kterém se porušení pravidla stane normou. Ne rozhodnutím, ale opakováním.
+  Jednou pravidlo ohneš, nic se nestane, a mozek si zapíše, že je to bezpečné.
+  Ve skutečnosti zjistil jen to, že to jednou vyšlo.
+  Příště je ohnutí snazší a o kousek větší.
+  Podléhají tomu hlavně zkušení. Každý ponor, při kterém odchylka prošla, je pro ně důkaz.
+  Obrana je znát důvod pravidla, ptát se po ponoru, co jsme udělali jinak než podle plánu, a nechat se pozorovat někým zvenčí.
+  Že to vyšlo, neznamená, že to bylo bezpečné.
+sources:
+  - { title: "The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA", author: "Vaughan D.", year: 1996 }
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+needs_review: true

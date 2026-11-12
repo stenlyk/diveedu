@@ -1,0 +1,19 @@
+id: checklisty
+moduleId: lidskyfaktor
+title: "Checklisty a kontrola před ponorem"
+order: 5
+conceptIds: ["checklist", "latentni-podminky", "zamena-plynu"]
+checkQuestionIds: ["chk-proc", "chk-typy", "chk-dobry", "chk-preruseni", "chk-smes"]
+estimatedMinutes: 9
+audioSummary: >-
+  Checklist neslouží k tomu, aby tě něco naučil. Slouží k tomu, abys udělal to, co umíš, pokaždé.
+  Paměť selhává u rutinních kroků, při vyrušení a pod časovým tlakem. Přesně takové jsou kroky před ponorem.
+  Dobrý seznam je krátký a obsahuje jen kroky, jejichž vynechání zabíjí.
+  Dělá se nahlas a ve dvou. Položky se ověřují, ne odříkávají.
+  Plyn znamená nadechnout se a podívat se na manometr.
+  Po přerušení se začíná znovu od začátku.
+  Checklist není berlička pro začátečníky. Používají ho ti, kdo vědí, kde zkušenost selhává.
+sources:
+  - { title: "The Checklist Manifesto: How to Get Things Right", author: "Gawande A.", year: 2009 }
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+needs_review: true

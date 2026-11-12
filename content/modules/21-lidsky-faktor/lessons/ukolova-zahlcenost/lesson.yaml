@@ -1,0 +1,19 @@
+id: ukolova-zahlcenost
+moduleId: lidskyfaktor
+title: "Úkolová zahlcenost a situační přehled"
+order: 3
+conceptIds: ["ukolova-zahlcenost", "situacni-prehled", "dusikova-narkoza"]
+checkQuestionIds: ["zahl-co-vypadne", "zahl-urovne", "zahl-priznaky", "zahl-spotreba", "zahl-obrana"]
+estimatedMinutes: 9
+audioSummary: >-
+  Pozornost je omezená. Když úkolů přibude, něco vypadne.
+  Nevypadne úkol, který právě děláš. Vypadne sledování na pozadí. Plyn, hloubka, čas a partner.
+  A vypadne potichu. Zahlcený mozek si nevšimne, že si nevšímá.
+  Situační přehled má tři úrovně. Vnímat, rozumět a předvídat. Zahlcenost je bere odshora.
+  Pozornost ubírá nová výstroj, úkol navíc, narkóza, chlad a špatný trim.
+  Obrana je automatizace základů, jedna nová věc na ponor, pravidelný rytmus kontrol a rozdělení rolí v týmu.
+  Když nestíháš, odlož to, co není nutné pro přežití.
+sources:
+  - { title: "Toward a theory of situation awareness in dynamic systems. Human Factors 37(1)", author: "Endsley M. R.", year: 1995 }
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+needs_review: true

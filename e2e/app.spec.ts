@@ -220,7 +220,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(900_000);
+  test.setTimeout(1_000_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -228,7 +228,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(84);
+  expect(hrefs.length).toBe(91);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -339,7 +339,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(166);
+  await expect(map.locator('[data-node]')).toHaveCount(178);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -419,7 +419,7 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(166);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(178);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');
@@ -553,5 +553,20 @@ test('průřezový modul Nouzové situace: lekce, scénář křečí a jeho rozb
   await choose('Řeknu, co se stalo. On dostane kyslík a volá se záchranná služba; já dýchám kyslík také a nechám se sledovat.');
   await expect(page.getByTestId('scenario-outcome')).toHaveText('Zvládnuto');
   await expect(page.getByTestId('scenario-debrief')).toContainText('5 správně, 0 přijatelně, 0 chyb');
+});
+
+test('průřezový modul Lidský faktor: scénář bez poruchy končí podle rozhodnutí', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/uceni');
+  await expect(page.getByRole('heading', { name: /Lidský faktor/ })).toBeVisible();
+  await page.goto('/trenink/scenare/jeste-kousek');
+  await page.getByRole('button', { name: 'Začít scénář' }).click();
+  await page.getByRole('button', { name: 'Dobře, věřím mu. Jdeme.' }).click();
+  await page.getByRole('button', { name: 'Pustím to z hlavy, na dně mám jinou práci.' }).click();
+  await page.getByRole('button', { name: 'Jen nahlédnu dovnitř, minutu dvě.' }).click();
+  await page.getByRole('button', { name: 'Kývnu. Když už jsme tady.' }).click();
+  await page.getByRole('button', { name: 'Ještě chvíli, plynu je dost.' }).click();
+  await expect(page.getByTestId('scenario-outcome')).toHaveText('Nezvládnuto');
+  await expect(page.getByTestId('scenario-debrief')).toContainText('utopené náklady');
 });
 

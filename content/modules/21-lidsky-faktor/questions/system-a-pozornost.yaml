@@ -1,0 +1,307 @@
+- id: syr-co-rika
+  type: choice
+  conceptIds: [svycarsky-syr]
+  difficulty: 1
+  prompt: Co říká model švýcarského sýra o vzniku nehody?
+  options:
+    - { text: 'Nehoda nastane, když se slabiny několika vrstev obrany sejdou najednou', correct: true }
+    - { text: 'Nehodu vždy způsobí jeden člověk jednou chybou', explanation: 'Jedna chyba projde jen tehdy, když ostatní vrstvy selhaly také.' }
+    - { text: 'Nehody jsou náhodné a nedá se jim předejít', explanation: 'Dá: zmenšováním děr a přidáváním vrstev.' }
+    - { text: 'Nehody se stávají jen začátečníkům', explanation: 'Zkušeným se stávají stejně, jen jinak.' }
+  explanation: 'Bezpečnost nestojí na tom, že nikdo neudělá chybu. Stojí na tom, že jedna chyba nestačí.'
+  backToLessonId: svycarsky-syr
+
+- id: syr-vrstvy
+  type: match
+  conceptIds: [svycarsky-syr, latentni-podminky]
+  difficulty: 2
+  prompt: Přiřaď slabinu k vrstvě obrany, do které patří.
+  pairs:
+    - { left: Lahev bez označení hloubky, right: Výstroj }
+    - { left: Přepnutí bez potvrzení partnera, right: Postupy }
+    - { left: 'V klubu se analýza „neřeší“', right: Organizace a kultura }
+    - { left: Chybí plán pro ztrátu plynu, right: Plánování }
+  explanation: 'Případové studie v aplikaci třídí řetěz chyb právě podle vrstev.'
+  backToLessonId: svycarsky-syr
+
+- id: syr-posledni
+  type: why
+  conceptIds: [svycarsky-syr, latentni-podminky]
+  difficulty: 2
+  prompt: Proč otázka „kdo to zavinil“ nevede ke zlepšení bezpečnosti?
+  options:
+    - { text: 'Najde jen poslední vrstvu; skryté podmínky, které chybu umožnily, zůstanou.', correct: true }
+    - { text: 'Viníka nikdy nejde určit.', explanation: 'Často jde. Jen to nic neopraví.' }
+    - { text: 'Je to neslušné.', explanation: 'Důvod je praktický, ne společenský.' }
+    - { text: 'Nehody nemají příčiny.', explanation: 'Mají jich několik.' }
+  explanation: 'Užitečná otázka zní: které vrstvy selhaly a proč to tomu člověku v tu chvíli dávalo smysl.'
+  backToLessonId: svycarsky-syr
+
+- id: syr-latentni
+  type: multi
+  conceptIds: [latentni-podminky]
+  difficulty: 1
+  prompt: Co z toho je skrytá podmínka, a ne aktivní selhání?
+  options:
+    - { text: 'Dekompresní lahve se v týmu nikdy neznačily', correct: true }
+    - { text: 'Kontrola před ponorem se dělá jen „když je čas“', correct: true }
+    - { text: 'V týmu se nesluší upozornit zkušenějšího na chybu', correct: true }
+    - { text: 'Potápěč sáhl ve 40 m po špatné automatice', explanation: 'To je aktivní selhání: poslední díra.' }
+  explanation: 'Skryté podmínky existují dlouho před nehodou a po ní se o nich mluví nejméně.'
+  backToLessonId: svycarsky-syr
+
+- id: syr-ppo2
+  type: numeric
+  conceptIds: [svycarsky-syr, zamena-plynu]
+  difficulty: 2
+  prompt: 'Všechny vrstvy selhaly a potápěč v hloubce {depth} m dýchá EAN50. Jaký je parciální tlak kyslíku?'
+  template: { fn: ppO2, params: { depth: { values: [30, 36, 40, 45] } }, fixed: { fo2: 0.5 }, args: [fo2, depth], tolerance: 0.03, unit: bar, decimals: 2 }
+  explanation: 'Frakce krát absolutní tlak. Vzorec říká, kde je hranice; ostatní vrstvy mají zajistit, že ji nepřekročíš omylem.'
+  backToLessonId: svycarsky-syr
+
+- id: syr-spolehani
+  type: why
+  conceptIds: [svycarsky-syr]
+  difficulty: 2
+  prompt: Proč je nebezpečné vynechat kontrolu s tím, že „na to dohlédne partner“?
+  options:
+    - { text: 'Partner může uvažovat stejně; dvě vrstvy, které spoléhají jedna na druhou, jsou jedna.', correct: true }
+    - { text: 'Partner kontroly neumí.', explanation: 'Umí. Jde o to, že je možná také vynechal.' }
+    - { text: 'Kontrola se smí dělat jen jednou.', explanation: 'Naopak, nezávislé kontroly jsou podstata vrstev.' }
+    - { text: 'Partner za tebe neručí.', explanation: 'O právní stránku nejde.' }
+  explanation: 'Vrstvy fungují jen tehdy, když jsou nezávislé.'
+  backToLessonId: svycarsky-syr
+
+- id: norm-co-je
+  type: choice
+  conceptIds: [normalizace-odchylky]
+  difficulty: 1
+  prompt: Co je normalizace odchylky?
+  options:
+    - { text: 'Porušení pravidla, které prošlo bez následků, se opakováním stane normou', correct: true }
+    - { text: 'Úprava pravidel po důkladném rozboru', explanation: 'To je řízená změna. Normalizace probíhá potichu a bez rozhodnutí.' }
+    - { text: 'Statistická metoda', explanation: 'Název zní podobně, ale jde o chování lidí.' }
+    - { text: 'Návrat k pravidlům po nehodě', explanation: 'To přichází až potom – pokud vůbec.' }
+  explanation: 'Mozek z úspěchu vyvodí „je to bezpečné“, i když zjistil jen to, že to jednou vyšlo.'
+  backToLessonId: normalizace-odchylky
+
+- id: norm-proc-funguje
+  type: why
+  conceptIds: [normalizace-odchylky]
+  difficulty: 2
+  prompt: Proč normalizaci odchylky podléhají hlavně zkušení potápěči?
+  options:
+    - { text: 'Mají za sebou mnoho ponorů, při kterých odchylka prošla, a každý berou jako důkaz.', correct: true }
+    - { text: 'Zkušení pravidla neznají.', explanation: 'Znají je nejlépe. Právě proto je „umějí“ ohnout.' }
+    - { text: 'Začátečníci pravidla porušovat nesmějí.', explanation: 'Nikdo nesmí víc než jiný.' }
+    - { text: 'Zkušení mají horší výstroj.', explanation: 'S výstrojí to nesouvisí.' }
+  explanation: 'Začátečník pravidlo dodrží, protože se bojí. Zkušený ho ohne, protože „ví“.'
+  backToLessonId: normalizace-odchylky
+
+- id: norm-priklady
+  type: findError
+  conceptIds: [normalizace-odchylky, latentni-podminky]
+  difficulty: 2
+  prompt: Které věty prozrazují normalizaci odchylky?
+  items:
+    - { text: 'Analyzuji každou lahev, i když je to stejná směs jako minule.' }
+    - { text: 'Kontrolu před ponorem neděláme, potápíme se spolu už roky.', isError: true, explanation: 'Délka spolupráce nechrání před jedním vyrušením nebo záměnou.' }
+    - { text: 'Otáčím vždycky o něco později, ještě nikdy to nevadilo.', isError: true, explanation: '„Ještě nikdy to nevadilo“ znamená, že k nouzi zatím nedošlo – ne že rezerva stačí.' }
+    - { text: 'Po ponoru se ptáme, co jsme udělali jinak než podle plánu.' }
+  explanation: 'Úspěch není důkaz bezpečnosti.'
+  backToLessonId: normalizace-odchylky
+
+- id: norm-plyn
+  type: numeric
+  conceptIds: [normalizace-odchylky, tlak-otocky]
+  difficulty: 3
+  prompt: 'V jeskyni ve 20 m jsi místo 70 bar použil na cestu dovnitř {usable} bar z dvojčete 24 l (spotřeba 20 l/min, rychlost 15 m/min). Jak daleko od vchodu jsi?'
+  template: { fn: penetrationDistance, params: { usable: { values: [75, 80, 90, 100] } }, fixed: { tank: 24, sac: 20, depth: 20, speed: 15 }, args: [usable, tank, sac, depth, speed], tolerance: 5, unit: m, decimals: 0 }
+  explanation: 'Každých deset barů navíc je šedesát metrů dál – a cesta ven pro dva stojí dvojnásobek toho, co cesta dovnitř.'
+  backToLessonId: normalizace-odchylky
+
+- id: norm-obrana
+  type: multi
+  conceptIds: [normalizace-odchylky, debriefing]
+  difficulty: 1
+  prompt: Co pomáhá proti normalizaci odchylky?
+  options:
+    - { text: 'Znát důvod každého pravidla', correct: true }
+    - { text: 'Po ponoru se ptát, co jsme udělali jinak než podle plánu', correct: true }
+    - { text: 'Pohled někoho zvenčí', correct: true }
+    - { text: 'Spoléhat na to, že dosud vše vyšlo', explanation: 'To je její příčina.' }
+  explanation: 'Odchylka, o které se mluví nahlas, se nestane normou potichu.'
+  backToLessonId: normalizace-odchylky
+
+- id: norm-novacek
+  type: why
+  conceptIds: [normalizace-odchylky, latentni-podminky]
+  difficulty: 2
+  prompt: Proč je normalizovaná odchylka nebezpečná i pro nové členy týmu?
+  options:
+    - { text: 'Naučí se ji jako správný postup a o původním pravidle se nedozvědí.', correct: true }
+    - { text: 'Nováčci pravidla sami mění.', explanation: 'Přebírají to, co vidí.' }
+    - { text: 'Noví členové mají horší paměť.', explanation: 'S pamětí to nesouvisí.' }
+    - { text: 'Není, týká se jen zkušených.', explanation: 'Šíří se právě předáváním.' }
+  explanation: 'Zároveň je nový člen ten, kdo odchylku ještě vidí. Stojí za to se ho ptát.'
+  backToLessonId: normalizace-odchylky
+
+- id: zahl-co-vypadne
+  type: why
+  conceptIds: [ukolova-zahlcenost, situacni-prehled]
+  difficulty: 1
+  prompt: Co při zahlcení úkoly vypadne z pozornosti jako první?
+  options:
+    - { text: 'Sledování na pozadí: plyn, hloubka, čas a partner.', correct: true }
+    - { text: 'Úkol, na který se soustředíš.', explanation: 'Ten má pozornost celou.' }
+    - { text: 'Dýchání.', explanation: 'Dýchání řídí tělo samo.' }
+    - { text: 'Nic, pozornost se dá dělit neomezeně.', explanation: 'Pozornost je konečná.' }
+  explanation: 'A vypadne potichu: zahlcený mozek si nevšimne, že si nevšímá.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: zahl-urovne
+  type: order
+  conceptIds: [situacni-prehled]
+  difficulty: 2
+  prompt: Seřaď úrovně situačního přehledu od první.
+  items:
+    - 'Vnímat, co se děje'
+    - 'Rozumět, co to znamená'
+    - 'Předvídat, co bude za chvíli'
+  explanation: 'Zahlcenost je bere odshora: nejdřív přestaneš předvídat.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: zahl-priznaky
+  type: multi
+  conceptIds: [ukolova-zahlcenost, situacni-prehled]
+  difficulty: 1
+  prompt: Které známky ukazují, že ztrácíš přehled?
+  options:
+    - { text: 'Nevíš, kolik máš plynu, dokud se nepodíváš', correct: true }
+    - { text: 'Překvapí tě hloubka na počítači', correct: true }
+    - { text: 'Partner je jinde, než sis myslel', correct: true }
+    - { text: 'Víš, kdy dosáhneš tlaku otočky', explanation: 'To je naopak známka dobrého přehledu.' }
+  explanation: 'Kterákoli z nich je důvod odložit úkol a vrátit se k základům.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: zahl-spotreba
+  type: numeric
+  conceptIds: [ukolova-zahlcenost, sac]
+  difficulty: 2
+  prompt: 'Při práci ti spotřeba stoupla na {sac} l/min. Kolik litrů plynu spotřebuješ za {time} min v hloubce {depth} m?'
+  template: { fn: gasConsumed, params: { sac: { values: [25, 30, 35] }, depth: { values: [20, 30, 40] }, time: { values: [10, 15] } }, args: [sac, depth, time], tolerance: 20, unit: l, decimals: 0 }
+  explanation: 'Spotřeba krát absolutní tlak krát čas. Plán počítal s klidovou hodnotou.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: zahl-obrana
+  type: findError
+  conceptIds: [ukolova-zahlcenost]
+  difficulty: 2
+  prompt: Které plány na ponor zvyšují riziko zahlcení?
+  items:
+    - { text: 'Nový oblek si poprvé vyzkouším na mělkém, známém místě.' }
+    - { text: 'Vezmu novou konfiguraci, nový foťák a půjdeme na vrak, kde jsem nebyl.', isError: true, explanation: 'Tři nové věci najednou. Pravidlo zní: jedna nová věc na ponor.' }
+    - { text: 'Budu fotit a zároveň navigovat, partner se jen veze.', isError: true, explanation: 'Role se dělí: kdo fotí, nenaviguje.' }
+    - { text: 'Plyn, hloubku a tým kontroluji v pravidelném rytmu.' }
+  explanation: 'Tým má víc pozornosti než jednotlivec – když ji rozdělí.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: zahl-trim
+  type: why
+  conceptIds: [ukolova-zahlcenost, trim]
+  difficulty: 2
+  prompt: Proč špatný trim a vztlak zhoršují situační přehled?
+  options:
+    - { text: 'Řízení polohy stojí pozornost, která pak chybí na plyn, hloubku a tým.', correct: true }
+    - { text: 'Špatný trim zkresluje údaje počítače.', explanation: 'Počítač měří správně.' }
+    - { text: 'Ve špatném trimu není vidět na manometr.', explanation: 'Vidět je. Jen se na něj nepodíváš.' }
+    - { text: 'Nezhoršují, je to jen estetika.', explanation: 'Základy, které nejsou automatické, jsou stálý úkol navíc.' }
+  explanation: 'Proto se základní dovednosti cvičí tak dlouho, až nestojí pozornost.'
+  backToLessonId: ukolova-zahlcenost
+
+- id: stres-zuzeni-co
+  type: multi
+  conceptIds: [stres-zuzeni]
+  difficulty: 1
+  prompt: Co dělá silný stres s myšlením potápěče?
+  options:
+    - { text: 'Zúží vnímání na jeden problém', correct: true }
+    - { text: 'Rozpadají se úkony o více krocích', correct: true }
+    - { text: 'Vrací ho k nejstaršímu návyku', correct: true }
+    - { text: 'Zlepšuje jemnou motoriku', explanation: 'Jemná motorika selhává jako první.' }
+  explanation: 'V nouzi neuděláš to, co víš, ale to, co máš nacvičené nejdéle.'
+  backToLessonId: stres-a-panika
+
+- id: stres-smycka
+  type: order
+  conceptIds: [panika, retence-co2]
+  difficulty: 2
+  prompt: Seřaď kroky smyčky paniky pod vodou.
+  items:
+    - 'Problém vyvolá stres a zrychlí dech'
+    - 'Mělký rychlý dech špatně odvádí oxid uhličitý'
+    - 'Stoupající CO2 vyvolá úzkost a pocit dušení'
+    - 'Pocit dušení dál zvyšuje stres'
+  explanation: 'Smyčka se dá přerušit jen v jednom místě: dechem.'
+  backToLessonId: stres-a-panika
+
+- id: stres-co2
+  type: why
+  conceptIds: [panika, retence-co2, hustota-plynu]
+  difficulty: 3
+  prompt: Proč se smyčka paniky roztočí v hloubce rychleji?
+  options:
+    - { text: 'Hustší plyn zvyšuje dechovou práci a CO2 se odvádí hůř už v klidu.', correct: true }
+    - { text: 'V hloubce je méně kyslíku.', explanation: 'Parciální tlak kyslíku je naopak vyšší.' }
+    - { text: 'Stres je v hloubce silnější.', explanation: 'Stres je stejný; mění se fyziologie dýchání.' }
+    - { text: 'Automatika dává v hloubce méně plynu.', explanation: 'Dává ho dost. Problém je jeho hustota.' }
+  explanation: 'K tomu narkóza, která zhoršuje úsudek. Proto se v hloubce volí helium i kvůli tomuhle.'
+  backToLessonId: stres-a-panika
+
+- id: stres-cas
+  type: numeric
+  conceptIds: [panika, stres-zuzeni]
+  difficulty: 2
+  prompt: 'V dvojčeti 24 l zbývá {bar} bar, hloubka 40 m. Na kolik minut plyn vystačí při panické spotřebě {sac} l/min?'
+  template: { fn: minutesOnGas, params: { bar: { values: [80, 100, 120] }, sac: { values: [40, 50, 60] } }, fixed: { tank: 24, depth: 40 }, args: [bar, tank, sac, depth], tolerance: 0.3, unit: min, decimals: 1 }
+  explanation: 'Litry děleno spotřebou v hloubce. Při klidných 20 l/min by to bylo dvakrát až třikrát déle.'
+  backToLessonId: stres-a-panika
+
+- id: stres-obrana
+  type: order
+  conceptIds: [panika, zastav-dychej-mysli]
+  difficulty: 1
+  prompt: Cítíš, že se ti dech vymyká. Seřaď, co uděláš.
+  items:
+    - 'Zastavím'
+    - 'Dlouze a úplně vydechnu, několikrát'
+    - 'Chytím se partnera nebo lana'
+    - 'Udělám jen první krok řešení'
+  explanation: 'Dlouhý výdech je jediná věc, která smyčku spolehlivě přeruší.'
+  backToLessonId: stres-a-panika
+
+- id: stres-partner
+  type: choice
+  conceptIds: [panika, stres-zuzeni]
+  difficulty: 2
+  prompt: Partner má vytřeštěné oči, trhaně se pohybuje a z automatiky mu jdou rychlé bubliny. Co uděláš?
+  options:
+    - { text: 'Zastavím ho dotykem, navážu oční kontakt a ukážu pomalý dech', correct: true }
+    - { text: 'Nechám ho, ať si to vyřeší sám', explanation: 'Smyčka se sama spíš uzavře.' }
+    - { text: 'Ukážu mu, ať zrychlí', explanation: 'Pohyb a spěch stres zvyšují.' }
+    - { text: 'Odplavu pro pomoc', explanation: 'Jsi pomoc. Partnera v tu chvíli neopouštíš.' }
+  explanation: 'Zasáhnout se má dřív, než se stres změní v paniku. Potom už nemusí být s kým komunikovat.'
+  backToLessonId: stres-a-panika
+
+- id: stres-navyk
+  type: why
+  conceptIds: [stres-zuzeni, zastav-dychej-mysli]
+  difficulty: 2
+  prompt: Proč se nouzové postupy cvičí tolikrát, až jdou bez přemýšlení?
+  options:
+    - { text: 'Pod stresem se složité úkony rozpadají a zůstane jen to, co je reflex.', correct: true }
+    - { text: 'Aby je potápěč nezapomněl do příštího kurzu.', explanation: 'Jde o výkon pod stresem, ne o paměť v klidu.' }
+    - { text: 'Kvůli zkoušce.', explanation: 'Zkouška je vedlejší.' }
+    - { text: 'Aby byly rychlejší.', explanation: 'Rychlost je důsledek; cíl je, aby vůbec proběhly.' }
+  explanation: 'Čím složitější úkon, tím méně stresu snese. Nácvik ho zjednodušuje.'
+  backToLessonId: stres-a-panika

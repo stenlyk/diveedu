@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–6 hotové s výhradami, plus první průřezový modul (sekce 26): zvuk a osm animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–6 hotové s výhradami, plus dva průřezové moduly (sekce 26–27): zvuk a osm animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -461,4 +461,19 @@ První ze čtyř průřezových modulů ze zadání. Zvolen jako první, protož
 - Průtok volně proudící automatiky (400 l/min) je ilustrační hodnota označená jako předpoklad.
 - Pole `unlockAfter` se v aplikaci zatím nijak neprojevuje: modul je přístupný vždy jako ostatní.
 - Zbývají průřezové moduly Fyziologie a medicína, Vybavení a Lidský faktor.
+
+## 27. Průřezový modul Lidský faktor (2026-11-12)
+
+- **Modul `lidskyfaktor`** (větev průřezová, navazuje na Advanced Nitrox): 7 lekcí, 46 otázek, 12 uzlů, 16 vazeb, 4 zajímavosti. Model švýcarského sýra; normalizace odchylky; úkolová zahlcenost a situační přehled; stres a panika; checklisty; týmová komunikace a rozbor po ponoru; právo ukončit ponor.
+- **Scénář „Ještě kousek“:** bez jediné poruchy, jen řada ústupků tlaku na dokončení.
+- Příklady v lekcích počítají `calc` a `deco` (o kolik barů chybí po otočce „o deset barů později“, co stojí pět minut navíc na dně).
+- Zvuková shrnutí všech sedmi lekcí jsou namluvená.
+
+### Co je slabé nebo otevřené
+
+- Obsah je psaný z hlavy; všech sedm lekcí i scénář mají `needs_review`. K odborné kontrole je teď 119 položek.
+- K ověření proti zdrojům zvlášť: čísla ze studie kontrolního seznamu WHO (Haynes et al. 2009), popis komunikace při nehodě na Tenerife 1977, výklad Yerkesova–Dodsonova zákona a přiřazení pojmů autorům (Reason, Vaughan, Endsley).
+- Smyčka stres → dech → CO2 → úzkost je podaná zjednodušeně; fyziologii má posoudit lékař.
+- **Velikost:** text a obsah narostly na 1,16 MB, celkem 2,51 MB z rozpočtu 3 MB. Dva zbývající průřezové moduly se ještě vejdou, další rozšiřování bude chtít rozpočet přehodnotit nebo obsah načítat po modulech.
+- Zbývají průřezové moduly Fyziologie a medicína a Vybavení.
 

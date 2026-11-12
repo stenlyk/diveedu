@@ -356,3 +356,21 @@
 - { from: tym, to: bezvladny-potapec, type: je_predpokladem, lessonId: zachrana-bezvladneho-potapece, explanation: 'Zachránit může jen ten, kdo je na dosah.' }
 - { from: kyslik-prvni-pomoc, to: plynova-embolie, type: zmirnuje, lessonId: zachrana-bezvladneho-potapece, explanation: Kyslík je první pomoc do příjezdu záchranky. }
 - { from: evakuacni-plan, to: bezvladny-potapec, type: je_predpokladem, lessonId: zachrana-bezvladneho-potapece, explanation: 'Záchrana končí až v nemocnici; cesta tam musí být známá předem.' }
+
+# ── Průřezový modul: Lidský faktor ───────────────────────────────────────────
+- { from: latentni-podminky, to: svycarsky-syr, type: je_predpokladem, lessonId: svycarsky-syr, explanation: Skryté podmínky jsou díry ve vrstvách obrany. }
+- { from: svycarsky-syr, to: zamena-plynu, type: zmirnuje, lessonId: svycarsky-syr, explanation: 'Několik nezávislých vrstev: analýza, značení, postup přepnutí, partner.' }
+- { from: normalizace-odchylky, to: latentni-podminky, type: zvysuje, lessonId: normalizace-odchylky, explanation: Každá tolerovaná odchylka je další díra. }
+- { from: normalizace-odchylky, to: tlak-otocky, type: zhorsuje, lessonId: normalizace-odchylky, explanation: 'Rezerva se zmenšuje po malých krocích, které nikdo neschválil.' }
+- { from: ukolova-zahlcenost, to: situacni-prehled, type: snizuje, lessonId: ukolova-zahlcenost, explanation: Pozornost je konečná. }
+- { from: ukolova-zahlcenost, to: sac, type: zvysuje, lessonId: ukolova-zahlcenost, explanation: Práce a soustředění zvyšují spotřebu. }
+- { from: dusikova-narkoza, to: situacni-prehled, type: snizuje, lessonId: ukolova-zahlcenost, explanation: Narkóza zpomaluje zpracování informací. }
+- { from: stres-zuzeni, to: panika, type: zpusobuje, lessonId: stres-a-panika, explanation: Nezvládnutý stres přerůstá v paniku. }
+- { from: retence-co2, to: panika, type: zvysuje, lessonId: stres-a-panika, explanation: Vysoký CO2 sám vyvolává úzkost a pocit dušení. }
+- { from: zastav-dychej-mysli, to: panika, type: zmirnuje, lessonId: stres-a-panika, explanation: Zklidněný dech přeruší smyčku. }
+- { from: checklist, to: latentni-podminky, type: zmirnuje, lessonId: checklisty, explanation: 'Zachytí vynechaný krok dřív, než se z něj stane díra.' }
+- { from: checklist, to: zamena-plynu, type: zmirnuje, lessonId: checklisty, explanation: 'Analýza a značení jako položka, ne jako zvyk.' }
+- { from: uzavrena-smycka, to: tym, type: je_predpokladem, lessonId: tymova-komunikace, explanation: Tým funguje jen tehdy, když si rozumí. }
+- { from: debriefing, to: normalizace-odchylky, type: zmirnuje, lessonId: tymova-komunikace, explanation: 'Odchylka, o které se mluví, se nestane normou potichu.' }
+- { from: pravo-ukoncit, to: tlak-na-dokonceni, type: zmirnuje, lessonId: pravo-ukoncit-ponor, explanation: 'Pravidlo dohodnuté předem unese tlak, který jednotlivec neunese.' }
+- { from: tlak-na-dokonceni, to: normalizace-odchylky, type: zvysuje, lessonId: pravo-ukoncit-ponor, explanation: 'Kvůli dokončení se ustupuje z pravidel.' }

@@ -1,0 +1,97 @@
+<Hook>
+
+Fotíš. Světlo, ostření, kompozice, vztlak, aby ses nedotkl dna. Jde ti to.
+
+Kdy ses naposledy podíval na manometr? A kde je partner?
+
+</Hook>
+
+<Principle>
+
+Pozornost je omezená. Každý úkol z ní ukrojí kus, a když úkolů přibude, něco vypadne. Tomu se říká <Term cs="úkolová zahlcenost" />.
+
+Zrádné je, **co** vypadne. Nevypadne úkol, který právě děláš – ten má pozornost celou. Vypadne sledování na pozadí: plyn, hloubka, čas, partner.
+A vypadne potichu; nezahlcený mozek by si všiml, zahlcený si nevšimne, že si nevšímá.
+
+**<Term cs="situační přehled" />** má tři úrovně:
+
+1. **Vnímat.** Co ukazuje manometr, počítač, kde je tým.
+2. **Rozumět.** Co to znamená: spotřeba je vyšší, než má být.
+3. **Předvídat.** Co z toho bude: za pět minut dosáhnu tlaku otočky, a to jsem teprve v půlce.
+
+Zahlcenost bere úrovně odshora. Nejdřív přestaneš předvídat, potom rozumět, nakonec se přestaneš dívat.
+
+**Co pozornost ubírá:**
+
+- nová výstroj, nová konfigurace, nové místo,
+- úkol navíc: foto, mapování, navíjení, vedení skupiny,
+- narkóza, chlad, únava,
+- špatný trim a vztlak – když musíš řídit polohu vědomě, na nic jiného nezbývá,
+- stres a jakýkoli nevyřešený problém.
+
+**Příznaky u sebe:** nevíš, kolik máš plynu, aniž se podíváš. Překvapí tě hloubka. Partner je jinde, než sis myslel. Děláš věci ve špatném pořadí.
+
+**Obrana:**
+
+- **Automatizace základů.** Vztlak, trim a ovládání výstroje nacvičené tak, aby nestály pozornost.
+- **Jedna nová věc na ponor.** Nová výstroj a nové místo a nový úkol je recept.
+- **Rytmus kontrol.** Plyn, hloubka, čas, tým – v pravidelném intervalu, bez ohledu na to, co děláš.
+- **Rozdělení rolí.** Kdo fotí, nenaviguje. Tým má víc pozornosti než jednotlivec.
+- **Zastavit úkol.** Když si všimneš, že nestíháš, odlož to, co není nutné pro přežití.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Práce a soustředění zvyšují spotřebu – a zahlcený potápěč je ten, kdo se na manometr dívá nejméně.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Deset minut ve 30 m v klidu, se spotřebou 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 30, 10]} expected={800} tolerance={1} unit="l" decimals={0} />
+
+Stejných deset minut s úkolem, který zaměstná hlavu i tělo, se spotřebou 30 l/min:
+
+<Worked fn="gasConsumed" args={[30, 30, 10]} expected={1200} tolerance={1} unit="l" decimals={0} />
+
+O polovinu víc. V lahvi 12 l je rozdíl <Calc fn="litersToBar" args={[400, 12]} decimals={0} unit="bar" />.
+
+Plán počítal s klidovou spotřebou a ty se na manometr díváš méně často než obvykle. Dvě chyby stejným směrem:
+plyn mizí rychleji a ty to zjistíš později. Proto má rytmus kontrol platit tím přísněji, čím víc máš práce.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="what-if-graph" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="blue-hole-2000" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

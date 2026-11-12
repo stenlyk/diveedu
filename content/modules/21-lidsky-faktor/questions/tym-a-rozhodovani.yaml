@@ -1,0 +1,260 @@
+- id: chk-proc
+  type: why
+  conceptIds: [checklist]
+  difficulty: 1
+  prompt: K čemu slouží checklist zkušenému potápěči?
+  options:
+    - { text: 'Aby to, co umí, udělal pokaždé – i při vyrušení a ve spěchu.', correct: true }
+    - { text: 'Aby se naučil nové postupy.', explanation: 'Na učení je kurz. Seznam hlídá provedení.' }
+    - { text: 'Aby měl doklad pro pojišťovnu.', explanation: 'O doklady nejde.' }
+    - { text: 'K ničemu, je pro začátečníky.', explanation: 'Používají ho piloti a chirurgové právě proto, že jsou zkušení.' }
+  explanation: 'Paměť selhává předvídatelně u rutinních kroků. Přesně takové jsou kroky před ponorem.'
+  backToLessonId: checklisty
+
+- id: chk-typy
+  type: match
+  conceptIds: [checklist]
+  difficulty: 2
+  prompt: Přiřaď druh seznamu k použití.
+  pairs:
+    - { left: Přečti a udělej, right: 'Sestavování výstroje a méně časté postupy' }
+    - { left: Udělej a ověř, right: 'Kontrola kritických bodů těsně před ponorem' }
+  explanation: 'Kontrola před ponorem ověřuje to, co už je hotové.'
+  backToLessonId: checklisty
+
+- id: chk-dobry
+  type: findError
+  conceptIds: [checklist]
+  difficulty: 2
+  prompt: Které vlastnosti kontroly před ponorem jsou špatně?
+  items:
+    - { text: 'Má sedm položek, samé kroky, jejichž vynechání zabíjí.' }
+    - { text: 'Má čtyřicet položek, ať se na nic nezapomene.', isError: true, explanation: 'Dlouhý seznam se přeskakuje. Kritických kroků je málo.' }
+    - { text: 'Každý si ji odříká potichu sám pro sebe.', isError: true, explanation: 'Dělá se nahlas a ve dvou: jeden čte, druhý ukazuje.' }
+    - { text: 'Položka „plyn“ znamená nadechnout se a podívat se na manometr.' }
+  explanation: 'Položky se ověřují, ne odříkávají.'
+  backToLessonId: checklisty
+
+- id: chk-preruseni
+  type: choice
+  conceptIds: [checklist, latentni-podminky]
+  difficulty: 2
+  prompt: V polovině kontroly před ponorem tě někdo vyruší dotazem. Jak pokračuješ?
+  options:
+    - { text: 'Začnu znovu od první položky', correct: true }
+    - { text: 'Navážu tam, kde jsem skončil', explanation: 'Po přerušení mozek věří, že rozdělaný krok je hotový.' }
+    - { text: 'Zbytek přeskočím, už je to skoro celé', explanation: 'Vynechaný bývá právě ten krok, u kterého přerušení přišlo.' }
+    - { text: 'Dokončím ji pod vodou', explanation: 'Pod vodou se už nedá nic napravit v klidu.' }
+  explanation: 'Přerušení je nejčastější příčina vynechaného kroku.'
+  backToLessonId: checklisty
+
+- id: chk-smes
+  type: numeric
+  conceptIds: [checklist, zamena-plynu]
+  difficulty: 2
+  prompt: 'Analýza se vynechala a v lahvi je EAN{fo2|percent} místo plánované směsi. Jaká je jeho maximální operační hloubka při limitu 1,4 bar?'
+  template: { fn: mod, params: { fo2: { values: [0.36, 0.4, 0.5] } }, fixed: { limit: 1.4 }, args: [fo2, limit], tolerance: 0.5, unit: m, decimals: 0 }
+  explanation: 'Limit dělený frakcí dá absolutní tlak; hloubka je o jeden bar méně, krát deset. Analýza trvá minutu.'
+  backToLessonId: checklisty
+
+- id: chk-ritual
+  type: why
+  conceptIds: [checklist, normalizace-odchylky]
+  difficulty: 2
+  prompt: Jak se z checklistu stane rituál, který nechrání?
+  options:
+    - { text: 'Slova se říkají, ale položky se neověřují pohledem a dotykem.', correct: true }
+    - { text: 'Dělá se příliš často.', explanation: 'Častost nevadí. Vadí, když se přestane dívat.' }
+    - { text: 'Je napsaný na papíře.', explanation: 'Forma nerozhoduje.' }
+    - { text: 'Dělá ho celý tým.', explanation: 'To je naopak správně.' }
+  explanation: 'Odříkaná kontrola je vrstva, která existuje jen na papíře.'
+  backToLessonId: checklisty
+
+- id: kom-smycka
+  type: order
+  conceptIds: [uzavrena-smycka]
+  difficulty: 1
+  prompt: Seřaď kroky komunikace v uzavřené smyčce.
+  items:
+    - 'Sdělení'
+    - 'Zopakování příjemcem vlastními slovy'
+    - 'Potvrzení, že to tak je'
+  explanation: 'Zpráva platí až tehdy, když ji příjemce zopakoval a odesílatel potvrdil.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-briefing
+  type: multi
+  conceptIds: [uzavrena-smycka, tym]
+  difficulty: 1
+  prompt: Co patří do porady před ponorem?
+  options:
+    - { text: 'Tlak otočky každého člena týmu', correct: true }
+    - { text: 'Role: kdo vede, kdo naviguje', correct: true }
+    - { text: 'Otázka, jestli někomu něco nesedí', correct: true }
+    - { text: 'Jen místo a čas srazu, zbytek se domluví pod vodou', explanation: 'Pod vodou se už domlouvá špatně.' }
+  explanation: 'Stejná osnova pokaždé: cíl, limity, role, konec ponoru, nouze, otázka.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-autorita
+  type: why
+  conceptIds: [uzavrena-smycka, tym]
+  difficulty: 2
+  prompt: Proč má nejzkušenější člen týmu výslovně říct, že chce být upozorněn na chyby?
+  options:
+    - { text: 'Bez toho ostatní mlčí, i když chybu vidí; čím větší rozdíl zkušeností, tím víc.', correct: true }
+    - { text: 'Aby vypadal skromně.', explanation: 'O dojem nejde.' }
+    - { text: 'Zkušení chybují častěji.', explanation: 'Nechybují častěji. Jen je méně lidí ochotných jim to říct.' }
+    - { text: 'Je to zdvořilostní fráze.', explanation: 'Mění, kolik informací se k němu dostane.' }
+  explanation: 'Sklon autority se sám nenarovná. Musí ho narovnat ten, kdo je nahoře.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-debrief
+  type: order
+  conceptIds: [debriefing]
+  difficulty: 1
+  prompt: Seřaď otázky rozboru po ponoru.
+  items:
+    - 'Co jsme plánovali?'
+    - 'Co se stalo doopravdy?'
+    - 'Proč se to lišilo?'
+    - 'Co příště uděláme jinak a co stejně?'
+  explanation: 'Pět minut, dokud je ponor čerstvý.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-otocka
+  type: numeric
+  conceptIds: [uzavrena-smycka, tlak-otocky]
+  difficulty: 3
+  prompt: 'Máš lahve o objemu {tank} l, partner 15 l. Oba začínáte na {start} bar se stejnou spotřebou. Jaký je tvůj tlak otočky, který bys měl na poradě říct nahlas?'
+  template: { fn: teamTurnBar, params: { tank: { values: [20, 24, 30] }, start: { values: [200, 210, 230] } }, fixed: { sac: 20, buddyTank: 15, buddySac: 20 }, args: [tank, sac, buddyTank, buddySac, start], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Partner otáčí na své třetině. Ty smíš použít jen stejný počet litrů.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-debrief-pravidla
+  type: findError
+  conceptIds: [debriefing, normalizace-odchylky]
+  difficulty: 2
+  prompt: Které zásady rozboru po ponoru jsou špatně?
+  items:
+    - { text: 'Ptáme se, proč to v tu chvíli dávalo smysl.' }
+    - { text: 'Nejdřív určíme, kdo to pokazil.', isError: true, explanation: 'Hledání viníka zavře ústa všem ostatním.' }
+    - { text: 'Když ponor dopadl dobře, rozbor vynecháme.', isError: true, explanation: 'Po dobrém ponoru se odhalí odchylky, které prošly.' }
+    - { text: 'Začíná nejzkušenější, vlastní chybou.' }
+  explanation: 'Tým, ve kterém se dá říct „udělal jsem chybu“, je bezpečnější než tým, kde nikdo chyby nedělá.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-signal
+  type: choice
+  conceptIds: [uzavrena-smycka]
+  difficulty: 1
+  prompt: Dal jsi partnerovi signál otočky. Nereaguje. Co to znamená?
+  options:
+    - { text: 'Signál nebyl přijat: opakuji ho, dokud nepřijde odpověď', correct: true }
+    - { text: 'Viděl ho a souhlasí', explanation: 'Mlčení není potvrzení.' }
+    - { text: 'Nechce otočit, pokračujeme', explanation: 'To nevíš. A otočka se nehlasuje.' }
+    - { text: 'Otočím sám a on se přidá', explanation: 'Tým se nedělí.' }
+  explanation: 'Uzavřená smyčka platí i pod vodou: signál, zopakování, potvrzení.'
+  backToLessonId: tymova-komunikace
+
+- id: kom-formulace
+  type: order
+  conceptIds: [uzavrena-smycka, pravo-ukoncit]
+  difficulty: 2
+  prompt: Chceš zkušenějšího partnera upozornit na problém. Seřaď části sdělení.
+  items:
+    - 'Vidím, že… (co pozoruji)'
+    - 'Znepokojuje mě to, protože…'
+    - 'Navrhuji…'
+  explanation: 'Hotová formulace pomáhá překonat ostych ve chvíli, kdy na něm záleží.'
+  backToLessonId: tymova-komunikace
+
+- id: ukon-pravidlo
+  type: choice
+  conceptIds: [pravo-ukoncit]
+  difficulty: 1
+  prompt: Kdo smí ukončit ponor?
+  options:
+    - { text: 'Kdokoli z týmu, kdykoli, z jakéhokoli důvodu', correct: true }
+    - { text: 'Jen vedoucí ponoru', explanation: 'Pak by se informace od ostatních ztrácely.' }
+    - { text: 'Většina týmu', explanation: 'O bezpečnosti se nehlasuje.' }
+    - { text: 'Kdokoli, pokud to zdůvodní', explanation: 'Povinnost obhajoby pravidlo ruší.' }
+  explanation: 'A nikdo se neptá proč. Jinak ho nikdo nepoužije.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-proc-tezke
+  type: multi
+  conceptIds: [tlak-na-dokonceni]
+  difficulty: 1
+  prompt: Co tlačí potápěče k pokračování, i když by měl skončit?
+  options:
+    - { text: 'Čas a peníze, které do ponoru už vložil', correct: true }
+    - { text: 'Cíl na dosah', correct: true }
+    - { text: 'Ohled na ostatní v týmu', correct: true }
+    - { text: 'Dostatek plynu', explanation: 'Dostatek plynu je důvod, ne tlak.' }
+  explanation: 'Všechny působí nejsilněji tehdy, kdy je rezerva nejmenší.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-utopene
+  type: why
+  conceptIds: [tlak-na-dokonceni]
+  difficulty: 2
+  prompt: Proč jsou „utopené náklady“ špatný důvod pokračovat?
+  options:
+    - { text: 'Co už je utraceno, se nevrátí a na budoucí riziko nemá žádný vliv.', correct: true }
+    - { text: 'Peníze nejsou důležité.', explanation: 'Jsou. Jen nemění fyziku ani fyziologii.' }
+    - { text: 'Náklady se dají odepsat z daní.', explanation: 'S daněmi to nesouvisí.' }
+    - { text: 'Jsou dobrý důvod, když jsou vysoké.', explanation: 'Čím vyšší, tím silněji klamou.' }
+  explanation: 'Rozhoduje jen to, co je před tebou: plyn, podmínky, stav týmu.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-reakce
+  type: choice
+  conceptIds: [pravo-ukoncit, debriefing]
+  difficulty: 2
+  prompt: Nejméně zkušený člen týmu ukončil ponor na hladině, protože „měl špatný pocit“. Jak má tým reagovat?
+  options:
+    - { text: 'Poděkovat a neřešit to; důvod probrat později, jen když bude chtít', correct: true }
+    - { text: 'Chtít vysvětlení hned', explanation: 'Z práva by se stala povinnost obhajoby.' }
+    - { text: 'Jít bez něj', explanation: 'Plán počítal s týmem; a tlak na něj by byl jasný vzkaz pro příště.' }
+    - { text: 'Dát najevo zklamání, ať si to příště rozmyslí', explanation: 'Příště nic neřekne – ani tehdy, když bude mít pravdu.' }
+  explanation: 'Reakce na první ukončení rozhodne, jestli bude nějaké druhé.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-deko
+  type: choice
+  conceptIds: [tlak-na-dokonceni, pravo-ukoncit]
+  difficulty: 2
+  prompt: Proč se rozhodnutí „ještě pět minut na dně“ zdá menší, než je?
+  options:
+    - { text: 'Jeho cena přijde až při výstupu: delší dekomprese a méně plynu', correct: true }
+    - { text: 'Pět minut na dně nic nestojí', explanation: 'Stojí plyn i dekompresi.' }
+    - { text: 'Dekomprese s časem na dně neroste', explanation: 'Roste rychleji než čas na dně.' }
+    - { text: 'Počítač to vyrovná', explanation: 'Počítač dekompresi přepočítá směrem nahoru.' }
+  explanation: 'Limity dohodnuté na břehu se pod vodou neposuzují, jen dodržují.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-pocit
+  type: why
+  conceptIds: [pravo-ukoncit, situacni-prehled]
+  difficulty: 2
+  prompt: Proč je „mám špatný pocit“ platný důvod ukončit ponor?
+  options:
+    - { text: 'Bývá to informace, kterou hlava zachytila, ale ještě neumí pojmenovat.', correct: true }
+    - { text: 'Pocity jsou vždy pravdivé.', explanation: 'Nejsou. Ale cena omylu je jen zrušený ponor.' }
+    - { text: 'Je to výmluva, kterou je slušné tolerovat.', explanation: 'Není to výmluva; je to součást přehledu o situaci.' }
+    - { text: 'Není, důvod musí být měřitelný.', explanation: 'Pak by pravidlo neplatilo právě pro první varovné známky.' }
+  explanation: 'Ukončený ponor se dá zopakovat. Opačná chyba ne.'
+  backToLessonId: pravo-ukoncit-ponor
+
+- id: ukon-predem
+  type: why
+  conceptIds: [pravo-ukoncit, tlak-na-dokonceni, normalizace-odchylky]
+  difficulty: 2
+  prompt: Proč se limity ponoru stanovují na břehu, a ne až podle situace pod vodou?
+  options:
+    - { text: 'Pod vodou rozhoduje hlava pod tlakem cíle, narkózy a stresu; na břehu rozhodovala v klidu.', correct: true }
+    - { text: 'Pod vodou se nedá počítat.', explanation: 'Dá, ale hůř – a s motivací dojít k opačnému výsledku.' }
+    - { text: 'Protože to chtějí agentury.', explanation: 'Důvod je v tom, jak se lidé rozhodují.' }
+    - { text: 'Aby byl ponor kratší.', explanation: 'Jde o kvalitu rozhodnutí, ne o délku.' }
+  explanation: 'Pravidlo dohodnuté předem unese tlak, který jednotlivec v dané chvíli neunese.'
+  backToLessonId: pravo-ukoncit-ponor

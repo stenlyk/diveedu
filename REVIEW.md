@@ -7,10 +7,12 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Značky na šňůře: šipky a osobní značky** (`znacky-na-snure`, modul `fullcave`)
 - [ ] Lekce **Když se sčítá hloubka a strop** (`hloubka-a-strop`, modul `deepcave`)
 - [ ] Lekce **Ztráta plynu** (`ztrata-plynu`, modul `nouze`)
+- [ ] Lekce **Model švýcarského sýra** (`svycarsky-syr`, modul `lidskyfaktor`)
 - [ ] Lekce **Travel gas a sestup na hypoxické směsi** (`travel-gas`, modul `fulltrimix`)
 - [ ] Lekce **Skoky, mezery a rozcestí** (`skoky-mezery-rozcesti`, modul `fullcave`)
 - [ ] Lekce **Profil jeskyně a dekomprese pod stropem** (`profil-jeskyne-a-dekomprese`, modul `deepcave`)
 - [ ] Lekce **Samovolný průtok a únik plynu** (`free-flow-a-unik`, modul `nouze`)
+- [ ] Lekce **Normalizace odchylky** (`normalizace-odchylky`, modul `lidskyfaktor`)
 - [ ] Lekce **Kyslíková toxicita CNS** (`cns-toxicita`, modul `nitrox`)
 - [ ] Lekce **Gradient factors: jak nastavit konzervativnost** (`gradient-factors`, modul `deko`)
 - [ ] Lekce **Je kyslík narkotický? Debata** (`je-kyslik-narkoticky`, modul `trimix`)
@@ -19,6 +21,7 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Okruhy, traverzy a plán navigace** (`okruhy-a-plan-navigace`, modul `fullcave`)
 - [ ] Lekce **Stage lahve a jejich odkládání** (`stage-lahve-a-odkladani`, modul `deepcave`)
 - [ ] Lekce **Vynechaná dekomprese** (`vynechana-dekomprese-postup`, modul `nouze`)
+- [ ] Lekce **Úkolová zahlcenost a situační přehled** (`ukolova-zahlcenost`, modul `lidskyfaktor`)
 - [ ] Lekce **CNS hodiny** (`cns-hodiny`, modul `nitrox`)
 - [ ] Lekce **Bubliny a bublinové modely** (`bubliny-a-bublinove-modely`, modul `deko`)
 - [ ] Lekce **Dekompresní nemoc vnitřního ucha** (`dcs-vnitrniho-ucha`, modul `fulltrimix`)
@@ -26,6 +29,7 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Ztráta partnera** (`ztrata-partnera`, modul `fullcave`)
 - [ ] Lekce **Ztráta stage a dekompresního plynu** (`ztrata-stage-a-deko-plynu`, modul `deepcave`)
 - [ ] Lekce **Nekontrolovaný výstup** (`nekontrolovany-vystup`, modul `nouze`)
+- [ ] Lekce **Stres a panika** (`stres-a-panika`, modul `lidskyfaktor`)
 - [ ] Lekce **Plicní toxicita a OTU** (`plicni-toxicita-otu`, modul `nitrox`)
 - [ ] Lekce **Strop, zastávky a rychlost výstupu** (`strop-zastavky-a-vystup`, modul `deko`)
 - [ ] Lekce **Hluboké zastávky: debata** (`hluboke-zastavky-debata`, modul `fulltrimix`)
@@ -33,17 +37,20 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Zúženiny a návrat po hmatu** (`zuzeniny-a-navrat-po-hmatu`, modul `fullcave`)
 - [ ] Lekce **Dlouhá dekomprese: chlad, habitat a podpora** (`dlouha-dekomprese`, modul `deepcave`)
 - [ ] Lekce **Kyslíkové křeče pod vodou** (`krece-pod-vodou`, modul `nouze`)
+- [ ] Lekce **Checklisty a kontrola před ponorem** (`checklisty`, modul `lidskyfaktor`)
 - [ ] Lekce **Helium: teplo, hlas a vysoký tlak** (`vlastnosti-helia`, modul `trimix`)
 - [ ] Lekce **Plán se třemi až čtyřmi plyny** (`plan-ctyr-plynu`, modul `fulltrimix`)
 - [ ] Lekce **Sediment a viditelnost** (`sediment-a-viditelnost`, modul `cavern`)
 - [ ] Lekce **Proud a průtok** (`proud-a-prutok`, modul `fullcave`)
 - [ ] Lekce **Plán hlubokého jeskynního ponoru** (`plan-hlubokeho-jeskynniho-ponoru`, modul `deepcave`)
 - [ ] Lekce **Záchrana bezvládného potápěče** (`zachrana-bezvladneho-potapece`, modul `nouze`)
+- [ ] Lekce **Týmová komunikace a rozbor po ponoru** (`tymova-komunikace`, modul `lidskyfaktor`)
 - [ ] Lekce **Best mix: nejlepší směs pro ponor** (`nejlepsi-smes`, modul `nitrox`)
 - [ ] Lekce **Minimum gas: rezerva, která se neplánuje** (`minimum-gas`, modul `deko`)
 - [ ] Lekce **Optimální trimix a standardní směsi** (`optimalni-trimix`, modul `trimix`)
 - [ ] Lekce **Kyslík přes více dní** (`kyslik-pres-vice-dni`, modul `fulltrimix`)
 - [ ] Lekce **Skútr v jeskyni** (`skutr-v-jeskyni`, modul `fullcave`)
+- [ ] Lekce **Kdokoli může ponor kdykoli ukončit** (`pravo-ukoncit-ponor`, modul `lidskyfaktor`)
 - [ ] Lekce **Kyslíkové okno** (`kyslikove-okno`, modul `nitrox`)
 - [ ] Lekce **Plánování plynu: třetiny, poloviny a rezervy** (`planovani-plynu`, modul `deko`)
 - [ ] Lekce **Dekomprese s heliem** (`dekomprese-s-heliem`, modul `trimix`)
@@ -66,6 +73,7 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Otázka `kr-automatika`: Partner má křeče. Přiřaď situaci k doporučenému postupu.
 - [ ] Otázka `zb-automatika`: Proč se bezvládnému potápěči nevrací automatika, která mu vypadla z úst?
 - [ ] Scénář **Samovolný průtok ve 40 metrech** (`free-flow-v-hloubce`)
+- [ ] Scénář **Ještě kousek** (`jeste-kousek`)
 - [ ] Scénář **Křeče partnera na kyslíkové zastávce** (`krece-partnera`)
 - [ ] Scénář **Partner bez plynu v nejvzdálenějším bodě** (`partner-bez-plynu`)
 - [ ] Scénář **Selhání hlavní svítilny** (`selhani-svetla`)
@@ -111,3 +119,6 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Zajímavost `free-flow-zima`: Plyn se při snížení tlaku v prvním stupni prudce ochlazuje. Ve studené vodě může v automatice vzniknout led, který ventil podrží otevřený. Proto se do studené vody používají automatiky k tomu určené – a proto se z nich před ponorem na vzduchu zbytečně nedýchá.
 - [ ] Zajímavost `embolie-melko`: K poranění plic přetlakem stačí překvapivě málo. Největší poměrná změna objemu je těsně pod hladinou: plný nádech v několika metrech a výstup se zadrženým dechem může plíce poškodit. Proto se nezadržování dechu učí jako první pravidlo potápění.
 - [ ] Zajímavost `zachrana-doporuceni`: Postup záchrany bezvládného potápěče sjednotila v roce 2012 odborná komise potápěčských lékařů. Jeden z jejích závěrů zní nezvykle: automatiku, která potápěči vypadla z úst, se pod vodou nevyplatí vracet. Rozhoduje čas do vynoření.
+- [ ] Zajímavost `yerkes-dodson`: Trocha napětí výkon zlepšuje, příliš ho ničí. Vztah popsali psychologové Yerkes a Dodson už roku 1908 a platí hlavně pro složité úkoly: čím náročnější úkon, tím méně stresu snese. Proto se nouzové postupy cvičí tak dlouho, až přestanou být složité.
+- [ ] Zajímavost `who-checklist`: Když osm nemocnic v různých zemích zavedlo před operací devatenáctibodový kontrolní seznam, počet vážných komplikací klesl zhruba o třetinu a úmrtí téměř na polovinu. Seznam neobsahoval nic, co by chirurgové neznali. Jen zajistil, že se to opravdu udělá pokaždé.
+- [ ] Zajímavost `tenerife-1977`: Nejhorší nehoda v dějinách letectví, srážka dvou letadel na Tenerife roku 1977, nebyla selháním techniky. Posádka zahájila vzlet v mlze v přesvědčení, že má povolení; nejednoznačná věta ve vysílačce nebyla zopakována a ověřena. Letectví z ní vyvodilo standardní frázi a povinné potvrzování – uzavřenou smyčku.

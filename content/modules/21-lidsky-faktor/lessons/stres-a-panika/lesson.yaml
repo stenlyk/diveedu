@@ -1,0 +1,19 @@
+id: stres-a-panika
+moduleId: lidskyfaktor
+title: "Stres a panika"
+order: 4
+conceptIds: ["stres-zuzeni", "panika", "retence-co2", "zastav-dychej-mysli"]
+checkQuestionIds: ["stres-zuzeni-co", "stres-smycka", "stres-co2", "stres-cas", "stres-obrana"]
+estimatedMinutes: 10
+audioSummary: >-
+  Stres je reakce těla na ohrožení. Na souši pomáhá utéct. Pod vodou všechno, co dělá, situaci zhoršuje.
+  Vnímání se zúží na jeden problém. Složité úkony se rozpadají. A člověk se vrátí k nejstaršímu návyku, což je plavat nahoru.
+  Smyčka paniky vypadá takto. Stres zrychlí dech. Mělký dech špatně odvádí oxid uhličitý. Ten vyvolá úzkost a pocit dušení. A to zvýší stres.
+  Přerušíš ji tak, že zastavíš a dlouze vydechneš. Tři takové dechy změní víc než jakákoli úvaha.
+  Předejdeš jí nácvikem, postupným zvyšováním nároků a upřímností k sobě před ponorem.
+  Stres pod vodou není slabost. Je to fyziologie.
+sources:
+  - { title: "Under Pressure: Diving Deeper with Human Factors", author: "Lock G.", year: 2019 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

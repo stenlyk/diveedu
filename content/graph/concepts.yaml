@@ -181,3 +181,17 @@
 - { id: krece-pod-vodou, label: Křeče pod vodou, type: risk, moduleId: nouze, shortDefinition: 'Kyslíkové křeče při ponoru; samy nezabíjejí, zabíjí utonutí po ztrátě automatiky.' }
 - { id: bezvladny-potapec, label: Záchrana bezvládného potápěče, type: procedure, moduleId: nouze, shortDefinition: 'Vynesení potápěče v bezvědomí na hladinu, uvolnění dýchacích cest a předání k resuscitaci.' }
 - { id: kyslik-prvni-pomoc, label: Kyslík jako první pomoc, type: procedure, moduleId: nouze, shortDefinition: 'Dýchání co nejvyšší koncentrace kyslíku na hladině při podezření na dekompresní onemocnění.' }
+
+# ── Průřezový modul: Lidský faktor ───────────────────────────────────────────
+- { id: svycarsky-syr, label: Model švýcarského sýra, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Nehoda vznikne, když se díry v několika vrstvách obrany sejdou v jedné přímce.' }
+- { id: latentni-podminky, label: Skryté podmínky, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Slabiny systému, které existují dlouho před nehodou: zvyklosti, výstroj, plánování, tlak okolí.' }
+- { id: normalizace-odchylky, label: Normalizace odchylky, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Odchylka od pravidla, která prošla bez následků, se postupně stává novým standardem.' }
+- { id: ukolova-zahlcenost, label: Úkolová zahlcenost, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Víc úkolů najednou, než kolik pozornost unese; první vypadne sledování plynu, hloubky a týmu.' }
+- { id: situacni-prehled, label: Situační přehled, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Vnímat, co se děje, rozumět tomu a odhadnout, co bude za minutu.' }
+- { id: stres-zuzeni, label: Stres a zúžení vnímání, type: physiology, moduleId: lidskyfaktor, shortDefinition: 'Pod stresem se pozornost zužuje na jednu věc a složitější úkony se rozpadají.' }
+- { id: panika, label: Panika, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Ztráta kontroly nad jednáním; pod vodou se živí rychlým dechem a stoupajícím CO2.' }
+- { id: checklist, label: Checklist, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Krátký seznam kritických kroků, který chrání před vynecháním toho, co každý „samozřejmě“ udělá.' }
+- { id: uzavrena-smycka, label: Komunikace v uzavřené smyčce, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Sdělení, potvrzení a ověření: zpráva platí až tehdy, když ji příjemce zopakoval.' }
+- { id: debriefing, label: Rozbor po ponoru, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Krátké společné zhodnocení bez hledání viníka: co se stalo, proč a co příště jinak.' }
+- { id: pravo-ukoncit, label: Právo ukončit ponor, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Kdokoli může kterýkoli ponor kdykoli ukončit, z jakéhokoli důvodu a bez vysvětlování.' }
+- { id: tlak-na-dokonceni, label: Tlak na dokončení, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Čím víc bylo do ponoru vloženo, tím těžší je ho zrušit – i když důvody ke zrušení přibývají.' }

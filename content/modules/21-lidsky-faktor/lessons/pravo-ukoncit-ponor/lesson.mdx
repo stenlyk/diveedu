@@ -1,0 +1,97 @@
+<Hook>
+
+Čtyři hodiny cesty, zaplacená loď, tři měsíce plánování. Stojíš na zádi ve výstroji a něco ti nesedí. Nevíš přesně co.
+
+Říct „já dnes nejdu“ je v tu chvíli těžší než cokoli, co tě čeká pod vodou.
+
+</Hook>
+
+<Principle>
+
+Pravidlo má jednu větu: **kdokoli může kterýkoli ponor kdykoli ukončit, z jakéhokoli důvodu, a nikdo se neptá proč.**
+
+Každé slovo v něm má svůj důvod:
+
+- **kdokoli** – i nejméně zkušený člen týmu; často je to on, kdo vidí, co ostatní přehlížejí,
+- **kdykoli** – před ponorem, na hladině, v polovině cesty, minutu před cílem,
+- **z jakéhokoli důvodu** – i „mám špatný pocit“. Špatný pocit bývá informace, kterou hlava ještě neumí pojmenovat,
+- **nikdo se neptá proč** – jinak se z práva stane povinnost obhajoby a nikdo ho nepoužije.
+
+**Proč je tak těžké ho použít: <Term cs="tlak na dokončení" />.**
+
+- **Utopené náklady.** Čas, peníze a úsilí, které už jsou pryč, tlačí k pokračování – i když na budoucí riziko nemají žádný vliv.
+- **Cíl na dosah.** Čím blíž, tím hůř se otáčí. Většina špatných rozhodnutí padne „pár metrů před“.
+- **Ostatní.** Nechci kazit ponor týmu. Nechci vypadat slabě.
+- **Závazek.** Řekl jsem, že to udělám.
+
+Všechny čtyři působí nejsilněji právě tehdy, kdy je rezerva nejmenší.
+
+**Jak pravidlo udržet při životě:**
+
+- **Říct ho nahlas** na každé poradě před ponorem. Ne jako formalitu: „Kdokoli ukáže palec nahoru, jdeme ven a neřešíme to.“
+- **Poděkovat** tomu, kdo ponor ukončil. Reakce týmu na první ukončení rozhodne, jestli bude nějaké druhé.
+- **Ukončit občas sám,** když jsi nejzkušenější. Ukážeš, že to není selhání.
+- **Rozhodnout předem.** Limity dohodnuté na břehu – tlak, čas, podmínky – se pod vodou neposuzují, jen dodržují.
+- **Oddělit rozbor od rozhodnutí.** Důvod se může probrat potom, v klidu a jen když chce ten, kdo ukončil.
+
+**Ukončený ponor se dá zopakovat.** Jeskyně, vrak i útes tam budou i příští týden. To je celý argument.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="minimum-gas" />
+
+Rezerva platí pro plán. Každá minuta „ještě kousek“ ji zmenšuje ze dvou stran: ubírá plyn a přidává dekompresi.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor do 40 m na vzduch, plán 20 minut, GF 50/80. Výstup podle výukového modelu trvá:
+
+<Worked fn="ascentMinutesAir" args={[40, 20, 50, 80]} expected={22.44} tolerance={0.5} unit="min" decimals={0} />
+
+„Ještě pět minut, už to skoro máme“:
+
+<Worked fn="ascentMinutesAir" args={[40, 25, 50, 80]} expected={36.44} tolerance={0.5} unit="min" decimals={0} />
+
+Pět minut na dně stálo čtrnáct minut dekomprese. A plyn: těch pět minut samo spotřebuje
+<Calc fn="gasConsumed" args={[20, 40, 5]} decimals={0} unit="l" />, tedy <Calc fn="litersToBar" args={[500, 24]} decimals={0} unit="bar" /> z dvojčete –
+a delší dekomprese další.
+
+Rozhodnutí „ještě kousek“ se zdá malé, protože vidíš jen těch pět minut. Jeho cena přijde až při výstupu, kdy už ho nejde vzít zpět.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="jeste-kousek" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="hluboka-jeskyne-na-vzduch" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

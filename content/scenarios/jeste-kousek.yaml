@@ -1,0 +1,69 @@
+id: jeste-kousek
+title: Ještě kousek
+summary: Žádná porucha, jen řada drobností a cíl na dosah. Kde se z dobrého ponoru stává rozbor nehody?
+moduleIds: [lidskyfaktor]
+conceptIds: [tlak-na-dokonceni, pravo-ukoncit, normalizace-odchylky]
+intro: >-
+  Vrak ve 40 m, na který se chystáte tři měsíce. Čtyři hodiny cesty, zaplacená loď. Plán: 20 minut na dně, dvojče 2×12 l s 200 bar, vzduch,
+  dekomprese na EAN50. V tomto scénáři se nic nerozbije. Rozhoduješ jen ty.
+setup: { startBar: 200, tankLiters: 24, depthM: 40, sacLpm: 20 }
+start: lod
+nodes:
+  - id: lod
+    text: >-
+      Na lodi zjistíš, že partner nestihl analyzovat svou dekompresní lahev. „Plnil mi ji stejný člověk jako vždycky, je to padesátka.“ Kapitán ukazuje na hodinky.
+    options:
+      - { text: 'Analyzujeme ji teď. Loď počká pět minut.', next: sestup, minutes: 0, verdict: good, feedback: 'Pět minut zdržení proti lahvi, o které nikdo neví, co v ní je.' }
+      - { text: 'Dobře, věřím mu. Jdeme.', next: sestup-bez, minutes: 0, verdict: bad, feedback: '„Jako vždycky“ je přesně věta, kterou začíná normalizace odchylky. A kapitánovy hodinky jsou tlak na dokončení.' }
+      - { text: 'Navrhnu, ať dnes dekomprimuje na mé lahvi a svou nepoužije.', next: sestup, minutes: 0, verdict: ok, feedback: 'Neznámá lahev zůstane zavřená, to je dobře. Ale plán plynu teď stojí na jedné dekompresní lahvi pro dva.' }
+  - id: sestup-bez
+    text: >-
+      Sestup proběhne dobře. Na dně si uvědomíš, že na neanalyzovanou lahev myslíš pořád.
+    options:
+      - { text: 'Signalizuji partnerovi, že při dekompresi použijeme jen mou lahev.', next: sestup, minutes: 1, verdict: good, feedback: 'Pozdě, ale správně. Starost, kterou si neseš, ubírá pozornost; vyřešená ji vrací.' }
+      - { text: 'Pustím to z hlavy, na dně mám jinou práci.', next: sestup, minutes: 1, verdict: bad, feedback: 'Nevyřešený problém nezmizí. Jen se přesune na dekompresní zastávku.' }
+  - id: sestup
+    text: >-
+      Vrak je nádherný. V šestnácté minutě najdete vstup do strojovny, o kterém jste četli. Je deset metrů od vás. Plán končí za čtyři minuty.
+    timeLimitSec: 20
+    timeout: { next: strojovna, minutes: 4, feedback: 'Nerozhodl ses, a tak rozhodl vrak.' }
+    options:
+      - { text: 'Podívám se na plyn a čas a ukážu partnerovi: dnes ne, příště.', next: otocka, minutes: 3, verdict: good, feedback: 'Strojovna tam bude i příště. Dnešní plán s ní nepočítal: ani plyn, ani dekomprese, ani šňůra.' }
+      - { text: 'Jen nahlédnu dovnitř, minutu dvě.', next: strojovna, minutes: 4, verdict: bad, feedback: 'Plán se pod vodou smí jen zkrátit. „Jen nahlédnu“ je rozhodnutí vstoupit pod strop bez šňůry.' }
+  - id: strojovna
+    text: >-
+      Uvnitř je to ještě lepší. Je dvacátá druhá minuta. Partner ukazuje na další průchod a zvedá dva prsty: ještě dvě minuty?
+    options:
+      - { text: 'Palec nahoru. Končíme, hned.', next: pozde, minutes: 2, verdict: good, feedback: 'Právo ukončit ponor platí i tehdy, když jsi u odchylky sám asistoval. Čím dřív, tím levněji.' }
+      - { text: 'Kývnu. Když už jsme tady.', next: daleko, minutes: 5, verdict: bad, feedback: '„Když už jsme tady“ jsou utopené náklady. Na budoucí riziko nemají vliv; na plyn a dekompresi ano.' }
+  - id: otocka
+    text: >-
+      Dvacátá minuta. Jste u výstupového lana, tlak odpovídá plánu. Partner vypadá zklamaně.
+    options:
+      - { text: 'Výstup podle plánu. O strojovně si promluvíme nahoře.', next: uspech, minutes: 12, verdict: good, feedback: 'Zklamání vydrží do večera. Plán na příští ponor může strojovnu obsahovat – se šňůrou a plynem.' }
+      - { text: 'Vrátím se pro pár fotek vstupu, je to kousek.', next: pozde, minutes: 4, verdict: bad, feedback: 'Otočka, která se dá vzít zpět, nebyla otočka.' }
+  - id: pozde
+    text: >-
+      Stoupáte o několik minut později, než říkal plán. Počítač ukazuje delší dekompresi a plynu je méně, než mělo být.
+    options:
+      - { text: 'Dodržím všechny zastávky, hlídám plyn a po ponoru to řeknu nahlas v rozboru.', next: castecne, minutes: 14, verdict: good, feedback: 'Odchylka, o které se mluví, se nestane normou.' }
+      - { text: 'Vyšlo to, není co řešit.', next: castecne, minutes: 14, verdict: bad, feedback: 'Právě tak se z dnešní výjimky stane příští plán.' }
+  - id: daleko
+    text: >-
+      Dvacátá osmá minuta ve 40 m. Počítač ukazuje dekompresi, na kterou plán plynu nebyl dělaný.
+    options:
+      - { text: 'Ven, hned, a zastávky tak dlouho, jak plyn dovolí.', next: konec, minutes: 22, verdict: good, feedback: 'Správné rozhodnutí. O osm minut později, než bylo zadarmo.' }
+      - { text: 'Ještě chvíli, plynu je dost.', next: konec, minutes: 26, verdict: bad, feedback: 'Plynu bylo dost na plán. Tohle už plán není.' }
+  - id: uspech
+    text: Na lodi, podle plánu.
+    end: { outcome: success, text: 'Nic se nestalo – a právě o to šlo. Všimni si, že žádné z tvých rozhodnutí nebylo technické. Všechna byla o tom, komu a čemu ustoupit.' }
+  - id: castecne
+    text: Na lodi.
+    end: { outcome: partial, text: 'Dopadlo to dobře. Rozbor ale ukazuje, kde plán přestal platit, a o kolik tenčí byla rezerva. Příště to může být den, kdy se k tomu přidá porucha.' }
+  - id: konec
+    text: Dekomprese je delší než zásoba plynu.
+    end: { outcome: fail, text: 'Scénář končí vynechanou dekompresí. Nic se nerozbilo; stačila řada malých ústupků, z nichž každý dával ve své chvíli smysl. Projdi si rozbor.' }
+sources:
+  - { title: 'Under Pressure: Diving Deeper with Human Factors', author: 'Lock G.', year: 2019 }
+  - { title: 'The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA', author: 'Vaughan D.', year: 1996 }
+needs_review: true

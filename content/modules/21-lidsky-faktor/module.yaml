@@ -1,0 +1,10 @@
+id: lidskyfaktor
+title: Lidský faktor
+subtitle: 'Průřezový modul: proč chybují zkušení a co s tím'
+branch: cross
+rig: oc
+prerequisites: []
+unlockAfter: nitrox
+order: 21
+passThreshold: 0.8
+status: published

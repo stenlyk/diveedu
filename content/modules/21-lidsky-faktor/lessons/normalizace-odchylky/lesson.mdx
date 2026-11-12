@@ -1,0 +1,100 @@
+<Hook>
+
+Poprvé jsi otočil o deset barů později, protože cíl byl hned za rohem. Nic se nestalo.
+
+Podruhé už to nebyla výjimka. A dnes si ani nevzpomeneš, kdy jsi naposledy otočil přesně na třetině.
+
+</Hook>
+
+<Principle>
+
+<Term cs="normalizace odchylky" /> je proces, ve kterém se porušení pravidla postupně stane normou – ne rozhodnutím, ale opakováním.
+
+**Jak probíhá:**
+
+1. Okolnosti tě jednou donutí pravidlo ohnout. Čas, peníze, cíl na dosah.
+2. Nic se nestane.
+3. Mozek si zapíše: „tohle je bezpečné“. Ve skutečnosti zjistil jen to, že to jednou vyšlo.
+4. Příště je ohnutí snazší a o kousek větší.
+5. Po čase je odchylka „jak se to u nás dělá“ a nováček se ji naučí jako správný postup.
+
+**Proč tomu podléhají hlavně zkušení:** mají za sebou stovky ponorů, při kterých odchylka prošla. Každý z nich je pro ně důkaz.
+Začátečník pravidlo dodrží, protože se bojí. Zkušený ho ohne, protože „ví“.
+
+**Jak vypadá v potápění:**
+
+- analýza plynu „jen když je to nová směs“,
+- otočka o deset barů později, než říká plán,
+- vynechaná kontrola před ponorem, protože „jsme spolu už stokrát“,
+- dekompresní lahev bez označení, protože „já vím, co v ní je“,
+- sólo dokončení ponoru, když se partnerovi nechce,
+- hloubka „jen o pár metrů“ za hranicí směsi.
+
+Žádná z nich není sama katastrofa. Každá je díra v jedné vrstvě, která tam zůstane – a čeká na den, kdy se sejde s ostatními.
+
+**Obrana:**
+
+- **Pravidla s důvodem.** Kdo ví, proč pravidlo existuje, pozná, co ohnutím ztrácí.
+- **Rozbor po ponoru** s jednou otázkou navíc: „Udělali jsme dnes něco jinak, než říká plán?“
+- **Pohled zvenčí.** Nový člen týmu, instruktor, jiný klub. Ten, kdo ještě nezvykl, odchylku vidí.
+- **Úspěch není důkaz.** Že to vyšlo, neznamená, že to bylo bezpečné.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+Rezerva ve vzorci nemá vůli. Zmenšuje se přesně o tolik, o kolik pravidlo ohneš.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Otočka „o deset barů později“ v jeskyni. Místo 70 bar použiješ na cestu dovnitř 80. Jak daleko jsi?
+
+<Worked fn="penetrationDistance" args={[80, 24, 20, 20, 15]} expected={480} tolerance={0.1} unit="m" decimals={0} />
+
+Cesta ven pro dva z tohoto místa stojí:
+
+<Worked fn="exitGasBar" args={[480, 15, 20, 20, 24]} expected={160} tolerance={0.1} unit="bar" decimals={0} />
+
+V lahvích ti po otočce zbývá 130 bar. Chybí třicet.
+
+Podle plánu by to bylo <Calc fn="penetrationDistance" args={[70, 24, 20, 20, 15]} decimals={0} unit="m" /> a
+<Calc fn="exitGasBar" args={[420, 15, 20, 20, 24]} decimals={0} unit="bar" /> na cestu ven – přesně tolik, kolik zbývá.
+
+Deset barů navíc nevypadá jako nic. Ve skutečnosti proměnilo plán, který vychází, v plán, který v nouzi nevyjde o třicet barů.
+A protože k nouzi nedošlo, nikdo to nezjistil.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="thirds" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="challenger-1986" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

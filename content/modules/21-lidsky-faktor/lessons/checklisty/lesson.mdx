@@ -1,0 +1,105 @@
+<Hook>
+
+Chirurg s dvacetiletou praxí nepotřebuje seznam, aby věděl, že má před operací ověřit jméno pacienta.
+
+A přesto: když ho nemocnice zavedly, umíralo méně lidí. Co ten kus papíru ví, co neví zkušený odborník?
+
+</Hook>
+
+<Principle>
+
+<Term cs="checklist" /> neslouží k tomu, aby tě něco naučil. Slouží k tomu, abys udělal to, co umíš – **pokaždé**.
+
+Paměť selhává předvídatelně: u rutinních kroků, při vyrušení, pod časovým tlakem a u věcí, které „samozřejmě“ uděláš. Přesně takové jsou kroky před ponorem.
+
+**Dva druhy seznamů:**
+
+- **Přečti a udělej.** Čteš krok, uděláš ho, čteš další. Pro sestavování výstroje a méně časté postupy.
+- **Udělej a ověř.** Uděláš vše zpaměti a potom seznamem zkontroluješ kritické body. Pro kontrolu před ponorem.
+
+**Dobrý checklist:**
+
+- je **krátký** – pět až devět položek; delší se přeskakuje,
+- obsahuje jen **kroky, jejichž vynechání zabíjí**, a ty, které se nejčastěji vynechávají,
+- má **jasný okamžik**, kdy se dělá: před vstupem do vody, před sestupem, před přepnutím plynu,
+- dělá se **nahlas a ve dvou**: jeden čte, druhý ukazuje a odpovídá,
+- položky se **ověřují, ne odříkávají**: „plyn“ znamená nadechnout se a podívat se na manometr.
+
+**Co obvykle obsahuje kontrola před ponorem:**
+
+- plyn: analýza, značení, tlak, otevřené ventily, funkční automatiky,
+- vztlak: napouštění a vypouštění kompenzátoru a obleku,
+- výstroj: světla, cívky, nůž, zátěž,
+- počítač: správné plyny a nastavení,
+- plán: hloubka, čas, tlak otočky, kdo co dělá, co ponor ukončuje.
+
+**Jak checklisty selhávají:**
+
+- stanou se rituálem: slova zní, oči se nedívají,
+- **přerušení** – někdo se zeptá, kde je klíč od auta. Po přerušení se začíná znovu od začátku, ne tam, kde ses zastavil,
+- „dneska ne, spěcháme“ – právě ve spěchu se vynechává nejvíc,
+- jeden člen týmu je považuje za urážku své zkušenosti.
+
+Checklist není berlička pro začátečníky. Používají ho piloti a chirurgové právě proto, že jsou zkušení – a vědí, kde zkušenost selhává.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Položka „plyn“ v kontrole není formalita. Je to jediné místo, kde se vzorec potká se skutečnou lahví.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Plán: ponor do 33 m na EAN32. Maximální operační hloubka směsi při limitu 1,4 bar:
+
+<Worked fn="mod" args={[0.32, 1.4]} expected={33.75} tolerance={0.01} unit="m" decimals={0} />
+
+V plnírně došlo k záměně a v lahvi je EAN36. Analýza se dnes vynechala, „je to přece stejná směs jako vždycky“. Hranice skutečné směsi:
+
+<Worked fn="mod" args={[0.36, 1.4]} expected={28.89} tolerance={0.01} unit="m" decimals={0} />
+
+Ve 33 m je parciální tlak kyslíku <Calc fn="ppO2" args={[0.36, 33]} decimals={2} unit="bar" /> místo plánovaných
+<Calc fn="ppO2" args={[0.32, 33]} decimals={2} unit="bar" />. A kdyby plán vedl do 40 m, bylo by to <Calc fn="ppO2" args={[0.36, 40]} decimals={1} unit="bar" />.
+
+Analýza trvá minutu. Položka „plyn: analyzováno, označeno“ v kontrole existuje proto, aby ta minuta nezávisela na tom, jestli si dnes vzpomeneš.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'tě uprostřed kontroly někdo vyruší?', effect: 'Začni znovu od první položky. Po přerušení mozek věří, že krok, u kterého skončil, už udělal.' },
+  { label: 'partner kontrolu odmítá, protože „to dělá dvacet let“?', effect: 'Kontrola není o jeho schopnostech, ale o tom, že dvacet let zkušenosti nechrání před jedním vyrušením. Bez kontroly se nepotápí.' },
+  { label: 'má seznam třicet položek?', effect: 'Nikdo ho nedočte. Zkrať ho na kroky, jejichž vynechání zabíjí; zbytek patří do přípravy, ne do kontroly.' },
+  { label: 'odříkáš kontrolu zpaměti a díváš se přitom jinam?', effect: 'To je rituál, ne kontrola. Každá položka se ověřuje: nádech z automatiky, pohled na manometr, stisk ventilu.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="who-checklist" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

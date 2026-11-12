@@ -82,3 +82,12 @@
 - { cs: barotrauma plic, en: pulmonary barotrauma, definition: 'Poranění plic rozpínajícím se plynem.' }
 - { cs: evakuační plán, en: emergency action plan, definition: 'Předem připravená cesta k odborné pomoci.' }
 - { cs: kyslík jako první pomoc, en: emergency oxygen, definition: 'Dýchání co nejvyšší koncentrace kyslíku na hladině.' }
+- { cs: model švýcarského sýra, en: Swiss cheese model, definition: 'Nehoda jako průchod dírami v několika vrstvách obrany.' }
+- { cs: normalizace odchylky, en: normalization of deviance, definition: 'Odchylka bez následků se stává novým standardem.' }
+- { cs: úkolová zahlcenost, en: task loading, definition: 'Víc úkolů, než kolik pozornost unese.' }
+- { cs: situační přehled, en: situational awareness, definition: 'Vnímat, rozumět a předvídat.' }
+- { cs: uzavřená smyčka, en: closed-loop communication, definition: 'Sdělení, zopakování a potvrzení.' }
+- { cs: rozbor po ponoru, en: debrief, definition: 'Společné zhodnocení ponoru bez hledání viníka.' }
+- { cs: panika, en: panic, definition: 'Ztráta kontroly nad jednáním pod vlivem stresu.' }
+- { cs: checklist, en: checklist, definition: 'Krátký seznam kritických kroků.' }
+- { cs: tlak na dokončení, en: goal fixation / plan continuation bias, definition: 'Sklon pokračovat v plánu, i když důvody ke zrušení přibývají.' }

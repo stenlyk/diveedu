@@ -1,0 +1,107 @@
+<Hook>
+
+„Otočíme na sto čtyřiceti.“ Oba kývnete.
+
+Jeden z vás myslel svůj tlak. Druhý tlak toho, kdo dosáhne sto čtyřiceti první. Zjistíte to v nejvzdálenějším bodě ponoru.
+
+</Hook>
+
+<Principle>
+
+Většina nedorozumění nevzniká tím, že někdo neposlouchal. Vzniká tím, že oba slyšeli totéž a rozuměli něčemu jinému.
+
+**<Term cs="uzavřená smyčka" />** je způsob, jak to zachytit:
+
+1. **Sdělení:** „Otáčíme, když kdokoli z nás dosáhne svého tlaku otočky. Můj je 140.“
+2. **Zopakování:** „Rozumím: otáčí první, kdo dosáhne svého tlaku. Můj je 160.“
+3. **Potvrzení:** „Ano.“
+
+Pod vodou je to stejné: signál, zopakování signálu, potvrzení. Signál, na který nepřišla odpověď, nebyl přijat.
+
+**Před ponorem** – krátká porada, vždy stejná osnova:
+
+- cíl a trasa,
+- hloubka, čas, plyny, tlak otočky každého,
+- role: kdo vede, kdo naviguje, kdo pokládá šňůru,
+- co ponor ukončuje,
+- nouzové postupy: ztráta plynu, ztráta partnera,
+- a otázka na konec: **„Má někdo cokoli, co mu nesedí?“**
+
+**Sklon autority.** Když je v týmu instruktor, majitel lodi nebo prostě ten nejzkušenější, ostatní mlčí, i když vidí chybu.
+Čím strmější sklon, tím méně informací se k vedoucímu dostane. Narovnává se dvěma věcmi:
+
+- zkušenější **výslovně** řekne, že chce být upozorněn,
+- méně zkušený má **formulaci**, kterou může použít: „Vidím X. Znepokojuje mě to. Navrhuji Y.“
+
+**<Term cs="rozbor po ponoru" />** – pět minut, dokud je ponor čerstvý:
+
+1. Co jsme plánovali?
+2. Co se stalo doopravdy?
+3. Proč se to lišilo?
+4. Co příště uděláme jinak – a co stejně?
+
+Pravidla rozboru:
+
+- **Bez hledání viníka.** Otázka zní „proč to dávalo smysl“, ne „kdo to pokazil“.
+- **Začíná nejzkušenější vlastní chybou.** Tím dá ostatním svolení mluvit o svých.
+- **I dobrý ponor má rozbor.** Právě po něm se odhalí odchylky, které prošly.
+
+Tým, ve kterém se dá říct „udělal jsem chybu“, je bezpečnější než tým, ve kterém nikdo chyby nedělá.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+Jedno číslo, které musí každý v týmu říct nahlas a slyšet zopakované: svůj tlak otočky.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Dva potápěči, oba 200 bar. Jeden má dvojče 2×12 l, druhý jednu lahev 15 l. „Otočíme na sto čtyřiceti.“
+
+Tlak otočky potápěče s patnáctkou je jeho třetina. Potápěč s dvojčetem smí použít jen stejný počet litrů, takže jeho tlak otočky je:
+
+<Worked fn="teamTurnBar" args={[24, 20, 15, 20, 200]} expected={158.33} tolerance={0.01} unit="bar" decimals={0} />
+
+Kdyby čekal na svých 140 bar, použil by 60 bar z 24 litrů:
+
+<Worked fn="barToLiters" args={[60, 24]} expected={1440} tolerance={0.1} unit="l" decimals={0} />
+
+Jeho partner by za stejnou dobu spotřeboval z patnáctky <Calc fn="litersToBar" args={[1440, 15]} decimals={0} unit="bar" /> – skoro polovinu místo třetiny.
+
+Věta „otočíme na sto čtyřiceti“ byla srozumitelná, krátká a špatně. Zopakování vlastními slovy by to odhalilo za deset vteřin na břehu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="team-turn" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="tenerife-1977" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

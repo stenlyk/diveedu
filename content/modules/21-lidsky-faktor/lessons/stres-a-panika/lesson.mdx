@@ -1,0 +1,99 @@
+<Hook>
+
+Maska se ti zalije a nejde vylít. Nic vážného – cvičil jsi to stokrát.
+
+Jenže dech se zrychluje, srdce buší a hladina najednou vypadá jako jediné rozumné místo na světě. Kde přesně se z drobnosti stala nouze?
+
+</Hook>
+
+<Principle>
+
+Stres je reakce těla na ohrožení: adrenalin, rychlý tep, rychlý dech. Na souši pomáhá utéct. Pod vodou utéct není kam a všechno, co stres dělá, situaci zhoršuje.
+
+**Co stres dělá s hlavou:**
+
+- **Zúžení vnímání.** Vidíš jen problém. Manometr, partner i šňůra zmizí z pozornosti.
+- **Rozpad složitých úkonů.** Jemná motorika a postupy o více krocích selhávají jako první.
+- **Návrat k nejstaršímu návyku.** V nouzi neuděláš to, co víš, ale to, co máš nacvičené nejdéle. U většiny lidí je to plavat nahoru.
+- **Zkreslený čas.** Vteřiny se zdají jako minuty; rozhodnutí se dělají zbrkle.
+
+**Smyčka paniky** je pod vodou zvlášť krutá:
+
+1. Problém vyvolá stres. Dech se zrychlí a změlčí.
+2. Mělký rychlý dech špatně odvádí oxid uhličitý.
+3. Vyšší CO2 sám vyvolává úzkost a pocit, že se nedá dýchat.
+4. Pocit dušení zvyšuje stres. Zpět na bod jedna.
+
+V hloubce s hustým plynem se smyčka roztočí rychleji. <Term cs="panika" /> je její konec: jednání, které už neřídíš.
+
+**Jak ji přerušit:**
+
+- **Zastav.** Pohyb zvyšuje spotřebu i CO2.
+- **Vydechni.** Dlouhý, úplný výdech; nádech přijde sám. Tři takové dechy změní víc než jakákoli úvaha.
+- **Chyť se něčeho** – partnera, lana, skály. Dotyk uklidňuje.
+- **Jeden krok.** Ne celý problém; jen první věc, kterou udělat.
+
+**Jak jí předejít:**
+
+- nácvik, dokud postup není reflex,
+- postupné zvyšování nároků, ne skoky,
+- upřímnost k sobě před ponorem: únava, nervozita a špatný pocit jsou informace,
+- partner, který pozná, že se něco děje – vytřeštěné oči, trhaný pohyb, rychlé bubliny – a zasáhne dřív, než se smyčka uzavře.
+
+Stres pod vodou není slabost. Je to fyziologie, a dá se s ní počítat.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Panický dech je spotřeba, která se zvedne na několikanásobek přesně ve chvíli, kdy na plynu záleží nejvíc.
+
+</FormulaSection>
+
+<WorkedSection>
+
+V dvojčeti 2×12 l zbývá 100 bar, hloubka 40 m. Při klidné spotřebě 20 l/min to vystačí na:
+
+<Worked fn="minutesOnGas" args={[100, 24, 20, 40]} expected={24} tolerance={0.01} unit="min" decimals={0} />
+
+V panice, při 50 l/min:
+
+<Worked fn="minutesOnGas" args={[100, 24, 50, 40]} expected={9.6} tolerance={0.05} unit="min" decimals={0} />
+
+Stejný plyn, stejná hloubka. Čtyřiadvacet minut na vyřešení problému, nebo necelých deset.
+
+Tři klidné dechy nestojí skoro nic a vrátí ti čtrnáct minut. Proto „zastav, dýchej, mysli“ není fráze – je to nejlevnější rezerva plynu, jakou máš.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="jeste-kousek" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="yerkes-dodson" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>
