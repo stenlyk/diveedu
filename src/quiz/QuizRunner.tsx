@@ -1,24 +1,38 @@
 import { formatCs } from '@diveedu/calc';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { Button, Card, ReviewBadge } from '../components/ui';
 import { lessonsById } from '../content';
 import type { Question } from '../content/schema';
-import { type AnswerRow, db } from '../db/db';
+import type { AnswerRow } from '../db/db';
+import { type Recorded, recordAnswer, regrade } from '../srs/record';
 import { checkNumeric, generateVariant, renderPrompt } from './numeric';
 
 /** Typy otázek, které engine umí. Ostatní typy přibudou s obsahem, který je potřebuje. */
 export const SUPPORTED_TYPES: ReadonlySet<Question['type']> = new Set(['choice', 'why', 'multi', 'numeric', 'order', 'match', 'findError']);
 
+export interface QuizOutcome {
+  question: Question;
+  correct: boolean;
+}
+
 export interface QuizResult {
   total: number;
   correct: number;
-  wrongQuestionIds: string[];
+  outcomes: QuizOutcome[];
+  /** Otázky, na které nedošlo (vypršel čas). */
+  unanswered: Question[];
 }
 
 interface Props {
   questions: Question[];
   mode: AnswerRow['mode'];
+  /** false = zkouškový režim: bez vysvětlení, hned další otázka. */
+  feedback?: boolean;
+  /** Čas (epoch ms), kdy běh končí; nezodpovězené otázky se počítají jako špatně. */
+  deadline?: number;
+  /** Vlastní závěrečná obrazovka; bez ní se ukáže jednoduché skóre. */
+  renderResult?: (result: QuizResult, restart: () => void) => ReactNode;
   onFinish?: (result: QuizResult) => void;
 }
 
@@ -31,64 +45,122 @@ function shuffled<T>(items: readonly T[]): T[] {
   return copy;
 }
 
-export function QuizRunner({ questions, mode, onFinish }: Props) {
+const clock = (ms: number) => {
+  const total = Math.max(0, Math.ceil(ms / 1000));
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+};
+
+export function QuizRunner({ questions, mode, feedback = true, deadline, renderResult, onFinish }: Props) {
   const usable = useMemo(() => questions.filter((question) => SUPPORTED_TYPES.has(question.type)), [questions]);
-  const [index, setIndex] = useState(0);
-  const [score, setScore] = useState<QuizResult>({ total: 0, correct: 0, wrongQuestionIds: [] });
-  const question = usable[index];
+  const [outcomes, setOutcomes] = useState<QuizOutcome[]>([]);
+  const [run, setRun] = useState(0);
+  const [now, setNow] = useState(() => Date.now());
+  const finished = useRef(false);
+
+  const timeUp = deadline !== undefined && now >= deadline;
+  const done = outcomes.length >= usable.length || timeUp;
+  const result: QuizResult = useMemo(
+    () => ({ total: usable.length, correct: outcomes.filter((o) => o.correct).length, outcomes, unanswered: usable.slice(outcomes.length) }),
+    [usable, outcomes],
+  );
+
+  useEffect(() => {
+    if (deadline === undefined || done) return;
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [deadline, done]);
+  useEffect(() => {
+    if (done && usable.length > 0 && !finished.current) {
+      finished.current = true;
+      onFinish?.(result);
+    }
+  }, [done, usable.length, result, onFinish]);
+
+  const restart = () => {
+    finished.current = false;
+    setOutcomes([]);
+    setRun(run + 1);
+  };
 
   if (usable.length === 0) return <p className="text-muted">Pro tento výběr zatím nejsou žádné otázky.</p>;
-  if (!question) {
+  if (done) {
+    if (renderResult) return <>{renderResult(result, restart)}</>;
     return (
       <Card>
         <div className="text-sm text-muted">Hotovo</div>
-        <div className="text-3xl font-bold" data-testid="quiz-score">{score.correct} / {score.total}</div>
+        <div className="text-3xl font-bold" data-testid="quiz-score">{result.correct} / {result.total}</div>
         <p className="mt-2 text-muted">
-          {score.correct === score.total ? 'Všechno správně.' : 'Chyby tě vedou zpět na konkrétní princip – projdi si odkazy u špatných odpovědí.'}
+          {result.correct === result.total ? 'Všechno správně.' : 'Chyby tě vedou zpět na konkrétní princip – projdi si odkazy u špatných odpovědí.'}
         </p>
-        <Button className="mt-4" variant="secondary" onClick={() => { setIndex(0); setScore({ total: 0, correct: 0, wrongQuestionIds: [] }); }}>Znovu</Button>
+        <WrongList result={result} />
+        <Button className="mt-4" variant="secondary" onClick={restart}>Znovu</Button>
       </Card>
     );
   }
 
-  const next = (correct: boolean) => {
-    const updated = {
-      total: score.total + 1,
-      correct: score.correct + (correct ? 1 : 0),
-      wrongQuestionIds: correct ? score.wrongQuestionIds : [...score.wrongQuestionIds, question.id],
-    };
-    setScore(updated);
-    setIndex(index + 1);
-    if (index + 1 >= usable.length) onFinish?.(updated);
-  };
-
+  const index = outcomes.length;
+  const question = usable[index]!;
   return (
     <div>
-      <div className="mb-3 flex items-center justify-between text-sm text-muted">
+      <div className="mb-3 flex items-center justify-between gap-3 text-sm text-muted">
         <span>Otázka {index + 1} z {usable.length}</span>
-        {question.needs_review && <ReviewBadge />}
+        <span className="flex items-center gap-2">
+          {question.needs_review && <ReviewBadge />}
+          {deadline !== undefined && <span className={`font-semibold tabular-nums ${deadline - now < 300_000 ? 'text-warn' : ''}`} aria-label="Zbývající čas" data-testid="quiz-clock">{clock(deadline - now)}</span>}
+        </span>
       </div>
-      <QuestionView key={`${question.id}-${index}`} question={question} mode={mode} onNext={next} />
+      <QuestionView key={`${run}-${index}-${question.id}`} question={question} mode={mode} feedback={feedback} onNext={(correct) => setOutcomes([...outcomes, { question, correct }])} />
     </div>
   );
 }
 
-function QuestionView({ question, mode, onNext }: { question: Question; mode: AnswerRow['mode']; onNext: (correct: boolean) => void }) {
+/** Přehled chyb s odkazem zpět na princip. */
+export function WrongList({ result }: { result: QuizResult }) {
+  const wrong = [...result.outcomes.filter((o) => !o.correct).map((o) => o.question), ...result.unanswered];
+  if (wrong.length === 0) return null;
+  return (
+    <details className="mt-4">
+      <summary className="min-h-11 cursor-pointer font-medium text-accent">Co zopakovat ({wrong.length})</summary>
+      <ul className="mt-2 space-y-3 text-sm">
+        {wrong.map((question, i) => {
+          const lesson = question.backToLessonId ? lessonsById.get(question.backToLessonId) : undefined;
+          return (
+            <li key={`${question.id}-${i}`} className="rounded-xl bg-surface-2 p-3">
+              <div className="font-medium">{question.type === 'numeric' ? question.prompt.replace(/\{(\w+)(\|percent)?\}/g, '…') : question.prompt}</div>
+              <p className="mt-1 text-muted">{question.explanation}</p>
+              {lesson && <Link to={`/uceni/${lesson.id}`} className="mt-1 inline-block text-accent underline underline-offset-4">Lekce: {lesson.title}</Link>}
+            </li>
+          );
+        })}
+      </ul>
+    </details>
+  );
+}
+
+function QuestionView({ question, mode, feedback, onNext }: { question: Question; mode: AnswerRow['mode']; feedback: boolean; onNext: (correct: boolean) => void }) {
   const startedAt = useRef(Date.now());
   const [verdict, setVerdict] = useState<boolean | null>(null);
+  const [recorded, setRecorded] = useState<Recorded | null>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
   const answer = (correct: boolean) => {
+    const pending = recordAnswer(question, correct, Date.now() - startedAt.current, mode).then(setRecorded, () => undefined);
+    if (!feedback) {
+      void pending;
+      onNext(correct);
+      return;
+    }
     setVerdict(correct);
-    void db.answers
-      .add({ questionId: question.id, at: Date.now(), correct, durationMs: Date.now() - startedAt.current, mode })
-      .catch(() => undefined);
   };
   useEffect(() => {
     if (verdict !== null) nextRef.current?.focus();
   }, [verdict]);
 
   const lesson = question.backToLessonId ? lessonsById.get(question.backToLessonId) : undefined;
+  const hard = () => {
+    if (recorded) void regrade(question.id, recorded.previous, 'hard').catch(() => undefined);
+    onNext(true);
+  };
   return (
     <Card>
       {question.type === 'numeric' ? (
@@ -111,8 +183,9 @@ function QuestionView({ question, mode, onNext }: { question: Question; mode: An
               Zpět k principu: {lesson.title}
             </Link>
           )}
-          <div className="mt-4">
-            <Button ref={nextRef} className="w-full sm:w-auto" onClick={() => onNext(verdict)}>Další</Button>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Button ref={nextRef} className="flex-1 sm:flex-none" onClick={() => onNext(verdict)}>Další</Button>
+            {mode === 'review' && verdict && <Button variant="secondary" onClick={hard}>Bylo to těžké</Button>}
           </div>
         </div>
       )}

@@ -159,6 +159,108 @@ test('numerická otázka: špatná odpověď vede zpět k principu', async ({ pa
   throw new Error('v ověření lekce nebyla numerická otázka');
 });
 
+test('denní opakování: otevřená lekce odemkne karty a odpověď kartu naplánuje', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/trenink/opakovani');
+  await expect(page.getByText('Dnes není co opakovat.')).toBeVisible();
+  await page.goto('/uceni/tlak-a-hloubka');
+  await expect(page.getByText('1 / 9 · Háček')).toBeVisible();
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'Denní opakování · 5' })).toBeVisible();
+  await page.getByRole('link', { name: 'Denní opakování · 5' }).click();
+  await expect(page.getByText('Otázka 1 z 5')).toBeVisible();
+  // Naplánovaná karta z fronty zmizí: po jedné odpovědi čekají už jen čtyři.
+  const numeric = page.getByRole('textbox', { name: /Odpověď/ });
+  if (await numeric.isVisible()) {
+    await numeric.fill('999');
+    await page.getByRole('button', { name: 'Ověřit' }).click();
+  } else {
+    await page.locator('button[aria-pressed]').first().click();
+  }
+  await page.getByRole('button', { name: 'Další' }).click();
+  // Navigace uvnitř aplikace (bez načtení stránky), aby zápis do IndexedDB stihl doběhnout.
+  await page.getByRole('navigation', { name: 'Hlavní navigace' }).filter({ visible: true }).getByRole('link', { name: 'Domů' }).click();
+  await expect(page.getByRole('link', { name: 'Denní opakování · 4' })).toBeVisible();
+  await page.getByRole('link', { name: /Celý přehled zvládnutí/ }).click();
+  await expect(page.getByTestId('streak')).toHaveText('1');
+});
+
+test('zkouška modulu: bez nápovědy, s časovým limitem a vyhodnocením proti prahu', async ({ page }) => {
+  await page.clock.install();
+  await acceptOnboarding(page);
+  await page.goto('/trenink/zkouska/zaklady');
+  await expect(page.getByText('ke splnění je potřeba 80 %')).toBeVisible();
+  await page.getByRole('button', { name: 'Začít zkoušku' }).click();
+  await expect(page.getByText('Otázka 1 z 40')).toBeVisible();
+  await expect(page.getByTestId('quiz-clock')).toHaveText(/^4[45]:\d\d$/);
+  // Čas vyprší: nezodpovězené otázky se počítají jako špatně.
+  await page.clock.fastForward('46:00');
+  await expect(page.getByTestId('exam-score')).toHaveText('0 %');
+  await expect(page.getByText(/Nesplněno – potřeba 80 %/)).toBeVisible();
+  await expect(page.getByText(/40 nezodpovězeno/)).toBeVisible();
+  await page.goto('/prehled');
+  await expect(page.getByText('Poslední zkoušky')).toBeVisible();
+});
+
+test('z hlavy na čas: deset úloh přes vlastní klávesnici, výsledek a tipy', async ({ page }, testInfo) => {
+  await acceptOnboarding(page);
+  await page.goto('/trenink/z-hlavy');
+  await page.getByRole('button', { name: 'Začít' }).click();
+  await expect(page.getByTestId('mental-prompt')).toBeVisible();
+  // První úlohu zadej klepáním na vlastní klávesnici (mobil), další klávesnicí.
+  await page.getByRole('button', { name: '9', exact: true }).click();
+  await page.getByRole('button', { name: 'Desetinná čárka' }).click();
+  await page.getByRole('button', { name: '5', exact: true }).click();
+  await expect(page.getByTestId('mental-input')).toContainText('9,5');
+  if (testInfo.project.name === 'mobil') {
+    const box = await page.getByRole('button', { name: '5', exact: true }).boundingBox();
+    expect(box!.height).toBeGreaterThanOrEqual(48);
+  }
+  await page.getByRole('button', { name: 'OK' }).click();
+  await expect(page.getByText(/přesně/)).toBeVisible();
+  for (let i = 0; i < 9; i++) {
+    await page.keyboard.press('Enter'); // další úloha
+    await page.keyboard.press('7');
+    await page.keyboard.press('Enter'); // potvrdit
+    await expect(page.getByText(/přesně/)).toBeVisible();
+  }
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('mental-score')).toHaveText(/\d+ \/ 10/);
+  await page.getByText('Tipy na odhady a zaokrouhlování').click();
+  await expect(page.getByText('Hloubku vyděl deseti a přičti jedna.')).toBeVisible();
+});
+
+test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z případové studie', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/graf');
+  const map = page.getByTestId('graph-map');
+  await expect(map.locator('[data-node]')).toHaveCount(51);
+  await map.locator('[data-node="ppo2"]').click();
+  await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
+  await page.getByRole('button', { name: 'Přiblížit' }).click();
+  await expect(map.locator('g').first()).toHaveAttribute('transform', /scale\(1\.5\)/);
+  await page.getByRole('button', { name: 'Advanced Nitrox' }).click();
+  await expect(map.locator('[data-node]')).toHaveCount(21);
+  await page.getByRole('tab', { name: 'Seznam' }).click();
+  await expect(page.getByRole('link', { name: /Absolutní tlak/ })).toBeVisible();
+
+  await page.goto('/pripady/zamena-plynu-krece');
+  await page.getByRole('link', { name: 'Zobrazit řetěz v mapě grafu' }).click();
+  await expect(page.getByText(/Zvýrazněný řetěz příčin/)).toBeVisible();
+  await expect(page.getByTestId('graph-map').locator('[data-node="zamena-plynu"]')).toHaveAttribute('opacity', '1');
+  await expect(page.getByTestId('graph-map').locator('[data-node="hloubka"]')).toHaveAttribute('opacity', '0.25');
+});
+
+test('trénink tématu a slabiny nabídnou otázky', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/trenink/tema?pojem=vzorec-mod');
+  await expect(page.getByRole('heading', { name: 'Trénink: Vzorec MOD' })).toBeVisible();
+  await expect(page.getByText(/Otázka 1 z \d+/)).toBeVisible();
+  await page.goto('/trenink/slabiny');
+  await expect(page.getByText('Nejslabší pojmy:')).toBeVisible();
+  await expect(page.getByText('Otázka 1 z 10')).toBeVisible();
+});
+
 test('export pokroku stáhne JSON zálohu', async ({ page }) => {
   await acceptOnboarding(page);
   await page.goto('/nastaveni');
@@ -195,6 +297,13 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await expect(page.getByText(/kyslíkové okno: přibližně/)).toBeVisible();
   await page.goto('/trenink/rychly-check');
   await expect(page.getByText('Otázka 1 z 10')).toBeVisible();
+  await page.goto('/trenink/z-hlavy');
+  await page.getByRole('button', { name: 'Začít' }).click();
+  await expect(page.getByTestId('mental-prompt')).toBeVisible();
+  await page.goto('/graf');
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(51);
+  await page.goto('/prehled');
+  await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');
   await expect(page.getByTestId('local-graph')).toBeVisible();
 });

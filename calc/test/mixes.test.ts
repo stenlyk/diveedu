@@ -12,6 +12,7 @@ import {
   gasDensity,
   HELIUM,
   icdCheck,
+  minHeForEnd,
   nitrox,
   optimalTrimix,
   OXYGEN,
@@ -143,6 +144,17 @@ describe('optimální trimix', () => {
     expect(practicalTrimix({ fO2: 0.189, fHe: 0.441 })).toEqual({ fO2: 0.18, fHe: 0.45 });
     expect(practicalTrimix({ fO2: 0.18, fHe: 0.45 })).toEqual({ fO2: 0.18, fHe: 0.45 });
     expect(practicalTrimix({ fO2: 0.105, fHe: 0.895 })).toEqual({ fO2: 0.1, fHe: 0.9 });
+  });
+});
+
+describe('minimální helium pro END', () => {
+  it('60 m a END 30 m → 42,9 % helia', () => {
+    expect(minHeForEnd(60, 30)).toBeCloseTo(1 - 4 / 7, 10);
+    expect(minHeForEnd(61.8, 30.9, FRESH_WATER_ENV)).toBeCloseTo(1 - 4 / 7, 10);
+  });
+  it('mělčeji než limit END helium není potřeba', () => {
+    expect(minHeForEnd(25, 30)).toBe(0);
+    expect(() => minHeForEnd(60, -1)).toThrow(CalcInputError);
   });
 });
 

@@ -115,3 +115,12 @@ export function checkMix(gas: Gas, depthM: number, limits: MixLimits, env: Env =
     allowed: !(hypoxic || ppO2TooHigh || endTooDeep || tooDense),
   };
 }
+
+/**
+ * Nejmenší frakce helia, při které END (O2 narkotický) nepřekročí limit:
+ * fHe = 1 − (END + 10) / (d + 10). Nikdy záporná.
+ */
+export function minHeForEnd(depthM: number, endMaxM: number, env: Env = DEFAULT_ENV): number {
+  assertNonNegative(endMaxM, 'END max');
+  return Math.max(0, 1 - absPressure(endMaxM, env) / absPressure(depthM, env));
+}

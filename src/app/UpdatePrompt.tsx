@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { Button } from '../components/ui';
 
@@ -7,6 +8,12 @@ import { Button } from '../components/ui';
  */
 export function UpdatePrompt() {
   const { needRefresh: [needRefresh, setNeedRefresh], offlineReady: [offlineReady, setOfflineReady], updateServiceWorker } = useRegisterSW();
+  // Informace „připraveno offline“ sama po chvíli zmizí; nabídka aktualizace zůstává, dokud ji uživatel nevyřeší.
+  useEffect(() => {
+    if (!offlineReady) return;
+    const timer = setTimeout(() => setOfflineReady(false), 6000);
+    return () => clearTimeout(timer);
+  }, [offlineReady, setOfflineReady]);
   if (!needRefresh && !offlineReady) return null;
   return (
     <div role="status" className="fixed inset-x-3 top-[calc(0.5rem+env(safe-area-inset-top))] z-30 mx-auto flex max-w-md items-center justify-between gap-3 rounded-2xl border border-accent bg-surface p-3 shadow-lg md:bottom-4 md:left-auto md:right-4 md:top-auto">

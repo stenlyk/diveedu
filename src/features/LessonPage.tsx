@@ -21,7 +21,11 @@ export function LessonPage() {
     setBody(null);
     setFailed(false);
     loadLessonBody(lesson).then((component) => { if (!cancelled) setBody(() => component); }, () => { if (!cancelled) setFailed(true); });
-    void db.progress.get(lesson.id).then((row) => { if (!cancelled) setIndex(row && row.status !== 'completed' ? row.section : 0); }).catch(() => undefined);
+    // Otevřením se lekce označí jako rozpracovaná – tím se její otázky odemknou pro denní opakování.
+    void db.progress.get(lesson.id).then((row) => {
+      if (!cancelled) setIndex(row && row.status !== 'completed' ? row.section : 0);
+      return row ? undefined : db.progress.put({ lessonId: lesson.id, status: 'started', section: 0, updatedAt: Date.now() });
+    }).catch(() => undefined);
     return () => { cancelled = true; };
   }, [lesson]);
 

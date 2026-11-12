@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–1 hotové. Etapa 2 (moduly 0 a 1) hotová, čeká na odbornou kontrolu obsahu.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–3 hotové (MVP). Obsah modulů 0 a 1 čeká na odbornou kontrolu. Další je etapa 4.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -277,3 +277,19 @@ Pokrytí: 50 uzlů × 3 otázky = min. 150 vazeb otázka→uzel. Plán: ~55 otá
 - Dvě hračky používají ilustrativní data místo výpočtu (pohlcování barev, kyslíkové okno) – obě jsou tak v aplikaci označené.
 - Jádro má 1,38 MB z limitu 1,5 MB. Před etapou 4 bude potřeba přestat precachovat lekce všech modulů najednou a stahovat text modulu při prvním otevření (nebo zvednout limit) – rozhodnutí před etapou 4.
 - Případová studie Blue Hole: bez profilu ponoru a s minimem detailů, protože spolehlivá data nemám; vše označeno k ověření.
+
+## 17. Etapa 3 – trénink (hotovo 2026-11-12)
+
+- **Denní opakování:** FSRS (`ts-fsrs`, bez náhodného rozptylu). Karta = otázka; vzniká první odpovědí kdekoli v aplikaci. Nové karty se odemykají otevřením lekce, nejvýš 10 nových a 20 celkem na jedno opakování. Hodnocení se odvozuje z výsledku a času; po správné odpovědi lze označit „bylo to těžké“.
+- **Z hlavy na čas:** 11 typů úloh ve 3 úrovních, vlastní číselná klávesnice, adaptivní obtížnost (nahoru po 3 správných, dolů po 2 chybách), tipy na odhady. Úroveň 3 (END, hustota trimixu, helium pro END) předbíhá do modulu 3.
+- **Zkouška modulu:** 40 otázek pokrývajících všechny pojmy, 45 minut, bez nápovědy, práh 80 %, rozbor na konci. Modul je „splněný“ až se zkouškou a splněnými prerekvizitami.
+- **Slabiny, Trénink tématu, Rychlý check** s přehledem, co zopakovat.
+- **Přehled:** série dní, zvládnutí pojmů po modulech, úspěšnost a rychlost výpočtů za 14 dní, poslední zkoušky.
+- **Mapa grafu:** silové rozložení, barvy podle zvládnutí, filtr modulu a typu vazby, zvýraznění řetězu příčin z případové studie.
+
+Odchylky od plánu:
+
+- Mapa používá `d3-force` + `d3-zoom` místo Cytoscape.js. Cytoscape by sám spotřeboval asi třetinu rozpočtu kódu; rozložení se počítá jednou předem, takže se na mobilu nic neanimuje.
+- Zvládnutí se počítá živě z historie odpovědí; tabulka `mastery` zůstává ve schématu nevyužitá (bez migrace ji lze později použít jako cache).
+- Pohled „Co kdyby“ (animace zhoršení uzlů při změně vstupu) přijde v etapě 4, až budou v grafu uzly pro hustotu směsí a END.
+- Rozpočet velikosti: kód < 1,5 MB, celkem s textem < 3 MB (rozhodnutí 2026-11-12). Aktuálně kód 1,23 MB, celkem 1,50 MB.

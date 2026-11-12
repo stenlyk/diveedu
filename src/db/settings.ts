@@ -6,10 +6,12 @@ export interface Settings {
   theme: 'dark' | 'light';
   /** Verze disclaimeru, kterou uživatel potvrdil; 0 = nepotvrzeno. */
   disclaimerAccepted: number;
+  /** Úroveň obtížnosti v režimu Z hlavy na čas (1–3). */
+  mentalLevel: number;
 }
 
 export const DISCLAIMER_VERSION = 1;
-const DEFAULTS: Settings = { theme: 'dark', disclaimerAccepted: 0 };
+const DEFAULTS: Settings = { theme: 'dark', disclaimerAccepted: 0, mentalLevel: 1 };
 
 interface SettingsStore extends Settings {
   loaded: boolean;

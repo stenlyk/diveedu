@@ -131,6 +131,8 @@ export function CasePage() {
         ))}
       </ol>
 
+      <Link to={`/graf?zvyraznit=${[...new Set(study.errorChain.flatMap((link) => link.conceptIds))].join(',')}`} className="mt-3 inline-flex min-h-11 items-center text-accent underline underline-offset-4">Zobrazit řetěz v mapě grafu</Link>
+
       <h2 className={heading}>5. Fyziologický mechanismus</h2>
       <p>{study.physiology}</p>
 

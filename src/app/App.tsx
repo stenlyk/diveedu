@@ -11,6 +11,12 @@ const Learn = lazy(() => import('../features/Learn').then((m) => ({ default: m.L
 const LessonPage = lazy(() => import('../features/LessonPage').then((m) => ({ default: m.LessonPage })));
 const Train = lazy(() => import('../features/Train').then((m) => ({ default: m.Train })));
 const QuickCheck = lazy(() => import('../features/Train').then((m) => ({ default: m.QuickCheck })));
+const Review = lazy(() => import('../features/Train').then((m) => ({ default: m.Review })));
+const Weaknesses = lazy(() => import('../features/Train').then((m) => ({ default: m.Weaknesses })));
+const Topic = lazy(() => import('../features/Train').then((m) => ({ default: m.Topic })));
+const Exam = lazy(() => import('../features/Train').then((m) => ({ default: m.Exam })));
+const Mental = lazy(() => import('../features/Mental').then((m) => ({ default: m.Mental })));
+const Dashboard = lazy(() => import('../features/Dashboard').then((m) => ({ default: m.Dashboard })));
 const GraphPage = lazy(() => import('../features/GraphPage').then((m) => ({ default: m.GraphPage })));
 const Tools = lazy(() => import('../features/Tools').then((m) => ({ default: m.Tools })));
 const ToolPage = lazy(() => import('../features/Tools').then((m) => ({ default: m.ToolPage })));
@@ -44,6 +50,12 @@ export function App() {
             <Route path="uceni/:lessonId" element={<LessonPage />} />
             <Route path="trenink" element={<Train />} />
             <Route path="trenink/rychly-check" element={<QuickCheck />} />
+            <Route path="trenink/opakovani" element={<Review />} />
+            <Route path="trenink/slabiny" element={<Weaknesses />} />
+            <Route path="trenink/tema" element={<Topic />} />
+            <Route path="trenink/zkouska/:moduleId" element={<Exam />} />
+            <Route path="trenink/z-hlavy" element={<Mental />} />
+            <Route path="prehled" element={<Dashboard />} />
             <Route path="graf" element={<GraphPage />} />
             <Route path="graf/:conceptId" element={<GraphPage />} />
             <Route path="nastroje" element={<Tools />} />

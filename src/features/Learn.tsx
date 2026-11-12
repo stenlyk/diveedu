@@ -3,12 +3,14 @@ import { Badge, Card, PageHeader, ReviewBadge } from '../components/ui';
 import { content, lessonsOfModule, questionsOfModule } from '../content';
 import { db } from '../db/db';
 import { useLiveQuery } from '../db/useLiveQuery';
+import { usePassedModules } from '../srs/hooks';
 
 const BRANCH_LABELS = { depth: 'Hlavní linie', cave: 'Jeskynní odbočka', cross: 'Průřezové moduly' } as const;
 
 export function Learn() {
   const progress = useLiveQuery(() => db.progress.toArray(), []);
   const status = new Map(progress?.map((row) => [row.lessonId, row.status]));
+  const passed = usePassedModules();
   return (
     <div>
       <PageHeader title="Učení" subtitle="Moduly jsou přístupné vždy. Splnit je lze po zkoušce na 80 %." />
@@ -26,6 +28,7 @@ export function Learn() {
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-lg font-semibold">{module.order} · {module.title}</h3>
                       {module.status === 'draft' && <Badge>rozpracováno</Badge>}
+                      {passed?.has(module.id) && <Badge tone="ok">✓ splněno</Badge>}
                     </div>
                     {module.subtitle && <p className="text-sm text-muted">{module.subtitle}</p>}
                     <p className="mt-1 text-xs text-muted">{lessons.length} lekcí · {questionsOfModule(module.id).length} otázek</p>
@@ -48,6 +51,11 @@ export function Learn() {
                           </li>
                         ))}
                       </ol>
+                    )}
+                    {module.status === 'published' && (
+                      <Link to={`/trenink/zkouska/${module.id}`} className="mt-3 inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4">
+                        Zkouška modulu{module.prerequisites.some((id) => !passed?.has(id)) ? ' (nejdřív splň předchozí modul)' : ''}
+                      </Link>
                     )}
                   </Card>
                 );

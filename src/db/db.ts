@@ -17,13 +17,13 @@ export interface AnswerRow {
   correct: boolean;
   durationMs: number;
   /** Kde otázka padla: lekce, rychlý check, trénink, zkouška. */
-  mode: 'lesson' | 'quick' | 'training' | 'exam' | 'review';
+  mode: 'lesson' | 'quick' | 'training' | 'exam' | 'review' | 'mental';
 }
 export interface CardRow {
   questionId: string;
   due: number;
-  /** Serializovaný stav FSRS (etapa 3). */
-  state: unknown;
+  /** Stav karty FSRS (data jako ISO řetězce). */
+  state: Record<string, unknown>;
 }
 export interface MasteryRow {
   conceptId: string;
