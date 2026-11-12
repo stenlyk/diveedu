@@ -1,0 +1,9 @@
+id: fulltrimix
+title: Full Trimix
+subtitle: Hypoxické směsi, velké hloubky a expediční ponory
+branch: depth
+rig: oc
+prerequisites: [trimix]
+order: 4
+passThreshold: 0.8
+status: published

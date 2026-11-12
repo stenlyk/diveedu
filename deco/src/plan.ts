@@ -9,14 +9,24 @@ export interface PlanGas {
   gas: Gas;
   /** Hloubka, od které se na plyn při výstupu přepíná. Plyn pro dno ji nemá. */
   switchDepthM?: number;
+  /** Travel gas: dýchá se i při sestupu, od hladiny do switchDepthM (pro hypoxické dno směsi). */
+  useOnDescent?: boolean;
+}
+
+/** Další úroveň ponoru po první: hloubka a čas strávený v ní (bez přesunu). */
+export interface PlanLevel {
+  depthM: number;
+  minutes: number;
 }
 
 export interface PlanInput {
   depthM: number;
   /** Čas od opuštění hladiny do zahájení výstupu (včetně sestupu). */
   bottomMinutes: number;
-  /** První plyn je pro sestup a dno; další jsou dekompresní. */
+  /** První plyn je pro sestup a dno; další jsou dekompresní nebo travel. */
   gases: PlanGas[];
+  /** Další úrovně po první (víceúrovňový profil). Přesun mezi úrovněmi se nekontroluje proti stropu – porušení ukáže rozbor plánu. */
+  levels?: PlanLevel[];
   /** Gradient factors v procentech. */
   gfLow: number;
   gfHigh: number;
@@ -142,9 +152,23 @@ export function planDive(input: PlanInput): EducationalPlan {
     } else stops.push({ depthM: depth, minutes, gasIndex });
   };
 
+  // Sestup: s travel plynem do jeho hloubky přepnutí, pak na plyn pro dno.
+  const travelIndex = input.gases.findIndex((entry, i) => i > 0 && entry.useOnDescent && entry.switchDepthM !== undefined);
+  const travelDepth = travelIndex > 0 ? Math.min(input.gases[travelIndex]!.switchDepthM!, input.depthM) : 0;
+  if (travelDepth > EPS) gasIndex = travelIndex;
   record();
-  move(input.depthM, descentMinutes);
+  if (travelDepth > EPS) {
+    move(travelDepth, travelDepth / descentRate);
+    gasIndex = 0;
+    record();
+  }
+  if (input.depthM - travelDepth > EPS) move(input.depthM, (input.depthM - travelDepth) / descentRate);
   if (input.bottomMinutes - descentMinutes > EPS) move(input.depthM, input.bottomMinutes - descentMinutes);
+  for (const level of input.levels ?? []) {
+    if (!(level.depthM > 0) || !(level.minutes >= 0)) throw new CalcInputError('úroveň ponoru musí mít kladnou hloubku a nezáporný čas');
+    if (Math.abs(level.depthM - depth) > EPS) move(level.depthM, Math.abs(level.depthM - depth) / (level.depthM > depth ? descentRate : ascentRate));
+    if (level.minutes > EPS) move(level.depthM, level.minutes);
+  }
   const ascentStart = t;
 
   while (depth > EPS) {

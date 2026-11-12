@@ -102,3 +102,23 @@
 - { id: analyza-helia, label: Analýza helia, type: procedure, moduleId: trimix, shortDefinition: 'Změření podílu helia vlastním analyzátorem; bez něj END ani dekompresi neznáš.' }
 - { id: realny-plyn, label: Chování reálného plynu, type: quantity, moduleId: trimix, shortDefinition: 'Odchylka skutečné stlačitelnosti plynu od ideální rovnice; u helia při vysokých tlacích znatelná.' }
 - { id: plan-vice-plynu, label: Plán s více plyny, type: procedure, moduleId: trimix, shortDefinition: 'Plán ponoru s dno směsí a jedním či dvěma dekompresními plyny včetně rezerv a záložních rozvrhů.' }
+
+# ── Modul 4: Full Trimix ─────────────────────────────────────────────────────
+- { id: hypoxicka-smes, label: Hypoxická směs, type: gas, moduleId: fulltrimix, shortDefinition: 'Trimix s méně než 18 % kyslíku; u hladiny nedýchatelný, určený pro velké hloubky.' }
+- { id: minimalni-hloubka, label: Minimální hloubka směsi, type: formula, moduleId: fulltrimix, formulaId: min-hloubka, shortDefinition: 'Hloubka, od které má hypoxická směs dostatečné ppO2.' }
+- { id: travel-gas, label: Travel gas, type: gas, moduleId: fulltrimix, shortDefinition: 'Směs dýchaná mezi hladinou a hloubkou, kde lze přejít na hypoxickou dno směs.' }
+- { id: prepnuti-pri-sestupu, label: Přepnutí při sestupu, type: procedure, moduleId: fulltrimix, shortDefinition: 'Řízený přechod z travel plynu na dno směs v plánované hloubce při sestupu.' }
+- { id: icd, label: 'Izobarická protidifuze (ICD)', type: physiology, moduleId: fulltrimix, shortDefinition: 'Přesycení vzniklé bez změny hloubky: jeden inertní plyn vstupuje do tkáně rychleji, než druhý odchází.' }
+- { id: pravidlo-petin, label: Pravidlo pětin, type: formula, moduleId: fulltrimix, formulaId: pravidlo-petin, shortDefinition: 'Provozní konvence: při přepnutí nemá podíl dusíku vzrůst o víc než pětinu poklesu podílu helia.' }
+- { id: dcs-vnitrniho-ucha, label: Dekompresní nemoc vnitřního ucha, type: risk, moduleId: fulltrimix, shortDefinition: 'Prudká závrať, zvracení a porucha sluchu během dekomprese hlubokých ponorů na heliu.' }
+- { id: hluboke-zastavky, label: Hluboké zastávky, type: procedure, moduleId: fulltrimix, shortDefinition: 'Zastávky hlouběji, než předepisuje model rozpuštěného plynu; předmět dlouhé debaty.' }
+- { id: plan-ctyr-plynu, label: Plán se třemi až čtyřmi plyny, type: procedure, moduleId: fulltrimix, shortDefinition: 'Dno směs, travel gas a jeden až dva dekompresní plyny s vlastními rezervami a záložními rozvrhy.' }
+- { id: kyslik-vice-dni, label: Kyslíková zátěž přes více dní, type: quantity, moduleId: fulltrimix, formulaId: repex, shortDefinition: 'Součet plicní kyslíkové zátěže (OTU) za sérii dní; limit na den klesá s délkou série.' }
+- { id: vzduchove-prestavky, label: Kyslíkové přestávky, type: procedure, moduleId: fulltrimix, shortDefinition: 'Krátké úseky na plynu s nižším ppO2 během dlouhé dekomprese na kyslíku.' }
+- { id: tepelny-management, label: Tepelný management, type: procedure, moduleId: fulltrimix, shortDefinition: 'Řízení tepla během ponoru: chladněji na dně, teplo na dekompresi.' }
+- { id: aktivni-ohrev, label: Aktivní ohřev, type: equipment, moduleId: fulltrimix, shortDefinition: 'Elektricky vyhřívaná vesta nebo podoblek; pomáhá i škodí podle toho, kdy je zapnutý.' }
+- { id: dehydratace, label: Dehydratace, type: physiology, moduleId: fulltrimix, shortDefinition: 'Úbytek tekutin ponořením, suchým plynem a pocením; zhoršuje prokrvení a zvyšuje riziko DCS.' }
+- { id: podpurny-tym, label: Podpůrný tým, type: procedure, moduleId: fulltrimix, shortDefinition: 'Potápěči a lidé na hladině, kteří zajišťují plyn, komunikaci a pomoc hlubokému týmu.' }
+- { id: odlozeny-plyn, label: Odložený plyn, type: procedure, moduleId: fulltrimix, shortDefinition: 'Lahve předem rozmístěné na trase výstupu nebo na dekompresní stanici.' }
+- { id: evakuacni-plan, label: Evakuační plán, type: procedure, moduleId: fulltrimix, shortDefinition: 'Předem známá cesta k hyperbarické komoře: kyslík, transport, kontakty a časy.' }
+- { id: limit-otevreneho-okruhu, label: Hranice otevřeného okruhu, type: risk, moduleId: fulltrimix, shortDefinition: 'Hloubka, ve které už spotřeba plynu, logistika a čas dekomprese přestávají být na otevřeném okruhu zvládnutelné.' }

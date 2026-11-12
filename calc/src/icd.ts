@@ -26,3 +26,13 @@ export function icdCheck(from: Gas, to: Gas): IcdCheck {
   const ok = heDrop <= EPS || deltaN2 <= maxN2Increase + EPS;
   return { deltaN2, deltaHe, maxN2Increase, ok };
 }
+
+/** Nárůst frakce dusíku při přepnutí mezi směsmi zadanými frakcemi (kladný = dusíku přibylo). */
+export function icdN2Rise(fromFO2: number, fromFHe: number, toFO2: number, toFHe: number): number {
+  return icdCheck({ fO2: fromFO2, fHe: fromFHe }, { fO2: toFO2, fHe: toFHe }).deltaN2;
+}
+
+/** Nejvyšší přípustný nárůst frakce dusíku podle pravidla pětin: pětina poklesu frakce helia. */
+export function icdAllowedN2Rise(fromFHe: number, toFHe: number): number {
+  return icdCheck({ fO2: 0, fHe: fromFHe }, { fO2: 0, fHe: toFHe }).maxN2Increase;
+}

@@ -347,3 +347,17 @@ describe('zkratky pro trimix', () => {
     expect(last(optimal).value).toBeCloseTo(1 - 4 / 7, 10);
   });
 });
+
+import { icdAllowedN2Rise, icdN2Rise } from '../src';
+
+describe('zkratky ICD', () => {
+  it('Tx 12/65 → EAN50: dusíku přibude 27 %, pravidlo pětin dovolí 13 %', () => {
+    expect(icdN2Rise(0.12, 0.65, 0.5, 0)).toBeCloseTo(0.27, 10);
+    expect(icdAllowedN2Rise(0.65, 0)).toBeCloseTo(0.13, 10);
+  });
+  it('přepnutí s mezistupněm: Tx 12/65 → Tx 21/35', () => {
+    expect(icdN2Rise(0.12, 0.65, 0.21, 0.35)).toBeCloseTo(0.21, 10);
+    expect(icdAllowedN2Rise(0.65, 0.35)).toBeCloseTo(0.06, 10);
+    expect(icdAllowedN2Rise(0.35, 0.45)).toBe(0);
+  });
+});

@@ -506,6 +506,64 @@ export const CALC_DEFS: CalcDef[] = [
     },
     steps: (v) => c.trimixBlendSteps(v.target!, v.fO2!, Math.min(v.fHe!, 1 - v.fO2!)),
   },
+  // ── Modul 4: plný trimix ───────────────────────────────────────────────────
+  {
+    id: 'min-depth',
+    title: 'Minimální hloubka hypoxické směsi',
+    summary: 'Od jaké hloubky se dá směs s málo kyslíkem dýchat.',
+    tool: true,
+    inputs: [
+      pct('fO2', 'Kyslík ve směsi', 5, 21, 10),
+      { key: 'min', label: 'Nejnižší přípustné ppO2', min: 0.16, max: 0.21, step: 0.01, unit: 'bar', initial: 0.18 },
+    ],
+    outputs: (v) => {
+      const surface = c.ppO2(v.fO2!, 0);
+      return [
+        { label: 'ppO2 na hladině', value: surface, unit: 'bar', decimals: 2, tone: surface < 0.16 ? 'danger' : surface < 0.18 ? 'warn' : 'ok' },
+        { label: 'Dýchatelná od hloubky (zaokrouhleno nahoru)', value: c.ceilTo(c.minDepthForPpO2(v.fO2!, v.min!)), unit: 'm', decimals: 0, bar: { max: 30 }, note: 'Mělčeji se dýchá travel gas. Hypoxie nevaruje – bezvědomí přichází bez pocitu dušení.' },
+      ];
+    },
+    steps: (v) => c.minDepthSteps(v.fO2!, v.min!),
+  },
+  {
+    id: 'icd',
+    title: 'Přepnutí He → N2 (pravidlo pětin)',
+    summary: 'Kontrola izobarické protidifuze při přepnutí plynu.',
+    tool: true,
+    inputs: [
+      pct('fromO2', 'Původní směs: kyslík', 8, 30, 12),
+      pct('fromHe', 'Původní směs: helium', 0, 80, 65),
+      pct('toO2', 'Nová směs: kyslík', 15, 100, 50),
+      pct('toHe', 'Nová směs: helium', 0, 60, 0),
+    ],
+    outputs: (v) => {
+      const from = { fO2: v.fromO2!, fHe: Math.min(v.fromHe!, 1 - v.fromO2!) };
+      const to = { fO2: v.toO2!, fHe: Math.min(v.toHe!, 1 - v.toO2!) };
+      const check = c.icdCheck(from, to);
+      return [
+        { label: 'Změna podílu helia', value: check.deltaHe * 100, unit: '%', decimals: 0 },
+        { label: 'Změna podílu dusíku', value: check.deltaN2 * 100, unit: '%', decimals: 0, tone: check.ok ? 'ok' : 'danger' },
+        { label: 'Nejvyšší přípustný nárůst dusíku', value: check.maxN2Increase * 100, unit: '%', decimals: 1, tone: check.ok ? 'ok' : 'danger', note: check.ok ? 'Přepnutí pravidlu pětin vyhovuje.' : 'Dusíku přibývá víc než pětina úbytku helia. Zvaž mezistupeň nebo dekompresní plyn s heliem. Pravidlo je provozní konvence, ne fyzikální zákon.' },
+      ];
+    },
+  },
+  {
+    id: 'otu-days',
+    title: 'Kyslík přes více dní',
+    summary: 'Denní dávka OTU proti limitu REPEX pro sérii potápěčských dní.',
+    tool: true,
+    inputs: [
+      { key: 'days', label: 'Počet dní po sobě', min: 1, max: 14, step: 1, unit: '', initial: 5 },
+      { key: 'daily', label: 'OTU za den', min: 50, max: 900, step: 10, unit: 'OTU', initial: 350 },
+    ],
+    outputs: (v) => {
+      const limit = c.repexDailyLimit(v.days!);
+      return [
+        { label: 'Průměrný denní limit pro tuto sérii', value: limit, unit: 'OTU', decimals: 0 },
+        { label: 'Čerpání limitu', value: (v.daily! / limit) * 100, unit: '%', decimals: 0, tone: v.daily! > limit ? 'danger' : v.daily! > limit * 0.8 ? 'warn' : 'ok', bar: { max: 150, marks: [{ at: 100, label: '100' }] }, note: 'Limity REPEX (Hamilton, 1989). Část kyslíkové rezervy se nechává pro případnou léčbu v komoře.' },
+      ];
+    },
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));

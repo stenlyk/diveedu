@@ -1,0 +1,21 @@
+id: hluboke-zastavky-debata
+moduleId: fulltrimix
+title: "Hluboké zastávky: debata"
+order: 5
+conceptIds: ["hluboke-zastavky", "bublinove-modely", "gradient-factor", "syceni-tkani"]
+checkQuestionIds: ["deep-co-jsou", "deep-nedu", "deep-proc-skodi", "deep-gf", "deep-zaver"]
+estimatedMinutes: 12
+audioSummary: >-
+  Hluboké zastávky jsou zastávky hlouběji, než předepisuje klasický model.
+  V devadesátých letech se rozšířily z osobní zkušenosti a z teorie bublinových modelů.
+  Jejich háček je, že v hloubce pomalé tkáně plyn stále přijímají.
+  Pokus amerického námořnictva z roku dva tisíce jedenáct srovnal dva rozvrhy se stejnou celkovou dobou. Ten s hlubokými zastávkami měl víc případů dekompresní nemoci.
+  Neplyne z toho, že se má stoupat rovnou k hladině. Řízený výstup a zastávky podle modelu platí dál.
+  Praxe se posunula k vyššímu gé ef low, například padesát osmdesát.
+  Pocit po ponoru ani elegantní teorie nejsou důkaz. Důkaz je pokus.
+sources:
+  - { title: "The importance of deep safety stops: rethinking ascent patterns from decompression dives. DeepTech 5", author: "Pyle R. L.", year: 1996 }
+  - { title: "Redistribution of decompression stop time from shallow to deep stops increases incidence of decompression sickness in air decompression dives. NEDU TR 11-06", author: "Doolette D. J., Gerth W. A., Gault K. A.", year: 2011 }
+  - { title: "Understanding M-values; Clearing Up the Confusion About Deep Stops", author: "Baker E. C.", year: 1998 }
+  - { title: "On the use of a bubble formation model to calculate diving tables. Aviation, Space, and Environmental Medicine 57(2)", author: "Yount D. E., Hoffman D. C.", year: 1986 }
+needs_review: true

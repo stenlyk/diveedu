@@ -3,3 +3,4 @@ export * from './tables';
 export * from './model';
 export * from './plan';
 export * from './simple';
+export * from './analyze';

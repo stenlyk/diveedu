@@ -1,0 +1,18 @@
+id: travel-gas
+moduleId: fulltrimix
+title: "Travel gas a sestup na hypoxické směsi"
+order: 2
+conceptIds: ["travel-gas", "prepnuti-pri-sestupu", "hypoxicka-smes", "prepnuti-plynu"]
+checkQuestionIds: ["travel-k-cemu", "travel-vyber", "travel-sestup-poradi", "travel-ppo2", "travel-chyby"]
+estimatedMinutes: 10
+audioSummary: >-
+  Travel gas je směs, kterou dýcháš mezi hladinou a hloubkou, kde lze přejít na hypoxickou směs pro dno.
+  Musí být dýchatelná od hladiny a v hloubce přepnutí nesmí překročit limit kyslíku ani narkózy.
+  Často se používá dekompresní směs pro hluboké zastávky, takže nepřibude žádná lahev.
+  Přepnutí při sestupu se dělá v klidu, se zastavením, stejným postupem jako na dekompresi. Hloubka, lahev, hadice, partner.
+  Přepínej v horní části povoleného pásma, kde je narkóza malá.
+  Nikdy nezačínej sestup na směsi pro dno, ani na pár metrů.
+sources:
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+needs_review: true

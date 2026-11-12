@@ -1,0 +1,398 @@
+- id: deep-co-jsou
+  type: choice
+  conceptIds: [hluboke-zastavky, bublinove-modely]
+  difficulty: 1
+  prompt: Co jsou hluboké zastávky?
+  options:
+    - { text: 'Zastávky hlouběji, než předepisuje model rozpuštěného plynu', correct: true }
+    - { text: 'Zastávky na dně před výstupem', explanation: 'Zastávky se dělají při výstupu.' }
+    - { text: 'Jiný název pro bezpečnostní zastávku ve 3 m', explanation: 'Ta je naopak mělká.' }
+    - { text: 'Zastávky jen při ponorech pod 100 m', explanation: 'Pojem se netýká konkrétní hloubky ponoru.' }
+  explanation: 'Vycházejí z bublinových modelů nebo z nízkého GF low.'
+  backToLessonId: hluboke-zastavky-debata
+
+- id: deep-nedu
+  type: choice
+  conceptIds: [hluboke-zastavky, bublinove-modely, dcs]
+  difficulty: 2
+  prompt: Co srovnával pokus NEDU z roku 2011?
+  options:
+    - { text: 'Dva rozvrhy se stejnou celkovou dobou dekomprese: jeden s hlubokými, druhý s mělčími zastávkami', correct: true }
+    - { text: 'Trimix proti vzduchu', explanation: 'Pokus probíhal na vzduchu.' }
+    - { text: 'Otevřený okruh proti rebreatheru', explanation: 'O přístroj nešlo.' }
+    - { text: 'Krátké ponory proti dlouhým', explanation: 'Profil ponoru byl stejný.' }
+  explanation: 'Rozvrh s hlubokými zastávkami měl výrazně víc případů dekompresní nemoci.'
+  backToLessonId: hluboke-zastavky-debata
+
+- id: deep-proc-skodi
+  type: why
+  conceptIds: [hluboke-zastavky, syceni-tkani, kompartment]
+  difficulty: 2
+  prompt: Jaký je hlavní argument proti hlubokým zastávkám?
+  options:
+    - { text: 'V hloubce pomalé tkáně stále přijímají plyn; čas tam strávený se jim přičítá ke dnu.', correct: true }
+    - { text: 'Hluboké zastávky spotřebují příliš mnoho plynu.', explanation: 'To je praktická nevýhoda, ne hlavní argument.' }
+    - { text: 'V hloubce nelze držet stálou hloubku.', explanation: Jde to stejně jako jinde. }
+    - { text: 'Způsobují kyslíkovou toxicitu.', explanation: 'Na dno směsi je ppO2 v hloubce zastávek nízké.' }
+  explanation: 'Co pomáhá rychlým tkáním, pomalým škodí.'
+  backToLessonId: hluboke-zastavky-debata
+
+- id: deep-gf
+  type: choice
+  conceptIds: [gradient-factor, hluboke-zastavky]
+  difficulty: 2
+  prompt: Kterým nastavením vzniknou v Bühlmannově modelu hluboké první zastávky?
+  options:
+    - { text: Nízkým GF low, correct: true }
+    - { text: Nízkým GF high, explanation: 'GF high řídí mělké zastávky a přesycení při vynoření.' }
+    - { text: Vysokým GF low, explanation: 'To první zastávku posune mělčeji.' }
+    - { text: Vypnutím gradient factors, explanation: 'Pak model jede po M-hodnotách a první zastávka je nejmělčí.' }
+  explanation: 'Po roce 2011 mnoho potápěčů GF low zvýšilo.'
+  backToLessonId: hluboke-zastavky-debata
+
+- id: deep-zaver
+  type: findError
+  conceptIds: [hluboke-zastavky, rychlost-vystupu, gradient-factor]
+  difficulty: 3
+  prompt: Které závěry z debaty o hlubokých zastávkách jsou chybné?
+  items:
+    - { text: 'Přesouvat čas z mělkých zastávek do hlubokých se při dané době dekomprese nevyplatí.' }
+    - { text: 'Z hloubky se má stoupat co nejrychleji rovnou k hladině.', isError: true, explanation: 'Řízená rychlost výstupu a zastávky podle modelu platí dál.' }
+    - { text: 'Výsledek pokusu na vzduchu nelze bez výhrad přenést na všechny trimixové ponory.' }
+    - { text: 'Dobrý pocit po ponoru dokazuje, že rozvrh byl správný.', isError: true, explanation: 'Pocit není důkaz. Důkaz je pokus s kontrolní skupinou.' }
+  explanation: 'Debata skončila posunem k vyššímu GF low, ne zrušením zastávek.'
+  backToLessonId: hluboke-zastavky-debata
+
+- id: p4-co-kontrolovat
+  type: multi
+  conceptIds: [plan-ctyr-plynu, travel-gas, minimalni-hloubka]
+  difficulty: 2
+  prompt: Co plán hlubokého trimixového ponoru kontroluje navíc oproti plánu se dvěma plyny?
+  options:
+    - { text: 'Minimální hloubku dno směsi a pásmo přepnutí při sestupu', correct: true }
+    - { text: 'Každé přepnutí proti pravidlu pětin', correct: true }
+    - { text: 'CNS hodiny sečtené přes všechny plyny', correct: true }
+    - { text: 'Barvu lahví', explanation: 'Barva není spolehlivé značení.' }
+  explanation: 'A záložní rozvrh pro ztrátu každého plynu zvlášť.'
+  backToLessonId: plan-ctyr-plynu
+
+- id: p4-spotreba-dno
+  type: numeric
+  conceptIds: [plan-ctyr-plynu, limit-otevreneho-okruhu, sac]
+  difficulty: 2
+  prompt: 'Kolik litrů plynu spotřebuješ za {time} min v {depth} m při spotřebě 20 l/min?'
+  template: { fn: gasConsumed, params: { depth: { values: [80, 90, 100, 120] }, time: { values: [10, 15, 20] } }, fixed: { sac: 20 }, args: [sac, depth, time], tolerance: 30, unit: l, decimals: 0 }
+  explanation: 'Spotřeba = SAC × absolutní tlak × čas. V 90 m je tlak 10 bar.'
+  backToLessonId: plan-ctyr-plynu
+
+- id: p4-mingas
+  type: why
+  conceptIds: [plan-ctyr-plynu, minimum-gas, hypoxicka-smes]
+  difficulty: 3
+  prompt: K jakému bodu se u hlubokého ponoru počítá minimum gas?
+  options:
+    - { text: 'K první lahvi, která je v dané hloubce dýchatelná a dostupná', correct: true }
+    - { text: 'Vždy k hladině', explanation: 'Přímý výstup na hladinu je u dekompresního ponoru vyloučený.' }
+    - { text: 'K nejbližší zastávce', explanation: 'Na zastávce musí být i plyn, který tam lze dýchat.' }
+    - { text: 'Nepočítá se, řeší to podpůrný tým', explanation: 'Podpora je navíc; vlastní rezerva je základ.' }
+  explanation: 'A vždy pro dva potápěče při stresové spotřebě.'
+  backToLessonId: plan-ctyr-plynu
+
+- id: p4-poradi-plynu
+  type: order
+  conceptIds: [plan-ctyr-plynu, travel-gas, prepnuti-plynu]
+  difficulty: 2
+  prompt: 'Seřaď plyny v pořadí, v jakém se dýchají při ponoru do 90 m.'
+  items:
+    - Travel gas od hladiny
+    - Hypoxická dno směs
+    - Travel nebo hluboký dekompresní plyn při výstupu
+    - Dekompresní plyn od 21 m
+    - Kyslík od 6 m
+  explanation: 'Čtyři role, pět úseků, čtyři přepnutí.'
+  backToLessonId: plan-ctyr-plynu
+
+- id: p4-cns
+  type: why
+  conceptIds: [plan-ctyr-plynu, vzorec-cns, kyslik-vice-dni]
+  difficulty: 2
+  prompt: Proč se CNS hodiny počítají přes celý ponor, a ne zvlášť pro každý plyn?
+  options:
+    - { text: 'Kyslíková zátěž se sčítá bez ohledu na to, z které lahve kyslík pochází.', correct: true }
+    - { text: 'Protože počítač neumí rozlišit plyny.', explanation: 'Umí; sčítání má fyziologický důvod.' }
+    - { text: 'Protože dno směs žádný kyslík neobsahuje.', explanation: 'Obsahuje a její ppO2 na dně je přes 1 bar.' }
+    - { text: 'Nepočítají se, platí jen pro nitrox.', explanation: 'Platí pro každou směs s ppO2 nad 0,5 bar.' }
+  explanation: 'U dlouhé dekomprese na kyslíku přesáhne součet plánovací limit dřív, než bys čekal.'
+  backToLessonId: plan-ctyr-plynu
+
+- id: vicedni-limit
+  type: choice
+  conceptIds: [kyslik-vice-dni, plicni-toxicita]
+  difficulty: 2
+  prompt: Jak se mění denní limit OTU s délkou série potápěčských dní?
+  options:
+    - { text: 'Klesá – čím delší série, tím nižší průměrná denní dávka', correct: true }
+    - { text: 'Roste, tělo si zvyká', explanation: 'Plíce si na kyslík nezvykají; zátěž se hromadí.' }
+    - { text: 'Nemění se', explanation: 'Podle REPEX je to 850 OTU pro jeden den a kolem 300 pro dlouhé série.' }
+    - { text: 'Platí jen první den', explanation: 'Platí pro každý den série.' }
+  explanation: 'Plicní zátěž se odbourává pomalu, proto se sčítá přes dny.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: vicedni-otu-vypocet
+  type: numeric
+  conceptIds: [kyslik-vice-dni, vzorec-otu, ppo2]
+  difficulty: 3
+  prompt: 'Kolik OTU nasbíráš za {time} min dekomprese na kyslíku v 6 m (ppO2 1,6 bar)? (OTU = t × ((ppO2 − 0,5) / 0,5)^0,83; 2,2^0,83 ≈ 1,92)'
+  template: { fn: otu, params: { time: { values: [20, 30, 45, 60] } }, fixed: { pp: 1.6 }, args: [pp, time], tolerance: 3, unit: OTU, decimals: 0 }
+  explanation: 'Čas krát přibližně 1,92.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: vicedni-prestavky
+  type: why
+  conceptIds: [vzduchove-prestavky, cns-toxicita, vzorec-cns]
+  difficulty: 2
+  prompt: Proč se při dlouhé dekompresi na kyslíku dělají přestávky?
+  options:
+    - { text: 'Limit jedné expozice při 1,6 bar je jen 45 minut; přestávka na nižším ppO2 snižuje riziko křečí.', correct: true }
+    - { text: 'Aby si potápěč odpočinul od automatiky.', explanation: 'Důvodem je kyslíková toxicita.' }
+    - { text: 'Aby se tkáně znovu nasytily.', explanation: 'To je nežádoucí vedlejší účinek, ne cíl.' }
+    - { text: 'Protože kyslík dojde.', explanation: 'Zásoba se plánuje předem.' }
+  explanation: 'Přestávka dekompresi mírně prodlouží. Je to cena za to, že ji dokončíš při vědomí.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: vicedni-rezerva
+  type: why
+  conceptIds: [kyslik-vice-dni, evakuacni-plan, plicni-toxicita]
+  difficulty: 2
+  prompt: Proč plán expedice nečerpá denní limit OTU celý?
+  options:
+    - { text: 'Případná léčba v komoře znamená další stovky OTU, na které musí zbýt rezerva.', correct: true }
+    - { text: 'Protože limit je jen odhad a nikdo ho nebere vážně.', explanation: 'Bere; a právě proto se nechává rezerva.' }
+    - { text: 'Aby zbyl kyslík na další den.', explanation: 'Jde o zátěž plic, ne o zásobu plynu.' }
+    - { text: 'Protože počítače OTU nepočítají.', explanation: 'Většina technických počítačů je počítá.' }
+  explanation: 'Co si necháš, je tvoje léčba.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: vicedni-cns-vs-otu
+  type: match
+  conceptIds: [vzorec-cns, vzorec-otu, kyslik-vice-dni]
+  difficulty: 2
+  prompt: Která kyslíková zátěž rozhoduje kdy?
+  pairs:
+    - { left: 'Jeden ponor s dlouhou dekompresí na kyslíku', right: CNS hodiny }
+    - { left: 'Série mnoha ponorů po sobě', right: 'OTU – plicní zátěž' }
+  explanation: 'CNS se hlídá pro každý ponor, OTU přes celé dny.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: teplo-kdy-topit
+  type: choice
+  conceptIds: [tepelny-management, aktivni-ohrev]
+  difficulty: 1
+  prompt: Kdy se má zapnout vyhřívaná vesta?
+  options:
+    - { text: Na začátku výstupu, correct: true }
+    - { text: Hned u hladiny, explanation: 'Teplo na dně zvyšuje sycení tkání.' }
+    - { text: Na dně, explanation: 'Právě na dně je teplo nevýhodou.' }
+    - { text: Až po vynoření, explanation: 'Největší přínos má na dekompresi.' }
+  explanation: 'Na dně chladněji, na dekompresi teplo.'
+  backToLessonId: tepelny-management
+
+- id: teplo-proc
+  type: why
+  conceptIds: [tepelny-management, syceni-tkani, dcs]
+  difficulty: 2
+  prompt: Proč je nejhorší být v teple na dně a prochladnout na dekompresi?
+  options:
+    - { text: 'Dobře prokrvené tkáně na dně naberou víc plynu a prochladlé ho pak vydávají pomalu.', correct: true }
+    - { text: 'Protože teplá voda obsahuje víc dusíku.', explanation: 'Jde o prokrvení tkání, ne o vodu.' }
+    - { text: 'Protože chlad zvyšuje M-hodnoty.', explanation: 'M-hodnoty jsou parametry modelu, ne teploty.' }
+    - { text: 'Protože v teple se dýchá rychleji.', explanation: To není hlavní mechanismus. }
+  explanation: 'Prokrvení určuje rychlost sycení i vysycování.'
+  backToLessonId: tepelny-management
+
+- id: teplo-ohrev-rizika
+  type: multi
+  conceptIds: [aktivni-ohrev, tepelny-management, ztrata-tepla]
+  difficulty: 2
+  prompt: Jaké zásady platí pro aktivní ohřev?
+  options:
+    - { text: 'Oblek musí izolovat i bez něj', correct: true }
+    - { text: 'Plán počítá s tím, že ohřev selže', correct: true }
+    - { text: 'Zapíná se až při výstupu', correct: true }
+    - { text: 'S ohřevem lze použít tenčí podoblek', explanation: 'Pak je selhání ohřevu na dlouhé dekompresi nebezpečné.' }
+  explanation: 'Porucha ohřevu uprostřed dekomprese je nejhorší scénář.'
+  backToLessonId: tepelny-management
+
+- id: teplo-hydratace
+  type: why
+  conceptIds: [dehydratace, dcs, transport-kysliku]
+  difficulty: 2
+  prompt: Proč dehydratace zvyšuje riziko dekompresní nemoci?
+  options:
+    - { text: 'Menší objem krve zhoršuje prokrvení tkání a odvod inertního plynu.', correct: true }
+    - { text: 'Protože voda v těle váže dusík.', explanation: Voda dusík neváže. }
+    - { text: 'Protože žíznivý potápěč dýchá víc.', explanation: To není podstatné. }
+    - { text: 'Protože bez vody nefunguje automatika.', explanation: Automatika s hydratací nesouvisí. }
+  explanation: 'Ponoření, suchý plyn a chlad odvodňují. Pití je součást plánu.'
+  backToLessonId: tepelny-management
+
+- id: teplo-priprava
+  type: findError
+  conceptIds: [tepelny-management, dehydratace, aktivni-ohrev]
+  difficulty: 2
+  prompt: Co je v přípravě na dlouhý studený ponor špatně?
+  items:
+    - { text: 'Od rána málo piju, abych nemusel na záchod.', isError: true, explanation: 'Dehydratace je rizikový faktor dekompresní nemoci.' }
+    - { text: 'Podoblek mám dimenzovaný tak, aby stačil i bez ohřevu.' }
+    - { text: 'Vestu zapnu hned při vstupu do vody, ať mi je dobře.', isError: true, explanation: 'Na dně je teplo nevýhodou; zapíná se při výstupu.' }
+    - { text: 'Na dekompresi mám připravené pití.' }
+  explanation: 'Teplo a tekutiny jsou součást dekompresního plánu.'
+  backToLessonId: tepelny-management
+
+- id: exp-podpora
+  type: multi
+  conceptIds: [podpurny-tym, ztrata-deko-plynu, tym]
+  difficulty: 1
+  prompt: Co dělá podpůrný potápěč?
+  options:
+    - { text: 'Kontroluje stav hlubokého týmu na dekompresi', correct: true }
+    - { text: 'Přináší náhradní plyn a odnáší prázdné lahve', correct: true }
+    - { text: 'Předává zprávy na hladinu', correct: true }
+    - { text: 'Dělá vlastní hluboký ponor souběžně', explanation: 'Pak není podpora, ale další potápěč, kterého je třeba zajistit.' }
+  explanation: 'Každý má jednu jasnou roli.'
+  backToLessonId: logistika-expedic
+
+- id: exp-evakuace
+  type: multi
+  conceptIds: [evakuacni-plan, dcs]
+  difficulty: 2
+  prompt: Co má evakuační plán obsahovat?
+  options:
+    - { text: 'Kde je nejbližší fungující komora a jak se tam dostat', correct: true }
+    - { text: 'Kolik kyslíku je na místě a na jak dlouho', correct: true }
+    - { text: 'Kdo volá, komu a čím', correct: true }
+    - { text: 'Odhad, že se nic nestane', explanation: 'Plán se píše právě pro případ, že se stane.' }
+  explanation: 'Píše se před expedicí, ne po nehodě.'
+  backToLessonId: logistika-expedic
+
+- id: exp-odlozeny-plyn
+  type: why
+  conceptIds: [odlozeny-plyn, planovani-plynu, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: Jaké pravidlo platí pro plyn odložený předem na trase?
+  options:
+    - { text: 'Plán nesmí záviset na jediné odložené lahvi – může se nenajít.', correct: true }
+    - { text: 'Odložený plyn nahrazuje rezervu na zádech.', explanation: 'Nenahrazuje; je navíc.' }
+    - { text: 'Odkládat se smí jen kyslík.', explanation: 'Odkládají se různé plyny.' }
+    - { text: 'Odložené lahve není třeba značit.', explanation: 'Značení je u nich ještě důležitější.' }
+  explanation: 'Případ U-869 ukazuje, co se stane, když odložené lahve nejsou k nalezení.'
+  backToLessonId: logistika-expedic
+
+- id: exp-limit-oc
+  type: numeric
+  conceptIds: [limit-otevreneho-okruhu, minimum-gas, hloubka]
+  difficulty: 3
+  prompt: 'Spočítej minimum gas v barech pro přímý výstup z {depth} m: stresová spotřeba 20 l/min, dvojče 24 l, dva potápěči, 1 min řešení, výstup 9 m/min.'
+  template: { fn: rockBottomBar, params: { depth: { values: [81, 90, 99, 108] } }, fixed: { sac: 20, tank: 24 }, args: [depth, sac, tank], tolerance: 3, unit: bar, decimals: 0 }
+  explanation: 'S hloubkou roste tlak i doba výstupu. Z čísla je vidět, proč má otevřený okruh strop.'
+  backToLessonId: logistika-expedic
+
+- id: exp-rozhodnuti
+  type: why
+  conceptIds: [podpurny-tym, plan-ponoru, limit-otevreneho-okruhu]
+  difficulty: 2
+  prompt: Proč se podmínky pro zrušení ponoru sepisují předem?
+  options:
+    - { text: 'Na místě, po měsících příprav, všichni chtějí a rozhodují se hůř.', correct: true }
+    - { text: 'Protože to vyžaduje pojišťovna.', explanation: 'Důvod je lidský, ne úřední.' }
+    - { text: 'Aby se ponor nikdy nerušil.', explanation: 'Naopak – aby se zrušil, když má.' }
+    - { text: 'Protože pod vodou se plán nedá číst.', explanation: 'Jde o rozhodnutí před ponorem.' }
+  explanation: 'Rozhodnutí neponořit se je nejtěžší část logistiky.'
+  backToLessonId: logistika-expedic
+
+- id: prestavky-jak
+  type: choice
+  conceptIds: [vzduchove-prestavky, kyslik-vice-dni]
+  difficulty: 1
+  prompt: Co je kyslíková přestávka při dekompresi?
+  options:
+    - { text: 'Několik minut na plynu s nižším ppO2 po každých dvaceti až třiceti minutách kyslíku', correct: true }
+    - { text: 'Výstup na hladinu a návrat', explanation: 'Dekomprese se nepřerušuje výstupem.' }
+    - { text: 'Zadržení dechu na minutu', explanation: 'Zadržení dechu nic neřeší a je nebezpečné.' }
+    - { text: 'Zastávka o tři metry hlouběji', explanation: 'Hlouběji by ppO2 kyslíku ještě vzrostlo.' }
+  explanation: 'Intervaly se mezi agenturami liší; princip je stejný.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: prestavky-alternativa
+  type: multi
+  conceptIds: [vzduchove-prestavky, cns-toxicita, ppo2]
+  difficulty: 2
+  prompt: Jak lze snížit CNS zátěž dlouhé dekomprese na kyslíku?
+  options:
+    - { text: 'Pravidelnými přestávkami na plynu s nižším ppO2', correct: true }
+    - { text: 'Dýcháním kyslíku až od 4–5 m místo od 6 m', correct: true }
+    - { text: 'Směsí s 80 % kyslíku místo čistého', correct: true }
+    - { text: 'Rychlejším dýcháním', explanation: 'Frekvence dechu ppO2 nezmění.' }
+  explanation: 'Každé z opatření dekompresi mírně prodlouží.'
+  backToLessonId: kyslik-pres-vice-dni
+
+- id: hydratace-kdy
+  type: choice
+  conceptIds: [dehydratace, tepelny-management]
+  difficulty: 1
+  prompt: Jak správně pít kolem dlouhého ponoru?
+  options:
+    - { text: 'Průběžně před ponorem, na dlouhé dekompresi a po ponoru', correct: true }
+    - { text: 'Litr vody těsně před skokem', explanation: 'Tělo ho nestihne využít a většinu vyloučí.' }
+    - { text: 'Nepít, aby nebylo třeba močit v obleku', explanation: 'Dehydratace zvyšuje riziko dekompresní nemoci.' }
+    - { text: 'Jen po ponoru', explanation: 'Pak už je na dekompresi pozdě.' }
+  explanation: 'Močení v suchém obleku je řešitelný technický problém.'
+  backToLessonId: tepelny-management
+
+- id: exp-role
+  type: why
+  conceptIds: [podpurny-tym, evakuacni-plan, tym]
+  difficulty: 2
+  prompt: Proč má mít každý člen podpůrného týmu jen jednu jasnou roli?
+  options:
+    - { text: 'V nouzi nesmí být nejasné, kdo dává kyslík, kdo volá pomoc a kdo zůstává s potápěči ve vodě.', correct: true }
+    - { text: 'Aby se nikdo nenudil.', explanation: 'Jde o spolehlivost v nouzi.' }
+    - { text: 'Protože to vyžaduje kapitán lodi.', explanation: 'Důvod je organizační, ne formální.' }
+    - { text: 'Aby mohli všichni dělat hluboký ponor.', explanation: 'Podpora, která sama dekomprimuje, nepomůže.' }
+  explanation: 'Role se rozdělují na břehu, ne až když se něco stane.'
+  backToLessonId: logistika-expedic
+
+- id: odlozeny-pravidla
+  type: multi
+  conceptIds: [odlozeny-plyn, znaceni-lahvi, podpurny-tym]
+  difficulty: 2
+  prompt: Jaká pravidla platí pro lahve odložené předem?
+  options:
+    - { text: 'Jsou označené obsahem a MOD jako každá jiná', correct: true }
+    - { text: 'Při cestě dovnitř se zkontroluje, že jsou na místě a natlakované', correct: true }
+    - { text: 'Plán má variantu pro případ, že se některá nenajde', correct: true }
+    - { text: 'Stačí vědět přibližně, kde leží', explanation: 'Ve tmě, bahně nebo pod narkózou „přibližně“ nestačí.' }
+  explanation: 'Odložený plyn zvětšuje dosah, ale přidává bod, kde může plán selhat.'
+  backToLessonId: logistika-expedic
+
+- id: odlozeny-kontrola
+  type: why
+  conceptIds: [odlozeny-plyn, ztrata-deko-plynu]
+  difficulty: 2
+  prompt: Proč se odložené lahve kontrolují už při cestě dovnitř?
+  options:
+    - { text: 'Když chybí nebo jsou prázdné, je ještě čas ponor otočit s plynem na zádech.', correct: true }
+    - { text: 'Aby se zahřály.', explanation: 'S teplotou to nesouvisí.' }
+    - { text: 'Protože při cestě ven na to není čas.', explanation: 'Čas by byl; chybí pak možnost cokoli změnit.' }
+    - { text: 'Je to zbytečné, lahve se neztrácejí.', explanation: 'Ztrácejí se, posunují se a ventily se otevírají.' }
+  explanation: 'Zjistit problém při cestě ven znamená zjistit ho pozdě.'
+  backToLessonId: logistika-expedic
+
+- id: exp-kyslik-cesta
+  type: numeric
+  conceptIds: [evakuacni-plan, kyslik, dcs]
+  difficulty: 2
+  prompt: 'Kolik litrů kyslíku potřebuje jeden člověk na {minutes} minut transportu při průtoku 15 l/min?'
+  template: { fn: gasConsumed, params: { minutes: { values: [60, 120, 180, 240, 360] } }, fixed: { flow: 15, depth: 0 }, args: [flow, depth, minutes], tolerance: 10, unit: l, decimals: 0 }
+  explanation: 'Průtok krát čas. Desetilitrová lahev na 200 bar obsahuje 2000 l.'
+  backToLessonId: logistika-expedic

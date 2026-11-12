@@ -1,6 +1,7 @@
 import { absPressure, boyleVolume, formatCs, pressureRatio } from '@diveedu/calc';
 import { type ComponentType, useState } from 'react';
 import { SliderField } from '../components/ui';
+import { ProfileSimulator } from './ProfileSimulator';
 import { TernaryDiagram } from './TernaryDiagram';
 import { TissueSimulator } from './TissueSimulator';
 import { WhatIfGraph } from './WhatIfGraph';
@@ -134,4 +135,4 @@ function OxygenWindow() {
   );
 }
 
-Object.assign(PLAYGROUNDS, { 'light-absorption': LightAbsorption, 'oxygen-window': OxygenWindow, 'tissue-sim': TissueSimulator, ternary: TernaryDiagram, 'what-if-graph': WhatIfGraph });
+Object.assign(PLAYGROUNDS, { 'light-absorption': LightAbsorption, 'oxygen-window': OxygenWindow, 'tissue-sim': TissueSimulator, ternary: TernaryDiagram, 'what-if-graph': WhatIfGraph, 'profile-sim': ProfileSimulator });

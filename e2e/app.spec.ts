@@ -120,6 +120,34 @@ test('tkáňový simulátor: rozvrh, přehrávání a reakce na gradient factors
   await expect(page.getByTestId('sim-stops')).toHaveText('Bez zastávek.');
 });
 
+test('profil ponoru: rozvrh a varování na hypoxii, ICD a MOD', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/nastroje');
+  await page.getByRole('link', { name: /Profil ponoru/ }).click();
+  const sim = page.getByTestId('profile-sim');
+  const issues = page.getByTestId('profile-issues');
+  await expect(sim.getByRole('note')).toContainText('není plánovač ponorů');
+  // Výchozí plán (Tx 18/45, 60 m, Tx 50/15 a kyslík) je bez výhrad.
+  await expect(issues).toContainText('Model nenašel v plánu žádnou výhradu');
+  await expect(page.getByTestId('profile-runtime')).toHaveText(/\d+ min/);
+  // Hypoxická směs dýchaná od hladiny a velký skok v dusíku.
+  await page.getByRole('button', { name: 'Tx 10/70 90 m bez travel' }).click();
+  await expect(issues.locator('[data-issue="hypoxic"]')).toContainText('hrozí hypoxie');
+  await expect(issues.locator('[data-issue="icd"]')).toContainText('pětina úbytku helia');
+  // Travel gas hypoxii odstraní.
+  await page.getByRole('button', { name: 'Tx 10/70 90 m s travel' }).click();
+  await expect(issues.locator('[data-issue="hypoxic"]')).toHaveCount(0);
+  // Kyslík nasazený o zastávku hlouběji: nad MOD a mimo tabulku CNS.
+  await page.getByLabel('Druhý dekompresní plyn').selectOption({ label: 'kyslík od 9 m (chyba)' });
+  await expect(issues.locator('[data-issue="ppo2-high"]')).toContainText('pod svou MOD');
+  await expect(page.getByTestId('profile-cns')).toHaveText('mimo tabulku');
+  // Víceúrovňový profil.
+  await page.getByRole('button', { name: 'Vzduch 45 m' }).click();
+  const before = await page.getByTestId('profile-runtime').innerText();
+  await page.getByRole('button', { name: 'Přidat úroveň' }).click();
+  await expect(page.getByTestId('profile-runtime')).not.toHaveText(before);
+});
+
 test('ternární diagram: hodnocení směsi podle hloubky a limitů', async ({ page }) => {
   await acceptOnboarding(page);
   await page.goto('/nastroje');
@@ -192,7 +220,7 @@ test('případová studie má všech osm částí, označení jistoty a výpoče
 });
 
 test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async ({ page }) => {
-  test.setTimeout(420_000);
+  test.setTimeout(540_000);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -200,7 +228,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(46);
+  expect(hrefs.length).toBe(55);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -311,7 +339,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(97);
+  await expect(map.locator('[data-node]')).toHaveCount(115);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -376,6 +404,10 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await expect(page.getByTestId('sim-stops')).toContainText('Zastávky:');
   await page.goto('/nastroje/simulator/ternarni-diagram');
   await expect(page.getByTestId('ternary-verdict')).toContainText('v limitech');
+  await page.goto('/nastroje/simulator/profil-ponoru');
+  await expect(page.getByTestId('profile-issues')).toBeVisible();
+  await page.goto('/nastroje/min-depth');
+  await expect(page.locator('[data-output="Dýchatelná od hloubky (zaokrouhleno nahoru)"]')).toHaveText('8 m');
   await page.goto('/pripady/rouse-u869');
   await expect(page.getByRole('heading', { name: '6. Spočítej si to' })).toBeVisible();
   await page.goto('/uceni/gradient-factors');
@@ -387,7 +419,7 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(97);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(115);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');

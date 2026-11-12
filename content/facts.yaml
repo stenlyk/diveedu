@@ -329,3 +329,69 @@
     kdy byl trimix nový, drahý a mnohými odmítaný. Právě tehdejší nehody na vzduchu přispěly k tomu, že se helium stalo samozřejmostí.
   conceptIds: [hluboky-vzduch, trimix]
   source: { title: The Last Dive, author: 'Chowdhury B.', year: 2000 }
+
+- id: hypoxie-bez-varovani
+  text: >-
+    Piloti se v podtlakové komoře učí poznat vlastní hypoxii, protože přichází jako příjemná otupělost, ne jako dušení.
+    Potápěč tuto možnost nemá: na hypoxické směsi u hladiny dělí první nádech od bezvědomí často jen desítky vteřin.
+  conceptIds: [hypoxicka-smes, hypoxie]
+  source: { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: 'Brubakk A. O., Neuman T. S. (eds.)', year: 2003 }
+
+- id: travel-nazev
+  text: >-
+    Jako travel gas často poslouží směs, kterou má potápěč stejně s sebou: dekompresní plyn pro hluboké zastávky.
+    Jedna lahev tak kryje sestup i část výstupu – a právě proto musí mít jednoznačně napsanou MOD pro obě cesty.
+  conceptIds: [travel-gas]
+  source: { title: 'TDI Advanced Trimix Diver Manual', author: Technical Diving International }
+
+- id: lambertsen-icd
+  text: >-
+    Izobarickou protidifuzi popsal v 70. letech Christian Lambertsen. Dobrovolníci v komoře dýchali směs s dusíkem, zatímco byli obklopeni heliem –
+    a na kůži se jim udělaly svědivé pupeny, aniž se tlak změnil. Stejný Lambertsen o čtvrt století dřív vymyslel zkratku SCUBA.
+  conceptIds: [icd]
+  source: { title: 'A new gas lesion syndrome in man, induced by isobaric gas counterdiffusion. Journal of Applied Physiology 39(3)', author: 'Lambertsen C. J., Idicula J.', year: 1975 }
+
+- id: ucho-doolette
+  text: >-
+    Proč zrovna vnitřní ucho? David Doolette a Simon Mitchell v roce 2003 spočítali, že jeho tekutiny jsou malé, špatně prokrvené a helia se zbavují pomalu.
+    Při dekompresi hlubokého ponoru tak v uchu vzniká přesycení větší než v mozku – a přepnutí plynu ho může na chvíli ještě zvýšit.
+  conceptIds: [dcs-vnitrniho-ucha, icd]
+  source: { title: 'Biophysical basis for inner ear decompression sickness. Journal of Applied Physiology 94(6)', author: 'Doolette D. J., Mitchell S. J.', year: 2003 }
+  needs_review: true
+
+- id: pyle-zastavky
+  text: >-
+    Hluboké zastávky zpopularizoval ichtyolog Richard Pyle. Při lovu ryb v hloubkách přes 60 m si všiml, že se po ponoru cítí lépe,
+    když cestou nahoru zastaví, aby rybám vypustil plynový měchýř. Z osobní zkušenosti se během 90. let stalo pravidlo – dřív, než je kdokoli ověřil pokusem.
+  conceptIds: [hluboke-zastavky]
+  source: { title: 'The importance of deep safety stops: rethinking ascent patterns from decompression dives. DeepTech 5', author: 'Pyle R. L.', year: 1996 }
+
+- id: rekord-oc
+  text: >-
+    Nejhlubší ponor na otevřeném okruhu, 332 metrů, uskutečnil roku 2014 v Rudém moři Ahmed Gabr. Sestup trval čtvrt hodiny, výstup téměř čtrnáct hodin
+    a o plyn se staraly desítky lahví a podpůrný tým. Je to dobrá ilustrace toho, kde otevřený okruh končí.
+  conceptIds: [limit-otevreneho-okruhu, podpurny-tym]
+  source: { title: Guinness World Records – deepest scuba dive (male), year: 2014, note: Hloubku a časy ověřit. }
+  needs_review: true
+
+- id: repex-hamilton
+  text: >-
+    Metodu REPEX vytvořil koncem 80. let fyziolog Bill Hamilton pro vědecké potápěče NOAA pracující z podmořského habitatu.
+    Tentýž Hamilton počítal dekompresní tabulky pro první průzkumné trimixové ponory v jeskyních.
+  conceptIds: [kyslik-vice-dni]
+  source: { title: 'Tolerating exposure to high oxygen levels: Repex and other methods. Marine Technology Society Journal 23(4)', author: 'Hamilton R. W.', year: 1989 }
+
+- id: teplo-nedu
+  text: >-
+    Pokus amerického námořnictva z roku 2007 nechal potápěče absolvovat stejný ponor ve vodě různé teploty. Nejhůř dopadli ti, kdo byli na dně v teple a na dekompresi v chladu.
+    Nejlépe opačná kombinace – chladno na dně, teplo při výstupu. Rozdíl odpovídal mnoha minutám dekomprese navíc.
+  conceptIds: [tepelny-management, aktivni-ohrev]
+  source: { title: 'The influence of thermal exposure on diver susceptibility to decompression sickness. NEDU TR 06-07', author: 'Gerth W. A., Ruterbusch V. L., Long E. T.', year: 2007 }
+  needs_review: true
+
+- id: habitat-deko
+  text: >-
+    Při průzkumu dlouhých jeskynních systémů si týmy stavějí pod vodou dekompresní habitaty – zvony se vzduchovou kapsou, kde potápěč může sundat masku, najíst se a zahřát.
+    Mnohahodinová dekomprese se tak změní z boje s chladem na čekání.
+  conceptIds: [odlozeny-plyn, tepelny-management]
+  source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006 }

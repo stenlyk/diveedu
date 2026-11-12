@@ -1,0 +1,93 @@
+<Hook>
+
+První den expedice: skvělý ponor, hodina dekomprese na kyslíku. Druhý den totéž. Třetí, čtvrtý.
+
+Pátý den tě při hlubokém nádechu píchá za hrudní kostí. Každý jednotlivý ponor byl v limitu. Co se přehlédlo?
+
+</Hook>
+
+<Principle>
+
+V modulu Advanced Nitrox jsi poznal dvě tváře kyslíku. U jednoho ponoru rozhodovala ta rychlá, CNS. U série dlouhých ponorů začíná rozhodovat pomalá: plíce.
+
+**Plicní zátěž se sčítá přes dny.** Měří se v jednotkách OTU a tělo ji odbourává pomalu. Metoda REPEX proto neudává jeden limit, ale limit podle délky série:
+
+- jeden den: <Calc fn="repexDailyLimit" args={[1]} /> OTU,
+- pět dní po sobě: průměrně <Calc fn="repexDailyLimit" args={[5]} /> OTU denně,
+- deset dní: <Calc fn="repexDailyLimit" args={[10]} /> OTU denně.
+
+**Rezerva na léčbu.** Kdyby došlo k dekompresní nemoci, léčba v komoře je hodiny kyslíku pod tlakem – stovky OTU.
+Plán expedice proto nikdy nečerpá limit celý. Co si necháš, je tvoje léčba.
+
+**CNS hodiny při dlouhé dekompresi.** Hodina na kyslíku v 6 m přesáhne limit jedné expozice. Řeší se to dvěma způsoby:
+
+- **přestávky** na plynu s nižším ppO2 – několik minut po každých dvaceti až třiceti minutách kyslíku; intervaly se mezi agenturami liší,
+- **nižší ppO2 na dekompresi** – kyslík až od 4–5 m nebo směs s 80 % kyslíku místo čistého.
+
+Přestávka dekompresi mírně prodlouží. Je to cena za to, že ji dokončíš při vědomí.
+
+**Co plánovat u vícedenní akce:**
+
+- denní OTU a jejich součet,
+- CNS každého ponoru včetně zbytku z předchozího,
+- den odpočinku uprostřed série,
+- příznaky: pálení za hrudní kostí, suchý kašel, únava. Když přijdou, kyslíková zátěž se snižuje, ne přetrpí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="otu" />
+
+<Formula id="repex" />
+
+První vzorec dá dávku za úsek ponoru, druhý říká, kolik si jich za den smíš dovolit podle délky série.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Hodina kyslíku v 6 m,** ppO2 1,6 bar. Plicní zátěž:
+
+<Worked fn="otu" args={[1.6, 60]} expected={115.44} tolerance={0.01} steps="otuSteps" unit="OTU" decimals={0} />
+
+Zlomek denního limitu. CNS hodiny za stejný úsek:
+
+<Worked fn="cnsPercent" args={[1.6, 60]} expected={133.33} tolerance={0.01} steps="cnsSteps" unit="%" decimals={0} />
+
+Přes sto procent – jeden úsek bez přestávek limit jedné expozice překračuje. U jednotlivého ponoru rozhoduje CNS.
+
+**Pět dní po sobě,** každý den 400 OTU: limit je <Calc fn="repexDailyLimit" args={[5]} /> OTU denně. Zbývá jen malá rezerva, a to ještě nikdo neonemocněl.
+Přes více dní začínají rozhodovat plíce.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="otu-days" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="repex-hamilton" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

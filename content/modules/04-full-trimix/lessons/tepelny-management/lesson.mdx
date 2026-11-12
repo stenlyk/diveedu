@@ -1,0 +1,96 @@
+<Hook>
+
+Dva potápěči, stejný ponor, stejný rozvrh, stejné plyny. Jeden má vyhřívanou vestu a zapne ji hned u hladiny. Druhý ji zapne až na první zastávce.
+
+Podle všeho, co o dekompresi víme, má druhý z nich výrazně lepší vyhlídky. Kvůli vypínači.
+
+</Hook>
+
+<Principle>
+
+Teplota mění prokrvení a prokrvení mění, jak rychle tkáně plyn přijímají a vydávají. Z toho plyne pravidlo, které jde proti intuici:
+
+- **Na dně** je teplo nevýhodou. Dobře prokrvené tkáně naberou víc inertního plynu.
+- **Na dekompresi** je teplo výhodou. Dobře prokrvené tkáně plyn rychleji vydají.
+
+Nejhorší kombinace je být v teple na dně a prochladnout při výstupu – a přesně tak probíhá většina dlouhých ponorů, pokud se o teplo nikdo nestará.
+Nejlepší je opak: na dně snesitelně chladno, na dekompresi teplo.
+
+**Aktivní ohřev** – vyhřívaná vesta nebo podoblek – tuto volbu poprvé umožňuje. Zásady:
+
+- zapíná se na začátku výstupu, ne na začátku ponoru,
+- oblek musí izolovat i bez něj; baterie se může vybít a kabel přerušit,
+- porucha ohřevu uprostřed dekomprese je nejhorší scénář – tkáně nasycené v teple a dekomprese v chladu. Plán musí počítat s tím, že ohřev selže.
+
+**Pasivní ochrana** zůstává základem: správně velký suchý oblek, kvalitní podoblek, argon nebo vzduch v obleku, suché rukavice, kapuce.
+
+**Hydratace.** Ponoření do vody, suchý dýchaný plyn a chlad vedou k odvodnění. Menší objem krve znamená horší prokrvení a pomalejší vysycování.
+
+- pij před ponorem a mezi ponory; ne litr těsně před skokem,
+- na dlouhé dekompresi jsou tekutiny a jídlo součást plánu,
+- močení v suchém obleku je řešitelný technický problém, ne důvod nepít.
+
+**Po ponoru:** žádná horká sprcha ani sauna hned po vynoření. Prudké zahřátí kůže v době, kdy je v tkáních nejvíc plynu, může vyvolat kožní příznaky. Zahřívej se postupně.
+
+</Principle>
+
+<FormulaSection>
+
+Tato lekce nemá vzorec k počítání. Má jedno pravidlo, které stojí za zapamatování přesně:
+
+<Given>na dně chladněji · na dekompresi teplo</Given>
+
+Opačné pořadí je nejhorší možné.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik času tráví potápěč na dekompresi oproti dnu – a tedy kde na teple záleží nejvíc?
+
+Ponor 90 m, 15 minut na dně. Sestup trvá:
+
+<Worked fn="travelMinutes" args={[0, 90, 20]} expected={4.5} tolerance={0.01} unit="min" decimals={1} />
+
+Na dně tedy zbývá kolem deseti minut práce. Dekomprese téhož ponoru trvá přes hodinu.
+
+Poměr je jeden ku šesti i víc. Chlad na dně je nepohodlí na deset minut; chlad na dekompresi je hodina se staženými cévami právě tehdy, kdy potřebuješ, aby krev plyn odnášela.
+
+Tepelné ztráty dechem v 90 m: hustota Tx 10/70 je tam <Calc fn="densityOfMix" args={[0.1, 0.7, 90]} decimals={2} unit="g/l" /> – čtyřikrát víc hmoty v každém nádechu než u vzduchu na hladině.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'zapneš vyhřívanou vestu hned na začátku ponoru?', effect: 'Na dně budeš v teple a tkáně naberou víc plynu. Pokud se baterie vybije na dekompresi, dostaneš nejhorší možnou kombinaci. Ohřev se zapíná na začátku výstupu.' },
+  { label: 'ti ohřev selže uprostřed dekomprese?', effect: 'Zůstává jen izolace obleku. Proto musí oblek stačit i bez ohřevu a plán má konzervativnější variantu pro tento případ. Dekompresi neprodlužuj odhadem – drž se počítače a partnera.' },
+  { label: 'před ponorem málo piješ, abys nemusel na záchod?', effect: 'Dehydratace zhoršuje prokrvení a patří mezi uznávané rizikové faktory dekompresní nemoci. Řeší se ventilem nebo plenou v obleku, ne žízní.' },
+  { label: 'po třech hodinách ve vodě skočíš do horké sprchy?', effect: 'Prudké zahřátí kůže sníží rozpustnost plynu v povrchových tkáních a může vyvolat kožní příznaky. Zahřej se postupně, pij a první hodinu odpočívej.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="teplo-nedu" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

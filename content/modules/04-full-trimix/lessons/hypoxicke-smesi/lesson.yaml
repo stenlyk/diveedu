@@ -1,0 +1,20 @@
+id: hypoxicke-smesi
+moduleId: fulltrimix
+title: "Hypoxické směsi: plyn, který u hladiny zabíjí"
+order: 1
+conceptIds: ["hypoxicka-smes", "minimalni-hloubka", "hypoxie", "vzorec-best-mix"]
+checkQuestionIds: ["hypo-proc", "hypo-min-hloubka", "hypo-varovani", "hypo-kyslik-90", "hypo-znaceni"]
+estimatedMinutes: 10
+audioSummary: >-
+  Pod zhruba šedesáti pěti metry vyžaduje limit kyslíku směs s méně než osmnácti procenty. Takové směsi se říká hypoxická.
+  V hloubce je ideální. U hladiny má příliš nízký parciální tlak kyslíku.
+  Hypoxie nepřichází jako dušení. Přichází jako otupělost a bezvědomí během desítek vteřin.
+  Každá hypoxická směs má proto minimální hloubku. Pro té iks deset sedmdesát je to osm metrů.
+  Hypoxická směs má dvě hranice, horní a dolní, a obě patří na lahev.
+  Mělčeji se dýchá travel gas.
+  Automatiku dno směsi před ponorem zkoušej jedním krátkým nádechem.
+sources:
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: false

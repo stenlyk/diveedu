@@ -22,4 +22,7 @@ dělá, co jsem zamýšlel. Níže jsou místa, kde jsem musel zvolit konvenci �
 | 16 | `deco/simple.ts` `ndlMinutes` | GF low = GF high, celé minuty, čas na dně včetně sestupu 20 m/min | Limity v lekcích jsou „podle výukového modelu“, ne tabulkové hodnoty. |
 | 17 | `mdx/WhatIfGraph.tsx` | Stupně uzlů: ppO2 1,4 / 1,6 bar, END 30 / 40 m, hustota 5,2 / 6,2 g/l; námaha posune CO2 o stupeň, vysoký CO2 posune narkózu o stupeň | Prahy a pravidla posunu jsou výukové zjednodušení, ne fyziologický model. |
 | 18 | `trimix.ts` `minHeForEnd`, `optimalTrimixSteps` | Kyslík se počítá jako narkotický | Opatrnější varianta; kalkulačka END ukazuje obě. |
+| 19 | `deco/analyze.ts` | CNS a OTU se počítají průměrným ppO2 mezi minutovými vzorky; limit ppO2 1,4 bar pro dno směs a 1,6 bar pro ostatní plyny; CNS nad 80 % je výhrada | Hrubší než výpočet počítače; při přepnutí plynu se krátký úsek do zátěže nezapočítá. |
+| 20 | `deco/plan.ts` víceúrovňový profil | Přesun mezi úrovněmi se neřídí stropem; porušení ohlásí rozbor | Záměrně – simulátor má ukázat, že takový profil je chybný. |
+| 21 | `icd.ts` | Pravidlo pětin počítané z frakcí, bez ohledu na hloubku přepnutí | Porušují ho i běžná přepnutí mezi standardními směsmi; prezentováno jako konvence. |
 | 10 | `blending.ts` | Ideální plyn | Trimix při 200+ bar se od ideálního plynu liší znatelně; van der Waals přijde s modulem 3. |

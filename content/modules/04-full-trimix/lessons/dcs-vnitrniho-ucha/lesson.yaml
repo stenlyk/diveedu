@@ -1,0 +1,20 @@
+id: dcs-vnitrniho-ucha
+moduleId: fulltrimix
+title: "Dekompresní nemoc vnitřního ucha"
+order: 4
+conceptIds: ["dcs-vnitrniho-ucha", "icd", "barotrauma-ucha", "presyceni"]
+checkQuestionIds: ["ucho-priznaky", "ucho-proc-nebezpecne", "ucho-vs-barotrauma", "ucho-co-delat", "ucho-prevence"]
+estimatedMinutes: 10
+audioSummary: >-
+  Dekompresní nemoc vnitřního ucha postihuje rovnovážné a sluchové ústrojí.
+  Objevuje se při dekompresi hlubokých ponorů na heliu, často krátce po přepnutí na směs s dusíkem.
+  Projevuje se prudkou závratí, zvracením, hučením v uchu a zhoršeným sluchem.
+  Vnitřní ucho je malý, špatně prokrvený prostor, který se helia zbavuje pomalu.
+  Pod vodou je nebezpečná situace, ne ucho samotné. Závrať a zvracení při dlouhé dekompresi zvládneš jen s partnerem.
+  Na hladině kyslík, klid a co nejrychleji hyperbarický lékař.
+  Od barotraumatu se liší okamžikem vzniku. Barotrauma přichází při sestupu, dekompresní nemoc při výstupu.
+sources:
+  - { title: "Biophysical basis for inner ear decompression sickness. Journal of Applied Physiology 94(6)", author: "Doolette D. J., Mitchell S. J.", year: 2003 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

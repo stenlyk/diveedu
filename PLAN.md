@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–3 hotové (MVP). Etapa 4 probíhá: dodávky 4a (deco, modul 2, tkáňový simulátor) a 4b (modul 3, ternární diagram, „Co kdyby“) hotové, zbývá 4c (modul 4, profil ponoru). Ověření `deco/` proti referenci je stále jen na 1 profilu z 10.** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–3 hotové (MVP). Etapa 4 obsahově hotová (moduly 2–4, tři simulátory, 5 případovek); její akceptační kritérium „deko ověřené proti referenci“ splněné není – ověřen je 1 profil z 10. Další je etapa 5 (jeskyně).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -315,3 +315,30 @@ Odchylky od plánu:
 - **Oprava v modulu 1:** tvrzení, že kyslík je „pravděpodobně narkotický“, bylo příliš silné. Nově je všude formulováno jako nerozhodnutá otázka (teorie pro, měření proti, opatrný plán počítá, že ano).
 - Volitelné míchání podle van der Waalse nevzniklo; lekce o míchání vysvětluje chování reálného plynu slovně a kalkulačka počítá ideální plyn s upozorněním.
 - Nastavení se nově ukládá na disk dřív, než se projeví v aplikaci (potvrzení onboardingu se neztratí při okamžitém zavření).
+
+## 20. Etapa 4c – Full Trimix a profil ponoru (hotovo 2026-11-12)
+
+- **Modul 4:** 9 lekcí, 52 otázek, 18 uzlů, 31 vazeb, 9 zajímavostí. Témata: hypoxické směsi a minimální hloubka, travel gas, izobarická protidifuze a pravidlo pětin, dekompresní nemoc vnitřního ucha, debata o hlubokých zastávkách, plán se 3–4 plyny, kyslík přes více dní, tepelný management, logistika expedic a hranice otevřeného okruhu.
+- **`deco/`:** víceúrovňový profil, travel gas při sestupu, rozbor plánu (`analyzePlan`): nejvyšší a nejnižší ppO2, END, hustota, CNS a OTU celého ponoru, každé přepnutí proti pravidlu pětin, porušení stropu.
+- **Simulátor profilu ponoru:** až tři úrovně, dno směs, travel gas, dva dekompresní plyny, GF; profil obarvený podle plynů a seznam výhrad k plánu. Profil se skládá z úrovní posuvníky – kreslení od ruky nevzniklo.
+- **Kalkulačky:** minimální hloubka hypoxické směsi (s postupem), kontrola přepnutí He → N2, kyslík přes více dní.
+- **Případové studie:** Zacatón 1994 a anonymizovaný vzorec „hypoxie na dno směsi u hladiny“.
+- Pravidlo pětin se ukázalo jako přísnější, než jsem čekal: porušují ho i běžná přepnutí mezi standardními směsmi (Tx 10/70 → Tx 21/35). Lekce i simulátor to říkají otevřeně a pravidlo prezentují jako konvenci.
+
+### Stav etapy 4 proti akceptačním kritériím
+
+| Kritérium | Stav |
+| --- | --- |
+| Moduly 2–4 | hotovo: 32 lekcí, 166 otázek |
+| Tkáňový simulátor, ternární diagram, profil ponoru | hotovo |
+| Další případovky | hotovo: U-869, Zacatón, hypoxie u hladiny (celkem 5) |
+| Deko ověřené proti referenci na 10 profilech | **nesplněno – 1 profil z 10**; viz `deco/test/fixtures/README.md` |
+| REVIEW.md aktualizovaný | hotovo: 55 položek |
+
+### Co ze SPEC zatím chybí napříč etapami
+
+- Simulátor „Míchací stanice“ (virtuální plnění, analýza, značení) – existují jen kalkulačky míchání.
+- „Kyslíkové okno“ je přepínač dvou stavů s ilustrativními hodnotami, ne animace.
+- Typy otázek „obrázková/diagramová“ a „scénář“ – přijdou s jeskynní mapou a rozhodovacími scénáři v etapě 5.
+- Průřezové moduly (Fyziologie a medicína, Vybavení, Lidský faktor, Nouzové situace) jako samostatné moduly nevznikly; jejich témata jsou zatím rozptýlená v lekcích hlavní linie.
+- Míchání podle van der Waalse (volitelné).

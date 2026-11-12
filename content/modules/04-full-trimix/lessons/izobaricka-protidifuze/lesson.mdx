@@ -1,0 +1,93 @@
+<Hook>
+
+Potápěč visí na zastávce ve 21 metrech. Nestoupá, neklesá, hloubku drží na decimetr. Přepne z trimixu na EAN50.
+
+O pár minut později se s ním zatočí svět. Tlak se nezměnil. Co se tedy změnilo?
+
+</Hook>
+
+<Principle>
+
+Dekompresní nemoc si spojujeme s výstupem: okolní tlak klesne a tkáň zůstane přesycená. Existuje ale i druhá cesta k přesycení, při které se hloubka nemění vůbec.
+
+Když přepneš z plynu bohatého na helium na plyn bohatý na dusík, děje se v tkáních dvojí:
+
+- helium začne odcházet, protože v dechu ho ubylo,
+- dusík začne přicházet, protože v dechu ho přibylo.
+
+Oba děje mají různou rychlost. Záleží na tkáni: někde helium odchází pomaleji, než dusík přichází. Součet tlaků obou plynů pak na chvíli **stoupne**,
+přestože jsi nevystoupal ani o metr. Tomu se říká <Term cs="izobarická protidifuze" />.
+
+Kde na tom záleží nejvíc, je vnitřní ucho – o něm je další lekce.
+
+**Pravidlo pětin** je provozní pomůcka, jak skok omezit: při přepnutí nemá podíl dusíku vzrůst o víc než pětinu toho, o kolik klesl podíl helia.
+
+**Jak se dodrží:**
+
+- dekompresní plyny s trochou helia, například Tx 50/15 místo EAN50,
+- mezistupně – víc přepnutí po menších krocích,
+- přepnutí na hlubší zastávce, kde je přesycení tkání ještě malé.
+
+**Jak ho brát.** Pravidlo pětin není fyzikální zákon a mnoho běžně používaných přepnutí ho nesplňuje – včetně přechodů mezi standardními směsmi.
+Je to přísná, opatrná konvence. Důležitější než číslo je rozumět tomu, před čím chrání, a neskládat nepříznivé okolnosti na sebe:
+velký skok v dusíku, právě dokončený výstup z hloubky a ucho, které už je přesycené.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="pravidlo-petin" />
+
+Vlevo je nárůst frakce dusíku, vpravo pětina poklesu frakce helia. Když dusíku při přepnutí ubude nebo helia neubude, pravidlo se neuplatní.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 10/70 → EAN50.** O kolik vzroste podíl dusíku?
+
+<Worked fn="icdN2Rise" args={[0.1, 0.7, 0.5, 0]} expected={0.3} tolerance={0.001} unit="" decimals={2} />
+
+Kolik pravidlo dovolí?
+
+<Worked fn="icdAllowedN2Rise" args={[0.7, 0]} expected={0.14} tolerance={0.001} unit="" decimals={2} />
+
+Třicet procent proti povoleným čtrnácti – pravidlo je porušeno výrazně.
+
+**Tx 18/45 → Tx 50/15.** Dusíku tu přibude <Calc fn="icdN2Rise" args={[0.18, 0.45, 0.5, 0.15]} decimals={2} />, tedy ubude; pravidlo je splněné, ať je limit jakýkoli.
+Patnáct procent helia v dekompresním plynu stojí pár minut dekomprese navíc a problém řeší.
+
+**Tx 10/70 → Tx 21/35,** běžné přepnutí mezi standardními směsmi: dusíku přibude <Calc fn="icdN2Rise" args={[0.1, 0.7, 0.21, 0.35]} decimals={2} />, pravidlo dovolí <Calc fn="icdAllowedN2Rise" args={[0.7, 0.35]} decimals={2} />.
+I tohle přepnutí pravidlo porušuje – a přesto se běžně dělá.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="icd" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="lambertsen-icd" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

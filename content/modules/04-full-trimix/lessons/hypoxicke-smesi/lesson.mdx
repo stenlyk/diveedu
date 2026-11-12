@@ -1,0 +1,86 @@
+<Hook>
+
+Na hladině se potápěč nadechne z automatiky, aby ji před skokem do vody vyzkoušel. Dvakrát, třikrát. Je mu dobře.
+
+O půl minuty později leží v bezvědomí na palubě. Automatika byla v pořádku. Plyn také – pro 90 metrů.
+
+</Hook>
+
+<Principle>
+
+V modulu Normoxic Trimix jsi kyslík ve směsi počítal z limitu ppO2 a vycházelo 18 % a víc. Hlouběji už to nevyjde:
+
+- v 75 m dovolí limit 1,3 bar nejvýš <Calc fn="bestMix" args={[75, 1.3]} decimals={2} /> kyslíku,
+- v 90 m <Calc fn="bestMix" args={[90, 1.3]} decimals={2} />,
+- ve 100 m <Calc fn="bestMix" args={[100, 1.3]} decimals={2} />.
+
+Směs s méně než 18 % kyslíku se nazývá <Term cs="hypoxická směs" />. V hloubce je ideální. U hladiny má parciální tlak kyslíku nižší, než tělo potřebuje.
+
+**Proč je to tak nebezpečné.** Z modulu Základy víš, že dýchání řídí CO2, ne kyslík. Hypoxie proto nepřichází jako dušení.
+Přichází jako lehká otupělost a pak bezvědomí – bez varování a během desítek vteřin. Ve vodě to znamená utonutí.
+
+**Minimální hloubka.** Každá hypoxická směs má hloubku, od které je dýchatelná. Počítá se z nejnižšího přípustného ppO2; nejčastěji se bere 0,18 bar.
+Tato hloubka patří na lahev stejně jako MOD. Hypoxická směs má tedy **dvě** hranice: horní a dolní.
+
+**Pravidla, která z toho plynou:**
+
+- na hladině a při sestupu se dýchá jiný plyn – travel gas, o kterém je další lekce,
+- na dno směs se přepíná až pod její minimální hloubkou,
+- při výstupu se z ní přepíná včas; „dodýchat“ dno směs do mělčiny je stejná chyba jako začít na ní,
+- automatika dno směsi se před ponorem zkouší jedním krátkým nádechem, ne dýcháním.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="min-hloubka" />
+
+Je to vzorec MOD s opačným limitem. MOD hlídá, aby kyslíku nebylo moc; minimální hloubka, aby ho nebylo málo.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Tx 10/70,** nejnižší přípustné ppO2 0,18 bar:
+
+<Worked fn="minDepthForPpO2" args={[0.1, 0.18]} expected={8} tolerance={0.01} steps="minDepthSteps" unit="m" decimals={0} />
+
+**Tx 12/65:**
+
+<Worked fn="minDepthForPpO2" args={[0.12, 0.18]} expected={5} tolerance={0.01} steps="minDepthSteps" unit="m" decimals={0} />
+
+**Na hladině** má Tx 10/70 ppO2 jen <Calc fn="ppO2" args={[0.1, 0]} decimals={2} unit="bar" /> – méně než polovinu toho, co vzduch.
+
+**V 90 m** má stejná směs ppO2 <Calc fn="ppO2" args={[0.1, 90]} decimals={2} unit="bar" />, END <Calc fn="endOfMix" args={[0.1, 0.7, 90]} unit="m" /> a hustotu <Calc fn="densityOfMix" args={[0.1, 0.7, 90]} decimals={2} unit="g/l" />.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="min-depth" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="hypoxie-u-hladiny" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

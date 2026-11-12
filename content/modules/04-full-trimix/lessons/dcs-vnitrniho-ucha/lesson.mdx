@@ -1,0 +1,92 @@
+<Hook>
+
+Hodina dekomprese před tebou. Najednou se voda kolem začne otáčet, nevíš, kde je nahoře, a zvedá se ti žaludek.
+
+Zvracet do automatiky, držet hloubku a nevědět, kde je hladina – a k tomu strop, nad který nesmíš.
+
+</Hook>
+
+<Principle>
+
+<Term cs="dekompresní nemoc vnitřního ucha" /> postihuje rovnovážné a sluchové ústrojí. Objevuje se typicky při dekompresi hlubokých ponorů na heliu,
+často krátce po přepnutí na směs bohatou na dusík.
+
+**Příznaky:**
+
+- prudká točivá závrať,
+- nevolnost a zvracení,
+- porucha rovnováhy,
+- hučení v uchu a zhoršený sluch, obvykle na jedné straně.
+
+**Proč právě ucho.** Tekutiny vnitřního ucha jsou malý, špatně prokrvený prostor. Helia se zbavují pomalu, takže při výstupu z hloubky v nich vzniká velké přesycení.
+Přepnutí na dusíkovou směs k tomu může přidat krátký nárůst tlaku protidifuzí. Roli může hrát i průchod žilních bublin do tepen přes otvor v srdeční přepážce.
+
+**Proč je to pod vodou tak vážné.** Samo postižení ucha život neohrožuje. Ohrožuje ho situace: závrať a zvracení při dlouhé dekompresi,
+kdy potápěč neudrží hloubku ani automatiku. Tady rozhoduje tým.
+
+**Co dělat:**
+
+- pod vodou: dát znamení, chytit se lana nebo partnera, zavřít oči, držet automatiku rukou; dekompresi dokončit, pokud to jde, s partnerem těsně u sebe,
+- na hladině: kyslík, klid vleže, a co nejrychleji hyperbarický lékař. Včasná léčba v komoře rozhoduje o tom, zda sluch a rovnováha zůstanou poškozené trvale.
+
+**Neplést s barotraumatem.** Poranění vnitřního ucha tlakem má podobné příznaky, ale jinou příčinu a opačnou léčbu.
+Vodítkem je okamžik: barotrauma vzniká při sestupu nebo při násilném vyrovnávání, dekompresní nemoc při výstupu a po něm. Rozhodnout musí lékař.
+
+**Prevence:** rozumné gradient factors, žádné velké skoky v podílu dusíku při přepnutí, dobrá hydratace a teplo, a po hlubokých ponorech nezvedat těžké věci.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="pravidlo-petin" />
+
+Pravidlo pětin se používá hlavně kvůli vnitřnímu uchu. Nezaručuje nic – jen omezuje jeden z přispívajících vlivů.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor do 90 m na Tx 10/70. Dvě varianty prvního přepnutí při výstupu.
+
+**Rovnou na EAN50 ve 21 m:** dusíku přibude <Calc fn="icdN2Rise" args={[0.1, 0.7, 0.5, 0]} decimals={2} />, pravidlo dovolí <Calc fn="icdAllowedN2Rise" args={[0.7, 0]} decimals={2} />.
+Velký skok, a navíc po dlouhém výstupu z 90 m bez jediné výměny plynu.
+
+**Přes mezistupeň Tx 35/25 ve 33 m:**
+
+<Worked fn="icdN2Rise" args={[0.1, 0.7, 0.35, 0.25]} expected={0.2} tolerance={0.001} unit="" decimals={2} />
+
+Skok je menší a přichází hlouběji. Druhé přepnutí, z Tx 35/25 na Tx 50/15 ve 21 m, už dusík nezvyšuje: <Calc fn="icdN2Rise" args={[0.35, 0.25, 0.5, 0.15]} decimals={2} />.
+
+Ani mezistupeň pravidlo pětin přesně nesplní. Rozloží ale změnu do dvou kroků a zkrátí dobu, po kterou ucho čeká na první úlevu od helia.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="ucho-doolette" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

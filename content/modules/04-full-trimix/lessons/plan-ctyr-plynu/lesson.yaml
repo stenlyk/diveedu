@@ -1,0 +1,20 @@
+id: plan-ctyr-plynu
+moduleId: fulltrimix
+title: "Plán se třemi až čtyřmi plyny"
+order: 6
+conceptIds: ["plan-ctyr-plynu", "travel-gas", "plan-vice-plynu", "minimum-gas", "limit-otevreneho-okruhu"]
+checkQuestionIds: ["p4-co-kontrolovat", "p4-spotreba-dno", "p4-mingas", "p4-poradi-plynu", "p4-cns"]
+estimatedMinutes: 12
+audioSummary: >-
+  Plán hlubokého trimixového ponoru má čtyři role plynů. Směs pro dno, travel gas, první dekompresní plyn a kyslík.
+  Pro každý potřebuješ složení, maximální hloubku, potřebu, rezervu a místo na výstroji.
+  Směs pro dno má navíc minimální hloubku.
+  Každé přepnutí zkontroluj proti pravidlu pětin a kyslíkovou zátěž sečti přes všechny plyny.
+  Minimum gas počítej k první lahvi, která je v dané hloubce dýchatelná.
+  V devadesáti metrech prodýcháš za minutu desetkrát víc plynu než na hladině.
+  Plán se nepíše proto, aby se ponor uskutečnil. Píše se, aby se včas zjistilo, že se uskutečnit nemá.
+sources:
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "Respiratory physiology of rebreather diving. In: Rebreathers and Scientific Diving", author: "Anthony G., Mitchell S. J.", year: 2016 }
+needs_review: true

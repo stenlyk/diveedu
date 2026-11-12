@@ -1,0 +1,87 @@
+<Hook>
+
+Kolem roku 2000 věděl každý technický potápěč, že hluboké zastávky jsou bezpečnější. O deset let později vyšel pokus, který naznačil opak.
+
+Jak se stalo, že celý obor tak dlouho věřil něčemu, co nikdo neověřil?
+
+</Hook>
+
+<Principle>
+
+**Jak to začalo.** V 90. letech se rozšířila zkušenost, že zastavit se cestou z hloubky dřív, než předepisují tabulky, přináší lepší pocit po ponoru.
+Souběžně vznikly bublinové modely, které hluboké zastávky zdůvodnily teoreticky: bublinu je snazší nenechat vyrůst než ji potom odstraňovat.
+A gradient factors umožnily totéž nastavit v Bühlmannově modelu nízkým GF low.
+
+**Co říkají hluboké zastávky:** zastav hluboko, drž malé přesycení rychlých tkání, bubliny nevzniknou.
+
+**Co je na tom háček:** v hloubce, kde rychlé tkáně plyn vydávají, pomalé tkáně ho stále přijímají. Čas strávený hluboko se pomalým tkáním přičítá ke dnu.
+
+**Pokus NEDU (2011).** Americké námořnictvo srovnalo dva rozvrhy pro stejný ponor na vzduchu se stejnou celkovou dobou dekomprese:
+jeden s důrazem na hluboké zastávky podle bublinového modelu, druhý s mělčími zastávkami. Rozvrh s hlubokými zastávkami měl výrazně víc případů dekompresní nemoci a pokus byl předčasně ukončen.
+
+**Co z toho plyne a co ne:**
+
+- Plyne: při dané době dekomprese není přesouvání času z mělkých zastávek do hlubokých výhodné, přinejmenším na vzduchu v těchto podmínkách.
+- Neplyne: že se má stoupat rovnou k hladině. Řízená rychlost výstupu a zastávky podle modelu platí dál.
+- Otevřené zůstává: jak přesně se výsledek přenáší na trimix, na jiné hloubky a na kratší ponory.
+
+**Kam se praxe posunula.** Mnoho potápěčů zvýšilo GF low – místo 20/85 používá hodnoty jako 40/75 nebo 50/80. První zastávka je mělčí, mělké zastávky delší.
+Bublinové modely v počítačích zůstaly, ale jejich výchozí nastavení se používají opatrněji.
+
+Poučení je obecnější než jedna studie: pocit po ponoru není důkaz, elegantní teorie není důkaz a shoda komunity také ne. Důkaz je pokus s kontrolní skupinou.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Hluboké zastávky v Bühlmannově modelu nejsou zvláštní pravidlo. Vzniknou samy, když nastavíš nízké GF low – první zastávka pak přijde ve chvíli, kdy vedoucí tkáň čerpá jen malou část gradientu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Stejný ponor na vzduch, 45 m a 25 minut, výukový model. Mění se jen GF low:
+
+- GF 20/85: první zastávka <Calc fn="firstStopAir" args={[45, 25, 20, 85]} unit="m" />, výstup <Calc fn="ascentMinutesAir" args={[45, 25, 20, 85]} unit="min" />
+- GF 50/85: první zastávka <Calc fn="firstStopAir" args={[45, 25, 50, 85]} unit="m" />, výstup <Calc fn="ascentMinutesAir" args={[45, 25, 50, 85]} unit="min" />
+- GF 85/85: první zastávka <Calc fn="firstStopAir" args={[45, 25, 85, 85]} unit="m" />, výstup <Calc fn="ascentMinutesAir" args={[45, 25, 85, 85]} unit="min" />
+
+Nízké GF low výstup prodlužuje, protože čas strávený hluboko se musí „odpracovat“ nahoře. Pokus NEDU šel ještě dál: držel celkovou dobu stejnou, takže hluboký rozvrh měl mělké zastávky kratší.
+
+Jak dlouho trvá cesta k první zastávce při 9 m/min?
+
+<Worked fn="travelMinutes" args={[45, 24, 9]} expected={2.33} tolerance={0.01} unit="min" decimals={1} />
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="tissue-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="pyle-zastavky" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

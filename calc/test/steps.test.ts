@@ -9,6 +9,7 @@ import {
   modSteps,
   otuSteps,
   ppO2Steps,
+  minDepthSteps,
   tex,
   texResult,
   trimix,
@@ -30,6 +31,15 @@ describe('texResult', () => {
     expect(texResult(20, '%')).toBe('20\\ \\text{\\%}');
     expect(texResult(4.375, 'bar')).toBe('4{,}375\\ \\text{bar}');
     expect(texResult(0.28, '', 2)).toBe('0{,}28');
+  });
+});
+
+describe('minimální hloubka hypoxické směsi – postup', () => {
+  it('Tx 10/70 při 0,18 bar: 1,8 bar → 8 m; normoxická směs 0 m', () => {
+    const steps = minDepthSteps(0.1, 0.18);
+    expect(steps[0]!.value).toBeCloseTo(1.8, 10);
+    expect(steps[1]!.value).toBeCloseTo(8, 10);
+    expect(minDepthSteps(0.21, 0.18)[1]!.value).toBe(0);
   });
 });
 

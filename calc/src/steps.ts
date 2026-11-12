@@ -2,7 +2,7 @@ import { DENSITY_HE, DENSITY_N2, DENSITY_O2, gasDensity, surfaceDensity } from '
 import { formatCs } from './format';
 import { AIR_FN2, fN2, type Gas } from './gas';
 import { ead, end } from './narcosis';
-import { bestMix, cnsLimitMinutes, mod, otu, ppO2 } from './oxygen';
+import { bestMix, cnsLimitMinutes, minDepthForPpO2, mod, otu, ppO2 } from './oxygen';
 import { absPressure, boyleVolume } from './pressure';
 import { gasConsumed, rockBottomLiters, sacFromPressureDrop } from './consumption';
 import { partialPressureBlend, trimixFillAirBar, trimixFillHeBar, trimixFillO2Bar } from './blending';
@@ -295,5 +295,14 @@ export function optimalTrimixSteps(depthM: number, ppO2MaxBar: number, endMaxM: 
     { label: 'Nejvyšší frakce kyslíku', latex: `F_{O_2} = \\frac{ppO_{2,max}}{P_{abs}} = \\frac{${tex(ppO2MaxBar)}}{${tex(p)}}`, value: bestMix(depthM, ppO2MaxBar), unit: '' },
     { label: 'Největší narkotická část směsi (kyslík + dusík)', latex: `\\frac{END + 10}{d + 10} = \\frac{${tex(endMaxM)} + 10}{${tex(depthM)} + 10}`, value: pEnd / p, unit: '' },
     { label: 'Nejmenší frakce helia', latex: `F_{He} = 1 - ${tex(pEnd / p, 3)}`, value: minHeForEnd(depthM, endMaxM), unit: '' },
+  ];
+}
+
+/** Minimální hloubka, od které je směs dýchatelná (ppO2 ≥ ppO2 min). */
+export function minDepthSteps(fO2: number, ppO2MinBar: number): CalcStep[] {
+  const p = ppO2MinBar / fO2;
+  return [
+    { label: 'Tlak, při kterém směs dosáhne nejnižšího přípustného ppO2', latex: `P_{abs} = \\frac{ppO_{2,min}}{F_{O_2}} = \\frac{${tex(ppO2MinBar)}}{${tex(fO2)}}`, value: p, unit: 'bar' },
+    { label: 'Převod tlaku na hloubku (nikdy méně než hladina)', latex: `d_{min} = (P_{abs} - 1) \\cdot 10 = (${tex(p, 3)} - 1) \\cdot 10`, value: minDepthForPpO2(fO2, ppO2MinBar), unit: 'm' },
   ];
 }

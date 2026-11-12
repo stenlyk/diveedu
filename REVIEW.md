@@ -3,22 +3,30 @@
 Generováno skriptem `npm run content` z polí `needs_review: true`. Needituj ručně.
 Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 
+- [ ] Lekce **Travel gas a sestup na hypoxické směsi** (`travel-gas`, modul `fulltrimix`)
 - [ ] Lekce **Kyslíková toxicita CNS** (`cns-toxicita`, modul `nitrox`)
 - [ ] Lekce **Gradient factors: jak nastavit konzervativnost** (`gradient-factors`, modul `deko`)
 - [ ] Lekce **Je kyslík narkotický? Debata** (`je-kyslik-narkoticky`, modul `trimix`)
+- [ ] Lekce **Izobarická protidifuze a pravidlo pětin** (`izobaricka-protidifuze`, modul `fulltrimix`)
 - [ ] Lekce **CNS hodiny** (`cns-hodiny`, modul `nitrox`)
 - [ ] Lekce **Bubliny a bublinové modely** (`bubliny-a-bublinove-modely`, modul `deko`)
+- [ ] Lekce **Dekompresní nemoc vnitřního ucha** (`dcs-vnitrniho-ucha`, modul `fulltrimix`)
 - [ ] Lekce **Plicní toxicita a OTU** (`plicni-toxicita-otu`, modul `nitrox`)
 - [ ] Lekce **Strop, zastávky a rychlost výstupu** (`strop-zastavky-a-vystup`, modul `deko`)
+- [ ] Lekce **Hluboké zastávky: debata** (`hluboke-zastavky-debata`, modul `fulltrimix`)
 - [ ] Lekce **Helium: teplo, hlas a vysoký tlak** (`vlastnosti-helia`, modul `trimix`)
+- [ ] Lekce **Plán se třemi až čtyřmi plyny** (`plan-ctyr-plynu`, modul `fulltrimix`)
 - [ ] Lekce **Best mix: nejlepší směs pro ponor** (`nejlepsi-smes`, modul `nitrox`)
 - [ ] Lekce **Minimum gas: rezerva, která se neplánuje** (`minimum-gas`, modul `deko`)
 - [ ] Lekce **Optimální trimix a standardní směsi** (`optimalni-trimix`, modul `trimix`)
+- [ ] Lekce **Kyslík přes více dní** (`kyslik-pres-vice-dni`, modul `fulltrimix`)
 - [ ] Lekce **Kyslíkové okno** (`kyslikove-okno`, modul `nitrox`)
 - [ ] Lekce **Plánování plynu: třetiny, poloviny a rezervy** (`planovani-plynu`, modul `deko`)
 - [ ] Lekce **Dekomprese s heliem** (`dekomprese-s-heliem`, modul `trimix`)
+- [ ] Lekce **Tepelný management a hydratace** (`tepelny-management`, modul `fulltrimix`)
 - [ ] Lekce **Dekompresní plyny v plánu a run-time** (`dekompresni-plyny-v-planu`, modul `deko`)
 - [ ] Lekce **Míchání a analýza trimixu** (`michani-trimixu`, modul `trimix`)
+- [ ] Lekce **Logistika expedic a hranice otevřeného okruhu** (`logistika-expedic`, modul `fulltrimix`)
 - [ ] Lekce **Dekompresní plyny a přepnutí** (`deko-plyny-a-prepnuti`, modul `nitrox`)
 - [ ] Lekce **Stage lahve: nošení, značení a objem** (`stage-lahve`, modul `deko`)
 - [ ] Lekce **Plán ponoru s více plyny** (`plan-vice-plynu`, modul `trimix`)
@@ -27,6 +35,8 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Míchání parciálním tlakem** (`michani-nitroxu`, modul `nitrox`)
 - [ ] Lekce **Ztráta dekompresního plynu a vynechaná dekomprese** (`ztrata-deko-plynu`, modul `deko`)
 - [ ] Případová studie **Blue Hole, Dahab: hluboký ponor na vzduch** (`blue-hole-2000`, jistota: hypotéza)
+- [ ] Případová studie **Zacatón 1994: hranice otevřeného okruhu** (`exley-zacaton-1994`, jistota: hypotéza)
+- [ ] Případová studie **Hypoxie na dno směsi u hladiny** (`hypoxie-u-hladiny`, jistota: hypotéza)
 - [ ] Případová studie **Vrak U-869: hluboký vrakový ponor na vzduch** (`rouse-u869`, jistota: hypotéza)
 - [ ] Případová studie **Kyslíkové křeče po přepnutí na špatnou lahev** (`zamena-plynu-krece`, jistota: hypotéza)
 - [ ] Zajímavost `hranicka-propast`: Nejhlubší známá zatopená propast světa je sladkovodní – Hranická propast na Moravě. Dálkově řízený robot v ní v roce 2016 dosáhl hloubky 404 m a dna se nedotkl. Ve sladké vodě by tam absolutní tlak byl kolem 40 bar.
@@ -45,3 +55,6 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Zajímavost `argon-v-obleku`: Argon vede teplo asi o třetinu hůř než vzduch, a proto si ho někteří potápěči plní do suchého obleku z malé samostatné lahve. Měřený přínos je menší, než by odpovídalo teorii – záleží hlavně na tom, zda se z obleku vzduch předem vypláchne.
 - [ ] Zajímavost `atlantis-hpns`: Nervový syndrom vysokého tlaku zkoumal Peter Bennett na Dukeově univerzitě. V sérii pokusů Atlantis kolem roku 1980 dosáhli dobrovolníci v komoře tlaku odpovídajícího 686 metrům. Pomohlo přidat do helia trochu dusíku: jeho narkotický účinek třes tlumí.
 - [ ] Zajímavost `nedu-heliox-trimix`: Dlouho se věřilo, že dusík v trimixu dekompresi oproti helioxu urychluje. Pokus amerického námořnictva z roku 2015 srovnal oba plyny na stejném profilu a rozdíl nenašel. Dekompresní modely přitom s heliem stále počítají jinak než s dusíkem.
+- [ ] Zajímavost `ucho-doolette`: Proč zrovna vnitřní ucho? David Doolette a Simon Mitchell v roce 2003 spočítali, že jeho tekutiny jsou malé, špatně prokrvené a helia se zbavují pomalu. Při dekompresi hlubokého ponoru tak v uchu vzniká přesycení větší než v mozku – a přepnutí plynu ho může na chvíli ještě zvýšit.
+- [ ] Zajímavost `rekord-oc`: Nejhlubší ponor na otevřeném okruhu, 332 metrů, uskutečnil roku 2014 v Rudém moři Ahmed Gabr. Sestup trval čtvrt hodiny, výstup téměř čtrnáct hodin a o plyn se staraly desítky lahví a podpůrný tým. Je to dobrá ilustrace toho, kde otevřený okruh končí.
+- [ ] Zajímavost `teplo-nedu`: Pokus amerického námořnictva z roku 2007 nechal potápěče absolvovat stejný ponor ve vodě různé teploty. Nejhůř dopadli ti, kdo byli na dně v teple a na dekompresi v chladu. Nejlépe opačná kombinace – chladno na dně, teplo při výstupu. Rozdíl odpovídal mnoha minutám dekomprese navíc.

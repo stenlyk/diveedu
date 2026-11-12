@@ -1,0 +1,96 @@
+<Hook>
+
+Dosud platilo: jedna směs na zádech od hladiny do největší hloubky, přepíná se až cestou nahoru.
+
+S hypoxickou směsí to nejde. První přepnutí přichází při sestupu – ve chvíli, kdy klesáš, vyrovnáváš, hlídáš partnera a narkóza roste.
+
+</Hook>
+
+<Principle>
+
+<Term cs="travel gas" /> je směs, kterou dýcháš mezi hladinou a hloubkou, kde lze přejít na dno směs. Musí splnit dvě věci:
+
+- být dýchatelná od hladiny, tedy mít aspoň 18 % kyslíku,
+- nepřekročit v hloubce přepnutí limit ppO2 ani rozumnou narkotickou hloubku.
+
+**Co se používá:**
+
+- **dekompresní směs pro hluboké zastávky**, například Tx 21/35 nebo Tx 35/25. Výhoda: žádná lahev navíc, stejná lahev poslouží při výstupu.
+- **nitrox nebo vzduch** pro krátký mělký úsek. Jednodušší, ale narkóza a hustota rostou rychle.
+
+**Sestup s přepnutím:**
+
+1. Začni na travel plynu. Dno směs je zavřená, nebo aspoň ne v ústech.
+2. V plánované hloubce zastav – přepíná se v klidu, ne v pohybu.
+3. Proveď přepnutí stejným postupem jako na dekompresi: hloubka, lahev, hadice, partner.
+4. Travel automatiku ulož a ventil zavři.
+5. Pokračuj v sestupu.
+
+Hloubka přepnutí se volí tak, aby byla bezpečně pod minimální hloubkou dno směsi a zároveň tam travel gas ještě vyhovoval.
+Mezi oběma hranicemi bývá široké pásmo; přepíná se v jeho horní části, kde je narkóza malá a času dost.
+
+**Co se kazí:**
+
+- přepnutí odložené „až dole“ – travel gas pak překročí svou MOD nebo END,
+- sestup na dno směsi od hladiny, „protože je to jen pár metrů“,
+- zapomenutý otevřený ventil travel lahve a automatika, po které lze sáhnout omylem.
+
+Konkrétní postupy se mezi agenturami liší – některé začínají na dno směsi z dvojčete až po přepnutí z lahve na boku, jiné používají pro sestup hlavní automatiku. Podstata je stejná.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="mod" />
+
+Travel gas má MOD jako každá jiná směs a kontroluje se pro něj i narkotická hloubka. Hloubka přepnutí leží mezi minimální hloubkou dno směsi a MOD travel plynu.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Dno směs Tx 10/70, travel gas Tx 21/35.
+
+**Dolní hranice pásma** – minimální hloubka dno směsi: <Calc fn="minDepthForPpO2" args={[0.1, 0.18]} unit="m" />.
+
+**Horní hranice podle kyslíku** – MOD travel plynu při 1,4 bar:
+
+<Worked fn="mod" args={[0.21, 1.4]} expected={56.67} tolerance={0.01} unit="m" decimals={0} />
+
+**Horní hranice podle narkózy** – END travel plynu v 51 m:
+
+<Worked fn="endOfMix" args={[0.21, 0.35, 51]} expected={29.65} tolerance={0.01} steps="endOfMixSteps" unit="m" decimals={1} />
+
+Travel gas tedy vyhovuje od hladiny do 51 m. Přepnout na dno směs lze kdekoli mezi 8 a 51 m; rozumné je udělat to v klidu kolem 20–30 m, ne na poslední chvíli.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="travel-nazev" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

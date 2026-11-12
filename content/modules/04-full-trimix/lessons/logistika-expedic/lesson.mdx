@@ -1,0 +1,98 @@
+<Hook>
+
+Nejbližší hyperbarická komora je šest hodin jízdy a pak trajekt. Signál na břehu není. Kyslíku je na lodi na čtyřicet minut.
+
+Ponor samotný je naplánovaný na minutu. A co je naplánováno pro případ, že se nepovede?
+
+</Hook>
+
+<Principle>
+
+U hlubokých ponorů přestává být bezpečnost věcí dvou potápěčů a jejich lahví. Stává se věcí organizace.
+
+**Podpůrný tým.**
+
+- **Podpůrní potápěči** se s hlubokým týmem setkají na dekompresi: zkontrolují stav, přinesou náhradní plyn, odnesou prázdné lahve, předají zprávu na hladinu.
+- **Hladinový tým** hlídá čas, počasí a loď, má připravený kyslík a ví, co dělat, když se někdo vynoří dřív nebo jinde.
+- Každý má jednu jasnou roli. Podpůrný potápěč, který sám dělá hluboký ponor, není podpora.
+
+**Odložený plyn.** Co se neunese, rozmístí se předem: lahve na dekompresní stanici, na laně, na trase v jeskyni.
+Platí pro něj přísná pravidla – označení, kontrola při cestě dovnitř, a hlavně: plán nesmí záviset na jedné odložené lahvi. Co je odložené, se může nenajít.
+
+**Evakuační plán** se píše před expedicí, ne po nehodě:
+
+- kde je nejbližší komora, jestli funguje a jak se tam dostat,
+- kolik kyslíku je na místě a na jak dlouho vystačí pro jednoho člověka,
+- kdo volá, komu a čím,
+- kdo zůstane s ostatními potápěči, kteří ještě dekomprimují.
+
+Kyslíku má být tolik, aby vydržel na celou cestu ke komoře.
+
+**Hranice otevřeného okruhu.** Spotřeba plynu roste s tlakem, dekomprese s hloubkou a časem a obojí s cenou helia.
+Někde kolem 100 m přestává být otevřený okruh praktický: plynu je třeba víc, než tým unese, a jediná porucha znamená ztrátu hodin dekomprese.
+Proto hluboký průzkum dnes patří rebreatherům – a proto tento kurz u otevřeného okruhu končí právě tady.
+
+**Rozhodnutí neponořit se** je nejtěžší část logistiky. Počasí, únava, drobná závada, špatný pocit jednoho člověka.
+Expedice stála peníze a měsíce příprav a všichni chtějí. Právě proto se podmínky pro zrušení ponoru sepisují předem, kdy ještě nikdo nic nechce.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Stejný vzorec, který jsi použil v první lekci o spotřebě. Tady ukáže, proč má otevřený okruh strop.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Spotřeba na dně ve 120 m,** 15 minut při 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 120, 15]} expected={3900} tolerance={0.1} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+To je <Calc fn="litersToBar" args={[3900, 24]} decimals={0} unit="bar" /> v dvojčeti 2×12 l – jen na dno, bez sestupu, výstupu, rezervy a dekomprese.
+
+**Minimum gas** pro dva z téže hloubky:
+
+<Worked fn="rockBottomBar" args={[120, 20, 24]} expected={177.22} tolerance={0.01} unit="bar" decimals={0} />
+
+Dohromady kolem 340 bar ve dvojčeti, které se plní na 200 až 230. Na otevřeném okruhu tento ponor znamená čtyři a víc lahví s dno směsí na osobu.
+
+**Kyslík na evakuaci.** Kolik litrů potřebuje jeden člověk na šest hodin při 15 l/min?
+
+<Worked fn="gasConsumed" args={[15, 0, 360]} expected={5400} tolerance={0.1} unit="l" decimals={0} />
+
+To je víc než dvě desetilitrové lahve plněné na 200 bar. Na většině potápěčských lodí tolik kyslíku není.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="consumption" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="exley-zacaton-1994" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

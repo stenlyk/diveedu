@@ -212,3 +212,44 @@
 - { from: plan-vice-plynu, to: prepnuti-plynu, type: pocita_se_z, lessonId: plan-vice-plynu, explanation: Plán určuje hloubky přepnutí a jejich pořadí. }
 - { from: trimix, to: plan-vice-plynu, type: je_predpokladem, lessonId: plan-vice-plynu, explanation: Trimixový ponor se bez dekompresního plynu prakticky neplánuje. }
 - { from: plan-vice-plynu, to: ztrata-deko-plynu, type: zmirnuje, lessonId: plan-vice-plynu, explanation: Součástí plánu je rozvrh pro ztrátu každého z plynů. }
+
+# ── Modul 4 ──────────────────────────────────────────────────────────────────
+- { from: hloubka, to: hypoxicka-smes, type: je_predpokladem, lessonId: hypoxicke-smesi, explanation: 'Pod zhruba 65 m limit ppO2 vyžaduje méně než 18 % kyslíku.' }
+- { from: hypoxicka-smes, to: hypoxie, type: zpusobuje, lessonId: hypoxicke-smesi, explanation: 'Hypoxická směs dýchaná mělko nemá dostatečné ppO2 a vede k bezvědomí bez varování.' }
+- { from: minimalni-hloubka, to: hypoxie, type: zmirnuje, lessonId: hypoxicke-smesi, explanation: 'Směs se dýchá jen pod svou minimální hloubkou.' }
+- { from: minimalni-hloubka, to: frakce-kysliku, type: pocita_se_z, lessonId: hypoxicke-smesi, explanation: Minimální hloubka je nejnižší přípustné ppO2 dělené frakcí kyslíku. }
+
+- { from: travel-gas, to: hypoxie, type: zmirnuje, lessonId: travel-gas, explanation: Travel gas pokrývá pásmo mezi hladinou a minimální hloubkou dno směsi. }
+- { from: travel-gas, to: prepnuti-pri-sestupu, type: je_predpokladem, lessonId: travel-gas, explanation: S travel plynem přibývá přepnutí už při sestupu. }
+- { from: prepnuti-pri-sestupu, to: zamena-plynu, type: zhorsuje, lessonId: travel-gas, explanation: 'Další přepnutí je další příležitost k záměně – tentokrát při sestupu, kdy roste narkóza.' }
+
+- { from: difuze-helia, to: icd, type: zpusobuje, lessonId: izobaricka-protidifuze, explanation: 'Helium odchází jinou rychlostí, než jakou dusík vstupuje; součet tlaků v tkáni může krátce vzrůst.' }
+- { from: pravidlo-petin, to: icd, type: zmirnuje, lessonId: izobaricka-protidifuze, explanation: Pravidlo omezuje skok v podílu dusíku při přepnutí. }
+- { from: pravidlo-petin, to: frakce-helia, type: pocita_se_z, lessonId: izobaricka-protidifuze, explanation: Přípustný nárůst dusíku je pětina poklesu frakce helia. }
+- { from: icd, to: presyceni, type: zvysuje, lessonId: izobaricka-protidifuze, explanation: Protidifuze vytváří přesycení bez výstupu. }
+
+- { from: icd, to: dcs-vnitrniho-ucha, type: zhorsuje, lessonId: dcs-vnitrniho-ucha, explanation: 'Přepnutí z helia na dusíkovou směs je s příznaky vnitřního ucha často časově spojené.' }
+- { from: presyceni, to: dcs-vnitrniho-ucha, type: zpusobuje, lessonId: dcs-vnitrniho-ucha, explanation: 'Vnitřní ucho je malá, špatně prokrvená tkáň, která se helia zbavuje pomalu.' }
+- { from: dcs-vnitrniho-ucha, to: vynechana-dekomprese, type: zpusobuje, lessonId: dcs-vnitrniho-ucha, explanation: Závrať a zvracení pod vodou mohou znemožnit dokončení dekomprese. }
+
+- { from: hluboke-zastavky, to: syceni-tkani, type: zvysuje, lessonId: hluboke-zastavky-debata, explanation: Čas strávený hluboko dál sytí pomalé tkáně. }
+- { from: bublinove-modely, to: hluboke-zastavky, type: zpusobuje, lessonId: hluboke-zastavky-debata, explanation: Bublinové modely předepisují zastávky hlouběji než modely rozpuštěného plynu. }
+- { from: gradient-factor, to: hluboke-zastavky, type: je_predpokladem, lessonId: hluboke-zastavky-debata, explanation: Nízké GF low dává hluboké první zastávky i v Bühlmannově modelu. }
+
+- { from: plan-ctyr-plynu, to: plan-vice-plynu, type: je_predpokladem, lessonId: plan-ctyr-plynu, explanation: Stejný postup jako u dvou plynů s dalšími přepnutími a rezervami. }
+- { from: plan-ctyr-plynu, to: travel-gas, type: pocita_se_z, lessonId: plan-ctyr-plynu, explanation: Plán určuje hloubky přepnutí při sestupu i při výstupu. }
+- { from: plan-ctyr-plynu, to: limit-otevreneho-okruhu, type: je_predpokladem, lessonId: plan-ctyr-plynu, explanation: 'Z výpočtu potřeby plynu je vidět, kde otevřený okruh přestává stačit.' }
+
+- { from: kyslik-vice-dni, to: vzorec-otu, type: pocita_se_z, lessonId: kyslik-pres-vice-dni, explanation: Denní dávky OTU se sčítají přes celou sérii. }
+- { from: kyslik-vice-dni, to: plicni-toxicita, type: zmirnuje, lessonId: kyslik-pres-vice-dni, explanation: Hlídání denní dávky chrání plíce při expedicích. }
+- { from: vzduchove-prestavky, to: cns-toxicita, type: zmirnuje, lessonId: kyslik-pres-vice-dni, explanation: Přestávka na nižším ppO2 snižuje riziko křečí při dlouhé dekompresi. }
+
+- { from: tepelny-management, to: dcs, type: zmirnuje, lessonId: tepelny-management, explanation: 'Chladněji na dně a teplo na dekompresi snižuje riziko dekompresní nemoci.' }
+- { from: aktivni-ohrev, to: syceni-tkani, type: zvysuje, lessonId: tepelny-management, explanation: Ohřev zapnutý na dně zvýší prokrvení a tkáně naberou víc plynu. }
+- { from: dehydratace, to: dcs, type: zhorsuje, lessonId: tepelny-management, explanation: Menší objem krve zhoršuje prokrvení tkání a odvod plynu. }
+- { from: tepelny-management, to: ztrata-tepla, type: snizuje, lessonId: tepelny-management, explanation: Izolace a ohřev ve správnou chvíli omezí prochladnutí na dlouhé dekompresi. }
+
+- { from: podpurny-tym, to: ztrata-deko-plynu, type: zmirnuje, lessonId: logistika-expedic, explanation: Podpůrní potápěči přinesou náhradní plyn a kontrolují dekompresi. }
+- { from: odlozeny-plyn, to: planovani-plynu, type: je_predpokladem, lessonId: logistika-expedic, explanation: 'Plyn, který se neunese, se předem rozmístí na trase.' }
+- { from: evakuacni-plan, to: dcs, type: zmirnuje, lessonId: logistika-expedic, explanation: 'Čas do léčby rozhoduje o výsledku; plán ho zkracuje.' }
+- { from: hloubka, to: limit-otevreneho-okruhu, type: zpusobuje, lessonId: logistika-expedic, explanation: 'Spotřeba plynu roste s tlakem a dekomprese s hloubkou i časem.' }

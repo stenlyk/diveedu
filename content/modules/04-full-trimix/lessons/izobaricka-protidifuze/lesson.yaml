@@ -1,0 +1,20 @@
+id: izobaricka-protidifuze
+moduleId: fulltrimix
+title: "Izobarická protidifuze a pravidlo pětin"
+order: 3
+conceptIds: ["icd", "pravidlo-petin", "difuze-helia", "presyceni"]
+checkQuestionIds: ["icd-co-je", "icd-pravidlo-vypocet", "icd-proc-vznika", "icd-reseni", "icd-konvence"]
+estimatedMinutes: 11
+audioSummary: >-
+  Přesycení může vzniknout i bez výstupu.
+  Když přepneš z plynu s heliem na plyn s dusíkem, helium začne z tkání odcházet a dusík přicházet.
+  V některých tkáních dusík přichází rychleji, než helium odchází. Součet tlaků pak na chvíli stoupne, i když hloubku držíš přesně.
+  Tomu se říká izobarická protidifuze.
+  Pravidlo pětin říká, že podíl dusíku nemá vzrůst o víc než pětinu poklesu podílu helia.
+  Dodržíš ho dekompresním plynem s trochou helia nebo mezistupni.
+  Není to fyzikální zákon. Je to opatrná konvence a mnoho běžných přepnutí ji nesplňuje.
+sources:
+  - { title: "A new gas lesion syndrome in man, induced by isobaric gas counterdiffusion. Journal of Applied Physiology 39(3)", author: "Lambertsen C. J., Idicula J.", year: 1975 }
+  - { title: "Biophysical basis for inner ear decompression sickness. Journal of Applied Physiology 94(6)", author: "Doolette D. J., Mitchell S. J.", year: 2003 }
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

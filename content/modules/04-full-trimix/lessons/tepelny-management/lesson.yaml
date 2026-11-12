@@ -1,0 +1,21 @@
+id: tepelny-management
+moduleId: fulltrimix
+title: "Tepelný management a hydratace"
+order: 8
+conceptIds: ["tepelny-management", "aktivni-ohrev", "dehydratace", "ztrata-tepla", "dcs"]
+checkQuestionIds: ["teplo-kdy-topit", "teplo-proc", "teplo-ohrev-rizika", "teplo-hydratace", "teplo-priprava", "hydratace-kdy"]
+estimatedMinutes: 10
+audioSummary: >-
+  Teplota mění prokrvení a prokrvení mění, jak rychle tkáně plyn přijímají a vydávají.
+  Na dně je teplo nevýhodou, protože tkáně naberou víc plynu.
+  Na dekompresi je teplo výhodou, protože ho rychleji vydají.
+  Nejhorší kombinace je teplo na dně a zima při výstupu.
+  Aktivní ohřev proto zapínej až na začátku výstupu.
+  Oblek musí izolovat i bez něj, protože baterie může selhat.
+  Pij před ponorem i během dlouhé dekomprese. Dehydratace zhoršuje vysycování.
+  A po ponoru žádná horká sprcha. Zahřívej se postupně.
+sources:
+  - { title: "The influence of thermal exposure on diver susceptibility to decompression sickness. NEDU TR 06-07", author: "Gerth W. A., Ruterbusch V. L., Long E. T.", year: 2007 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+needs_review: true

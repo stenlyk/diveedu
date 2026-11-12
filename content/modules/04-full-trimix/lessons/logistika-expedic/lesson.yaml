@@ -1,0 +1,19 @@
+id: logistika-expedic
+moduleId: fulltrimix
+title: "Logistika expedic a hranice otevřeného okruhu"
+order: 9
+conceptIds: ["podpurny-tym", "odlozeny-plyn", "evakuacni-plan", "limit-otevreneho-okruhu", "tym"]
+checkQuestionIds: ["exp-podpora", "exp-evakuace", "exp-odlozeny-plyn", "exp-limit-oc", "exp-rozhodnuti", "odlozeny-pravidla"]
+estimatedMinutes: 11
+audioSummary: >-
+  U hlubokých ponorů je bezpečnost věcí organizace.
+  Podpůrní potápěči se s hlubokým týmem setkají na dekompresi a přinesou náhradní plyn. Hladinový tým hlídá čas a má připravený kyslík.
+  Plyn, který se neunese, se rozmístí předem. Plán ale nesmí záviset na jedné odložené lahvi.
+  Evakuační plán se píše před expedicí. Kde je komora, jak se tam dostat a kolik je na místě kyslíku.
+  Kolem sta metrů přestává být otevřený okruh praktický. Plynu je třeba víc, než tým unese.
+  A podmínky pro zrušení ponoru sepiš předem, dokud ještě nikdo nic nechce.
+sources:
+  - { title: "TDI Advanced Trimix Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: true

@@ -1,0 +1,243 @@
+- id: hypo-proc
+  type: why
+  conceptIds: [hypoxicka-smes, vzorec-best-mix, ppo2]
+  difficulty: 1
+  prompt: Proč se pro ponory pod zhruba 65 m používají směsi s méně než 18 % kyslíku?
+  options:
+    - { text: 'Při vyšším podílu kyslíku by ppO2 v hloubce překročilo limit.', correct: true }
+    - { text: 'Aby se ušetřil kyslík.', explanation: 'Důvodem je kyslíková toxicita, ne cena.' }
+    - { text: 'Protože kyslík je v hloubce narkotický.', explanation: 'Rozhodující je limit ppO2.' }
+    - { text: 'Aby směs byla lehčí.', explanation: 'Hustotu řeší helium.' }
+  explanation: 'V 90 m dovolí limit 1,3 bar jen 13 % kyslíku.'
+  backToLessonId: hypoxicke-smesi
+
+- id: hypo-min-hloubka
+  type: numeric
+  conceptIds: [minimalni-hloubka, hypoxicka-smes, hypoxie]
+  difficulty: 2
+  prompt: 'Od jaké hloubky je dýchatelná směs s {fO2|percent} % kyslíku, je-li nejnižší přípustné ppO2 0,18 bar?'
+  template: { fn: minDepthForPpO2, params: { fO2: { values: [0.08, 0.1, 0.12, 0.15] } }, fixed: { min: 0.18 }, args: [fO2, min], tolerance: 0.5, unit: m, decimals: 1 }
+  explanation: 'Minimální hloubka = (0,18 / frakce kyslíku − 1) × 10.'
+  backToLessonId: hypoxicke-smesi
+
+- id: hypo-varovani
+  type: why
+  conceptIds: [hypoxie, hypoxicka-smes]
+  difficulty: 1
+  prompt: Proč je nádech hypoxické směsi u hladiny tak zrádný?
+  options:
+    - { text: 'Hypoxie nevyvolá pocit dušení; bezvědomí přijde během desítek vteřin bez varování.', correct: true }
+    - { text: 'Směs má nepříjemnou chuť, která vyvolá paniku.', explanation: 'Plyny jsou bez chuti a zápachu.' }
+    - { text: 'Helium u hladiny zmrazí plíce.', explanation: 'Helium plíce nepoškozuje.' }
+    - { text: 'Automatika s hypoxickou směsí nefunguje mělko.', explanation: 'Funguje stejně; problém je složení plynu.' }
+  explanation: 'Dýchání řídí CO2. Když se CO2 vydýchává normálně, tělo o nedostatku kyslíku „neví“.'
+  backToLessonId: hypoxicke-smesi
+
+- id: hypo-kyslik-90
+  type: numeric
+  conceptIds: [hypoxicka-smes, vzorec-best-mix, ppo2]
+  difficulty: 2
+  prompt: 'Jaká je nejvyšší frakce kyslíku pro dno v {depth} m při limitu ppO2 1,3 bar? (Zadej desetinné číslo.)'
+  template: { fn: bestMix, params: { depth: { values: [70, 80, 90, 100, 110] } }, fixed: { limit: 1.3 }, args: [depth, limit], tolerance: 0.01, unit: '', decimals: 3 }
+  explanation: 'Limit dělený absolutním tlakem; zaokrouhluje se dolů.'
+  backToLessonId: hypoxicke-smesi
+
+- id: hypo-znaceni
+  type: choice
+  conceptIds: [hypoxicka-smes, minimalni-hloubka, znaceni-lahvi]
+  difficulty: 2
+  prompt: Co musí být na lahvi s hypoxickou směsí navíc oproti běžné směsi?
+  options:
+    - { text: 'Minimální hloubka, od které se smí dýchat', correct: true }
+    - { text: 'Cena helia', explanation: 'Cena na lahev nepatří.' }
+    - { text: 'Jméno plniče', explanation: 'Na štítku je ten, kdo analyzoval; to platí pro každou lahev.' }
+    - { text: 'Nic, MOD stačí', explanation: 'Hypoxická směs má dvě hranice: horní i dolní.' }
+  explanation: 'MOD hlídá, aby kyslíku nebylo moc; minimální hloubka, aby ho nebylo málo.'
+  backToLessonId: hypoxicke-smesi
+
+- id: travel-k-cemu
+  type: choice
+  conceptIds: [travel-gas, hypoxie, hypoxicka-smes]
+  difficulty: 1
+  prompt: K čemu slouží travel gas?
+  options:
+    - { text: 'K dýchání mezi hladinou a hloubkou, kde lze přejít na hypoxickou dno směs', correct: true }
+    - { text: 'K rychlejšímu sestupu', explanation: 'Rychlost sestupu neovlivňuje.' }
+    - { text: 'K plnění suchého obleku', explanation: 'Na to je vzduch nebo argon.' }
+    - { text: 'Ke zkrácení dekomprese', explanation: 'Může ji zkrátit, je-li použit i při výstupu, ale to není jeho hlavní účel.' }
+  explanation: 'Pokrývá pásmo, kde dno směs nemá dost kyslíku.'
+  backToLessonId: travel-gas
+
+- id: travel-vyber
+  type: multi
+  conceptIds: [travel-gas, vzorec-mod, vzorec-end]
+  difficulty: 2
+  prompt: Co musí travel gas splnit?
+  options:
+    - { text: 'Být dýchatelný od hladiny (aspoň 18 % kyslíku)', correct: true }
+    - { text: 'Nepřekročit v hloubce přepnutí limit ppO2', correct: true }
+    - { text: 'Mít v hloubce přepnutí přijatelnou narkotickou hloubku', correct: true }
+    - { text: 'Obsahovat víc helia než dno směs', explanation: 'To není podmínka; obvykle má helia méně.' }
+  explanation: 'Často poslouží dekompresní směs pro hluboké zastávky.'
+  backToLessonId: travel-gas
+
+- id: travel-sestup-poradi
+  type: order
+  conceptIds: [prepnuti-pri-sestupu, travel-gas, prepnuti-plynu]
+  difficulty: 2
+  prompt: Seřaď sestup s přepnutím z travel plynu na dno směs.
+  items:
+    - Začni sestup na travel plynu
+    - V plánované hloubce zastav
+    - 'Zkontroluj hloubku, lahev a hadici a počkej na potvrzení partnera'
+    - Přepni na dno směs
+    - Ulož travel automatiku a pokračuj v sestupu
+  explanation: 'Přepíná se v klidu, ne v pohybu.'
+  backToLessonId: travel-gas
+
+- id: travel-ppo2
+  type: numeric
+  conceptIds: [travel-gas, vzorec-mod, prepnuti-pri-sestupu]
+  difficulty: 2
+  prompt: 'Travel gas má {fO2|percent} % kyslíku. Jaké ppO2 dýcháš v hloubce {depth} m?'
+  template: { fn: ppO2, params: { fO2: { values: [0.21, 0.32, 0.35] }, depth: { values: [20, 30, 40, 50] } }, args: [fO2, depth], tolerance: 0.02, unit: bar, decimals: 2 }
+  explanation: 'Frakce kyslíku krát absolutní tlak. Porovnej s limitem – travel gas má MOD jako každá směs.'
+  backToLessonId: travel-gas
+
+- id: travel-chyby
+  type: findError
+  conceptIds: [prepnuti-pri-sestupu, travel-gas, zamena-plynu]
+  difficulty: 2
+  prompt: Co je v popisu sestupu špatně?
+  items:
+    - { text: 'Sestup začínám na travel plynu.' }
+    - { text: 'Na dno směs přepnu až na dně, ať se nezdržuji.', isError: true, explanation: 'Travel gas pak překročí svou MOD nebo narkotickou hloubku. Přepíná se v plánované hloubce.' }
+    - { text: 'Při přepnutí si nechám lahev potvrdit partnerem.' }
+    - { text: 'Ventil travel lahve nechám otevřený, kdyby se hodila.', isError: true, explanation: 'Otevřená lahev s automatikou po ruce je příležitost k záměně. Ventil se zavírá.' }
+  explanation: 'Přepnutí při sestupu má stejná pravidla jako přepnutí na dekompresi.'
+  backToLessonId: travel-gas
+
+- id: icd-co-je
+  type: choice
+  conceptIds: [icd, presyceni]
+  difficulty: 2
+  prompt: Co je izobarická protidifuze?
+  options:
+    - { text: 'Přesycení vzniklé výměnou inertních plynů bez změny hloubky', correct: true }
+    - { text: 'Únik helia netěsnou automatikou', explanation: 'To je technická závada.' }
+    - { text: 'Míchání plynů v lahvi', explanation: 'Jde o děj v tkáních, ne v lahvi.' }
+    - { text: 'Rychlý výstup bez zastávek', explanation: '„Izobarická“ znamená při stálém tlaku.' }
+  explanation: 'Jeden plyn do tkáně vstupuje rychleji, než druhý odchází.'
+  backToLessonId: izobaricka-protidifuze
+
+- id: icd-pravidlo-vypocet
+  type: numeric
+  conceptIds: [pravidlo-petin, icd, frakce-helia]
+  difficulty: 2
+  prompt: 'Při přepnutí klesne podíl helia z {from|percent} % na {to|percent} %. O kolik smí podle pravidla pětin vzrůst frakce dusíku? (Zadej desetinné číslo.)'
+  template: { fn: icdAllowedN2Rise, params: { from: { values: [0.45, 0.55, 0.65, 0.7] }, to: { values: [0, 0.15, 0.25] } }, args: [from, to], tolerance: 0.005, unit: '', decimals: 3 }
+  explanation: 'Pětina poklesu frakce helia.'
+  backToLessonId: izobaricka-protidifuze
+
+- id: icd-proc-vznika
+  type: why
+  conceptIds: [icd, difuze-helia, presyceni]
+  difficulty: 3
+  prompt: Proč může po přepnutí z helia na dusíkovou směs tlak inertních plynů v tkáni krátce vzrůst?
+  options:
+    - { text: 'V některých tkáních dusík vstupuje rychleji, než helium odchází.', correct: true }
+    - { text: 'Protože dusík je těžší a stlačí helium.', explanation: 'Hmotnost plynu tu nehraje roli; jde o rychlost výměny.' }
+    - { text: 'Protože se zvýší okolní tlak.', explanation: 'Okolní tlak se nemění.' }
+    - { text: 'Protože helium reaguje s dusíkem.', explanation: 'Oba plyny jsou inertní.' }
+  explanation: 'Součet tlaků obou plynů se na chvíli zvětší, přestože hloubka zůstala stejná.'
+  backToLessonId: izobaricka-protidifuze
+
+- id: icd-reseni
+  type: multi
+  conceptIds: [pravidlo-petin, icd, deko-s-heliem]
+  difficulty: 2
+  prompt: Jak lze zmenšit skok v podílu dusíku při přepnutí?
+  options:
+    - { text: 'Dekompresní plyn s trochou helia, například Tx 50/15', correct: true }
+    - { text: 'Mezistupeň – víc přepnutí po menších krocích', correct: true }
+    - { text: 'Rychlejší výstup, aby helium stihlo odejít', explanation: 'Rychlejší výstup přesycení zvětší.' }
+    - { text: 'Zadržet dech při přepnutí', explanation: 'Zadržení dechu nic neřeší a je nebezpečné.' }
+  explanation: 'Helium v dekompresním plynu stojí pár minut dekomprese a problém zmírní.'
+  backToLessonId: izobaricka-protidifuze
+
+- id: icd-konvence
+  type: why
+  conceptIds: [pravidlo-petin, icd]
+  difficulty: 3
+  prompt: Jak je třeba pravidlo pětin chápat?
+  options:
+    - { text: 'Jako přísnou provozní konvenci; mnoho běžných přepnutí ji nesplňuje.', correct: true }
+    - { text: 'Jako fyzikální zákon, jehož porušení vždy vede k nemoci.', explanation: 'Není to zákon a porušení nevede k nemoci automaticky.' }
+    - { text: 'Jako zastaralé pravidlo, které se už nepoužívá.', explanation: 'Používá se, jen s vědomím jeho mezí.' }
+    - { text: 'Jako pravidlo jen pro vzduchové ponory.', explanation: 'Bez helia se neuplatní vůbec.' }
+  explanation: 'Důležitější než číslo je neskládat nepříznivé okolnosti na sebe.'
+  backToLessonId: izobaricka-protidifuze
+
+- id: ucho-priznaky
+  type: multi
+  conceptIds: [dcs-vnitrniho-ucha]
+  difficulty: 1
+  prompt: Jaké jsou typické příznaky dekompresní nemoci vnitřního ucha?
+  options:
+    - { text: Prudká točivá závrať, correct: true }
+    - { text: Nevolnost a zvracení, correct: true }
+    - { text: Hučení v uchu a zhoršený sluch, correct: true }
+    - { text: Záškuby rtů a tunelové vidění, explanation: To jsou varovné příznaky kyslíkové toxicity. }
+  explanation: 'Objevuje se typicky při dekompresi hlubokých ponorů na heliu.'
+  backToLessonId: dcs-vnitrniho-ucha
+
+- id: ucho-proc-nebezpecne
+  type: why
+  conceptIds: [dcs-vnitrniho-ucha, vynechana-dekomprese, tym]
+  difficulty: 2
+  prompt: Proč je postižení vnitřního ucha pod vodou tak vážné?
+  options:
+    - { text: 'Závrať a zvracení mohou znemožnit držet hloubku a dokončit dekompresi.', correct: true }
+    - { text: 'Protože vždy vede k okamžité smrti.', explanation: 'Samo postižení ucha život neohrožuje.' }
+    - { text: 'Protože zvyšuje spotřebu kyslíku.', explanation: To není hlavní problém. }
+    - { text: 'Protože poškodí automatiku.', explanation: Automatika s tím nesouvisí. }
+  explanation: 'Ohrožuje situace, ne orgán. Proto rozhoduje partner těsně vedle.'
+  backToLessonId: dcs-vnitrniho-ucha
+
+- id: ucho-vs-barotrauma
+  type: match
+  conceptIds: [dcs-vnitrniho-ucha, barotrauma-ucha, vyrovnani-tlaku]
+  difficulty: 2
+  prompt: Přiřaď typický okamžik vzniku.
+  pairs:
+    - { left: Barotrauma vnitřního ucha, right: 'Při sestupu nebo při násilném vyrovnávání' }
+    - { left: Dekompresní nemoc vnitřního ucha, right: 'Při výstupu, na dekompresi nebo po vynoření' }
+  explanation: 'Příznaky jsou podobné, léčba opačná. Rozhodnout musí lékař.'
+  backToLessonId: dcs-vnitrniho-ucha
+
+- id: ucho-co-delat
+  type: order
+  conceptIds: [dcs-vnitrniho-ucha, tym]
+  difficulty: 2
+  prompt: 'Na zastávce přijde prudká závrať. Seřaď reakci.'
+  items:
+    - Dej znamení partnerovi
+    - Chyť se lana nebo partnera a drž automatiku rukou
+    - 'Pokud to jde, dokonči dekompresi s partnerem těsně u sebe'
+    - Na hladině kyslík a klid vleže
+    - Co nejrychleji hyperbarický lékař
+  explanation: 'Včasná léčba v komoře rozhoduje o tom, zda poškození zůstane trvalé.'
+  backToLessonId: dcs-vnitrniho-ucha
+
+- id: ucho-prevence
+  type: why
+  conceptIds: [dcs-vnitrniho-ucha, icd, presyceni]
+  difficulty: 3
+  prompt: Proč je právě vnitřní ucho při dekompresi z helia tak ohrožené?
+  options:
+    - { text: 'Jeho tekutiny jsou malý, špatně prokrvený prostor, který se helia zbavuje pomalu.', correct: true }
+    - { text: 'Protože helium je pro sluchový nerv toxické.', explanation: Helium toxické není. }
+    - { text: 'Protože ucho je nejhlouběji v těle.', explanation: 'Poloha v těle nerozhoduje.' }
+    - { text: 'Protože bubínek helium nepropouští.', explanation: Bubínek s vnitřním uchem v tomto směru nesouvisí. }
+  explanation: 'V uchu vzniká větší přesycení než v dobře prokrvených tkáních a přepnutí plynu ho může krátce zvýšit.'
+  backToLessonId: dcs-vnitrniho-ucha

@@ -1,0 +1,46 @@
+id: exley-zacaton-1994
+title: 'Zacatón 1994: hranice otevřeného okruhu'
+year: 1994
+location: 'Zacatón, Tamaulipas, Mexiko'
+rig: oc
+moduleIds: [fulltrimix]
+anonymized: false
+context: >-
+  Sheck Exley patřil k nejzkušenějším jeskynním potápěčům své doby a byl autorem pravidel, která jeskynní potápění učinila bezpečnějším.
+  V dubnu 1994 se spolu s Jimem Bowdenem pokusil na otevřeném okruhu dosáhnout dna zatopené propasti Zacatón v hloubce přes 300 metrů.
+  Každý sestupoval po vlastním laně. Bowden ponor přerušil před dosažením dna a po mnohahodinové dekompresi se vynořil. Exley se nevrátil.
+  Příčinu se nepodařilo spolehlivě určit. Uvádíme jen údaje, které se v publikovaných zdrojích shodují; hloubky a podrobnosti je třeba ověřit.
+profile: []
+timeline:
+  - { when: Příprava, what: 'Měsíce plánování, cvičné hluboké ponory, lahve s plynem rozmístěné na lanech pro dekompresi.' }
+  - { when: Sestup, what: 'Oba potápěči sestupují každý po svém laně na trimixu, velmi rychle, aby omezili čas ve velké hloubce.' }
+  - { when: Hluboká část, what: 'Bowden zjistí vyšší spotřebu, než plánoval, a obrací před dnem. Exley pokračuje.' }
+  - { when: Výstup, what: 'Bowden dekomprimuje mnoho hodin. Exley se na dekompresní stanici neobjeví.' }
+  - { when: Později, what: 'Exleyho tělo je vytaženo s lanem. Jeho přístroje ukazují, že dosáhl hloubky blízké dnu.' }
+errorChain:
+  - { layer: planovani, description: 'Ponor na samé hranici toho, co otevřený okruh dovoluje: obrovské objemy plynu, žádná možnost pomoci v hloubce, sólo sestup.', conceptIds: [limit-otevreneho-okruhu, plan-ctyr-plynu] }
+  - { layer: plyn, description: 'Spotřeba v hloubce přes 250 m je mnohonásobná a každá odchylka od plánu znamená rychlé vyčerpání zásoby.', conceptIds: [sac, minimum-gas] }
+  - { layer: vybaveni, description: 'Otevřený okruh s mnoha lahvemi; záložní plyn pro velkou hloubku je prakticky neunesitelný.', conceptIds: [odlozeny-plyn] }
+  - { layer: prostredi, description: 'Extrémní hloubka: nervový syndrom vysokého tlaku při rychlém sestupu, vysoká hustota plynu i s heliem, tma.', conceptIds: [hpns, limit-hustoty] }
+  - { layer: lidsky-faktor, description: 'V hloubce nebyl nikdo, kdo by mohl pomoci nebo ponor ukončit. Rozhodnutí pokračovat či otočit dělal každý sám.', conceptIds: [tym, podpurny-tym] }
+physiology: >-
+  Příčina není známa a nejspíš už známa nebude. Zvažované hypotézy zahrnují nervový syndrom vysokého tlaku po velmi rychlém sestupu,
+  narkózu a hromadění CO2 při dýchání hustého plynu, kyslíkovou toxicitu a vyčerpání plynu. Žádnou z nich nelze potvrdit.
+  Případ je cenný právě tím: ukazuje, že na hranici možností se sčítá několik vlivů, z nichž každý sám by mohl stačit,
+  a že v takové hloubce neexistuje rezerva, která by chybu kterékoli z nich pokryla.
+calcTasks:
+  - { prompt: 'Jaký je absolutní tlak v hloubce 280 m?', fn: absPressure, args: [280], unit: bar, tolerance: 0.1 }
+  - { prompt: 'Kolik litrů plynu spotřebuješ za jedinou minutu v 280 m při spotřebě 25 l/min?', fn: gasConsumed, args: [25, 280, 1], unit: l, tolerance: 5 }
+  - { prompt: 'Jaká frakce kyslíku dá v 280 m ppO2 1,3 bar? (Zadej desetinné číslo.)', fn: bestMix, args: [280, 1.3], unit: '', tolerance: 0.005 }
+  - { prompt: 'Jaká je hustota směsi se 4 % kyslíku a 80 % helia v 280 m?', fn: densityOfMix, args: [0.04, 0.8, 280], unit: g/l, tolerance: 0.2 }
+preventions:
+  - 'Uznat hranici přístroje: pod zhruba 100 m přestává otevřený okruh dávat rezervu.'
+  - 'Pomalejší sestup omezuje nervový syndrom vysokého tlaku – za cenu delší dekomprese, která je na otevřeném okruhu sotva únosná.'
+  - 'Směs navržená podle hustoty, nejen podle narkózy.'
+  - 'Předem dané podmínky pro otočení, které se dodrží bez ohledu na vynaložené úsilí.'
+  - 'Otázka, kterou si klade každý průzkum: stojí cíl za riziko, které nelze ničím pokrýt?'
+sources:
+  - { title: Caverns Measureless to Man, author: 'Exley S.', year: 1994, note: 'Autobiografie; události posledního ponoru jsou popsány v doslovu a v pozdějších článcích.' }
+  - { title: 'Publikované zprávy o ponoru v Zacatónu (aquaCORPS, NSS-CDS)', year: 1994, note: 'Hloubky, časy a složení směsí ověřit proti primárním zdrojům.' }
+certainty: hypotéza
+needs_review: true

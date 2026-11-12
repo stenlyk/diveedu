@@ -44,3 +44,10 @@
 - { cs: standardní směsi, en: standard gases, definition: 'Pevná sada směsí pro pásma hloubek.' }
 - { cs: dusíková narkóza, en: nitrogen narcosis (inert gas narcosis), definition: 'Zhoršení úsudku a koordinace při vysokém parciálním tlaku dusíku.' }
 - { cs: reálný plyn, en: real gas (compressibility), definition: 'Plyn, jehož stlačitelnost se odchyluje od ideální rovnice.' }
+- { cs: hypoxická směs, en: hypoxic mix, definition: 'Směs s méně než 18 % kyslíku, u hladiny nedýchatelná.' }
+- { cs: travel gas, en: travel gas, definition: 'Směs pro úsek mezi hladinou a hloubkou použití dno směsi.', pronunciation: trevl ges }
+- { cs: izobarická protidifuze, en: isobaric counterdiffusion (ICD), definition: 'Přesycení vzniklé výměnou inertních plynů bez změny tlaku.', pronunciation: í cé dé }
+- { cs: dekompresní nemoc vnitřního ucha, en: inner ear decompression sickness (IEDCS), definition: 'Postižení rovnovážného a sluchového ústrojí bublinami.' }
+- { cs: hluboké zastávky, en: deep stops, definition: 'Zastávky hlouběji, než předepisuje model rozpuštěného plynu.' }
+- { cs: aktivní ohřev, en: active heating, definition: 'Elektricky vyhřívané prvky pod suchým oblekem.' }
+- { cs: podpůrný potápěč, en: support diver, definition: 'Potápěč, který zajišťuje hluboký tým na dekompresi.' }

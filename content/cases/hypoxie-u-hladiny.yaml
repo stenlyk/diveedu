@@ -1,0 +1,46 @@
+id: hypoxie-u-hladiny
+title: Hypoxie na dno směsi u hladiny
+location: Anonymizovaný vzorec nehody
+rig: oc
+moduleIds: [fulltrimix]
+anonymized: true
+context: >-
+  Nejde o jednu konkrétní nehodu, ale o vzorec, který se u ponorů s hypoxickým trimixem opakuje:
+  potápěč se u hladiny – při kontrole výstroje, při skoku do vody, na začátku sestupu nebo na konci výstupu – nadechne směsi určené pro velkou hloubku.
+  Během desítek vteřin ztrácí vědomí bez jakéhokoli varování. Scénář níže je složený z typických prvků a nepopisuje konkrétní osobu.
+profile:
+  - { minute: 0, depthM: 0, event: nádech dno směsi }
+  - { minute: 1, depthM: 3 }
+  - { minute: 2, depthM: 4, event: bezvědomí }
+timeline:
+  - { when: Na lodi, what: 'Potápěč před skokem zkouší automatiky. Z hlavní automatiky dno směsi se několikrát nadechne.' }
+  - { when: Skok do vody, what: 'Je vlnobití a spěch. Automatiku dno směsi si nechá v ústech s tím, že na travel gas přepne pod hladinou.' }
+  - { when: První minuta, what: 'Řeší vztlak a čeká na partnera. Dýchá směs s deseti procenty kyslíku v hloubce dvou až tří metrů.' }
+  - { when: O chvíli později, what: 'Přestane reagovat. Automatika mu vypadne z úst.' }
+  - { when: Záchrana, what: 'Výsledek závisí na tom, zda si partner všimne okamžitě a vynese ho na hladinu.' }
+errorChain:
+  - { layer: planovani, description: 'Plán neurčoval, na kterém plynu se vstupuje do vody a kdo to zkontroluje.', conceptIds: [plan-ctyr-plynu, travel-gas] }
+  - { layer: plyn, description: 'Dno směs s 10 % kyslíku má minimální hloubku 8 m; mělčeji je ppO2 pod hranicí pro udržení vědomí.', conceptIds: [hypoxicka-smes, minimalni-hloubka] }
+  - { layer: vybaveni, description: 'Automatika dno směsi byla hlavní a první po ruce; travel gas visel na boku se zavřeným ventilem.', conceptIds: [prepnuti-pri-sestupu] }
+  - { layer: prostredi, description: 'Vlny, proud a spěch při vstupu do vody odvedly pozornost od pořadí plynů.', conceptIds: [namaha] }
+  - { layer: lidsky-faktor, description: 'Zkratka „jen na chvíli“ a chybějící kontrola partnerem před skokem.', conceptIds: [hypoxie, tym] }
+physiology: >-
+  Směs s deseti procenty kyslíku má na hladině ppO2 0,10 bar a ve třech metrech 0,13 bar – hluboko pod hranicí přibližně 0,16 bar,
+  kde se zhoršuje výkon mozku. Protože dýchání řídí CO2 a ten se vydýchává normálně, potápěč nemá pocit dušení.
+  Hladina kyslíku v krvi klesá s každým nádechem a bezvědomí přichází náhle. Pod vodou následuje ztráta automatiky a utonutí.
+calcTasks:
+  - { prompt: 'Jaké je ppO2 směsi s 10 % kyslíku na hladině?', fn: ppO2, args: [0.1, 0], unit: bar, tolerance: 0.01 }
+  - { prompt: 'Jaké je ppO2 téže směsi ve 3 m?', fn: ppO2, args: [0.1, 3], unit: bar, tolerance: 0.01 }
+  - { prompt: 'Od jaké hloubky má tato směs ppO2 aspoň 0,18 bar?', fn: minDepthForPpO2, args: [0.1, 0.18], unit: m, tolerance: 0.5 }
+  - { prompt: 'Jaké ppO2 má ve 3 m travel gas s 21 % kyslíku?', fn: ppO2, args: [0.21, 3], unit: bar, tolerance: 0.01 }
+preventions:
+  - 'Do vody se vstupuje na travel plynu; dno směs je do přepnutí mimo ústa.'
+  - 'Minimální hloubka napsaná na lahvi vedle MOD.'
+  - 'Automatiky dno směsi se před ponorem zkoušejí jedním krátkým nádechem, ne dýcháním.'
+  - 'Kontrola partnerem těsně před skokem: „Na čem dýcháš?“'
+  - 'Stejná pozornost na konci ponoru: z dno směsi se přepíná včas, mělko se na ní nedodýchává.'
+sources:
+  - { title: 'DAN Annual Diving Report (řada výročních zpráv o nehodách)', author: Divers Alert Network, note: 'Vzorec nehody; konkrétní ročník a případy doplnit.' }
+  - { title: 'TDI Advanced Trimix Diver Manual', author: Technical Diving International }
+certainty: hypotéza
+needs_review: true

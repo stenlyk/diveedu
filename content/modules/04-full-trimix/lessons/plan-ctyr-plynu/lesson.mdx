@@ -1,0 +1,95 @@
+<Hook>
+
+Ponor do 90 metrů na čtvrt hodiny. Na papíře to vypadá jako každý jiný plán, jen s většími čísly.
+
+Pak spočítáš plyn na dno a zjistíš, že dvojče je prázdné dřív, než začne výstup.
+
+</Hook>
+
+<Principle>
+
+Plán hlubokého trimixového ponoru má stejnou kostru jako plán z předchozího modulu. Přibývají plyny a s nimi vazby mezi nimi.
+
+**Čtyři role plynů:**
+
+- **dno směs** – hypoxická, jen pod minimální hloubkou,
+- **travel gas** – od hladiny k přepnutí při sestupu a znovu při výstupu,
+- **první dekompresní plyn** – obvykle od 21 m,
+- **kyslík** – od 6 m.
+
+**Pro každý plyn:** složení, MOD a u dno směsi i minimální hloubka; potřeba a rezerva; lahev, která ho ponese; místo, kde bude připnutá.
+
+**Kontroly, které přibývají:**
+
+- **Dvě hranice dno směsi** a pásmo přepnutí při sestupu.
+- **Každé přepnutí proti pravidlu pětin.** Kde se porušuje, je to vědomé rozhodnutí, ne přehlédnutí.
+- **Kyslík celého ponoru.** CNS hodiny se sčítají přes všechny plyny; u dlouhé dekomprese na kyslíku přesáhnou plánovací limit dřív, než bys čekal.
+- **Minimum gas k první lahvi,** která je v dané hloubce dýchatelná – a spočítaný pro dva.
+- **Záložní rozvrh pro ztrátu každého plynu zvlášť.**
+
+**Kde plán narazí.** Spotřeba roste s tlakem. V 90 m prodýcháš za minutu desetkrát víc plynu než na hladině, a to plynu, který stojí nejvíc.
+Otevřený okruh tu potřebuje větší dvojče, víc lahví na boku, plyn odložený předem nebo podpůrné potápěče.
+Výpočet ukáže, kdy se ponor na otevřeném okruhu ještě dá rozumně udělat a kdy už patří rebreatheru.
+
+Plán se v této hloubce nepíše proto, aby se ponor uskutečnil. Píše se proto, aby se včas zjistilo, že se uskutečnit nemá.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Jeden vzorec, čtyři plyny, a pro každý záložní varianta. K tomu vzorce, které už znáš: MOD, minimální hloubka, END, hustota, pravidlo pětin a CNS hodiny.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor 90 m, 15 minut na dně, Tx 10/70, spotřeba 20 l/min.
+
+**Dno směs v hloubce:** ppO2 <Calc fn="ppO2" args={[0.1, 90]} decimals={2} unit="bar" />, END <Calc fn="endOfMix" args={[0.1, 0.7, 90]} unit="m" />, hustota <Calc fn="densityOfMix" args={[0.1, 0.7, 90]} decimals={2} unit="g/l" />. Všechno v limitech.
+
+**Spotřeba na dně:**
+
+<Worked fn="gasConsumed" args={[20, 90, 15]} expected={3000} tolerance={0.1} steps="gasConsumedSteps" unit="l" decimals={0} />
+
+V dvojčeti 2×12 l je to <Calc fn="litersToBar" args={[3000, 24]} decimals={0} unit="bar" />.
+
+**Minimum gas** pro přímý výstup z 90 m:
+
+<Worked fn="rockBottomBar" args={[90, 20, 24]} expected={108.33} tolerance={0.01} unit="bar" decimals={0} />
+
+Dno a rezerva dohromady přes 230 bar – víc, než se do dvojčete 2×12 l vejde, a to bez výstupu a bez záložní dekomprese.
+Tento ponor vyžaduje větší lahve, dno plyn i na boku, nebo jiný přístroj.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="profile-sim" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="rekord-oc" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>
