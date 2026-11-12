@@ -1,0 +1,100 @@
+<Hook>
+
+Za hlavou se ozve rachot jako z vodopádu a kolem masky se valí bubliny. Ručička manometru se hýbe tak, že je to vidět.
+
+Plyn máš. Zatím. Otázka je, na kolik minut – a jestli víš, který ventil zavřít.
+
+</Hook>
+
+<Principle>
+
+<Term cs="samovolný průtok" /> znamená, že automatika dodává plyn nepřetržitě. Příčinou bývá zamrznutí ve studené vodě, nečistota ve ventilu nebo špatně seřízený stupeň.
+Stejně se projeví prasklá hadice nebo uvolněný o-kroužek: plyn utíká a ty máš minuty.
+
+**Dobrá zpráva:** z automatiky, která volně proudí, se dá dýchat. Nejsi bez plynu. Máš jen málo času.
+
+**S dvojčetem nebo dvěma lahvemi:**
+
+1. Zastav. Dej signál partnerovi.
+2. Urči, odkud plyn uniká – poslechem, pohledem, pomocí partnera.
+3. Přejdi na automatiku z druhého ventilu, pokud dýcháš z té postižené.
+4. Zavři ventil, ze kterého plyn uniká.
+5. Ověř, že dýcháš a že únik ustal. Když neustal, zavřel jsi špatný ventil: otevři ho a zavři druhý nebo propojovací.
+6. Ponor končí.
+
+Tomuto postupu se říká <Term cs="ventilový drill" /> a cvičí se, dokud ho neuděláš poslepu do půl minuty.
+
+**S jednou lahví** ventil zavřít nemůžeš – je to tvůj jediný plyn:
+
+1. Dýchej z proudící automatiky; nedrž ji pevně v ústech, nech přebytek unikat.
+2. Signál partnerovi a k němu.
+3. Přejdi na jeho plyn a zahajte výstup.
+
+**Zamrzlá automatika** se po zavření ventilu může za chvíli vzpamatovat. Ventil pak lze opatrně otevřít – ale ponor se stejně nepokračuje.
+
+**Prevence:**
+
+- automatiky určené do studené vody a pravidelný servis,
+- ve studené vodě z automatiky zbytečně nedýchat na vzduchu a nemačkat sprchu,
+- kontrola hadic a spojů před každým ponorem,
+- bublinková kontrola u hladiny: partner se podívá na tvé ventily.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Únik je spotřeba, kterou neovlivníš dechem. Jediné, co ji zastaví, je zavřený ventil.
+
+</FormulaSection>
+
+<WorkedSection>
+
+V lahvi 12 l je 150 bar. Kolik je to plynu?
+
+<Worked fn="barToLiters" args={[150, 12]} expected={1800} tolerance={0.1} unit="l" decimals={0} />
+
+<Given>ilustrační průtok volně proudící automatiky = 400 l/min</Given>
+
+Při takovém úniku je lahev prázdná za čtyři a půl minuty. Skutečný průtok závisí na automatice a hloubce a bývá i vyšší.
+
+Proto rozhoduje čas do zavření ventilu. Dvojče 2×12 l se 150 bar ztratí při úniku 900 l:
+
+<Worked fn="litersToBar" args={[900, 24]} expected={37.5} tolerance={0.1} unit="bar" decimals={0} />
+
+Dvě minuty váhání stojí skoro čtyřicet barů – zhruba tolik, kolik je celá rezerva na výstup dvou lidí ze 40 m.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="free-flow-v-hloubce" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="free-flow-zima" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,262 @@
+- id: plyn-prvni-krok
+  type: choice
+  conceptIds: [bez-plynu, zastav-dychej-mysli]
+  difficulty: 1
+  prompt: Nadechneš se a automatika nedá plyn. Partner je tři metry od tebe. Co uděláš?
+  options:
+    - { text: 'Signál a plavu k partnerovi', correct: true }
+    - { text: 'Plavu k hladině', explanation: 'Z hloubky a s dekompresí je to nejhorší možnost. Plyn je tři metry od tebe.' }
+    - { text: 'Zkontroluji manometr a ventily', explanation: 'Diagnostika až s plynem v ústech.' }
+    - { text: 'Počkám, jestli se to nespraví', explanation: 'Na čekání máš jeden výdech.' }
+  explanation: 'Ztráta plynu se řeší reflexem: plyn partnera, potom všechno ostatní.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-poradi
+  type: order
+  conceptIds: [bez-plynu, sdileni-plynu]
+  difficulty: 2
+  prompt: Partner ti signalizuje, že nemá plyn. Seřaď postup.
+  items:
+    - 'Podám automatiku, ze které dýchám'
+    - 'Přejdu na záložní automatiku pod bradou'
+    - 'Chytím partnera, zastavíme a zklidníme dech'
+    - 'Zkontroluji tlak'
+    - 'Společný výstup'
+  explanation: 'Tlak se kontroluje před výstupem: teď dýchají dva z jedné zásoby.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-proc-dlouha
+  type: why
+  conceptIds: [bez-plynu, sdileni-plynu]
+  difficulty: 1
+  prompt: Proč se partnerovi bez plynu podává automatika, ze které dárce právě dýchá?
+  options:
+    - { text: 'Dárce ví, že funguje, a potápěč bez plynu po ní sáhne tak jako tak.', correct: true }
+    - { text: 'Je čistší než záložní.', explanation: 'O hygienu nejde.' }
+    - { text: 'Záložní automatika dává méně plynu.', explanation: 'Obě dávají stejně.' }
+    - { text: 'Je to jedno, záleží na zvyku.', explanation: 'Postup musí být v týmu jeden, aby fungoval ve stresu.' }
+  explanation: 'Dárce pak přejde na záložní automatiku pod bradou, kterou najde poslepu.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-staci
+  type: numeric
+  conceptIds: [bez-plynu, minimum-gas]
+  difficulty: 2
+  prompt: 'V dvojčeti 24 l zbývá {bar} bar. Dva potápěči z něj v hloubce {depth} m dýchají dohromady 60 l/min. Na kolik minut plyn v této hloubce vystačí?'
+  template: { fn: minutesOnGas, params: { bar: { values: [40, 50, 60, 80] }, depth: { values: [30, 40, 50] } }, fixed: { tank: 24, sac: 60 }, args: [bar, tank, sac, depth], tolerance: 0.3, unit: min, decimals: 1 }
+  explanation: 'Litry děleno spotřebou v hloubce. Výsledek porovnej s délkou výstupu – a pochopíš, proč se rezerva počítá předem.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-darce-chyby
+  type: findError
+  conceptIds: [bez-plynu, zastav-dychej-mysli]
+  difficulty: 2
+  prompt: Které reakce na partnera bez plynu jsou chybné?
+  items:
+    - { text: 'Podal jsem mu automatiku a přešel na záložní.' }
+    - { text: 'Hned jsme vyrazili nahoru, uklidnit se můžeme cestou.', isError: true, explanation: 'Nejdřív zastavit a zklidnit dech. Výstup dvou vyděšených lidí na jedné hadici se snadno změní v úprk.' }
+    - { text: 'Tlak jsem nekontroloval, stejně jdeme ven.', isError: true, explanation: 'Tlak rozhoduje, jestli vyjdou zastávky, nebo jen přímý výstup.' }
+    - { text: 'Při výstupu jsem ho držel za paži.' }
+  explanation: 'Zastav, dýchej, mysli platí i tehdy, když je plyn zajištěný.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-zastav-proc
+  type: why
+  conceptIds: [zastav-dychej-mysli]
+  difficulty: 1
+  prompt: Proč každý nouzový postup začíná zastavením?
+  options:
+    - { text: 'Pohyb a spěch situaci zhoršují dřív, než ji pochopíš.', correct: true }
+    - { text: 'Zastavení šetří baterii počítače.', explanation: 'S počítačem to nesouvisí.' }
+    - { text: 'V klidu se plyn nespotřebovává.', explanation: 'Spotřebovává, jen pomaleji.' }
+    - { text: 'Je to zdvořilost vůči týmu.', explanation: 'Je to podmínka správného rozhodnutí.' }
+  explanation: 'Většina problémů se za pět vteřin nezhorší. To, co uděláš v panice, ano.'
+  backToLessonId: ztrata-plynu
+
+- id: plyn-prevence
+  type: multi
+  conceptIds: [bez-plynu, minimum-gas, zastav-dychej-mysli]
+  difficulty: 1
+  prompt: Co rozhoduje o výsledku ztráty plynu ještě před ponorem?
+  options:
+    - { text: 'Spočítaná rezerva pro dva', correct: true }
+    - { text: 'Dohodnutá vzdálenost v týmu', correct: true }
+    - { text: 'Nacvičený postup sdílení', correct: true }
+    - { text: 'Co nejvyšší rychlost výstupu', explanation: 'Rychlý výstup je důsledek špatné přípravy, ne její součást.' }
+  explanation: 'Partner, ke kterému nedoplaveš na jeden výdech, není záloha.'
+  backToLessonId: ztrata-plynu
+
+- id: ff-co-je
+  type: choice
+  conceptIds: [free-flow]
+  difficulty: 1
+  prompt: Co je samovolný průtok automatiky?
+  options:
+    - { text: 'Automatika dodává plyn nepřetržitě, i když potápěč nenadechuje', correct: true }
+    - { text: 'Automatika nedává žádný plyn', explanation: 'To je opačná porucha.' }
+    - { text: 'Plyn proudí z lahve do lahve', explanation: 'To je vyrovnávání přes propojení.' }
+    - { text: 'Volné dýchání bez automatiky', explanation: 'Takový pojem v potápění není.' }
+  explanation: 'Z proudící automatiky se dá dýchat. Problém je čas: lahev je prázdná během minut.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-poradi
+  type: order
+  conceptIds: [free-flow, ventilovy-drill]
+  difficulty: 2
+  prompt: Z jedné automatiky dvojčete uniká plyn. Seřaď postup.
+  items:
+    - 'Zastavím a dám signál partnerovi'
+    - 'Určím, odkud plyn uniká'
+    - 'Přejdu na automatiku z druhého ventilu'
+    - 'Zavřu ventil, ze kterého plyn uniká'
+    - 'Ověřím, že dýchám a únik ustal'
+  explanation: 'Nejdřív jistota dýchání, potom ventil.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-proc-ventil
+  type: why
+  conceptIds: [free-flow, unik-plynu, ventilovy-drill]
+  difficulty: 2
+  prompt: Proč se při úniku z dvojčete zavírá ventil postižené automatiky, a ne jen propojení?
+  options:
+    - { text: 'Zavřený ventil únik zastaví a přes propojení zůstane dostupný plyn z obou lahví.', correct: true }
+    - { text: 'Propojení se pod vodou zavřít nedá.', explanation: 'Dá. Jen zachrání pouze polovinu plynu.' }
+    - { text: 'Ventil automatiky je blíž.', explanation: 'O vzdálenost nejde.' }
+    - { text: 'Propojení se zavírá jen na hladině.', explanation: 'Zavírá se, když únik nejde zastavit ventilem automatiky.' }
+  explanation: 'Propojení se zavírá až tehdy, když uniká plyn z místa, které ventil automatiky neodřízne.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-jedna-lahev
+  type: choice
+  conceptIds: [free-flow, bez-plynu]
+  difficulty: 2
+  prompt: Máš jednu lahev s jedním ventilem a automatika začne volně proudit. Co uděláš?
+  options:
+    - { text: 'Dýchám z proudící automatiky, dám signál a plavu k partnerovi', correct: true }
+    - { text: 'Zavřu ventil', explanation: 'Je to tvůj jediný plyn.' }
+    - { text: 'Vyplivnu automatiku a zadržím dech', explanation: 'Z proudící automatiky se dá dýchat. Zadržený dech při výstupu je nebezpečný.' }
+    - { text: 'Pokračuji v ponoru, plyn přece teče', explanation: 'Teče ven. Za pár minut nebude žádný.' }
+  explanation: 'Automatiku nedrž pevně v ústech; nech přebytek plynu unikat kolem náustku.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-prevence
+  type: multi
+  conceptIds: [free-flow, ztrata-tepla]
+  difficulty: 1
+  prompt: Co snižuje riziko zamrznutí automatiky ve studené vodě?
+  options:
+    - { text: 'Automatika určená do studené vody', correct: true }
+    - { text: 'Nedýchat z ní zbytečně na vzduchu před ponorem', correct: true }
+    - { text: 'Pravidelný servis', correct: true }
+    - { text: 'Co nejvyšší tlak v lahvi', explanation: 'Vyšší tlak znamená větší ochlazení při expanzi.' }
+  explanation: 'Plyn se při snížení tlaku ochlazuje; led může ventil podržet otevřený.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-spatny-ventil
+  type: choice
+  conceptIds: [ventilovy-drill, unik-plynu]
+  difficulty: 2
+  prompt: Zavřel jsi ventil, ale rachot za hlavou pokračuje. Co to znamená?
+  options:
+    - { text: 'Zavřel jsem špatný ventil: otevřu ho a zavřu jiný', correct: true }
+    - { text: 'Ventil je rozbitý, nedá se nic dělat', explanation: 'Mnohem pravděpodobnější je záměna stran.' }
+    - { text: 'Únik je jen zvuk, plyn neutíká', explanation: 'Zkontroluj manometr.' }
+    - { text: 'Mám zavřít všechny ventily', explanation: 'Pak nemáš z čeho dýchat.' }
+  explanation: 'Proto se po zavření vždy ověřuje, že únik ustal a že dýcháš.'
+  backToLessonId: free-flow-a-unik
+
+- id: ff-ztrata
+  type: numeric
+  conceptIds: [free-flow, unik-plynu]
+  difficulty: 2
+  prompt: 'Než jsi zavřel ventil, uniklo {liters} l plynu. Kolik barů to je v dvojčeti 24 l?'
+  template: { fn: litersToBar, params: { liters: { values: [480, 720, 960, 1200] } }, fixed: { tank: 24 }, args: [liters, tank], tolerance: 1, unit: bar, decimals: 0 }
+  explanation: 'Litry děleno objemem lahví. Porovnej s rezervou na výstup.'
+  backToLessonId: free-flow-a-unik
+
+- id: nv-priciny
+  type: multi
+  conceptIds: [nekontrolovany-vystup]
+  difficulty: 1
+  prompt: Co může způsobit nekontrolovaný výstup?
+  options:
+    - { text: 'Zaseknutý napouštěcí ventil kompenzátoru nebo obleku', correct: true }
+    - { text: 'Plyn v nohách suchého obleku', correct: true }
+    - { text: 'Ztráta zátěže', correct: true }
+    - { text: 'Příliš pomalé dýchání', explanation: 'Pomalý dech vztlak nezvyšuje.' }
+  explanation: 'Výstup se sám zrychluje: rozpínající se plyn zvyšuje vztlak.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-co-delat
+  type: order
+  conceptIds: [nekontrolovany-vystup]
+  difficulty: 2
+  prompt: Stoupáš a nemůžeš to zastavit. Seřaď, co uděláš.
+  items:
+    - 'Vydechuji nepřetržitě'
+    - 'Vypouštím kompenzátor a oblek'
+    - 'Odpojím napouštěcí hadici, pokud ventil napouští sám'
+    - 'Roztáhnu tělo naplocho'
+  explanation: 'Výdech je první: je to jediný krok, bez kterého výstup nepřežiješ.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-proc-vydech
+  type: why
+  conceptIds: [nekontrolovany-vystup, barotrauma-plic, plynova-embolie]
+  difficulty: 1
+  prompt: Proč je při nekontrolovaném výstupu nejdůležitější vydechovat?
+  options:
+    - { text: 'Plyn v plicích se rozpíná; když nemůže ven, plíce roztrhne a bubliny vniknou do krve.', correct: true }
+    - { text: 'Výdech zpomaluje výstup.', explanation: 'Jen nepatrně. Chrání plíce.' }
+    - { text: 'Výdech odstraňuje dusík z tkání.', explanation: 'Za půl minuty ne.' }
+    - { text: 'Aby se nezamlžila maska.', explanation: 'O masku nejde.' }
+  explanation: 'Poranění plic přetlakem je nejrychlejší a nejvážnější následek rychlého výstupu.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-objem
+  type: numeric
+  conceptIds: [nekontrolovany-vystup, barotrauma-plic]
+  difficulty: 2
+  prompt: 'V plicích máš {volume} l plynu v hloubce {depth} m. Jaký objem by ten plyn zabral na hladině?'
+  template: { fn: boyleVolume, params: { volume: { values: [4, 5, 6] }, depth: { values: [5, 10, 20, 30] } }, fixed: { surface: 0 }, args: [volume, depth, surface], tolerance: 0.3, unit: l, decimals: 1 }
+  explanation: 'Objem krát poměr tlaků. Plíce se tolik neroztáhnou; plyn musí odejít výdechem.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-embolie-priznaky
+  type: choice
+  conceptIds: [plynova-embolie]
+  difficulty: 2
+  prompt: Kdy se typicky projeví arteriální plynová embolie?
+  options:
+    - { text: 'Během minut po vynoření', correct: true }
+    - { text: 'Až druhý den', explanation: 'Zpožděné příznaky jsou typické spíš pro dekompresní nemoc.' }
+    - { text: 'Jen pod vodou', explanation: 'Projevuje se po výstupu nebo na jeho konci.' }
+    - { text: 'Do týdne', explanation: 'Embolie je náhlá příhoda.' }
+  explanation: 'Náhlé bezvědomí, ochrnutí nebo porucha řeči těsně po vynoření se bere jako embolie, dokud lékař neřekne jinak.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-oblek
+  type: why
+  conceptIds: [nekontrolovany-vystup]
+  difficulty: 2
+  prompt: Proč je plyn v nohách suchého obleku tak nebezpečný?
+  options:
+    - { text: 'Otočí potápěče hlavou dolů, kde vypouštěcí ventil na rameni nefunguje, a vztlak dál roste.', correct: true }
+    - { text: 'Plyn v nohách je chladnější.', explanation: 'O teplotu nejde.' }
+    - { text: 'Nohy v obleku nesnesou tlak.', explanation: 'Jde o polohu a vypouštění.' }
+    - { text: 'Zvyšuje spotřebu plynu.', explanation: 'Přímo ne.' }
+  explanation: 'Proto se cvičí převrat z polohy hlavou dolů a průběžné vypouštění při každém výstupu.'
+  backToLessonId: nekontrolovany-vystup
+
+- id: nv-hladina
+  type: multi
+  conceptIds: [plynova-embolie, kyslik-prvni-pomoc, nekontrolovany-vystup]
+  difficulty: 2
+  prompt: Partner se vynořil po nekontrolovaném výstupu a je zmatený. Co patří k první pomoci?
+  options:
+    - { text: 'Kyslík v co nejvyšší koncentraci', correct: true }
+    - { text: 'Poloha vleže a klid', correct: true }
+    - { text: 'Okamžité přivolání záchranné služby', correct: true }
+    - { text: 'Nový ponor na dokončení zastávek', explanation: 'S příznaky se do vody nevrací.' }
+  explanation: 'Zmatenost po rychlém výstupu se bere jako embolie nebo dekompresní nemoc. Nečeká se.'
+  backToLessonId: nekontrolovany-vystup

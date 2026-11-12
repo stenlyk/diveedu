@@ -6,9 +6,11 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Prostředí se stropem** (`prostredi-se-stropem`, modul `cavern`)
 - [ ] Lekce **Značky na šňůře: šipky a osobní značky** (`znacky-na-snure`, modul `fullcave`)
 - [ ] Lekce **Když se sčítá hloubka a strop** (`hloubka-a-strop`, modul `deepcave`)
+- [ ] Lekce **Ztráta plynu** (`ztrata-plynu`, modul `nouze`)
 - [ ] Lekce **Travel gas a sestup na hypoxické směsi** (`travel-gas`, modul `fulltrimix`)
 - [ ] Lekce **Skoky, mezery a rozcestí** (`skoky-mezery-rozcesti`, modul `fullcave`)
 - [ ] Lekce **Profil jeskyně a dekomprese pod stropem** (`profil-jeskyne-a-dekomprese`, modul `deepcave`)
+- [ ] Lekce **Samovolný průtok a únik plynu** (`free-flow-a-unik`, modul `nouze`)
 - [ ] Lekce **Kyslíková toxicita CNS** (`cns-toxicita`, modul `nitrox`)
 - [ ] Lekce **Gradient factors: jak nastavit konzervativnost** (`gradient-factors`, modul `deko`)
 - [ ] Lekce **Je kyslík narkotický? Debata** (`je-kyslik-narkoticky`, modul `trimix`)
@@ -16,23 +18,27 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Vodicí šňůra** (`vodici-snura`, modul `cavern`)
 - [ ] Lekce **Okruhy, traverzy a plán navigace** (`okruhy-a-plan-navigace`, modul `fullcave`)
 - [ ] Lekce **Stage lahve a jejich odkládání** (`stage-lahve-a-odkladani`, modul `deepcave`)
+- [ ] Lekce **Vynechaná dekomprese** (`vynechana-dekomprese-postup`, modul `nouze`)
 - [ ] Lekce **CNS hodiny** (`cns-hodiny`, modul `nitrox`)
 - [ ] Lekce **Bubliny a bublinové modely** (`bubliny-a-bublinove-modely`, modul `deko`)
 - [ ] Lekce **Dekompresní nemoc vnitřního ucha** (`dcs-vnitrniho-ucha`, modul `fulltrimix`)
 - [ ] Lekce **Světla a světelné signály** (`svetla-a-signaly`, modul `cavern`)
 - [ ] Lekce **Ztráta partnera** (`ztrata-partnera`, modul `fullcave`)
 - [ ] Lekce **Ztráta stage a dekompresního plynu** (`ztrata-stage-a-deko-plynu`, modul `deepcave`)
+- [ ] Lekce **Nekontrolovaný výstup** (`nekontrolovany-vystup`, modul `nouze`)
 - [ ] Lekce **Plicní toxicita a OTU** (`plicni-toxicita-otu`, modul `nitrox`)
 - [ ] Lekce **Strop, zastávky a rychlost výstupu** (`strop-zastavky-a-vystup`, modul `deko`)
 - [ ] Lekce **Hluboké zastávky: debata** (`hluboke-zastavky-debata`, modul `fulltrimix`)
 - [ ] Lekce **Kontaktní komunikace** (`kontaktni-komunikace`, modul `cavern`)
 - [ ] Lekce **Zúženiny a návrat po hmatu** (`zuzeniny-a-navrat-po-hmatu`, modul `fullcave`)
 - [ ] Lekce **Dlouhá dekomprese: chlad, habitat a podpora** (`dlouha-dekomprese`, modul `deepcave`)
+- [ ] Lekce **Kyslíkové křeče pod vodou** (`krece-pod-vodou`, modul `nouze`)
 - [ ] Lekce **Helium: teplo, hlas a vysoký tlak** (`vlastnosti-helia`, modul `trimix`)
 - [ ] Lekce **Plán se třemi až čtyřmi plyny** (`plan-ctyr-plynu`, modul `fulltrimix`)
 - [ ] Lekce **Sediment a viditelnost** (`sediment-a-viditelnost`, modul `cavern`)
 - [ ] Lekce **Proud a průtok** (`proud-a-prutok`, modul `fullcave`)
 - [ ] Lekce **Plán hlubokého jeskynního ponoru** (`plan-hlubokeho-jeskynniho-ponoru`, modul `deepcave`)
+- [ ] Lekce **Záchrana bezvládného potápěče** (`zachrana-bezvladneho-potapece`, modul `nouze`)
 - [ ] Lekce **Best mix: nejlepší směs pro ponor** (`nejlepsi-smes`, modul `nitrox`)
 - [ ] Lekce **Minimum gas: rezerva, která se neplánuje** (`minimum-gas`, modul `deko`)
 - [ ] Lekce **Optimální trimix a standardní směsi** (`optimalni-trimix`, modul `trimix`)
@@ -57,6 +63,10 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Ztráta dekompresního plynu a vynechaná dekomprese** (`ztrata-deko-plynu`, modul `deko`)
 - [ ] Otázka `zuzenina-typy`: Přiřaď stupeň zúženiny k popisu.
 - [ ] Otázka `stage-kolik`: Přiřaď pravidlo k tomu, kde podle něj leží rezerva pro partnera.
+- [ ] Otázka `kr-automatika`: Partner má křeče. Přiřaď situaci k doporučenému postupu.
+- [ ] Otázka `zb-automatika`: Proč se bezvládnému potápěči nevrací automatika, která mu vypadla z úst?
+- [ ] Scénář **Samovolný průtok ve 40 metrech** (`free-flow-v-hloubce`)
+- [ ] Scénář **Křeče partnera na kyslíkové zastávce** (`krece-partnera`)
 - [ ] Scénář **Partner bez plynu v nejvzdálenějším bodě** (`partner-bez-plynu`)
 - [ ] Scénář **Selhání hlavní svítilny** (`selhani-svetla`)
 - [ ] Scénář **Ztráta šňůry v nulové viditelnosti** (`ztrata-snury`)
@@ -97,3 +107,7 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Zajímavost `stage-pruzkum`: Dlouhé průzkumné ponory se připravují dny předem: podpůrné týmy rozvezou lahve na dohodnutá místa a po ponoru je zase sbírají. Hlavní tým pak cestou dovnitř i ven lahve jen střídá. Každá má jmenovku, směs a maximální hloubku – a místo v plánu.
 - [ ] Zajímavost `plyn-v-zaloze`: Na frekventovaných lokalitách zůstávají v jeskyních trvale uložené nouzové lahve. Plán s nimi nepočítá: nikdo neručí za to, co v nich je a kolik. Jediný plyn, na který se dá spolehnout, je ten, který tým sám analyzoval, označil a uložil.
 - [ ] Zajímavost `deko-habitat`: Při ponorech s mnohahodinovou dekompresí si průzkumné týmy stavějí pod stropem jeskyně habitat: obrácenou vanu nebo zvon naplněný plynem, do kterého se potápěč vynoří po pás nebo celý. Může se najíst, napít a ohřát – a kdyby při dýchání kyslíku přišly křeče, neutopí se.
+- [ ] Zajímavost `panika-spotreba`: Rozbory nehod opakovaně ukazují, že potápěče nezabije první porucha, ale reakce na ni. Ztráta plynu v týmu, který ji cvičil, je nepříjemná minuta. V týmu, který ji necvičil, končí úprkem k hladině.
+- [ ] Zajímavost `free-flow-zima`: Plyn se při snížení tlaku v prvním stupni prudce ochlazuje. Ve studené vodě může v automatice vzniknout led, který ventil podrží otevřený. Proto se do studené vody používají automatiky k tomu určené – a proto se z nich před ponorem na vzduchu zbytečně nedýchá.
+- [ ] Zajímavost `embolie-melko`: K poranění plic přetlakem stačí překvapivě málo. Největší poměrná změna objemu je těsně pod hladinou: plný nádech v několika metrech a výstup se zadrženým dechem může plíce poškodit. Proto se nezadržování dechu učí jako první pravidlo potápění.
+- [ ] Zajímavost `zachrana-doporuceni`: Postup záchrany bezvládného potápěče sjednotila v roce 2012 odborná komise potápěčských lékařů. Jeden z jejích závěrů zní nezvykle: automatiku, která potápěči vypadla z úst, se pod vodou nevyplatí vracet. Rozhoduje čas do vynoření.

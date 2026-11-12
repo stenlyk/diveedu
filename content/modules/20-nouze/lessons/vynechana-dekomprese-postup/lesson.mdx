@@ -1,0 +1,104 @@
+<Hook>
+
+Jsi na hladině. Počítač ukazuje dvacet minut dekomprese, které jsi neudělal. Cítíš se dobře.
+
+Právě tenhle pocit je nejnebezpečnější část celé situace.
+
+</Hook>
+
+<Principle>
+
+<Term cs="vynechaná dekomprese" /> znamená, že jsi vystoupal nad dekompresní strop nebo se vynořil bez dokončení zastávek. Tkáně jsou přesycené víc, než model připouští.
+Dekompresní nemoc může přijít za minuty, za hodiny – nebo vůbec. Podle pocitu to nepoznáš.
+
+**Na hladině, hned:**
+
+1. **Řekni to.** Tým a doprovod musí vědět, co se stalo a kolik dekomprese chybí.
+2. **Kyslík.** Co nejvyšší koncentrace, maskou, vleže nebo vsedě v klidu. Bez čekání na příznaky.
+3. **Klid a teplo.** Žádná námaha, žádné nošení výstroje, žádná horká sprcha.
+4. **Tekutiny,** pokud jsi při vědomí a nezvracíš. Voda, ne alkohol.
+5. **Kontakt s odbornou pomocí:** záchranná služba a linka potápěčské medicíny. Oni rozhodnou o transportu do komory.
+6. **Sledování** nejméně 24 hodin. Zapiš čas, profil ponoru, plyny a každou změnu stavu.
+
+**Příznaky, při kterých se nečeká:** bolest kloubů, brnění nebo necitlivost, slabost končetin, závrať, poruchy zraku nebo řeči, svědivá vyrážka, neobvyklá únava, dušnost, zmatenost.
+Kterýkoli z nich znamená záchrannou službu.
+
+**Návrat do vody.** Některé agentury učí postup, při kterém se potápěč bez příznaků během několika minut vrátí pod vodu a zastávky dokončí s přídavkem.
+Jiné to nedoporučují. Podmínky jsou vždy přísné: žádné příznaky, dost plynu, partner, podmínky na hladině a krátký čas od vynoření.
+Rozhoduje postup tvé agentury, naučený předem – ne úvaha na hladině.
+
+**Co nikdy:**
+
+- nevracet se do vody s příznaky,
+- neléčit se sám dalším ponorem „na vydýchání“,
+- neodjíždět domů a nejít spát bez dohledu,
+- nelétat a nejezdit do hor, dokud to lékař nepovolí,
+- nezatajovat to ze studu.
+
+Vynechaná dekomprese není selhání charakteru. Je to situace s postupem, a ten začíná tím, že ji přiznáš.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Zastávky drží přesycení pod hranicí. Vynechané zastávky znamenají, že jsi tu hranici překročil o neznámou míru.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kolik dekomprese se dá vynechat jedním rychlým výstupem? Ponor do 45 m na 25 minut, vzduch, GF 50/80. Výstup podle výukového modelu trvá:
+
+<Worked fn="ascentMinutesAir" args={[45, 25, 50, 80]} expected={50} tolerance={0.5} unit="min" decimals={0} />
+
+První zastávka je v hloubce <Calc fn="firstStopAir" args={[45, 25, 50, 80]} decimals={0} unit="m" />.
+
+Přímý výstup stejnou rychlostí bez zastávek:
+
+<Worked fn="travelMinutes" args={[45, 0, 9]} expected={5} tolerance={0.01} unit="min" decimals={0} />
+
+Rozdíl je pětačtyřicet minut, které tkáně potřebovaly a nedostaly. Proto se po takovém výstupu nečeká, „jestli se něco projeví“:
+kyslík a kontakt s lékařem přicházejí hned.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'se po vynechané dekompresi cítíš úplně dobře?', effect: 'Kyslík, klid a kontakt s lékařem stejně. Příznaky mohou přijít se zpožděním hodin a čím dřív léčba začne, tím lépe dopadne.' },
+  { label: 'máš brnění v ruce a chceš se vrátit do vody dokončit zastávky?', effect: 'Ne. S příznaky se do vody nevrací: stav se může pod vodou zhoršit a tam ti nikdo nepomůže. Kyslík a záchranná služba.' },
+  { label: 'kyslík na lodi není?', effect: 'Pak chybí nejdůležitější prostředek první pomoci. Kyslíková souprava patří k technickému ponoru stejně jako dekompresní plyn.' },
+  { label: 'ti večer po ponoru začne být divně a jsi už doma sám?', effect: 'Volej záchrannou službu a řekni, že jde o potápěče po vynechané dekompresi. Proto se po takovém ponoru nezůstává bez dohledu.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="rouse-u869" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

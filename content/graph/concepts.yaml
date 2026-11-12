@@ -170,3 +170,14 @@
 - { id: ztrata-stage, label: Ztráta stage lahve, type: risk, moduleId: deepcave, shortDefinition: 'Odložená lahev není k nalezení nebo nefunguje; chybí plyn, se kterým plán počítal.' }
 - { id: habitat, label: Dekompresní habitat, type: equipment, moduleId: deepcave, shortDefinition: 'Suchý prostor pod vodou pro dlouhou dekompresi: teplo, jídlo a menší následky kyslíkových křečí.' }
 - { id: plan-hluboke-jeskyne, label: Plán hlubokého jeskynního ponoru, type: procedure, moduleId: deepcave, shortDefinition: 'Spojuje směsi, dekompresi, navigaci a plyn na cestu ven pro dva do jednoho plánu s jedním nejslabším článkem.' }
+
+# ── Průřezový modul: Nouzové situace ─────────────────────────────────────────
+- { id: zastav-dychej-mysli, label: 'Zastav, dýchej, mysli', type: procedure, moduleId: nouze, shortDefinition: 'První krok každé nouze: nezhoršit situaci, zklidnit dech a teprve potom jednat.' }
+- { id: bez-plynu, label: Ztráta plynu, type: risk, moduleId: nouze, shortDefinition: 'Potápěč nemá z čeho dýchat; řeší ji okamžitě plyn partnera a potom ukončení ponoru.' }
+- { id: free-flow, label: Samovolný průtok automatiky, type: risk, moduleId: nouze, shortDefinition: 'Automatika nepřestává dodávat plyn; lahev se vyprázdní během minut.' }
+- { id: postup-vynechana-deko, label: Postup po vynechané dekompresi, type: procedure, moduleId: nouze, shortDefinition: 'Kyslík, klid, tekutiny, sledování a kontakt s hyperbarickým lékařem; návrat do vody jen podle postupu agentury.' }
+- { id: nekontrolovany-vystup, label: Nekontrolovaný výstup, type: risk, moduleId: nouze, shortDefinition: 'Výstup rychlejší, než potápěč chce; hrozí barotrauma plic a dekompresní nemoc.' }
+- { id: plynova-embolie, label: Arteriální plynová embolie, type: risk, moduleId: nouze, shortDefinition: 'Bubliny plynu v tepnách po poranění plic přetlakem; příznaky přicházejí během minut po vynoření.' }
+- { id: krece-pod-vodou, label: Křeče pod vodou, type: risk, moduleId: nouze, shortDefinition: 'Kyslíkové křeče při ponoru; samy nezabíjejí, zabíjí utonutí po ztrátě automatiky.' }
+- { id: bezvladny-potapec, label: Záchrana bezvládného potápěče, type: procedure, moduleId: nouze, shortDefinition: 'Vynesení potápěče v bezvědomí na hladinu, uvolnění dýchacích cest a předání k resuscitaci.' }
+- { id: kyslik-prvni-pomoc, label: Kyslík jako první pomoc, type: procedure, moduleId: nouze, shortDefinition: 'Dýchání co nejvyšší koncentrace kyslíku na hladině při podezření na dekompresní onemocnění.' }

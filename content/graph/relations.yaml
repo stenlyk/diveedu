@@ -336,3 +336,23 @@
 - { from: podil-plynu, to: plan-hluboke-jeskyne, type: je_predpokladem, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: Plán začíná bilancí plynu na cestu ven. }
 - { from: plan-vice-plynu, to: plan-hluboke-jeskyne, type: je_predpokladem, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: 'Směsi, přepnutí a dekomprese z hloubkové linie.' }
 - { from: plan-hluboke-jeskyne, to: hluboka-jeskyne, type: zmirnuje, lessonId: plan-hlubokeho-jeskynniho-ponoru, explanation: 'Každé riziko má v plánu svou rezervu.' }
+
+# ── Průřezový modul: Nouzové situace ─────────────────────────────────────────
+- { from: zastav-dychej-mysli, to: bez-plynu, type: zmirnuje, lessonId: ztrata-plynu, explanation: 'Klidný dech prodlužuje čas a drží tým pohromadě.' }
+- { from: minimum-gas, to: bez-plynu, type: zmirnuje, lessonId: ztrata-plynu, explanation: Rezerva dovede oba potápěče na hladinu nebo k dalšímu plynu. }
+- { from: bez-plynu, to: nekontrolovany-vystup, type: zpusobuje, lessonId: ztrata-plynu, explanation: 'Bez plynu partnera zbývá jen úprk nahoru.' }
+- { from: free-flow, to: bez-plynu, type: zpusobuje, lessonId: free-flow-a-unik, explanation: Otevřená automatika vyprázdní lahev během minut. }
+- { from: ventilovy-drill, to: free-flow, type: zmirnuje, lessonId: free-flow-a-unik, explanation: 'Zavřený ventil zastaví únik a zachrání zbylý plyn.' }
+- { from: ztrata-tepla, to: free-flow, type: zvysuje, lessonId: free-flow-a-unik, explanation: Ve studené vodě může první stupeň zamrznout v otevřené poloze. }
+- { from: vynechana-dekomprese, to: dcs, type: zvysuje, lessonId: vynechana-dekomprese-postup, explanation: Tkáně zůstaly přesycené nad hranicí modelu. }
+- { from: postup-vynechana-deko, to: vynechana-dekomprese, type: zmirnuje, lessonId: vynechana-dekomprese-postup, explanation: 'Kyslík a včasná léčba snižují následky.' }
+- { from: kyslik-prvni-pomoc, to: dcs, type: zmirnuje, lessonId: vynechana-dekomprese-postup, explanation: Kyslík urychluje vyplavování inertního plynu a okysličuje postižené tkáně. }
+- { from: nekontrolovany-vystup, to: barotrauma-plic, type: zpusobuje, lessonId: nekontrolovany-vystup, explanation: 'Plyn v plicích se rozpíná rychleji, než stihne odejít.' }
+- { from: barotrauma-plic, to: plynova-embolie, type: zpusobuje, lessonId: nekontrolovany-vystup, explanation: Plyn z poraněné plíce vniká do krevního oběhu. }
+- { from: nekontrolovany-vystup, to: vynechana-dekomprese, type: zpusobuje, lessonId: nekontrolovany-vystup, explanation: Zastávky zůstaly pod potápěčem. }
+- { from: cns-toxicita, to: krece-pod-vodou, type: zpusobuje, lessonId: krece-pod-vodou, explanation: Vysoký parciální tlak kyslíku vyvolá křeče bez varování. }
+- { from: zamena-plynu, to: krece-pod-vodou, type: zpusobuje, lessonId: krece-pod-vodou, explanation: Bohatá směs dýchaná pod její maximální hloubkou. }
+- { from: bezvladny-potapec, to: krece-pod-vodou, type: zmirnuje, lessonId: krece-pod-vodou, explanation: 'Křeče přežije ten, koho partner včas vynese.' }
+- { from: tym, to: bezvladny-potapec, type: je_predpokladem, lessonId: zachrana-bezvladneho-potapece, explanation: 'Zachránit může jen ten, kdo je na dosah.' }
+- { from: kyslik-prvni-pomoc, to: plynova-embolie, type: zmirnuje, lessonId: zachrana-bezvladneho-potapece, explanation: Kyslík je první pomoc do příjezdu záchranky. }
+- { from: evakuacni-plan, to: bezvladny-potapec, type: je_predpokladem, lessonId: zachrana-bezvladneho-potapece, explanation: 'Záchrana končí až v nemocnici; cesta tam musí být známá předem.' }

@@ -545,3 +545,35 @@
   conceptIds: [habitat, tepelny-management]
   source: { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006, note: Konstrukci a použití ověřit. }
   needs_review: true
+
+- id: panika-spotreba
+  text: >-
+    Rozbory nehod opakovaně ukazují, že potápěče nezabije první porucha, ale reakce na ni. Ztráta plynu v týmu, který ji cvičil,
+    je nepříjemná minuta. V týmu, který ji necvičil, končí úprkem k hladině.
+  conceptIds: [zastav-dychej-mysli, bez-plynu]
+  source: { title: 'DAN Annual Diving Report (řada výročních zpráv o nehodách)', author: Divers Alert Network, note: 'Obecný závěr rozborů; konkrétní ročník doplnit.' }
+  needs_review: true
+
+- id: free-flow-zima
+  text: >-
+    Plyn se při snížení tlaku v prvním stupni prudce ochlazuje. Ve studené vodě může v automatice vzniknout led, který ventil podrží otevřený.
+    Proto se do studené vody používají automatiky k tomu určené – a proto se z nich před ponorem na vzduchu zbytečně nedýchá.
+  conceptIds: [free-flow, ztrata-tepla]
+  source: { title: NOAA Diving Manual, 6th Edition, author: NOAA, year: 2017, note: Mechanismus a doporučení ověřit. }
+  needs_review: true
+
+- id: embolie-melko
+  text: >-
+    K poranění plic přetlakem stačí překvapivě málo. Největší poměrná změna objemu je těsně pod hladinou:
+    plný nádech v několika metrech a výstup se zadrženým dechem může plíce poškodit. Proto se nezadržování dechu učí jako první pravidlo potápění.
+  conceptIds: [plynova-embolie, barotrauma-plic]
+  source: { title: 'U.S. Navy Diving Manual, Revision 7', author: Naval Sea Systems Command, year: 2016, note: Hloubky a mechanismus ověřit. }
+  needs_review: true
+
+- id: zachrana-doporuceni
+  text: >-
+    Postup záchrany bezvládného potápěče sjednotila v roce 2012 odborná komise potápěčských lékařů. Jeden z jejích závěrů zní nezvykle:
+    automatiku, která potápěči vypadla z úst, se pod vodou nevyplatí vracet. Rozhoduje čas do vynoření.
+  conceptIds: [bezvladny-potapec]
+  source: { title: 'Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)', author: 'Mitchell S. J. et al.', year: 2012 }
+  needs_review: true

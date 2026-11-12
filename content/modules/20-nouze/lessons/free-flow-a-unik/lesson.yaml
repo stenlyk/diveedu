@@ -1,0 +1,20 @@
+id: free-flow-a-unik
+moduleId: nouze
+title: "Samovolný průtok a únik plynu"
+order: 2
+conceptIds: ["free-flow", "unik-plynu", "ventilovy-drill"]
+checkQuestionIds: ["ff-co-je", "ff-poradi", "ff-proc-ventil", "ff-jedna-lahev", "ff-prevence"]
+estimatedMinutes: 9
+audioSummary: >-
+  Při samovolném průtoku dodává automatika plyn nepřetržitě. Stejně se projeví prasklá hadice.
+  Z proudící automatiky se dá dýchat. Nejsi bez plynu, máš jen málo času.
+  S dvojčetem zastav, urči, odkud plyn uniká, přejdi na druhou automatiku a zavři postižený ventil.
+  Ověř, že dýcháš a že únik ustal. Když neustal, zavřel jsi špatný ventil.
+  S jednou lahví ventil nezavírej. Dýchej z proudící automatiky a plav k partnerovi.
+  Ponor v obou případech končí.
+  Dvě minuty váhání stojí tolik plynu jako celá rezerva na výstup.
+sources:
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

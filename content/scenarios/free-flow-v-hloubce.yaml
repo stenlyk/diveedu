@@ -1,0 +1,81 @@
+id: free-flow-v-hloubce
+title: Samovolný průtok ve 40 metrech
+summary: Za hlavou začne unikat plyn. Rozhoduje pořadí kroků a rychlost, s jakou zavřeš správný ventil.
+moduleIds: [nouze, deko]
+conceptIds: [free-flow, ventilovy-drill, bez-plynu]
+intro: >-
+  Dva potápěči, dvojče 2×12 l s propojením, 40 m, studená voda. Jsi dvanáct minut na dně, v lahvích máš 160 bar a do konce plánu zbývá osm minut.
+  Scénář je cvičení rozhodování, ne náhrada výcviku; postup se cvičí s instruktorem.
+setup: { startBar: 160, tankLiters: 24, depthM: 40, sacLpm: 20 }
+start: start
+nodes:
+  - id: start
+    text: >-
+      Za hlavou se ozve hlasitý rachot a kolem masky se valí bubliny. Automatika v ústech dává plyn normálně.
+    timeLimitSec: 12
+    timeout: { next: uteka, minutes: 1, stress: 6, feedback: 'Minuta váhání při úniku stojí desítky barů. První krok má být nacvičený: zastavit a dát signál.' }
+    options:
+      - { text: 'Zastavím, posvítím na partnera a ukážu, že mám problém.', next: urcit, minutes: 0.3, stress: 5, verdict: good, feedback: 'Partner vidí tvé ventily. Ty ne.' }
+      - { text: 'Okamžitě zahájím výstup.', next: vystup-unik, minutes: 2, stress: 7, verdict: bad, feedback: 'Únik stoupá s tebou. Bez zavřeného ventilu ztrácíš plyn celou cestu a tým o ničem neví.' }
+      - { text: 'Dokončím, co dělám, a pak se na to podívám.', next: uteka, minutes: 1.5, stress: 6, verdict: bad, feedback: 'Volně proudící automatika vyprázdní lahev za pár minut.' }
+  - id: urcit
+    text: >-
+      Partner je u tebe a ukazuje na tvé pravé rameno: uniká pravá automatika, ta na dlouhé hadici, ze které dýcháš.
+    timeLimitSec: 12
+    timeout: { next: uteka, minutes: 0.8, stress: 6, feedback: 'Každá vteřina s otevřeným ventilem je plyn, který bude chybět při výstupu.' }
+    options:
+      - { text: 'Přejdu na záložní automatiku pod bradou a zavřu pravý ventil.', next: zavreno, minutes: 0.5, stress: 4, verdict: good, feedback: 'Nejdřív jistota dýchání, potom ventil. Propojení zůstává otevřené, takže máš plyn z obou lahví.' }
+      - { text: 'Zavřu pravý ventil a dýchám dál z pravé automatiky.', next: bez-dechu, minutes: 0.5, stress: 4, verdict: bad, feedback: 'Zavřel jsi ventil automatice, kterou máš v ústech.' }
+      - { text: 'Zavřu propojovací ventil, ať neztratím všechno.', next: uteka, minutes: 0.8, stress: 5, verdict: ok, feedback: 'Polovinu plynu jsi zachránil, ale z pravé lahve uniká dál. Nejdřív se zavírá ventil, ze kterého plyn uniká.' }
+  - id: bez-dechu
+    text: >-
+      Dva nádechy a automatika v ústech přestane dávat. Únik ustal.
+    options:
+      - { text: 'Vezmu záložní automatiku pod bradou.', next: zavreno, minutes: 0.3, stress: 3, verdict: good, feedback: 'Je tam, kde ji najdeš poslepu. Příště nejdřív přepnout, potom zavírat.' }
+      - { text: 'Otevřu pravý ventil znovu.', next: uteka, minutes: 0.5, stress: 6, verdict: bad, feedback: 'Únik se vrátil. Plyn máš v záložní automatice na druhém ventilu.' }
+  - id: uteka
+    text: >-
+      Plyn dál uniká. Manometr klesá před očima.
+    options:
+      - { text: 'Přejdu na záložní automatiku a zavřu pravý ventil.', next: zavreno, minutes: 0.5, stress: 4, verdict: good, feedback: 'Pozdě, ale správně. Podívej se, kolik to stálo.' }
+      - { text: 'Požádám partnera o plyn a ventily nechám být.', next: sdileni, minutes: 0.5, stress: 5, verdict: ok, feedback: 'Dýcháš, ale tvůj plyn dál utíká a oba teď visíte na jedné zásobě.' }
+  - id: zavreno
+    text: >-
+      Rachot ustal. Dýcháš ze záložní automatiky. Partner ukazuje, že je vše v pořádku. Co teď?
+    options:
+      - { text: 'Zkontroluji tlak, dám signál ukončení ponoru a začneme stoupat podle plánu.', next: vystup, minutes: 0.5, verdict: good, feedback: 'Porucha je zvládnutá, ale přišel jsi o zálohu. Ponor končí.' }
+      - { text: 'Zkusím ventil znovu otevřít, třeba to přestalo, a doplaveme plán.', next: vystup, minutes: 3, stress: 1.5, verdict: bad, feedback: 'Zamrzlá automatika se může vzpamatovat, ale ponor se po poruše nepokračuje. Další únik by přišel s menší rezervou.' }
+  - id: sdileni
+    text: >-
+      Dýcháš z partnerovy dlouhé hadice. Tvoje dvojče se mezitím vyprazdňuje.
+    options:
+      - { text: 'Teď zavřu svůj pravý ventil a zahájíme výstup.', next: vystup, minutes: 0.5, stress: 3, verdict: good, feedback: 'Zbylý plyn je zachráněný. Můžeš se na něj při výstupu vrátit.' }
+      - { text: 'Stoupáme hned, na ventily není čas.', next: konec-sdileni, minutes: 5, stress: 2, verdict: bad, feedback: 'Tvůj plyn je pryč a dekomprese dvou lidí z jedné zásoby nemusí vyjít.' }
+  - id: vystup
+    text: >-
+      Stoupáte. Počítač ukazuje dekompresní zastávky. Dýcháš z jedné automatiky bez zálohy na vlastních zádech.
+    options:
+      - { text: 'Držím se u partnera na dosah ruky a dodržím všechny zastávky.', next: uspech, minutes: 6, verdict: good, feedback: 'Tvou zálohou je teď partner. Proto na dosah.' }
+      - { text: 'Zastávky zkrátím, chci být rychle venku.', next: castecne, minutes: 3, verdict: bad, feedback: 'Plynu bylo dost. Zkrácením zastávek jsi k vyřešené poruše přidal vynechanou dekompresi.' }
+  - id: vystup-unik
+    text: >-
+      Stoupáš sám, plyn uniká dál. Ve 20 metrech je manometr skoro na nule a počítač hlásí zastávky.
+    options:
+      - { text: 'Zastavím, zavřu pravý ventil a rozhlédnu se po partnerovi.', next: castecne, minutes: 1, stress: 3, verdict: good, feedback: 'Zachránil jsi zbytek. Partner tě ale teprve hledá a zastávky budeš dělat s minimem plynu.' }
+      - { text: 'Pokračuji k hladině.', next: konec-vystup, minutes: 1, stress: 5, verdict: bad, feedback: 'Bez plynu, bez partnera a bez zastávek.' }
+  - id: uspech
+    text: Hladina, po všech zastávkách.
+    end: { outcome: success, text: 'Únik jsi zastavil dřív, než vzal rezervu, a tým to věděl od první vteřiny. Podívej se na zbylý tlak: tolik stojí i dobře zvládnutá porucha.' }
+  - id: castecne
+    text: Hladina.
+    end: { outcome: partial, text: 'Jsi venku, ale s vynechanou nebo zkrácenou dekompresí. Na hladině platí další postup: kyslík, klid a kontakt s lékařem.' }
+  - id: konec-sdileni
+    text: Zásoba pro dva na celou dekompresi nestačila.
+    end: { outcome: fail, text: 'Scénář končí. Plyn, který utekl otevřeným ventilem, by býval stačil. Projdi si rozbor.' }
+  - id: konec-vystup
+    text: Vynořuješ se bez plynu a bez zastávek.
+    end: { outcome: fail, text: 'Scénář končí nekontrolovaným výstupem s vynechanou dekompresí. Porucha přitom šla zastavit jedním ventilem. Projdi si rozbor.' }
+sources:
+  - { title: TDI Decompression Procedures Diver Manual, author: Technical Diving International }
+  - { title: 'Doing It Right: The Fundamentals of Better Diving', author: 'Jablonski J.', year: 2006 }
+needs_review: true

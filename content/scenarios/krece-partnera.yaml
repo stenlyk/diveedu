@@ -1,0 +1,73 @@
+id: krece-partnera
+title: Křeče partnera na kyslíkové zastávce
+summary: Partner dostane křeče v šesti metrech. Rozhoduje, co uděláš s automatikou a kdy začneš stoupat.
+moduleIds: [nouze, nitrox]
+conceptIds: [krece-pod-vodou, bezvladny-potapec, kyslik-prvni-pomoc]
+intro: >-
+  Dekompresní zastávka v 6 m na kyslíku, zbývá dvanáct minut. Na lodi je doprovod s kyslíkovou soupravou.
+  Scénář vychází z doporučení odborné komise potápěčských lékařů z roku 2012. Je to cvičení rozhodování; záchrana se musí nacvičit ve vodě s instruktorem.
+setup: { startBar: 120, tankLiters: 11, depthM: 6, sacLpm: 18 }
+start: start
+nodes:
+  - id: start
+    text: >-
+      Partner vedle tebe ztuhne, prohne se a začne se zmítat. Automatiku má stále v ústech.
+    timeLimitSec: 12
+    timeout: { next: vypadla, minutes: 0.5, stress: 2, feedback: 'Než ses rozhodl, automatika mu vypadla z úst.' }
+    options:
+      - { text: 'Chytím ho zezadu a přidržím mu automatiku v ústech.', next: drzis, minutes: 0.3, stress: 2, verdict: good, feedback: 'Dokud má automatiku v ústech, nemůže vdechnout vodu.' }
+      - { text: 'Okamžitě ho táhnu k hladině.', next: vystup-v-krecich, minutes: 0.3, stress: 2, verdict: bad, feedback: 'Během ztuhnutí bývají dýchací cesty sevřené. Výstup v té chvíli hrozí poraněním plic – a automatiku má, takže se netopí.' }
+      - { text: 'Plavu pro pomoc k druhé dvojici.', next: vypadla, minutes: 1, stress: 2, verdict: bad, feedback: 'Minuta bez dozoru. Pomoc voláš signálem, partnera nepouštíš.' }
+  - id: drzis
+    text: >-
+      Držíš ho. Záškuby pokračují. Jste stále v 6 metrech.
+    options:
+      - { text: 'Počkám, až záškuby ustanou, a potom ho vynesu.', next: po-krecich, minutes: 1, stress: 2, verdict: good, feedback: 'Po odeznění křečí se dýchací cesty uvolní a plyn může při výstupu z plic odcházet.' }
+      - { text: 'Vynesu ho hned, čekat je risk.', next: vystup-v-krecich, minutes: 0.3, stress: 2, verdict: ok, feedback: 'S automatikou v ústech se netopí; doporučení říká počkat na konec záškubů. Rozhodnutí je obhajitelné, ale ne nejlepší.' }
+      - { text: 'Sestoupím s ním hlouběji, ať se uklidní.', next: konec, minutes: 2, stress: 2, verdict: bad, feedback: 'Hlouběji je parciální tlak kyslíku ještě vyšší.' }
+  - id: vypadla
+    text: >-
+      Automatika mu vypadla z úst. Zmítá se dál.
+    timeLimitSec: 10
+    timeout: { next: konec, minutes: 2, stress: 2, feedback: 'Bez automatiky rozhodují vteřiny.' }
+    options:
+      - { text: 'Nevracím ji. Chytím ho zezadu a vynesu na hladinu hned.', next: hladina, minutes: 0.7, stress: 2.5, verdict: good, feedback: 'Bez automatiky je riziko utonutí větší než riziko poranění plic. Proto se nečeká.' }
+      - { text: 'Zkusím mu automatiku vrátit do úst.', next: konec, minutes: 1.5, stress: 2.5, verdict: bad, feedback: 'Přes sevřené čelisti to nejde a ztrácíš čas, který nemá.' }
+      - { text: 'Počkám, až křeče přejdou.', next: konec, minutes: 1.5, stress: 2, verdict: bad, feedback: 'Čekat se má jen tehdy, když má automatiku v ústech. Po křečích se nadechne – vody.' }
+  - id: po-krecich
+    text: >-
+      Záškuby ustaly. Partner je ochablý a v bezvědomí, automatiku mu držíš v ústech. Tobě zbývá jedenáct minut dekomprese.
+    options:
+      - { text: 'Vynesu ho, vztlak řídím jeho kompenzátorem. Své zastávky dořeším podle situace na hladině.', next: hladina, minutes: 0.7, stress: 2.5, verdict: good, feedback: 'Jeho dekomprese teď nerozhoduje. O své rozhoduješ ty; na hladině je doprovod, který ho může převzít.' }
+      - { text: 'Dokončím nejdřív svou dekompresi a držím ho u sebe.', next: konec, minutes: 11, stress: 1.5, verdict: bad, feedback: 'V bezvědomí pod vodou mu hrozí utonutí a další křeče. Jedenáct minut nemá.' }
+  - id: vystup-v-krecich
+    text: >-
+      Vynášíš ho během křečí. Na hladině je v bezvědomí.
+    options:
+      - { text: 'Otočím ho obličejem vzhůru, zajistím vztlak a volám na loď.', next: predani, minutes: 0.5, stress: 2, verdict: good, feedback: 'Teď stejný postup jako vždy. Doprovodu řekni, že vystoupal během křečí: je třeba sledovat příznaky poranění plic.' }
+      - { text: 'Táhnu ho k lodi obličejem dolů, ať je to rychlé.', next: konec, minutes: 2, stress: 2, verdict: bad, feedback: 'Na hladině musí mít obličej nad vodou jako první věc.' }
+  - id: hladina
+    text: >-
+      Jste na hladině. Partner je v bezvědomí.
+    options:
+      - { text: 'Otočím ho obličejem vzhůru, nafouknu mu kompenzátor, sundám masku a volám na loď.', next: predani, minutes: 0.5, stress: 2, verdict: good, feedback: 'Vztlak, dýchací cesty, pomoc. V tomto pořadí.' }
+      - { text: 'Nejdřív mu sundám výstroj, ať se lépe táhne.', next: predani, minutes: 2, stress: 2, verdict: ok, feedback: 'Výstroj se odkládá, až když brání vytažení. Nejdřív obličej nad vodou a pomoc.' }
+  - id: predani
+    text: >-
+      Doprovod ho vytáhl na loď. Dýchá, je zmatený. Ty jsi vynechal většinu své dekomprese a cítíš se dobře.
+    options:
+      - { text: 'Řeknu, co se stalo. On dostane kyslík a volá se záchranná služba; já dýchám kyslík také a nechám se sledovat.', next: uspech, minutes: 1, verdict: good, feedback: 'Zachránce je po vynechané dekompresi druhý pacient.' }
+      - { text: 'Je to dobré, hlavně že dýchá. Jdu si zabalit výstroj.', next: castecne, minutes: 1, verdict: bad, feedback: 'Vynechal jsi dekompresi. Dobrý pocit nic neznamená: kyslík, klid a sledování platí i pro tebe.' }
+  - id: uspech
+    text: Loď míří k břehu, záchranná služba je na cestě.
+    end: { outcome: success, text: 'Partner žije, protože jsi byl na dosah a věděl, co s automatikou. Dál rozhodují lékaři; tvůj úkol je říct jim profil ponoru, plyny a přesný průběh.' }
+  - id: castecne
+    text: Partner je v péči doprovodu.
+    end: { outcome: partial, text: 'Záchrana se povedla. Na sebe jsi ale zapomněl: po vynechané dekompresi platí stejný postup jako pro kohokoli jiného.' }
+  - id: konec
+    text: Partner je příliš dlouho pod vodou bez dechu.
+    end: { outcome: fail, text: 'Scénář končí. Křeče samy nezabíjejí; zabíjí čas strávený pod vodou bez automatiky. Projdi si rozbor.' }
+sources:
+  - { title: 'Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)', author: 'Mitchell S. J. et al.', year: 2012 }
+  - { title: 'Emergency Oxygen for Scuba Diving Injuries (příručka kurzu)', author: Divers Alert Network }
+needs_review: true

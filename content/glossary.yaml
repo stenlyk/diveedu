@@ -74,3 +74,11 @@
 - { cs: odložení stage, en: stage drop, definition: 'Zanechání lahve na šňůře pro cestu ven.' }
 - { cs: habitat, en: decompression habitat, definition: 'Suchý prostor pod vodou pro dlouhou dekompresi.' }
 - { cs: podpůrný tým, en: support team, definition: 'Potápěči a lidé na hladině, kteří zajišťují plyn, logistiku a pomoc hlavnímu týmu.' }
+- { cs: samovolný průtok, en: free-flow, definition: 'Automatika nepřestává dodávat plyn.' }
+- { cs: plynová embolie, en: arterial gas embolism (AGE), definition: 'Bubliny plynu v tepnách po poranění plic přetlakem.' }
+- { cs: nekontrolovaný výstup, en: uncontrolled ascent, definition: 'Výstup rychlejší, než potápěč chce.' }
+- { cs: 'zastav, dýchej, mysli', en: 'stop, breathe, think', definition: 'První krok každé nouze pod vodou.' }
+- { cs: vynechaná dekomprese, en: omitted decompression, definition: 'Výstup nad strop nebo vynoření bez dokončení zastávek.' }
+- { cs: barotrauma plic, en: pulmonary barotrauma, definition: 'Poranění plic rozpínajícím se plynem.' }
+- { cs: evakuační plán, en: emergency action plan, definition: 'Předem připravená cesta k odborné pomoci.' }
+- { cs: kyslík jako první pomoc, en: emergency oxygen, definition: 'Dýchání co nejvyšší koncentrace kyslíku na hladině.' }

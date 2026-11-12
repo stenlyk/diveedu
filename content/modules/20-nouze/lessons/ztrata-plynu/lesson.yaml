@@ -1,0 +1,20 @@
+id: ztrata-plynu
+moduleId: nouze
+title: "Ztráta plynu"
+order: 1
+conceptIds: ["zastav-dychej-mysli", "bez-plynu", "minimum-gas", "sdileni-plynu"]
+checkQuestionIds: ["plyn-prvni-krok", "plyn-poradi", "plyn-proc-dlouha", "plyn-staci", "plyn-darce-chyby"]
+estimatedMinutes: 10
+audioSummary: >-
+  Každá nouze pod vodou začíná stejně. Zastav, dýchej, mysli.
+  Ztráta plynu je jediná nouze, kde dýchání nemůže počkat. Řeší se reflexem.
+  Když jsi bez plynu, dej signál a plav k partnerovi, ne nahoru.
+  Když je bez plynu partner, podej mu automatiku, ze které dýcháš, a sám přejdi na záložní pod bradou.
+  Zastavte, uklidněte dech a zkontrolujte tlak. Teď dýchají dva z jedné zásoby.
+  Ponor končí společným výstupem.
+  Rozhoduje to, co bylo připraveno předem. Rezerva pro dva, vzdálenost v týmu, kontrola manometru a nácvik.
+sources:
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

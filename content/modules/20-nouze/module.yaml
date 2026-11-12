@@ -1,0 +1,10 @@
+id: nouze
+title: Nouzové situace
+subtitle: 'Průřezový modul: postupy, které musí fungovat bez přemýšlení'
+branch: cross
+rig: oc
+prerequisites: []
+unlockAfter: deko
+order: 20
+passThreshold: 0.8
+status: published

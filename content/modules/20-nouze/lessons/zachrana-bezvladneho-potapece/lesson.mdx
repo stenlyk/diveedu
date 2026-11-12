@@ -1,0 +1,101 @@
+<Hook>
+
+Partner leží na dně a nehýbe se. Neodpovídá na světlo ani na dotek.
+
+Nevíš, co se stalo, a nezjistíš to. Víš jen, že každá minuta pod vodou snižuje šanci, že se ještě někdy nadechne.
+
+</Hook>
+
+<Principle>
+
+Potápěč v bezvědomí pod vodou má jedinou šanci: **dostat se rychle na hladinu a začít dýchat.** Příčinu nehledáš; postup je stejný.
+
+**Pod vodou:**
+
+1. **Zkontroluj sebe.** Plyn, hloubku, vlastní dekompresi. Druhá oběť nikoho nezachrání.
+2. **Automatika.** Je-li v ústech, přidrž ji tam. Není-li, nevracej ji.
+3. **Uchop ho zezadu,** hlavu drž v přirozené poloze.
+4. **Vynes ho.** Vztlak řiď jeho kompenzátorem a oblekem. Výstup řízený, ale bez zdržování.
+5. **Jeho zastávky se vynechávají.** O svých rozhoduješ ty.
+
+**Na hladině:**
+
+1. Otoč ho obličejem vzhůru a zajisti vztlak – jeho i svůj.
+2. Zavolej o pomoc: hlasem, píšťalkou, signálem k lodi.
+3. Sundej mu masku a automatiku, uvolni dýchací cesty.
+4. Když nedýchá, dej záchranné vdechy, pokud to podmínky dovolí, a co nejrychleji ho dostaň z vody. Masáž srdce ve vodě nefunguje.
+5. Výstroj odlož, když brání vytažení.
+
+**Na břehu nebo na lodi:**
+
+1. Volej záchrannou službu. Řekni, že jde o potápěče.
+2. Nedýchá: resuscitace podle postupu první pomoci, u tonoucích se začíná vdechy.
+3. Dýchá: <Term cs="kyslík jako první pomoc" /> v co nejvyšší koncentraci, poloha vleže, teplo.
+4. Zajisti jeho počítač a výstroj; lékař bude potřebovat profil ponoru a plyny.
+5. Zbytek týmu se sleduje také – i zachránce vynechal dekompresi.
+
+**Zachránce a vlastní riziko.** Vynechat vlastní zastávky je rozhodnutí, které nikdo neudělá za tebe. Závisí na tom, kolik dekomprese ti chybí, kdo další je ve vodě a co čeká na hladině.
+V týmu se proto cvičí předání: jeden vynáší, další pokračují v dekompresi nebo vynášejí po úsecích.
+
+**<Term cs="evakuační plán" />** se dělá před ponorem: kyslík a kdo ho umí podat, spojení, nejbližší komora, cesta k ní.
+Ve chvíli, kdy ho potřebuješ, na jeho vymýšlení není čas.
+
+Záchrana se nedá naučit čtením. Tato lekce říká, co se cvičí a proč – cvičit se to musí ve vodě.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Záchrana je závod s časem. Jediné číslo, které v ní můžeš ovlivnit, je počet minut do prvního nádechu na hladině.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Jak dlouho trvá vynesení z hloubky? Ze 40 m rychlostí 9 m/min:
+
+<Worked fn="travelMinutes" args={[40, 0, 9]} expected={4.44} tolerance={0.01} unit="min" decimals={1} />
+
+Čtyři a půl minuty, než začne cokoli dalšího. K tomu čas, než sis partnera všiml, a čas na hladině do vytažení z vody.
+
+Proto záleží na vzdálenosti v týmu víc než na čemkoli jiném: partner na dosah ruky znamená zásah během vteřin, partner na hranici viditelnosti minuty.
+
+Zachránce přitom dýchá za dva – námaha a stres. Pět minut výstupu ze 40 m se spotřebou 40 l/min stojí zhruba
+<Calc fn="gasConsumed" args={[40, 20, 5]} decimals={0} unit="l" /> při průměrné hloubce 20 m,
+tedy <Calc fn="litersToBar" args={[600, 24]} decimals={0} unit="bar" /> z dvojčete. I záchrana má svou rezervu plynu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="krece-partnera" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="zachrana-doporuceni" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

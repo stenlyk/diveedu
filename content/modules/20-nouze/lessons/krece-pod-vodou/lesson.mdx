@@ -1,0 +1,104 @@
+<Hook>
+
+Partner na zastávce v šesti metrech ztuhne. Pak se začne zmítat. Automatika mu vypadne z úst.
+
+Křeče za minutu přejdou samy a mozek je vydrží. Voda v plicích ne. Máš jeho život v rukou – doslova.
+
+</Hook>
+
+<Principle>
+
+<Term cs="kyslíková toxicita CNS" /> se může projevit křečemi podobnými epileptickému záchvatu. Přicházejí často bez varování.
+Potápěč ztrácí vědomí a kontrolu nad tělem. Samotné křeče mozek obvykle nepoškodí; **zabíjí utonutí**.
+
+**Průběh:** ztuhnutí celého těla, potom rytmické záškuby, potom ochabnutí a bezvědomí. Během ztuhnutí bývají dýchací cesty sevřené.
+
+**Co udělat** podle doporučení odborné komise potápěčských lékařů z roku 2012:
+
+**Když má automatiku v ústech:**
+
+1. Přidrž mu ji v ústech.
+2. Počkej, až záškuby ustanou. Při sevřených dýchacích cestách by výstup hrozil poraněním plic.
+3. Potom ho vynes na hladinu.
+
+**Když automatiku v ústech nemá:**
+
+1. Nezkoušej ji vracet. Nepodaří se to a ztratíš čas.
+2. Vynes ho na hladinu hned, i během křečí. Riziko utonutí je větší než riziko poranění plic.
+
+**V obou případech:**
+
+- drž ho zezadu, hlavu v přirozené poloze,
+- řiď vztlak jeho kompenzátorem, svůj drž pod kontrolou,
+- na hladině ho otoč obličejem vzhůru, zajisti vztlak, volej o pomoc,
+- dál platí postup záchrany bezvládného potápěče.
+
+**Jeho dekomprese** v té chvíli nerozhoduje: utonutí je horší než dekompresní nemoc. **Tvoje dekomprese** je tvoje rozhodnutí.
+Když je tým, jeden ho vynáší a další pokračují v dekompresi; proto se cvičí předání.
+
+**Varovné příznaky** někdy předcházejí: záškuby rtů a tváře, tunelové vidění, zvonění v uších, nevolnost, závrať, neklid.
+Kterýkoli z nich znamená okamžitě snížit parciální tlak kyslíku: přejít na chudší směs a vystoupat. Nelze na ně ale spoléhat.
+
+**Prevence** je jediná spolehlivá obrana: limity parciálního tlaku, analýza a značení každé lahve, postup přepnutí s potvrzením partnera a přestávky při dlouhé kyslíkové dekompresi.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="dalton" />
+
+Křeče nezpůsobuje procento kyslíku, ale jeho parciální tlak – tedy směs a hloubka dohromady.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Nejčastější cesta ke křečím je bohatá směs v příliš velké hloubce. EAN50 nasazený omylem ve 40 m:
+
+<Worked fn="ppO2" args={[0.5, 40]} expected={2.5} tolerance={0.01} unit="bar" decimals={1} />
+
+Daleko nad jakýmkoli limitem. Křeče mohou přijít během minut.
+
+Správné použití stejné směsi končí v hloubce <Calc fn="mod" args={[0.5, 1.6]} decimals={0} unit="m" />.
+
+Čistý kyslík v 6 m:
+
+<Worked fn="ppO2" args={[1, 6]} expected={1.6} tolerance={0.01} unit="bar" decimals={1} />
+
+Na samé hranici. Limit jedné expozice při tomto tlaku je <Calc fn="cnsLimitMinutes" args={[1.6]} decimals={0} unit="min" />.
+Stačí klesnout o čtyři metry a parciální tlak je <Calc fn="ppO2" args={[1, 10]} decimals={1} unit="bar" />.
+Proto se na kyslíkové zastávce hlídá hloubka přísněji než kdekoli jinde.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="krece-partnera" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="zamena-plynu-krece" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

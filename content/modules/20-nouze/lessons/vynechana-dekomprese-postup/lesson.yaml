@@ -1,0 +1,21 @@
+id: vynechana-dekomprese-postup
+moduleId: nouze
+title: "Vynechaná dekomprese"
+order: 3
+conceptIds: ["postup-vynechana-deko", "vynechana-dekomprese", "kyslik-prvni-pomoc"]
+checkQuestionIds: ["vd-co-nejdriv", "vd-kyslik-proc", "vd-zpet-do-vody", "vd-priznaky", "vd-chyby"]
+estimatedMinutes: 10
+audioSummary: >-
+  Vynechaná dekomprese znamená, že tkáně jsou přesycené víc, než model připouští. Podle pocitu to nepoznáš.
+  Na hladině to nejdřív řekni týmu.
+  Dýchej kyslík v co nejvyšší koncentraci, hned a bez čekání na příznaky.
+  Zůstaň v klidu a v teple, pij vodu.
+  Kontaktuj záchrannou službu a potápěčského lékaře. Nech se sledovat nejméně čtyřiadvacet hodin.
+  S příznaky se do vody nikdy nevracej.
+  Návrat do vody bez příznaků řeší postup tvé agentury, naučený předem.
+  Vynechaná dekomprese není selhání charakteru. Postup začíná tím, že ji přiznáš.
+sources:
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "TDI Decompression Procedures Diver Manual", author: "Technical Diving International" }
+  - { title: "Emergency Oxygen for Scuba Diving Injuries (příručka kurzu)", author: "Divers Alert Network" }
+needs_review: true

@@ -1,0 +1,21 @@
+id: zachrana-bezvladneho-potapece
+moduleId: nouze
+title: "Záchrana bezvládného potápěče"
+order: 6
+conceptIds: ["bezvladny-potapec", "kyslik-prvni-pomoc", "evakuacni-plan"]
+checkQuestionIds: ["zb-poradi", "zb-automatika", "zb-hladina", "zb-kyslik", "zb-zachrance", "zb-plan"]
+estimatedMinutes: 11
+audioSummary: >-
+  Potápěč v bezvědomí pod vodou má jedinou šanci. Dostat se rychle na hladinu a začít dýchat.
+  Nejdřív zkontroluj sebe. Druhá oběť nikoho nezachrání.
+  Automatiku v ústech přidrž. Když vypadla, nevracej ji.
+  Uchop ho zezadu a vynes. Jeho zastávky se vynechávají.
+  Na hladině ho otoč obličejem vzhůru, zajisti vztlak a volej o pomoc.
+  Co nejrychleji ho dostaň z vody. Na břehu resuscitace, nebo kyslík, když dýchá.
+  Zajisti jeho počítač. Lékař bude potřebovat profil ponoru.
+  Evakuační plán se dělá před ponorem. A záchrana se musí cvičit ve vodě.
+sources:
+  - { title: "Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)", author: "Mitchell S. J. et al.", year: 2012 }
+  - { title: "Emergency Oxygen for Scuba Diving Injuries (příručka kurzu)", author: "Divers Alert Network" }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: true

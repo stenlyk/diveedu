@@ -1,0 +1,104 @@
+<Hook>
+
+Nádech – a nic. Automatika, která před vteřinou fungovala, nedává plyn.
+
+Na další nádech máš tolik času, kolik vydržíš bez dechu. Co se během něj stane, bylo rozhodnuto dávno před ponorem.
+
+</Hook>
+
+<Principle>
+
+Každá nouze pod vodou začíná stejně: **<Term cs="zastav, dýchej, mysli" />.** Zastavit znamená nezhoršit situaci. Dýchat znamená zajistit plyn a zklidnit dech.
+Teprve potom přichází rozhodnutí.
+
+Ztráta plynu je jediná nouze, kde druhý krok nemůže počkat. Proto se řeší reflexem, ne úvahou.
+
+**Když jsi bez plynu ty:**
+
+1. Signál partnerovi: světlem a rukou přes krk.
+2. Plav k němu. Ne nahoru.
+3. Přijmi automatiku, dýchej, uklidni se.
+4. Ukažte si, že je vše v pořádku, a zkontrolujte tlak.
+5. Ponor končí. Výstup společně, v kontaktu.
+
+**Když je bez plynu partner:**
+
+1. Podej automatiku, ze které dýcháš, na dlouhé hadici. Víš, že funguje.
+2. Přejdi na záložní automatiku, kterou máš pod bradou.
+3. Chyť partnera, zastavte, dýchejte.
+4. Zkontroluj tlak: teď dýchají dva z jedné zásoby.
+5. Výstup, včetně zastávek, pokud plyn dovolí.
+
+**Proč to funguje:** záložní automatika na krku je tam, kde ji najdeš poslepu, a dlouhá hadice dovolí dvěma lidem plavat a stoupat, aniž se o plyn přetahují.
+
+**Co rozhoduje předem:**
+
+- **<Term cs="minimum gas" />** – rezerva spočítaná pro dva vystresované potápěče z největší hloubky až na hladinu nebo k dalšímu plynu.
+- **Vzdálenost v týmu** – partner, ke kterému nedoplaveš na jeden výdech, není záloha.
+- **Kontrola manometru** – většina „náhlých“ ztrát plynu je plyn, na který se nikdo nepodíval.
+- **Nácvik** – postup, který jsi dělal jednou na kurzu, pod stresem neuděláš.
+
+**Když partner není na dosah,** zbývá nouzový výstup s plynulým výdechem. Je to poslední možnost, ne plán.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="minimum-gas" />
+
+Rezerva se počítá pro dva, se stresovou spotřebou, od největší hloubky.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Partner přišel o plyn ve 40 m. V tvém dvojčeti 2×12 l je 50 bar. Oba dýcháte zrychleně, každý 30 l/min. Na jak dlouho to u dna stačí?
+
+<Worked fn="minutesOnGas" args={[50, 24, 60, 40]} expected={4} tolerance={0.01} unit="min" decimals={0} />
+
+Samotný výstup rychlostí 9 m/min trvá:
+
+<Worked fn="travelMinutes" args={[40, 0, 9]} expected={4.44} tolerance={0.01} unit="min" decimals={1} />
+
+A to bez minuty na vyřešení problému a bez jediné zastávky. Padesát barů je málo.
+
+Rezerva pro tuto hloubku a spotřebu 25 l/min na osobu:
+
+<Worked fn="rockBottomBar" args={[40, 25, 24]} expected={38.19} tolerance={0.1} unit="bar" decimals={0} />
+
+Vychází jen pro přímý výstup bez dekomprese. S jednou lahví 12 l je to dvojnásobek:
+<Calc fn="rockBottomBar" args={[40, 25, 12]} decimals={0} unit="bar" />. Kdo se na dně dívá na manometr až při 50 barech, rezervu pro partnera už nemá.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Scenario id="free-flow-v-hloubce" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="panika-spotreba" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

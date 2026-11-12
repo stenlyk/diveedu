@@ -1,0 +1,264 @@
+- id: vd-co-nejdriv
+  type: order
+  conceptIds: [postup-vynechana-deko, kyslik-prvni-pomoc]
+  difficulty: 2
+  prompt: Vynořil ses s vynechanou dekompresí a nemáš příznaky. Seřaď, co následuje.
+  items:
+    - 'Řeknu to týmu a doprovodu'
+    - 'Dýchám kyslík, v klidu'
+    - 'Piju vodu a zůstávám v teple'
+    - 'Kontakt se záchrannou službou a potápěčským lékařem'
+    - 'Sledování nejméně 24 hodin'
+  explanation: 'Postup začíná přiznáním. Bez něj se nic dalšího nestane.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-kyslik-proc
+  type: why
+  conceptIds: [kyslik-prvni-pomoc, postup-vynechana-deko]
+  difficulty: 2
+  prompt: Proč se po vynechané dekompresi dýchá kyslík, i když potápěč nemá příznaky?
+  options:
+    - { text: 'Urychluje vyplavování inertního plynu a lépe okysličuje tkáně; čekat na příznaky znamená ztratit čas.', correct: true }
+    - { text: 'Kyslík rozpouští bubliny okamžitě.', explanation: 'Neokamžitě. Pomáhá, ale komoru nenahradí.' }
+    - { text: 'Je to placebo na uklidnění.', explanation: 'Je to nejúčinnější první pomoc, která je na hladině dostupná.' }
+    - { text: 'Aby se vyrovnala kyslíková zátěž z ponoru.', explanation: 'Kyslíková zátěž se tím nevyrovnává.' }
+  explanation: 'Kyslík na hladině je bezpečný a účinný. Podává se v co nejvyšší koncentraci.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-zpet-do-vody
+  type: choice
+  conceptIds: [postup-vynechana-deko, vynechana-dekomprese]
+  difficulty: 3
+  prompt: Deset minut po vynoření s vynechanou dekompresí ti začne brnět ruka. Kolega navrhuje vrátit se do vody a zastávky dodělat. Co uděláš?
+  options:
+    - { text: 'Do vody se nevracím: kyslík a záchranná služba', correct: true }
+    - { text: 'Vrátím se, brnění pod tlakem přejde', explanation: 'Stav se může pod vodou zhoršit a tam ti nikdo nepomůže.' }
+    - { text: 'Počkám hodinu, jestli se to zhorší', explanation: 'Čas do léčby rozhoduje o výsledku.' }
+    - { text: 'Vezmu si prášek proti bolesti a jdu spát', explanation: 'Příznak zamaskuješ a zůstaneš bez dohledu.' }
+  explanation: 'Návrat do vody připouštějí některé agentury jen bez příznaků a za přísných podmínek.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-priznaky
+  type: multi
+  conceptIds: [postup-vynechana-deko, dcs]
+  difficulty: 1
+  prompt: Které příznaky po ponoru znamenají okamžitě volat záchrannou službu?
+  options:
+    - { text: 'Brnění nebo necitlivost končetin', correct: true }
+    - { text: 'Závrať, poruchy zraku nebo řeči', correct: true }
+    - { text: 'Bolest kloubů a neobvyklá únava', correct: true }
+    - { text: 'Hlad po dlouhém ponoru', explanation: 'Ten je v pořádku.' }
+  explanation: 'Příznaky dekompresní nemoci bývají nenápadné a potápěči je často vysvětlují jinak.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-chyby
+  type: findError
+  conceptIds: [postup-vynechana-deko, vynechana-dekomprese]
+  difficulty: 2
+  prompt: Které kroky po vynechané dekompresi jsou chybné?
+  items:
+    - { text: 'Hned jsem to řekl a začal dýchat kyslík.' }
+    - { text: 'Cítil jsem se dobře, tak jsem odjel domů a šel spát.', isError: true, explanation: 'Příznaky mohou přijít se zpožděním. Po vynechané dekompresi se nezůstává bez dohledu.' }
+    - { text: 'Dal jsem si horkou sprchu na zahřátí.', isError: true, explanation: 'Prudké ohřátí může příznaky vyvolat. Teplo ano, horká sprcha ne.' }
+    - { text: 'Zapsal jsem si profil ponoru a čas vynoření.' }
+  explanation: 'Dobrý pocit po vynechané dekompresi nic neznamená.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-cas
+  type: numeric
+  conceptIds: [vynechana-dekomprese, postup-vynechana-deko]
+  difficulty: 2
+  prompt: 'Jak dlouho trvá přímý výstup z {depth} m rychlostí 9 m/min, bez jediné zastávky?'
+  template: { fn: travelMinutes, params: { depth: { values: [36, 45, 54, 63] } }, fixed: { to: 0, rate: 9 }, args: [depth, to, rate], tolerance: 0.2, unit: min, decimals: 1 }
+  explanation: 'Hloubka dělená rychlostí. Plánovaný výstup se zastávkami trvá mnohonásobně déle; rozdíl je vynechaná dekomprese.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: vd-dohled
+  type: why
+  conceptIds: [postup-vynechana-deko]
+  difficulty: 1
+  prompt: Proč se vynechaná dekomprese nesmí zatajit?
+  options:
+    - { text: 'Tým a lékař mohou pomoci jen tehdy, když vědí, co se stalo a kolik dekomprese chybí.', correct: true }
+    - { text: 'Je to přestupek, který se musí hlásit úřadům.', explanation: 'O úřady nejde.' }
+    - { text: 'Počítač to stejně prozradí.', explanation: 'Možná, ale pozdě.' }
+    - { text: 'Kvůli pojištění.', explanation: 'Důvod je zdravotní.' }
+  explanation: 'Stud patří k nejčastějším příčinám pozdní léčby.'
+  backToLessonId: vynechana-dekomprese-postup
+
+- id: kr-proc-zabiji
+  type: why
+  conceptIds: [krece-pod-vodou, cns-toxicita]
+  difficulty: 1
+  prompt: Proč jsou kyslíkové křeče pod vodou smrtelně nebezpečné?
+  options:
+    - { text: 'Potápěč ztratí vědomí a automatiku a utone.', correct: true }
+    - { text: 'Křeče trvale poškodí mozek.', explanation: 'Samotné křeče mozek obvykle nepoškodí.' }
+    - { text: 'Kyslík zastaví srdce.', explanation: 'Nezastaví.' }
+    - { text: 'Křeče roztrhnou plíce.', explanation: 'Plíce ohrožuje výstup se sevřenými dýchacími cestami, ne křeče samy.' }
+  explanation: 'Na hladině nebo v habitatu jsou křeče mnohem méně nebezpečné. Zabíjí voda.'
+  backToLessonId: krece-pod-vodou
+
+- id: kr-automatika
+  type: match
+  conceptIds: [krece-pod-vodou, bezvladny-potapec]
+  difficulty: 3
+  prompt: Partner má křeče. Přiřaď situaci k doporučenému postupu.
+  pairs:
+    - { left: Automatika zůstala v ústech, right: 'Přidržet ji, počkat na konec záškubů, potom vynést' }
+    - { left: Automatika vypadla, right: 'Nevracet ji a vynést hned' }
+  explanation: 'S automatikou se netopí, takže se čeká kvůli plicím. Bez ní rozhoduje čas.'
+  needs_review: true
+  backToLessonId: krece-pod-vodou
+
+- id: kr-faze
+  type: order
+  conceptIds: [krece-pod-vodou]
+  difficulty: 2
+  prompt: Seřaď fáze kyslíkových křečí.
+  items:
+    - 'Ztuhnutí celého těla'
+    - 'Rytmické záškuby'
+    - 'Ochabnutí a bezvědomí'
+  explanation: 'Během ztuhnutí bývají dýchací cesty sevřené; proto se s výstupem čeká, pokud má potápěč automatiku.'
+  backToLessonId: krece-pod-vodou
+
+- id: kr-ppo2
+  type: numeric
+  conceptIds: [krece-pod-vodou, cns-toxicita, zamena-plynu]
+  difficulty: 2
+  prompt: 'Potápěč omylem dýchá směs s {fo2|percent} % kyslíku v hloubce {depth} m. Jaký je parciální tlak kyslíku?'
+  template: { fn: ppO2, params: { fo2: { values: [0.5, 0.8, 1] }, depth: { values: [30, 40, 50] } }, args: [fo2, depth], tolerance: 0.03, unit: bar, decimals: 2 }
+  explanation: 'Frakce krát absolutní tlak. Všechny tyto hodnoty jsou nad limitem 1,6 bar.'
+  backToLessonId: krece-pod-vodou
+
+- id: kr-prevence
+  type: multi
+  conceptIds: [krece-pod-vodou, zamena-plynu]
+  difficulty: 1
+  prompt: Co je spolehlivá prevence kyslíkových křečí?
+  options:
+    - { text: 'Dodržení limitů parciálního tlaku kyslíku', correct: true }
+    - { text: 'Analýza a značení každé lahve', correct: true }
+    - { text: 'Přepnutí plynu s potvrzením partnera', correct: true }
+    - { text: 'Spoléhat na varovné příznaky', explanation: 'Křeče často přicházejí bez varování.' }
+  explanation: 'Varovné příznaky někdy chybí úplně. Prevence je jediná obrana, na kterou se dá spolehnout.'
+  backToLessonId: krece-pod-vodou
+
+- id: kr-varovani
+  type: choice
+  conceptIds: [krece-pod-vodou, cns-toxicita]
+  difficulty: 2
+  prompt: Na kyslíkové zastávce ti začnou cukat rty a zúží se ti zorné pole. Co uděláš?
+  options:
+    - { text: 'Hned přejdu na směs s méně kyslíkem a dám signál partnerovi', correct: true }
+    - { text: 'Počkám, jestli to přejde', explanation: 'Další příznak mohou být křeče.' }
+    - { text: 'Sestoupím o pár metrů', explanation: 'Hlouběji parciální tlak kyslíku stoupne.' }
+    - { text: 'Zrychlím dýchání', explanation: 'Zvýší to CO2 a riziko křečí.' }
+  explanation: 'Jakýkoli varovný příznak znamená okamžitě snížit parciální tlak kyslíku.'
+  backToLessonId: krece-pod-vodou
+
+- id: kr-deko
+  type: why
+  conceptIds: [krece-pod-vodou, bezvladny-potapec, vynechana-dekomprese]
+  difficulty: 2
+  prompt: Proč se při vynášení potápěče po křečích neřeší jeho dekomprese?
+  options:
+    - { text: 'Utonutí je horší a jistější než dekompresní nemoc, která se dá léčit.', correct: true }
+    - { text: 'Po křečích se dekomprese ruší.', explanation: 'Neruší. Jen ustupuje vážnějšímu riziku.' }
+    - { text: 'Kyslík dekompresi nahradil.', explanation: 'Nenahradil.' }
+    - { text: 'V bezvědomí se plyn nevyplavuje.', explanation: 'Vyplavuje se dál.' }
+  explanation: 'O vlastní dekompresi rozhoduje zachránce sám; proto se v týmu cvičí předání.'
+  backToLessonId: krece-pod-vodou
+
+- id: zb-poradi
+  type: order
+  conceptIds: [bezvladny-potapec]
+  difficulty: 2
+  prompt: Partner leží na dně a nereaguje. Seřaď postup pod vodou.
+  items:
+    - 'Zkontroluji vlastní plyn a situaci'
+    - 'Automatiku v jeho ústech přidržím; vypadlou nevracím'
+    - 'Uchopím ho zezadu'
+    - 'Vynesu ho, vztlak řídím jeho kompenzátorem'
+  explanation: 'Zachránce, který se sám dostane do nouze, nikoho nezachrání.'
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-automatika
+  type: why
+  conceptIds: [bezvladny-potapec]
+  difficulty: 2
+  prompt: Proč se bezvládnému potápěči nevrací automatika, která mu vypadla z úst?
+  options:
+    - { text: 'Většinou se to nepodaří a ztracený čas snižuje jeho šanci víc než cokoli jiného.', correct: true }
+    - { text: 'Automatika by mu poškodila zuby.', explanation: 'O zuby nejde.' }
+    - { text: 'V bezvědomí člověk nedýchá nikdy.', explanation: 'Někdy dýchá. Rozhoduje ale čas do vynoření.' }
+    - { text: 'Je to zakázané.', explanation: 'Je to doporučení odborné komise, s důvodem.' }
+  explanation: 'Automatika, která v ústech zůstala, se naopak přidržuje.'
+  needs_review: true
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-hladina
+  type: order
+  conceptIds: [bezvladny-potapec]
+  difficulty: 2
+  prompt: Jsi s bezvládným potápěčem na hladině. Seřaď, co uděláš.
+  items:
+    - 'Otočím ho obličejem vzhůru a zajistím vztlak'
+    - 'Zavolám o pomoc'
+    - 'Sundám mu masku a uvolním dýchací cesty'
+    - 'Co nejrychleji ho dostanu z vody'
+  explanation: 'Masáž srdce ve vodě nefunguje. Rozhoduje, jak rychle bude na pevném podkladu.'
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-kyslik
+  type: choice
+  conceptIds: [kyslik-prvni-pomoc, bezvladny-potapec]
+  difficulty: 1
+  prompt: Vytažený potápěč dýchá, ale je zmatený. Jakou první pomoc dostane?
+  options:
+    - { text: 'Kyslík v co nejvyšší koncentraci, vleže a v teple', correct: true }
+    - { text: 'Sladký čaj a procházku', explanation: 'Námaha je nevhodná; tekutiny jen při plném vědomí.' }
+    - { text: 'Vzduch z jeho lahve', explanation: 'Vzduch má jen pětinu kyslíku.' }
+    - { text: 'Nic, počkáme na záchranku', explanation: 'Kyslík je dostupný hned a pomáhá.' }
+  explanation: 'Kyslíková souprava a někdo, kdo ji umí použít, patří ke každému technickému ponoru.'
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-zachrance
+  type: why
+  conceptIds: [bezvladny-potapec, kyslik-prvni-pomoc, vynechana-dekomprese]
+  difficulty: 2
+  prompt: Proč se po záchraně sleduje i zachránce?
+  options:
+    - { text: 'Sám nejspíš vynechal dekompresi a stoupal rychle a s námahou.', correct: true }
+    - { text: 'Kvůli psychickému šoku, jinak je v pořádku.', explanation: 'Psychika je důležitá, ale hlavní je vynechaná dekomprese.' }
+    - { text: 'Je to formalita.', explanation: 'Druhý pacient po záchraně není vzácnost.' }
+    - { text: 'Aby mohl svědčit.', explanation: 'Jde o jeho zdraví.' }
+  explanation: 'Zachránce dýchá kyslík a zůstává v klidu stejně jako kdokoli po vynechané dekompresi.'
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-plan
+  type: multi
+  conceptIds: [bezvladny-potapec, evakuacni-plan, kyslik-prvni-pomoc]
+  difficulty: 1
+  prompt: Co musí být připraveno před ponorem, aby záchrana měla šanci?
+  options:
+    - { text: 'Kyslíková souprava a kdo ji umí podat', correct: true }
+    - { text: 'Spojení a číslo na záchrannou službu', correct: true }
+    - { text: 'Znalost nejbližší komory a cesty k ní', correct: true }
+    - { text: 'Nic, řeší se to až na místě', explanation: 'Ve chvíli, kdy plán potřebuješ, na jeho vymýšlení není čas.' }
+  explanation: 'Evakuační plán je součást plánu ponoru.'
+  backToLessonId: zachrana-bezvladneho-potapece
+
+- id: zb-pricina
+  type: choice
+  conceptIds: [bezvladny-potapec, zastav-dychej-mysli]
+  difficulty: 2
+  prompt: Najdeš partnera v bezvědomí a nevíš proč. Co z toho plyne pro postup?
+  options:
+    - { text: 'Nic: příčinu nehledám, postup je stejný – rychle na hladinu', correct: true }
+    - { text: 'Nejdřív zjistím příčinu z jeho počítače', explanation: 'Každá minuta pod vodou snižuje jeho šanci.' }
+    - { text: 'Zkusím mu vyměnit plyn', explanation: 'V bezvědomí nedýchá spolehlivě; rozhoduje hladina.' }
+    - { text: 'Počkám na zbytek týmu', explanation: 'Jednáš hned; tým přivoláš signálem.' }
+  explanation: 'Jediná kontrola předem je ta vlastní: plyn a situace zachránce.'
+  backToLessonId: zachrana-bezvladneho-potapece

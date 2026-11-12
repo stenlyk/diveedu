@@ -1,0 +1,102 @@
+<Hook>
+
+Nohy máš nad hlavou a oblek se nafukuje. Čím výš jsi, tím rychleji stoupáš, a čím rychleji stoupáš, tím víc se plyn rozpíná.
+
+Na zastavení máš pár vteřin. Na jednu věc ale musíš myslet i tehdy, když to zastavit nejde.
+
+</Hook>
+
+<Principle>
+
+<Term cs="nekontrolovaný výstup" /> je výstup, který neřídíš ty. Sám sebe zrychluje: plyn v kompenzátoru a obleku se s klesajícím tlakem rozpíná a vztlak roste.
+
+**Příčiny:**
+
+- zaseknutý napouštěcí ventil kompenzátoru nebo suchého obleku,
+- plyn v nohách suchého obleku a poloha hlavou dolů,
+- ztráta zátěže,
+- panický úprk k hladině po ztrátě plynu,
+- nezvládnuté vypouštění s rozpínajícím se plynem při výstupu.
+
+**Co dělat – v tomto pořadí:**
+
+1. **Vydechuj.** Nepřetržitě, s otevřenými dýchacími cestami. Tohle je jediný krok, který nesmí chybět.
+2. **Vypouštěj.** Kompenzátor nejvyšším ventilem, oblek ventilem na rameni – ruku nahoru.
+3. **Odpoj napouštěcí hadici,** pokud ventil napouští sám.
+4. **Zvětši odpor:** tělo naplocho, ruce a nohy od sebe, ploutve napříč.
+5. **Chyť se** – lana, partnera, skály.
+
+Partner může pomoci: chytit tě, vypustit tvůj kompenzátor, stáhnout tě za ploutev. Jen pokud tím sám neodletí.
+
+**Dvě rizika:**
+
+**<Term cs="barotrauma plic" /> a <Term cs="plynová embolie" />.** Když plyn nemůže z plic ven, roztrhne je. Bubliny se dostanou do krve a do mozku.
+Příznaky přicházejí během minut po vynoření: ztráta vědomí, ochrnutí, poruchy řeči a zraku, křeče, krvavá pěna u úst. Je to stav ohrožující život.
+
+**Dekompresní nemoc.** Zastávky zůstaly dole. Platí postup pro vynechanou dekompresi.
+
+**Na hladině:** kyslík, poloha vleže, záchranná služba, a při bezvědomí bez dechu resuscitace. U podezření na embolii se nečeká na nic.
+
+**Prevence:** kontrola ventilů před ponorem, zátěž zajištěná proti ztrátě, nácvik odpojení hadice a převratu z polohy hlavou dolů, a průběžné vypouštění při každém výstupu.
+
+Postupy se mezi agenturami liší v detailech a tato lekce je nenahrazuje. Nacvičují se s instruktorem, dokud nejdou bez přemýšlení.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="boyle" />
+
+Objem roste, jak tlak klesá – a nejvíc v posledních metrech pod hladinou.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Plný nádech v 10 m je asi 6 litrů. Kolik místa by ten plyn potřeboval na hladině?
+
+<Worked fn="boyleVolume" args={[6, 10, 0]} expected={12} tolerance={0.01} unit="l" decimals={0} />
+
+Dvojnásobek. Plíce se tolik neroztáhnou; plyn musí ven.
+
+Stejné platí pro oblek. Čtyři litry plynu ve 30 m se cestou do 10 m zvětší na <Calc fn="boyleVolume" args={[4, 30, 10]} decimals={0} unit="l" />
+a na hladině na <Calc fn="boyleVolume" args={[4, 30, 0]} decimals={0} unit="l" />. Každý litr navíc je kilogram vztlaku.
+
+**Čas.** Řízený výstup ze 30 m rychlostí 9 m/min:
+
+<Worked fn="travelMinutes" args={[30, 0, 9]} expected={3.33} tolerance={0.01} unit="min" decimals={1} />
+
+Nekontrolovaný výstup rychlostí 60 m/min trvá <Calc fn="travelMinutes" args={[30, 0, 60]} decimals={1} unit="min" />.
+Půl minuty na to, aby plyn odešel z plic, z tkání i z obleku.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="depth-pressure" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="embolie-melko" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -1,0 +1,21 @@
+id: nekontrolovany-vystup
+moduleId: nouze
+title: "Nekontrolovaný výstup"
+order: 4
+conceptIds: ["nekontrolovany-vystup", "plynova-embolie", "barotrauma-plic"]
+checkQuestionIds: ["nv-priciny", "nv-co-delat", "nv-proc-vydech", "nv-objem", "nv-embolie-priznaky"]
+estimatedMinutes: 10
+audioSummary: >-
+  Nekontrolovaný výstup sám sebe zrychluje. Plyn v obleku a kompenzátoru se rozpíná a vztlak roste.
+  První a nejdůležitější krok je vydechovat. Nepřetržitě, s otevřenými dýchacími cestami.
+  Potom vypouštěj kompenzátor i oblek a odpoj hadici, pokud ventil napouští sám.
+  Roztáhni tělo naplocho a chyť se, čeho můžeš.
+  Hrozí dvě věci. Poranění plic s plynovou embolií a dekompresní nemoc.
+  Embolie se projeví během minut. Bezvědomí, ochrnutí, poruchy řeči.
+  Na hladině kyslík, poloha vleže a záchranná služba.
+  Prevence je kontrola ventilů a průběžné vypouštění při každém výstupu.
+sources:
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: true

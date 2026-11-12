@@ -1,6 +1,6 @@
 # PLAN.md – DiveEdu: PWA výuková aplikace technického potápění (OC)
 
-Stav: **Etapy 0–6 hotové s výhradami: zvuk a osm animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
+Stav: **Etapy 0–6 hotové s výhradami, plus první průřezový modul (sekce 26): zvuk a osm animovaných výkladů existují, předrenderovaná videa ne (sekce 24–25). Dekompresní model je ověřený na 11 referenčních profilech (sekce 23).** Zdroj zadání: `SPEC.md` (export z 2026-11-12).
 Tento plán pokrývá architekturu, schémata obsahu, seznam modulů, pořadí práce a detailní
 seznam lekcí a uzlů grafu pro moduly 0–1.
 
@@ -443,4 +443,22 @@ Systémový hlas macOS uživatel po poslechu odmítl. Generátor proto umí Elev
 - **Počet:** osm výkladů na 78 lekcí; výběr je můj. Izobarickou protidifuzi jsem záměrně vynechal: její fyziologie je sporná a animace by ji podala jistěji, než odpovídá stavu poznání.
 - **Poslech a plynulost jsem neověřil.** Viděl jsem jednotlivé snímky, ne pohyb; souhru hlasu se scénou musí posoudit člověk.
 - Předrenderovaná videa (MP4) nevznikla.
+
+## 26. Průřezový modul Nouzové situace (2026-11-12)
+
+První ze čtyř průřezových modulů ze zadání. Zvolen jako první, protože se opírá o hotové scénáře a případovky.
+
+- **Modul `nouze`** (větev průřezová, navazuje na Decompression Procedures): 6 lekcí, 42 otázek, 9 uzlů, 18 vazeb, 4 zajímavosti. Ztráta plynu; samovolný průtok a únik; vynechaná dekomprese; nekontrolovaný výstup; kyslíkové křeče pod vodou; záchrana bezvládného potápěče.
+- **Dva scénáře:** samovolný průtok ve 40 m a křeče partnera na kyslíkové zastávce.
+- Zvuková shrnutí všech šesti lekcí jsou namluvená.
+
+### Co je slabé nebo otevřené
+
+- **Je to obsah, na kterém záleží nejvíc, a je psaný z hlavy.** Všech šest lekcí i oba scénáře mají `needs_review`; k odborné kontrole je teď 108 položek.
+- **Záchrana a křeče** vycházejí z doporučení Mitchell et al. 2012 tak, jak si je pamatuji: automatiku v ústech přidržet a s výstupem počkat na konec záškubů; vypadlou nevracet a vynést hned. Zdroj jsem při psaní neměl otevřený. Před zveřejněním to musí proti článku ověřit potápěčský lékař nebo instruktor.
+- **Vynechaná dekomprese:** návrat do vody je popsaný jen obecně, protože se postupy agentur liší; lekce konkrétní čísla záměrně neuvádí.
+- **První pomoc** (vdechy ve vodě, resuscitace, podání kyslíku) je popsaná jen v obrysech a odkazuje na kurz. Lekce ji nenahrazuje a říká to.
+- Průtok volně proudící automatiky (400 l/min) je ilustrační hodnota označená jako předpoklad.
+- Pole `unlockAfter` se v aplikaci zatím nijak neprojevuje: modul je přístupný vždy jako ostatní.
+- Zbývají průřezové moduly Fyziologie a medicína, Vybavení a Lidský faktor.
 

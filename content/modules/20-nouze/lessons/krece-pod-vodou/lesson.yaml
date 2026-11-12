@@ -1,0 +1,20 @@
+id: krece-pod-vodou
+moduleId: nouze
+title: "Kyslíkové křeče pod vodou"
+order: 5
+conceptIds: ["krece-pod-vodou", "cns-toxicita", "bezvladny-potapec"]
+checkQuestionIds: ["kr-proc-zabiji", "kr-automatika", "kr-faze", "kr-ppo2", "kr-prevence"]
+estimatedMinutes: 10
+audioSummary: >-
+  Kyslíkové křeče přicházejí často bez varování. Potápěč ztrácí vědomí a kontrolu nad tělem.
+  Samotné křeče mozek obvykle nepoškodí. Zabíjí utonutí.
+  Když má automatiku v ústech, přidrž mu ji a počkej, až záškuby ustanou. Potom ho vynes.
+  Když automatiku v ústech nemá, nezkoušej ji vracet. Vynes ho na hladinu hned.
+  Drž ho zezadu a řiď vztlak jeho kompenzátorem.
+  Jeho dekomprese v té chvíli nerozhoduje. Utonutí je horší než dekompresní nemoc.
+  Prevence je jediná spolehlivá obrana. Limity, analýza, značení lahví a přepnutí s potvrzením partnera.
+sources:
+  - { title: "Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)", author: "Mitchell S. J. et al.", year: 2012 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+needs_review: true
