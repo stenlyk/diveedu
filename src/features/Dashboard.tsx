@@ -54,9 +54,9 @@ export function Dashboard() {
     <div>
       <PageHeader title="Přehled" subtitle="Co umíš, co slábne a jak rychle počítáš." />
       <div className="grid grid-cols-3 gap-3 sm:max-w-xl">
-        <Card><div className="text-2xl font-bold tabular-nums" data-testid="streak">{streakDays(answers.map((a) => a.at), now)}</div><div className="text-sm text-muted">dní v řadě</div></Card>
-        <Card><div className="text-2xl font-bold tabular-nums">{today.total}</div><div className="text-sm text-muted">odpovědí dnes</div></Card>
-        <Card><div className="text-2xl font-bold tabular-nums">{queue ? queue.due.length + queue.fresh.length : 0}</div><div className="text-sm text-muted">karet čeká</div></Card>
+        <Card><div className="text-2xl font-semibold tabular-nums" data-testid="streak">{streakDays(answers.map((a) => a.at), now)}</div><div className="text-sm text-muted">dní v řadě</div></Card>
+        <Card><div className="text-2xl font-semibold tabular-nums">{today.total}</div><div className="text-sm text-muted">odpovědí dnes</div></Card>
+        <Card><div className="text-2xl font-semibold tabular-nums">{queue ? queue.due.length + queue.fresh.length : 0}</div><div className="text-sm text-muted">karet čeká</div></Card>
       </div>
 
       <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -70,7 +70,7 @@ export function Dashboard() {
               return (
                 <div key={module.id}>
                   <div className="mb-1 flex justify-between text-sm"><span>{module.title}</span><span className="text-muted">{counts.strong} / {concepts.length}</span></div>
-                  <div className="flex h-3 overflow-hidden rounded-full bg-border" role="img" aria-label={LEVELS.map((level) => `${LEVEL_STYLE[level].label}: ${counts[level]}`).join(', ')}>
+                  <div className="flex h-3 overflow-hidden rounded-[2px] bg-border" role="img" aria-label={LEVELS.map((level) => `${LEVEL_STYLE[level].label}: ${counts[level]}`).join(', ')}>
                     {LEVELS.map((level) => <span key={level} style={{ width: `${(counts[level] / concepts.length) * 100}%`, background: LEVEL_STYLE[level].css }} />)}
                   </div>
                 </div>

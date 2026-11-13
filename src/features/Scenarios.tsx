@@ -33,7 +33,7 @@ export function ScenarioPage() {
   return (
     <div className="flex flex-1 flex-col">
       <nav className="text-sm text-muted"><Link to="/trenink/scenare" className="underline underline-offset-4">Scénáře</Link> › {scenario.title}</nav>
-      <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{scenario.title}</h1>
+      <h1 className="mb-3 mt-1 text-2xl font-semibold tracking-tight">{scenario.title}</h1>
       <ScenarioPlayer key={scenario.id} scenario={scenario} />
     </div>
   );

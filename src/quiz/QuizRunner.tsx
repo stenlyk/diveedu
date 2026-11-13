@@ -89,7 +89,7 @@ export function QuizRunner({ questions, mode, feedback = true, deadline, renderR
     return (
       <Card>
         <div className="text-sm text-muted">Hotovo</div>
-        <div className="text-3xl font-bold" data-testid="quiz-score">{result.correct} / {result.total}</div>
+        <div className="text-3xl font-semibold" data-testid="quiz-score">{result.correct} / {result.total}</div>
         <p className="mt-2 text-muted">
           {result.correct === result.total ? 'Všechno správně.' : 'Chyby tě vedou zpět na konkrétní princip – projdi si odkazy u špatných odpovědí.'}
         </p>
@@ -318,7 +318,7 @@ function OrderBody({ question, locked, onAnswer }: { question: Extract<Question,
           return (
             <li key={item}>
               <button type="button" disabled={locked} onClick={() => setPicked(picked.filter((i) => i !== item))} className={`${row} ${!locked ? 'border-accent bg-accent/10' : ok ? 'border-ok bg-ok/10' : 'border-danger bg-danger/10'}`}>
-                <span className="font-bold tabular-nums">{position + 1}.</span><span>{question.items[item]}</span>
+                <span className="font-semibold tabular-nums">{position + 1}.</span><span>{question.items[item]}</span>
               </button>
             </li>
           );

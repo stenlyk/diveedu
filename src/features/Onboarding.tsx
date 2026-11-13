@@ -8,7 +8,7 @@ export function Onboarding() {
   const [checked, setChecked] = useState(false);
   return (
     <main className="mx-auto flex min-h-dvh max-w-xl flex-col justify-center px-4 py-8">
-      <h1 className="text-3xl font-bold tracking-tight">DiveEdu</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">DiveEdu</h1>
       <p className="mt-2 text-muted">Teorie technického potápění od Advanced Nitrox po Full Trimix a Full Cave. Princip, výpočet, reálný ponor.</p>
       <Card className="mt-6 border-warn/60">
         <h2 className="text-lg font-semibold">Než začneš</h2>

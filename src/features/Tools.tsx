@@ -57,7 +57,7 @@ export function SimulatorPage() {
   return (
     <div>
       <nav className="text-sm text-muted"><Link to="/nastroje" className="underline underline-offset-4">Nástroje</Link> › {sim.title}</nav>
-      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{sim.title}</h1>
+      <h1 className="mb-4 mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{sim.title}</h1>
       <sim.Component />
     </div>
   );
@@ -71,13 +71,13 @@ export function ToolPage() {
   return (
     <div>
       <nav className="text-sm text-muted"><Link to="/nastroje" className="underline underline-offset-4">Nástroje</Link> › {def.title}</nav>
-      <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{def.title}</h1>
+      <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{def.title}</h1>
       <p className="mb-4 text-muted">{def.summary}</p>
       <div className="mb-4"><Disclaimer kind="calc" /></div>
       {def.steps && (
-        <div className="mb-5 grid max-w-md grid-cols-2 gap-2" role="tablist" aria-label="Režim kalkulačky">
+        <div className="mb-5 grid max-w-md grid-cols-2 gap-1 rounded-xl border border-border bg-surface-2 p-1" role="tablist" aria-label="Režim kalkulačky">
           {([['solve', 'Spočti mi'], ['practice', 'Spočítám sám']] as const).map(([value, label]) => (
-            <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => setMode(value)} className={`min-h-12 rounded-xl border-2 font-semibold ${mode === value ? 'border-accent bg-accent/15' : 'border-border text-muted'}`}>{label}</button>
+            <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => setMode(value)} className={`min-h-11 rounded-xl border text-[0.9375rem] font-semibold ${mode === value ? 'border-accent bg-surface-3 text-text' : 'border-transparent text-muted hover:text-text'}`}>{label}</button>
           ))}
         </div>
       )}

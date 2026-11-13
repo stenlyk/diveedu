@@ -13,12 +13,12 @@ function Output({ output }: { output: OutputDef }) {
   const shown = output.value === null ? 'mimo tabulku' : !Number.isFinite(output.value) ? 'bez limitu' : `${formatCs(output.value, output.decimals)} ${output.unit}`;
   const ratio = bar && output.value !== null && Number.isFinite(output.value) ? Math.max(0, Math.min(1, output.value / bar.max)) : null;
   return (
-    <div className="rounded-xl bg-surface-2 p-3">
-      <dt className="text-xs text-muted">{output.label}</dt>
-      <dd className={`text-2xl font-bold tabular-nums ${output.tone ? TONE[output.tone] : ''}`} data-output={output.label}>{shown}</dd>
+    <div className="rounded-xl border border-border bg-surface-2 p-3">
+      <dt className="label-ui">{output.label}</dt>
+      <dd className={`mt-1 font-mono text-2xl font-medium tabular-nums ${output.tone ? TONE[output.tone] : ''}`} data-output={output.label}>{shown}</dd>
       {bar && ratio !== null && (
-        <dd className="relative mt-2 h-2 rounded-full bg-border" aria-hidden="true">
-          <span className={`block h-2 rounded-full ${output.tone ? BAR_TONE[output.tone] : 'bg-accent'}`} style={{ width: `${ratio * 100}%`, transition: 'width 150ms ease-out' }} />
+        <dd className="relative mt-2 h-1 rounded-[2px] bg-border" aria-hidden="true">
+          <span className={`block h-1 rounded-[2px] ${output.tone ? BAR_TONE[output.tone] : 'bg-accent'}`} style={{ width: `${ratio * 100}%`, transition: 'width 150ms ease-out' }} />
           {bar.marks?.map((mark) => (
             <span key={mark.at} className="absolute -top-1 h-4 w-0.5 bg-text" style={{ left: `${(mark.at / bar.max) * 100}%` }}>
               <span className="absolute left-1 top-3.5 text-[10px] text-muted">{mark.label}</span>
@@ -133,7 +133,7 @@ export function CalcPractice({ def }: { def: CalcDef }) {
         {def.inputs.map((input) => (
           <div key={input.key} className="rounded-xl bg-surface-2 p-3">
             <dt className="text-xs text-muted">{input.label}</dt>
-            <dd className="text-xl font-bold tabular-nums">{String(task.shown[input.key]).replace('.', ',')} {input.unit}</dd>
+            <dd className="text-xl font-semibold tabular-nums">{String(task.shown[input.key]).replace('.', ',')} {input.unit}</dd>
           </div>
         ))}
       </dl>

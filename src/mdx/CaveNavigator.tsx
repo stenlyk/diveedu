@@ -45,7 +45,7 @@ export function CaveNavigator() {
     <div className="space-y-4" data-testid="cave-nav" data-phase={state.phase}>
       <Disclaimer kind="calc" />
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tabular-nums">
-        <span className={`text-lg font-bold ${low ? 'text-danger' : ''}`} data-testid="cave-gas">{formatCs(state.gasBar, 0)} bar</span>
+        <span className={`text-lg font-semibold ${low ? 'text-danger' : ''}`} data-testid="cave-gas">{formatCs(state.gasBar, 0)} bar</span>
         <span className="text-muted">otočka {limit} bar</span>
         <span className="text-muted">{formatCs(state.minutes, 0)} min</span>
         <span className="text-muted">značky {state.cookiesLeft} · cívky {state.spoolsLeft}</span>
@@ -144,7 +144,7 @@ export function CaveNavigator() {
         return (
           <div data-testid="cave-debrief">
             <div className={`rounded-2xl border-2 bg-surface p-4 ${OUTCOME[state.outcome.result].css}`}>
-              <h3 className="text-xl font-bold" data-testid="cave-outcome">{OUTCOME[state.outcome.result].title}</h3>
+              <h3 className="text-xl font-semibold" data-testid="cave-outcome">{OUTCOME[state.outcome.result].title}</h3>
               <p className="mt-1">{state.outcome.text}</p>
               <p className="mt-2 text-sm tabular-nums text-muted">Zbylo {formatCs(state.gasBar, 0)} bar · {formatCs(state.minutes, 0)} min · nejdál {state.metersIn} m od vchodu</p>
             </div>

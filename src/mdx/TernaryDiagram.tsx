@@ -99,11 +99,11 @@ export function TernaryDiagram() {
         </div>
       </div>
       <div className={`rounded-2xl border-2 p-4 ${check.allowed ? 'border-ok' : 'border-danger'}`} role="status" data-testid="ternary-verdict">
-        <div className="text-lg font-bold">{gasLabel(mix)} v {depth} m: {check.allowed ? 'v limitech' : 'mimo limity'}</div>
+        <div className="text-lg font-semibold">{gasLabel(mix)} v {depth} m: {check.allowed ? 'v limitech' : 'mimo limity'}</div>
         <dl className="mt-2 grid grid-cols-3 gap-2 text-center text-sm">
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">ppO2</dt><dd className="font-bold tabular-nums">{formatCs(check.ppO2Bar, 2)} bar</dd></div>
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">END</dt><dd className="font-bold tabular-nums">{formatCs(check.endM, 1)} m</dd></div>
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Hustota</dt><dd className="font-bold tabular-nums">{formatCs(check.densityGL, 2)} g/l</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">ppO2</dt><dd className="font-semibold tabular-nums">{formatCs(check.ppO2Bar, 2)} bar</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">END</dt><dd className="font-semibold tabular-nums">{formatCs(check.endM, 1)} m</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Hustota</dt><dd className="font-semibold tabular-nums">{formatCs(check.densityGL, 2)} g/l</dd></div>
         </dl>
         {problems.length > 0 && <ul className="mt-2 list-disc pl-5 text-sm text-danger">{problems.map((problem) => <li key={String(problem)}>{problem}</li>)}</ul>}
       </div>

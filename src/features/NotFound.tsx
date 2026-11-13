@@ -13,7 +13,7 @@ export function NotFound() {
   }, []);
   return (
     <Card className="max-w-xl">
-      <h1 className="text-xl font-bold">Stránka nenalezena</h1>
+      <h1 className="text-xl font-semibold">Stránka nenalezena</h1>
       <p className="mt-2 text-sm text-muted">Buď adresa neexistuje, nebo máš v zařízení starší verzi aplikace, která tuto stránku ještě nezná. Pokud se objeví nabídka nové verze, zvol „Aktualizovat“.</p>
       <div className="mt-4 flex flex-wrap gap-3">
         <Button onClick={() => window.location.reload()}>Načíst znovu</Button>

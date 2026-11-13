@@ -83,7 +83,7 @@ export function Podcast() {
         <>
           <Card>
             <div className="text-sm text-muted" data-testid="podcast-position">{index + 1} / {tracks.length} · {current.moduleTitle}</div>
-            <h2 className="mt-1 text-xl font-bold" data-testid="podcast-title">{current.title}</h2>
+            <h2 className="mt-1 text-xl font-semibold" data-testid="podcast-title">{current.title}</h2>
             <div className="mt-5 grid grid-cols-3 gap-3">
               <button type="button" aria-label="Předchozí" disabled={step(index, tracks.length, -1) === null} onClick={() => go(-1)} className="min-h-20 rounded-2xl border-2 border-border text-3xl disabled:opacity-40">⏮</button>
               <button type="button" aria-label={playing ? 'Pozastavit' : 'Přehrát'} onClick={toggle} className="min-h-20 rounded-2xl border-2 border-accent bg-accent/15 text-4xl" data-status={player.status} data-testid="podcast-toggle">{playing ? '⏸' : '▶'}</button>

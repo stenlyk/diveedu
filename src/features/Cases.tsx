@@ -94,7 +94,7 @@ export function CasePage() {
   return (
     <article className="max-w-3xl">
       <nav className="text-sm text-muted"><Link to="/pripady" className="underline underline-offset-4">Případové studie</Link></nav>
-      <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{study.title}</h1>
+      <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{study.title}</h1>
       <p className="text-muted">{[study.location, study.year].filter(Boolean).join(' · ')}</p>
       <div className="mt-2 flex flex-wrap gap-2">
         <Badge tone={study.certainty === 'doloženo' ? 'ok' : 'warn'}>Příčina: {study.certainty}</Badge>

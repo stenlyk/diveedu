@@ -19,7 +19,7 @@ function ConceptDetail({ conceptId }: { conceptId: string }) {
   return (
     <div>
       <nav className="text-sm text-muted"><Link to="/graf" className="underline underline-offset-4">Graf</Link> › {concept.label}</nav>
-      <h1 className="mt-1 text-2xl font-bold tracking-tight">{concept.label}</h1>
+      <h1 className="mt-1 text-2xl font-semibold tracking-tight">{concept.label}</h1>
       <p className="mb-4 mt-1 flex flex-wrap items-center gap-3 text-sm text-muted">
         <span><span style={{ color: LEVEL_STYLE[level].css }}>{LEVEL_STYLE[level].mark}</span> {LEVEL_STYLE[level].label}{m ? ` · ${Math.round(m.score * 100)} % z ${m.answers} odpovědí` : ''}</span>
       </p>
@@ -41,7 +41,7 @@ function ConceptDetail({ conceptId }: { conceptId: string }) {
   );
 }
 
-const chip = (active: boolean) => `min-h-11 rounded-full border px-4 text-sm ${active ? 'border-accent bg-accent/15 text-text' : 'border-border text-muted'}`;
+const chip = (active: boolean) => `min-h-11 rounded border px-4 text-sm ${active ? 'border-accent bg-accent/15 text-text' : 'border-border text-muted'}`;
 
 export function GraphPage() {
   const { conceptId } = useParams();

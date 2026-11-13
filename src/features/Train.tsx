@@ -19,7 +19,7 @@ function Crumb({ title }: { title: string }) {
   return (
     <>
       <nav className="text-sm text-muted"><Link to="/trenink" className="underline underline-offset-4">Trénink</Link> › {title}</nav>
-      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight">{title}</h1>
+      <h1 className="mb-4 mt-1 text-2xl font-semibold tracking-tight">{title}</h1>
     </>
   );
 }
@@ -112,7 +112,7 @@ export function Weaknesses() {
         <>
           <p className="mb-3 flex flex-wrap items-center gap-2 text-sm text-muted">
             Nejslabší pojmy:
-            {frozen.concepts.map((id) => <Link key={id} to={`/graf/${id}`} className="rounded-full border border-border px-3 py-1 text-text">{conceptsById.get(id)?.label}</Link>)}
+            {frozen.concepts.map((id) => <Link key={id} to={`/graf/${id}`} className="rounded border border-border px-3 py-1 text-text">{conceptsById.get(id)?.label}</Link>)}
           </p>
           <QuizRunner questions={frozen.questions} mode="training" />
         </>
@@ -216,14 +216,14 @@ export function Exam() {
           return (
             <Card>
               <div className="text-sm text-muted">Výsledek zkoušky</div>
-              <div className={`text-4xl font-bold ${passed ? 'text-ok' : 'text-danger'}`} data-testid="exam-score">{percent} %</div>
+              <div className={`text-4xl font-semibold ${passed ? 'text-ok' : 'text-danger'}`} data-testid="exam-score">{percent} %</div>
               <p className="mt-1 font-semibold">{passed ? '✓ Splněno' : `✗ Nesplněno – potřeba ${threshold} %`}</p>
               <p className="text-sm text-muted">{result.correct} z {result.total} správně{result.unanswered.length > 0 ? `, ${result.unanswered.length} nezodpovězeno (vypršel čas)` : ''}.</p>
               {worst.length > 0 && (
                 <>
                   <h2 className="mt-4 font-semibold">Kde jsi ztratil nejvíc</h2>
                   <ul className="mt-2 flex flex-wrap gap-2">
-                    {worst.map(([id, n]) => <li key={id}><Link to={`/trenink/tema?pojem=${id}`} className="inline-flex min-h-11 items-center rounded-full border border-border px-4 text-sm hover:border-accent">{conceptsById.get(id)?.label} · {n}×</Link></li>)}
+                    {worst.map(([id, n]) => <li key={id}><Link to={`/trenink/tema?pojem=${id}`} className="inline-flex min-h-11 items-center rounded border border-border px-4 text-sm hover:border-accent">{conceptsById.get(id)?.label} · {n}×</Link></li>)}
                   </ul>
                 </>
               )}

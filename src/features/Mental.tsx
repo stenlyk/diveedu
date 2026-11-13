@@ -98,7 +98,7 @@ export function Mental() {
   const crumb = (
     <>
       <nav className="text-sm text-muted"><Link to="/trenink" className="underline underline-offset-4">Trénink</Link> › Z hlavy na čas</nav>
-      <h1 className="mb-4 mt-1 text-2xl font-bold tracking-tight">Z hlavy na čas</h1>
+      <h1 className="mb-4 mt-1 text-2xl font-semibold tracking-tight">Z hlavy na čas</h1>
     </>
   );
 
@@ -112,7 +112,7 @@ export function Mental() {
         {finished && (
           <Card className="mb-5">
             <div className="text-sm text-muted">Výsledek</div>
-            <div className="text-3xl font-bold" data-testid="mental-score">{correct} / {done.length}</div>
+            <div className="text-3xl font-semibold" data-testid="mental-score">{correct} / {done.length}</div>
             <p className="text-muted">Průměrně {formatCs(avg, 1)} s na úlohu. Příště začneš na úrovni {level} z {MAX_LEVEL}.</p>
             <ul className="mt-3 space-y-1 text-sm">
               {done.map((d, i) => (
@@ -146,7 +146,7 @@ export function Mental() {
       </div>
       <Card>
         <h2 className="text-xl font-semibold" data-testid="mental-prompt">{task.prompt}</h2>
-        <div className={`mt-4 flex h-16 items-center justify-center rounded-xl border-2 text-3xl font-bold tabular-nums ${verdict === null ? 'border-border' : verdict ? 'border-ok text-ok' : 'border-danger text-danger'}`} aria-live="polite" data-testid="mental-input">
+        <div className={`mt-4 flex h-16 items-center justify-center rounded-xl border-2 text-3xl font-semibold tabular-nums ${verdict === null ? 'border-border' : verdict ? 'border-ok text-ok' : 'border-danger text-danger'}`} aria-live="polite" data-testid="mental-input">
           {input || <span className="text-muted">–</span>}<span className="ml-2 text-lg font-normal text-muted">{task.unit}</span>
         </div>
         {verdict !== null && (

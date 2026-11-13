@@ -74,9 +74,9 @@ export function ScenarioPlayer({ scenario }: { scenario: Scenario }) {
         {scenario.needs_review && <div className="mb-2"><ReviewBadge /></div>}
         <p>{scenario.intro}</p>
         <dl className="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Plyn</dt><dd className="font-bold tabular-nums">{scenario.setup.startBar} bar</dd></div>
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Hloubka</dt><dd className="font-bold tabular-nums">{scenario.setup.depthM} m</dd></div>
-          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Lahve</dt><dd className="font-bold tabular-nums">{scenario.setup.tankLiters} l</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Plyn</dt><dd className="font-semibold tabular-nums">{scenario.setup.startBar} bar</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Hloubka</dt><dd className="font-semibold tabular-nums">{scenario.setup.depthM} m</dd></div>
+          <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Lahve</dt><dd className="font-semibold tabular-nums">{scenario.setup.tankLiters} l</dd></div>
         </dl>
         <label className="mt-4 flex min-h-12 items-center gap-3">
           <input type="checkbox" className="h-6 w-6 accent-[var(--accent)]" checked={sound} onChange={(event) => setSound(event.target.checked)} />
@@ -95,7 +95,7 @@ export function ScenarioPlayer({ scenario }: { scenario: Scenario }) {
       <div data-testid="scenario-debrief">
         <Card className={`border-2 ${outcome.css}`}>
           <div className="text-sm text-muted">Konec scénáře</div>
-          <h2 className="text-2xl font-bold" data-testid="scenario-outcome">{outcome.title}</h2>
+          <h2 className="text-2xl font-semibold" data-testid="scenario-outcome">{outcome.title}</h2>
           <p className="mt-2">{state.finished.text}</p>
           <p className="mt-2 text-sm text-muted tabular-nums">Čas {formatCs(state.elapsedMin, 0)} min · zbylo {formatCs(state.gasBar, 0)} bar · {summary.good} správně, {summary.ok} přijatelně, {summary.bad} chyb</p>
         </Card>
@@ -123,8 +123,8 @@ export function ScenarioPlayer({ scenario }: { scenario: Scenario }) {
   return (
     <div className={`-mx-4 flex min-h-[70dvh] flex-col px-4 pb-4 transition-colors duration-700 md:mx-0 md:rounded-2xl md:p-5 ${dark ? 'bg-black text-neutral-300' : node!.darkness === 'dim' ? 'bg-[#1c1a12]' : ''}`} data-testid="scenario-play" data-darkness={node!.darkness}>
       <div className="flex items-center justify-between gap-3 py-2 text-sm tabular-nums">
-        <span className={lowGas ? 'font-bold text-danger' : ''} data-testid="scenario-gas">{formatCs(state.gasBar, 0)} bar</span>
-        <span className="h-2 flex-1 overflow-hidden rounded-full bg-border"><span className={`block h-2 ${lowGas ? 'bg-danger' : 'bg-accent'}`} style={{ width: `${(state.gasBar / scenario.setup.startBar) * 100}%`, transition: 'width 400ms' }} /></span>
+        <span className={lowGas ? 'font-semibold text-danger' : ''} data-testid="scenario-gas">{formatCs(state.gasBar, 0)} bar</span>
+        <span className="h-2 flex-1 overflow-hidden rounded-[2px] bg-border"><span className={`block h-2 ${lowGas ? 'bg-danger' : 'bg-accent'}`} style={{ width: `${(state.gasBar / scenario.setup.startBar) * 100}%`, transition: 'width 400ms' }} /></span>
         <span>{formatCs(state.elapsedMin, 0)} min</span>
         <button type="button" className="min-h-11 px-2" aria-pressed={sound} aria-label={sound ? 'Vypnout zvuk' : 'Zapnout zvuk'} onClick={() => setSound(!sound)}>{sound ? '🔊' : '🔇'}</button>
       </div>
@@ -133,7 +133,7 @@ export function ScenarioPlayer({ scenario }: { scenario: Scenario }) {
       <p className="mt-4 text-lg leading-relaxed" data-testid="scenario-text">{node!.text}</p>
       {remaining !== null && (
         <div className="mt-3" aria-label={`Zbývá ${Math.ceil(remaining)} sekund`}>
-          <div className="h-1.5 overflow-hidden rounded-full bg-border"><div className={`h-1.5 ${remaining < 5 ? 'bg-danger' : 'bg-warn'}`} style={{ width: `${(remaining / node!.timeLimitSec!) * 100}%`, transition: 'width 200ms linear' }} /></div>
+          <div className="h-1.5 overflow-hidden rounded-[2px] bg-border"><div className={`h-1.5 ${remaining < 5 ? 'bg-danger' : 'bg-warn'}`} style={{ width: `${(remaining / node!.timeLimitSec!) * 100}%`, transition: 'width 200ms linear' }} /></div>
         </div>
       )}
       {/* Možnosti dole, v dosahu palce. */}

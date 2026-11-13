@@ -104,9 +104,9 @@ export function TissueSimulator() {
           </svg>
           <p className="mt-1 text-xs text-muted">Bílá čára: hloubka v čase. Červená plocha: pásmo nad stropem, kam v danou chvíli nelze vystoupat.</p>
           <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-sm">
-            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Výstup</dt><dd className="text-lg font-bold tabular-nums" data-testid="sim-ascent">{formatCs(plan.ascentMin, 0)} min</dd></div>
-            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">První zastávka</dt><dd className="text-lg font-bold tabular-nums">{plan.firstStopM} m</dd></div>
-            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">GF na hladině</dt><dd className="text-lg font-bold tabular-nums">{formatCs(plan.surfacingGfPercent, 0)} %</dd></div>
+            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Výstup</dt><dd className="text-lg font-semibold tabular-nums" data-testid="sim-ascent">{formatCs(plan.ascentMin, 0)} min</dd></div>
+            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">První zastávka</dt><dd className="text-lg font-semibold tabular-nums">{plan.firstStopM} m</dd></div>
+            <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">GF na hladině</dt><dd className="text-lg font-semibold tabular-nums">{formatCs(plan.surfacingGfPercent, 0)} %</dd></div>
           </dl>
           <p className="mt-2 text-sm text-muted" data-testid="sim-stops">
             {plan.stops.length === 0 ? 'Bez zastávek.' : `Zastávky: ${plan.stops.map((stop) => `${stop.depthM} m / ${stop.minutes} min`).join(' · ')}`}

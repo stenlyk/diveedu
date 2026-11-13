@@ -481,3 +481,19 @@ První ze čtyř průřezových modulů ze zadání. Zvolen jako první, protož
 
 Původně byl vygenerovaný zvuk mimo git. Na přání uživatele je `public/media` i `public/media-manifest.json` v repozitáři a nasazuje se jako statické soubory (99 souborů MP3, 33,5 MB). Dřívější poznámky „výstup není v gitu“ v sekcích 24–25 už neplatí. Po změně textu shrnutí nebo výkladu je třeba spustit `npm run tts` a nové soubory commitnout; build na to sám neupozorní.
 
+## 28. Nový vizuální systém podle návrhu ze Stitch (2026-11-13)
+
+Podklad: export ze Stitch „Technical Precision Instrument“ (DESIGN.md a čtyři vzorové obrazovky). Přenesen je design systém, ne obsah obrazovek.
+
+- **Tokeny:** plochy ve čtyřech úrovních (bg, surface, surface-2, surface-3), okraj #233C47, texty primární / sekundární / tlumený; sémantické barvy beze změny. Světlý režim podle návrhu.
+- **Písma:** Inter pro text, JetBrains Mono pro čísla, jednotky a stavové štítky. Lokální soubory (`@fontsource`), aby fungovala offline. Aby se jádro vešlo do 1,5 MB, nebalí se do něj nepoužívané rodiny písem KaTeX a cizí abecedy písma Inter.
+- **Tvary:** rohy 4 px u ovládacích prvků, 8 px u karet; žádné stíny ani rozmazané pozadí; oválné tvary jen u stavových teček.
+- **Komponenty:** tlačítka (primární, sekundární, ghost, danger), štítky (neproporcionální písmo, velká písmena, tónovaná plocha), segmentový přepínač, posuvník se čtvercovým jezdcem, krokovač lekce (hotové části zeleně, aktuální akcentem), spodní lišta s čárou nad aktivní položkou, horní lišta se značkou a stavem „Offline připraveno“.
+- **Obrazovky:** úvod a přehled modulů přestavěné podle návrhu; ostatní obrazovky přebírají vzhled přes sdílené komponenty a tokeny.
+
+### Co z návrhu záměrně nepřevzato
+
+- Vymyšlený obsah vzorových obrazovek: jméno uživatele, synchronizace, „udržení teorie 94,2 %“, aktivní profil, komunitní peer-review, „uložit do tréninkového deníku“, ilustrační fotografie, zamčené moduly (moduly jsou podle zadání přístupné vždy) a fyziologická tvrzení v ukázkové lekci.
+- Barevné proužky sekcí v zelené a žluté: odporují vlastnímu pravidlu návrhu, že sémantické barvy nesmí být ozdobou. Všechny sekce mají akcentovou barvu.
+- Neaktivní položky spodní lišty nejsou v tlumené barvě #5B727D, ale v sekundární: tlumená barva má na pozadí kontrast asi 3,3 : 1 a malý text by nesplnil WCAG AA.
+

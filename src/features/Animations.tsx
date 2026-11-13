@@ -31,7 +31,7 @@ export function AnimationPage() {
   return (
     <div className="max-w-2xl">
       <nav className="text-sm text-muted"><Link to="/animace" className="underline underline-offset-4">Animované výklady</Link> › {animation.title}</nav>
-      <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{animation.title}</h1>
+      <h1 className="mb-3 mt-1 text-2xl font-semibold tracking-tight">{animation.title}</h1>
       <Card><AnimationPlayer key={animation.id} animation={animation} /></Card>
       {lesson && <p className="mt-4 text-sm">Souvislosti a výpočty: <Link to={`/uceni/${lesson.id}`} className="text-accent underline underline-offset-4">lekce {lesson.title}</Link></p>}
     </div>

@@ -34,7 +34,7 @@ export function LocalGraph({ conceptId }: { conceptId: string }) {
       <Column title="Co na pojem působí" items={data.causes} arrow="in" />
       <div className="rounded-2xl border-2 border-accent bg-accent/10 p-4 text-center md:mt-6 md:max-w-56">
         <div className="text-xs text-muted">{CONCEPT_TYPE_LABELS[data.concept.type]}</div>
-        <div className="text-lg font-bold">{data.concept.label}</div>
+        <div className="text-lg font-semibold">{data.concept.label}</div>
         <p className="mt-1 text-sm text-muted">{data.concept.shortDefinition}</p>
       </div>
       <Column title="Na co pojem působí" items={data.effects} arrow="out" />

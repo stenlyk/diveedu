@@ -38,7 +38,8 @@ export default defineConfig({
         // Jádro: kód, styly, text, otázky, graf, matematické fonty. Média se cachují až po stažení balíčku.
         // Manifest zvuku je malý a musí být offline, aby aplikace věděla, které soubory hledat ve staženém balíčku.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}', 'media-manifest.json'],
-        globIgnores: ['media/**'],
+        // Rodiny písem KaTeX, které obsah nepoužívá, a cizí abecedy písma Inter se do jádra nebalí (načtou se ze sítě, kdyby byly někdy potřeba).
+        globIgnores: ['media/**', '**/KaTeX_{Caligraphic,Script,SansSerif,Fraktur,Typewriter}-*.woff2', '**/inter-{cyrillic,cyrillic-ext,greek,greek-ext,vietnamese}-*.woff2'],
         navigateFallback: `${base}index.html`,
         cleanupOutdatedCaches: true,
         runtimeCaching: [

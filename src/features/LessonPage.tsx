@@ -49,20 +49,20 @@ export function LessonPage() {
 
   return (
     <article className="pb-24 md:pb-0">
-      <nav className="text-sm text-muted"><Link to="/uceni" className="underline underline-offset-4">Učení</Link> › {module?.title}</nav>
-      <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{lesson.title}</h1>
+      <nav className="label-ui"><Link to="/uceni" className="hover:text-text">Učení</Link> › {module?.title}</nav>
+      <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{lesson.title}</h1>
       {lesson.needs_review && <div className="mt-2"><ReviewBadge /></div>}
 
-      <ol className="mt-4 flex gap-1.5" aria-label="Části lekce">
+      <ol className="mt-4 flex gap-1" aria-label="Části lekce">
         {LESSON_SECTIONS.map((name, i) => (
           <li key={name} className="flex-1">
             <button type="button" onClick={() => goTo(i)} aria-label={`${i + 1}. ${SECTION_TITLES[name]}`} aria-current={i === index ? 'step' : undefined} className="block h-11 w-full">
-              <span className={`block h-1.5 rounded-full ${i === index ? 'bg-accent' : i < index ? 'bg-accent/45' : 'bg-border'}`} />
+              <span className={`block h-1 rounded-[2px] ${i === index ? 'bg-accent' : i < index ? 'bg-ok' : 'bg-surface-3'}`} />
             </button>
           </li>
         ))}
       </ol>
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-accent">{index + 1} / {LESSON_SECTIONS.length} · {SECTION_TITLES[active]}</h2>
+      <h2 className="font-mono text-xs font-medium uppercase tracking-wider text-accent">{index + 1} / {LESSON_SECTIONS.length} · {SECTION_TITLES[active]}</h2>
 
       <div className="mt-4 min-h-[40dvh]">
         {failed && <p className="text-danger">Lekci se nepodařilo načíst.</p>}
@@ -84,7 +84,7 @@ export function LessonPage() {
       </div>
 
       {/* Na mobilu přilepeno nad spodní navigací, v dosahu palce. */}
-      <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-10 flex gap-3 border-t border-border bg-bg/95 px-4 py-3 backdrop-blur md:static md:mt-8 md:border-0 md:bg-transparent md:p-0">
+      <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-10 flex gap-3 border-t border-border bg-surface px-4 py-3 md:static md:mt-8 md:border-0 md:bg-transparent md:p-0">
         <Button variant="secondary" className="flex-1 md:flex-none" disabled={index === 0} onClick={() => goTo(index - 1)}>Zpět</Button>
         {isLast ? (
           <Link to="/uceni" onClick={complete} className="inline-flex min-h-12 flex-[2] items-center justify-center rounded-xl bg-accent px-5 font-semibold text-accent-ink md:flex-none">Dokončit lekci</Link>

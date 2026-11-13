@@ -22,11 +22,11 @@ function DepthPressure() {
         <dl className="grid grid-cols-2 gap-3 text-center">
           <div className="rounded-xl bg-surface-2 p-3">
             <dt className="text-xs text-muted">Absolutní tlak</dt>
-            <dd className="text-2xl font-bold tabular-nums" data-testid="toy-pressure">{formatCs(pressure, 1)} bar</dd>
+            <dd className="text-2xl font-semibold tabular-nums" data-testid="toy-pressure">{formatCs(pressure, 1)} bar</dd>
           </div>
           <div className="rounded-xl bg-surface-2 p-3">
             <dt className="text-xs text-muted">Balonek 10 l z hladiny</dt>
-            <dd className="text-2xl font-bold tabular-nums">{formatCs(volume, 1)} l</dd>
+            <dd className="text-2xl font-semibold tabular-nums">{formatCs(volume, 1)} l</dd>
           </div>
         </dl>
         <p className="text-sm text-muted">

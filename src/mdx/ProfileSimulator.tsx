@@ -85,7 +85,7 @@ export function ProfileSimulator() {
     <div className="space-y-5" data-testid="profile-sim">
       <Disclaimer kind="deco" />
       <div className="flex flex-wrap gap-2" aria-label="Připravené ponory">
-        {PRESETS.map((preset) => <button key={preset.label} type="button" onClick={() => applyPreset(preset)} className="min-h-11 rounded-full border border-border px-4 text-sm hover:border-accent">{preset.label}</button>)}
+        {PRESETS.map((preset) => <button key={preset.label} type="button" onClick={() => applyPreset(preset)} className="min-h-11 rounded border border-border px-4 text-sm hover:border-accent">{preset.label}</button>)}
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -132,10 +132,10 @@ export function ProfileSimulator() {
                 <span>○ přepnutí plynu</span><span>červená plocha: nad stropem</span>
               </p>
               <dl className="mt-3 grid grid-cols-2 gap-2 text-center text-sm sm:grid-cols-4">
-                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Celkem</dt><dd className="text-lg font-bold tabular-nums" data-testid="profile-runtime">{formatCs(plan.runtimeMin, 0)} min</dd></div>
-                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Výstup</dt><dd className="text-lg font-bold tabular-nums">{formatCs(plan.ascentMin, 0)} min</dd></div>
-                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">CNS</dt><dd className="text-lg font-bold tabular-nums" data-testid="profile-cns">{analysis.cnsPercent === null ? 'mimo tabulku' : `${formatCs(analysis.cnsPercent, 0)} %`}</dd></div>
-                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">OTU</dt><dd className="text-lg font-bold tabular-nums">{formatCs(analysis.otu, 0)}</dd></div>
+                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Celkem</dt><dd className="text-lg font-semibold tabular-nums" data-testid="profile-runtime">{formatCs(plan.runtimeMin, 0)} min</dd></div>
+                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">Výstup</dt><dd className="text-lg font-semibold tabular-nums">{formatCs(plan.ascentMin, 0)} min</dd></div>
+                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">CNS</dt><dd className="text-lg font-semibold tabular-nums" data-testid="profile-cns">{analysis.cnsPercent === null ? 'mimo tabulku' : `${formatCs(analysis.cnsPercent, 0)} %`}</dd></div>
+                <div className="rounded-xl bg-surface-2 p-2"><dt className="text-xs text-muted">OTU</dt><dd className="text-lg font-semibold tabular-nums">{formatCs(analysis.otu, 0)}</dd></div>
               </dl>
               <div className={`mt-3 rounded-2xl border-2 p-3 ${analysis.issues.length === 0 ? 'border-ok' : 'border-danger'}`} role="status" data-testid="profile-issues">
                 {analysis.issues.length === 0 ? (

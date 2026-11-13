@@ -68,7 +68,7 @@ export function Diagram({ id, selected, locked, answer, onSelect }: { id: string
       <div className="mt-3 flex gap-2">
         {def.hotspots.map((hotspot) => (
           <button key={hotspot.id} type="button" disabled={locked} aria-pressed={hotspot.id === selected} aria-label={`Bod ${hotspot.id.toUpperCase()}`} onClick={() => onSelect(hotspot.id)}
-            className={`min-h-12 flex-1 rounded-xl border-2 text-lg font-bold ${locked ? (hotspot.id === answer ? 'border-ok text-ok' : hotspot.id === selected ? 'border-danger text-danger' : 'border-border opacity-60') : hotspot.id === selected ? 'border-accent text-accent' : 'border-border'}`}>
+            className={`min-h-12 flex-1 rounded-xl border-2 text-lg font-semibold ${locked ? (hotspot.id === answer ? 'border-ok text-ok' : hotspot.id === selected ? 'border-danger text-danger' : 'border-border opacity-60') : hotspot.id === selected ? 'border-accent text-accent' : 'border-border'}`}>
             {hotspot.id.toUpperCase()}
           </button>
         ))}

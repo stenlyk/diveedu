@@ -80,7 +80,7 @@ export function AnimationPlayer({ animation }: { animation: AnimationDef }) {
   return (
     <figure className="not-prose my-4 max-w-none" data-testid="animation" data-cue={position.cue}>
       <Scene cue={position.cue} p={position.p} />
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-border" aria-hidden="true"><div className="h-1.5 bg-accent" style={{ width: `${(time / timeline.duration) * 100}%` }} /></div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-[2px] bg-border" aria-hidden="true"><div className="h-1.5 bg-accent" style={{ width: `${(time / timeline.duration) * 100}%` }} /></div>
       <figcaption className="mt-3 min-h-[4.5rem] text-base leading-relaxed" data-testid="animation-caption">{animation.cues[position.cue]}</figcaption>
       <div className="mt-2 grid grid-cols-3 gap-2">
         <button type="button" aria-label="Předchozí věta" disabled={position.cue === 0 && time === 0} onClick={() => jump(position.p > 0.15 || position.cue === 0 ? position.cue : position.cue - 1)} className="min-h-14 rounded-xl border-2 border-border text-2xl disabled:opacity-40">⏮</button>

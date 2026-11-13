@@ -131,7 +131,7 @@ function LocalGraph() {
               role="tab"
               aria-selected={id === conceptId}
               onClick={() => setConceptId(id)}
-              className={`min-h-11 rounded-full border px-4 text-sm ${id === conceptId ? 'border-accent bg-accent/15 text-text' : 'border-border text-muted'}`}
+              className={`min-h-11 rounded border px-4 text-sm ${id === conceptId ? 'border-accent bg-accent/15 text-text' : 'border-border text-muted'}`}
             >
               {conceptsById.get(id)?.label ?? id}
             </button>
