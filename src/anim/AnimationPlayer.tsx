@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { type AnimationAudio, loadManifest, mediaUrl } from '../audio/manifest';
+import { type AnimationAudio, loadManifest, audioUrl } from '../audio/manifest';
 import type { AnimationDef } from './defs';
 import { SCENES } from './scenes';
 import { positionAt, recordedTimeline } from './timing';
@@ -52,7 +52,7 @@ export function AnimationPlayer({ animation }: { animation: AnimationDef }) {
     clock.current = { started: performance.now(), offset: from };
     setTime(from);
     if (recording) {
-      const element = new Audio(mediaUrl(recording.file));
+      const element = new Audio(audioUrl(recording));
       element.currentTime = from;
       try {
         await element.play();

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { loadManifest, mediaUrl } from './manifest';
+import { loadManifest, audioUrl } from './manifest';
 import { lessonSpeech } from './pronounce';
 
 export type PlayerStatus = 'idle' | 'loading' | 'playing' | 'paused';
@@ -54,7 +54,7 @@ export function useSummaryPlayer(onEnded?: () => void) {
     if (run.current !== id) return;
     const entry = manifest.files.find((file) => file.lessonId === lesson.id);
     if (!entry) { speak(lesson, id); return; }
-    const element = new Audio(mediaUrl(entry.file));
+    const element = new Audio(audioUrl(entry));
     element.playbackRate = rateRef.current;
     element.preload = 'auto';
     audio.current = element;

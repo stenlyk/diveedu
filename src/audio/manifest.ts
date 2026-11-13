@@ -83,6 +83,12 @@ export function parseManifest(value: unknown): AudioManifest {
 
 export const mediaUrl = (file: string): string => `${import.meta.env.BASE_URL}${file}`;
 
+/**
+ * Adresa nahrávky včetně otisku obsahu. Soubory mají stálá jména a service worker je drží v mezipaměti natrvalo;
+ * bez otisku v adrese by po přegenerování hrál starou verzi.
+ */
+export const audioUrl = (entry: { file: string; hash: string }): string => `${mediaUrl(entry.file)}?v=${encodeURIComponent(entry.hash)}`;
+
 let pending: Promise<AudioManifest> | null = null;
 
 /** Manifest se načte jednou za běh aplikace. Bez sítě a bez precache vrátí prázdný – aplikace pak čte systémovým hlasem. */
