@@ -477,3 +477,7 @@ První ze čtyř průřezových modulů ze zadání. Zvolen jako první, protož
 - **Velikost:** text a obsah narostly na 1,16 MB, celkem 2,51 MB z rozpočtu 3 MB. Dva zbývající průřezové moduly se ještě vejdou, další rozšiřování bude chtít rozpočet přehodnotit nebo obsah načítat po modulech.
 - Zbývají průřezové moduly Fyziologie a medicína a Vybavení.
 
+### Dodatek: zvuk je součástí repozitáře (2026-11-13)
+
+Původně byl vygenerovaný zvuk mimo git. Na přání uživatele je `public/media` i `public/media-manifest.json` v repozitáři a nasazuje se jako statické soubory (99 souborů MP3, 33,5 MB). Dřívější poznámky „výstup není v gitu“ v sekcích 24–25 už neplatí. Po změně textu shrnutí nebo výkladu je třeba spustit `npm run tts` a nové soubory commitnout; build na to sám neupozorní.
+

@@ -61,7 +61,7 @@ Dva zdroje hlasu:
 
 Stejný příkaz namlouvá i animované výklady (`src/anim/defs.ts`) a ukládá k nim začátek každé věty.
 
-Výstup není v gitu. Bez něj aplikace funguje dál a shrnutí čte systémový hlas zařízení.
+Nahrávky (`public/media`) a jejich manifest jsou uložené v gitu a nasazují se jako statické soubory; generovat je znovu je potřeba jen po změně textu shrnutí nebo výkladu. Generátor nezměněné texty přeskakuje.
 Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`; nová zkratka v názvu nebo shrnutí lekce bez záznamu ve slovníku zastaví build.
 
 ## Nasazení (Cloudflare Pages)
@@ -69,7 +69,6 @@ Zkratky se čtou podle slovníku v `src/audio/pronounce.ts`; nová zkratka v ná
 ```bash
 npx wrangler login                                   # jednorázově, otevře prohlížeč
 npx wrangler pages project create diveedu --production-branch main   # jednorázově
-npm run tts                                          # zvuková shrnutí; bez nich se nasadí verze bez nahraného hlasu
 npm run deploy
 ```
 

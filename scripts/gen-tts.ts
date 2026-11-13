@@ -19,7 +19,8 @@
  * Kromě shrnutí lekcí se namlouvají animované výklady (src/anim/defs.ts) do public/media/animace; u nich se ukládá
  * i začátek každé věty, podle kterého aplikace řídí scénu a titulky.
  *
- * Čtený text prochází slovníkem výslovnosti (src/audio/pronounce.ts). Výstup není v gitu.
+ * Čtený text prochází slovníkem výslovnosti (src/audio/pronounce.ts). Výstup se ukládá do gitu jako statické soubory;
+ * po změně textu shrnutí nebo výkladu spusť generátor znovu a nové soubory commitni.
  */
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
