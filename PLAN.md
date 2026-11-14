@@ -527,3 +527,13 @@ Podklad: export ze Stitch „Technical Precision Instrument“ (DESIGN.md a čty
 - K ověření zvlášť: výčet projevů DCS a jejich časování, doporučení společného stanoviska k PFO (komu vyšetření, jaká konzervativní opatření), rizikové faktory a postup u IPE, rozlišení AGE a DCS, průtok 15 l/min u masky s rezervoárem, pití tekutin jako první pomoc, prevalence PFO v pitevní studii.
 - Aplikace dává obecné poučení, ne lékařskou radu; text to říká u způsobilosti a návratu po nemoci, ale lékař má posoudit, jestli je to dost zřetelné.
 - **Velikost:** celkem 2,74 MB z 3 MB, kód 1,43 MB z 1,5 MB. Další obsah bude chtít načítání po modulech.
+
+## 31. Jednotná hlasitost nahrávek (2026-11-14)
+
+- **Problém:** nahrávky z ElevenLabs měly integrovanou hlasitost od −35,0 do −18,7 LUFS (rozptyl 16,3 LU). Při poslechu za sebou musel posluchač u každé lekce měnit hlasitost.
+- **Řešení bez nového generování přes API:** `npm run audio:normalize` (`scripts/normalize-audio.ts`, `scripts/lib/loudness.ts`) změří každý soubor filtrem `loudnorm` (EBU R128), zesílí ho na −16 LUFS a limiterem na čtyřnásobném vzorkování ořízne krátké špičky nad −1,5 dBTP. Výsledek se změří; při odchylce se kóduje znovu z originálu s opraveným zesílením a stropem, takže zvuk projde kodérem jen jednou. Formát zůstává MP3, 44,1 kHz, mono, 64 kb/s.
+- **Výsledek:** −16,3 až −16,0 LUFS (rozptyl 0,3 LU), špička nejvýš −1,5 dBTP, délky beze změny (odchylka do 0,12 s, časování animací sedí). Opakované spuštění nic nepřekóduje: soubory v toleranci 1 LU se nechávají být.
+- **Nové nahrávky** se normalizují automaticky v `npm run tts` hned po stažení.
+- **Mezipaměť:** manifest nese u každé nahrávky otisk obsahu (`audio`) a adresa souboru ho používá místo otisku textu. Po normalizaci tak aplikace i service worker stáhnou novou verzi; stažené zvukové balíčky se po aktualizaci aplikace ukážou jako nestažené a je třeba je stáhnout znovu.
+- Normalizace potřebuje lokálně `ffmpeg`; build ani CI ho nepotřebují.
+- Cíl −16 LUFS odpovídá běžnému doporučení pro řeč poslouchanou na mobilu. Kdo by chtěl tišší, změní `LOUDNESS_TARGET` a spustí příkaz znovu z původních souborů (git).

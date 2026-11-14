@@ -21,6 +21,7 @@
     "e2e": "playwright test",
     "icons": "node scripts/gen-icons.mjs",
     "tts": "npm run content && tsx scripts/gen-tts.ts",
+    "audio:normalize": "tsx scripts/normalize-audio.ts",
     "check": "npm run lint && npm run typecheck && npm run test:coverage && npm run build && npm run e2e",
     "deploy": "npm run build && wrangler pages deploy dist --project-name diveedu --branch main"
   },

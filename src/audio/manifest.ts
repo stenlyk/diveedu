@@ -8,6 +8,8 @@ export interface AudioFile {
   seconds: number;
   /** Otisk čteného textu; generátor podle něj pozná, co je třeba přegenerovat. */
   hash: string;
+  /** Otisk obsahu souboru; mění se i při úpravě zvuku beze změny textu (např. normalizace hlasitosti). */
+  audio?: string;
 }
 
 /** Namluvený animovaný výklad: jeden soubor a začátky jednotlivých vět. */
@@ -18,6 +20,7 @@ export interface AnimationAudio {
   bytes: number;
   seconds: number;
   hash: string;
+  audio?: string;
   /** Začátek každé věty v sekundách; řídí kroky scény a titulky. */
   cues: number[];
 }
@@ -50,7 +53,7 @@ export function packsOf(manifest: AudioManifest, lessons: readonly { id: string;
   }
   // Zvuk animovaných výkladů patří do balíčku svého modulu.
   for (const animation of manifest.animations) {
-    const entry: AudioFile = { lessonId: `animace:${animation.id}`, file: animation.file, bytes: animation.bytes, seconds: animation.seconds, hash: animation.hash };
+    const entry: AudioFile = { lessonId: `animace:${animation.id}`, file: animation.file, bytes: animation.bytes, seconds: animation.seconds, hash: animation.hash, audio: animation.audio };
     byModule.set(animation.moduleId, [...(byModule.get(animation.moduleId) ?? []), entry]);
   }
   return moduleOrder.flatMap((moduleId) => {
@@ -87,7 +90,7 @@ export const mediaUrl = (file: string): string => `${import.meta.env.BASE_URL}${
  * Adresa nahrávky včetně otisku obsahu. Soubory mají stálá jména a service worker je drží v mezipaměti natrvalo;
  * bez otisku v adrese by po přegenerování hrál starou verzi.
  */
-export const audioUrl = (entry: { file: string; hash: string }): string => `${mediaUrl(entry.file)}?v=${encodeURIComponent(entry.hash)}`;
+export const audioUrl = (entry: { file: string; hash: string; audio?: string }): string => `${mediaUrl(entry.file)}?v=${encodeURIComponent(entry.audio ?? entry.hash)}`;
 
 let pending: Promise<AudioManifest> | null = null;
 

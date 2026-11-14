@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EMPTY_MANIFEST, formatBytes, formatDuration, packsOf, parseManifest } from './manifest';
+import { audioUrl, EMPTY_MANIFEST, formatBytes, formatDuration, packsOf, parseManifest } from './manifest';
 import { buildPlaylist, nextRate, step } from './playlist';
 
 const modules = [{ id: 'b', title: 'Druhý', order: 2 }, { id: 'a', title: 'První', order: 1 }];
@@ -55,5 +55,18 @@ describe('manifest', () => {
     expect(parseManifest({ voice: 1, files: [file('a1', 1, 1), { lessonId: 'bez-souboru' }, null] })).toEqual({ voice: '', generatedAt: '', files: [file('a1', 1, 1)], animations: [] });
     const animation = { id: 'x', moduleId: 'm', file: 'f', bytes: 1, seconds: 1, hash: 'h', cues: [0, 0.5] };
     expect(parseManifest({ voice: 'Zuzana', generatedAt: '2026', files: [], animations: [animation, { id: 'bez-vet', moduleId: 'm', file: 'f', bytes: 1, seconds: 1 }, { ...animation, cues: ['a'] }] })).toEqual({ voice: 'Zuzana', generatedAt: '2026', files: [], animations: [animation] });
+  });
+});
+
+describe('adresa nahrávky', () => {
+  it('nese otisk obsahu, aby po normalizaci nehrála stará verze z mezipaměti', () => {
+    expect(audioUrl({ file: 'media/a.mp3', hash: 'text1', audio: 'zvuk1' })).toMatch(/media\/a\.mp3\?v=zvuk1$/);
+  });
+  it('bez otisku obsahu použije otisk textu (starší manifest)', () => {
+    expect(audioUrl({ file: 'media/a.mp3', hash: 'text1' })).toMatch(/\?v=text1$/);
+  });
+  it('balíček převezme otisk obsahu i u animovaného výkladu', () => {
+    const manifest = { ...EMPTY_MANIFEST, animations: [{ id: 'x', moduleId: 'm', file: 'media/x.mp3', bytes: 1, seconds: 1, hash: 'h', audio: 'a', cues: [0] }] };
+    expect(packsOf(manifest, [], ['m'])[0]!.files[0]!.audio).toBe('a');
   });
 });

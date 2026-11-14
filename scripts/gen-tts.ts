@@ -33,6 +33,7 @@ import { proportionalStarts, startsFromCharacters } from '../src/anim/timing';
 import { type AnimationAudio, type AudioFile, type AudioManifest, EMPTY_MANIFEST, parseManifest } from '../src/audio/manifest';
 import { lessonSpeech, toSpeech } from '../src/audio/pronounce';
 import type { Content } from '../src/content/schema';
+import { audioHash, normalizeLoudness } from './lib/loudness';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -190,10 +191,11 @@ for (const job of jobs) {
   try {
     mkdirSync(dirname(job.target), { recursive: true });
     const seconds = await provider.synthesize(job.text, job.target);
+    if (job.target.endsWith('.mp3')) normalizeLoudness(job.target);
     const old = known.get(job.lessonId);
     // Po změně hlasu má soubor jinou příponu; starý by v balíčku zůstal ležet.
     if (old && old.file !== job.file) rmSync(join(root, 'public', old.file), { force: true });
-    done.push({ lessonId: job.lessonId, file: job.file, bytes: statSync(job.target).size, seconds: Math.round(seconds * 10) / 10, hash: job.hash });
+    done.push({ lessonId: job.lessonId, file: job.file, bytes: statSync(job.target).size, seconds: Math.round(seconds * 10) / 10, hash: job.hash, audio: audioHash(job.target) });
     console.log(`  ${job.lessonId} · ${seconds.toFixed(0)} s`);
   } catch (error) {
     failure = error;
@@ -206,10 +208,11 @@ for (const job of failure ? [] : animationJobs) {
   try {
     mkdirSync(dirname(job.target), { recursive: true });
     const timed = provider.synthesizeTimed ? await provider.synthesizeTimed(job.text, job.target) : { seconds: await provider.synthesize(job.text, job.target), characterStarts: null };
+    if (job.target.endsWith('.mp3')) normalizeLoudness(job.target);
     const cues = (timed.characterStarts && startsFromCharacters(job.spoken, timed.characterStarts)) ?? proportionalStarts(job.spoken, timed.seconds);
     const old = knownAnimations.get(job.id);
     if (old && old.file !== job.file) rmSync(join(root, 'public', old.file), { force: true });
-    doneAnimations.push({ id: job.id, moduleId: job.moduleId, file: job.file, bytes: statSync(job.target).size, seconds: Math.round(timed.seconds * 10) / 10, hash: job.hash, cues });
+    doneAnimations.push({ id: job.id, moduleId: job.moduleId, file: job.file, bytes: statSync(job.target).size, seconds: Math.round(timed.seconds * 10) / 10, hash: job.hash, audio: audioHash(job.target), cues });
     console.log(`  výklad ${job.id} · ${timed.seconds.toFixed(0)} s · ${timed.characterStarts ? 'časové značky z hlasu' : 'časování odhadem'}`);
   } catch (error) {
     failure = error;
