@@ -91,3 +91,13 @@
 - { cs: panika, en: panic, definition: 'Ztráta kontroly nad jednáním pod vlivem stresu.' }
 - { cs: checklist, en: checklist, definition: 'Krátký seznam kritických kroků.' }
 - { cs: tlak na dokončení, en: goal fixation / plan continuation bias, definition: 'Sklon pokračovat v plánu, i když důvody ke zrušení přibývají.' }
+- { cs: dlouhá hadice, en: long hose, definition: 'Hadice hlavní automatiky dlouhá asi dva metry; při nouzi se podává partnerovi.' }
+- { cs: první stupeň, en: first stage, definition: 'Část regulátoru na ventilu lahve, která snižuje tlak z lahve na střední tlak.' }
+- { cs: střední tlak, en: intermediate pressure, definition: 'Tlak v hadicích mezi prvním stupněm a automatikou; zhruba deset barů nad okolním tlakem.' }
+- { cs: DIN ventil, en: DIN valve, definition: 'Ventil se závitem, do kterého se první stupeň zašroubuje; těsnicí kroužek je uzavřený uvnitř.', pronunciation: dín ventil }
+- { cs: dekompresní počítač, en: dive computer, definition: 'Přístroj, který z hloubky a času počítá dekompresní model.' }
+- { cs: záložní počítač, en: backup computer, definition: 'Druhý nezávislý zdroj hloubky a času pro případ, že hlavní počítač selže.' }
+- { cs: suchý oblek, en: drysuit, definition: 'Nepromokavý oblek; izoluje vrstva plynu v podobleku.' }
+- { cs: argonová lahev, en: argon bottle, definition: 'Malá lahev s argonem pro plnění suchého obleku; neobsahuje kyslík a nesmí se z ní dýchat.' }
+- { cs: vyvážení, en: weighting, definition: 'Množství zátěže, se kterým potápěč na konci ponoru udrží poslední zastávku.' }
+- { cs: křídlo, en: wing, definition: 'Vztlakový vak na zádech technického potápěče.' }

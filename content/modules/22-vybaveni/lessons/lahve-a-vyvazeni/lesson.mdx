@@ -1,0 +1,90 @@
+<Hook>
+
+Na začátku ponoru máš v křídle trochu plynu a všechno sedí. Na poslední zastávce ve třech metrech je křídlo prázdné – a stejně tě to táhne nahoru.
+
+Nic se nepokazilo. Jen jsi vydýchal pět kilo.
+
+</Hook>
+
+<Principle>
+
+Plyn má hmotnost. Plné dvojče 2×12 l nese několik kilogramů vzduchu a během ponoru je vydýcháš.
+Potápěč je proto **na konci ponoru lehčí než na začátku** – o hmotnost plynu, který prošel plícemi.
+
+**<Term cs="vyvážení" /> se kontroluje na konci, ne na začátku.** Zátěž musí být taková, abys s téměř prázdnými lahvemi a prázdným křídlem udržel poslední zastávku.
+Na začátku ponoru tu hmotnost navíc vyrovnáš plynem v křídle.
+
+**Materiál lahví:**
+
+- **Ocelové lahve** jsou ve vodě záporné i prázdné. Dobré pro dvojče na zádech: nesou část zátěže.
+- **Hliníkové lahve** jsou plné lehce záporné, prázdné lehce kladné. Proto se jako stage nosí po stranách: jejich vztlak se během ponoru mění jen málo kolem nuly.
+- Odložením nebo vydýcháním stage se vyvážení mění. Počítá se s tím už při plánu.
+
+**<Term cs="křídlo" />** musí unést nejhorší okamžik ponoru:
+
+- začátek ponoru s plnými lahvemi a stagemi,
+- plus zmačkaný podoblek a oblek v hloubce,
+- plus případnou ztrátu plynu v obleku.
+
+Víc než nutné ale není lepší. Velké křídlo s malým množstvím plynu se špatně ovládá a vytváří odpor.
+
+**Zátěž:** jen tolik, kolik je potřeba. Každý kilogram navíc se musí vyrovnat plynem v křídle, který se při výstupu rozpíná a musí se vypouštět.
+Část zátěže by se měla dát odhodit, nebo musí být jisté, že potápěč s výstrojí vyplave i bez plynu v křídle – například s pomocí obleku.
+Jak to vyřešit pro konkrétní výstroj, je otázka pro instruktora a zkoušku ve vodě.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="archimedes" />
+
+Vztlak je rozdíl mezi tíhou vytlačené vody a tíhou potápěče s výstrojí. Plyn v lahvích je součástí té tíhy, a proto se během ponoru mění.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Dvojče 2×12 l naplněné na 230 bar nese vzduch o hmotnosti:
+
+<Worked fn="gasMassKg" args={[24, 230]} expected={7.11} tolerance={0.05} unit="kg" decimals={1} />
+
+Na konci ponoru, při 50 bar, zbývá:
+
+<Worked fn="gasMassKg" args={[24, 50]} expected={1.55} tolerance={0.05} unit="kg" decimals={1} />
+
+Potápěč je o <Calc fn="gasMassKg" args={[24, 180]} decimals={1} unit="kg" /> lehčí. Hliníková stage 11,1 l naplněná na 200 bar k tomu přidá dalších
+<Calc fn="gasMassKg" args={[11.1, 200]} decimals={1} unit="kg" />, pokud ji vydýcháš.
+
+Kdo se vyváží na začátku ponoru bez plynu v křídle, bude mít na poslední zastávce o tolik kilogramů víc vztlaku, než dokáže udržet. Kontroluje se proto na konci.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="buoyancy" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hlinikova-osmdesatka" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

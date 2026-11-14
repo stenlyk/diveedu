@@ -1,0 +1,273 @@
+- id: konf-zasada
+  type: choice
+  conceptIds: [konfigurace]
+  difficulty: 1
+  prompt: Podle jaké otázky se skládá technická konfigurace?
+  options:
+    - { text: 'Co se stane, když tahle věc selže, a kdo ji v tu chvíli bude ovládat?', correct: true }
+    - { text: 'Co je nejmodernější a nejlehčí?', explanation: 'Novinka nebo nízká hmotnost nic neříká o tom, co se stane při poruše.' }
+    - { text: 'Co nejvíc vyhovuje mému pohodlí na hladině?', explanation: 'Na hladině je klid. Výstroj se posuzuje podle nejhoršího okamžiku pod vodou.' }
+    - { text: 'Co doporučí prodejce?', explanation: 'Konfigurace se odvozuje z poruch a z týmu, ne z nabídky obchodu.' }
+  explanation: 'Každá věc má důvod a stálé místo; výstroj musí být čitelná i pro partnera.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-proc-stejne
+  type: why
+  conceptIds: [konfigurace]
+  difficulty: 2
+  prompt: Proč je důležité, aby tým používal stejnou konfiguraci?
+  options:
+    - { text: 'Nouze přichází k týmu ve chvíli, kdy nikdo nemá kapacitu přemýšlet; co je stejné, se nemusí vymýšlet.', correct: true }
+    - { text: 'Kvůli vzhledu na fotkách.', explanation: 'Jde o čitelnost výstroje při nouzi, ne o vzhled.' }
+    - { text: 'Protože jedna konfigurace je jediná správná na světě.', explanation: 'Školy se liší. Důležité je, aby tým používal stejnou.' }
+    - { text: 'Aby se dala výstroj půjčovat.', explanation: 'To je vedlejší výhoda, ne důvod.' }
+  explanation: 'Standardní konfigurace přesouvá rozhodování z hloubky na břeh.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-dlouha-hadice
+  type: choice
+  conceptIds: [dlouha-hadice, sdileni-plynu]
+  difficulty: 1
+  prompt: Partner nemá plyn. Kterou automatiku mu podáš v konfiguraci s dlouhou hadicí?
+  options:
+    - { text: 'Tu, ze které právě dýchám, na dlouhé hadici', correct: true }
+    - { text: 'Záložní automatiku pod bradou', explanation: 'Tu si nechávám pro sebe. Partner dostane automatiku, o které víme, že funguje a dodává plyn.' }
+    - { text: 'Žádnou, ukážu mu, ať vystoupá', explanation: 'Potápěč bez plynu potřebuje plyn hned.' }
+    - { text: 'Tu, kterou si sám vybere', explanation: 'Ve stresu se nevybírá. Postup musí být dohodnutý předem.' }
+  explanation: 'Automatika, ze které dýchám, prokazatelně funguje. Sám přejdu na záložní pod bradou.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-rozmisteni
+  type: multi
+  conceptIds: [konfigurace]
+  difficulty: 1
+  prompt: Které zásady platí pro rozmístění výstroje?
+  options:
+    - { text: 'Každá věc má jedno stálé místo', correct: true }
+    - { text: 'Nic nevisí volně pod tělem', correct: true }
+    - { text: 'Partner ví, kde mám záložní světlo a jak mi zavřít ventil', correct: true }
+    - { text: 'Čím víc karabin, tím víc možností', explanation: 'Každá karabina navíc je místo, kde se zachytí šňůra, a věc, kterou je třeba ve stresu najít.' }
+  explanation: 'Ruka musí najít věc bez očí, v rukavicích a ve tmě.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-rock-bottom
+  type: numeric
+  conceptIds: [konfigurace, dlouha-hadice, minimum-gas]
+  difficulty: 2
+  prompt: 'Ponor do {depth} m, oba potápěči mají v klidu spotřebu {sac} l/min. Kolik litrů musí zůstat v lahvích, aby dva vystoupali z jedné zásoby (rock bottom)?'
+  template: { fn: rockBottomLiters, params: { depth: { values: [30, 40, 50] }, sac: { values: [15, 20, 25] } }, args: [depth, sac], tolerance: 5, unit: l, decimals: 0 }
+  explanation: 'Rezerva pro dva platí jen tehdy, když konfigurace dovolí plyn předat bez hledání.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-chyby
+  type: findError
+  conceptIds: [konfigurace, dlouha-hadice]
+  difficulty: 2
+  prompt: Které věty popisují chybu v konfiguraci?
+  items:
+    - { text: 'Manometr visí volně pod tělem, aby byl dobře vidět.', isError: true, explanation: 'Volně visící manometr ničí dno a zachytává se. Připíná se.' }
+    - { text: 'Každý v týmu má dlouhou hadici na jiné straně, podle toho, jak se mu to líbí.', isError: true, explanation: 'Partner musí vědět, odkud automatiku dostane.' }
+    - { text: 'Záložní automatika visí na gumičce pod bradou.' }
+    - { text: 'Druhou cívku nosím „pro jistotu“, ale nikdy jsem neřešil, kde ji mám.', isError: true, explanation: 'Věc bez stálého místa ve stresu nenajdeš.' }
+  explanation: 'Každá věc má důvod a stálé místo a tým používá stejné rozložení.'
+  backToLessonId: konfigurace-a-standard
+
+- id: konf-podani
+  type: order
+  conceptIds: [dlouha-hadice, sdileni-plynu]
+  difficulty: 2
+  prompt: Seřaď podání plynu v konfiguraci s dlouhou hadicí.
+  items:
+    - 'Vyndám z úst automatiku na dlouhé hadici a podám ji partnerovi'
+    - 'Přejdu na záložní automatiku pod bradou'
+    - 'Uvolním dlouhou hadici, aby mohl partner plavat vedle mě'
+    - 'Zastavíme, zklidníme dech a domluvíme výstup'
+  explanation: 'Partner dostane plyn okamžitě. Teprve pak se řeší hadice a další postup.'
+  backToLessonId: konfigurace-a-standard
+
+- id: reg-prvni-stupen
+  type: match
+  conceptIds: [prvni-stupen]
+  difficulty: 1
+  prompt: Přiřaď část regulátoru k tomu, co dělá.
+  pairs:
+    - { left: První stupeň, right: Sníží tlak z lahve na střední tlak }
+    - { left: Automatika, right: Sníží střední tlak na okolní a otevře se při nádechu }
+    - { left: Vysokotlaký výstup, right: Vede tlak z lahve k manometru }
+    - { left: Středotlaká hadice, right: Vede plyn k automatice a inflátoru }
+  explanation: 'Regulátor snižuje tlak ve dvou krocích; střední tlak bývá zhruba deset barů nad okolním.'
+  backToLessonId: regulatory
+
+- id: reg-prutok
+  type: numeric
+  conceptIds: [prvni-stupen, absolutni-tlak]
+  difficulty: 2
+  prompt: 'Potápěč v hloubce {depth} m dýchá {sac} l/min (přepočteno na hladinu). Kolik litrů plynu z lahve musí regulátor dodat za minutu?'
+  template: { fn: gasConsumed, params: { sac: { values: [20, 25, 40, 50] }, depth: { values: [20, 30, 40, 50] } }, fixed: { time: 1 }, args: [sac, depth, time], tolerance: 1, unit: l, decimals: 0 }
+  explanation: 'Spotřeba krát absolutní tlak. Ve 40 m pětkrát víc než na hladině.'
+  backToLessonId: regulatory
+
+- id: reg-studena-voda
+  type: why
+  conceptIds: [prvni-stupen, free-flow]
+  difficulty: 2
+  prompt: Proč se ve studené vodě nemá zbytečně čistit automatika tlačítkem?
+  options:
+    - { text: 'Velký průtok prudce ochladí plyn v regulátoru a může vzniknout led, který ventil podrží otevřený.', correct: true }
+    - { text: 'Tlačítko se ve studené vodě zlomí.', explanation: 'Problém je led uvnitř, ne tlačítko.' }
+    - { text: 'Plyn v lahvi by zmrzl.', explanation: 'Plyn nezmrzne. Ochlazuje se při rozpínání a zmrznout může vlhkost v regulátoru.' }
+    - { text: 'Kvůli spotřebě plynu, jinak to nevadí.', explanation: 'Hlavní riziko je zamrznutí a samovolný průtok.' }
+  explanation: 'Plyn se při snížení tlaku ochlazuje; čím větší průtok, tím víc.'
+  backToLessonId: regulatory
+
+- id: reg-selze-otevreny
+  type: choice
+  conceptIds: [prvni-stupen, free-flow]
+  difficulty: 2
+  prompt: Jak se běžná automatika chová, když selže?
+  options:
+    - { text: 'Zůstane otevřená: plyn uniká, ale dýchat se z něj dá', correct: true }
+    - { text: 'Zavře se a nepustí žádný plyn', explanation: 'To by bylo horší. Konstrukce je záměrně taková, aby selhala do otevřeného stavu.' }
+    - { text: 'Začne dodávat plyn s vyšším obsahem kyslíku', explanation: 'Regulátor složení plynu nemění.' }
+    - { text: 'Vypne se a zapne po minutě', explanation: 'Regulátor nemá elektroniku ani časovač.' }
+  explanation: 'Nedostatek plynu je horší než jeho ztráta. Samovolný průtok se řeší zavřením ventilu a přechodem na druhou automatiku.'
+  backToLessonId: regulatory
+
+- id: reg-dva-z-jednoho
+  type: why
+  conceptIds: [prvni-stupen, dlouha-hadice]
+  difficulty: 2
+  prompt: Proč se regulátor vybírá podle nejhoršího okamžiku ponoru?
+  options:
+    - { text: 'V hloubce, při námaze a se dvěma potápěči na jednom prvním stupni se průtok mnohonásobně zvýší.', correct: true }
+    - { text: 'Protože se z něj v obchodě dýchá jinak.', explanation: 'Na hladině se dýchá lehce skoro z čehokoli. Rozhoduje hloubka a stres.' }
+    - { text: 'Kvůli záruce.', explanation: 'Důvodem je bezpečnost, ne záruka.' }
+    - { text: 'Protože nejhorší okamžik je na hladině.', explanation: 'Nejhorší okamžik je hluboko, ve stresu a při sdílení plynu.' }
+  explanation: 'Stres ve 40 m s 50 l/min znamená 250 l/min z lahve; dva potápěči dvojnásobek.'
+  backToLessonId: regulatory
+
+- id: reg-kontrola
+  type: multi
+  conceptIds: [prvni-stupen]
+  difficulty: 1
+  prompt: Co patří ke zkoušce regulátoru před ponorem?
+  options:
+    - { text: 'Nádech z každé automatiky', correct: true }
+    - { text: 'Po zavření ventilu se ručička manometru nehýbe', correct: true }
+    - { text: 'Inflátor plní a nepouští', correct: true }
+    - { text: 'Rozebrání prvního stupně', explanation: 'Rozebírá se v servisu, ne před ponorem.' }
+  explanation: 'Klesající manometr po zavření ventilu znamená únik.'
+  backToLessonId: regulatory
+
+- id: reg-vyvazeny
+  type: choice
+  conceptIds: [prvni-stupen]
+  difficulty: 2
+  prompt: Co znamená, že je první stupeň vyvážený?
+  options:
+    - { text: 'Drží stejný střední tlak bez ohledu na to, kolik je v lahvi', correct: true }
+    - { text: 'Je ve vodě neutrální', explanation: 'Vyvážení zde znamená tlak, ne vztlak.' }
+    - { text: 'Má stejně dlouhé hadice na obou stranách', explanation: 'Délka hadic s tím nesouvisí.' }
+    - { text: 'Je odolný proti studené vodě', explanation: 'To je utěsnění proti okolí, jiná vlastnost.' }
+  explanation: 'Z vyváženého prvního stupně se dýchá stejně na začátku i na konci ponoru.'
+  backToLessonId: regulatory
+
+- id: vent-din
+  type: why
+  conceptIds: [din-ventil]
+  difficulty: 1
+  prompt: Proč technické potápění používá DIN připojení, a ne třmen?
+  options:
+    - { text: 'Těsnicí kroužek je uzavřený v závitu a nemůže se vytlačit nárazem ani tlakem.', correct: true }
+    - { text: 'DIN je levnější.', explanation: 'Cena není důvod.' }
+    - { text: 'Třmen nejde použít se suchým oblekem.', explanation: 'Oblek s tím nesouvisí.' }
+    - { text: 'DIN dodává víc plynu za minutu.', explanation: 'Rozdíl je v těsnění a odolnosti, ne v průtoku.' }
+  explanation: 'U třmenu je kroužek přitlačený zvenku a třmen se snáz zachytí.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: vent-mista-uniku
+  type: multi
+  conceptIds: [unik-plynu, twinset]
+  difficulty: 2
+  prompt: Které úniky na dvojčeti NEzastavíš zavřením ventilu na své straně?
+  options:
+    - { text: 'Únik z hrdla lahve pod ventilem', correct: true }
+    - { text: 'Únik z mostu mezi lahvemi', correct: true }
+    - { text: 'Samovolný průtok automatiky', explanation: 'Ten je za ventilem ve směru k ústům; zavření ventilu ho zastaví.' }
+    - { text: 'Prasklá středotlaká hadice', explanation: 'Visí na prvním stupni; zavřením ventilu ji odstavíš.' }
+  explanation: 'Úniky za ventilem (hrdlo, vřeteno, most) zastaví jen izolátor.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: vent-kde-zavrit
+  type: match
+  conceptIds: [unik-plynu, din-ventil, prvni-stupen]
+  difficulty: 2
+  prompt: Přiřaď únik k ventilu, který ho zastaví.
+  pairs:
+    - { left: Samovolný průtok pravé automatiky, right: Pravý ventil }
+    - { left: Prasklá hadice manometru vlevo, right: Levý ventil }
+    - { left: Únik z mostu mezi lahvemi, right: Izolační ventil }
+    - { left: Únik z hrdla levé lahve, right: 'Izolační ventil; levou lahev ztratíš' }
+  explanation: 'Zavřením ventilu ztratíš vše, co na té straně visí. Izolátor zachrání jen nepoškozenou polovinu.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: vent-polovina
+  type: numeric
+  conceptIds: [unik-plynu, pravidlo-tretin]
+  difficulty: 2
+  prompt: 'V bodě otočky je v obou lahvích dvojčete 2×12 l {bar} bar. Zavřeš izolátor a levou lahev ztratíš. Kolik litrů ti zbude v pravé?'
+  template: { fn: barToLiters, params: { bar: { values: [120, 140, 160, 180] } }, fixed: { tank: 12 }, args: [bar, tank], tolerance: 1, unit: l, decimals: 0 }
+  explanation: 'Tlak krát objem jedné lahve. Pravidlo třetin počítá s tím, že tahle polovina stačí na cestu ven.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: vent-pred-ponorem
+  type: multi
+  conceptIds: [din-ventil, prvni-stupen]
+  difficulty: 1
+  prompt: Co zkontroluješ na ventilech a připojení před ponorem?
+  options:
+    - { text: 'Ventily i izolátor jsou otevřené', correct: true }
+    - { text: 'Těsnicí kroužky nejsou popraskané', correct: true }
+    - { text: 'Po zavření ventilů manometr stojí', correct: true }
+    - { text: 'DIN je dotažený klíčem co nejpevněji', explanation: 'Dotahuje se rukou do konce, ne silou. Kroužek těsní tlakem.' }
+  explanation: 'Zavřený izolátor bez důvodu znamená, že dýcháš jen z poloviny zásoby.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: vent-za-ventilem
+  type: why
+  conceptIds: [unik-plynu, pravidlo-tretin]
+  difficulty: 3
+  prompt: Proč nestačí, aby potápěč s dvojčetem nesl na cestu ven přesně polovinu zásoby, kterou má v bodě otočky?
+  options:
+    - { text: 'Po zavření izolátoru má jen jednu lahev a v ní musí být dost pro sebe; rezervu pro partnera nese partner ve svých lahvích.', correct: true }
+    - { text: 'Protože izolátor propouští.', explanation: 'Pokud funguje, nepropouští. Jde o rozdělení zásoby.' }
+    - { text: 'Protože na cestě ven nedýchá.', explanation: 'Dýchá, a ve stresu víc.' }
+    - { text: 'Stačí, rezerva není potřeba.', explanation: 'Bez rezervy první komplikace na cestě ven znamená nouzi.' }
+  explanation: 'Třetiny počítají se ztrátou poloviny zásoby v nejhorším bodě a s partnerem, který nese svou rezervu.'
+  backToLessonId: ventily-a-pripojeni
+
+- id: reg-stredni-tlak
+  type: choice
+  conceptIds: [prvni-stupen]
+  difficulty: 2
+  prompt: Proč je střední tlak nastavený jako zhruba deset barů NAD okolním tlakem, a ne jako pevné číslo?
+  options:
+    - { text: 'Aby automatika dostávala stejný tlakový rozdíl v každé hloubce a dýchala se stejně', correct: true }
+    - { text: 'Aby se v hloubce šetřil plyn', explanation: 'Spotřebu určuje dýchání a hloubka, ne nastavení stupně.' }
+    - { text: 'Kvůli manometru', explanation: 'Manometr je na vysokotlakém výstupu a ukazuje tlak v lahvi.' }
+    - { text: 'Je to náhoda konstrukce', explanation: 'Je to záměr: první stupeň vnímá okolní tlak a přičítá se k němu.' }
+  explanation: 'Kdyby byl střední tlak pevný, s hloubkou by se rozdíl zmenšoval a automatika by dýchala hůř.'
+  backToLessonId: regulatory
+
+- id: vent-izolator-zavreny
+  type: choice
+  conceptIds: [din-ventil, unik-plynu, twinset]
+  difficulty: 2
+  prompt: Před ponorem zjistíš, že izolační ventil dvojčete je zavřený. Co to znamená?
+  options:
+    - { text: 'Každá automatika dýchá jen ze své lahve a manometr ukazuje jen jednu z nich', correct: true }
+    - { text: 'Nic, izolátor se otevře sám tlakem', explanation: 'Neotevře. Musíš ho otevřít rukou.' }
+    - { text: 'Dvojče je bezpečnější, protože je rozdělené', explanation: 'Rozdělené dvojče znamená, že po poruše jedné strany ztratíš plyn, který jsi z ní nedýchal, a manometr lže o zásobě.' }
+    - { text: 'Dýchá se lépe', explanation: 'Dýchání to neovlivní. Ovlivní to dostupnost plynu.' }
+  explanation: 'Izolátor je před ponorem otevřený; zavírá se jen při úniku za ventilem.'
+  backToLessonId: ventily-a-pripojeni

@@ -1,0 +1,89 @@
+<Hook>
+
+Na hladině ti automatika dýchá lehce. Ve 40 m, po rychlém plavání proti proudu, se najednou musíš o každý nádech přetahovat.
+
+Automatika se nezměnila. Změnilo se, kolik plynu po ní chceš.
+
+</Hook>
+
+<Principle>
+
+Regulátor snižuje tlak ve dvou krocích.
+
+**<Term cs="první stupeň" />** na ventilu lahve sníží tlak z lahve (stovky barů) na <Term cs="střední tlak" /> – zhruba deset barů nad okolním tlakem.
+Ten pak vede hadicemi k automatikám, k inflátoru křídla a k suchému obleku. Vysokotlaký výstup vede jen k manometru.
+
+- **Vyvážený** první stupeň drží střední tlak stejný, ať je v lahvi 200 barů, nebo 30. Proto se z něj dýchá stejně na začátku i na konci ponoru.
+- **Uzavřený proti okolí** (environmentálně utěsněný) první stupeň nepouští vodu k vnitřním pružinám. Ve studené vodě je to ochrana proti zamrznutí.
+
+**Automatika (druhý stupeň)** u úst sníží střední tlak na okolní a otevře se jen při nádechu.
+Běžná konstrukce je taková, že když selže, **zůstane otevřená, ne zavřená**: plyn uniká volným proudem (free flow), ale dýchat se z něj dá.
+Selhání do otevřeného stavu je záměr – nedostatek plynu by byl horší než jeho ztráta.
+
+**Průtok roste s hloubkou.** Automatika musí při každém nádechu dodat objem plynu stlačený na okolní tlak.
+Ve 40 m je to pětkrát víc molekul na nádech než na hladině, a ty musí projít stejnými otvory a ventily.
+Když se k tomu přidá námaha nebo dva potápěči na jednom prvním stupni, nárok se znásobí.
+
+**Studená voda.** Plyn se při rozpínání v prvním stupni ochlazuje. Při velkém průtoku ve studené vodě může vzniknout led, který ventil podrží otevřený.
+Proto se do studené vody volí automatiky k tomu určené, zbytečně se nečistí tlačítkem a před ponorem se z nich nedýchá na mrazu.
+
+**Údržba** podle výrobce a zkouška před každým ponorem: střední tlak, dýchání z obou automatik, manometr se po zavření ventilu nehýbe.
+Konkrétní intervaly a hodnoty patří do návodu k regulátoru a na servisní kurz.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Stejný vzorec, který počítá spotřebu z lahve, říká i to, kolik plynu musí regulátor v hloubce za minutu protlačit.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Potápěč v klidu dýchá 25 l/min. Na hladině to pro regulátor znamená:
+
+<Worked fn="gasConsumed" args={[25, 0, 1]} expected={25} tolerance={0.1} unit="l/min" decimals={0} />
+
+Ve 40 m stejný potápěč:
+
+<Worked fn="gasConsumed" args={[25, 40, 1]} expected={125} tolerance={0.1} unit="l/min" decimals={0} />
+
+A při námaze nebo ve stresu, kdy dýchá 50 l/min:
+
+<Worked fn="gasConsumed" args={[50, 40, 1]} expected={250} tolerance={0.1} unit="l/min" decimals={0} />
+
+Když se ve stresu dělí o plyn dva, jde jedním prvním stupněm i dvojnásobek. Proto se regulátor vybírá podle nejhoršího okamžiku ponoru, ne podle toho, jak se z něj dýchá v obchodě.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="consumption" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="free-flow-zima" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

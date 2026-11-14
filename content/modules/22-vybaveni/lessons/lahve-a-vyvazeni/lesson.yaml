@@ -1,0 +1,18 @@
+id: lahve-a-vyvazeni
+moduleId: vybaveni
+title: "Lahve, křídlo a vyvážení"
+order: 6
+conceptIds: ["vyvazeni", "kridlo", "vztlak", "stage-lahev"]
+checkQuestionIds: ["vyv-hmotnost-plynu", "vyv-kdy-kontrolovat", "vyv-hlinik", "vyv-kridlo", "vyv-zatez"]
+estimatedMinutes: 10
+audioSummary: >-
+  Plyn má hmotnost. Z plného dvojčete vydýcháš během ponoru několik kilogramů, a proto jsi na konci lehčí.
+  Vyvážení se kontroluje na konci ponoru. S téměř prázdnými lahvemi a prázdným křídlem musíš udržet poslední zastávku.
+  Ocelové lahve jsou záporné i prázdné. Hliníkové jsou prázdné lehce kladné, proto se hodí jako stage.
+  Křídlo musí unést nejhorší okamžik ponoru: plné lahve, zmačkaný oblek a případnou ztrátu plynu v obleku.
+  Zátěže jen tolik, kolik je potřeba. Každý kilogram navíc se vyrovnává plynem, který se při výstupu rozpíná.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: true

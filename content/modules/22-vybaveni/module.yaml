@@ -1,0 +1,10 @@
+id: vybaveni
+title: Vybavení
+subtitle: 'Průřezový modul: proč je výstroj taková, jaká je'
+branch: cross
+rig: oc
+prerequisites: []
+unlockAfter: deko
+order: 22
+passThreshold: 0.8
+status: published

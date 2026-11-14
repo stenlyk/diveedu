@@ -1,0 +1,18 @@
+id: ventily-a-pripojeni
+moduleId: vybaveni
+title: "Ventily, připojení a kde zůstane plyn"
+order: 3
+conceptIds: ["din-ventil", "prvni-stupen", "unik-plynu", "pravidlo-tretin"]
+checkQuestionIds: ["vent-din", "vent-mista-uniku", "vent-kde-zavrit", "vent-polovina", "vent-pred-ponorem"]
+estimatedMinutes: 10
+audioSummary: >-
+  Technické potápění používá DIN ventily. První stupeň se zašroubuje a těsnicí kroužek je uzavřený uvnitř.
+  Plyn může utíkat z hrdla lahve, z ventilu, z mostu mezi lahvemi, z prvního stupně, z hadic a z automatiky.
+  Úniky od prvního stupně dál zastavíš ventilem na své straně.
+  Úniky z hrdla, z ventilu a z mostu jsou za ventilem. Zastaví je jen izolátor a ten zachrání jen tu polovinu, která není děravá.
+  Pravidlo třetin počítá přesně s tím. V bodě otočky musí tvoje polovina stačit na cestu ven.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+needs_review: true

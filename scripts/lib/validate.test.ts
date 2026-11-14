@@ -212,13 +212,14 @@ describe('validátor obsahu', () => {
         { element: 'Playground', value: 'neni' },
         { element: 'Fact', value: 'neni' },
         { element: 'CaseLink', value: 'neni' },
+        { element: 'LessonLink', value: 'neni' },
         { element: 'Formula', value: 'p-abs' },
         { element: 'Formula', value: 'neni' },
         { element: 'Term', value: 'Neni' },
       ];
       raw.lessons[0]!.handWritten = ['30 / 10 + 1 = 4 bar'];
     });
-    expect(errors.match(/neznámou položku/g)).toHaveLength(5);
+    expect(errors.match(/neznámou položku/g)).toHaveLength(6);
     expect(errors).not.toMatch(/„mod“|„depth-pressure“|„p-abs“/);
     expect(errors).toMatch(/ručně psaný výsledek „30 \/ 10 \+ 1 = 4 bar“/);
   });

@@ -1,0 +1,19 @@
+id: pocitace-a-algoritmy
+moduleId: vybaveni
+title: "Počítače: co počítají a kdy jim nevěřit"
+order: 4
+conceptIds: ["dekompresni-pocitac", "zalozni-pocitac", "gradient-factor", "prepnuti-plynu"]
+checkQuestionIds: ["poc-co-vi", "poc-prepnuti", "poc-ruzne-gf", "poc-zaloha", "poc-gf-cisla"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dekompresní počítač nic neměří v tvém těle. Měří hloubku a čas a z nich počítá model.
+  Plyny, přepnutí a konzervativnost mu musíš říct ty.
+  Nejnebezpečnější chyba je potvrdit přepnutí, které neproběhlo. Počítač pak ukazuje kratší dekompresi, než potřebuješ.
+  Dva počítače s různými gradient faktory ukážou po stejném ponoru rozdíl desítek minut. Tým vystupuje podle nejkonzervativnějšího plánu.
+  Na dekompresním ponoru nosíš záložní zdroj hloubky a času.
+  Počítač nenahrazuje plán. Když se liší, je to důvod zpomalit.
+sources:
+  - { title: "Dekompression – Dekompressionskrankheit", author: "Bühlmann A. A.", year: 1983 }
+  - { title: "Understanding M-values; Clearing Up the Confusion About Deep Stops", author: "Baker E. C.", year: 1998 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

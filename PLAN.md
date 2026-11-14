@@ -497,3 +497,18 @@ Podklad: export ze Stitch „Technical Precision Instrument“ (DESIGN.md a čty
 - Barevné proužky sekcí v zelené a žluté: odporují vlastnímu pravidlu návrhu, že sémantické barvy nesmí být ozdobou. Všechny sekce mají akcentovou barvu.
 - Neaktivní položky spodní lišty nejsou v tlumené barvě #5B727D, ale v sekundární: tlumená barva má na pozadí kontrast asi 3,3 : 1 a malý text by nesplnil WCAG AA.
 
+
+## 29. Průřezový modul Vybavení (2026-11-14)
+
+- **Modul `vybaveni`** (větev průřezová, navazuje na Dekompresní procedury): 6 lekcí, 44 otázek, 10 uzlů, 18 vazeb, 1 zajímavost. Konfigurace a standardizace s dlouhou hadicí; regulátor a průtok v hloubce; ventily, DIN a kde po poruše zůstane plyn; dekompresní počítače a jejich nastavení; suchý oblek a argon; lahve, křídlo a vyvážení.
+- Témata, která už mají vlastní lekci, se neopakují, ale odkazují: dvojče a ventilový drill (Dekomprese), sidemount a backmount (Full Cave), světla (Cavern). Pro to vznikla komponenta `<LessonLink id>` a validátor kontroluje, že odkaz vede na existující lekci.
+- Příklady počítají `calc` a `deco`: kolik plynu musí regulátor dodat ve 40 m ve stresu, co zbude po zavření izolátoru v bodě otočky, rozdíl dekomprese mezi GF 30/70 a 50/85, kolik plynu potřebuje oblek ve 40 m, kolik kilogramů plynu se vydýchá z dvojčete.
+- Zvuková shrnutí všech šesti lekcí jsou namluvená (40–45 s).
+
+### Co je slabé nebo otevřené
+
+- Obsah je psaný z hlavy; všech šest lekcí má `needs_review`. K odborné kontrole je teď 126 položek.
+- K ověření zvlášť: tvrzení o třmenovém připojení a tlakových třídách (zajímavost `din-a-trmen`), střední tlak „zhruba deset barů nad okolním“, chování hliníkových a ocelových lahví, popis bublinových modelů a algoritmů výrobců, postup při zaseknutém inflátoru obleku.
+- Svítilny nemají v modulu vlastní lekci: výdrž, záložní světla a signály pokrývá lekce Světla a signály v modulu Cavern. Pokud má modul Vybavení stát samostatně, chybí lekce o svítilnách a bateriích.
+- **Velikost:** celkem 2,66 MB z rozpočtu 3 MB, kód 1,43 MB z 1,5 MB. Poslední plánovaný modul (Fyziologie a medicína) se ještě vejde; potom bude třeba načítat obsah po modulech.
+- Zbývá průřezový modul Fyziologie a medicína.

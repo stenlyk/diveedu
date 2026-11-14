@@ -1,0 +1,89 @@
+<Hook>
+
+Po hodinovém ponoru ukazují dva počítače stejného týmu dvě různá čísla: jeden 24 minut dekomprese, druhý 41.
+
+Nepokazil se ani jeden. Oba počítají přesně to, co jim kdo nastavil.
+
+</Hook>
+
+<Principle>
+
+<Term cs="dekompresní počítač" /> nic neměří v tvém těle. Měří dvě věci – **hloubku a čas** – a z nich počítá model sycení tkání.
+Všechno ostatní mu musíš říct ty: jaké plyny neseš, který právě dýcháš a jak konzervativně má počítat.
+
+**Co v počítačích běží:**
+
+- **Bühlmannův model s gradient faktory** – nejčastější v technických počítačích. Konzervativnost nastavuješ dvěma čísly, GF low a GF high.
+- **Bublinové modely** (například VPM) – jiný přístup ke stejnému problému, s vlastní konzervativností.
+- **Vlastní algoritmy výrobců** – hlavně u rekreačních počítačů; jejich detaily často nejsou veřejné.
+
+Žádný z nich nezná tvou únavu, chlad, hydrataci ani to, jak se ti spalo. Model je zjednodušení a počítač ho jen rychle provádí.
+
+**Kde počítač selže kvůli člověku:**
+
+- **Přepnutí, které neproběhlo.** Potvrdíš na počítači přepnutí na EAN50, ale dýcháš dál dno. Počítač počítá vyplavování na bohaté směsi a ukazuje kratší dekompresi, než potřebuješ. To je nebezpečný směr.
+- **Přepnutí, které nepotvrdíš.** Dýcháš EAN50, ale počítač o tom neví. Ukazuje delší dekompresi – bezpečnější směr, ale rozbije plán plynu.
+- **Plyn v počítači neodpovídá lahvi.** Nastavený plyn musí odpovídat tomu, co ukázal analyzátor.
+- **Jiné nastavení než partner.** Tým vystupuje podle nejkonzervativnějšího plánu, ne podle toho, kdo má kratší čísla.
+
+**<Term cs="záložní počítač" />.** Počítač je elektronika a vybije se, zaplaví nebo zamrzne. Na dekompresním ponoru proto nosíš druhý zdroj hloubky a času – druhý počítač se stejnými plyny, nebo hloubkoměr s časoměrem a tabulky plánu.
+Kdo nemá zálohu a počítač mu zhasne, zná jen hloubku, ve které je. Neví, kolik dekomprese mu zbývá.
+
+**Počítač nenahrazuje plán.** Plán říká, co by se mělo stát. Počítač ukazuje, co se děje. Když se liší, je to informace – a důvod zpomalit, ne slepě následovat to kratší číslo.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Gradient faktory jsou nejčastější nastavení konzervativnosti v technických počítačích. Dvě čísla, která mění délku dekomprese o desítky minut.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor na vzduch do 45 m, 25 minut na dně. Jeden počítač má nastavené GF 30/70:
+
+<Worked fn="ascentMinutesAir" args={[45, 25, 30, 70]} expected={68} tolerance={0.5} unit="min" decimals={0} />
+
+Druhý GF 50/85:
+
+<Worked fn="ascentMinutesAir" args={[45, 25, 50, 85]} expected={45} tolerance={0.5} unit="min" decimals={0} />
+
+Rozdíl skoro půl hodiny. Oba počítají správně – každý pro jiné riziko, se kterým jeho majitel souhlasil.
+Tým se na nastavení dohodne na břehu. Kdo by pod vodou šel podle kratšího čísla, vynechal by dekompresi, kterou si partner naplánoval.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="gf-plan" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<CaseLink id="zamena-plynu-krece" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -608,3 +608,11 @@
   conceptIds: [uzavrena-smycka, tlak-na-dokonceni]
   source: { title: 'Tenerife airport disaster – zpráva vyšetřovací komise (souhrn)', author: 'Subsecretaría de Aviación Civil, Španělsko', year: 1978, note: Podrobnosti komunikace ověřit proti zprávě. }
   needs_review: true
+
+- id: din-a-trmen
+  text: >-
+    Připojení DIN vzniklo v Německu a jeho název je zkratka Deutsches Institut für Normung. Těsnicí kroužek sedí v závitu prvního stupně a nemůže se vytlačit ven.
+    U třmenového připojení je kroužek přitlačený zvenku a třmen bývá konstruovaný pro nižší plnicí tlaky než vysokotlaké DIN ventily.
+  conceptIds: [din-ventil, unik-plynu]
+  source: { title: 'NOAA Diving Manual, 6th Edition – Diving Equipment', author: NOAA, year: 2017, note: Tlakové třídy a normy ověřit. }
+  needs_review: true

@@ -31,6 +31,7 @@ export const ABBREVIATIONS: Readonly<Record<string, string>> = {
   DAN: 'dan',
   VPM: 'vé pé em',
   PWA: 'pé vé á',
+  DIN: 'dín',
   ppO2: 'pé pé ó dva',
   ppN2: 'pé pé en dva',
   ppHe: 'pé pé helia',

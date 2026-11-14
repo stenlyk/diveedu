@@ -1,0 +1,98 @@
+<Hook>
+
+Bublinky za hlavou. Partner ukazuje na tvůj levý ventil. Zavřeš ho – a bublinky jdou dál.
+
+Teď se rozhoduje, kolik plynu odneseš domů. Rozhoduje se podle toho, jestli víš, kde všude může plyn utíkat.
+
+</Hook>
+
+<Principle>
+
+**Připojení prvního stupně.** Existují dva systémy:
+
+- **<Term cs="DIN ventil" />** – první stupeň se do ventilu zašroubuje. Těsnicí kroužek je uzavřený uvnitř závitu a nemůže se vytlačit ven. Technické potápění používá téměř výhradně tento systém.
+- **Třmen** – první stupeň se na ventil přitlačí šroubem přes třmen. Kroužek je přitlačený zvenku; při nárazu nebo vysokém tlaku se může vytlačit a plyn začne prudce unikat. Snáz se také zachytí.
+
+**Kde může plyn utíkat** (dvojče, od lahve k ústům):
+
+1. hrdlo lahve – kroužek mezi lahví a ventilem,
+2. ventil – vřeteno a jeho ucpávka,
+3. most mezi lahvemi a izolační ventil,
+4. spojení ventilu a prvního stupně,
+5. první stupeň,
+6. hadice – středotlaké k automatikám, inflátoru a obleku, vysokotlaká k manometru,
+7. automatika – volný proud.
+
+Body 4 až 7 se dají odstavit zavřením ventilu na své straně; ztratíš jen to, co na té straně visí.
+Body 1 až 3 jsou **za ventilem**: zavření ventilu je nezastaví. Zastaví je jen izolační ventil – a ten zachrání jen tu polovinu, která není děravá.
+
+**Co po zavření izolátoru zbude.** Z jedné lahve dvojčete můžeš dál dýchat jen to, co v ní je – polovinu zásoby, kterou jsi měl v okamžiku poruchy.
+Pravidlo třetin počítá přesně s touto situací: v bodě otočky musí tvoje polovina stačit, abys došel ven.
+
+**Před ponorem:**
+
+- ventily otevřené úplně (a o kousek zpět, podle zvyku týmu), izolátor otevřený,
+- každá automatika vyzkoušená, manometr po zavření ventilů stojí,
+- kroužky bez prasklin, DIN zašroubovaný do konce, ale ne silou.
+
+Postup, jak ventily pod vodou zavírat, probírá lekce <LessonLink id="twinset-a-ventilovy-drill" />.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="tretiny" />
+
+Třetina na cestu ven je dimenzovaná tak, aby po ztrátě poloviny zásoby v bodě otočky zbylo dost pro tebe – a třetina, kterou nese partner, pro něj.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Dvojče 2×12 l, otočka podle třetin. V bodě otočky je v obou lahvích 140 bar. V hrdle levé lahve začne utíkat plyn; zavřeš izolátor. V pravé lahvi zůstane:
+
+<Worked fn="barToLiters" args={[140, 12]} expected={1680} tolerance={1} unit="l" decimals={0} />
+
+Cesta ven trvá 18 minut v průměrné hloubce 30 m a spotřebuješ při ní 20 l/min:
+
+<Worked fn="gasConsumed" args={[20, 30, 18]} expected={1440} tolerance={1} unit="l" decimals={0} />
+
+Stačí to, s malou rezervou. Kdyby se o plyn musel dělit i partner, potřebovali byste
+<Calc fn="gasConsumed" args={[40, 30, 18]} decimals={0} unit="l" /> – proto se třetiny počítají pro každého potápěče a každý nese rezervu pro druhého ve svých lahvích, ne v těch, které se mohou porouchat.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'uniká plyn z automatiky na pravé straně?', effect: 'Zavřeš pravý ventil a dýcháš ze záložní. Izolátor nech otevřený: z levé strany dál dýcháš plyn z obou lahví.' },
+  { label: 'uniká plyn z mostu mezi lahvemi?', effect: 'Zavření pravého ani levého ventilu únik nezastaví. Zavři izolátor; zachráníš lahev, která není děravá.' },
+  { label: 'uniká plyn z hrdla levé lahve?', effect: 'Únik je za ventilem. Izolátor zachrání pravou lahev; levou ztratíš celou.' },
+  { label: 'používáš třmen místo DIN?', effect: 'Kroužek je přitlačený zvenku a může se vytlačit nárazem. Proto technické potápění používá DIN.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="din-a-trmen" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

@@ -12,7 +12,7 @@ import { LocalGraph as LocalGraphView } from '../components/LocalGraph';
 import { Tex } from '../components/Math';
 import { Steps } from '../components/Steps';
 import { Card, ReviewBadge } from '../components/ui';
-import { scenariosById, casesById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
+import { scenariosById, casesById, lessonsById, conceptsById, factsById, formulasById, glossaryByCs, questionsById } from '../content';
 import { callContentFunction } from '../content/fns';
 import { LESSON_SECTIONS, type Lesson } from '../content/schema';
 import { QuizRunner } from '../quiz/QuizRunner';
@@ -209,6 +209,13 @@ function CaseLink({ id }: { id: string }) {
   );
 }
 
+/** Odkaz na jinou lekci uvnitř textu; název se bere z obsahu, aby po přejmenování nezastaral. */
+function LessonLink({ id }: { id: string }) {
+  const target = lessonsById.get(id);
+  if (!target) return null;
+  return <Link to={`/uceni/${target.id}`} className="text-accent underline underline-offset-4">{target.title}</Link>;
+}
+
 /** Daná konvence nebo zadání (ne výsledek výpočtu) – např. „10 m mořské vody = 1 bar“. */
 function Given({ children }: { children?: ReactNode }) {
   return <strong className="whitespace-nowrap">{children}</strong>;
@@ -232,6 +239,7 @@ export const mdxComponents = {
   Given,
   WhatIf,
   CaseLink,
+  LessonLink,
   Hook: section('Hook'),
   Principle: section('Principle'),
   FormulaSection: section('FormulaSection'),

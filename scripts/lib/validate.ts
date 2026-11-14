@@ -33,7 +33,7 @@ export interface RawLesson {
   topLevelElements: string[];
   /** Všechny <Calc> a <Worked> v lekci. */
   calcCalls: CalcCall[];
-  /** Odkazy na další obsah: <Playground kind>, <Fact id>, <CaseLink id>, <Formula id>, <Term cs>. */
+  /** Odkazy na další obsah: <Playground kind>, <Fact id>, <CaseLink id>, <LessonLink id>, <Formula id>, <Term cs>. */
   refs?: { element: string; value: string }[];
   /** Úryvky textu s ručně psaným výsledkem v částech Vzorec a Ukázkový výpočet. */
   handWritten?: string[];
@@ -218,6 +218,7 @@ export function validateContent(raw: RawContent): ValidationResult {
         Term: (value) => glossaryTerms.has(value.toLowerCase()),
         Scenario: (value) => scenarioIds.has(value),
         Animation: (value) => animationsById.has(value),
+        LessonLink: (value) => lessonIds.has(value),
       };
       if (!known[ref.element]!(ref.value)) errors.push(`${where}: <${ref.element}> odkazuje na neznámou položku „${ref.value}“`);
     }

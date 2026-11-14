@@ -1,0 +1,90 @@
+<Hook>
+
+Malá lahvička na boku, nenápadná, bez automatiky. V technické výstroji je to jediná lahev, ze které se nikdy nesmí dýchat.
+
+Kdyby ses z ní nadechl, neucítíš nic. Jen za chvíli přestaneš vnímat.
+
+</Hook>
+
+<Principle>
+
+<Term cs="suchý oblek" /> nechrání před chladem sám. Chrání vrstva plynu v podobleku – plyn vede teplo mnohem hůř než voda.
+S hloubkou se ale plyn v obleku stlačuje (Boyle) a podoblek se zmačká. Izolace zmizí a oblek začne svírat.
+Proto se do obleku při sestupu přidává plyn a při výstupu se vypouští.
+
+**K čemu oblek slouží a k čemu ne:**
+
+- Oblek je především **tepelná izolace**. Plyn v něm má držet podoblek nadýchaný, ne nést potápěče.
+- Vztlak řídí **křídlo**. Velká bublina v obleku se při výstupu rozpíná a přelévá k nohám nebo k ramenům; špatně se ovládá.
+- Vypouštěcí ventil bývá na levém rameni: plyn uniká, když je rameno nejvýš.
+
+**Nouze s oblekem:**
+
+- **Zaseknutý inflátor** plní oblek bez přestání. Odpoj hadici od inflátoru, vypusť plyn a zastav výstup.
+- **Protržený nebo zatopený oblek** ztratí izolaci i vztlak plynu v něm. Křídlo musí unést i tuto ztrátu, a proto se jeho velikost volí s rezervou.
+
+**Argon.** Argon vede teplo asi o třetinu hůř než vzduch. Plní se proto do obleku z malé samostatné lahve.
+Přínos v praxi je menší, než slibuje teorie, a závisí na tom, jestli se vzduch z obleku předem vypláchne.
+Helium do obleku nikdy nepatří: vede teplo několikanásobně lépe než vzduch.
+
+**<Term cs="argonová lahev" /> je hypoxický plyn.** Argon neobsahuje žádný kyslík. Z argonové lahve se tedy nesmí dýchat nikdy:
+
+- má jen hadici k obleku, **nikdy automatiku**,
+- je jasně označená a jinak vypadá nebo jinak visí než lahve s dýchacím plynem,
+- analyzuje se i ona – kyslík v ní musí být nula.
+
+Kdo z ní omylem dýchá, nemá dušnost ani varování; CO2 se vydechuje normálně. Ztratí vědomí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="boyle" />
+
+Plyn v obleku poslouchá stejný zákon jako plyn v plicích: kolikrát se zvýší tlak, tolikrát se zmenší objem.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ve 40 m chceš mít v obleku 4 l plynu, aby podoblek izoloval. Na hladině by těch 4 l zabralo:
+
+<Worked fn="boyleVolume" args={[4, 40, 0]} expected={20} tolerance={0.1} unit="l" decimals={0} />
+
+Tolik plynu musíš při sestupu do obleku dopustit. Malá argonová lahev 0,85 l naplněná na 200 bar obsahuje:
+
+<Worked fn="barToLiters" args={[200, 0.85]} expected={170} tolerance={0.1} unit="l" decimals={0} />
+
+To stačí na několik sestupů, ne na neomezené dopouštění. Kdo oblek používá jako hlavní vztlak, vyprázdní ji brzy – a pokračuje bez izolace.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="boyle" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="argon-v-obleku" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

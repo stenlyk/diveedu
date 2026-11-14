@@ -228,7 +228,7 @@ test('všechny lekce se vykreslí ve všech devíti částech bez chyby', async 
   await page.goto('/uceni');
   await expect(page.getByRole('link', { name: /Tlak a hloubka/ })).toBeVisible();
   const hrefs = await page.locator('a[href^="/uceni/"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')!));
-  expect(hrefs.length).toBe(91);
+  expect(hrefs.length).toBe(97);
   for (const href of hrefs) {
     await page.goto(href);
     for (let part = 1; part <= 9; part++) {
@@ -339,7 +339,7 @@ test('mapa grafu: všechny pojmy, výběr, filtr modulu a řetěz příčin z p�
   await acceptOnboarding(page);
   await page.goto('/graf');
   const map = page.getByTestId('graph-map');
-  await expect(map.locator('[data-node]')).toHaveCount(178);
+  await expect(map.locator('[data-node]')).toHaveCount(188);
   await map.locator('[data-node="ppo2"]').click();
   await expect(page.getByTestId('graph-selected')).toHaveText('ppO2');
   await page.getByRole('button', { name: 'Přiblížit' }).click();
@@ -419,7 +419,7 @@ test('po první návštěvě funguje aplikace kompletně offline', async ({ page
   await page.getByRole('button', { name: 'Začít' }).click();
   await expect(page.getByTestId('mental-prompt')).toBeVisible();
   await page.goto('/graf');
-  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(178);
+  await expect(page.getByTestId('graph-map').locator('[data-node]')).toHaveCount(188);
   await page.goto('/prehled');
   await expect(page.getByText('Zvládnutí pojmů')).toBeVisible();
   await page.goto('/graf/absolutni-tlak');
@@ -570,3 +570,13 @@ test('průřezový modul Lidský faktor: scénář bez poruchy končí podle roz
   await expect(page.getByTestId('scenario-debrief')).toContainText('utopené náklady');
 });
 
+
+test('průřezový modul Vybavení: odkaz z lekce vede na navazující lekci', async ({ page }) => {
+  await acceptOnboarding(page);
+  await page.goto('/uceni');
+  await expect(page.getByRole('heading', { name: /Vybavení/ })).toBeVisible();
+  await page.getByRole('link', { name: /Konfigurace: každá věc má důvod/ }).click();
+  await page.getByRole('button', { name: /^Dál/ }).click();
+  await page.getByRole('link', { name: 'Dvojče a ventilový drill' }).click();
+  await expect(page.getByRole('heading', { name: 'Dvojče a ventilový drill' })).toBeVisible();
+});

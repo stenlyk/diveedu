@@ -1,0 +1,17 @@
+id: regulatory
+moduleId: vybaveni
+title: "Regulátor: první stupeň, automatika a průtok v hloubce"
+order: 2
+conceptIds: ["prvni-stupen", "free-flow", "dlouha-hadice"]
+checkQuestionIds: ["reg-prvni-stupen", "reg-prutok", "reg-studena-voda", "reg-selze-otevreny", "reg-dva-z-jednoho"]
+estimatedMinutes: 10
+audioSummary: >-
+  Regulátor snižuje tlak ve dvou krocích.
+  První stupeň na lahvi sníží tlak na střední, zhruba deset barů nad okolním tlakem. Vyvážený první stupeň ho drží stejný od plné lahve po prázdnou.
+  Automatika u úst ho sníží na okolní tlak. Když selže, zůstane otevřená a plyn uniká, ale dýchat se z něj dá. To je záměr.
+  Automatika musí v hloubce protlačit tolikrát víc plynu, kolikrát je vyšší okolní tlak. Ve čtyřiceti metrech pětkrát víc než na hladině.
+  Ve studené vodě může při velkém průtoku vzniknout led. Proto automatiky určené do studené vody a žádné zbytečné čištění tlačítkem.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: true

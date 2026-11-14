@@ -195,3 +195,15 @@
 - { id: debriefing, label: Rozbor po ponoru, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Krátké společné zhodnocení bez hledání viníka: co se stalo, proč a co příště jinak.' }
 - { id: pravo-ukoncit, label: Právo ukončit ponor, type: procedure, moduleId: lidskyfaktor, shortDefinition: 'Kdokoli může kterýkoli ponor kdykoli ukončit, z jakéhokoli důvodu a bez vysvětlování.' }
 - { id: tlak-na-dokonceni, label: Tlak na dokončení, type: risk, moduleId: lidskyfaktor, shortDefinition: 'Čím víc bylo do ponoru vloženo, tím těžší je ho zrušit – i když důvody ke zrušení přibývají.' }
+
+# ── Průřezový modul: Vybavení ────────────────────────────────────────────────
+- { id: konfigurace, label: Standardizovaná konfigurace, type: equipment, moduleId: vybaveni, shortDefinition: 'Výstroj, ve které má každá věc důvod a stálé místo a kterou tým používá stejně; rozhodování se přesouvá z hloubky na břeh.' }
+- { id: dlouha-hadice, label: Dlouhá hadice, type: equipment, moduleId: vybaveni, shortDefinition: 'Hlavní automatika na hadici asi dva metry dlouhé; při nouzi ji potápěč podá partnerovi a sám dýchá ze záložní pod bradou.' }
+- { id: prvni-stupen, label: První stupeň, type: equipment, moduleId: vybaveni, shortDefinition: 'Část regulátoru na ventilu lahve; snižuje tlak z lahve na střední tlak pro automatiky, inflátor a oblek.' }
+- { id: din-ventil, label: DIN ventil, type: equipment, moduleId: vybaveni, shortDefinition: 'Ventil, do kterého se první stupeň zašroubuje; těsnicí kroužek je uzavřený uvnitř a nemůže se vytlačit.' }
+- { id: dekompresni-pocitac, label: Dekompresní počítač, type: equipment, moduleId: vybaveni, shortDefinition: 'Měří hloubku a čas a počítá z nich dekompresní model; plyny, přepnutí a konzervativnost mu zadává potápěč.' }
+- { id: zalozni-pocitac, label: Záložní počítač, type: equipment, moduleId: vybaveni, shortDefinition: 'Druhý nezávislý zdroj hloubky a času na dekompresním ponoru: druhý počítač nebo hloubkoměr s časoměrem a tabulkami plánu.' }
+- { id: suchy-oblek, label: Suchý oblek, type: equipment, moduleId: vybaveni, shortDefinition: 'Nepromokavý oblek, ve kterém izoluje vrstva plynu v podobleku; při sestupu se plyn dopouští, při výstupu vypouští.' }
+- { id: argonova-lahev, label: Argonová lahev, type: equipment, moduleId: vybaveni, shortDefinition: 'Malá lahev s argonem jen pro plnění suchého obleku; plyn bez kyslíku, nikdy na ní nesmí být automatika.' }
+- { id: vyvazeni, label: Vyvážení, type: procedure, moduleId: vybaveni, shortDefinition: 'Množství zátěže, se kterým potápěč s téměř prázdnými lahvemi udrží poslední zastávku; kontroluje se na konci ponoru.' }
+- { id: kridlo, label: Křídlo, type: equipment, moduleId: vybaveni, shortDefinition: 'Vztlakový vak na zádech; musí unést nejtěžší okamžik ponoru včetně ztráty vztlaku obleku.' }

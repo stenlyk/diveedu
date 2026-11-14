@@ -1,0 +1,84 @@
+<Hook>
+
+Partner ve 40 m ukazuje „nemám plyn“. Máš na to jednu, dvě vteřiny.
+
+V tu chvíli nerozhoduje, jak drahou výstroj máte. Rozhoduje, jestli on přesně ví, kde je tvoje automatika – a jestli ty víš, co mu podat, aniž bys hledal.
+
+</Hook>
+
+<Principle>
+
+Technická konfigurace se neskládá podle vkusu. Skládá se podle otázky: **co se stane, když tahle věc selže, a kdo ji v tu chvíli bude ovládat?**
+
+Z ní vychází několik zásad, na kterých se shodne většina technických škol:
+
+- **Každá věc má důvod.** Co nepotřebuješ, nebereš. Každý karabinový háček navíc je místo, kde se zachytí šňůra, a věc, kterou musíš ve stresu najít.
+- **Každá věc má jedno místo.** Manometr, záložní světlo, cívka, nůž – pořád tam, kde byly. Ruka tam sáhne bez očí, v rukavicích a ve tmě.
+- **Nic nevisí.** Hadice kopírují tělo, manometr je připnutý. Co visí, ničí dno, zachytává se a odvádí pozornost.
+- **Výstroj je čitelná pro partnera.** Partner musí vědět, jak ti zavřít ventil, odkud si vzít plyn a kde máš záložní světlo.
+
+**<Term cs="dlouhá hadice" /> a podání plynu.** Hlavní automatika je na hadici dlouhé zhruba dva metry, vedené kolem těla.
+Záložní automatika visí na gumičce pod bradou. Když partner potřebuje plyn, podáš mu **tu, ze které právě dýcháš** – víš, že funguje a že je v ní plyn – a sám přejdeš na záložní pod bradou.
+Dlouhá hadice dovolí plavat za sebou v úzké chodbě a dává oběma prostor pro výstup.
+
+Konkrétní rozložení (na které straně je dlouhá hadice, kam patří manometr) se mezi školami liší. Důležité je, že **tým používá stejné**.
+
+**Proč tolik důrazu na stejnost?** Protože nouze nepřichází k jednomu potápěči. Přichází k týmu, a to v okamžiku, kdy je každý jeho člen nejméně schopný přemýšlet.
+Standardní konfigurace přesouvá rozhodování z hloubky na břeh: co by se pod vodou muselo vymýšlet, je vymyšlené předem.
+
+Navazuje lekce <LessonLink id="twinset-a-ventilovy-drill" /> a pro jeskyně <LessonLink id="sidemount-a-backmount" />.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="minimum-gas" />
+
+Konfigurace a rezerva plynu jsou dvě poloviny téže odpovědi. Rezerva říká, kolik plynu musíš nést pro dva. Konfigurace říká, jak se ten plyn ke druhému dostane.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor do 40 m, oba potápěči mají v klidu spotřebu 20 l/min. Kolik plynu musí v lahvích zůstat, aby z nejhlubšího bodu vystoupali dva z jedné zásoby?
+
+<Worked fn="rockBottomLiters" args={[40, 20]} expected={733.33} tolerance={1} unit="l" decimals={0} />
+
+V dvojčeti 2×12 l je to:
+
+<Worked fn="rockBottomBar" args={[40, 20, 24]} expected={30.56} tolerance={0.1} unit="bar" decimals={0} />
+
+To číslo platí jen tehdy, když se plyn k partnerovi skutečně dostane: když partner ví, kterou automatiku dostane, hadice je dost dlouhá pro výstup vedle sebe a nikdo nic nehledá.
+Rezerva bez konfigurace, která ji umí předat, je jen číslo na manometru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="rock-bottom" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hogarthian" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

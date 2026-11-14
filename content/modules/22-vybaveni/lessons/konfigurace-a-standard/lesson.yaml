@@ -1,0 +1,19 @@
+id: konfigurace-a-standard
+moduleId: vybaveni
+title: "Konfigurace: každá věc má důvod a své místo"
+order: 1
+conceptIds: ["konfigurace", "dlouha-hadice", "sdileni-plynu"]
+checkQuestionIds: ["konf-zasada", "konf-proc-stejne", "konf-dlouha-hadice", "konf-rozmisteni", "konf-rock-bottom"]
+estimatedMinutes: 10
+audioSummary: >-
+  Technická konfigurace se skládá podle jedné otázky. Co se stane, když tahle věc selže, a kdo ji bude ovládat?
+  Každá věc má důvod a jedno stálé místo. Nic nevisí. Výstroj musí být čitelná i pro partnera.
+  Hlavní automatika je na dlouhé hadici, záložní pod bradou.
+  Partnerovi bez plynu podáš tu, ze které právě dýcháš, protože víš, že funguje. Sám přejdeš na záložní.
+  Rozložení se mezi školami liší. Důležité je, aby tým používal stejné.
+  Standardní konfigurace přesouvá rozhodování z hloubky na břeh.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "NSS Cave Diving Manual", author: "Prosser J., Grey H. V. (eds.), National Speleological Society Cave Diving Section", year: 1992 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

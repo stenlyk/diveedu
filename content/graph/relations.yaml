@@ -374,3 +374,21 @@
 - { from: debriefing, to: normalizace-odchylky, type: zmirnuje, lessonId: tymova-komunikace, explanation: 'Odchylka, o které se mluví, se nestane normou potichu.' }
 - { from: pravo-ukoncit, to: tlak-na-dokonceni, type: zmirnuje, lessonId: pravo-ukoncit-ponor, explanation: 'Pravidlo dohodnuté předem unese tlak, který jednotlivec neunese.' }
 - { from: tlak-na-dokonceni, to: normalizace-odchylky, type: zvysuje, lessonId: pravo-ukoncit-ponor, explanation: 'Kvůli dokončení se ustupuje z pravidel.' }
+- { from: konfigurace, to: ukolova-zahlcenost, type: zmirnuje, lessonId: konfigurace-a-standard, explanation: 'Co je vymyšlené na břehu, se pod vodou nemusí vymýšlet.' }
+- { from: dlouha-hadice, to: sdileni-plynu, type: je_predpokladem, lessonId: konfigurace-a-standard, explanation: 'Dlouhá hadice dovolí sdílet plyn za sebou v chodbě i při výstupu vedle sebe.' }
+- { from: konfigurace, to: bez-plynu, type: zmirnuje, lessonId: konfigurace-a-standard, explanation: 'Partner ví, kterou automatiku dostane a odkud.' }
+- { from: absolutni-tlak, to: prvni-stupen, type: zvysuje, lessonId: regulatory, explanation: 'Regulátor musí v hloubce protlačit tolikrát víc plynu, kolikrát je vyšší okolní tlak.' }
+- { from: prvni-stupen, to: free-flow, type: zpusobuje, lessonId: regulatory, explanation: 'Zamrzlý nebo poškozený stupeň se zasekne otevřený.' }
+- { from: namaha, to: prvni-stupen, type: zvysuje, lessonId: regulatory, explanation: 'Při námaze se průtok znásobí; regulátor se volí podle nejhoršího okamžiku.' }
+- { from: din-ventil, to: unik-plynu, type: snizuje, lessonId: ventily-a-pripojeni, explanation: 'Kroužek uzavřený v závitu se nevytlačí nárazem.' }
+- { from: pravidlo-tretin, to: unik-plynu, type: zmirnuje, lessonId: ventily-a-pripojeni, explanation: 'Po ztrátě poloviny zásoby v bodě otočky zbude dost na cestu ven.' }
+- { from: dekompresni-pocitac, to: model-buhlmann, type: pocita_se_z, lessonId: pocitace-a-algoritmy, explanation: 'Technické počítače nejčastěji počítají Bühlmannův model s gradient faktory.' }
+- { from: dekompresni-pocitac, to: gradient-factor, type: pocita_se_z, lessonId: pocitace-a-algoritmy, explanation: 'Konzervativnost nastavuje potápěč dvěma čísly.' }
+- { from: zalozni-pocitac, to: vynechana-dekomprese, type: zmirnuje, lessonId: pocitace-a-algoritmy, explanation: 'Když hlavní počítač zhasne, záloha ví, kolik dekomprese zbývá.' }
+- { from: prepnuti-plynu, to: dekompresni-pocitac, type: je_predpokladem, lessonId: pocitace-a-algoritmy, explanation: 'Počítač počítá správně jen s přepnutím, které opravdu proběhlo.' }
+- { from: suchy-oblek, to: ztrata-tepla, type: snizuje, lessonId: suchy-oblek-a-argon, explanation: 'Izoluje vrstva plynu v podobleku, dokud není zmačkaná.' }
+- { from: analyza-plynu, to: argonova-lahev, type: je_predpokladem, lessonId: suchy-oblek-a-argon, explanation: 'I argonová lahev se analyzuje: kyslík v ní musí být nula, aby nikdo nepoznal záměnu až pod vodou.' }
+- { from: argonova-lahev, to: hypoxie, type: zpusobuje, lessonId: suchy-oblek-a-argon, explanation: 'Argon neobsahuje kyslík; dýchání z něj vede k bezvědomí bez varování.' }
+- { from: vztlak, to: vyvazeni, type: je_predpokladem, lessonId: lahve-a-vyvazeni, explanation: 'Vyvážení je vztlak na konci ponoru, kdy je plyn vydýchaný.' }
+- { from: kridlo, to: suchy-oblek, type: zmirnuje, lessonId: lahve-a-vyvazeni, explanation: 'Křídlo musí unést i ztrátu vztlaku zatopeného obleku.' }
+- { from: stage-lahev, to: vyvazeni, type: zhorsuje, lessonId: lahve-a-vyvazeni, explanation: 'Vydýchaná nebo odložená stage mění vztlak; počítá se s tím v plánu.' }

@@ -1,0 +1,19 @@
+id: suchy-oblek-a-argon
+moduleId: vybaveni
+title: "Suchý oblek a argon"
+order: 5
+conceptIds: ["suchy-oblek", "argonova-lahev", "argon", "ztrata-tepla"]
+checkQuestionIds: ["oblek-proc-plnit", "oblek-kolik", "oblek-argon-proc", "oblek-argon-nedychat", "oblek-zaseknuty"]
+estimatedMinutes: 10
+audioSummary: >-
+  Suchý oblek chrání vrstva plynu v podobleku. S hloubkou se plyn stlačí a izolace zmizí, proto se při sestupu dopouští.
+  Oblek je tepelná izolace. Vztlak řídí křídlo.
+  Zaseknutý inflátor odpojíš a plyn vypustíš.
+  Argon vede teplo asi o třetinu hůř než vzduch, přínos v praxi je ale menší, než slibuje teorie.
+  Argonová lahev neobsahuje žádný kyslík. Nikdy na ní nesmí být automatika, je jasně označená a analyzuje se i ona.
+  Z argonu se nedá varovat dušností. Kdo z něj dýchá, ztratí vědomí.
+sources:
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Argon used as dry suit insulation gas for cold-water diving. Extreme Physiology & Medicine 2:17", author: "Vrijdag X. C. E., Reyners P. J., Hey J. N., Brouwer A. A., Kerkhof J.", year: 2013 }
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+needs_review: true

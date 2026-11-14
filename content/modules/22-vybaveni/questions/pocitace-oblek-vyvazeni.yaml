@@ -1,0 +1,269 @@
+- id: poc-co-vi
+  type: multi
+  conceptIds: [dekompresni-pocitac]
+  difficulty: 1
+  prompt: Co dekompresní počítač sám měří?
+  options:
+    - { text: 'Hloubku', correct: true }
+    - { text: 'Čas', correct: true }
+    - { text: 'Sycení tvých tkání', explanation: 'Sycení počítá z modelu. Do těla nevidí.' }
+    - { text: 'Který plyn právě dýcháš', explanation: 'To mu musíš říct přepnutím. Sám to nepozná.' }
+  explanation: 'Plyny, přepnutí a konzervativnost zadává potápěč; únavu, chlad ani hydrataci model nezná.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-prepnuti
+  type: why
+  conceptIds: [dekompresni-pocitac, prepnuti-plynu]
+  difficulty: 2
+  prompt: Proč je nebezpečné potvrdit na počítači přepnutí na EAN50, když ho ve skutečnosti nedýcháš?
+  options:
+    - { text: 'Počítač počítá vyplavování na bohaté směsi a ukáže kratší dekompresi, než potřebuješ.', correct: true }
+    - { text: 'Počítač se zablokuje.', explanation: 'Nezablokuje; počítá dál, jen podle špatného plynu.' }
+    - { text: 'Ukáže delší dekompresi, než potřebuješ.', explanation: 'To se stane v opačném případě, když přepnutí nepotvrdíš.' }
+    - { text: 'Nic, počítač si plyn ověří sám.', explanation: 'Počítač pro otevřený okruh plyn neměří.' }
+  explanation: 'Počítač, který věří, že dýcháš bohatou směs, zkracuje zastávky.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-ruzne-gf
+  type: choice
+  conceptIds: [dekompresni-pocitac, gradient-factor]
+  difficulty: 2
+  prompt: Dva počítače v týmu ukazují po stejném ponoru 24 a 41 minut dekomprese. Podle čeho tým vystoupí?
+  options:
+    - { text: 'Podle nejkonzervativnějšího plánu', correct: true }
+    - { text: 'Podle kratšího čísla, ušetří se plyn', explanation: 'Tím by jeden z týmu vynechal dekompresi, kterou si naplánoval.' }
+    - { text: 'Každý zvlášť podle svého', explanation: 'Tým se pod vodou nerozděluje.' }
+    - { text: 'Podle průměru', explanation: 'Průměr nesplní plán ani jednoho z nich.' }
+  explanation: 'Rozdíl obvykle vzniká z jiného nastavení. Tým se na něm dohodne na břehu.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-zaloha
+  type: why
+  conceptIds: [zalozni-pocitac, vynechana-dekomprese]
+  difficulty: 1
+  prompt: Proč nosíš na dekompresním ponoru záložní zdroj hloubky a času?
+  options:
+    - { text: 'Když hlavní počítač selže, bez zálohy nevíš, kolik dekomprese ti zbývá.', correct: true }
+    - { text: 'Aby se dal ponor zapsat dvakrát.', explanation: 'Záloha je pro bezpečný výstup, ne pro deník.' }
+    - { text: 'Protože počítače se nesmí používat samotné ze zákona.', explanation: 'Důvod je praktický: elektronika selhává.' }
+    - { text: 'Kvůli porovnání s partnerem.', explanation: 'To se dělá na břehu.' }
+  explanation: 'Druhý počítač se stejnými plyny, nebo hloubkoměr s časoměrem a tabulkami plánu.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-gf-cisla
+  type: numeric
+  conceptIds: [dekompresni-pocitac, gradient-factor]
+  difficulty: 3
+  prompt: 'Ponor na vzduch do {depth} m, {bottom} minut na dně, gradient faktory 30/70. Kolik minut trvá výstup podle výukového modelu?'
+  template: { fn: ascentMinutesAir, params: { depth: { values: [40, 45] }, bottom: { values: [20, 25] } }, fixed: { low: 30, high: 70 }, args: [depth, bottom, low, high], tolerance: 1, unit: min, decimals: 0 }
+  explanation: 'Porovnej s nastavením 50/85 v lekci: stejný ponor, rozdíl desítek minut.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-chyby
+  type: findError
+  conceptIds: [dekompresni-pocitac, zalozni-pocitac]
+  difficulty: 2
+  prompt: Které věty popisují chybu v práci s počítačem?
+  items:
+    - { text: 'Plyny v počítači nastavuji podle toho, co ukázal analyzátor.' }
+    - { text: 'Záložní počítač nechávám doma, hlavní má novou baterii.', isError: true, explanation: 'Baterie je jen jedna z příčin selhání. Zaplavení nebo porucha přijdou bez varování.' }
+    - { text: 'Přepnutí potvrzuji na počítači až po nádechu z nové automatiky.' }
+    - { text: 'Když se počítač liší od plánu, jdu podle kratšího čísla.', isError: true, explanation: 'Rozdíl je informace a důvod zpomalit, ne zkrátit dekompresi.' }
+  explanation: 'Počítač nenahrazuje plán. Ukazuje, co se děje.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: poc-algoritmy
+  type: match
+  conceptIds: [dekompresni-pocitac, model-buhlmann, zalozni-pocitac]
+  difficulty: 2
+  prompt: Přiřaď algoritmus k popisu.
+  pairs:
+    - { left: Bühlmann s gradient faktory, right: Nejčastější v technických počítačích }
+    - { left: VPM, right: Bublinový model }
+    - { left: Algoritmus výrobce, right: 'Často u rekreačních počítačů, detaily nejsou veřejné' }
+    - { left: Záložní tabulky plánu, right: Použiješ s hloubkoměrem a časoměrem }
+  explanation: 'Žádný algoritmus nezná únavu, chlad ani hydrataci.'
+  backToLessonId: pocitace-a-algoritmy
+
+- id: oblek-proc-plnit
+  type: why
+  conceptIds: [suchy-oblek, ztrata-tepla]
+  difficulty: 1
+  prompt: Proč se do suchého obleku při sestupu přidává plyn?
+  options:
+    - { text: 'Plyn se s hloubkou stlačí, podoblek se zmačká a přestane izolovat.', correct: true }
+    - { text: 'Aby potápěč klesal pomaleji.', explanation: 'Vztlak řídí křídlo. Plyn v obleku má izolovat.' }
+    - { text: 'Aby do obleku netekla voda.', explanation: 'Těsnost zajišťují manžety a zip, ne tlak plynu.' }
+    - { text: 'Kvůli dýchání.', explanation: 'Z obleku se nedýchá.' }
+  explanation: 'Izoluje vrstva plynu v podobleku. Bez ní oblek svírá a nehřeje.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-kolik
+  type: numeric
+  conceptIds: [suchy-oblek, objem-plynu]
+  difficulty: 2
+  prompt: 'V hloubce {depth} m chceš mít v obleku {volume} l plynu. Kolik litrů by tento plyn zabral na hladině?'
+  template: { fn: boyleVolume, params: { volume: { values: [3, 4, 5] }, depth: { values: [20, 30, 40, 50] } }, fixed: { surface: 0 }, args: [volume, depth, surface], tolerance: 0.2, unit: l, decimals: 1 }
+  explanation: 'Objem krát poměr absolutních tlaků. Tolik plynu musíš při sestupu dopustit.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-argon-proc
+  type: choice
+  conceptIds: [argon, suchy-oblek, argonova-lahev]
+  difficulty: 1
+  prompt: Proč někteří potápěči plní suchý oblek argonem?
+  options:
+    - { text: 'Argon vede teplo asi o třetinu hůř než vzduch', correct: true }
+    - { text: 'Argon je lehčí než vzduch a nadnáší', explanation: 'Argon je těžší než vzduch. Důvodem je tepelná vodivost.' }
+    - { text: 'Argon se dá v nouzi dýchat', explanation: 'Nedá. Argon neobsahuje kyslík.' }
+    - { text: 'Argon snižuje dekompresi', explanation: 'Plyn v obleku se nedýchá a na dekompresi nemá vliv.' }
+  explanation: 'Měřený přínos je menší, než by odpovídalo teorii.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-argon-nedychat
+  type: why
+  conceptIds: [argonova-lahev, hypoxie]
+  difficulty: 2
+  prompt: Proč je dýchání z argonové lahve tak zrádné?
+  options:
+    - { text: 'Argon neobsahuje kyslík a CO2 se vydechuje normálně, takže nepřijde dušnost ani varování před bezvědomím.', correct: true }
+    - { text: 'Argon je jedovatý a hned pálí v krku.', explanation: 'Nepálí. Právě proto je zrádný: nic necítíš.' }
+    - { text: 'Argon je silně narkotický, takže to potápěč pozná.', explanation: 'Rozhodující je chybějící kyslík; narkózu před bezvědomím nemusí poznat.' }
+    - { text: 'Není zrádné, dá se z něj krátce dýchat.', explanation: 'Nedá. Hypoxie může vést k bezvědomí během několika nádechů.' }
+  explanation: 'Pocit dušení vyvolává hlavně CO2, ne nedostatek kyslíku.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-zaseknuty
+  type: order
+  conceptIds: [suchy-oblek, nekontrolovany-vystup]
+  difficulty: 2
+  prompt: Inflátor suchého obleku se zasekl a plní. Seřaď postup.
+  items:
+    - 'Odpojím hadici od inflátoru'
+    - 'Zvednu levé rameno a vypustím plyn z obleku'
+    - 'Zastavím výstup a srovnám vztlak křídlem'
+    - 'Dám znamení partnerovi a rozhodneme o pokračování'
+  explanation: 'Nejdřív zastavit přívod plynu, pak ho vypustit. Bez oblekového plnění se počítá s chladem.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-argon-lahev
+  type: multi
+  conceptIds: [argonova-lahev]
+  difficulty: 1
+  prompt: Co platí pro argonovou lahev?
+  options:
+    - { text: 'Má jen hadici k obleku, nikdy automatiku', correct: true }
+    - { text: 'Je jasně označená a odlišená od lahví s dýchacím plynem', correct: true }
+    - { text: 'Analyzuje se i ona: kyslík musí být nula', correct: true }
+    - { text: 'V nouzi poslouží jako záložní plyn', explanation: 'Nikdy. Argon neobsahuje kyslík.' }
+  explanation: 'Argonová lahev je hypoxický plyn. Všechna opatření mají zabránit tomu, aby se z ní kdy dýchalo.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: oblek-vztlak
+  type: why
+  conceptIds: [suchy-oblek, kridlo]
+  difficulty: 2
+  prompt: Proč se vztlak řídí křídlem, a ne suchým oblekem?
+  options:
+    - { text: 'Velká bublina v obleku se při výstupu rozpíná a přelévá k nohám nebo ramenům; špatně se ovládá.', correct: true }
+    - { text: 'Oblek nejde plnit pod vodou.', explanation: 'Jde. Plní se ale jen tolik, aby izoloval.' }
+    - { text: 'Křídlo je teplejší.', explanation: 'Křídlo neizoluje. Jde o ovladatelnost.' }
+    - { text: 'Je to jen zvyk bez důvodu.', explanation: 'Důvodem je rozpínání plynu a jeho přelévání v obleku.' }
+  explanation: 'Oblek je tepelná izolace, křídlo je vztlak.'
+  backToLessonId: suchy-oblek-a-argon
+
+- id: vyv-hmotnost-plynu
+  type: numeric
+  conceptIds: [vyvazeni, vztlak]
+  difficulty: 2
+  prompt: 'Kolik kilogramů váží vzduch v dvojčeti 2×12 l naplněném na {bar} bar?'
+  template: { fn: gasMassKg, params: { bar: { values: [200, 230, 250] } }, fixed: { tank: 24 }, args: [tank, bar], tolerance: 0.1, unit: kg, decimals: 1 }
+  explanation: 'Objem krát tlak krát hustota vzduchu na hladině. Tolik můžeš během ponoru vydýchat.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-kdy-kontrolovat
+  type: choice
+  conceptIds: [vyvazeni]
+  difficulty: 1
+  prompt: Kdy se kontroluje, jestli máš správnou zátěž?
+  options:
+    - { text: 'Na konci ponoru s téměř prázdnými lahvemi a prázdným křídlem', correct: true }
+    - { text: 'Na začátku ponoru s plnými lahvemi', explanation: 'Plné lahve tě zatíží o plyn, který během ponoru vydýcháš.' }
+    - { text: 'Na hladině před sestupem', explanation: 'Na hladině jsou lahve plné; výsledek by byl o několik kilogramů jinde.' }
+    - { text: 'Kdykoli, je to jedno', explanation: 'Není. Rozdíl dělá hmotnost vydýchaného plynu.' }
+  explanation: 'Poslední zastávku musíš udržet s vydýchaným plynem.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-hlinik
+  type: match
+  conceptIds: [vyvazeni, stage-lahev]
+  difficulty: 2
+  prompt: Přiřaď lahev k jejímu chování ve vodě.
+  pairs:
+    - { left: Ocelové dvojče, right: Záporné i prázdné }
+    - { left: Hliníková stage plná, right: Lehce záporná }
+    - { left: Hliníková stage prázdná, right: Lehce kladná }
+    - { left: Argonová lahvička, right: Malý vliv na vztlak }
+  explanation: 'Hliníkové stage mění vztlak jen málo kolem nuly, proto se nosí po stranách.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-kridlo
+  type: multi
+  conceptIds: [kridlo, suchy-oblek]
+  difficulty: 2
+  prompt: S čím musí počítat velikost křídla?
+  options:
+    - { text: 'S plnými lahvemi a stagemi na začátku ponoru', correct: true }
+    - { text: 'Se zmačkaným oblekem a podoblekem v hloubce', correct: true }
+    - { text: 'Se ztrátou vztlaku při zatopení obleku', correct: true }
+    - { text: 'Čím větší, tím lépe, bez ohledu na výstroj', explanation: 'Velké křídlo s malým množstvím plynu se špatně ovládá a dělá odpor.' }
+  explanation: 'Křídlo musí unést nejhorší okamžik ponoru, ne o moc víc.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-zatez
+  type: why
+  conceptIds: [vyvazeni, kridlo]
+  difficulty: 2
+  prompt: Proč je zátěž navíc problém, i když ji vyrovnáš plynem v křídle?
+  options:
+    - { text: 'Plyn v křídle se při výstupu rozpíná a musí se vypouštět; víc plynu znamená hůř ovladatelný výstup.', correct: true }
+    - { text: 'Zátěž zvyšuje spotřebu kyslíku v plynu.', explanation: 'Spotřebu zvyšuje námaha, ne olovo samo.' }
+    - { text: 'Není to problém.', explanation: 'Je: čím víc plynu v křídle, tím větší změna vztlaku na každý metr.' }
+    - { text: 'Zátěž ruší počítač.', explanation: 'Počítač na olovo nereaguje.' }
+  explanation: 'Zátěže jen tolik, kolik je potřeba na poslední zastávku.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-stage
+  type: numeric
+  conceptIds: [vyvazeni, stage-lahev]
+  difficulty: 2
+  prompt: 'Hliníková stage 11,1 l je naplněná na {bar} bar. O kolik kilogramů lehčí bude, když ji vydýcháš do prázdna?'
+  template: { fn: gasMassKg, params: { bar: { values: [150, 180, 200] } }, fixed: { tank: 11.1 }, args: [tank, bar], tolerance: 0.1, unit: kg, decimals: 1 }
+  explanation: 'Hmotnost plynu v ní. S tím se počítá při plánu, stejně jako s odložením stage.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: vyv-chyby
+  type: findError
+  conceptIds: [vyvazeni, kridlo]
+  difficulty: 2
+  prompt: Které věty popisují chybu ve vyvážení?
+  items:
+    - { text: 'Zátěž jsem nastavil na začátku ponoru tak, abych měl prázdné křídlo.', isError: true, explanation: 'Na konci budeš o hmotnost vydýchaného plynu lehčí a poslední zastávku neudržíš.' }
+    - { text: 'Na poslední zastávce s rezervou plynu zkouším, jestli se udržím s prázdným křídlem.' }
+    - { text: 'Kilo navíc nevadí, vyrovnám ho křídlem.', isError: true, explanation: 'Každý kilogram navíc znamená víc plynu v křídle, který se při výstupu rozpíná.' }
+    - { text: 'Při plánu počítám s tím, že stage vydýchám nebo odložím.' }
+  explanation: 'Vyvážení se kontroluje na konci ponoru.'
+  backToLessonId: lahve-a-vyvazeni
+
+- id: poc-zaloha-moznosti
+  type: multi
+  conceptIds: [zalozni-pocitac]
+  difficulty: 1
+  prompt: Co může na dekompresním ponoru sloužit jako záloha hlavního počítače?
+  options:
+    - { text: 'Druhý počítač se stejnými plyny', correct: true }
+    - { text: 'Hloubkoměr s časoměrem a tabulky plánu', correct: true }
+    - { text: 'Partnerův počítač', explanation: 'Partner se může vzdálit a jeho počítač zná jeho profil, ne tvůj.' }
+    - { text: 'Odhad podle pocitu', explanation: 'Dekomprese se neodhaduje.' }
+  explanation: 'Záloha musí být tvoje a nezávislá na hlavním počítači.'
+  backToLessonId: pocitace-a-algoritmy
