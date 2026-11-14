@@ -207,6 +207,8 @@
 - { id: argonova-lahev, label: Argonová lahev, type: equipment, moduleId: vybaveni, shortDefinition: 'Malá lahev s argonem jen pro plnění suchého obleku; plyn bez kyslíku, nikdy na ní nesmí být automatika.' }
 - { id: vyvazeni, label: Vyvážení, type: procedure, moduleId: vybaveni, shortDefinition: 'Množství zátěže, se kterým potápěč s téměř prázdnými lahvemi udrží poslední zastávku; kontroluje se na konci ponoru.' }
 - { id: kridlo, label: Křídlo, type: equipment, moduleId: vybaveni, shortDefinition: 'Vztlakový vak na zádech; musí unést nejtěžší okamžik ponoru včetně ztráty vztlaku obleku.' }
+- { id: svisla-rychlost-skutru, label: Svislá rychlost na skútru, type: quantity, moduleId: vybaveni, formulaId: svisla-rychlost, shortDefinition: 'Rychlost změny hloubky při jízdě s nakloněnou přídí; už malý sklon stačí na rychlejší výstup, než dovoluje plán.' }
+- { id: ujety-skutr, label: Ujetý skútr, type: risk, moduleId: vybaveni, shortDefinition: 'Skútr, který po puštění spouště nepřestane táhnout; nejnebezpečnější, když míří k hladině.' }
 
 # ── Průřezový modul: Fyziologie a medicína ───────────────────────────────────
 - { id: typy-dcs, label: Projevy dekompresní nemoci, type: physiology, moduleId: fyziologie, shortDefinition: 'Klouby a svaly, kůže, mícha, mozek, vnitřní ucho, plíce nebo jen únava; většinou během hodin po vynoření. První pomoc je u všech stejná.' }

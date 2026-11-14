@@ -111,3 +111,5 @@
 - { cs: lékařská způsobilost, en: fitness to dive, definition: 'Zdravotní stav, který dovoluje potápět se s přijatelným rizikem.' }
 - { cs: rekomprese, en: recompression, definition: 'Léčba v přetlakové komoře s dýcháním kyslíku.' }
 - { cs: pneumotorax, en: pneumothorax, definition: 'Vzduch mezi plící a hrudní stěnou; plíce se částečně nebo úplně zhroutí.' }
+- { cs: ujetý skútr, en: runaway DPV, definition: 'Skútr, který po puštění spouště nepřestane táhnout.' }
+- { cs: vodítko skútru, en: DPV tow cord, definition: 'Krátké lanko mezi skútrem a kroužkem na postroji v rozkroku; tah nese postroj, ne paže.' }

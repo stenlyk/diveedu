@@ -392,6 +392,11 @@
 - { from: vztlak, to: vyvazeni, type: je_predpokladem, lessonId: lahve-a-vyvazeni, explanation: 'Vyvážení je vztlak na konci ponoru, kdy je plyn vydýchaný.' }
 - { from: kridlo, to: suchy-oblek, type: zmirnuje, lessonId: lahve-a-vyvazeni, explanation: 'Křídlo musí unést i ztrátu vztlaku zatopeného obleku.' }
 - { from: stage-lahev, to: vyvazeni, type: zhorsuje, lessonId: lahve-a-vyvazeni, explanation: 'Vydýchaná nebo odložená stage mění vztlak; počítá se s tím v plánu.' }
+- { from: skutr-dpv, to: svisla-rychlost-skutru, type: zvysuje, lessonId: skutr-ve-volne-vode, explanation: 'Při rychlosti jízdy stačí malý sklon přídě a hloubka se mění rychleji, než potápěč stačí reagovat.' }
+- { from: svisla-rychlost-skutru, to: rychlost-vystupu, type: zhorsuje, lessonId: skutr-ve-volne-vode, explanation: 'Nakloněný skútr vynese potápěče nahoru rychleji než 9–10 m/min, aniž by se o výstup pokoušel.' }
+- { from: svisla-rychlost-skutru, to: vyrovnani-tlaku, type: zhorsuje, lessonId: skutr-ve-volne-vode, explanation: 'Rychlý sestup na skútru nedá uším čas na vyrovnání tlaku.' }
+- { from: ujety-skutr, to: vynechana-dekomprese, type: zpusobuje, lessonId: skutr-ve-volne-vode, explanation: 'Skútr, který táhne k hladině, vynese potápěče přes zastávky.' }
+- { from: selhani-skutru, to: namaha, type: zpusobuje, lessonId: skutr-ve-volne-vode, explanation: 'Návrat plaváním s výstrojí stavěnou pro jízdu je těžká práce; spotřeba plynu prudce stoupne.' }
 - { from: typy-dcs, to: dcs, type: je_predpokladem, lessonId: typy-dcs, explanation: 'Kdo zná projevy, nepřehlédne nemoc, kterou má.' }
 - { from: dehydratace, to: dcs, type: zvysuje, lessonId: typy-dcs, explanation: 'Horší prokrvení zpomaluje vyplavování dusíku.' }
 - { from: namaha, to: typy-dcs, type: zvysuje, lessonId: typy-dcs, explanation: 'Námaha po ponoru zvyšuje množství bublin.' }

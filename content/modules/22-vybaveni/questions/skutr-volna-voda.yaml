@@ -1,0 +1,131 @@
+- id: dpv-sklon
+  type: numeric
+  conceptIds: [svisla-rychlost-skutru, rychlost-vystupu]
+  difficulty: 2
+  prompt: 'Jedeš na skútru rychlostí {speed} m/min s přídí {angle}° nahoru. Jak rychle stoupáš?'
+  template: { fn: verticalSpeed, params: { speed: { values: [30, 40, 50] }, angle: { values: [15, 20, 25] } }, args: [speed, angle], tolerance: 0.5, unit: m/min, decimals: 1 }
+  explanation: 'Svislá rychlost = rychlost jízdy × sin(sklonu). Už při 15° je to při rychlé jízdě víc než 9–10 m/min.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-max-sklon
+  type: numeric
+  conceptIds: [svisla-rychlost-skutru]
+  difficulty: 3
+  prompt: 'Při jízdě rychlostí {speed} m/min: jaký největší sklon přídě ještě drží svislou rychlost na 9 m/min?'
+  template: { fn: maxClimbAngleDeg, params: { speed: { values: [30, 40, 50] } }, fixed: { limit: 9 }, args: [speed, limit], tolerance: 1, unit: '°', decimals: 0 }
+  explanation: 'Pár stupňů, které pod vodou nikdo neodhadne. Proto se výstup nedělá jízdou.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-vystup-jak
+  type: choice
+  conceptIds: [svisla-rychlost-skutru, rychlost-vystupu]
+  difficulty: 1
+  prompt: 'Jízda končí ve 30 m a čeká tě výstup na první zastávku. Jak vystoupíš?'
+  options:
+    - { text: 'Zastavím, srovnám vztlak a stoupám rychlostí podle plánu; skútr mám u sebe, ale netáhne mě.', correct: true }
+    - { text: 'Nakloním příď mírně nahoru a vyjedu pomalou jízdou.', explanation: 'Mírný sklon při rychlosti jízdy snadno překročí rychlost výstupu.' }
+    - { text: 'Vyjedu rychle a na zastávce počkám déle.', explanation: 'Rychlý výstup se delší zastávkou nenapraví.' }
+    - { text: 'Nechám skútr vytáhnout mě a vypustím plyn z křídla.', explanation: 'Výstup pak řídí skútr, ne ty.' }
+  explanation: 'Výstup je součást dekomprese. Řídí ho vztlak a plán, ne tah vrtule.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-usi
+  type: why
+  conceptIds: [svisla-rychlost-skutru, vyrovnani-tlaku]
+  difficulty: 1
+  prompt: Proč se na skútru sestupuje pomaleji, než by skútr dovolil?
+  options:
+    - { text: 'Uši a dutiny musí stačit vyrovnávat tlak; skútr tě do bolesti dotlačí snadno.', correct: true }
+    - { text: 'Kvůli úspoře baterie.', explanation: 'Sestup baterii téměř nezatíží; jde o uši.' }
+    - { text: 'Aby se nepřehřál motor.', explanation: 'Motor chladí okolní voda.' }
+    - { text: 'Protože počítač při rychlém sestupu přestane počítat.', explanation: 'Počítač počítá dál; problém je ve tvých uších.' }
+  explanation: 'Když ucho nepovolí, zastav. Plaváním bys zpomalil sám, skútr tě táhne dál.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-ujety-prvni
+  type: choice
+  conceptIds: [ujety-skutr]
+  difficulty: 2
+  prompt: 'Pustíš spoušť a skútr dál táhne – směrem k hladině. Co uděláš nejdřív?'
+  options:
+    - { text: 'Odkloním příď do vodorovné roviny a skútr vypnu nebo se od něj odpojím a pustím ho.', correct: true }
+    - { text: 'Nechám se vyvézt, k hladině je to nejrychlejší cesta.', explanation: 'Vynese tě přes zastávky rychleji, než stačíš vypustit plyn.' }
+    - { text: 'Budu mačkat spoušť znovu, dokud nepovolí.', explanation: 'Mezitím stoupáš. Nejdřív zastav stoupání.' }
+    - { text: 'Nafouknu křídlo, abych zpomalil.', explanation: 'Plyn v křídle tě táhne nahoru ještě víc.' }
+  explanation: 'Nejdřív zastavit změnu hloubky, pak skútr. Vypnutí a odpojení se nacvičuje naslepo v mělké vodě.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-ujety-proc
+  type: why
+  conceptIds: [ujety-skutr, vynechana-dekomprese]
+  difficulty: 2
+  prompt: Proč je ujetý skútr nejnebezpečnější, když míří k hladině?
+  options:
+    - { text: 'Vynese tě přes zastávky a rozpínající se plyn v křídle a obleku výstup ještě zrychlí.', correct: true }
+    - { text: 'Protože na hladině skútr narazí do lodi.', explanation: 'I to se může stát, ale hlavní riziko je nekontrolovaný výstup.' }
+    - { text: 'Protože směrem nahoru víc spotřebuje baterii.', explanation: 'Baterie tu nehraje roli.' }
+    - { text: 'Není, směrem ke dnu je horší.', explanation: 'Ke dnu tě zastaví dno a sestup se dá vyrovnat; výstup se s každým metrem zrychluje.' }
+  explanation: 'Nekontrolovaný výstup s dekompresním závazkem znamená vynechanou dekompresi a riziko barotraumatu plic.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-ujety-prevence
+  type: multi
+  conceptIds: [ujety-skutr]
+  difficulty: 2
+  prompt: Co snižuje riziko, že tě ujetý skútr vynese k hladině?
+  options:
+    - { text: 'Kontrola spouště a vypínání před ponorem', correct: true }
+    - { text: 'Nácvik vypnutí a odepnutí naslepo v mělké vodě', correct: true }
+    - { text: 'Vodítko, ze kterého se dá rychle odepnout', correct: true }
+    - { text: 'Vodítko omotané kolem zápěstí, aby skútr neulétl', explanation: 'Omotané vodítko neodepneš; skútr tě vezme s sebou.' }
+    - { text: 'Jízda na nejvyšší rychlost, aby skútr táhl rovnoměrně', explanation: 'Vyšší rychlost dává méně času na reakci.' }
+  explanation: 'Poruše nezabráníš vždy. Zvládneš ji, když víš, jak skútr zastavit nebo pustit.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-navrat-plyn
+  type: numeric
+  conceptIds: [selhani-skutru, skutr-dpv]
+  difficulty: 2
+  prompt: 'Skútr selže {distance} m od vstupu ve hloubce {depth} m. Plaveš zpět 15 m/min, spotřeba 20 l/min, dvojče 2×12 l. Kolik barů spotřebuješ sám na cestu zpět?'
+  template: { fn: exitGasBar, params: { distance: { values: [600, 900] }, depth: { values: [20, 25] } }, fixed: { speed: 15, sac: 20, tank: 24, divers: 1 }, args: [distance, speed, sac, depth, tank, divers], tolerance: 2, unit: bar, decimals: 0 }
+  explanation: 'Plyn na návrat bez skútru se plánuje předem. Když na něj nestačí, plánuje se jiná trasa nebo záložní skútr.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-unik-nahoru
+  type: multi
+  conceptIds: [selhani-skutru, vynechana-dekomprese]
+  difficulty: 2
+  prompt: 'Ve volné vodě je při poruše skútru únik nahoru. Kdy na něj nemůžeš spoléhat?'
+  options:
+    - { text: 'Když máš dekompresní závazek', correct: true }
+    - { text: 'Když jsi pod převisem nebo uvnitř vraku', correct: true }
+    - { text: 'Když tě na hladině v proudu a vlnách nikdo nenajde', correct: true }
+    - { text: 'Na ponoru bez dekomprese v 15 m s lodí, která tě sleduje', explanation: 'Tady je řízený výstup s bójkou rozumná cesta.' }
+  explanation: 'Dekompresní závazek a strop zavírají cestu nahoru stejně jako v jeskyni. Hladina pomůže jen tomu, koho tam někdo vyzvedne.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-tym
+  type: choice
+  conceptIds: [skutr-dpv, ztrata-partnera]
+  difficulty: 1
+  prompt: Jakou rychlostí jede tým se skútry ve volné vodě?
+  options:
+    - { text: 'Rychlostí nejpomalejšího skútru nebo potápěče', correct: true }
+    - { text: 'Každý svou nejvyšší, sejdou se na konci', explanation: 'Rozdíl rychlostí je za minutu desítky metrů; ve volné vodě není šňůra, podle které by se tým znovu našel.' }
+    - { text: 'Rychlostí vedoucího, ostatní se přizpůsobí', explanation: 'Pomalejší se nepřizpůsobí, jen zůstane vzadu.' }
+    - { text: 'Průměrnou rychlostí týmu', explanation: 'Průměr je pro nejpomalejšího pořád moc.' }
+  explanation: 'Sevřená formace na dohled, signály světlem.'
+  backToLessonId: skutr-ve-volne-vode
+
+- id: dpv-baterie
+  type: choice
+  conceptIds: [selhani-skutru]
+  difficulty: 2
+  prompt: Jak se plánuje baterie skútru?
+  options:
+    - { text: 'Jako plyn: třetina tam, třetina zpět, třetina rezerva – a ve studené vodě s menší kapacitou, než slibuje štítek.', correct: true }
+    - { text: 'Do vybití, zpět se dá plavat.', explanation: 'Plavání zpět je nouzový plán, ne běžný.' }
+    - { text: 'Na polovinu: tam a zpět.', explanation: 'Bez rezervy na proud, tažení partnera a chlad.' }
+    - { text: 'Podle ukazatele během ponoru, plán netřeba.', explanation: 'Ukazatel řekne, kolik zbývá, ne kolik bude potřeba na návrat.' }
+  explanation: 'Tažení partnera spotřebu energie výrazně zvýší.'
+  backToLessonId: skutr-ve-volne-vode

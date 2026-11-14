@@ -1,6 +1,6 @@
-/** Výpočty pro prostředí se stropem: dosah, návrat a tlak otočky při různých rychlostech tam a zpět. */
+/** Výpočty pro prostředí se stropem a pro jízdu na skútru: dosah, návrat, tlak otočky a svislá rychlost. */
 import { litersToBar, gasConsumed } from './consumption';
-import { assertNonNegative, assertPositive } from './errors';
+import { assertNonNegative, assertPositive, CalcInputError } from './errors';
 
 /** Doba, na kterou vystačí daný úbytek tlaku v hloubce (min). */
 export function minutesOnGas(usableBar: number, tankLiters: number, sacLpm: number, depthM: number): number {
@@ -44,4 +44,22 @@ export function usableFraction(speedInMpm: number, speedOutMpm: number): number 
 export function turnPressureForSpeeds(startBar: number, speedInMpm: number, speedOutMpm: number): number {
   assertNonNegative(startBar, 'počáteční tlak');
   return startBar * (1 - usableFraction(speedInMpm, speedOutMpm));
+}
+
+/**
+ * Svislá rychlost při jízdě na skútru se skloněnou přídí (m/min): rychlost × sin(úhlu).
+ * Kladný úhel = příď nahoru (výstup), záporný = dolů (sestup).
+ */
+export function verticalSpeed(speedMpm: number, angleDeg: number): number {
+  assertNonNegative(speedMpm, 'rychlost');
+  if (!Number.isFinite(angleDeg) || Math.abs(angleDeg) > 90) throw new CalcInputError('úhel musí být mezi −90° a 90°');
+  return speedMpm * Math.sin((angleDeg * Math.PI) / 180);
+}
+
+/** Největší sklon přídě (°), při kterém svislá rychlost nepřekročí daný limit. */
+export function maxClimbAngleDeg(speedMpm: number, limitMpm: number): number {
+  assertPositive(speedMpm, 'rychlost');
+  assertNonNegative(limitMpm, 'limit svislé rychlosti');
+  if (limitMpm >= speedMpm) return 90;
+  return (Math.asin(limitMpm / speedMpm) * 180) / Math.PI;
 }

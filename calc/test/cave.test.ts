@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CalcInputError, exitGasBar, exitMinutes, minutesOnGas, penetrationDistance, turnPressureForSpeeds, usableFraction } from '../src';
+import { CalcInputError, exitGasBar, exitMinutes, maxClimbAngleDeg, minutesOnGas, penetrationDistance, turnPressureForSpeeds, usableFraction, verticalSpeed } from '../src';
 
 describe('dosah a návrat', () => {
   it('60 bar z dvojčete 24 l při 20 l/min ve 20 m vystačí na 24 minut', () => {
@@ -47,5 +47,25 @@ describe('otočka při různých rychlostech', () => {
     expect(() => usableFraction(0, 15)).toThrow(CalcInputError);
     expect(() => usableFraction(15, 0)).toThrow(CalcInputError);
     expect(() => turnPressureForSpeeds(-1, 15, 15)).toThrow(CalcInputError);
+  });
+});
+
+describe('svislá rychlost na skútru', () => {
+  it('40 m/min se sklonem 15° stoupá o 10,4 m/min, se sklonem 30° o 20 m/min', () => {
+    expect(verticalSpeed(40, 15)).toBeCloseTo(10.35, 2);
+    expect(verticalSpeed(40, 30)).toBeCloseTo(20, 8);
+    expect(verticalSpeed(40, 0)).toBe(0);
+    expect(verticalSpeed(40, -30)).toBeCloseTo(-20, 8);
+  });
+  it('limit 9 m/min při 40 m/min dovolí sklon asi 13°', () => {
+    expect(maxClimbAngleDeg(40, 9)).toBeCloseTo(13.0, 1);
+    expect(verticalSpeed(40, maxClimbAngleDeg(40, 9))).toBeCloseTo(9, 8);
+    expect(maxClimbAngleDeg(5, 9)).toBe(90);
+  });
+  it('odmítne neplatné vstupy', () => {
+    expect(() => verticalSpeed(-1, 10)).toThrow(CalcInputError);
+    expect(() => verticalSpeed(40, 91)).toThrow(CalcInputError);
+    expect(() => verticalSpeed(40, Number.NaN)).toThrow(CalcInputError);
+    expect(() => maxClimbAngleDeg(0, 9)).toThrow(CalcInputError);
   });
 });

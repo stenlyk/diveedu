@@ -606,6 +606,32 @@ export const CALC_DEFS: CalcDef[] = [
       ];
     },
   },
+  {
+    id: 'scooter-climb',
+    title: 'Sklon skútru a svislá rychlost',
+    summary: 'Jak rychle stoupáš nebo klesáš, když jedeš na skútru s nakloněnou přídí.',
+    tool: true,
+    inputs: [
+      { key: 'speed', label: 'Rychlost jízdy', min: 10, max: 60, step: 1, unit: 'm/min', initial: 40 },
+      { key: 'angle', label: 'Sklon přídě (+ nahoru, − dolů)', min: -45, max: 45, step: 1, unit: '°', initial: 15 },
+    ],
+    outputs: (v) => {
+      const vertical = c.verticalSpeed(v.speed!, v.angle!);
+      return [
+        {
+          label: vertical >= 0 ? 'Rychlost výstupu' : 'Rychlost sestupu',
+          value: Math.abs(vertical),
+          unit: 'm/min',
+          decimals: 1,
+          tone: vertical > 10 ? 'danger' : vertical > 9 ? 'warn' : 'ok',
+          bar: { max: 45, marks: [{ at: 9, label: '9' }] },
+          note: vertical >= 0 ? 'Výstup se řídí rychlostí z plánu a počítače, obvykle kolem 9–10 m/min, a nikdy ne skútrem.' : 'Rychlý sestup nedá uším čas na vyrovnání tlaku.',
+        },
+        { label: 'Největší sklon pro výstup 9 m/min', value: c.maxClimbAngleDeg(v.speed!, 9), unit: '°', decimals: 0 },
+        { label: 'Změna hloubky za 10 sekund', value: Math.abs(vertical) / 6, unit: 'm', decimals: 1 },
+      ];
+    },
+  },
 ];
 
 export const calcDefsById = new Map(CALC_DEFS.map((def) => [def.id, def]));

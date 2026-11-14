@@ -1,0 +1,113 @@
+<Hook>
+
+Jedeš podél útesu ve třiceti metrech. Útes stoupá a ty s ním, příď skútru mírně nahoru. Nic nepozoruješ – plavat nemusíš, vztlak drží.
+
+Za minutu počítač pípá: rychlý výstup. Jsi v osmnácti metrech.
+
+</Hook>
+
+<Principle>
+
+<Term cs="skútr" /> ve volné vodě nese stejné riziko jako v jeskyni – vzdálenost, ze které je při poruše třeba doplavat. Přidává ale ještě jedno: **mění hloubku stejně snadno jako vzdálenost.**
+
+**Hloubka za jízdy.** Při plavání tě každý metr nahoru stojí práci, takže ho cítíš. Na skútru se hloubka mění sama, sklonem přídě.
+Při rychlosti jízdy stačí sklon pár stupňů a stoupáš rychleji, než dovoluje plán. Proto platí:
+
+- **Výstup neřídí skútr.** Na konci jízdy zastavíš, srovnáš vztlak a stoupáš rychlostí podle plánu a počítače. Skútr máš u sebe, ale netáhne tě.
+- **Sestup** jen tak rychle, jak stačí vyrovnávat uši. Když ucho nepovolí, zastav – skútr tě do bolesti dotlačí snadno.
+- **Pilovitý profil.** Jízda nahoru a dolů podél útesu nebo vraku dělá opakované výstupy a sestupy, které dekompresní model špatně popisuje. Drž hloubku a měň ji vědomě.
+- **Vztlak se mění i za jízdy.** S hloubkou se rozpíná plyn v křídle a obleku; tah skútru to zakryje, dokud nezastavíš.
+
+**<Term cs="ujetý skútr" />** – skútr, který po puštění spouště nepřestane táhnout. Nejnebezpečnější je, když míří k hladině: vynese tě přes zastávky rychleji, než stačíš vypustit plyn.
+
+- Okamžitě odkloň příď z vertikály do vodorovné roviny.
+- Vypni skútr způsobem, který pro daný model určuje výrobce, nebo se od něj odpoj a pusť ho.
+- Obojí musíš umět naslepo a v rukavicích. Nacvičuje se v mělké vodě, ne poprvé ve třiceti metrech.
+- Před ponorem zkontroluj spoušť a vypínání; skútr nese <Term cs="vodítko skútru" />, ze kterého se dá rychle odepnout.
+
+**Únik nahoru.** Ve volné vodě máš na rozdíl od jeskyně cestu ven všude nad sebou – ale jen někdy:
+
+- **dekompresní závazek** únik nahoru zavírá stejně jako strop,
+- **vrak, převis nebo led** jsou strop,
+- **na hladině** tě musí někdo najít: proud, vlny, lodní provoz a vzdálenost od lodi nebo břehu. Bójka se vypouští ze zastávek, ne až nahoře.
+
+Na pobřežních ponorech je cesta zpět často vodorovná a dlouhá. Když skútr selže, plave se – pod vodou nebo na hladině – a **plyn i baterie se plánují na návrat bez skútru.**
+Baterie se dělí jako plyn: třetina tam, třetina zpět, třetina rezerva. Ve studené vodě má akumulátor obvykle menší kapacitu, než slibuje štítek.
+
+**Tým** jede rychlostí nejpomalejšího skútru. Rozdíl rychlostí je za minutu desítky metrů a ve volné vodě není šňůra, podle které by se tým znovu našel.
+Jezdí se v sevřené formaci na dohled a signály se dávají světlem.
+
+**Vrtule** nesmí dosáhnout na hadice, vlasy, šňůru bójky ani na partnera. Proud za vrtulí zvedá sediment a kalí vodu všem za tebou.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="svisla-rychlost" />
+
+Svislá rychlost je část rychlosti jízdy, která míří nahoru nebo dolů. Rychlý skútr ji udělá velkou i z malého sklonu.
+
+<Formula id="dosah" />
+
+Stejný vzorec jako v jeskyni: skútr násobí rychlost, a tím i vzdálenost, ze které se při poruše plave zpět.
+
+</FormulaSection>
+
+<WorkedSection>
+
+**Sklon přídě.** Jízda rychlostí 40 m/min, příď 15° nahoru:
+
+<Worked fn="verticalSpeed" args={[40, 15]} expected={10.35} tolerance={0.05} unit="m/min" decimals={1} />
+
+To je víc než obvyklých 9–10 m/min – a sklon 15° na skútru skoro nevnímáš. Při sklonu 30° je to <Calc fn="verticalSpeed" args={[40, 30]} decimals={0} unit="m/min" />.
+
+Největší sklon, při kterém výstup nepřekročí 9 m/min:
+
+<Worked fn="maxClimbAngleDeg" args={[40, 9]} expected={13} tolerance={0.1} unit="°" decimals={0} />
+
+Sklon na stupně nikdo neodhadne. Proto se výstup nedělá jízdou.
+
+**Návrat bez skútru.** Pobřežní ponor: skútr selže 900 m od vstupu ve 25 m. Plaveš zpět rychlostí 15 m/min:
+
+<Worked fn="exitMinutes" args={[900, 15]} expected={60} tolerance={0.01} unit="min" decimals={0} />
+
+Při spotřebě 20 l/min z dvojčete 2×12 l to stojí:
+
+<Worked fn="exitGasBar" args={[900, 15, 20, 25, 24, 1]} expected={175} tolerance={0.1} unit="bar" decimals={0} />
+
+Tam to skútrem rychlostí 60 m/min trvalo <Calc fn="exitMinutes" args={[900, 60]} decimals={0} unit="min" />. Návrat musí počítat s mělčí trasou, s výstupem a plaváním na hladině, nebo s tažením partnerem – a to se rozhoduje na břehu, ne ve 25 m.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="scooter-climb" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+Plánování plynu a tažení partnera do detailu: <LessonLink id="skutr-v-jeskyni" />.
+
+</Links>
+
+<RealWorld>
+
+Skútr se ve volné vodě nejčastěji používá na dlouhých pobřežních ponorech, na velkých vracích a na hlubokých ponorech, kde zkrácí čas na dně.
+Ve všech třech případech platí totéž co v jeskyni: všechno, co se skútrem uděláš, musíš umět dokončit bez něj. Ovládání, připnutí a nácvik poruch patří do kurzu s instruktorem.
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

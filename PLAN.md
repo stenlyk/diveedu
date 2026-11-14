@@ -537,3 +537,12 @@ Podklad: export ze Stitch „Technical Precision Instrument“ (DESIGN.md a čty
 - **Mezipaměť:** manifest nese u každé nahrávky otisk obsahu (`audio`) a adresa souboru ho používá místo otisku textu. Po normalizaci tak aplikace i service worker stáhnou novou verzi; stažené zvukové balíčky se po aktualizaci aplikace ukážou jako nestažené a je třeba je stáhnout znovu.
 - Normalizace potřebuje lokálně `ffmpeg`; build ani CI ho nepotřebují.
 - Cíl −16 LUFS odpovídá běžnému doporučení pro řeč poslouchanou na mobilu. Kdo by chtěl tišší, změní `LOUDNESS_TARGET` a spustí příkaz znovu z původních souborů (git).
+
+## 32. Lekce Skútr ve volné vodě (2026-11-14)
+
+- **Proč:** skútr měl jen jeskynní lekci (`skutr-v-jeskyni`). Ve volné vodě přibývá riziko, které jeskyně tolik nezdůrazňuje: skútr mění hloubku stejně snadno jako vzdálenost.
+- **Lekce** `skutr-ve-volne-vode` v modulu Vybavení (pořadí 7): hloubka za jízdy a výstup bez tahu skútru, sestup a uši, pilovitý profil, ujetý skútr, kdy únik nahoru nefunguje (dekompresní závazek, strop, hladina), návrat a baterie bez skútru, tým, vrtule. Vzájemné odkazy `<LessonLink>` s jeskynní lekcí.
+- **Výpočty:** `verticalSpeed(rychlost, sklon)` a `maxClimbAngleDeg(rychlost, limit)` v `calc/src/cave.ts` s testy, vzorec `svisla-rychlost`, kalkulačka a hračka `scooter-climb` (sklon přídě → rychlost výstupu, největší sklon pro 9 m/min).
+- **Graf:** pojmy `svisla-rychlost-skutru`, `ujety-skutr`; 5 vazeb. 11 otázek (`skutr-volna-voda.yaml`), modul Vybavení má 55.
+- **Zvuk:** shrnutí namluveno přes ElevenLabs (1 soubor, 48 s) a automaticky normalizováno na −16 LUFS.
+- **K ověření:** postup při ujetém skútru (pořadí kroků, vypnutí podle výrobce), tvrzení o menší kapacitě akumulátoru ve studené vodě, nižší spotřeba plynu při jízdě, pilovitý profil jako rizikový faktor DCS, doporučené vybavení (vodítko, připnutí). Lekce má `needs_review`.

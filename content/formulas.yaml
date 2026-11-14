@@ -257,3 +257,12 @@
     - { symbol: 'v_{dovnitr}', name: rychlost cesty dovnitř vůči dnu, unit: m/min }
     - { symbol: 'v_{ven}', name: rychlost cesty ven v nejhorším případě, unit: m/min }
   calcFunction: usableFraction
+
+- id: svisla-rychlost
+  title: Svislá rychlost na skútru
+  latex: 'v_{svisla} = v \cdot \sin\alpha'
+  variables:
+    - { symbol: 'v_{svisla}', name: rychlost změny hloubky, unit: m/min }
+    - { symbol: 'v', name: rychlost jízdy, unit: m/min }
+    - { symbol: '\alpha', name: sklon přídě od vodorovné roviny, unit: '°' }
+  calcFunction: verticalSpeed

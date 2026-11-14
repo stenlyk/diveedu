@@ -1,0 +1,20 @@
+id: skutr-ve-volne-vode
+moduleId: vybaveni
+title: "Skútr ve volné vodě"
+order: 7
+conceptIds: ["skutr-dpv", "svisla-rychlost-skutru", "ujety-skutr", "selhani-skutru", "rychlost-vystupu"]
+checkQuestionIds: ["dpv-sklon", "dpv-vystup-jak", "dpv-usi", "dpv-ujety-prvni", "dpv-unik-nahoru", "dpv-tym"]
+estimatedMinutes: 10
+audioSummary: >-
+  Skútr mění hloubku stejně rychle jako vzdálenost. Při jízdě čtyřicet metrů za minutu stačí sklon patnácti stupňů
+  a stoupáš rychleji než deset metrů za minutu.
+  Výstup proto nikdy neřídí skútr. Zastavíš, srovnáš vztlak a stoupáš rychlostí podle plánu.
+  Sestupuj tak pomalu, aby uši stačily vyrovnávat.
+  Ujetý skútr, který nepřestane táhnout, je nejnebezpečnější směrem k hladině. Vypnout nebo pustit ho musíš umět naslepo.
+  Ve volné vodě je únik nahoru, ale ne s dekompresním závazkem a ne pod stropem.
+  Plyn i baterie se plánují na návrat bez skútru. Tým jede rychlostí nejpomalejšího.
+sources:
+  - { title: "Doing It Right: The Fundamentals of Better Diving", author: "Jablonski J.", year: 2006 }
+  - { title: "TDI DPV Cave Diver Manual", author: "Technical Diving International" }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+needs_review: true

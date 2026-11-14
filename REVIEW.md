@@ -63,6 +63,7 @@ Ruční poznámky ke konvencím ve výpočtech jsou v `docs/REVIEW-calc.md`.
 - [ ] Lekce **Kyslík přes více dní** (`kyslik-pres-vice-dni`, modul `fulltrimix`)
 - [ ] Lekce **Skútr v jeskyni** (`skutr-v-jeskyni`, modul `fullcave`)
 - [ ] Lekce **Kdokoli může ponor kdykoli ukončit** (`pravo-ukoncit-ponor`, modul `lidskyfaktor`)
+- [ ] Lekce **Skútr ve volné vodě** (`skutr-ve-volne-vode`, modul `vybaveni`)
 - [ ] Lekce **Kyslíkové okno** (`kyslikove-okno`, modul `nitrox`)
 - [ ] Lekce **Plánování plynu: třetiny, poloviny a rezervy** (`planovani-plynu`, modul `deko`)
 - [ ] Lekce **Dekomprese s heliem** (`dekomprese-s-heliem`, modul `trimix`)
