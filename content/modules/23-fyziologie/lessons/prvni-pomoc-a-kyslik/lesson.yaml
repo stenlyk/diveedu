@@ -1,0 +1,19 @@
+id: prvni-pomoc-a-kyslik
+moduleId: fyziologie
+title: "První pomoc a kyslík"
+order: 6
+conceptIds: ["kyslik-prvni-pomoc", "rekomprese", "typy-dcs"]
+checkQuestionIds: ["pp-kyslik-proc", "pp-jak", "pp-poradi", "pp-zlepseni", "pp-zasoba"]
+estimatedMinutes: 10
+audioSummary: >-
+  Kyslík je první pomoc při každém podezření na dekompresní nemoc i plynovou embolii. Co nejvyšší koncentrace, co nejdřív a co nejdéle.
+  Plicní automatika nebo maska s rezervoárem. Nosní brýle nestačí.
+  Poloha vleže, záchranná služba a potápěčská pohotovostní linka. Pít, pokud je postižený při vědomí. Zapsat profil a čas příznaků. Sledovat i partnera.
+  Když se stav po kyslíku zlepší, nemoc neskončila. Vyšetření lékařem je potřeba vždy.
+  Léčbou je rekomprese v komoře. Kyslík je jen most k ní, a zásoba se plánuje na celou cestu.
+sources:
+  - { title: "Emergency Oxygen for Scuba Diving Injuries (příručka kurzu)", author: "Divers Alert Network" }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "Decompression illness. The Lancet 377(9760)", author: "Vann R. D., Butler F. K., Mitchell S. J., Moon R. E.", year: 2011 }
+  - { title: "Recommendations for rescue of a submerged unresponsive compressed-gas diver. Undersea & Hyperbaric Medicine 39(6)", author: "Mitchell S. J. et al.", year: 2012 }
+needs_review: true

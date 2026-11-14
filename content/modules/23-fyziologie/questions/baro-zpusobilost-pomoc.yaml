@@ -1,0 +1,273 @@
+- id: baro-plice-proc
+  type: why
+  conceptIds: [barotrauma-plic, plynova-embolie, pneumotorax]
+  difficulty: 1
+  prompt: Proč se při výstupu nesmí zadržovat dech?
+  options:
+    - { text: 'Plyn v plicích se rozpíná a může roztrhnout sklípky; plyn pak pronikne do tepen a do mozku.', correct: true }
+    - { text: 'Protože se tím zvyšuje spotřeba.', explanation: 'Jde o poranění plic, ne o spotřebu.' }
+    - { text: 'Kvůli dusíkové narkóze.', explanation: 'Narkóza s tím nesouvisí.' }
+    - { text: 'Nevadí to, plíce jsou pružné.', explanation: 'Pružnost plic je malá; roztrhnou se dřív, než to ucítíš.' }
+  explanation: 'Následkem může být arteriální plynová embolie, pneumotorax nebo vzduch v mezihrudí.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-melko
+  type: choice
+  conceptIds: [barotrauma-plic, pneumotorax]
+  difficulty: 2
+  prompt: Kde je největší poměrná změna objemu plynu při výstupu?
+  options:
+    - { text: 'V posledních metrech pod hladinou', correct: true }
+    - { text: 'Ve velké hloubce', explanation: 'Absolutní tlak se tam mění poměrně méně: ze 40 na 30 m je to 5 : 4, z 10 m na hladinu 2 : 1.' }
+    - { text: 'Všude stejná', explanation: 'Poměr tlaků je u hladiny největší.' }
+    - { text: 'Jen při sestupu', explanation: 'Při sestupu se plyn smršťuje; rozpínání je při výstupu.' }
+  explanation: 'Výstup se zadrženým dechem ze dvou metrů může stačit k poranění.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-age-priznaky
+  type: multi
+  conceptIds: [plynova-embolie]
+  difficulty: 2
+  prompt: Které příznaky během minut po vynoření ukazují na arteriální plynovou embolii?
+  options:
+    - { text: 'Bezvědomí nebo zmatenost', correct: true }
+    - { text: 'Ochrnutí jedné strany těla', correct: true }
+    - { text: 'Porucha řeči nebo vidění', correct: true }
+    - { text: 'Svědění kůže za šest hodin', explanation: 'To odpovídá spíš kožní DCS a časem neodpovídá AGE.' }
+  explanation: 'AGE vypadá jako mrtvice a přichází rychle.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-dutiny
+  type: match
+  conceptIds: [barotrauma-dutin]
+  difficulty: 1
+  prompt: Přiřaď barotrauma k řešení nebo prevenci.
+  pairs:
+    - { left: Maska svírá obličej, right: Vydechnout nosem do masky }
+    - { left: Suchý oblek svírá při sestupu, right: Dopustit plyn do obleku }
+    - { left: Bolest nad okem při rýmě, right: Nepotápět se s rýmou }
+    - { left: Bolest ucha při sestupu, right: Vyrovnávat včas a zastavit sestup }
+  explanation: 'Každá uzavřená dutina s plynem se musí vyrovnávat, jinak ji tlak poraní.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-objem
+  type: numeric
+  conceptIds: [barotrauma-plic, objem-plynu, pneumotorax]
+  difficulty: 2
+  prompt: 'Potápěč má v hloubce {depth} m v plicích 6 l plynu a vystoupá se zadrženým dechem. Kolik litrů by plyn zabral na hladině?'
+  template: { fn: boyleVolume, params: { depth: { values: [2, 3, 5, 10] } }, fixed: { volume: 6, surface: 0 }, args: [volume, depth, surface], tolerance: 0.1, unit: l, decimals: 1 }
+  explanation: 'Objem krát poměr absolutních tlaků. I malé zvětšení nad plný nádech může plíce poranit.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-dutiny-vystup
+  type: choice
+  conceptIds: [barotrauma-dutin]
+  difficulty: 2
+  prompt: Může se nosní dutina „ucpat“ i při výstupu?
+  options:
+    - { text: 'Ano; plyn uvnitř se rozpíná a nemůže ven, což bolí a může krvácet', correct: true }
+    - { text: 'Ne, problém je jen při sestupu', explanation: 'Uzavřený vývod brání vyrovnání v obou směrech.' }
+    - { text: 'Ano, ale nikdy to nebolí', explanation: 'Bolest je typická.' }
+    - { text: 'Jen při potápění na nádech', explanation: 'Týká se každého potápění.' }
+  explanation: 'Rýma a ucpaný nos jsou důvod ponor odložit.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-po-poraneni
+  type: why
+  conceptIds: [barotrauma-plic, lekarska-zpusobilost]
+  difficulty: 2
+  prompt: Proč potřebuje potápěč po poranění plic posouzení lékaře, i když se cítí dobře?
+  options:
+    - { text: 'Příčinou může být místo v plicích, kde se plyn zachytává; bez vyšetření se může poranění opakovat.', correct: true }
+    - { text: 'Kvůli statistice.', explanation: 'Jde o riziko opakování.' }
+    - { text: 'Protože jinak propadne certifikát.', explanation: 'Důvod je zdravotní.' }
+    - { text: 'Nepotřebuje, když se cítí dobře.', explanation: 'Pocit nic neříká o stavu plic.' }
+  explanation: 'Návrat po poranění plic patří do rukou lékaře se znalostí potápěčské medicíny.'
+  backToLessonId: barotraumata-a-age
+
+- id: zpus-proc
+  type: why
+  conceptIds: [lekarska-zpusobilost]
+  difficulty: 1
+  prompt: Proč klade technické potápění na zdraví vyšší nároky než rekreační?
+  options:
+    - { text: 'Chlad, dlouhá dekomprese, hustý plyn a těžká výstroj, a v nouzi velká námaha bez možnosti přímého výstupu.', correct: true }
+    - { text: 'Protože technici jsou starší.', explanation: 'Věk není důvod; důvodem je prostředí a zátěž.' }
+    - { text: 'Nenáročné je stejně.', explanation: 'Zátěž je výrazně vyšší.' }
+    - { text: 'Kvůli ceně výstroje.', explanation: 'Cena se zdravím nesouvisí.' }
+  explanation: 'Proto prohlídka u lékaře, který rozumí potápěčské medicíně.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: zpus-stavy
+  type: multi
+  conceptIds: [lekarska-zpusobilost]
+  difficulty: 2
+  prompt: Které stavy vyžadují posouzení lékařem před potápěním?
+  options:
+    - { text: 'Vysoký krevní tlak', correct: true }
+    - { text: 'Astma', correct: true }
+    - { text: 'Cukrovka léčená inzulinem', correct: true }
+    - { text: 'Krátkozrakost korigovaná maskou s dioptriemi', explanation: 'Ta posouzení obvykle nevyžaduje.' }
+  explanation: 'Posouzení neznamená automaticky zákaz. Rozhoduje lékař.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: zpus-den
+  type: findError
+  conceptIds: [lekarska-zpusobilost]
+  difficulty: 1
+  prompt: Které úvahy v den ponoru jsou chybné?
+  items:
+    - { text: 'Mám platnou prohlídku, takže dnes jsem v pořádku.', isError: true, explanation: 'Prohlídka nic neříká o dnešní rýmě, spánku ani kocovině.' }
+    - { text: 'Spal jsem čtyři hodiny, ponor posunu nebo zkrátím.' }
+    - { text: 'Mám rýmu, ale vezmu si kapky a půjdu.', isError: true, explanation: 'Kapky mohou přestat účinkovat pod vodou a dutina se ucpe při výstupu.' }
+    - { text: 'Beru nový lék, zeptám se lékaře, jestli nevadí.' }
+  explanation: 'Způsobilost má dvě roviny: dlouhodobou a dnešní.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: zpus-po-dcs
+  type: choice
+  conceptIds: [lekarska-zpusobilost, typy-dcs]
+  difficulty: 2
+  prompt: Kdo rozhoduje o návratu k potápění po DCS?
+  options:
+    - { text: 'Lékař se znalostí potápěčské medicíny', correct: true }
+    - { text: 'Potápěč sám, podle toho, jak se cítí', explanation: 'Pocit neodhalí příčinu ani riziko opakování.' }
+    - { text: 'Instruktor', explanation: 'Instruktor není lékař.' }
+    - { text: 'Nikdo, stačí počkat týden', explanation: 'Doba pauzy se řídí tím, co se stalo.' }
+  explanation: 'Může být potřeba další vyšetření, například na PFO.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: zpus-spotreba
+  type: numeric
+  conceptIds: [lekarska-zpusobilost, namaha]
+  difficulty: 2
+  prompt: 'Při tažení partnera v hloubce {depth} m dýcháš {sac} l/min. Kolik litrů plynu spotřebuješ za minutu?'
+  template: { fn: gasConsumed, params: { sac: { values: [30, 40, 50] }, depth: { values: [10, 20, 30] } }, fixed: { time: 1 }, args: [sac, depth, time], tolerance: 1, unit: l, decimals: 0 }
+  explanation: 'Kondice rozhoduje o tom, jak vysoko spotřeba při námaze vyskočí a jak dlouho ji vydržíš.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: zpus-zdatnost
+  type: why
+  conceptIds: [lekarska-zpusobilost, namaha]
+  difficulty: 2
+  prompt: Proč je fyzická zdatnost součástí bezpečnosti, a ne jen pohodlí?
+  options:
+    - { text: 'Zdatný potápěč dýchá při stejné práci méně, vydrží ji déle a je dál od paniky.', correct: true }
+    - { text: 'Protože zdatný potápěč nepotřebuje rezervu plynu.', explanation: 'Rezervu potřebuje každý.' }
+    - { text: 'Kvůli rychlejší dekompresi.', explanation: 'Dekompresi model počítá stejně.' }
+    - { text: 'Není součástí bezpečnosti.', explanation: 'Je: v nouzi rozhoduje, kolik práce zvládneš.' }
+  explanation: 'Zdatnost je rezerva plynu, kterou nevidíš na manometru.'
+  backToLessonId: zpusobilost-k-potapeni
+
+- id: pp-kyslik-proc
+  type: why
+  conceptIds: [kyslik-prvni-pomoc, typy-dcs]
+  difficulty: 2
+  prompt: Proč pomáhá dýchání čistého kyslíku při DCS?
+  options:
+    - { text: 'Zvětší rozdíl tlaku dusíku mezi bublinou a krví, bubliny se zmenšují rychleji a tkáně dostanou kyslík.', correct: true }
+    - { text: 'Kyslík bubliny okamžitě rozpustí.', explanation: 'Zmenšování trvá; proto co nejdéle.' }
+    - { text: 'Kyslík tlumí bolest.', explanation: 'Nejde o tlumení bolesti, ale o vyplavení dusíku.' }
+    - { text: 'Kyslík nahrazuje rekompresi.', explanation: 'Nenahrazuje. Je to most k ní.' }
+  explanation: 'Co nejvyšší koncentrace, co nejdřív a co nejdéle.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-jak
+  type: multi
+  conceptIds: [kyslik-prvni-pomoc]
+  difficulty: 1
+  prompt: Jak podat kyslík potápěči s podezřením na DCS?
+  options:
+    - { text: 'Plicní automatikou, pokud je při vědomí a dýchá', correct: true }
+    - { text: 'Maskou s rezervoárem s průtokem kolem 15 l/min', correct: true }
+    - { text: 'Až do předání zdravotníkům', correct: true }
+    - { text: 'Nosními brýlemi, 2 l/min', explanation: 'Nosní brýle dávají příliš málo kyslíku.' }
+  explanation: 'Cílem je co nejvyšší koncentrace kyslíku v nádechu.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-poradi
+  type: order
+  conceptIds: [kyslik-prvni-pomoc, rekomprese]
+  difficulty: 2
+  prompt: Potápěč po ponoru hlásí brnění nohou. Seřaď postup.
+  items:
+    - 'Uložit vleže a dát kyslík'
+    - 'Zavolat záchrannou službu a potápěčskou pohotovostní linku'
+    - 'Zapsat čas příznaků, profil a plyny; počítač pošle s ním'
+    - 'Předat zdravotníkům k převozu na rekompresi'
+  explanation: 'Kyslík první a bez čekání; telefonát hned potom.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-zlepseni
+  type: why
+  conceptIds: [kyslik-prvni-pomoc, rekomprese]
+  difficulty: 2
+  prompt: Příznaky po kyslíku zmizely. Proč je i tak potřeba vyšetření lékařem?
+  options:
+    - { text: 'Nemoc tím neskončila; po vysazení kyslíku se příznaky mohou vrátit, i horší.', correct: true }
+    - { text: 'Kvůli potvrzení pro pojišťovnu.', explanation: 'Důvodem je zdraví.' }
+    - { text: 'Není potřeba, když příznaky zmizely.', explanation: 'Zlepšení na kyslíku je časté a neznamená vyléčení.' }
+    - { text: 'Kvůli kyslíkové toxicitě.', explanation: 'Na hladině je riziko zanedbatelné; jde o návrat DCS.' }
+  explanation: 'Léčbou je rekomprese. Kyslík je jen most.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-zasoba
+  type: numeric
+  conceptIds: [kyslik-prvni-pomoc, rekomprese]
+  difficulty: 2
+  prompt: 'Kyslíková lahev {tank} l je naplněná na 200 bar, maska spotřebuje 15 l/min. Na kolik minut kyslík vystačí?'
+  template: { fn: minutesOnGas, params: { tank: { values: [1, 2, 3, 5] } }, fixed: { bar: 200, flow: 15, depth: 0 }, args: [bar, tank, flow, depth], tolerance: 0.5, unit: min, decimals: 0 }
+  explanation: 'Zásoba se plánuje na celou cestu k lékaři, ne na první půlhodinu.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-rekomprese
+  type: choice
+  conceptIds: [rekomprese]
+  difficulty: 2
+  prompt: Co je léčbou dekompresní nemoci a arteriální plynové embolie?
+  options:
+    - { text: 'Rekomprese v přetlakové komoře s dýcháním kyslíku', correct: true }
+    - { text: 'Kyslík na hladině', explanation: 'Ten je první pomoc a most k léčbě.' }
+    - { text: 'Návrat pod vodu na zastávky', explanation: 'Rekomprese ve vodě je postup pro specializované týmy; jako improvizace je nebezpečná.' }
+    - { text: 'Klid na lůžku', explanation: 'Klid sám bubliny neodstraní.' }
+  explanation: 'Tlak zmenší bubliny a kyslík vyplaví plyn.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: pp-dalsi
+  type: findError
+  conceptIds: [kyslik-prvni-pomoc, rekomprese]
+  difficulty: 2
+  prompt: Které kroky po podezření na DCS jsou chybné?
+  items:
+    - { text: 'Postižený je při vědomí, dáme mu pít vodu.' }
+    - { text: 'Večer letíme domů, v letadle bude kyslík.', isError: true, explanation: 'Let bez rozhodnutí lékaře může stav zhoršit.' }
+    - { text: 'Pustíme se zpátky do vody na zastávky, komora je daleko.', isError: true, explanation: 'Improvizovaná rekomprese ve vodě je nebezpečná.' }
+    - { text: 'Sledujeme i partnera, měl stejný profil.' }
+  explanation: 'Kyslík, záchranná služba, pohotovostní linka a převoz k rekompresi.'
+  backToLessonId: prvni-pomoc-a-kyslik
+
+- id: baro-pneumotorax
+  type: multi
+  conceptIds: [pneumotorax, barotrauma-plic]
+  difficulty: 2
+  prompt: Které projevy po výstupu ukazují na poranění plic přetlakem mimo arteriální embolii?
+  options:
+    - { text: 'Bolest na hrudi a dušnost', correct: true }
+    - { text: 'Změna hlasu a bolest za hrudní kostí', correct: true }
+    - { text: 'Praskání pod kůží na krku', correct: true }
+    - { text: 'Bolest v kolenu za osm hodin', explanation: 'To odpovídá spíš kloubní DCS.' }
+  explanation: 'Pneumotorax a vzduch v mezihrudí nebo pod kůží. První pomoc: kyslík, záchranná služba.'
+  backToLessonId: barotraumata-a-age
+
+- id: baro-maska
+  type: why
+  conceptIds: [barotrauma-dutin]
+  difficulty: 1
+  prompt: Proč se při sestupu občas vydechne nosem do masky?
+  options:
+    - { text: 'Plyn v masce se stlačuje; bez vyrovnání podtlak poraní cévky v obličeji a v očích.', correct: true }
+    - { text: 'Aby se maska nemlžila.', explanation: 'Mlžení s tlakem nesouvisí.' }
+    - { text: 'Kvůli vyrovnání tlaku v uších.', explanation: 'Uši se vyrovnávají jinak; maska je samostatný prostor.' }
+    - { text: 'Aby se ušetřil plyn.', explanation: 'Jde o malé množství; důvodem je podtlak.' }
+  explanation: 'Každý prostor s plynem u těla se musí vyrovnávat.'
+  backToLessonId: barotraumata-a-age

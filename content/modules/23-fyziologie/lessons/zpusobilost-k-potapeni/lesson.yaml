@@ -1,0 +1,18 @@
+id: zpusobilost-k-potapeni
+moduleId: fyziologie
+title: "Lékařská způsobilost a den ponoru"
+order: 5
+conceptIds: ["lekarska-zpusobilost", "namaha", "dehydratace"]
+checkQuestionIds: ["zpus-proc", "zpus-stavy", "zpus-den", "zpus-po-dcs", "zpus-spotreba"]
+estimatedMinutes: 9
+audioSummary: >-
+  Způsobilost k potápění má dvě roviny. Dlouhodobý zdravotní stav a to, jak ti je dnes.
+  Nemoci srdce, vysoký tlak, astma, cukrovka, epilepsie a některé léky vyžadují posouzení lékařem se znalostí potápěčské medicíny.
+  Kondice je rezerva. Při tažení partnera se spotřeba může ztrojnásobit.
+  V den ponoru se zeptej sám sebe. Spal jsem, nejsem nemocný, nepil jsem, neberu nový lék?
+  Návrat po dekompresní nemoci nebo po edému plic patří do rukou lékaře.
+sources:
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "NOAA Diving Manual, 6th Edition", author: "NOAA", year: 2017 }
+  - { title: "Joint position statement on persistent foramen ovale (PFO) and diving. Diving and Hyperbaric Medicine 45(2)", author: "Smart D., Mitchell S., Wilmshurst P., Turner M., Banham N.", year: 2015 }
+needs_review: true

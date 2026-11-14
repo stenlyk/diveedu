@@ -1,0 +1,18 @@
+id: pfo-a-zkrat
+moduleId: fyziologie
+title: "Otevřené foramen ovale a zkrat v srdci"
+order: 2
+conceptIds: ["pfo", "konzervativni-profil", "bubliny"]
+checkQuestionIds: ["pfo-co-je", "pfo-proc-vadi", "pfo-kdy-otevre", "pfo-moznosti", "pfo-gf"]
+estimatedMinutes: 10
+audioSummary: >-
+  Mezi pravou a levou síní srdce je před narozením otvor. Asi u čtvrtiny dospělých se úplně neuzavře.
+  Bubliny v žilní krvi normálně zachytí plíce. Otevřeným foramen ovale mohou část bublin obejít plíce a dostat se do tepen, do mozku, míchy, ucha nebo kůže.
+  Chlopeň se otevře při tlačení, kašli a námaze, zvlášť těsně po ponoru.
+  Plošné vyšetřování se nedoporučuje. Po zjištění se rozhoduje s lékařem mezi konzervativním potápěním, uzavřením a koncem potápění.
+  Konzervativní profil znamená méně bublin a je rozumný pro každého.
+sources:
+  - { title: "Joint position statement on persistent foramen ovale (PFO) and diving. Diving and Hyperbaric Medicine 45(2)", author: "Smart D., Mitchell S., Wilmshurst P., Turner M., Banham N.", year: 2015 }
+  - { title: "Patent foramen ovale and decompression sickness in sports divers. Journal of Applied Physiology 84(5)", author: "Germonpré P., Dendale P., Unger P., Balestra C.", year: 1998 }
+  - { title: "Incidence and size of patent foramen ovale during the first 10 decades of life: an autopsy study of 965 normal hearts. Mayo Clinic Proceedings 59(1)", author: "Hagen P. T., Scholz D. G., Edwards W. D.", year: 1984 }
+needs_review: true

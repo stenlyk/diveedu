@@ -1,0 +1,10 @@
+id: fyziologie
+title: Fyziologie a medicína
+subtitle: 'Průřezový modul: co se děje v těle a co dělat, když se něco pokazí'
+branch: cross
+rig: oc
+prerequisites: []
+unlockAfter: deko
+order: 23
+passThreshold: 0.8
+status: published

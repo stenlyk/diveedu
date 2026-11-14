@@ -1,0 +1,91 @@
+<Hook>
+
+Lékařská prohlídka je za tebou, razítko platí ještě rok. Dnes ráno ale máš rýmu, spal jsi čtyři hodiny a včera jsi slavil.
+
+Razítko o dnešku neříká nic.
+
+</Hook>
+
+<Principle>
+
+<Term cs="lékařská způsobilost" /> k potápění má dvě roviny: dlouhodobou (zdravotní stav) a dnešní (jak ti je teď).
+
+**Dlouhodobě.** Technické potápění klade na tělo vysoké nároky: chlad, dlouhá dekomprese, hustý plyn, těžká výstroj a v nouzi velká námaha.
+Prohlídka u lékaře, který rozumí potápěčské medicíně, se dělá před výcvikem a pak pravidelně – jak často, se liší podle země, agentury a věku.
+
+Stavy, které **vyžadují posouzení lékařem** (ne automaticky zákaz):
+
+- nemoci srdce a vysoký krevní tlak,
+- astma a jiné plicní nemoci,
+- cukrovka, hlavně léčená inzulinem,
+- epilepsie a stavy s poruchou vědomí,
+- léky, které tlumí nebo mění pozornost,
+- těhotenství,
+- prodělaná DCS, IPE nebo poranění plic.
+
+**Zdatnost.** Potápěč musí zvládnout vytáhnout partnera, plavat proti proudu a vydržet dlouhou dekompresi v chladu. Kdo je v kondici, dýchá při stejné práci méně a má víc rezervy.
+
+**Den ponoru.** Než se obléknete, každý si odpoví:
+
+- Spal jsem? Nejsem nemocný, nemám rýmu?
+- Pil jsem včera alkohol? Piju dost vody?
+- Neberu nový lék?
+- Nejsem pod tlakem, který si nesu pod vodu?
+
+Kdo odpoví „ne“, má právo ponor zrušit (<LessonLink id="pravo-ukoncit-ponor" />).
+
+**Po nemoci z potápění.** Návrat po DCS, IPE nebo poranění plic patří do rukou lékaře se znalostí potápěčské medicíny. Doba pauzy i další vyšetření se řídí tím, co se stalo, a ne tím, jak se potápěč cítí.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="sac" />
+
+Spotřeba v klidu je číslo z deníku. Spotřeba při námaze je číslo, které rozhodne v nouzi – a kondice ho mění víc než cokoli jiného.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ve 20 m dýcháš v klidu 15 l/min:
+
+<Worked fn="gasConsumed" args={[15, 20, 1]} expected={45} tolerance={0.1} unit="l" decimals={0} />
+
+Při tažení partnera proti proudu se spotřeba zvedne na 40 l/min:
+
+<Worked fn="gasConsumed" args={[40, 20, 1]} expected={120} tolerance={0.1} unit="l" decimals={0} />
+
+Skoro trojnásobek. Potápěč bez kondice se k takové spotřebě dostane dřív, vydrží ji kratší dobu a je při ní blíž panice. Zdatnost je rezerva plynu, kterou nevidíš na manometru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="consumption" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="spotreba-stres" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

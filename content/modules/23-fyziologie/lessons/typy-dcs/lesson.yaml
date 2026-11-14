@@ -1,0 +1,18 @@
+id: typy-dcs
+moduleId: fyziologie
+title: "Dekompresní nemoc: jak se projevuje"
+order: 1
+conceptIds: ["typy-dcs", "dcs", "plynova-embolie", "dehydratace"]
+checkQuestionIds: ["dcs-priznaky", "dcs-kdy", "dcs-pravidlo", "dcs-age-rozdil", "dcs-gradient"]
+estimatedMinutes: 11
+audioSummary: >-
+  Dekompresní nemoc se projevuje podle toho, kam se bubliny dostanou.
+  Bolest kloubů, svědění nebo mramorování kůže, brnění a slabost končetin, zmatenost, závrať, dušnost, nebo jen nepřiměřená únava.
+  Většina případů se projeví během několika hodin po vynoření. Arteriální plynová embolie přichází během minut.
+  Riziko zvyšuje námaha po ponoru, chlad při dekompresi, nedostatek tekutin a zkrat krve v srdci.
+  Jakýkoli nový příznak po ponoru je dekompresní nemoc, dokud lékař neřekne jinak. Nejčastější chybou je popírání.
+sources:
+  - { title: "Decompression illness. The Lancet 377(9760)", author: "Vann R. D., Butler F. K., Mitchell S. J., Moon R. E.", year: 2011 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+needs_review: true

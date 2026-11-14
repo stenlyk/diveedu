@@ -1,0 +1,248 @@
+- id: dcs-priznaky
+  type: multi
+  conceptIds: [typy-dcs]
+  difficulty: 1
+  prompt: Co z toho může být projevem dekompresní nemoci?
+  options:
+    - { text: 'Hluboká bolest v rameni', correct: true }
+    - { text: 'Mramorovaná, fialově skvrnitá kůže', correct: true }
+    - { text: 'Brnění a slabost nohou', correct: true }
+    - { text: 'Nepřiměřená únava', correct: true }
+  explanation: 'Dekompresní nemoc se projevuje podle toho, kam se bubliny dostanou. Únava se snadno svede na náročný den.'
+  backToLessonId: typy-dcs
+
+- id: dcs-kdy
+  type: choice
+  conceptIds: [typy-dcs, plynova-embolie]
+  difficulty: 2
+  prompt: Kdy se dekompresní nemoc nejčastěji projeví?
+  options:
+    - { text: 'Během několika hodin po vynoření', correct: true }
+    - { text: 'Výhradně během prvních pěti minut', explanation: 'Během minut přichází typicky arteriální plynová embolie. DCS spíš během hodin.' }
+    - { text: 'Až za několik dní', explanation: 'Pozdní projevy jsou možné, ale většina případů přichází dřív.' }
+    - { text: 'Jen během dekomprese pod vodou', explanation: 'Většina projevů přichází až po vynoření.' }
+  explanation: 'Let nebo cesta do hor po ponoru může příznaky vyvolat i později.'
+  backToLessonId: typy-dcs
+
+- id: dcs-pravidlo
+  type: why
+  conceptIds: [typy-dcs, dcs]
+  difficulty: 1
+  prompt: Proč se jakýkoli nový příznak po ponoru bere jako DCS, dokud lékař neřekne jinak?
+  options:
+    - { text: 'Nejčastější chybou je popírání a čekání; včasná první pomoc zlepšuje výsledek léčby.', correct: true }
+    - { text: 'Protože jiné nemoci se po ponoru nevyskytují.', explanation: 'Vyskytují. Ale rozlišit je musí lékař, ne potápěč na břehu.' }
+    - { text: 'Kvůli pojišťovně.', explanation: 'Důvodem je zdraví, ne papíry.' }
+    - { text: 'Protože DCS vždy přejde sama.', explanation: 'Nepřejde vždy, a může zanechat trvalé následky.' }
+  explanation: 'Příznaky mají často rozumné vysvětlení po ruce. Právě to je zrádné.'
+  backToLessonId: typy-dcs
+
+- id: dcs-age-rozdil
+  type: match
+  conceptIds: [typy-dcs, plynova-embolie]
+  difficulty: 2
+  prompt: Přiřaď typické rysy.
+  pairs:
+    - { left: Arteriální plynová embolie, right: 'Během minut, i po mělkém ponoru' }
+    - { left: Dekompresní nemoc, right: Spíš během hodin po ponoru s dekompresní zátěží }
+    - { left: První pomoc u obou, right: 'Kyslík, vleže, záchranná služba' }
+    - { left: Léčba u obou, right: Rekomprese v komoře }
+  explanation: 'Rozlišení pomáhá lékaři. První pomoc je stejná.'
+  backToLessonId: typy-dcs
+
+- id: dcs-gradient
+  type: numeric
+  conceptIds: [typy-dcs, gradient-factor]
+  difficulty: 3
+  prompt: 'Tkáň č. 5 má po vynoření tlak dusíku {tissue} bar, okolní tlak je 1,013 bar. Kolik procent rozdílu mezi okolním tlakem a M-hodnotou čerpá (gradient)?'
+  template: { fn: gradientPercentN2, params: { tissue: { values: [1.4, 1.5, 1.6, 1.7] } }, fixed: { compartment: 5, ambient: 1.013 }, args: [compartment, tissue, ambient], tolerance: 1, unit: '%', decimals: 0 }
+  explanation: 'I pod M-hodnotou není riziko nulové. Model říká, jak je malé.'
+  backToLessonId: typy-dcs
+
+- id: dcs-rizika
+  type: multi
+  conceptIds: [typy-dcs, dehydratace]
+  difficulty: 2
+  prompt: Co zvyšuje riziko DCS i při stejném profilu?
+  options:
+    - { text: 'Námaha po ponoru', correct: true }
+    - { text: 'Chlad během dekomprese', correct: true }
+    - { text: 'Nedostatek tekutin', correct: true }
+    - { text: 'Delší zastávky na mělčině', explanation: 'Ty riziko snižují.' }
+  explanation: 'Model zná hloubku a čas. Chlad, námahu ani tekutiny nezná.'
+  backToLessonId: typy-dcs
+
+- id: dcs-chyby
+  type: findError
+  conceptIds: [typy-dcs]
+  difficulty: 2
+  prompt: Které úvahy po ponoru jsou chybné?
+  items:
+    - { text: 'Počítač nehlásil chybu, takže to DCS být nemůže.', isError: true, explanation: 'Dodržený model neznamená nulové riziko.' }
+    - { text: 'Rameno bolí, ale nesl jsem lahve. Počkám do rána.', isError: true, explanation: 'Popírání je nejčastější chyba. Kyslík a telefonát nic nestojí.' }
+    - { text: 'Brní mě ruka, dám si kyslík a zavolám pohotovostní linku.' }
+    - { text: 'Partner měl stejný profil, budu ho sledovat taky.' }
+  explanation: 'Jakýkoli nový příznak po ponoru je DCS, dokud lékař neřekne jinak.'
+  backToLessonId: typy-dcs
+
+- id: pfo-co-je
+  type: choice
+  conceptIds: [pfo]
+  difficulty: 1
+  prompt: Co je otevřené foramen ovale?
+  options:
+    - { text: 'Neúplně uzavřený otvor mezi pravou a levou síní srdce', correct: true }
+    - { text: 'Díra v ušním bubínku', explanation: 'To je perforace bubínku, jiná věc.' }
+    - { text: 'Vada srdeční chlopně mezi síní a komorou', explanation: 'PFO je mezi síněmi, ne mezi síní a komorou.' }
+    - { text: 'Následek dekompresní nemoci', explanation: 'PFO je vrozené; DCS ho neodhalí vždy a nezpůsobí.' }
+  explanation: 'Asi u čtvrtiny dospělých chlopeň úplně nesroste.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-proc-vadi
+  type: why
+  conceptIds: [pfo, bubliny]
+  difficulty: 2
+  prompt: Proč může PFO potápěči uškodit?
+  options:
+    - { text: 'Žilní bubliny jím mohou obejít plicní filtr a dostat se do tepen, mozku, míchy, ucha nebo kůže.', correct: true }
+    - { text: 'Protože srdce s PFO pumpuje méně krve.', explanation: 'Malé PFO výkon srdce prakticky neovlivní.' }
+    - { text: 'Protože PFO samo vytváří bubliny.', explanation: 'Bubliny vznikají dekompresí. PFO je jen cesta.' }
+    - { text: 'Protože zvyšuje spotřebu plynu.', explanation: 'Na spotřebu nemá vliv.' }
+  explanation: 'Plíce normálně bubliny zachytí. Zkrat je obejde.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-kdy-otevre
+  type: multi
+  conceptIds: [pfo, namaha]
+  difficulty: 2
+  prompt: Co může PFO pootevřít?
+  options:
+    - { text: 'Prudký Valsalvův manévr', correct: true }
+    - { text: 'Zvedání lahví po ponoru', correct: true }
+    - { text: 'Kašel', correct: true }
+    - { text: 'Klidné dýchání', explanation: 'Při klidném dýchání je tlak v levé síni vyšší a chlopeň zůstává zavřená.' }
+  explanation: 'Chlopeň se otevře, když tlak v pravé síni převýší tlak v levé.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-moznosti
+  type: multi
+  conceptIds: [pfo, konzervativni-profil]
+  difficulty: 2
+  prompt: Jaké možnosti má potápěč, u kterého se zjistí PFO?
+  options:
+    - { text: 'Potápět se konzervativně', correct: true }
+    - { text: 'Nechat PFO uzavřít zákrokem', correct: true }
+    - { text: 'Přestat se potápět', correct: true }
+    - { text: 'Pokračovat beze změny, PFO nehraje roli', explanation: 'Hraje: je spojené hlavně s neurologickou a kožní DCS.' }
+  explanation: 'Rozhoduje se s lékařem, který rozumí potápěčské medicíně.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-gf
+  type: numeric
+  conceptIds: [konzervativni-profil, gradient-factor]
+  difficulty: 2
+  prompt: 'Ponor na vzduch do 40 m, 25 minut na dně, GF low 50 a GF high {high}. Kolik minut trvá výstup podle výukového modelu?'
+  template: { fn: ascentMinutesAir, params: { high: { values: [70, 75, 80, 85] } }, fixed: { depth: 40, bottom: 25, low: 50 }, args: [depth, bottom, low, high], tolerance: 1, unit: min, decimals: 0 }
+  explanation: 'Nižší GF high znamená delší mělké zastávky a méně bublin.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-konzervativni
+  type: multi
+  conceptIds: [konzervativni-profil]
+  difficulty: 1
+  prompt: Co patří ke konzervativnímu profilu?
+  options:
+    - { text: 'Nitrox s výpočtem jako pro vzduch', correct: true }
+    - { text: 'Nižší GF high a pomalejší výstup', correct: true }
+    - { text: 'Žádná námaha v prvních hodinách po ponoru', correct: true }
+    - { text: 'Hlubší ponor na kratší dobu', explanation: 'Hloubka zvyšuje sycení. Konzervativní je mělčí a kratší.' }
+  explanation: 'Méně přesycení na hladině znamená méně bublin.'
+  backToLessonId: pfo-a-zkrat
+
+- id: pfo-vysetreni
+  type: choice
+  conceptIds: [pfo]
+  difficulty: 2
+  prompt: Doporučuje se vyšetřit na PFO každého potápěče?
+  options:
+    - { text: 'Ne; vyšetření se zvažuje hlavně po DCS s neurologickými, ušními nebo kožními projevy', correct: true }
+    - { text: 'Ano, před každým kurzem', explanation: 'Plošné vyšetřování se podle společného stanoviska lékařských společností nedoporučuje.' }
+    - { text: 'Ano, každý rok', explanation: 'PFO je vrozené; opakované vyšetření nemá smysl.' }
+    - { text: 'Ne, PFO se nedá zjistit', explanation: 'Dá, vyšetřením srdce s kontrastní látkou.' }
+  explanation: 'O vyšetření rozhoduje lékař podle toho, co se stalo.'
+  backToLessonId: pfo-a-zkrat
+
+- id: ipe-co-je
+  type: choice
+  conceptIds: [ipe]
+  difficulty: 1
+  prompt: Co je imerzní edém plic?
+  options:
+    - { text: 'Prosakování tekutiny do plicních sklípků během ponoření', correct: true }
+    - { text: 'Forma dekompresní nemoci', explanation: 'IPE s dekompresí nesouvisí; vzniká během ponoření.' }
+    - { text: 'Vdechnutí vody při tonutí', explanation: 'Tekutina pochází z cév, ne z okolní vody.' }
+    - { text: 'Poranění plic přetlakem', explanation: 'To je barotrauma plic.' }
+  explanation: 'Přesun krve do hrudníku, chlad, námaha a odpor při nádechu zvýší tlak v plicním oběhu.'
+  backToLessonId: imerzni-edem-plic
+
+- id: ipe-priznaky
+  type: multi
+  conceptIds: [ipe]
+  difficulty: 1
+  prompt: Jak se imerzní edém plic projevuje?
+  options:
+    - { text: 'Dušnost nepřiměřená námaze', correct: true }
+    - { text: 'Kašel, někdy růžový pěnivý hlen', correct: true }
+    - { text: 'Chrčivý dech', correct: true }
+    - { text: 'Mramorovaná kůže', explanation: 'To je kožní projev DCS.' }
+  explanation: 'Snadno se splete s panikou, s plicní formou DCS nebo s tonutím.'
+  backToLessonId: imerzni-edem-plic
+
+- id: ipe-rizika
+  type: multi
+  conceptIds: [ipe, ztrata-tepla, prace-dychani]
+  difficulty: 2
+  prompt: Co zvyšuje riziko imerzního edému plic?
+  options:
+    - { text: 'Studená voda', correct: true }
+    - { text: 'Vysoký krevní tlak', correct: true }
+    - { text: 'Automatika s velkým odporem při nádechu', correct: true }
+    - { text: 'Delší dekompresní zastávky', explanation: 'Dekomprese s IPE nesouvisí.' }
+  explanation: 'Riziko zvyšuje i pití velkého množství tekutin těsně před ponorem a předchozí IPE.'
+  backToLessonId: imerzni-edem-plic
+
+- id: ipe-co-delat
+  type: order
+  conceptIds: [ipe]
+  difficulty: 2
+  prompt: Potápěč má pod vodou náhlou dušnost a kašel. Seřaď postup.
+  items:
+    - 'Ukončit ponor a řízeně vystoupat'
+    - 'Na hladině ven z vody a posadit'
+    - 'Dát kyslík'
+    - 'Zavolat záchrannou službu'
+    - 'I po zlepšení k lékaři a vyšetřit srdce'
+  explanation: 'IPE může zabít. Zlepšení stavu není konec.'
+  backToLessonId: imerzni-edem-plic
+
+- id: ipe-hustota
+  type: numeric
+  conceptIds: [ipe, hustota-plynu]
+  difficulty: 2
+  prompt: 'Jaká je hustota vzduchu v hloubce {depth} m?'
+  template: { fn: airDensity, params: { depth: { values: [10, 20, 30, 40, 50] } }, args: [depth], tolerance: 0.05, unit: g/l, decimals: 2 }
+  explanation: 'Hustý plyn zvyšuje odpor při nádechu a podtlak v hrudníku.'
+  backToLessonId: imerzni-edem-plic
+
+- id: ipe-zdatni
+  type: why
+  conceptIds: [ipe]
+  difficulty: 2
+  prompt: Proč nestačí říct, že IPE hrozí jen starším lidem s nemocným srdcem?
+  options:
+    - { text: 'Popsané jsou případy i u mladých zdatných plavců a triatlonistů; chlad a námaha stačí.', correct: true }
+    - { text: 'Protože IPE je nakažlivé.', explanation: 'Není.' }
+    - { text: 'Protože starší lidé IPE nedostanou.', explanation: 'Dostanou, a častěji. Ale nejen oni.' }
+    - { text: 'Je to pravda, mladým nehrozí.', explanation: 'Hrozí. Zdatnost před IPE nechrání.' }
+  explanation: 'Kdo by IPE vyloučil kvůli věku, splete si ho s panikou.'
+  backToLessonId: imerzni-edem-plic

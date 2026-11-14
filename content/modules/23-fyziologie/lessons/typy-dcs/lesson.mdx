@@ -1,0 +1,96 @@
+<Hook>
+
+Večer po ponoru tě bolí rameno. Asi jsi včera nesl lahve. Ruka trochu brní, ale to bude tím, jak jsi na ní ležel.
+
+Přesně takhle vypadá většina dekompresních nemocí: nenápadně, s rozumným vysvětlením po ruce.
+
+</Hook>
+
+<Principle>
+
+<Term cs="dekompresní nemoc" /> vzniká z bublin inertního plynu, které se uvolní při poklesu tlaku. Kde se bubliny objeví a kam se dostanou, rozhoduje o tom, jak se nemoc projeví.
+
+**Jak se projevuje** (dělení podle postižené části těla):
+
+- **klouby a svaly** – tupá, hluboká bolest, nejčastěji rameno nebo loket; pohyb ji často nezmění,
+- **kůže** – svědění, nebo mramorovaná, fialově skvrnitá kůže; mramorování se považuje za závažnější projev,
+- **mícha** – brnění, necitlivost, slabost končetin, bolest zad nebo pasu, potíže s močením,
+- **mozek** – zmatenost, poruchy řeči a vidění, neobvyklá únava, změna chování,
+- **vnitřní ucho** – závrať, zvracení, ztráta sluchu (lekce <LessonLink id="dcs-vnitrniho-ucha" />),
+- **plíce** – kašel, bolest na hrudi, dušnost; vzácné, ale nebezpečné,
+- **celkově** – nepřiměřená únava, malátnost. Snadno se svede na náročný den.
+
+Starší dělení na **typ I** (kůže, klouby) a **typ II** (nervový systém, ucho, plíce) se ještě používá. Pro první pomoc na tom nezáleží: postup je stejný.
+
+**Kdy přichází.** Většina případů se projeví během několika hodin po vynoření, část i později. Let nebo cesta do hor po ponoru může příznaky vyvolat.
+<Term cs="arteriální plynová embolie" /> po poranění plic přichází jinak: typicky během minut po vynoření a často náhle (lekce <LessonLink id="barotraumata-a-age" />).
+Obojímu se společně říká **dekompresní onemocnění** a první pomoc je stejná.
+
+**Co riziko zvyšuje** kromě samotného profilu:
+
+- námaha během ponoru a hlavně po něm,
+- chlad během dekomprese (<LessonLink id="tepelny-management" />),
+- <Term cs="dehydratace" />,
+- opakované ponory a více dní za sebou,
+- zkrat krve v srdci (<LessonLink id="pfo-a-zkrat" />),
+- let nebo výjezd do výšky po ponoru.
+
+**Hlavní pravidlo:** jakýkoli nový příznak po ponoru je dekompresní nemoc, dokud lékař neřekne jinak. Nejčastější chybou není špatná léčba, ale **popírání** – čekání, jestli to přejde.
+
+Dodržený počítač nebo tabulka neznamená, že DCS být nemůže. Model říká, jak je riziko malé, ne že je nulové.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Gradient faktor říká, jak blízko k M-hodnotě tkáň při výstupu pustíš. Ani pod ní není riziko nulové: M-hodnota není hranice mezi zdravím a nemocí, ale bod, nad kterým bylo v pokusech nemocí příliš mnoho.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Tkáň s poločasem <Calc fn="n2HalfTime" args={[5]} decimals={0} unit="min" /> má po výstupu na hladinu tlak dusíku 1,6 bar. Jak blízko je M-hodnotě?
+
+<Worked fn="gradientPercentN2" args={[5, 1.6, 1.013]} expected={68.77} tolerance={0.1} unit="%" decimals={0} />
+
+Kdyby byl tlak v tkáni 1,75 bar:
+
+<Worked fn="gradientPercentN2" args={[5, 1.75, 1.013]} expected={86.34} tolerance={0.1} unit="%" decimals={0} />
+
+Oba výstupy jsou „v limitu“ běžně používaných nastavení. Druhý ale nechává mnohem menší rezervu – a o tom, jestli z ní bude nemoc, rozhodují i věci, které model nezná: chlad, námaha, voda v těle, zkrat v srdci.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="m-value" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="spencer-doppler" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

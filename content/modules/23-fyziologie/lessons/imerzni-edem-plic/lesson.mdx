@@ -1,0 +1,98 @@
+<Hook>
+
+Ve třiceti metrech, ve studené vodě, se ti najednou nedaří nadechnout. Nejde o plyn – manometr je v pořádku. Kašleš a dech se zrychluje.
+
+Partner si myslí, že panikaříš. Ty si myslíš totéž. Ani jeden z vás nemá pravdu.
+
+</Hook>
+
+<Principle>
+
+<Term cs="imerzní edém plic" /> (IPE) je stav, kdy z krevních vlásečnic v plicích prosakuje tekutina do plicních sklípků. Vzniká během ponoření, bez souvislosti s dekompresí.
+
+**Proč vzniká.** Několik vlivů najednou zvýší tlak v plicním oběhu:
+
+- ponoření přesune krev z končetin do hrudníku,
+- chlad stáhne cévy v kůži a přesune ještě víc,
+- námaha zvýší průtok a tlak,
+- odpor při nádechu (hustý plyn, špatně dýchající automatika) vytváří v hrudníku podtlak, který tekutinu nasává.
+
+**Kdo je ohrožen:**
+
+- lidé s vysokým krevním tlakem nebo nemocí srdce,
+- starší potápěči,
+- kdo už jednou IPE měl – opakuje se,
+- ale také mladí a zdatní: popsané jsou případy u vojenských plavců a triatlonistů.
+
+Rizika zvyšuje i **velké množství vypité tekutiny těsně před ponorem**, chlad a velká námaha.
+
+**Příznaky:**
+
+- dušnost nepřiměřená námaze, pocit, že se nejde nadechnout,
+- kašel, někdy pěnivé, růžové hlenovité vykašlávání,
+- chrčivý dech, zmatenost z nedostatku kyslíku.
+
+Snadno se splete s **panikou**, s **plicní formou DCS** nebo s **tonutím**.
+
+**Co dělat:**
+
+- ukončit ponor a řízeně vystoupat – dodržet dekompresi, pokud je to bezpečně možné,
+- na hladině ven z vody, posadit, kyslík, záchranná služba,
+- i když se stav zlepší, patří potápěč k lékaři. IPE může zabít a před dalším ponorem je potřeba vyšetření srdce.
+
+**Prevence:** léčený krevní tlak, žádné pití litrů vody těsně před ponorem (ale ani dehydratace), teplo, přiměřená námaha, automatika s malým dechovým odporem a plyn s nízkou hustotou.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="hustota" />
+
+Hustý plyn zvyšuje odpor při nádechu, a tím podtlak v hrudníku. Proto má hustota plynu místo i v lekci o plicním edému.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Hustota vzduchu na hladině:
+
+<Worked fn="airDensity" args={[0]} expected={1.29} tolerance={0.01} unit="g/l" decimals={2} />
+
+A ve 40 m:
+
+<Worked fn="airDensity" args={[40]} expected={6.44} tolerance={0.01} unit="g/l" decimals={1} />
+
+Pětkrát hustší plyn se nasává pětkrát hůř při stejném proudění. Námaha k tomu přidá rychlé proudění, chlad přesun krve do hrudníku.
+Žádný z vlivů sám IPE nezpůsobí. Dohromady mohou.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="density" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="hustota-anthony-mitchell" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

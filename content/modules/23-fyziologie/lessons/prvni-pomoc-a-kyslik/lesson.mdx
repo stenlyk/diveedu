@@ -1,0 +1,92 @@
+<Hook>
+
+Partner po ponoru říká, že mu brní nohy. Kyslíková sada je v autě. Volat, nevolat? Počkat, jestli to nepřejde?
+
+Na čekání jsou nejhorší dvě věci: že to často opravdu na chvíli přejde – a že to pak přijde zpátky horší.
+
+</Hook>
+
+<Principle>
+
+**Kyslík je první pomoc při každém podezření na DCS i AGE.** Dýchání čistého kyslíku zvětší rozdíl mezi tlakem dusíku v bublinách a v krvi. Bubliny se zmenšují rychleji a tkáně dostanou kyslík, který jim bubliny berou.
+
+**Jak:**
+
+- **co nejvyšší koncentrace, co nejdřív a co nejdéle** – až do předání zdravotníkům,
+- **plicní automatika** (u potápěče při vědomí, který dýchá) nebo **maska s rezervoárem** s průtokem kolem 15 l/min,
+- nosní brýle (kanyla) nestačí – dávají příliš málo kyslíku,
+- u potápěče, který nedýchá: resuscitace podle lekce <LessonLink id="zachrana-bezvladneho-potapece" />.
+
+**Další kroky:**
+
+1. Vleže, v poloze, která je postiženému pohodlná; v bezvědomí se zachovaným dechem do zotavovací polohy.
+2. Záchranná služba a potápěčská pohotovostní linka (například DAN). Rozhodnou o převozu do <Term cs="rekomprese" />.
+3. Pokud je při vědomí a nezvrací, pít vodu nebo nesladký nápoj; žádný alkohol.
+4. Zapsat čas příznaků, profil ponoru, plyny, data z počítače. Počítač jede s postiženým.
+5. Sledovat i partnera – měl stejný profil.
+6. Žádný let a žádná cesta přes horské průsmyky bez rozhodnutí lékaře.
+
+**Když se stav zlepší.** Příznaky po kyslíku často ustoupí. To neznamená, že nemoc skončila – může se vrátit, když kyslík dojde. **Vyšetření lékařem je potřeba vždy.**
+
+**Rekomprese v komoře** je léčba. Kyslík na hladině je jen most k ní. Rekomprese ve vodě je postup pro specializované týmy s výbavou; jako improvizace je nebezpečná.
+
+**Zásoba kyslíku** se plánuje podle toho, jak daleko je pomoc. Na odlehlém místě musí vystačit na celou cestu k lékaři, ne na první půlhodinu.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="spotreba" />
+
+Kolik kyslíku je v lahvi a jak rychle ho maska spotřebuje, je stejný výpočet jako spotřeba pod vodou – jen v hloubce nula.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Kyslíková lahev 3 l naplněná na 200 bar, maska s rezervoárem na 15 l/min. Kyslík vystačí na:
+
+<Worked fn="minutesOnGas" args={[200, 3, 15, 0]} expected={40} tolerance={0.1} unit="min" decimals={0} />
+
+Menší lahev 2 l:
+
+<Worked fn="minutesOnGas" args={[200, 2, 15, 0]} expected={26.67} tolerance={0.1} unit="min" decimals={0} />
+
+Když záchranná služba dorazí za hodinu a převoz trvá další, je to málo. Velikost sady se volí podle místa, ne podle toho, co se vejde do auta.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<WhatIf items={[
+  { label: 'příznaky po kyslíku zmizí?', effect: 'Nemoc tím neskončila. Po vysazení kyslíku se může vrátit. Lékař a vyšetření jsou potřeba vždy.' },
+  { label: 'použiješ nosní brýle místo masky?', effect: 'Kyslíku je v nádechu příliš málo. Plicní automatika nebo maska s rezervoárem.' },
+  { label: 'kyslík dojde před příjezdem pomoci?', effect: 'Most k léčbě se přerušil. Zásoba se plánuje na celou cestu k lékaři.' },
+  { label: 'se partner s „brněním“ rozhodne počkat do rána?', effect: 'Popírání je nejčastější chyba. Kyslík a telefonát nic nestojí, čekání může stát trvalé následky.' },
+]} />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="zachrana-doporuceni" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

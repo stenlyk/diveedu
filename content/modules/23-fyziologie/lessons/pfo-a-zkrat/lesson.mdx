@@ -1,0 +1,93 @@
+<Hook>
+
+Potápěč s tisíci ponory dostane po obyčejném ponoru na čtyřicet metrů mramorovanou kůži a brnění v ruce. Profil byl konzervativní, počítač nehlásil nic.
+
+Po vyšetření se ukáže, že problém nebyl v profilu. Byl v srdci – a byl tam od narození.
+
+</Hook>
+
+<Principle>
+
+Před narozením neprochází krev plícemi. Mezi pravou a levou síní srdce je proto otvor – <Term cs="foramen ovale" />. Po narození se zavře chlopní, která časem obvykle sroste.
+**Asi u čtvrtiny dospělých nesroste úplně.** Chlopeň zůstane jen přiložená a za určitých okolností se pootevře. Říká se tomu <Term cs="otevřené foramen ovale" /> (PFO).
+
+**Proč na tom potápěči záleží.** Po většině ponorů jsou v žilní krvi bubliny, i bez příznaků. Plíce je normálně zachytí jako filtr a plyn se vydýchá.
+Při PFO může část bublin projít z pravé strany srdce rovnou do levé – **obejde plicní filtr** a dostane se do tepen: do mozku, míchy, vnitřního ucha nebo kůže.
+
+**Kdy se chlopeň otevře.** Když tlak v pravé síni převýší tlak v levé:
+
+- Valsalvův manévr a tlačení (vyrovnávání tlaku, zvedání lahví, tlačení na stolici),
+- kašel,
+- námaha těsně po ponoru, kdy je bublin nejvíc.
+
+**Na co PFO ukazuje.** Je spojené hlavně s neurologickou DCS, DCS vnitřního ucha a kožním mramorováním, zvlášť když se objeví po ponoru, který by podle profilu neměl problém způsobit.
+
+**Možnosti** (podle společného stanoviska lékařských společností):
+
+- Plošné vyšetřování všech potápěčů se nedoporučuje. Vyšetření se zvažuje hlavně po DCS s těmito rysy.
+- Po zjištění PFO jsou možnosti tři: přestat se potápět, **potápět se konzervativně**, nebo PFO uzavřít (zákrok katétrem). Rozhoduje se s lékařem, který rozumí potápěčské medicíně.
+
+**<Term cs="konzervativní profil" /> znamená méně bublin:**
+
+- mělčí a kratší ponory, delší a pomalejší výstup, nižší GF high,
+- nitrox s výpočtem jako pro vzduch,
+- žádná námaha, zvedání ani tlačení v prvních hodinách po ponoru,
+- vyrovnávání tlaku bez prudkého Valsalvova manévru.
+
+Tato opatření snižují množství bublin a jsou rozumná pro každého, nejen pro potápěče s PFO.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="gradient-factor" />
+
+Nižší GF high znamená delší mělké zastávky a méně přesycení na hladině – tedy méně bublin, které by mohly zkratem projít.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Ponor na vzduch do 40 m, 25 minut na dně. S nastavením GF 50/85 trvá výstup:
+
+<Worked fn="ascentMinutesAir" args={[40, 25, 50, 85]} expected={32.44} tolerance={0.5} unit="min" decimals={0} />
+
+Konzervativněji, s GF 50/70:
+
+<Worked fn="ascentMinutesAir" args={[40, 25, 50, 70]} expected={45.44} tolerance={0.5} unit="min" decimals={0} />
+
+Třináct minut navíc na mělkých zastávkách. To je cena, kterou platí potápěč, který ví, že jeho plicní filtr nemusí zachytit všechno.
+
+Čísla jsou z výukového modelu a slouží k porovnání, ne k plánování ponoru.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="gf-plan" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="pfo-ctvrtina" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

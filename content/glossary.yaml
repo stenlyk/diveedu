@@ -101,3 +101,13 @@
 - { cs: argonová lahev, en: argon bottle, definition: 'Malá lahev s argonem pro plnění suchého obleku; neobsahuje kyslík a nesmí se z ní dýchat.' }
 - { cs: vyvážení, en: weighting, definition: 'Množství zátěže, se kterým potápěč na konci ponoru udrží poslední zastávku.' }
 - { cs: křídlo, en: wing, definition: 'Vztlakový vak na zádech technického potápěče.' }
+- { cs: dehydratace, en: dehydration, definition: 'Nedostatek tekutin v těle; zhoršuje prokrvení a zvyšuje riziko DCS.' }
+- { cs: foramen ovale, en: foramen ovale, definition: 'Otvor mezi pravou a levou síní srdce, kterým před narozením obtéká krev plíce.', pronunciation: foramen ovále }
+- { cs: otevřené foramen ovale, en: patent foramen ovale (PFO), definition: 'Foramen ovale, které po narození úplně nesrostlo a může se pootevřít.', pronunciation: otevřené foramen ovále }
+- { cs: konzervativní profil, en: conservative diving, definition: 'Ponor plánovaný tak, aby vzniklo co nejméně bublin.' }
+- { cs: imerzní edém plic, en: immersion pulmonary edema (IPE), definition: 'Prosakování tekutiny do plicních sklípků během ponoření.' }
+- { cs: barotrauma, en: barotrauma, definition: 'Poranění rozdílem tlaků mezi plynem v dutině těla a okolím.' }
+- { cs: barotrauma dutin, en: sinus and squeeze barotrauma, definition: 'Barotrauma vedlejších nosních dutin, obličeje pod maskou, kůže pod oblekem nebo zubu.' }
+- { cs: lékařská způsobilost, en: fitness to dive, definition: 'Zdravotní stav, který dovoluje potápět se s přijatelným rizikem.' }
+- { cs: rekomprese, en: recompression, definition: 'Léčba v přetlakové komoře s dýcháním kyslíku.' }
+- { cs: pneumotorax, en: pneumothorax, definition: 'Vzduch mezi plící a hrudní stěnou; plíce se částečně nebo úplně zhroutí.' }

@@ -511,4 +511,19 @@ Podklad: export ze Stitch „Technical Precision Instrument“ (DESIGN.md a čty
 - K ověření zvlášť: tvrzení o třmenovém připojení a tlakových třídách (zajímavost `din-a-trmen`), střední tlak „zhruba deset barů nad okolním“, chování hliníkových a ocelových lahví, popis bublinových modelů a algoritmů výrobců, postup při zaseknutém inflátoru obleku.
 - Svítilny nemají v modulu vlastní lekci: výdrž, záložní světla a signály pokrývá lekce Světla a signály v modulu Cavern. Pokud má modul Vybavení stát samostatně, chybí lekce o svítilnách a bateriích.
 - **Velikost:** celkem 2,66 MB z rozpočtu 3 MB, kód 1,43 MB z 1,5 MB. Poslední plánovaný modul (Fyziologie a medicína) se ještě vejde; potom bude třeba načítat obsah po modulech.
-- Zbývá průřezový modul Fyziologie a medicína.
+- Zbývá průřezový modul Fyziologie a medicína (hotovo v sekci 30).
+
+## 30. Průřezový modul Fyziologie a medicína (2026-11-14)
+
+- **Modul `fyziologie`** (větev průřezová, navazuje na Dekompresní procedury): 6 lekcí, 44 otázek, 8 uzlů, 16 vazeb, 1 zajímavost. Projevy dekompresní nemoci; otevřené foramen ovale a konzervativní profil; imerzní edém plic; barotraumata, pneumotorax a arteriální plynová embolie; lékařská způsobilost a den ponoru; první pomoc a kyslík.
+- Témata se samostatnou lekcí jinde se neopakují, ale odkazují: DCS vnitřního ucha a izobarická protidifuze (Full Trimix), tepelný management (Full Trimix), uši a vyrovnání (Základy), záchrana bezvládného potápěče (Nouzové situace).
+- Příklady počítají `calc` a `deco`: gradient tkáně po vynoření, o kolik prodlouží výstup GF 50/70 proti 50/85, hustota vzduchu ve 40 m, rozpínání plynu v plicích při výstupu ze 2 a 10 m, spotřeba při námaze, výdrž kyslíkové lahve.
+- Zvuková shrnutí všech šesti lekcí jsou namluvená.
+- Tímto jsou všechny průřezové moduly ze zadání hotové.
+
+### Co je slabé nebo otevřené
+
+- **Zdravotnický obsah psaný z hlavy.** Všech šest lekcí má `needs_review` a musí je před zveřejněním zkontrolovat lékař se znalostí potápěčské medicíny. K odborné kontrole je teď 133 položek.
+- K ověření zvlášť: výčet projevů DCS a jejich časování, doporučení společného stanoviska k PFO (komu vyšetření, jaká konzervativní opatření), rizikové faktory a postup u IPE, rozlišení AGE a DCS, průtok 15 l/min u masky s rezervoárem, pití tekutin jako první pomoc, prevalence PFO v pitevní studii.
+- Aplikace dává obecné poučení, ne lékařskou radu; text to říká u způsobilosti a návratu po nemoci, ale lékař má posoudit, jestli je to dost zřetelné.
+- **Velikost:** celkem 2,74 MB z 3 MB, kód 1,43 MB z 1,5 MB. Další obsah bude chtít načítání po modulech.

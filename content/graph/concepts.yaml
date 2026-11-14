@@ -207,3 +207,13 @@
 - { id: argonova-lahev, label: Argonová lahev, type: equipment, moduleId: vybaveni, shortDefinition: 'Malá lahev s argonem jen pro plnění suchého obleku; plyn bez kyslíku, nikdy na ní nesmí být automatika.' }
 - { id: vyvazeni, label: Vyvážení, type: procedure, moduleId: vybaveni, shortDefinition: 'Množství zátěže, se kterým potápěč s téměř prázdnými lahvemi udrží poslední zastávku; kontroluje se na konci ponoru.' }
 - { id: kridlo, label: Křídlo, type: equipment, moduleId: vybaveni, shortDefinition: 'Vztlakový vak na zádech; musí unést nejtěžší okamžik ponoru včetně ztráty vztlaku obleku.' }
+
+# ── Průřezový modul: Fyziologie a medicína ───────────────────────────────────
+- { id: typy-dcs, label: Projevy dekompresní nemoci, type: physiology, moduleId: fyziologie, shortDefinition: 'Klouby a svaly, kůže, mícha, mozek, vnitřní ucho, plíce nebo jen únava; většinou během hodin po vynoření. První pomoc je u všech stejná.' }
+- { id: pfo, label: Otevřené foramen ovale (PFO), type: physiology, moduleId: fyziologie, shortDefinition: 'Neúplně uzavřený otvor mezi síněmi srdce, asi u čtvrtiny dospělých; bubliny jím mohou obejít plicní filtr.' }
+- { id: konzervativni-profil, label: Konzervativní profil, type: procedure, moduleId: fyziologie, shortDefinition: 'Ponor s menší tvorbou bublin: mělčí, kratší, pomalejší výstup, nižší GF high, bez námahy po ponoru.' }
+- { id: ipe, label: Imerzní edém plic (IPE), type: risk, moduleId: fyziologie, shortDefinition: 'Prosakování tekutiny do plicních sklípků během ponoření; dušnost, kašel, růžový pěnivý hlen. Může zabít.' }
+- { id: pneumotorax, label: Pneumotorax, type: risk, moduleId: fyziologie, shortDefinition: 'Vzduch mezi plící a hrudní stěnou po poranění plic přetlakem; bolest na hrudi a dušnost.' }
+- { id: barotrauma-dutin, label: Barotrauma dutin, type: risk, moduleId: fyziologie, shortDefinition: 'Poranění vedlejších nosních dutin, obličeje pod maskou, kůže pod oblekem nebo zubu rozdílem tlaků.' }
+- { id: lekarska-zpusobilost, label: Lékařská způsobilost, type: procedure, moduleId: fyziologie, shortDefinition: 'Posouzení zdravotního stavu lékařem se znalostí potápěčské medicíny a každodenní úvaha, jestli jsem dnes schopen ponoru.' }
+- { id: rekomprese, label: Rekomprese, type: procedure, moduleId: fyziologie, shortDefinition: 'Léčba DCS a AGE v přetlakové komoře s dýcháním kyslíku; kyslík na hladině je most k ní.' }

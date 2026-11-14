@@ -392,3 +392,19 @@
 - { from: vztlak, to: vyvazeni, type: je_predpokladem, lessonId: lahve-a-vyvazeni, explanation: 'Vyvážení je vztlak na konci ponoru, kdy je plyn vydýchaný.' }
 - { from: kridlo, to: suchy-oblek, type: zmirnuje, lessonId: lahve-a-vyvazeni, explanation: 'Křídlo musí unést i ztrátu vztlaku zatopeného obleku.' }
 - { from: stage-lahev, to: vyvazeni, type: zhorsuje, lessonId: lahve-a-vyvazeni, explanation: 'Vydýchaná nebo odložená stage mění vztlak; počítá se s tím v plánu.' }
+- { from: typy-dcs, to: dcs, type: je_predpokladem, lessonId: typy-dcs, explanation: 'Kdo zná projevy, nepřehlédne nemoc, kterou má.' }
+- { from: dehydratace, to: dcs, type: zvysuje, lessonId: typy-dcs, explanation: 'Horší prokrvení zpomaluje vyplavování dusíku.' }
+- { from: namaha, to: typy-dcs, type: zvysuje, lessonId: typy-dcs, explanation: 'Námaha po ponoru zvyšuje množství bublin.' }
+- { from: pfo, to: typy-dcs, type: zvysuje, lessonId: pfo-a-zkrat, explanation: 'Bubliny obejdou plicní filtr a dostanou se do tepen.' }
+- { from: konzervativni-profil, to: bubliny, type: snizuje, lessonId: pfo-a-zkrat, explanation: 'Méně přesycení na hladině znamená méně bublin, které by mohly zkratem projít.' }
+- { from: bubliny, to: pfo, type: zhorsuje, lessonId: pfo-a-zkrat, explanation: 'Zkrat je nebezpečný jen tehdy, když jsou v žilní krvi bubliny.' }
+- { from: prace-dychani, to: ipe, type: zvysuje, lessonId: imerzni-edem-plic, explanation: 'Odpor při nádechu vytváří podtlak v hrudníku.' }
+- { from: ztrata-tepla, to: ipe, type: zvysuje, lessonId: imerzni-edem-plic, explanation: 'Chlad stáhne cévy v kůži a přesune krev do hrudníku.' }
+- { from: namaha, to: ipe, type: zvysuje, lessonId: imerzni-edem-plic, explanation: 'Námaha zvyšuje tlak v plicním oběhu.' }
+- { from: barotrauma-plic, to: pneumotorax, type: zpusobuje, lessonId: barotraumata-a-age, explanation: 'Plyn z roztržených sklípků unikne mezi plíci a hrudní stěnu.' }
+- { from: objem-plynu, to: barotrauma-dutin, type: zpusobuje, lessonId: barotraumata-a-age, explanation: 'Plyn v uzavřené dutině se smršťuje a rozpíná s tlakem.' }
+- { from: rekomprese, to: plynova-embolie, type: zmirnuje, lessonId: barotraumata-a-age, explanation: 'Tlak zmenší bubliny a kyslík vyplaví plyn.' }
+- { from: lekarska-zpusobilost, to: ipe, type: zmirnuje, lessonId: zpusobilost-k-potapeni, explanation: 'Léčený krevní tlak a vyšetřené srdce snižují riziko.' }
+- { from: lekarska-zpusobilost, to: namaha, type: zmirnuje, lessonId: zpusobilost-k-potapeni, explanation: 'Kdo je v kondici, zvládne stejnou práci s menší spotřebou a větší rezervou.' }
+- { from: kyslik-prvni-pomoc, to: typy-dcs, type: zmirnuje, lessonId: prvni-pomoc-a-kyslik, explanation: 'Kyslík zrychlí zmenšování bublin a okysličí tkáně.' }
+- { from: kyslik-prvni-pomoc, to: rekomprese, type: je_predpokladem, lessonId: prvni-pomoc-a-kyslik, explanation: 'Kyslík na hladině je most do komory, ne náhrada léčby.' }

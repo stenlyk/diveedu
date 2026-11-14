@@ -1,0 +1,86 @@
+<Hook>
+
+Nouzový výstup z šesti metrů. Na hladině potápěč vypadá v pořádku, mluví. Za dvě minuty nereaguje a nehýbe pravou rukou.
+
+Dekompresní nemoc to být skoro nemohla – ponor byl krátký a mělký. Ale na mělkém ponoru vzniká něco jiného.
+
+</Hook>
+
+<Principle>
+
+<Term cs="barotrauma" /> je poranění rozdílem tlaků: plyn v dutině těla se rozpíná nebo smršťuje a tkáň to neunese.
+
+**Dutiny, které se musí vyrovnávat** (<Term cs="barotrauma dutin" />):
+
+- **ucho** – lekce <LessonLink id="usi-a-vyrovnani" />,
+- **vedlejší nosní dutiny** – při rýmě se ucpe jejich vývod; bolest nad okem nebo v tváři, krev v masce; může se ucpat i při výstupu,
+- **maska** – podtlak v masce při sestupu; řeší se vydechnutím nosem,
+- **suchý oblek** – svírání při sestupu; řeší se dopuštěním plynu,
+- **zuby** – vzácně vzduchová kapsa pod výplní.
+
+**Plíce při výstupu.** Plyn v plicích se při výstupu rozpíná. Když nemůže ven – zadržený dech, křeč průdušek, hlen, jizva v plicích – roztrhne sklípky. Důsledky:
+
+- **<Term cs="arteriální plynová embolie" />** (AGE): plyn vnikne do plicních žil a odtud tepnami do mozku. Příznaky jako mrtvice: bezvědomí, zmatenost, ochrnutí, poruchy řeči a vidění. Přichází **během minut** po vynoření, často okamžitě.
+- **<Term cs="pneumotorax" />**: vzduch mezi plící a hrudní stěnou; bolest na hrudi, dušnost.
+- **Vzduch v mezihrudí a pod kůží**: změna hlasu, bolest za hrudní kostí, praskání pod kůží na krku.
+
+**Proč nejvíc u hladiny.** Poměrná změna objemu je největší v posledních metrech. Plný nádech ve dvou metrech a výstup se zadrženým dechem stačí.
+
+**Rozlišení AGE a DCS** pomáhá lékaři, ne první pomoci: AGE přichází během minut a po jakémkoli ponoru, i mělkém; DCS spíš během hodin a po ponoru s dekompresní zátěží.
+První pomoc je stejná: kyslík, poloha vleže, záchranná služba, rekompresní komora.
+
+**Prevence:** nikdy nezadržovat dech při výstupu, řízená rychlost výstupu, nepotápět se s rýmou ani s neléčeným astmatem. Kdo měl poranění plic, potřebuje před dalším ponorem posouzení lékařem.
+
+</Principle>
+
+<FormulaSection>
+
+<Formula id="boyle" />
+
+Rozpínání plynu je stejné v plicích jako v balonku. Rozdíl je v tom, že plíce se roztrhnou dřív, než to ucítíš.
+
+</FormulaSection>
+
+<WorkedSection>
+
+Potápěč se nadechne do plných plic (6 l) v 10 m a vystoupá se zadrženým dechem. Na hladině by ten plyn zabral:
+
+<Worked fn="boyleVolume" args={[6, 10, 0]} expected={12} tolerance={0.01} unit="l" decimals={0} />
+
+Dvojnásobek – plíce to neunesou. Ale i výstup ze dvou metrů:
+
+<Worked fn="boyleVolume" args={[6, 2, 0]} expected={7.2} tolerance={0.01} unit="l" decimals={1} />
+
+O 1,2 l víc, než plíce pojmou při plném nádechu. Na poranění to může stačit. Proto „nikdy nezadržuj dech“ platí i v bazénu.
+
+</WorkedSection>
+
+<PlaygroundSection>
+
+<Playground kind="boyle" />
+
+</PlaygroundSection>
+
+<Links>
+
+<LocalGraph />
+
+</Links>
+
+<RealWorld>
+
+<Fact id="embolie-melko" />
+
+</RealWorld>
+
+<Check>
+
+<LessonCheck />
+
+</Check>
+
+<AudioSummary>
+
+<AudioSummaryPlayer />
+
+</AudioSummary>

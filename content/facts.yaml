@@ -616,3 +616,11 @@
   conceptIds: [din-ventil, unik-plynu]
   source: { title: 'NOAA Diving Manual, 6th Edition – Diving Equipment', author: NOAA, year: 2017, note: Tlakové třídy a normy ověřit. }
   needs_review: true
+
+- id: pfo-ctvrtina
+  text: >-
+    Pitevní studie téměř tisíce zdravých srdcí na Mayo Clinic našla otevřené foramen ovale přibližně u čtvrtiny lidí; s věkem byl jeho výskyt nižší, ale otvory větší.
+    Většina z nich se o něm nikdy nedozví – potápěč se o něm často dozví až po dekompresní nemoci.
+  conceptIds: [pfo]
+  source: { title: 'Incidence and size of patent foramen ovale during the first 10 decades of life: an autopsy study of 965 normal hearts. Mayo Clinic Proceedings 59(1)', author: 'Hagen P. T., Scholz D. G., Edwards W. D.', year: 1984, note: Přesné procento a vztah k věku ověřit. }
+  needs_review: true

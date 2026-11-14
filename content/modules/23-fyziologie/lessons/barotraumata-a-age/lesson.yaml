@@ -1,0 +1,18 @@
+id: barotraumata-a-age
+moduleId: fyziologie
+title: "Barotraumata a arteriální plynová embolie"
+order: 4
+conceptIds: ["barotrauma-plic", "plynova-embolie", "pneumotorax", "barotrauma-dutin"]
+checkQuestionIds: ["baro-plice-proc", "baro-melko", "baro-age-priznaky", "baro-dutiny", "baro-objem"]
+estimatedMinutes: 11
+audioSummary: >-
+  Barotrauma je poranění rozdílem tlaků. Týká se uší, nosních dutin, masky, obleku i zubů.
+  Nejnebezpečnější je poranění plic při výstupu se zadrženým dechem. Plyn může proniknout do tepen a do mozku. To je arteriální plynová embolie.
+  Přichází během minut po vynoření a vypadá jako mrtvice.
+  Největší poměrná změna objemu je u hladiny. Výstup se zadrženým dechem ze dvou metrů může stačit.
+  První pomoc je stejná jako u dekompresní nemoci. Kyslík, poloha vleže, záchranná služba a rekompresní komora.
+sources:
+  - { title: "U.S. Navy Diving Manual, Revision 7", author: "Naval Sea Systems Command", year: 2016 }
+  - { title: "Bennett and Elliott's Physiology and Medicine of Diving, 5th Edition", author: "Brubakk A. O., Neuman T. S. (eds.)", year: 2003 }
+  - { title: "Decompression illness. The Lancet 377(9760)", author: "Vann R. D., Butler F. K., Mitchell S. J., Moon R. E.", year: 2011 }
+needs_review: true
